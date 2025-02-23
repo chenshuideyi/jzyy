@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "entries": [
+    "csdy:chests/end_city_treasure",
+    "csdy:chests/abandoned_mineshaft"
+  ]
+}

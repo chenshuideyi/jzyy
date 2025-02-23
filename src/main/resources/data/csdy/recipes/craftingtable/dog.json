@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "abc",
+    "def",
+    "ghi"
+  ],
+  "key":
+  {
+    "a":
+    {
+      "item": "csdy:lapis_sword"
+    },
+    "b":
+    {
+      "item": "csdy:redstone_sword"
+    },
+    "c":
+    {
+      "item": "minecraft:diamond_sword"
+    },
+    "d":
+    {
+      "item": "csdy:purpur_sword"
+    },
+    "e":
+    {
+      "item": "minecraft:iron_sword"
+    },
+    "f":
+    {
+      "item": "minecraft:golden_sword"
+    },
+    "g":
+    {
+      "item": "csdy:emerald_sword"
+    },
+    "h":
+    {
+      "item": "minecraft:beacon"
+    },
+    "i":
+    {
+      "item": "csdy:coal_sword"
+    }
+  },
+  "result":
+  {
+    "item": "csdy:dog",
+    "count": 1
+  }
+}

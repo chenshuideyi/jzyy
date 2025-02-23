@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "csdy:netherite_saber",
+          "weight": 13
+        },
+        {
+          "type": "minecraft:item",
+          "name": "csdy:diamond_saber",
+          "weight": 7
+        },
+        {
+          "type": "minecraft:item",
+          "name": "csdy:broken_sacred_relic",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 70
+        }
+      ],
+      "name": "main",
+      "rolls": 3.0
+    }
+  ]
+}

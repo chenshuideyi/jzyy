@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "a",
+    "a",
+    "b"
+  ],
+  "key":
+  {
+    "a":
+    {
+      "item": "minecraft:coal"
+    },
+    "b":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result":
+  {
+    "item": "csdy:coal_sword",
+    "count": 1
+  }
+}

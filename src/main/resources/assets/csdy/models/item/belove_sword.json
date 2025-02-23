@@ -1,0 +1,93 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "csdy:item/belove_sword"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        55
+      ],
+      "translation": [
+        -6.3,
+        16.0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.3
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        90,
+        -55
+      ],
+      "translation": [
+        -6.3,
+        16.0,
+        0
+      ],
+      "scale": [
+        2.5,
+        2.5,
+        2.3
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -20,
+        -90,
+        10
+      ],
+      "translation": [
+        1.13,
+        5.2,
+        -0.26
+      ],
+      "scale": [
+        2.3,
+        2.3,
+        2.5
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -20,
+        -90,
+        -80
+      ],
+      "translation": [
+        1.13,
+        5.2,
+        -0.26
+      ],
+      "scale": [
+        2.3,
+        2.3,
+        2.5
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        17,
+        18,
+        18
+      ],
+      "scale": [
+        15,
+        15,
+        15
+      ]
+    }
+  }
+}
