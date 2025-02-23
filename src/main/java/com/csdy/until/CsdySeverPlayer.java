@@ -1,8 +1,5 @@
 package com.csdy.until;
 
-import com.csdy.item.register.HideRegister;
-import com.csdy.until.List.DeadLists;
-import com.csdy.until.List.GodList;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
