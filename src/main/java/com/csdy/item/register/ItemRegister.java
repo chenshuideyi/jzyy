@@ -1,14 +1,11 @@
 package com.csdy.item.register;
 
 import com.csdy.ModMain;
-import com.csdy.item.Death;
-import com.csdy.item.EnderDragonHeart;
+import com.csdy.item.food.EnderDragonHeart;
 import com.csdy.item.TheSilverKey;
-import com.csdy.item.WardenHeart;
+import com.csdy.item.food.WardenHeart;
 import com.csdy.item.food.Poop;
-import com.csdy.item.material.BrokenSacredRelic;
-import com.csdy.item.material.OriginalCatalyst;
-import com.csdy.item.material.RebellionDebris;
+import com.csdy.item.material.*;
 import com.csdy.item.sword.*;
 import com.csdy.item.sword.sword.Lapis;
 import com.csdy.item.sword.sword.RedStone;
@@ -48,5 +45,13 @@ public class ItemRegister {
     public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart", WardenHeart::new);
     public static final RegistryObject<Item> THE_SILVER_KEY = ITEMS.register("the_silver_key", TheSilverKey::new);
     public static final RegistryObject<Item> ENDERDRAGON_HEART = ITEMS.register("enderdragon_heart", EnderDragonHeart::new);
+    public static final RegistryObject<Item> FORMA = ITEMS.register("forma", Forma::new);
+    public static final RegistryObject<Item> NEURON = ITEMS.register("neuron", Neuron::new);
+    public static final RegistryObject<Item> MORPHICS = ITEMS.register("morphics", Morphics::new);
+    public static final RegistryObject<Item> OROKIN_CELL = ITEMS.register("orokin_cell", OrokinCell::new);
+    public static final RegistryObject<Item> NEURAL_SENSORS = ITEMS.register("neural_sensors", NeuralSensors::new);
+
+
+
 
 }

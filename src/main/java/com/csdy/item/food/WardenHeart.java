@@ -1,6 +1,5 @@
-package com.csdy.item;
+package com.csdy.item.food;
 
-import com.csdy.item.food.ItemGenericFood;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

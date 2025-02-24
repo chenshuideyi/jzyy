@@ -43,5 +43,10 @@
   "item.csdy.poop": "屎",
   "item.csdy.original_catalyst": "旧日的MC气息",
   "item.csdy.warden_heart": "§1坚守者核心",
-  "item.csdy.enderdragon_heart": "§5末影龙的心脏"
+  "item.csdy.enderdragon_heart": "§5末影龙的心脏",
+  "item.csdy.forma": "Forma",
+  "item.csdy.neuron": "神经元",
+  "item.csdy.morphics": "非晶态合金",
+  "item.csdy.orokin_cell": "Orokin电池",
+  "item.csdy.neural_sensors": "神经传感器"
 }

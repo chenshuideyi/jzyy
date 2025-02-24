@@ -15,9 +15,18 @@ public class SystemVolume {
         IntByReference volumeRef = new IntByReference();
         WinMM.INSTANCE.waveOutGetVolume(null, volumeRef);
         int volume = volumeRef.getValue();
-        int leftVolume = volume & 0xFFFF;
-        int rightVolume = volume >> 16;
-        return (leftVolume + rightVolume);
+
+        // 提取左右声道的音量值
+        int leftVolume = volume & 0xFFFF;      // 低 16 位
+        int rightVolume = (volume >> 16) & 0xFFFF; // 高 16 位
+
+        // 计算左右声道的平均值
+        int averageVolume = (leftVolume + rightVolume) / 2;
+
+        // 将音量值转换为百分比（0xFFFF 对应 100%）
+        int volumePercentage = (int) ((averageVolume / (double) 0xFFFF) * 100);
+
+        return volumePercentage;
     }
 
 }
