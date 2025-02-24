@@ -1,4 +1,4 @@
-package com.csdy.diadema;
+package com.csdy.diadema.warden;
 
 
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,6 @@ public class Warden {
     public static void addWarden(Player player) {
        Warden.add(player);
     }
-
 
     public static void removeWarden(Player player) {
         Warden.remove(player);

@@ -1,8 +1,10 @@
 package com.csdyms.mixins;
 
+import com.csdy.item.register.ItemRegister;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.item.ItemStack;
@@ -61,10 +63,17 @@ public abstract class LivingEntityMixin {
         LivingEntity living = (LivingEntity)(Object) this;
         if (living instanceof Warden) {
             Level level = living.level();
-            // 创建一个金苹果
-            ItemStack goldenApple = new ItemStack(Items.GOLDEN_APPLE);
-            // 生成掉落物
-            ItemEntity itemEntity = new ItemEntity(level,living.getX(),living.getY(),living.getZ(),goldenApple);
+
+            ItemStack warden = new ItemStack(ItemRegister.WARDEN_HEART.get());
+
+            ItemEntity itemEntity = new ItemEntity(level,living.getX(),living.getY(),living.getZ(),warden);
+            living.level.addFreshEntity(itemEntity);
+        } else if (living instanceof EnderDragon) {
+            Level level = living.level();
+
+            ItemStack ender = new ItemStack(ItemRegister.ENDERDRAGON_HEART.get());
+
+            ItemEntity itemEntity = new ItemEntity(level,living.getX(),living.getY(),living.getZ(),ender);
             living.level.addFreshEntity(itemEntity);
         }
     }

@@ -2,8 +2,6 @@ package com.csdy.event;
 
 import com.csdy.ModMain;
 import com.csdy.item.register.ItemRegister;
-import com.csdyms.ParticleUtils;
-import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
@@ -12,18 +10,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.items.ItemHandlerHelper;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.world.phys.Vec3;
 
 
-import java.awt.*;
-
-import static com.csdy.diadema.Warden.isWarden;
+import static com.csdy.diadema.warden.Warden.isWarden;
 
 @Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Event {

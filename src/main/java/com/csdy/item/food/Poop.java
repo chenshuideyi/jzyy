@@ -1,6 +1,6 @@
 package com.csdy.item.food;
 
-import com.csdy.diadema.Warden;
+import com.csdy.diadema.warden.Warden;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -8,7 +8,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class Poop extends ItemGenericFood {
@@ -34,7 +33,7 @@ public class Poop extends ItemGenericFood {
         tag.putBoolean(firstshit, true);
         player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
         }
-        return livingEntity instanceof Player && ((Player) livingEntity).getAbilities().instabuild ? stack : new ItemStack(Items.BOWL);
+        return stack;
     }
 }
 

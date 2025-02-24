@@ -2,6 +2,9 @@ package com.csdy.item.register;
 
 import com.csdy.ModMain;
 import com.csdy.item.Death;
+import com.csdy.item.EnderDragonHeart;
+import com.csdy.item.TheSilverKey;
+import com.csdy.item.WardenHeart;
 import com.csdy.item.food.Poop;
 import com.csdy.item.material.BrokenSacredRelic;
 import com.csdy.item.material.OriginalCatalyst;
@@ -42,5 +45,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> BeloveSword = ITEMS.register("belove_sword", () -> new com.csdy.item.sword.BeloveSword(Tiers.NETHERITE, 3, -2.4F, new Item.Properties()));
     public static final RegistryObject<Item> POOP = ITEMS.register("poop", Poop::new);
     public static final RegistryObject<Item> ORIGINALCATALYST = ITEMS.register("original_catalyst", OriginalCatalyst::new);
+    public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart", WardenHeart::new);
+    public static final RegistryObject<Item> THE_SILVER_KEY = ITEMS.register("the_silver_key", TheSilverKey::new);
+    public static final RegistryObject<Item> ENDERDRAGON_HEART = ITEMS.register("enderdragon_heart", EnderDragonHeart::new);
 
 }
