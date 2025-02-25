@@ -66,6 +66,10 @@ mixin {
 }
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
+    maven { url = 'https://maven.aliyun.com/repository/central' }
+    maven { url = 'https://maven.aliyun.com/repository/public' }
+    maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { url = 'https://maven.aliyun.com/repository/apache-snapshots' }
     maven {
         name 'DVS1 Maven FS'
         url 'https://dvs1.progwml6.com/files/maven'
@@ -75,6 +79,12 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation 'org.javassist:javassist:3.28.0-GA'
+
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 
 //    implementation fg.deobf("slimeknights.mantle:Mantle:1.20.1-${mantle_version}")
 //    implementation fg.deobf("slimeknights.tconstruct:Tconstrust:${tcon_version}")
