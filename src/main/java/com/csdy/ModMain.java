@@ -1,5 +1,6 @@
 package com.csdy;
 
+import com.csdy.effect.register.EffectRegister;
 import com.csdy.item.register.HideRegister;
 import com.csdy.item.register.ItemRegister;
 import com.csdy.particle.register.ParticlesRegister;
@@ -30,6 +31,7 @@ public class ModMain {
     public static final List<Supplier<? extends Item>> TAB_ITEMS_LIST = new ArrayList<>();
 
     public ModMain() {
+
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         CsdyTab.CREATIVE_MODE_TABS.register(bus);
         //注册表
@@ -39,7 +41,7 @@ public class ModMain {
         EntityRegister.REGISTRY.register(bus);
         MinecraftForge.EVENT_BUS.register(this);
         ParticlesRegister.PARTICLE_TYPES.register(bus);
-
+        EffectRegister.EFFECTS.register(bus);
 
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
 

@@ -18,22 +18,12 @@ import net.minecraftforge.registries.RegistryObject;
 public class ParticlesRegister {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ModMain.MODID);
 
-    public static final RegistryObject<SimpleParticleType> CUSTOM_PARTICLE = PARTICLE_TYPES.register(
-            "custom_particle", () -> new SimpleParticleType(false)
-    );
-    public static final RegistryObject<SimpleParticleType> SHADOW_PARTICLE = PARTICLE_TYPES.register(
-            "shadow_particle", () -> new SimpleParticleType(false)
-    );
-    public static final RegistryObject<SimpleParticleType> EMC_PARTICLE = PARTICLE_TYPES.register(
-            "emc_particle", () -> new SimpleParticleType(false)
-    );
-    public static final RegistryObject<SimpleParticleType> SULFUR_PARTICLE = PARTICLE_TYPES.register(
-            "sulfur_particle", () -> new SimpleParticleType(false)
-    );
-    public static final RegistryObject<SimpleParticleType> DARK_PARTICLE = PARTICLE_TYPES.register(
-            "dark_particle", () -> new SimpleParticleType(false)
-    );
-
+    public static final RegistryObject<SimpleParticleType> CUSTOM_PARTICLE = PARTICLE_TYPES.register("custom_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SHADOW_PARTICLE = PARTICLE_TYPES.register("shadow_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> EMC_PARTICLE = PARTICLE_TYPES.register("emc_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> SULFUR_PARTICLE = PARTICLE_TYPES.register("sulfur_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> DARK_PARTICLE = PARTICLE_TYPES.register("dark_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> ABYSS_PARTICLE = PARTICLE_TYPES.register("abyss_particle", () -> new SimpleParticleType(false));
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
@@ -44,5 +34,6 @@ public class ParticlesRegister {
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.EMC_PARTICLE.get(), EmcParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.SULFUR_PARTICLE.get(), SulfurParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.DARK_PARTICLE.get(), DarkPartice.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticlesRegister.ABYSS_PARTICLE.get(), AbyssParticle.Provider::new);
     }
 }

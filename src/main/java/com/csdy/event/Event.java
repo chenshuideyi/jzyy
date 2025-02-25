@@ -1,15 +1,19 @@
 package com.csdy.event;
 
 import com.csdy.ModMain;
+import com.csdy.effect.Scared;
+import com.csdy.effect.register.EffectRegister;
 import com.csdy.item.register.ItemRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -65,6 +69,8 @@ public class Event {
         }
 
     }
+
+
 
 }
 //@SubscribeEvent

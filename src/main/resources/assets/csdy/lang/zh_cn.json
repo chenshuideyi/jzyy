@@ -48,5 +48,13 @@
   "item.csdy.neuron": "神经元",
   "item.csdy.morphics": "非晶态合金",
   "item.csdy.orokin_cell": "Orokin电池",
-  "item.csdy.neural_sensors": "神经传感器"
+  "item.csdy.neural_sensors": "神经传感器",
+  "item.csdy.aura_forma": "光环Forma",
+
+
+
+
+
+  "effect.csdy.scared": "惊恐",
+  "effect.csdy.physical_injury": "开放性物理创口"
 }

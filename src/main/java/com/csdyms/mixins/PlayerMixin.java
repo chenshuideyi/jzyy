@@ -1,5 +1,7 @@
 package com.csdyms.mixins;
 
+import com.csdy.diadema.abyss.AbyssParticle;
+import com.csdy.effect.register.EffectRegister;
 import com.csdy.item.register.HideRegister;
 import com.csdy.until.ClassObj;
 import com.csdy.until.List.GodList;
@@ -46,7 +48,7 @@ public class PlayerMixin {
                 this.player.inventory.add(new ItemStack(HideRegister.CSDY_SWORD.get()));
 
             }
-            ParticleUtils.Wing(this.player,this.player.level);
+            AbyssParticle.AddAbyssParticle(this.player,this.player.level);
             player.getAbilities().setWalkingSpeed(0.2F);
             player.getAbilities().setFlyingSpeed(1F);
             player.getAbilities().mayfly = true;
@@ -68,7 +70,6 @@ public class PlayerMixin {
             }
             
         }
-
     }
     @Inject(
             method = {"getHurtSound"},

@@ -65,7 +65,7 @@ public class BeloveSword extends SwordItem {
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
 //        mc.gui=new SuperForgeGui(mc);
-        int currentVolume = getCurrentVolume()*100/65534;
+        int currentVolume = getCurrentVolume();
         ((Player) entity).displayClientMessage(Component.literal(currentVolume+"%"), false);
         return false;
     }

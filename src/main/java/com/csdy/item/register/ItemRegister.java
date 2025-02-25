@@ -50,7 +50,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> MORPHICS = ITEMS.register("morphics", Morphics::new);
     public static final RegistryObject<Item> OROKIN_CELL = ITEMS.register("orokin_cell", OrokinCell::new);
     public static final RegistryObject<Item> NEURAL_SENSORS = ITEMS.register("neural_sensors", NeuralSensors::new);
-
+    public static final RegistryObject<Item> AURA_FORMA = ITEMS.register("aura_forma", AuraForma::new);
 
 
 

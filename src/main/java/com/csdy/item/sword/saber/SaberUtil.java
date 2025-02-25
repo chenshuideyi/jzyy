@@ -15,7 +15,8 @@ public class SaberUtil {
         double x = player.getX();
         double y = player.getY();
         double z = player.getZ();
-        List<LivingEntity> moblist = player.level.getEntitiesOfClass(LivingEntity.class, new AABB( x + 4, y + 4, z + 4, x -4, y -4, z -4));
+        List<LivingEntity> moblist = player.level.getEntitiesOfClass(LivingEntity.class,
+                new AABB( x + 4, y + 4, z + 4, x -4, y -4, z -4));
         for (LivingEntity targets : moblist) {
             if (targets != null) {
                 targets.invulnerableTime = 0;

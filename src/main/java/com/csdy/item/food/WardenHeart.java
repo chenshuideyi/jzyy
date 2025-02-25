@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 
 public class WardenHeart extends ItemGenericFood {
     public WardenHeart() {
-        super(30, 30F, false, true, true, 1);
+        super(30, 30F, false, true, true, 16);
     }
 
     @Override
