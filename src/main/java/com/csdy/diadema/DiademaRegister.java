@@ -7,6 +7,7 @@ import com.csdy.frames.register.CsdyRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+// 把你的领域注册上来就算是完成了！
 public class DiademaRegister {
     public static final DeferredRegister<DiademaType> DIADEMA_TYPES = DeferredRegister.create(CsdyRegistries.DIADEMA_TYPE, ModMain.MODID);
 

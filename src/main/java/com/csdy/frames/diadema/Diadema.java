@@ -3,7 +3,6 @@ package com.csdy.frames.diadema;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -16,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/// 领域实例的抽象基类，实现这个和一旁的DiademaType即可实现自定义领域
 public abstract class Diadema {
     // init&final
     public Diadema(DiademaType type, DiademaMovement movement) {
@@ -68,20 +68,24 @@ public abstract class Diadema {
         return position.z;
     }
 
-    protected abstract DiademaRange getRange();
+    public abstract DiademaRange getRange();
 
     private final DiademaMovement movement;
 
     private final Set<Entity> entities = new HashSet<>();
 
+    /// 所有受这一领域影响的生物的视图，注意是只读的，进行更改会抛出异常。<br/>
+    /// 发生变更后会有事件发出
     public final Set<Entity> affectingEntities = Collections.unmodifiableSet(entities);
 
+    /// 终结这一领域
     public void kill() {
         remove();
     }
 
 
     // virtual methods
+    /// 每帧执行一次的实例方法，放手一搏吧
     protected void perTick() {
     }
 
@@ -115,9 +119,9 @@ public abstract class Diadema {
 
     // event handlers
     @SubscribeEvent
-    public void onLevelTick(TickEvent.LevelTickEvent e) {
-        updateEntities();
+    public final void onServerTick(TickEvent.ServerTickEvent e) {
         updatePosition();
+        updateEntities();
         perTick();
     }
 }

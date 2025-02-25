@@ -8,6 +8,8 @@ import net.minecraft.world.phys.AABB;
 
 import java.util.stream.Stream;
 
+/// 方便使用的基础实现，只需要填入领域实例，然后写好粗略的AABB和具体判定方法即可 <br/>
+/// 应保证AABB范围能完全包含住实际范围，不然AABB外面的部分会选不到
 @SuppressWarnings("LombokGetterMayBeUsed")
 public abstract class CommonDiademaRange extends DiademaRange {
     protected CommonDiademaRange(Diadema diadema) {
@@ -17,6 +19,7 @@ public abstract class CommonDiademaRange extends DiademaRange {
     @Getter
     protected final Diadema diadema;
 
+    /// 粗筛选用的AABB，应保证AABB范围能完全包含住实际范围，不然AABB外面的部分会选不到
     protected abstract AABB getAABB();
 
     @Override public Stream<Entity> getAffectingEntities() {
