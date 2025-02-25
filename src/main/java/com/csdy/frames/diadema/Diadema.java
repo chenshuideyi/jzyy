@@ -1,9 +1,7 @@
-package com.csdy.diadema;
+package com.csdy.frames.diadema;
 
-import com.csdy.diadema.events.EntityEnteredDiademaEvent;
-import com.csdy.diadema.events.EntityExitedDiademaEvent;
-import com.csdy.diadema.movement.DiademaMovement;
-import com.csdy.diadema.range.DiademaRange;
+import com.csdy.frames.diadema.movement.DiademaMovement;
+import com.csdy.frames.diadema.range.DiademaRange;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.world.entity.Entity;
@@ -29,6 +27,12 @@ public abstract class Diadema {
     }
 
     private void remove() {
+        // 视作实体离开领域
+        for (Entity entity : entities) {
+            entities.remove(entity);
+            MinecraftForge.EVENT_BUS.post(new EntityExitedDiademaEvent(entity, this));
+        }
+
         // 同样实例在删除时候需要手动取消注册。不然因为注册也是个引用，可能导致内存泄漏或者null引用异常
         MinecraftForge.EVENT_BUS.unregister(this);
     }

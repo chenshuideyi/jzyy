@@ -1,4 +1,4 @@
-package com.csdy.diadema.range;
+package com.csdy.frames.diadema.range;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;

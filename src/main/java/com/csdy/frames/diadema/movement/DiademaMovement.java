@@ -1,4 +1,4 @@
-package com.csdy.diadema.movement;
+package com.csdy.frames.diadema.movement;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
