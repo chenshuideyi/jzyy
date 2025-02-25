@@ -1,5 +1,7 @@
 package com.csdy;
 
+import com.csdy.diadema.DiademaRegister;
+import com.csdy.frames.diadema.range.DiademaRange;
 import com.csdy.item.register.HideRegister;
 import com.csdy.item.register.ItemRegister;
 import com.csdy.particle.register.ParticlesRegister;
@@ -21,7 +23,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 
-
 @Mod(ModMain.MODID)
 public class ModMain {
 
@@ -40,6 +41,8 @@ public class ModMain {
         MinecraftForge.EVENT_BUS.register(this);
         ParticlesRegister.PARTICLE_TYPES.register(bus);
 
+        DiademaRegister.DIADEMA_TYPES.register(bus);
+
 
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
 
@@ -48,7 +51,7 @@ public class ModMain {
 //        MinecraftForge.EVENT_BUS.register(ClientEventHandler.class);
 //    }
 
-    }
+}
 //    class CsdyThread extends Thread{
 //        public void run() {
 //            while(Minecraft.getInstance().isRunning()) {

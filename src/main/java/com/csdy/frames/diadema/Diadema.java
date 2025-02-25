@@ -14,12 +14,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class Diadema {
+public abstract class Diadema {
     // init&final
-    public Diadema(DiademaType type, DiademaRange range, DiademaMovement movement) {
+    public Diadema(DiademaType type, DiademaMovement movement) {
         this.type = type;
-        this.range = range;
         this.movement = movement;
 
         // 实例上的事件处理器需要手动注册
@@ -68,8 +68,7 @@ public class Diadema {
         return position.z;
     }
 
-    @Getter
-    private final DiademaRange range;
+    protected abstract DiademaRange getRange();
 
     private final DiademaMovement movement;
 
@@ -103,7 +102,7 @@ public class Diadema {
     }
 
     private void updateEntities() {
-        var inRange = range.getAffectingEntities();
+        var inRange = getRange().getAffectingEntities().collect(Collectors.toSet());
         entities.stream().filter(entity -> !inRange.contains(entity)).toList().forEach(this::removeEntity);
         inRange.forEach(this::addEntity);
     }

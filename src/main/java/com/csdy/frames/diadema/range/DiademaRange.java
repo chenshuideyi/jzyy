@@ -1,17 +1,17 @@
 package com.csdy.frames.diadema.range;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Set;
+import java.util.stream.Stream;
 
 public abstract class DiademaRange {
     public abstract boolean ifInclude(Vec3 position);
 
     public abstract boolean ifInclude(Entity entity);
 
-    public abstract Set<Entity> getAffectingEntities();
+    public abstract Stream<Entity> getAffectingEntities();
 
-    public abstract Set<BlockState> getAffectingBlocks();
+    public abstract Stream<BlockPos> getAffectingBlocks();
 }
