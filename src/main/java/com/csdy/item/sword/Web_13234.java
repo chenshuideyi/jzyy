@@ -3,6 +3,7 @@ package com.csdy.item.sword;
 import com.csdy.diadema.DiademaRegister;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.movement.FollowDiademaMovement;
+import com.csdy.frames.diadema.movement.StaticDiademaMovement;
 import com.csdyms.core.EntityUntil;
 import com.csdyms.core.enums.EntityCategory;
 import com.google.common.collect.ImmutableMultimap;
@@ -52,7 +53,7 @@ public class Web_13234 extends SwordItem {
         System.out.println("111 玩家使用Web_13234");
         if (level instanceof ServerLevel serverLevel) {
             if (state0) {
-                testDiadema = DiademaRegister.WARDEN.get().CreateInstance(new FollowDiademaMovement(player));
+                testDiadema = DiademaRegister.WARDEN.get().CreateInstance(new StaticDiademaMovement(serverLevel, player.position()));
                 System.out.println("222 并且领域添加了");
                 state0 = false;
             } else {

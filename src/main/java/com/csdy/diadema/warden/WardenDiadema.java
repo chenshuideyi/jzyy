@@ -1,23 +1,22 @@
 package com.csdy.diadema.warden;
 
+import com.csdy.ModMain;
+import com.csdy.diadema.DiademaRegister;
 import com.csdy.diadema.ranges.HalfSphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
+import com.csdy.frames.diadema.events.EntityEnteredDiademaEvent;
+import com.csdy.frames.diadema.events.EntityExitedDiademaEvent;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
-import com.csdy.particle.register.ParticlesRegister;
-import com.csdy.particleUtils.PointSets;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-import java.util.stream.Stream;
-
-// 如你所见，这个是具体实例，后面带Type的是类型，一般而言两个都要重写一份
+// 如你所见，这个是领域的服务端类型，带个Client的是客户端类型，一般而言两个都要重写一份。然后拿去注册
+@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WardenDiadema extends Diadema {
-    private static final double RADIUS = 6;
+    static final double RADIUS = 6;
 
     public WardenDiadema(DiademaType type, DiademaMovement movement) {
         super(type, movement);
@@ -29,27 +28,27 @@ public class WardenDiadema extends Diadema {
         return range;
     }
 
-    // 粒子我建议像这样写在这里，还有大部分逐帧事件（比如把所有范围内实体丢进虚空）就都可以写在这里，有方法能获取所有影响到的方块和实体，针对类型的最好写在Type类上
-    // 需要针对实体进出的时间点的就监听事件，参考WardenDiadema上的那俩事件处理器。
-    // todo: ↑得写在客户端的部分所以暂时当我没说
+    // 大部分逐帧事件（比如把所有范围内实体丢进虚空）就都可以写在这里，有方法能获取所有影响到的方块和实体
+    // 需要针对实体进出的时间点的就监听事件，参考那俩事件处理器。
     @Override protected void perTick() {
     }
 
-    private void drawParticle() {
-        Vec3 center = getPosition();
-        int segX = 40, segY = 80, segGround = 60;
-        SimpleParticleType type = ParticlesRegister.DARK_PARTICLE.get();
 
-        var points = PointSets.Circle(RADIUS, segX).flatMap(v -> {
-            // 上半球
-            var up = Stream.iterate(0, i -> i <= segY, i -> i + 1)
-                    .map(i -> v.scale((double) (i) / segY).add(0, RADIUS * i / segY, 0));
-            // 下半面
-            var down = Stream.iterate(0, i -> i <= segGround, i -> i + 1)
-                    .map(i -> v.scale((double) (i) / segGround));
-            return Stream.concat(up, down);
-        }).map(v -> v.add(center)); // 移动中心点
+    // 不知道你打算怎么实现，总之这两个事件监听能监听到实体进出的时候，写在这里就好
+    @SubscribeEvent
+    public static void onEntityEnteredDiadema(EntityEnteredDiademaEvent e) {
+        if (!e.getDiadema().isOfType(DiademaRegister.WARDEN.get())) return; //检测领域类型
+        if (!(e.getEntity() instanceof Player)) return; //仅影响玩家
 
-        points.forEach(v -> getLevel().addParticle(type, v.x, v.y, v.z, 0, 0, 0)); //绘制
+        /// todo: 在这里进行你的操作
+    }
+
+    @SubscribeEvent
+    public static void onEntityExitedDiadema(EntityExitedDiademaEvent e) {
+        if (!e.getDiadema().isOfType(DiademaRegister.WARDEN.get())) return; //检测领域类型
+        if (DiademaRegister.WARDEN.get().isAffected(e.getEntity())) return; //这个是为了防止玩家从多个重叠的Warden领域中的一嗝离开而被误识别为完全离开
+        if (!(e.getEntity() instanceof Player)) return; //仅影响玩家
+
+        // todo: 在这里进行你的取消操作
     }
 }
