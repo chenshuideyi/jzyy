@@ -9,6 +9,9 @@ import com.csdy.frames.diadema.events.EntityEnteredDiademaEvent;
 import com.csdy.frames.diadema.events.EntityExitedDiademaEvent;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
+import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 // 如你所见，这个是领域的服务端类型，带个Client的是客户端类型，一般而言两个都要重写一份。然后拿去注册
 @Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WardenDiadema extends Diadema {
+    public Player player;
     static final double RADIUS = 6;
 
     public WardenDiadema(DiademaType type, DiademaMovement movement) {
@@ -54,7 +58,7 @@ public class WardenDiadema extends Diadema {
         System.out.printf("什么离开了%s: %s \n", e.getDiadema(), e.getEntity());
 
         if (!(e.getEntity() instanceof Player)) return; //仅影响玩家
-
+//        SonicBoomUtil.performSonicBoom(e.getEntity().level(), (LivingEntity) e.getEntity(),e.getDiadema().player);
         // todo: 在这里进行你的取消操作，那行输出快删掉
     }
 }

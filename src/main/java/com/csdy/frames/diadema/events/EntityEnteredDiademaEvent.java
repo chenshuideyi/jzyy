@@ -13,5 +13,6 @@ public class EntityEnteredDiademaEvent extends EntityEvent {
 
     @Getter
     private final Diadema diadema;
+
 }
 

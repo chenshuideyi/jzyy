@@ -84,7 +84,7 @@ public class ParticleUtils {
                 double X = player.getX();
                 double Z = player.getZ();
                 double y = player.getY() + 0.1D;
-                SimpleParticleType type = ParticleTypes.ELECTRIC_SPARK.getType();
+        SimpleParticleType type = ParticleTypes.ELECTRIC_SPARK.getType();
                 for(int i = 0 ; i <= 360; i++){
                     double rad = i * 0.017453292519943295D;
                     double r1 = 0.5D,r2 = 3.0D;
