@@ -4,6 +4,7 @@ import com.csdy.ModMain;
 import com.csdy.frames.diadema.events.EntityEnteredDiademaEvent;
 import com.csdy.frames.diadema.events.EntityExitedDiademaEvent;
 import com.csdy.frames.diadema.movement.DiademaMovement;
+import com.csdy.frames.diadema.movement.FollowDiademaMovement;
 import com.csdy.frames.diadema.packets.DiademaCreatedPacket;
 import com.csdy.frames.diadema.packets.DiademaRemovedPacket;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
@@ -12,6 +13,7 @@ import lombok.Getter;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
@@ -93,6 +95,16 @@ public abstract class Diadema {
 
     private final DiademaMovement movement;
 
+    public Entity GetCore() {
+        if (!(movement instanceof FollowDiademaMovement follow)) return null;
+        return follow.getEntity();
+    }
+
+    public Player GetPlayer() {
+        if (!(GetCore() instanceof Player player)) return null;
+        return player;
+    }
+
     private final Set<Entity> entities = new HashSet<>();
 
     /// 所有受这一领域影响的生物的视图，注意是只读的，进行更改会抛出异常。<br/>
@@ -112,11 +124,11 @@ public abstract class Diadema {
     }
 
     /// 实体进入自己时会发生的实例方法，也许无需时刻监听事件
-    protected void onEntityEnter(Entity entity){
+    protected void onEntityEnter(Entity entity) {
     }
 
     /// 实体离开自己时会发生的实例方法，值得一提的是这两个函数判定比事件早
-    protected void onEntityExit(Entity entity){
+    protected void onEntityExit(Entity entity) {
     }
 
     /// 重写这个来像Client同步自定义参数，把东西序列化到字节数组里，在另一边的ClientDiadema里还原回来即可
