@@ -4,9 +4,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+/// 领域会静止在特定地点
 public final class StaticDiademaMovement extends DiademaMovement {
-    private final ServerLevel level;
-    private final Vec3 position;
+    private ServerLevel level;
+    private Vec3 position;
 
     public StaticDiademaMovement(ServerLevel level, Vec3 position) {
 

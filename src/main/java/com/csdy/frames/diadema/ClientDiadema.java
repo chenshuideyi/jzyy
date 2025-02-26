@@ -2,14 +2,13 @@ package com.csdy.frames.diadema;
 
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import lombok.Getter;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+/// 客户端的领域实例类型，用于处理显示效果之类的东西
 public abstract class ClientDiadema {
     public ClientDiadema() {
         // 实例上的事件处理器需要手动注册
