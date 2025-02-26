@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+/// 用于处理双端同步的工具类，一般情况下除了初始化以外应该完全不需要和这里交互。
 @Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DiademaSyncing {
     private static final String PROTOCOL_VERSION = "1";

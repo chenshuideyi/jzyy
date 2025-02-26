@@ -8,9 +8,7 @@ import com.csdy.frames.diadema.packets.DiademaCreatedPacket;
 import com.csdy.frames.diadema.packets.DiademaRemovedPacket;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import com.csdy.frames.diadema.range.DiademaRange;
-import io.netty.buffer.ByteBuf;
 import lombok.Getter;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -113,6 +111,15 @@ public abstract class Diadema {
     protected void perTick() {
     }
 
+    /// 实体进入自己时会发生的实例方法，也许无需时刻监听事件
+    protected void onEntityEnter(Entity entity){
+    }
+
+    /// 实体离开自己时会发生的实例方法，值得一提的是这两个函数判定比事件早
+    protected void onEntityExit(Entity entity){
+    }
+
+    /// 重写这个来像Client同步自定义参数，把东西序列化到字节数组里，在另一边的ClientDiadema里还原回来即可
     protected byte[] getCustomSyncData() {
         return new byte[0];
     }
@@ -127,6 +134,7 @@ public abstract class Diadema {
     private void removeEntity(Entity entity) {
         if (entities.remove(entity)) {
             type.removeAffected(entity);
+            onEntityExit(entity);
             MinecraftForge.EVENT_BUS.post(new EntityExitedDiademaEvent(entity, this));
         }
     }
@@ -134,6 +142,7 @@ public abstract class Diadema {
     private void addEntity(Entity entity) {
         if (entities.add(entity)) {
             type.addAffected(entity);
+            onEntityEnter(entity);
             MinecraftForge.EVENT_BUS.post(new EntityEnteredDiademaEvent(entity, this));
         }
     }

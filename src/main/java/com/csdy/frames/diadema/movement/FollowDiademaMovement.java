@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 
+/// 领域会始终跟随实体
 @SuppressWarnings("LombokGetterMayBeUsed")
 public final class FollowDiademaMovement extends DiademaMovement {
     public FollowDiademaMovement(Entity entity) {
