@@ -3,24 +3,32 @@ package com.csdy.frames.diadema;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import lombok.Getter;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public abstract class ClientDiadema {
     public ClientDiadema() {
+        System.out.println("creating one client diadema...");
 
+        // 实例上的事件处理器需要手动注册
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     void remove() {
-        //todo: 未实现
+        System.out.println("removing one client diadema...");
+
+        // 同样实例在删除时候需要手动取消注册。不然因为注册也是个引用，可能导致内存泄漏或者null引用异常
+        MinecraftForge.EVENT_BUS.unregister(this);
     }
 
 
     // properties
     @Getter private Vec3 position = Vec3.ZERO;
-    @Getter private ResourceKey<Level> dimension;
+    @Getter private ResourceLocation dimension;
 
 
     // virtual methods
@@ -36,7 +44,8 @@ public abstract class ClientDiadema {
 
 
     // updating
-    void update(DiademaUpdatePacket packet) {
+    final void update(DiademaUpdatePacket packet) {
+        System.out.println("updating one client diadema...");
         this.position = packet.position();
         this.dimension = packet.dimension();
         updating(packet.customData());

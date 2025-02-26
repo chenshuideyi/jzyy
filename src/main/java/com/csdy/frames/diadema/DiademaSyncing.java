@@ -5,6 +5,8 @@ import com.csdy.frames.diadema.packets.DiademaCreatedPacket;
 import com.csdy.frames.diadema.packets.DiademaRemovedPacket;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -62,31 +64,42 @@ public class DiademaSyncing {
     // sync logic
     private static final Map<Long, ClientDiadema> instances = new HashMap<>();
 
+    @OnlyIn(Dist.CLIENT)
     public static void handleCreation(DiademaCreatedPacket packet, Supplier<NetworkEvent.Context> network) {
         network.get().enqueueWork(() -> {
-            instances.replace(packet.instanceId(), packet.type().CreateClientInstance());
-            System.out.println("1111111111\n1111111111\n111111111111111111111111111111111111111111111111111\n\n\n\n\n\n111");
+            instances.put(packet.instanceId(), packet.type().CreateClientInstance());
+            System.out.printf("Created: %d, %s\n", packet.instanceId(), packet.type());
         });
+        network.get().setPacketHandled(true);
     }
 
+    @OnlyIn(Dist.CLIENT)
     private static void handleRemoval(DiademaRemovedPacket packet, Supplier<NetworkEvent.Context> network) {
         network.get().enqueueWork(() -> {
             var instance = instances.remove(packet.instanceId());
             if (instance != null) instance.remove();
+            System.out.printf("Removed: %d\n", packet.instanceId());
         });
+        network.get().setPacketHandled(true);
     }
 
+    @OnlyIn(Dist.CLIENT)
     private static void handleUpdate(DiademaUpdatePacket packet, Supplier<NetworkEvent.Context> network) {
         network.get().enqueueWork(() -> {
             var instance = instances.getOrDefault(packet.instanceId(), null);
             if (instance != null) instance.update(packet);
+            System.out.printf("Instances %d\n", instances.size());
+            System.out.printf("Update: %d, (%s), %s\n", packet.instanceId(), packet.position().toString(), packet.dimension().toString());
         });
+        network.get().setPacketHandled(true);
     }
 
 
     // event handlers
-    @SubscribeEvent
+    @SubscribeEvent @OnlyIn(Dist.CLIENT)
     public static void onClientLoggingOut(ClientPlayerNetworkEvent.LoggingOut e) {
+        System.out.println("1111111111\n1111111111\n111111111111111111111111111111111111111111111111111\n\n\n\n\n\n111");
+        System.out.println("1111111111\n1111111111\n111111111111111111111111111111111111111111111111111\n\n\n\n\n\n111");
         instances.values().forEach(ClientDiadema::remove);
         instances.clear();
     }

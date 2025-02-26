@@ -7,6 +7,7 @@ import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.particleUtils.PointSets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.stream.Stream;
@@ -18,15 +19,23 @@ public class WardenClientDiadema extends ClientDiadema {
 
     // 粒子我建议像这样写在这里
     @Override protected void perTick() {
-        drawParticle();
+        var level = Minecraft.getInstance().level;
+
+        System.out.println("0000000");
+
+        if (level == null) return;
+
+        System.out.printf("%s, %s\n", level.dimension.location(), getDimension());
+
+        if (!level.dimension.location().equals(getDimension())) return; //维度不一致时不触发
+
+        System.out.println("1111111111");
+
+        drawParticle(level);
     }
 
 
-    private void drawParticle() {
-        var level = Minecraft.getInstance().level;
-        if (level == null) return;
-        if (level.dimension != getDimension()) return; //维度不一致时不触发
-
+    private void drawParticle(Level level) {
         Vec3 center = getPosition();
         int segX = 40, segY = 80, segGround = 60;
         SimpleParticleType type = ParticlesRegister.DARK_PARTICLE.get();

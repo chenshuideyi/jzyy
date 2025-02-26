@@ -32,8 +32,6 @@ public abstract class Diadema {
     // init&final
     private static long nextId = 0;
 
-    private static final Map<Long, Diadema> instances = new HashMap<>();
-
     public Diadema(DiademaType type, DiademaMovement movement) {
         this.type = type;
         this.movement = movement;
@@ -44,7 +42,6 @@ public abstract class Diadema {
         //FMLJavaModLoadingContext.get().getModEventBus().register(this); //不是这个bus，注释掉了
 
         // 加到列表里
-        instances.put(this.instanceId, this);
         type.instances.add(this);
 
         // 发包
@@ -59,7 +56,6 @@ public abstract class Diadema {
         MinecraftForge.EVENT_BUS.unregister(this);
 
         // 从列表里移除
-        instances.remove(this.instanceId);
         type.instances.remove(this);
 
         // 发包
@@ -158,7 +154,7 @@ public abstract class Diadema {
         // 发包
         DiademaSyncing.CHANNEL.send(
                 PacketDistributor.ALL.noArg(),
-                new DiademaUpdatePacket(this.instanceId, level.dimension(), position, getCustomSyncData())
+                new DiademaUpdatePacket(this.instanceId, level.dimension().location(), position, getCustomSyncData())
         );
     }
 
@@ -168,13 +164,10 @@ public abstract class Diadema {
     }
 
     @SubscribeEvent
-    public static void on(PlayerEvent.PlayerLoggedInEvent e) {
+    public final void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent e) {
         // 发包
-        instances.values().forEach(
-                instance -> DiademaSyncing.CHANNEL.send(
-                        PacketDistributor.PLAYER.with(() -> (ServerPlayer) e.getEntity()),
-                        new DiademaCreatedPacket(instance.type, instance.instanceId)
-                )
-        );
+        DiademaSyncing.CHANNEL.send(
+                PacketDistributor.PLAYER.with(() -> (ServerPlayer) e.getEntity()),
+                new DiademaCreatedPacket(type, instanceId));
     }
 }
