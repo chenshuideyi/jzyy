@@ -1,6 +1,8 @@
 package com.csdy.effect.register;
 
 import com.csdy.ModMain;
+import com.csdy.effect.ComminutedFracture;
+import com.csdy.effect.Fracture;
 import com.csdy.effect.PhysicalInjury;
 import com.csdy.effect.Scared;
 import net.minecraft.world.effect.MobEffect;
@@ -13,6 +15,6 @@ public class EffectRegister {
 
     public static final RegistryObject<MobEffect> SCARED = EFFECTS.register("scared", Scared::new);
     public static final RegistryObject<MobEffect> PHYSICALINJURY = EFFECTS.register("physical_injury", PhysicalInjury::new);
-
-
+    public static final RegistryObject<MobEffect> FRACTURE = EFFECTS.register("fracture", Fracture::new);
+    public static final RegistryObject<MobEffect> COMMINUTED_FRACTURE = EFFECTS.register("comminuted_fracture", ComminutedFracture::new);
 }

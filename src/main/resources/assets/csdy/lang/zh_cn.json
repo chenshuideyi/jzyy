@@ -56,5 +56,7 @@
 
 
   "effect.csdy.scared": "惊恐",
-  "effect.csdy.physical_injury": "开放性物理创口"
+  "effect.csdy.physical_injury": "开放性物理创口",
+  "effect.csdy.fracture": "骨折",
+  "effect.csdy.comminuted_fracture": "粉碎性骨折"
 }
