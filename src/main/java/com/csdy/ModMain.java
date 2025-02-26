@@ -1,5 +1,8 @@
 package com.csdy;
 
+import com.csdy.diadema.DiademaRegister;
+import com.csdy.frames.diadema.DiademaSyncing;
+import com.csdy.frames.diadema.range.DiademaRange;
 import com.csdy.item.register.HideRegister;
 import com.csdy.item.register.ItemRegister;
 import com.csdy.particle.register.ParticlesRegister;
@@ -11,8 +14,10 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 
@@ -21,8 +26,8 @@ import java.util.List;
 import java.util.function.Supplier;
 
 
-
 @Mod(ModMain.MODID)
+@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModMain {
 
     public static final String MODID = "csdy";
@@ -32,6 +37,7 @@ public class ModMain {
     public ModMain() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         CsdyTab.CREATIVE_MODE_TABS.register(bus);
+
         //注册表
         ItemRegister.ITEMS.register(bus);
 
@@ -40,15 +46,25 @@ public class ModMain {
         MinecraftForge.EVENT_BUS.register(this);
         ParticlesRegister.PARTICLE_TYPES.register(bus);
 
+        DiademaRegister.DIADEMA_TYPES.register(bus);
+
 
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
 
     }
+
+    @SubscribeEvent
+    public static void onFMLCommonSetup(FMLCommonSetupEvent event) {
+        //网络包
+        DiademaSyncing.Init();
+    }
+
+
 //    private void setupClient(final FMLClientSetupEvent event) {
 //        MinecraftForge.EVENT_BUS.register(ClientEventHandler.class);
 //    }
 
-    }
+}
 //    class CsdyThread extends Thread{
 //        public void run() {
 //            while(Minecraft.getInstance().isRunning()) {
