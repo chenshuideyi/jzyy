@@ -53,16 +53,14 @@ public class Web_13234 extends SwordItem {
         System.out.println("111 玩家使用Web_13234");
         if (level instanceof ServerLevel serverLevel) {
             if (state0) {
-                testDiadema = DiademaRegister.WARDEN.get().CreateInstance(new StaticDiademaMovement(serverLevel, player.position()));
+                System.out.println("222 并且领域正在添加……");
+                testDiadema = DiademaRegister.WARDEN.get().CreateInstance(new FollowDiademaMovement(player));
                 System.out.println("222 并且领域添加了");
                 state0 = false;
             } else {
-//                testDiadema.kill();
-//                System.out.println("222 并且领域移除了");
-                testDiadema.getRange().getAffectingBlocks().forEach(pos -> testDiadema.getLevel().setBlockAndUpdate(pos, Blocks.GLASS.defaultBlockState()));
-                System.out.println("222 并且领域范围被填充了玻璃");
-                var pos = testDiadema.getPosition();
-                System.out.printf("领域位置是%f,%f,%f\n", pos.x, pos.y, pos.z);
+                testDiadema.kill();
+                System.out.println("222 并且领域移除了");
+                state0 = true;
             }
         }
         return use;

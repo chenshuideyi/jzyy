@@ -1,8 +1,6 @@
 package com.csdy.diadema.warden;
 
 import com.csdy.frames.diadema.ClientDiadema;
-import com.csdy.frames.diadema.DiademaType;
-import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.particleUtils.PointSets;
 import net.minecraft.client.Minecraft;
@@ -33,17 +31,20 @@ public class WardenClientDiadema extends ClientDiadema {
         int segX = 40, segY = 80, segGround = 60;
         SimpleParticleType type = ParticlesRegister.DARK_PARTICLE.get();
 
-        var points = PointSets.Circle(RADIUS, segX).flatMap(v -> {
+        var points = PointSets.Circle(RADIUS, segX).flatMap(v -> { // 生成一个圆做基底，对其上的每个点：
             // 上半球
-            var up = Stream.iterate(0, i -> i <= segY, i -> i + 1)
-                    .map(i -> v.scale(Math.sin(i / (double) segY * Math.PI / 2))
-                            .add(0, RADIUS * Math.cos(i / (double) segY * Math.PI / 2), 0));
+            var up = Stream.iterate(0, i -> i <= segY, i -> i + 1) // 这个方法相当于用for循环进行生成
+                    .map(i -> v.scale(Math.sin(i / (double) segY * Math.PI / 2)) // 水平缩放
+                            .add(0, RADIUS * Math.cos(i / (double) segY * Math.PI / 2), 0) // 垂直移动
+                    );
             // 下半面
             var down = Stream.iterate(0, i -> i <= segGround, i -> i + 1)
-                    .map(i -> v.scale((double) (i) / segGround).yRot(i * 0.1f));
-            return Stream.concat(up, down);
-        }).map(v -> v.add(center)); // 移动中心点
+                    .map(i -> v.scale((double) (i) / segGround) // 缩放
+                            .yRot(i * 0.1f)  // 绕y轴轻微旋转
+                    );
+            return Stream.concat(up, down); // 把上下两部分合并起来
+        }).map(v -> v.add(center)); // 移动中心点至center处
 
-        points.forEach(v -> level.addParticle(type, v.x, v.y, v.z, 0, 0, 0)); //绘制
+        points.forEach(v -> level.addParticle(type, v.x, v.y, v.z, 0, 0, 0)); //对每个位置绘制粒子
     }
 }

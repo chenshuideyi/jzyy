@@ -38,17 +38,23 @@ public class WardenDiadema extends Diadema {
     @SubscribeEvent
     public static void onEntityEnteredDiadema(EntityEnteredDiademaEvent e) {
         if (!e.getDiadema().isOfType(DiademaRegister.WARDEN.get())) return; //检测领域类型
+
+        System.out.printf("什么进了%s: %s \n", e.getDiadema(), e.getEntity());
+
         if (!(e.getEntity() instanceof Player)) return; //仅影响玩家
 
-        /// todo: 在这里进行你的操作
+        // todo: 在这里进行你的影响操作，那行输出想删就删吧
     }
 
     @SubscribeEvent
     public static void onEntityExitedDiadema(EntityExitedDiademaEvent e) {
         if (!e.getDiadema().isOfType(DiademaRegister.WARDEN.get())) return; //检测领域类型
         if (DiademaRegister.WARDEN.get().isAffected(e.getEntity())) return; //这个是为了防止玩家从多个重叠的Warden领域中的一嗝离开而被误识别为完全离开
+
+        System.out.printf("什么离开了%s: %s \n", e.getDiadema(), e.getEntity());
+
         if (!(e.getEntity() instanceof Player)) return; //仅影响玩家
 
-        // todo: 在这里进行你的取消操作
+        // todo: 在这里进行你的取消操作，那行输出快删掉
     }
 }

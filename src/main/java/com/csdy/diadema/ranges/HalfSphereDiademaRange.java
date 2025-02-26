@@ -26,10 +26,6 @@ public class HalfSphereDiademaRange extends CommonDiademaRange {
     }
 
     @Override public boolean ifInclude(Vec3 position) {
-        return position.y > diadema.getPosY() && position.distanceToSqr(diadema.getPosition()) <= radius * radius;
-    }
-
-    @Override public boolean ifInclude(Entity entity) {
-        return entity.level == diadema.getLevel() && ifInclude(entity.position());
+        return position.y >= diadema.getPosY() && position.distanceToSqr(diadema.getPosition()) <= radius * radius;
     }
 }

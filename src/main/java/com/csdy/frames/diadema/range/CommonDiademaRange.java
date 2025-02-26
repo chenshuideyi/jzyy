@@ -32,4 +32,9 @@ public abstract class CommonDiademaRange extends DiademaRange {
         return BlockPos.betweenClosedStream(getAABB())
                 .filter(pos -> ifInclude(pos.getCenter()));
     }
+
+    @Override public boolean ifInclude(Entity entity) {
+        return entity.level == diadema.getLevel() &&
+                (ifInclude(entity.position()) || ifInclude(entity.position.add(0, entity.eyeHeight, 0)));
+    }
 }
