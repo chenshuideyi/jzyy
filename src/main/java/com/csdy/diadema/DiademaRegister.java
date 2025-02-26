@@ -1,6 +1,8 @@
 package com.csdy.diadema;
 
 import com.csdy.ModMain;
+import com.csdy.diadema.meridiaVerse.MeridiaVerseClientDiadema;
+import com.csdy.diadema.meridiaVerse.MeridiaVerseDiadema;
 import com.csdy.diadema.warden.WardenClientDiadema;
 import com.csdy.diadema.warden.WardenDiadema;
 import com.csdy.frames.diadema.DiademaType;
@@ -14,4 +16,7 @@ public class DiademaRegister {
 
     public static final RegistryObject<DiademaType> WARDEN =
             DIADEMA_TYPES.register("warden", () -> DiademaType.Create(WardenDiadema::new, WardenClientDiadema::new));
+
+    public static final RegistryObject<DiademaType> MERIDIA_VERSE =
+            DIADEMA_TYPES.register("meridia_verse", () -> DiademaType.Create(MeridiaVerseDiadema::new, MeridiaVerseClientDiadema::new));
 }
