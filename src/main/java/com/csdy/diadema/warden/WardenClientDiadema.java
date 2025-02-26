@@ -21,15 +21,8 @@ public class WardenClientDiadema extends ClientDiadema {
     @Override protected void perTick() {
         var level = Minecraft.getInstance().level;
 
-        System.out.println("0000000");
-
         if (level == null) return;
-
-        System.out.printf("%s, %s\n", level.dimension.location(), getDimension());
-
         if (!level.dimension.location().equals(getDimension())) return; //维度不一致时不触发
-
-        System.out.println("1111111111");
 
         drawParticle(level);
     }
@@ -43,10 +36,11 @@ public class WardenClientDiadema extends ClientDiadema {
         var points = PointSets.Circle(RADIUS, segX).flatMap(v -> {
             // 上半球
             var up = Stream.iterate(0, i -> i <= segY, i -> i + 1)
-                    .map(i -> v.scale((double) (i) / segY).add(0, RADIUS * i / segY, 0));
+                    .map(i -> v.scale(Math.sin(i / (double) segY * Math.PI / 2))
+                            .add(0, RADIUS * Math.cos(i / (double) segY * Math.PI / 2), 0));
             // 下半面
             var down = Stream.iterate(0, i -> i <= segGround, i -> i + 1)
-                    .map(i -> v.scale((double) (i) / segGround));
+                    .map(i -> v.scale((double) (i) / segGround).yRot(i * 0.1f));
             return Stream.concat(up, down);
         }).map(v -> v.add(center)); // 移动中心点
 

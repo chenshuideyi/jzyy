@@ -12,15 +12,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public abstract class ClientDiadema {
     public ClientDiadema() {
-        System.out.println("creating one client diadema...");
-
         // 实例上的事件处理器需要手动注册
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     void remove() {
-        System.out.println("removing one client diadema...");
-
         // 同样实例在删除时候需要手动取消注册。不然因为注册也是个引用，可能导致内存泄漏或者null引用异常
         MinecraftForge.EVENT_BUS.unregister(this);
     }
@@ -45,7 +41,6 @@ public abstract class ClientDiadema {
 
     // updating
     final void update(DiademaUpdatePacket packet) {
-        System.out.println("updating one client diadema...");
         this.position = packet.position();
         this.dimension = packet.dimension();
         updating(packet.customData());

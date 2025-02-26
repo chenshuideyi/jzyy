@@ -68,7 +68,6 @@ public class DiademaSyncing {
     public static void handleCreation(DiademaCreatedPacket packet, Supplier<NetworkEvent.Context> network) {
         network.get().enqueueWork(() -> {
             instances.put(packet.instanceId(), packet.type().CreateClientInstance());
-            System.out.printf("Created: %d, %s\n", packet.instanceId(), packet.type());
         });
         network.get().setPacketHandled(true);
     }
@@ -78,7 +77,6 @@ public class DiademaSyncing {
         network.get().enqueueWork(() -> {
             var instance = instances.remove(packet.instanceId());
             if (instance != null) instance.remove();
-            System.out.printf("Removed: %d\n", packet.instanceId());
         });
         network.get().setPacketHandled(true);
     }
@@ -88,8 +86,6 @@ public class DiademaSyncing {
         network.get().enqueueWork(() -> {
             var instance = instances.getOrDefault(packet.instanceId(), null);
             if (instance != null) instance.update(packet);
-            System.out.printf("Instances %d\n", instances.size());
-            System.out.printf("Update: %d, (%s), %s\n", packet.instanceId(), packet.position().toString(), packet.dimension().toString());
         });
         network.get().setPacketHandled(true);
     }
@@ -98,8 +94,6 @@ public class DiademaSyncing {
     // event handlers
     @SubscribeEvent @OnlyIn(Dist.CLIENT)
     public static void onClientLoggingOut(ClientPlayerNetworkEvent.LoggingOut e) {
-        System.out.println("1111111111\n1111111111\n111111111111111111111111111111111111111111111111111\n\n\n\n\n\n111");
-        System.out.println("1111111111\n1111111111\n111111111111111111111111111111111111111111111111111\n\n\n\n\n\n111");
         instances.values().forEach(ClientDiadema::remove);
         instances.clear();
     }
