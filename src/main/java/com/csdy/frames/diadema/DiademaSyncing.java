@@ -4,6 +4,7 @@ import com.csdy.ModMain;
 import com.csdy.frames.diadema.packets.DiademaCreatedPacket;
 import com.csdy.frames.diadema.packets.DiademaRemovedPacket;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
+import com.csdy.network.packets.SonicBoomPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

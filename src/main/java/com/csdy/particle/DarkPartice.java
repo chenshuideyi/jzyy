@@ -11,11 +11,9 @@ public class DarkPartice extends TextureSheetParticle {
     protected DarkPartice(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         this.setSize(0.1F, 0.1F); // 粒子大小
-        this.lifetime = 12; // 粒子存活时间（单位：刻）
+        this.lifetime = 2; // 粒子存活时间（单位：刻）
         this.gravity = 0.0F; // 重力效果
-        this.xd = 0; // X 方向速度
         this.yd = 0; // Y 方向速度
-        this.zd = 0; // Z 方向速度
         this.hasPhysics = false; // 是否受物理影响
 
     }
@@ -36,7 +34,7 @@ public class DarkPartice extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            EmcParticle particle = new EmcParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
+            DarkPartice particle = new DarkPartice(level, x, y, z, xSpeed, ySpeed, zSpeed);
             particle.pickSprite(this.spriteSet); // 设置粒子纹理
             return particle;
         }

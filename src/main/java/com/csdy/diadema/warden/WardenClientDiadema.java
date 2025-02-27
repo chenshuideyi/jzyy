@@ -28,7 +28,7 @@ public class WardenClientDiadema extends ClientDiadema {
 
     private void drawParticle(Level level) {
         Vec3 center = getPosition();
-        int segX = 40, segY = 80, segGround = 60;
+        int segX = 25, segY = 75, segGround = 30;
         SimpleParticleType type = ParticlesRegister.DARK_PARTICLE.get();
 
         var points = PointSets.Circle(RADIUS, segX).flatMap(v -> { // 生成一个圆做基底，对其上的每个点：

@@ -14,7 +14,7 @@ public class AbyssParticle extends TextureSheetParticle {
         this.lifetime = 30; // 粒子存活时间（单位：刻）
         this.gravity = 0.0F; // 重力效果
         this.xd = 0; // X 方向速度
-        this.yd = -0.3; // Y 方向速度
+        this.yd = -0.35; // Y 方向速度
         this.zd = 0; // Z 方向速度
         this.hasPhysics = false; // 是否受物理影响
 

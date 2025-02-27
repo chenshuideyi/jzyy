@@ -1,10 +1,12 @@
 package com.csdy;
 
 import com.csdy.diadema.DiademaRegister;
+import com.csdy.effect.register.EffectRegister;
 import com.csdy.frames.diadema.DiademaSyncing;
 import com.csdy.frames.diadema.range.DiademaRange;
 import com.csdy.item.register.HideRegister;
 import com.csdy.item.register.ItemRegister;
+import com.csdy.network.ParticleSyncing;
 import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.test.EntityRegister;
 import com.csdy.until.Tab.CsdyTab;
@@ -45,6 +47,7 @@ public class ModMain {
         EntityRegister.REGISTRY.register(bus);
         MinecraftForge.EVENT_BUS.register(this);
         ParticlesRegister.PARTICLE_TYPES.register(bus);
+        EffectRegister.EFFECTS.register(bus);
 
         DiademaRegister.DIADEMA_TYPES.register(bus);
 
@@ -57,6 +60,7 @@ public class ModMain {
     public static void onFMLCommonSetup(FMLCommonSetupEvent event) {
         //网络包
         DiademaSyncing.Init();
+        ParticleSyncing.Init();
     }
 
 
