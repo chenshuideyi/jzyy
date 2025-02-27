@@ -1,5 +1,6 @@
 package com.csdy.frames.diadema.packets;
 
+import io.netty.buffer.Unpooled;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
@@ -20,5 +21,9 @@ public record DiademaUpdatePacket(long instanceId, ResourceLocation dimension, V
         var position = new Vec3(buf.readDouble(), buf.readDouble(), buf.readDouble());
         var customData = buf.readBytes(buf.readableBytes());
         return new DiademaUpdatePacket(instanceId, dimension, position, customData.array());
+    }
+
+    public FriendlyByteBuf getCustomData() {
+        return new FriendlyByteBuf(Unpooled.wrappedBuffer(customData));
     }
 }
