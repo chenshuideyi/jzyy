@@ -6,13 +6,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 
 /// 领域会始终跟随实体
-@SuppressWarnings("LombokGetterMayBeUsed")
-public final class FollowDiademaMovement extends DiademaMovement {
+public final class FollowDiademaMovement extends EntityDiademaMovement {
     public FollowDiademaMovement(Entity entity) {
-        this.entity = entity;
+        super(entity);
     }
-
-    @Getter private final Entity entity;
 
     @Override public Vec3 getPosition() {
         return entity.position;

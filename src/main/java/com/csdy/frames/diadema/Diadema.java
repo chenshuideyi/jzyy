@@ -4,12 +4,15 @@ import com.csdy.ModMain;
 import com.csdy.frames.diadema.events.EntityEnteredDiademaEvent;
 import com.csdy.frames.diadema.events.EntityExitedDiademaEvent;
 import com.csdy.frames.diadema.movement.DiademaMovement;
-import com.csdy.frames.diadema.movement.FollowDiademaMovement;
+import com.csdy.frames.diadema.movement.EntityDiademaMovement;
 import com.csdy.frames.diadema.packets.DiademaCreatedPacket;
 import com.csdy.frames.diadema.packets.DiademaRemovedPacket;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import com.csdy.frames.diadema.range.DiademaRange;
+import io.netty.buffer.PooledByteBufAllocator;
 import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -60,6 +63,9 @@ public abstract class Diadema {
 
         // 发包
         DiademaSyncing.CHANNEL.send(PacketDistributor.ALL.noArg(), new DiademaRemovedPacket(this.instanceId));
+
+        // 自定义逻辑
+        removed();
     }
 
 
@@ -93,10 +99,12 @@ public abstract class Diadema {
 
     public abstract DiademaRange getRange();
 
-    private final DiademaMovement movement;
+    @Getter
+    @Setter
+    private DiademaMovement movement;
 
     public Entity GetCore() {
-        if (!(movement instanceof FollowDiademaMovement follow)) return null;
+        if (!(movement instanceof EntityDiademaMovement follow)) return null;
         return follow.getEntity();
     }
 
@@ -123,6 +131,10 @@ public abstract class Diadema {
     protected void perTick() {
     }
 
+    /// 领域被移除后会调用这个方法，用于自定义属性的清理或者其他你想要的逻辑
+    protected void removed() {
+    }
+
     /// 实体进入自己时会发生的实例方法，也许无需时刻监听事件
     protected void onEntityEnter(Entity entity) {
     }
@@ -131,9 +143,8 @@ public abstract class Diadema {
     protected void onEntityExit(Entity entity) {
     }
 
-    /// 重写这个来像Client同步自定义参数，把东西序列化到字节数组里，在另一边的ClientDiadema里还原回来即可
-    protected byte[] getCustomSyncData() {
-        return new byte[0];
+    /// 重写这个来像Client同步自定义参数，把数据write进buf里，从另一边依序read即可
+    protected void writeCustomSyncData(FriendlyByteBuf buf) {
     }
 
 
@@ -173,10 +184,14 @@ public abstract class Diadema {
         updateEntities();
         perTick();
         // 发包
+        var buffer = PooledByteBufAllocator.DEFAULT.buffer();
+        writeCustomSyncData(new FriendlyByteBuf(buffer));
+
         DiademaSyncing.CHANNEL.send(
                 PacketDistributor.ALL.noArg(),
-                new DiademaUpdatePacket(this.instanceId, level.dimension().location(), position, getCustomSyncData())
+                new DiademaUpdatePacket(this.instanceId, level.dimension().location(), position, buffer.array())
         );
+        buffer.release();
     }
 
     @SubscribeEvent
