@@ -4,12 +4,14 @@ import com.csdy.ModMain;
 import com.csdy.frames.diadema.events.EntityEnteredDiademaEvent;
 import com.csdy.frames.diadema.events.EntityExitedDiademaEvent;
 import com.csdy.frames.diadema.movement.DiademaMovement;
+import com.csdy.frames.diadema.movement.EntityDiademaMovement;
 import com.csdy.frames.diadema.movement.FollowDiademaMovement;
 import com.csdy.frames.diadema.packets.DiademaCreatedPacket;
 import com.csdy.frames.diadema.packets.DiademaRemovedPacket;
 import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import com.csdy.frames.diadema.range.DiademaRange;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -93,10 +95,11 @@ public abstract class Diadema {
 
     public abstract DiademaRange getRange();
 
-    private final DiademaMovement movement;
+    @Getter @Setter
+    private DiademaMovement movement;
 
     public Entity GetCore() {
-        if (!(movement instanceof FollowDiademaMovement follow)) return null;
+        if (!(movement instanceof EntityDiademaMovement follow)) return null;
         return follow.getEntity();
     }
 
