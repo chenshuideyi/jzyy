@@ -20,6 +20,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -103,13 +105,13 @@ public abstract class Diadema {
     @Setter
     private DiademaMovement movement;
 
-    public Entity GetCore() {
+    public Entity getCore() {
         if (!(movement instanceof EntityDiademaMovement follow)) return null;
         return follow.getEntity();
     }
 
-    public Player GetPlayer() {
-        if (!(GetCore() instanceof Player player)) return null;
+    public Player getPlayer() {
+        if (!(getCore() instanceof Player player)) return null;
         return player;
     }
 
@@ -176,6 +178,21 @@ public abstract class Diadema {
         inRange.forEach(this::addEntity);
     }
 
+    private void sendSyncPack(){
+        // 获取自定义数据
+        var buffer = PooledByteBufAllocator.DEFAULT.buffer();
+        writeCustomSyncData(new FriendlyByteBuf(buffer));
+        byte[] data = new byte[buffer.readableBytes()];
+        buffer.getBytes(buffer.readerIndex(), data);
+        buffer.release();
+
+        // 发包
+        DiademaSyncing.CHANNEL.send(
+                PacketDistributor.ALL.noArg(),
+                new DiademaUpdatePacket(this.instanceId, level.dimension().location(), position, data)
+        );
+    }
+
 
     // event handlers
     @SubscribeEvent
@@ -183,15 +200,7 @@ public abstract class Diadema {
         updatePosition();
         updateEntities();
         perTick();
-        // 发包
-        var buffer = PooledByteBufAllocator.DEFAULT.buffer();
-        writeCustomSyncData(new FriendlyByteBuf(buffer));
-
-        DiademaSyncing.CHANNEL.send(
-                PacketDistributor.ALL.noArg(),
-                new DiademaUpdatePacket(this.instanceId, level.dimension().location(), position, buffer.array())
-        );
-        buffer.release();
+        sendSyncPack();
     }
 
     @SubscribeEvent
@@ -205,5 +214,17 @@ public abstract class Diadema {
         DiademaSyncing.CHANNEL.send(
                 PacketDistributor.PLAYER.with(() -> (ServerPlayer) e.getEntity()),
                 new DiademaCreatedPacket(type, instanceId));
+    }
+
+    @SubscribeEvent
+    public final void onEntityLeaveLevel(EntityLeaveLevelEvent e) {
+        if (getCore() == null) return;
+        if (e.getEntity() == getCore()) remove();
+    }
+
+    @SubscribeEvent
+    public final void onLivingDeathEvent(LivingDeathEvent e){
+        if (getCore() == null) return;
+        if (e.getEntity() == getCore()) remove();
     }
 }

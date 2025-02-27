@@ -1,6 +1,5 @@
 package com.csdy.item.food;
 
-import com.csdy.diadema.warden.Warden;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,7 +24,7 @@ public class Poop extends ItemGenericFood {
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
         super.finishUsingItem(stack, worldIn, livingEntity);
         Player player = (Player) livingEntity;
-        Warden.addWarden(player);
+        //Warden.addWarden(player);
         CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
         if (!tag.getBoolean(firstshit)){
         player.displayClientMessage(Component.literal("你居然连这个都吃!但是不会给你成就的"), false);

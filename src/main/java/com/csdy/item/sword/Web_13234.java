@@ -2,16 +2,10 @@ package com.csdy.item.sword;
 
 import com.csdy.diadema.DiademaRegister;
 import com.csdy.diadema.warden.SonicBoomUtil;
-import com.csdy.diadema.warden.Warden;
-import com.csdy.diadema.warden.WardenDiadema;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.movement.FollowDiademaMovement;
-import com.csdy.frames.diadema.movement.StaticDiademaMovement;
-import com.csdyms.core.EntityUntil;
-import com.csdyms.core.enums.EntityCategory;
 import com.google.common.collect.ImmutableMultimap;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -24,10 +18,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

@@ -11,13 +11,12 @@ public class AbyssParticle extends TextureSheetParticle {
     protected AbyssParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
         this.setSize(2.8F, 2.8F); // 粒子大小
-        this.lifetime = 30; // 粒子存活时间（单位：刻）
+        this.lifetime = 10; // 粒子存活时间（单位：刻）
         this.gravity = 0.0F; // 重力效果
         this.xd = 0; // X 方向速度
-        this.yd = -0.35; // Y 方向速度
+        this.yd = ySpeed / lifetime; // Y 方向速度
         this.zd = 0; // Z 方向速度
         this.hasPhysics = false; // 是否受物理影响
-
     }
 
     @Override
