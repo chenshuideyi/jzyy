@@ -19,22 +19,23 @@ public class Abyss extends Diadema {
 
     public Abyss(DiademaType type, DiademaMovement movement) {
         super(type, movement);
-
     }
 
     private final HalfSphereDiademaRange range = new HalfSphereDiademaRange(this, RADIUS);
 
-    @Override public DiademaRange getRange() {
+    @Override
+    public DiademaRange getRange() {
         return range;
     }
 
-    @Override protected void perTick() {
+    @Override
+    protected void perTick() {
         Abyssutility(player);
     }
 
     public static void Abyssutility(Player player){
         Vec3 playerpos = player.position();
-        double range = 5;
+        double range = 6;
         Vec3 start = new Vec3(playerpos.x-range,playerpos.y-range,playerpos.z-range);
         Vec3 finish = new Vec3(playerpos.x+range,playerpos.y+range,playerpos.z+range);
         List<LivingEntity> moblist = player.level.getEntitiesOfClass(LivingEntity.class,

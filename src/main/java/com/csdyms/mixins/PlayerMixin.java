@@ -1,16 +1,11 @@
 package com.csdyms.mixins;
 
-import com.csdy.diadema.abyss.AbyssParticle;
-import com.csdy.effect.register.EffectRegister;
 import com.csdy.item.register.HideRegister;
 import com.csdy.until.ClassObj;
 import com.csdy.until.List.GodList;
-import com.csdyms.ParticleUtils;
 import com.csdyms.core.EntityUntil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.sound.SoundEvent;
@@ -20,8 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
 
 
 @Mixin({Player.class})
@@ -48,7 +41,7 @@ public class PlayerMixin {
                 this.player.inventory.add(new ItemStack(HideRegister.CSDY_SWORD.get()));
 
             }
-            AbyssParticle.AddAbyssParticle(this.player,this.player.level);
+//            AbyssParticle.AddAbyssParticle(this.player,this.player.level);
             player.getAbilities().setWalkingSpeed(0.2F);
             player.getAbilities().setFlyingSpeed(1F);
             player.getAbilities().mayfly = true;
