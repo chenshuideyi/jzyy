@@ -30,7 +30,7 @@ public class MeridiaVerseDiadema extends Diadema {
             if (!(entity instanceof LivingEntity living)) continue;
             var pos = living.position.subtract(getPosition());
             pos = pos.yRot(0.1f);
-            pos = pos.xRot((float) Math.copySign(0.1, pos.x));
+            pos = pos.xRot(0.75f);
             //pos = pos.yRot((float) Math.copySign(0.1, pos.z));
             living.position = pos.add(getPosition());
         }

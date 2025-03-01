@@ -56,7 +56,7 @@ public class Web_13234 extends SwordItem {
         if (level instanceof ServerLevel serverLevel) {
             if (state0) {
                 System.out.println("222 并且领域正在添加……");
-                testDiadema = DiademaRegister.PROJECTE.get().CreateInstance(new FollowDiademaMovement(player));
+                testDiadema = DiademaRegister.MELT_DOWN.get().CreateInstance(new FollowDiademaMovement(player));
                 System.out.println("222 并且领域添加了");
                 state0 = false;
             } else {

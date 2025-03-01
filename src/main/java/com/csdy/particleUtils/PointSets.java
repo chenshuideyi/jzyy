@@ -16,6 +16,10 @@ public class PointSets {
         });
     }
 
+    public static Stream<Vec3> Arc(double r, double from, double to, int seg) {
+        return Arc(r, to - from, seg).map(v -> v.yRot((float) from));
+    }
+
     public static Stream<Vec3> Line(Vec3 from, Vec3 to, int seg) {
         return Stream.iterate(0, i -> i <= seg, i -> i + 1).map(i -> {
             double p = i / (double) seg;
@@ -28,4 +32,6 @@ public class PointSets {
                 .flatMap(i -> Stream.iterate(0, j -> j < segX, j -> j + 1)
                         .map(j -> new Vec3(sizeX * j / segX, 0, sizeZ * i / segZ)));
     }
+
+
 }

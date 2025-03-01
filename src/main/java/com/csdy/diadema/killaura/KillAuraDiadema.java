@@ -44,5 +44,4 @@ public class KillAuraDiadema extends Diadema {
             }
         }
     }
-
 }
