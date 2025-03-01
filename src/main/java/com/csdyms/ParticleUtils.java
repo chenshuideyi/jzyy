@@ -420,45 +420,6 @@ public class ParticleUtils {
         }
     }
 
-    public static void Shadow(Player player,Level level){
-        //影子
-        double X = player.getX();
-        double Z = player.getZ();
-        double Y = player.getY()+0.1;
-        double r = sqrt(128)/2.3;
-        SimpleParticleType type = ParticlesRegister.SHADOW_PARTICLE.get();
-//        SimpleParticleType type = ParticleTypes.END_ROD.getType();
-        ParticleUtils.DrawCurve(0.01,X+4, Y, Z+4,X-4,Y,Z-4,X-r,Y,Z+r,type,level);
-
-        ParticleUtils.DrawCurve(0.01,X+4, Y, Z+4,X-4,Y,Z-4,X+r,Y,Z-r,type,level);
-
-        ParticleUtils.Drawline(0.01,X-r,Y,Z+r,X+r,Y,Z-r,type,level);
-    }
-
-
-
-
-    public static void Wing(Player player,Level level) {
-        //乘风行走之物
-        double X = player.getX();
-        double Z = player.getZ();
-        double Y = player.getY()+0.1;
-        double value = 16;
-        SimpleParticleType type =  ParticlesRegister.CUSTOM_PARTICLE.get();
-
-
-        Random r = new Random();
-        double randomX = r.nextDouble() * (value+value)-value;
-        double randomY = r.nextDouble() * (value+value)-value;
-        double randomZ = r.nextDouble() * (value+value)-value;
-
-        double CX = r.nextDouble() * (value+value)-value;
-        double CY = r.nextDouble() * (value+value)-value;
-        double CZ = r.nextDouble() * (value+value)-value;
-
-        ParticleUtils.DrawCurve(0.01,X+randomX, Y+randomY, Z+randomZ,X-randomX,Y-randomY,Z-randomZ,X+CX,Y+CY,Z+CZ,type,level);
-
-    }
     public static void Death(Player player,Level level) {
 
         double X = player.getX();
@@ -579,20 +540,22 @@ public class ParticleUtils {
             level.addParticle(type, curveX, curveY, curveZ, 0, 0, 0);
         }
     }
-    public static void DrawCurve(double interval, double tox, double toy, double toz, double X, double Y, double Z, double ctrlX, double ctrlY, double ctrlZ, SimpleParticleType type, Level level) {
+    public static void DrawCurve(double interval, Vec3 end, Vec3 start, Vec3 ctrlpoint,
+                          SimpleParticleType type, Level level) {
         // 计算两点之间的直线距离
-        double deltax = tox - X;
-        double deltay = toy - Y;
-        double deltaz = toz - Z;
+        double deltax = end.x - start.x;
+        double deltay = end.y - start.y;
+        double deltaz = end.z - start.z;
         double length = Math.sqrt(deltax * deltax + deltay * deltay + deltaz * deltaz);
         int amount = (int) (length / interval);
+
 
         // 使用二次贝塞尔曲线公式计算曲线上的点
         for (int i = 0; i <= amount; i++) {
             double t = (double) i / amount;
-            double x = (1 - t) * (1 - t) * X + 2 * (1 - t) * t * ctrlX + t * t * tox;
-            double y = (1 - t) * (1 - t) * Y + 2 * (1 - t) * t * ctrlY + t * t * toy;
-            double z = (1 - t) * (1 - t) * Z + 2 * (1 - t) * t * ctrlZ + t * t * toz;
+            double x = (1 - t) * (1 - t) * start.x + 2 * (1 - t) * t * ctrlpoint.x + t * t * end.x;
+            double y = (1 - t) * (1 - t) * start.y + 2 * (1 - t) * t * ctrlpoint.y + t * t * end.y;
+            double z = (1 - t) * (1 - t) * start.z + 2 * (1 - t) * t * ctrlpoint.z + t * t * end.z;
 
             // 在曲线上添加粒子
             level.addParticle(type, x, y, z, 0, 0, 0);

@@ -3,10 +3,22 @@ package com.csdy.diadema;
 import com.csdy.ModMain;
 import com.csdy.diadema.abyss.AbyssDiadema;
 import com.csdy.diadema.abyss.AbyssClientDiadema;
+import com.csdy.diadema.fakekillaura.FakeKillAuraClientDiadema;
+import com.csdy.diadema.fakekillaura.FakeKillAuraDiadema;
+import com.csdy.diadema.fakeprojecte.FakeProjectEClientDiadema;
+import com.csdy.diadema.fakeprojecte.FakeProjectEDiadema;
+import com.csdy.diadema.gula.GulaClientDiadema;
+import com.csdy.diadema.gula.GulaDiadema;
+import com.csdy.diadema.killaura.KillAuraClientDiadema;
+import com.csdy.diadema.killaura.KillAuraDiadema;
 import com.csdy.diadema.meridiaVerse.MeridiaVerseClientDiadema;
 import com.csdy.diadema.meridiaVerse.MeridiaVerseDiadema;
+import com.csdy.diadema.projecte.ProjectEClientDiadema;
+import com.csdy.diadema.projecte.ProjectEDiadema;
 import com.csdy.diadema.warden.WardenClientDiadema;
 import com.csdy.diadema.warden.WardenDiadema;
+import com.csdy.diadema.wind.WindClientDiadema;
+import com.csdy.diadema.wind.WindDiadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.CsdyRegistries;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,4 +35,25 @@ public class DiademaRegister {
             DIADEMA_TYPES.register("meridia_verse", () -> DiademaType.Create(MeridiaVerseDiadema::new, MeridiaVerseClientDiadema::new));
     public static final RegistryObject<DiademaType> ABYSS =
             DIADEMA_TYPES.register("abyss", () -> DiademaType.Create(AbyssDiadema::new, AbyssClientDiadema::new));
+    public static final RegistryObject<DiademaType> WIND =
+            DIADEMA_TYPES.register("wind", () -> DiademaType.Create(WindDiadema::new, WindClientDiadema::new));
+    public static final RegistryObject<DiademaType> GULA =
+            DIADEMA_TYPES.register("gula", () -> DiademaType.Create(GulaDiadema::new, GulaClientDiadema::new));
+    public static final RegistryObject<DiademaType> KILL_AURA =
+            DIADEMA_TYPES.register("kill_aura", () -> DiademaType.Create(KillAuraDiadema::new, KillAuraClientDiadema::new));
+    public static final RegistryObject<DiademaType> FAKE_KILL_AURA =
+            DIADEMA_TYPES.register("fake_kill_aura", () -> DiademaType.Create(FakeKillAuraDiadema::new, FakeKillAuraClientDiadema::new));
+    public static final RegistryObject<DiademaType> PROJECTE =
+            DIADEMA_TYPES.register("projecte", () -> DiademaType.Create(ProjectEDiadema::new, ProjectEClientDiadema::new));
+    public static final RegistryObject<DiademaType> FAKE_PROJECTE =
+            DIADEMA_TYPES.register("fake_projecte", () -> DiademaType.Create(FakeProjectEDiadema::new, FakeProjectEClientDiadema::new));
+
+
+
+
+
+
+
+
+
 }

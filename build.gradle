@@ -7,118 +7,131 @@ buildscript {
         maven { url = 'https://maven.aliyun.com/repository/apache-snapshots' }
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
 
+        maven { url = 'https://maven.blamejared.com' }
+
+
+
+        }
+        dependencies {
+            classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        }
     }
-    dependencies {
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    plugins {
+        id 'eclipse'
+        id 'idea'
+        id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
     }
-}
-plugins {
-    id 'eclipse'
-    id 'idea'
-    id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
-}
-apply plugin: 'org.spongepowered.mixin'
-group = mod_group_id
-version = mod_version
-base {
-    archivesName = mod_id
-}
-java {
-    toolchain.languageVersion = JavaLanguageVersion.of(17)
-}
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    copyIdeResources = true
-    runs {
-        configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
+    apply plugin: 'org.spongepowered.mixin'
+    group = mod_group_id
+    version = mod_version
+    base {
+        archivesName = mod_id
+    }
+    java {
+        toolchain.languageVersion = JavaLanguageVersion.of(17)
+    }
+    minecraft {
+        mappings channel: mapping_channel, version: mapping_version
+        accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+        copyIdeResources = true
+        runs {
+            configureEach {
+                workingDirectory project.file('run')
+                property 'forge.logging.markers', 'REGISTRIES'
+                property 'forge.logging.console.level', 'debug'
+                mods {
+                    "${mod_id}" {
+                        source sourceSets.main
+                    }
                 }
             }
-        }
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-        }
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-        data {
-            workingDirectory project.file('run-data')
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            client {
+                property 'forge.enabledGameTestNamespaces', mod_id
+            }
+            server {
+                property 'forge.enabledGameTestNamespaces', mod_id
+                args '--nogui'
+            }
+            gameTestServer {
+                property 'forge.enabledGameTestNamespaces', mod_id
+            }
+            data {
+                workingDirectory project.file('run-data')
+                args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            }
         }
     }
-}
-apply plugin: 'java'
-mixin {
-    add sourceSets.main, 'csdy.refmap.json'
-    config 'csdy.mixins.json'
-    debug.verbose = true
-    debug.export = true
-}
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-repositories {
-    maven { url = 'https://maven.aliyun.com/repository/central' }
-    maven { url = 'https://maven.aliyun.com/repository/public' }
-    maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
-    maven { url = 'https://maven.aliyun.com/repository/apache-snapshots' }
-    maven {
-        name 'DVS1 Maven FS'
-        url 'https://dvs1.progwml6.com/files/maven'
+    apply plugin: 'java'
+    mixin {
+        add sourceSets.main, 'csdy.refmap.json'
+        config 'csdy.mixins.json'
+        debug.verbose = true
+        debug.export = true
     }
-}
-dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation 'org.javassist:javassist:3.28.0-GA'
+    sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    repositories {
+        maven { url = 'https://maven.aliyun.com/repository/central' }
+        maven { url = 'https://maven.aliyun.com/repository/public' }
+        maven { url = 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url = 'https://maven.aliyun.com/repository/apache-snapshots' }
+        maven { url = 'https://maven.blamejared.com' }
+        maven {
+            name = "CurseMaven"
+            url = "https://www.cursemaven.com/"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
+    }
+    dependencies {
+        minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+        annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+        implementation 'org.javassist:javassist:3.28.0-GA'
 
-    testCompileOnly 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+        implementation fg.deobf("curse.maven:projecte-226410:4901949")
+
+        implementation fg.deobf("curse.maven:jei-238222:5626488")
+
+        compileOnly 'org.projectlombok:lombok:1.18.36'
+        annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.36'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 
 //    implementation fg.deobf("slimeknights.mantle:Mantle:1.20.1-${mantle_version}")
 //    implementation fg.deobf("slimeknights.tconstruct:Tconstrust:${tcon_version}")
-}
-tasks.named('processResources', ProcessResources).configure {
-    var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
-                             forge_version       : forge_version, forge_version_range: forge_version_range,
-                             loader_version_range: loader_version_range,
-                             mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-                             mod_authors         : mod_authors, mod_description: mod_description,]
-    inputs.properties replaceProperties
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
     }
-}
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                "Specification-Title"     : mod_id,
-                "Specification-Vendor"    : mod_authors,
-                "Specification-Version"   : "1",
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : mod_authors,
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                'Agent-Class'             : "com.csdyms.agent.CsdyAgent",
-                'Premain-Class'           : "com.csdyms.agent.CsdyAgentLoader",
-                "Can-Redefine-Classes"    : "true",
-                "Can-Retransform-Classes" : "true"
-        ])
+    tasks.named('processResources', ProcessResources).configure {
+        var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+                                 forge_version       : forge_version, forge_version_range: forge_version_range,
+                                 loader_version_range: loader_version_range,
+                                 mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+                                 mod_authors         : mod_authors, mod_description: mod_description,]
+        inputs.properties replaceProperties
+        filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+            expand replaceProperties + [project: project]
+        }
     }
-    finalizedBy 'reobfJar'
-}
+    tasks.named('jar', Jar).configure {
+        manifest {
+            attributes([
+                    "Specification-Title"     : mod_id,
+                    "Specification-Vendor"    : mod_authors,
+                    "Specification-Version"   : "1",
+                    "Implementation-Title"    : project.name,
+                    "Implementation-Version"  : project.jar.archiveVersion,
+                    "Implementation-Vendor"   : mod_authors,
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                    'Agent-Class'             : "com.csdyms.agent.CsdyAgent",
+                    'Premain-Class'           : "com.csdyms.agent.CsdyAgentLoader",
+                    "Can-Redefine-Classes"    : "true",
+                    "Can-Retransform-Classes" : "true"
+            ])
+        }
+        finalizedBy 'reobfJar'
+    }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }

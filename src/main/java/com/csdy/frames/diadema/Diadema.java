@@ -21,6 +21,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
@@ -55,7 +56,10 @@ public abstract class Diadema {
 
     private void remove() {
         // 视作实体离开领域
-        entities.forEach(this::removeEntity);
+//        entities.forEach(this::removeEntity);
+        //这个写法会让列表被便利的时候修改,已修正
+
+        entities.stream().toList().forEach(this::removeEntity);
 
         // 同样实例在删除时候需要手动取消注册。不然因为注册也是个引用，可能导致内存泄漏或者null引用异常
         MinecraftForge.EVENT_BUS.unregister(this);

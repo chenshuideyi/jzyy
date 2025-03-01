@@ -24,6 +24,11 @@ public class ParticlesRegister {
     public static final RegistryObject<SimpleParticleType> SULFUR_PARTICLE = PARTICLE_TYPES.register("sulfur_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> DARK_PARTICLE = PARTICLE_TYPES.register("dark_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> ABYSS_PARTICLE = PARTICLE_TYPES.register("abyss_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> MERIDIA_VERSE__PARTICLE = PARTICLE_TYPES.register("meridia_verse_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> GULA_PARTICLE = PARTICLE_TYPES.register("gula_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> KILL_AURA_PARTICLE = PARTICLE_TYPES.register("kill_aura_particle", () -> new SimpleParticleType(false));
+
+
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
@@ -35,5 +40,8 @@ public class ParticlesRegister {
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.SULFUR_PARTICLE.get(), SulfurParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.DARK_PARTICLE.get(), DarkPartice.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.ABYSS_PARTICLE.get(), AbyssParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticlesRegister.MERIDIA_VERSE__PARTICLE.get(), MeridiaVerseParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticlesRegister.GULA_PARTICLE.get(), GulaParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticlesRegister.KILL_AURA_PARTICLE.get(), KillAuraParticle.Provider::new);
     }
 }

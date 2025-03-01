@@ -17,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -37,6 +38,8 @@ public class ModMain {
     public static final List<Supplier<? extends Item>> TAB_ITEMS_LIST = new ArrayList<>();
 
     public ModMain() {
+
+
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         CsdyTab.CREATIVE_MODE_TABS.register(bus);
 

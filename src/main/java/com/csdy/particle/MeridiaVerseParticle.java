@@ -7,29 +7,28 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ShadowPartice extends TextureSheetParticle {
+public class MeridiaVerseParticle extends TextureSheetParticle {
 
-    protected ShadowPartice(ClientLevel level, double x, double y, double z) {
-        super(level, x, y, z);
-        this.lifetime = 0; // 存活时间 1 刻（立即消失）
-        this.xd = 0; // X 方向速度
-        this.yd = 0; // Y 方向速度
-        this.zd = 0; // Z 方向速度
-        this.gravity = 0; // 无重力
-        this.hasPhysics = false; // 无物理效果
-    }
+    protected MeridiaVerseParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        super(level, x, y, z, xSpeed, ySpeed, zSpeed);
+        this.setSize(3.2F, 3.2F); // 粒子大小
+        this.lifetime = 2; // 粒子存活时间（单位：刻）
+        this.gravity = 0.0F; // 重力效果
+        this.hasPhysics = false; // 是否受物理影响
 
-    @Override
-    public void tick() {
-        this.remove(); // 立即移除粒子
     }
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+        // 使用发光的渲染类型
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
-
+    @Override
+    public int getLightColor(float partialTick) {
+        // 设置粒子发光亮度（15 是最大亮度）
+        return 15 << 20 | 15 << 4;
+    }
 
     @OnlyIn(Dist.CLIENT)
     public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -42,7 +41,7 @@ public class ShadowPartice extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            ShadowPartice particle = new ShadowPartice(level, x, y, z);
+            MeridiaVerseParticle particle = new MeridiaVerseParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
             particle.pickSprite(this.spriteSet); // 设置粒子纹理
             return particle;
         }

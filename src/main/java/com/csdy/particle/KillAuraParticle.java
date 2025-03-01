@@ -1,3 +1,4 @@
+// CustomParticle.java
 package com.csdy.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -7,29 +8,21 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ShadowPartice extends TextureSheetParticle {
-
-    protected ShadowPartice(ClientLevel level, double x, double y, double z) {
-        super(level, x, y, z);
-        this.lifetime = 0; // 存活时间 1 刻（立即消失）
-        this.xd = 0; // X 方向速度
-        this.yd = 0; // Y 方向速度
-        this.zd = 0; // Z 方向速度
-        this.gravity = 0; // 无重力
-        this.hasPhysics = false; // 无物理效果
-    }
-
-    @Override
-    public void tick() {
-        this.remove(); // 立即移除粒子
+public class KillAuraParticle extends TextureSheetParticle {
+    protected KillAuraParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        super(level, x, y, z, xSpeed, ySpeed, zSpeed);
+        this.setSize(0.1F, 0.1F); // 粒子大小
+        this.lifetime = 16; // 粒子存活时间（单位：刻）
+        this.gravity = 0.0F; // 重力效果
+        this.hasPhysics = false; // 是否受物理影响
+        this.xd = 0;
+        this.zd = 0;
     }
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+        return ParticleRenderType.PARTICLE_SHEET_OPAQUE; // 渲染类型
     }
-
-
 
     @OnlyIn(Dist.CLIENT)
     public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -42,7 +35,7 @@ public class ShadowPartice extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            ShadowPartice particle = new ShadowPartice(level, x, y, z);
+            KillAuraParticle particle = new KillAuraParticle(level, x, y, z, xSpeed, ySpeed, zSpeed);
             particle.pickSprite(this.spriteSet); // 设置粒子纹理
             return particle;
         }

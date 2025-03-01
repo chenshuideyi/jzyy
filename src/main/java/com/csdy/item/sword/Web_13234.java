@@ -5,9 +5,13 @@ import com.csdy.diadema.warden.SonicBoomUtil;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.movement.FollowDiademaMovement;
 import com.google.common.collect.ImmutableMultimap;
+import moze_intel.projecte.api.capabilities.PECapabilities;
+import moze_intel.projecte.api.capabilities.block_entity.IEmcStorage;
+import moze_intel.projecte.api.proxy.IEMCProxy;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -22,6 +26,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.util.List;
 
 public class Web_13234 extends SwordItem {
@@ -50,7 +56,7 @@ public class Web_13234 extends SwordItem {
         if (level instanceof ServerLevel serverLevel) {
             if (state0) {
                 System.out.println("222 并且领域正在添加……");
-                testDiadema = DiademaRegister.ABYSS.get().CreateInstance(new FollowDiademaMovement(player));
+                testDiadema = DiademaRegister.PROJECTE.get().CreateInstance(new FollowDiademaMovement(player));
                 System.out.println("222 并且领域添加了");
                 state0 = false;
             } else {
@@ -68,6 +74,12 @@ public class Web_13234 extends SwordItem {
             SonicBoomUtil.performSonicBoom(player.level,living,player);
         }
         return super.onLeftClickEntity(stack, player, entity);
+    }
+
+    @Override
+    public boolean onEntitySwing(ItemStack stack, LivingEntity living) {
+//        living.setPos(living.getX(), -500, living.getZ());
+        return false;
     }
 }
 //    @Override

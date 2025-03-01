@@ -3,6 +3,7 @@ package com.csdy.event;
 import com.csdy.ModMain;
 import com.csdy.diadema.DiademaRegister;
 import com.csdy.diadema.warden.WardenDiadema;
+import com.csdy.frames.diadema.Diadema;
 import com.csdy.item.register.ItemRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

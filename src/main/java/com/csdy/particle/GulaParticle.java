@@ -7,10 +7,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ShadowPartice extends TextureSheetParticle {
+public class GulaParticle extends TextureSheetParticle {
 
-    protected ShadowPartice(ClientLevel level, double x, double y, double z) {
+    protected GulaParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
+        this.setSize(5F, 5F); // 粒子大小
         this.lifetime = 0; // 存活时间 1 刻（立即消失）
         this.xd = 0; // X 方向速度
         this.yd = 0; // Y 方向速度
@@ -42,7 +43,7 @@ public class ShadowPartice extends TextureSheetParticle {
 
         @Override
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            ShadowPartice particle = new ShadowPartice(level, x, y, z);
+            GulaParticle particle = new GulaParticle(level, x, y, z);
             particle.pickSprite(this.spriteSet); // 设置粒子纹理
             return particle;
         }

@@ -1,12 +1,11 @@
 package com.csdy.diadema.meridiaVerse;
 
 import com.csdy.frames.diadema.ClientDiadema;
+import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.particleUtils.PointSets;
 import com.csdy.particleUtils.Transforms;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.FireworkParticles;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.phys.Vec3;
@@ -14,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.stream.Stream;
 
 public class MeridiaVerseClientDiadema extends ClientDiadema {
-    private static final double RADIUS = MeridiaVerseDiadema.RADIUS;
+    private static final double RADIUS = com.csdy.diadema.meridiaVerse.MeridiaVerseDiadema.RADIUS;
 
     @Override protected void perTick() {
         var level = Minecraft.getInstance().level;
@@ -34,7 +33,7 @@ public class MeridiaVerseClientDiadema extends ClientDiadema {
 
     private void drawParticle(ClientLevel level) {
         Vec3 center = getPosition();
-
+        SimpleParticleType type =  ParticlesRegister.MERIDIA_VERSE__PARTICLE.get();
         var round = PointSets.Circle(RADIUS, SEG).toList(); // 返回的stream只能用一次，但这个圆要重复用，所以收集成表
 
         rx += RS_X;
@@ -49,6 +48,6 @@ public class MeridiaVerseClientDiadema extends ClientDiadema {
         set = set.map(v -> Transforms.Rotate(v, finalAxis, rFin)); // 最后整体沿最终轴转一下
 
         set.map(v -> v.add(center)) //移至中心
-                .forEach(v -> level.addParticle(PARTICLE_TYPE, v.x, v.y, v.z, 0, 0, 0)); //绘制
+                .forEach(v -> level.addParticle(type, v.x, v.y, v.z, 0, 0, 0)); //绘制
     }
 }
