@@ -11,6 +11,8 @@ import com.csdy.diadema.gula.GulaClientDiadema;
 import com.csdy.diadema.gula.GulaDiadema;
 import com.csdy.diadema.killaura.KillAuraClientDiadema;
 import com.csdy.diadema.killaura.KillAuraDiadema;
+import com.csdy.diadema.meltdown.MeltdownClientDiadema;
+import com.csdy.diadema.meltdown.MeltdownDiadema;
 import com.csdy.diadema.meridiaVerse.MeridiaVerseClientDiadema;
 import com.csdy.diadema.meridiaVerse.MeridiaVerseDiadema;
 import com.csdy.diadema.projecte.ProjectEClientDiadema;
@@ -47,13 +49,8 @@ public class DiademaRegister {
             DIADEMA_TYPES.register("projecte", () -> DiademaType.Create(ProjectEDiadema::new, ProjectEClientDiadema::new));
     public static final RegistryObject<DiademaType> FAKE_PROJECTE =
             DIADEMA_TYPES.register("fake_projecte", () -> DiademaType.Create(FakeProjectEDiadema::new, FakeProjectEClientDiadema::new));
-
-
-
-
-
-
-
+    public static final RegistryObject<DiademaType> MELT_DOWN =
+            DIADEMA_TYPES.register("meltdown", () -> DiademaType.Create(MeltdownDiadema::new, MeltdownClientDiadema::new));
 
 
 }

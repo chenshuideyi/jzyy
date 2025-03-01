@@ -8,6 +8,7 @@ import com.csdy.item.register.HideRegister;
 import com.csdy.item.register.ItemRegister;
 import com.csdy.network.ParticleSyncing;
 import com.csdy.particle.register.ParticlesRegister;
+import com.csdy.sounds.SoundsRegister;
 import com.csdy.test.EntityRegister;
 import com.csdy.until.Tab.CsdyTab;
 import net.minecraft.client.Minecraft;
@@ -51,6 +52,7 @@ public class ModMain {
         MinecraftForge.EVENT_BUS.register(this);
         ParticlesRegister.PARTICLE_TYPES.register(bus);
         EffectRegister.EFFECTS.register(bus);
+        SoundsRegister.SOUND_EVENTS.register(bus);
 
         DiademaRegister.DIADEMA_TYPES.register(bus);
 

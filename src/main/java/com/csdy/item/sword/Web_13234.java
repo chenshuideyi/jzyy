@@ -4,19 +4,23 @@ import com.csdy.diadema.DiademaRegister;
 import com.csdy.diadema.warden.SonicBoomUtil;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.movement.FollowDiademaMovement;
+import com.csdy.sounds.SoundsRegister;
 import com.google.common.collect.ImmutableMultimap;
 import moze_intel.projecte.api.capabilities.PECapabilities;
 import moze_intel.projecte.api.capabilities.block_entity.IEmcStorage;
 import moze_intel.projecte.api.proxy.IEMCProxy;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -24,11 +28,14 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class Web_13234 extends SwordItem {
     public Web_13234(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
@@ -56,15 +63,17 @@ public class Web_13234 extends SwordItem {
         if (level instanceof ServerLevel serverLevel) {
             if (state0) {
                 System.out.println("222 并且领域正在添加……");
-                testDiadema = DiademaRegister.PROJECTE.get().CreateInstance(new FollowDiademaMovement(player));
+                testDiadema = DiademaRegister.KILL_AURA.get().CreateInstance(new FollowDiademaMovement(player));
                 System.out.println("222 并且领域添加了");
                 state0 = false;
+
             } else {
                 testDiadema.kill();
                 System.out.println("222 并且领域移除了");
                 state0 = true;
             }
         }
+
         return use;
     }
 
@@ -78,9 +87,9 @@ public class Web_13234 extends SwordItem {
 
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity living) {
-//        living.setPos(living.getX(), -500, living.getZ());
         return false;
     }
+
 }
 //    @Override
 //    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {

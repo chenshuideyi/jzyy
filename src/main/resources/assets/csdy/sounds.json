@@ -1,0 +1,26 @@
+{
+  "loli_succrss": {
+    "sounds": [
+      {
+        "name": "csdy:lolisuccess",
+        "stream": false
+      }
+    ]
+  },
+  "lolirecord": {
+    "sounds": [
+      {
+        "name": "csdy:lolirecord",
+        "stream": false
+      }
+    ]
+  },
+  "meltdown": {
+    "sounds": [
+      {
+        "name": "csdy:meltdown",
+        "stream": false
+      }
+    ]
+  }
+}
