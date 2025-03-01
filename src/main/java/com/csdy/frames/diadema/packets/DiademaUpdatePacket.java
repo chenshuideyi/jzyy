@@ -19,8 +19,9 @@ public record DiademaUpdatePacket(long instanceId, ResourceLocation dimension, V
         var instanceId = buf.readLong();
         var dimension = buf.readResourceLocation();
         var position = new Vec3(buf.readDouble(), buf.readDouble(), buf.readDouble());
-        var customData = buf.readBytes(buf.readableBytes());
-        return new DiademaUpdatePacket(instanceId, dimension, position, customData.array());
+        var customData = new byte[buf.readableBytes()];
+        buf.getBytes(buf.readerIndex(), customData);
+        return new DiademaUpdatePacket(instanceId, dimension, position, customData);
     }
 
     public FriendlyByteBuf getCustomData() {
