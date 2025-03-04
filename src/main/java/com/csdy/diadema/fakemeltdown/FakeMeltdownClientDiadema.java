@@ -1,21 +1,17 @@
-package com.csdy.diadema.meltdown;
+package com.csdy.diadema.fakemeltdown;
 
+import com.csdy.diadema.meltdown.MeltdownDiadema;
 import com.csdy.frames.diadema.ClientDiadema;
 import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.particleUtils.PointSets;
-import com.csdy.sounds.SoundsRegister;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Arrays;
 import java.util.stream.Stream;
 
-public class MeltdownClientDiadema extends ClientDiadema {
+public class FakeMeltdownClientDiadema extends ClientDiadema {
 
     @Override protected void perTick() {
         var level = Minecraft.getInstance().level;
@@ -28,7 +24,7 @@ public class MeltdownClientDiadema extends ClientDiadema {
 
 
     private static final SimpleParticleType PARTICLE_TYPE = ParticlesRegister.MELTDOWN_PARTICLE.get();
-    private static final double RADIUS = 12;
+    private static final double RADIUS = FakeMeltdownDiadema.RADIUS;
     private static final double R1 = 0.2, R2 = 0.3, R_OUT = 1.1; // 外环2.5，内两环分别是0.5和0.75，比例是0.2和0.3
     private static final int SEG1 = 24, SEG2 = 8, SEG3 = 24, SEG_LINE = 16, SEG_OUT = 120;
 
@@ -47,7 +43,7 @@ public class MeltdownClientDiadema extends ClientDiadema {
         var points = Stream.concat(Stream.concat(arcs, lines), PointSets.Circle(RADIUS * R1, SEG1));
         points = Stream.concat(points, PointSets.Circle(RADIUS * R_OUT, SEG_OUT)); // 外环
 
-        points.map(v -> v.add(pos)).forEach(v -> level.addParticle(PARTICLE_TYPE, v.x, v.y+0.2, v.z, 0, 0.05, 0));
+        points.map(v -> v.add(pos)).forEach(v -> level.addParticle(PARTICLE_TYPE, v.x, v.y+0.1, v.z, 0, 0.05, 0));
     }
 
 
