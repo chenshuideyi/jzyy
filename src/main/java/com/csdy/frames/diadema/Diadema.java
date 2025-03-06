@@ -25,6 +25,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
+import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
@@ -37,6 +38,8 @@ import java.util.stream.Collectors;
 public abstract class Diadema {
     // init&final
     private static long nextId = 0;
+    @Getter
+    private boolean alive = true;
 
     public Diadema(DiademaType type, DiademaMovement movement) {
         this.type = type;
@@ -55,6 +58,7 @@ public abstract class Diadema {
     }
 
     private void remove() {
+        alive = false;
         // 视作实体离开领域
 //        entities.forEach(this::removeEntity);
         //这个写法会让列表被便利的时候修改,已修正

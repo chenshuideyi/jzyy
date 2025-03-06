@@ -16,37 +16,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class Warden extends DiademaModifier implements EquipmentChangeModifierHook {
-    private Diadema warden;
-    @Override
-    public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        LivingEntity entity = context.getEntity();
-        if (entity instanceof Player player) {
-            if (context.getLevel() instanceof ServerLevel serverLevel) {
-                if (context.getChangedSlot().isArmor()) {
-                    this.warden = DiademaRegister.WARDEN.get().CreateInstance(new FollowDiademaMovement(player));
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onUnequip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
-        LivingEntity entity = context.getEntity();
-        if (entity instanceof Player) {
-            if (context.getChangedSlot().isArmor() && warden!=null) {
-                this.warden.kill();
-            }
-        }
-    }
-
-
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.EQUIPMENT_CHANGE);
-        super.registerHooks(hookBuilder);
-    }
-
+public class Warden extends DiademaModifier {
     @Override
     protected DiademaType getDiademaType() {
         return DiademaRegister.WARDEN.get();

@@ -67,14 +67,14 @@ public class ModMain {
         ParticleSyncing.Init();
     }
 
-    @SubscribeEvent
-    public void onGatherData(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
-
-        // 注册数据生成器
-        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
-    }
+//    @SubscribeEvent
+//    public void onGatherData(GatherDataEvent event) {
+//        DataGenerator generator = event.getGenerator();
+//        PackOutput packOutput = generator.getPackOutput();
+//
+//        // 注册数据生成器
+//        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
+//    }
 
 }
 

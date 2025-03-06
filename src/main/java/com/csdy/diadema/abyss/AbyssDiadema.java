@@ -29,19 +29,6 @@ public class AbyssDiadema extends Diadema {
                 entity.setPos(entity.getX(), -500, entity.getZ());
         }
     }
-
-//    public static void Abyssutility(Player player) {
-//        Vec3 playerpos = player.position();
-//        double range = 5;
-//        Vec3 start = new Vec3(playerpos.x - range, playerpos.y - range, playerpos.z - range);
-//        Vec3 finish = new Vec3(playerpos.x + range, playerpos.y + range, playerpos.z + range);
-//        List<LivingEntity> moblist = player.level.getEntitiesOfClass(LivingEntity.class,
-//                new AABB(start, finish));
-//        for (LivingEntity targets : moblist) {
-//            if (targets != null && targets.position().distanceTo(playerpos) <= 6 && !targets.equals(player))
-//                targets.setPos(targets.getX(), -500, targets.getZ());
-//        }
-//    }
 }
 
 
