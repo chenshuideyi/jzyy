@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:gold_ingot"
+    },
+    "b": {
+      "item": "tcondiadema:warden_heart"
+    }
+
+  },
+  "result": {
+    "item": "tcondiadema:orokin_cell",
+    "count": 1
+  }
+}

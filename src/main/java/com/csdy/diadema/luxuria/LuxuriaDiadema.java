@@ -42,6 +42,7 @@ public class LuxuriaDiadema extends Diadema {
                 }
                 else if (timer % 40 == 0){
                     spawnExperienceOrb(living);
+                    living.setHealth(living.getHealth()-10);
                 }
             }
             timer++;

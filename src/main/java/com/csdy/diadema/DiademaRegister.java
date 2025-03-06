@@ -5,12 +5,16 @@ import com.csdy.diadema.abyss.AbyssDiadema;
 import com.csdy.diadema.abyss.AbyssClientDiadema;
 import com.csdy.diadema.fakekillaura.FakeKillAuraClientDiadema;
 import com.csdy.diadema.fakekillaura.FakeKillAuraDiadema;
+import com.csdy.diadema.fakemeltdown.FakeMeltdownClientDiadema;
+import com.csdy.diadema.fakemeltdown.FakeMeltdownDiadema;
 import com.csdy.diadema.fakeprojecte.FakeProjectEClientDiadema;
 import com.csdy.diadema.fakeprojecte.FakeProjectEDiadema;
 import com.csdy.diadema.gula.GulaClientDiadema;
 import com.csdy.diadema.gula.GulaDiadema;
 import com.csdy.diadema.killaura.KillAuraClientDiadema;
 import com.csdy.diadema.killaura.KillAuraDiadema;
+import com.csdy.diadema.luxuria.LuxuriaClinetDiadema;
+import com.csdy.diadema.luxuria.LuxuriaDiadema;
 import com.csdy.diadema.meltdown.MeltdownClientDiadema;
 import com.csdy.diadema.meltdown.MeltdownDiadema;
 import com.csdy.diadema.meridiaVerse.MeridiaVerseClientDiadema;
@@ -41,6 +45,8 @@ public class DiademaRegister {
             DIADEMA_TYPES.register("wind", () -> DiademaType.Create(WindDiadema::new, WindClientDiadema::new));
     public static final RegistryObject<DiademaType> GULA =
             DIADEMA_TYPES.register("gula", () -> DiademaType.Create(GulaDiadema::new, GulaClientDiadema::new));
+    public static final RegistryObject<DiademaType> LUXURIA =
+            DIADEMA_TYPES.register("luxuria", () -> DiademaType.Create(LuxuriaDiadema::new, LuxuriaClinetDiadema::new));
     public static final RegistryObject<DiademaType> KILL_AURA =
             DIADEMA_TYPES.register("kill_aura", () -> DiademaType.Create(KillAuraDiadema::new, KillAuraClientDiadema::new));
     public static final RegistryObject<DiademaType> FAKE_KILL_AURA =
@@ -51,6 +57,7 @@ public class DiademaRegister {
             DIADEMA_TYPES.register("fake_projecte", () -> DiademaType.Create(FakeProjectEDiadema::new, FakeProjectEClientDiadema::new));
     public static final RegistryObject<DiademaType> MELT_DOWN =
             DIADEMA_TYPES.register("meltdown", () -> DiademaType.Create(MeltdownDiadema::new, MeltdownClientDiadema::new));
-
+    public static final RegistryObject<DiademaType> FAKE_MELT_DOWN =
+            DIADEMA_TYPES.register("fake_meltdown", () -> DiademaType.Create(FakeMeltdownDiadema::new, FakeMeltdownClientDiadema::new));
 
 }

@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "l2hostility:killer_aura"
+    },
+    {
+      "item": "l2hostility:killer_aura"
+    },
+    {
+      "item": "l2hostility:killer_aura"
+    },
+    {
+      "item": "l2hostility:killer_aura"
+    },
+    {
+      "item": "l2hostility:killer_aura"
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "slots": {
+    "diadema": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/worn"
+  },
+  "result": "tcondiadema:kill_aura"
+}

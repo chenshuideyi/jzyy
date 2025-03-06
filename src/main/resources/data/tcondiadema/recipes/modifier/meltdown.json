@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "mekanism:laser"
+    },
+    {
+      "item": "mekanismgenerators:hohlraum"
+    },
+    {
+      "item": "mekanism:laser"
+    },
+    {
+      "item": "mekanismgenerators:fusion_fuel_bucket"
+    },
+    {
+      "item": "mekanismgenerators:fusion_fuel_bucket"
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "slots": {
+    "diadema": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/worn"
+  },
+  "result": "tcondiadema:meltdown"
+}

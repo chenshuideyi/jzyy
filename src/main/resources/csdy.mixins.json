@@ -1,18 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.csdyms.mixins",
-  "compatibilityLevel": "JAVA_8",
+  "package": "com.csdyaop.mixins",
+  "compatibilityLevel": "JAVA_17",
   "refmap": "csdy.refmap.json",
   "mixins": [
-    "EntityMixin",
-    "GameRendererMixin",
-    "LivingEntityMixin",
-    "PlayerMixin"
+    "LivingEntityMixin"
   ],
   "client": [
-    "EntityRenderMixin",
-    "LivingEntityRenderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

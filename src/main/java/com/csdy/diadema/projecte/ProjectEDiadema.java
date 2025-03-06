@@ -18,7 +18,7 @@ import java.math.BigInteger;
 public class ProjectEDiadema extends Diadema {
     static final double RADIUS = 8;
     private final Player player = getPlayer();
-
+    DamageSource src = PEDamageTypes.BYPASS_ARMOR_PLAYER_ATTACK.source(player);
     public ProjectEDiadema(DiademaType type, DiademaMovement movement) {
         super(type, movement);
     }
@@ -35,7 +35,6 @@ public class ProjectEDiadema extends Diadema {
             if (!(entity instanceof LivingEntity)) continue;
             if (!entity.equals(player)){
                 entity.invulnerableTime = 0;
-                DamageSource src = PEDamageTypes.BYPASS_ARMOR_PLAYER_ATTACK.source(player);
                 entity.hurt(src,1000);
                 if (player instanceof ServerPlayer serverPlayer) {
                     player.getCapability(PECapabilities.KNOWLEDGE_CAPABILITY).ifPresent(knowledge -> {

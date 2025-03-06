@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " ba",
+    "ddb",
+    "cd "
+  ],
+  "key":
+  {
+    "a":
+    {
+      "item": "minecraft:gilded_blackstone"
+    },
+    "b":
+    {
+      "item": "minecraft:netherite_block"
+    },
+    "c":
+    {
+      "item": "tcondiadema:broken_sacred_relic"
+    },
+    "d":
+    {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result":
+  {
+    "item": "tcondiadema:sacred_relic",
+    "count": 1
+  }
+}

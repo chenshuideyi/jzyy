@@ -1,0 +1,16 @@
+{
+  "modifier.tcondiadema": {
+    "forma": "#D9D914",
+    "aura_forma": "#FFA500",
+    "gula": "#de605d",
+    "fake_meltdown": "#EE9A00",
+    "meltdown": "#EE9A00",
+    "warden": "#1A3FC2",
+    "luxuria": "#B409E5",
+    "fake_kill_aura": "#FF0000",
+    "kill_aura": "#FF0000",
+    "fake_projecte": "#000000",
+    "projecte": "#000000"
+  }
+}
+

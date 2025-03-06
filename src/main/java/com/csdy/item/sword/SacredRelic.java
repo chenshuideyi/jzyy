@@ -26,7 +26,7 @@ public class SacredRelic extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
-        tooltip.add(Component.translatable("item.csdy.sacred_relic.line1").withStyle(ChatFormatting.YELLOW));
+        tooltip.add(Component.translatable("item.tcondiadema.sacred_relic.line1").withStyle(ChatFormatting.YELLOW));
     }
     @Override
     public boolean isDamageable(ItemStack stack) {

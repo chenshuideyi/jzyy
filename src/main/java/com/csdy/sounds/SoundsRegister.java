@@ -14,7 +14,7 @@ public class SoundsRegister {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ModMain.MODID);
 
     // 注册声音事件
-    public static final RegistryObject<SoundEvent> MELTDOWN = SOUND_EVENTS.register("meltdown", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("csdy", "meltdown")));
-    public static final RegistryObject<SoundEvent> LOLI_SUCCRSS = SOUND_EVENTS.register("loli_succrss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("csdy", "loli_succrss")));
-    public static final RegistryObject<SoundEvent> LOLIRECORD = SOUND_EVENTS.register("lolirecord", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("csdy", "lolirecord")));
+    public static final RegistryObject<SoundEvent> MELTDOWN = SOUND_EVENTS.register("meltdown", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("tcondiadema", "meltdown")));
+    public static final RegistryObject<SoundEvent> LOLI_SUCCRSS = SOUND_EVENTS.register("loli_succrss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("tcondiadema", "loli_succrss")));
+    public static final RegistryObject<SoundEvent> LOLIRECORD = SOUND_EVENTS.register("lolirecord", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("tcondiadema", "lolirecord")));
 }

@@ -1,18 +1,14 @@
 package com.csdy.diadema.gula;
 
 import com.csdy.frames.diadema.ClientDiadema;
-import com.csdy.particle.DarkPartice;
 import com.csdy.particle.register.ParticlesRegister;
-import com.csdyms.ParticleUtils;
+import com.csdy.ParticleUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import static com.csdyms.ParticleUtils.DrawCurve;
-import static java.lang.Math.PI;
+import static com.csdy.ParticleUtils.DrawCurve;
 import static java.lang.Math.sqrt;
 
 public class GulaClientDiadema extends ClientDiadema {

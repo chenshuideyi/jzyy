@@ -3,14 +3,12 @@ package com.csdy.diadema.luxuria;
 import com.csdy.frames.diadema.ClientDiadema;
 import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.particleUtils.PointSets;
-import com.csdyms.ParticleUtils;
+import com.csdy.ParticleUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-
-import java.util.List;
 
 public class LuxuriaClinetDiadema extends ClientDiadema {
     private static final SimpleParticleType type = ParticlesRegister.LUXURIA_PARTICLE.get();

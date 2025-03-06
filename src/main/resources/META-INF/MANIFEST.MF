@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Implementation-Title: 1.20.1csdy
-Premain-Class: com.csdyms.agent.CsdyAgent
-Launcher-Agent-Class: com.csdyms.agent.CsdyAgent
-Agent-Class: com.csdyms.agent.CsdyAgent
+Premain-Class: com.csdyaop.agent.CsdyAgent
+Launcher-Agent-Class: com.csdyaop.agent.CsdyAgent
+Agent-Class: com.csdyaop.agent.CsdyAgent
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true
 Specification-Version: 1

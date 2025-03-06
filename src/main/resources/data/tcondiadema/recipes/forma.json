@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tcondiadema:morphics"
+    },
+    {
+      "item": "tcondiadema:orokin_cell"
+    },
+    {
+      "item": "tcondiadema:neural_sensors"
+    },
+    {
+      "item": "tcondiadema:neuron"
+    }
+  ],
+  "result": {
+    "item": "tcondiadema:forma",
+    "count": 1
+  }
+}

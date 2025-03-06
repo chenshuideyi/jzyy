@@ -13,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -45,19 +46,6 @@ public class Event {
         }
     }
 
-//    @SubscribeEvent
-//    public static void onRenderGui(RenderGuiEvent.Post event) {
-//        // 获取 GuiGraphics 实例
-//        GuiGraphics guiGraphics = event.getGuiGraphics();
-//        // 获取屏幕宽度和高度
-//        int width = event.getWindow().getGuiScaledWidth();
-//        int height = event.getWindow().getGuiScaledHeight();
-//
-//        // 绘制灰色矩形覆盖整个屏幕
-////        guiGraphics.fill(0, 0, width, height, 0xFF000000); // ARGB格式：0x80表示50%透明度，000000表示黑色
-//    }
-
-
     @SubscribeEvent
     public static void onRenderOverlay(RenderGuiOverlayEvent event) {
         Minecraft mc = Minecraft.getInstance();
@@ -73,22 +61,5 @@ public class Event {
 
 
 }
-//@SubscribeEvent
-//    public static void playerLogin(PlayerEvent.PlayerLoggedInEvent e) {
-//        if (e.getEntity() instanceof ServerPlayer serverPlayer) {
-//            Networking.sendToPlayerClient(new PacketInitDocs(), serverPlayer);
-//            boolean isContributor = Rewards.CONTRIBUTORS.contains(serverPlayer.getUUID());
-//            if (isContributor) {
-//                Networking.sendToPlayerClient(new PacketJoinedServer(true), serverPlayer);
-//            }
-//        }
-//        CompoundTag tag = e.getEntity().getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
-//        String book_tag = "an_book_";
-//        if (!tag.getBoolean(book_tag)) {
-//            Player entity = e.getEntity();
-//            ItemHandlerHelper.giveItemToPlayer(entity, new ItemStack(ItemRegister.BROKEN_SACRED_RELIC.get()));
-//            tag.putBoolean(book_tag, true);
-////            e.getEntity().getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
-////        }
-//    }
+
 
