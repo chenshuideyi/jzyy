@@ -1,6 +1,6 @@
 # 匠魂领域
 
-[English](readme.md) | [简体中文](readme_zh.md)
+[English](readme.md) | **简体中文**
 
 ![GitHub License](https://img.shields.io/github/license/chenshuideyi/TconDiadema)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/chenshuideyi/TconDiadema)
