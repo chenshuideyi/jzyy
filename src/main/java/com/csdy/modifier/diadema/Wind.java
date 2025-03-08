@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
@@ -31,7 +32,7 @@ public class Wind extends DiademaModifier implements InventoryTickModifierHook {
     }
 
     @Override
-    public void onUnequip(IToolStackView tool, ModifierEntry entry, EquipmentChangeContext context) {
+    public void onUnequip(@NotNull IToolStackView tool, @NotNull ModifierEntry entry, EquipmentChangeContext context) {
         if (!(context.getEntity() instanceof Player player)) return;
         player.removeEffect(new MobEffectInstance(EffectRegister.WIND.get()).getEffect());
         player.getAbilities().setFlyingSpeed(0.05f);
