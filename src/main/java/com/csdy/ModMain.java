@@ -47,7 +47,7 @@ public class ModMain {
         ItemRegister.ITEMS.register(bus);
         ModifierRegister.MODIFIERS.register(bus);
         HideRegister.HIDE.register(bus);
-//        EntityRegister.REGISTRY.register(bus);
+
         MinecraftForge.EVENT_BUS.register(this);
         ParticlesRegister.PARTICLE_TYPES.register(bus);
         EffectRegister.EFFECTS.register(bus);

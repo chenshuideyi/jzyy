@@ -1,6 +1,6 @@
 package com.csdy.diadema.luxuria;
 
-import com.csdy.diadema.ranges.SphereDiademaRange;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class LuxuriaDiadema extends Diadema {
     private final Player player = getPlayer();
@@ -24,7 +25,7 @@ public class LuxuriaDiadema extends Diadema {
     }
 
     @Override
-    public DiademaRange getRange() {
+    public @NotNull DiademaRange getRange() {
         return new SphereDiademaRange(this, 8);
     }
 

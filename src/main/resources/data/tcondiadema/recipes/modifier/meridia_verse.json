@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "minecraft:conduit"
+    },
+    {
+      "item": "minecraft:filled_map"
+    },
+    {
+      "item": "minecraft:clock"
+    },
+    {
+      "item": "minecraft:recovery_compass"
+    },
+    {
+      "item": "minecraft:compass"
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "slots": {
+    "diadema": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/worn"
+  },
+  "result": "tcondiadema:meridia_verse"
+}

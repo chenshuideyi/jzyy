@@ -1,11 +1,12 @@
 package com.csdy.diadema.meridiaVerse;
 
-import com.csdy.diadema.ranges.SphereDiademaRange;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 /// 我给它起的中文名是 \[经天纬地\]
 public class MeridiaVerseDiadema extends Diadema {
@@ -18,7 +19,7 @@ public class MeridiaVerseDiadema extends Diadema {
 
     private final SphereDiademaRange range = new SphereDiademaRange(this, RADIUS);
 
-    @Override public DiademaRange getRange() {
+    @Override public @NotNull DiademaRange getRange() {
         return range;
     }
 

@@ -1,32 +1,20 @@
 package com.csdy.diadema.gula;
 
 import com.csdy.ModMain;
-import com.csdy.diadema.ranges.SphereDiademaRange;
-import com.csdy.diadema.warden.SonicBoomUtil;
-import com.csdy.effect.register.EffectRegister;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
-import com.csdy.item.register.ItemRegister;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.items.ItemHandlerHelper;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GulaDiadema extends Diadema {
@@ -45,7 +33,7 @@ public class GulaDiadema extends Diadema {
     private final SphereDiademaRange range = new SphereDiademaRange(this,RADIUS);
 
     @Override
-    public DiademaRange getRange() {
+    public @NotNull DiademaRange getRange() {
         return range;
     }
 

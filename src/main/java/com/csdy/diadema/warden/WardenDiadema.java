@@ -1,28 +1,20 @@
 package com.csdy.diadema.warden;
 
 import com.csdy.ModMain;
-import com.csdy.diadema.DiademaRegister;
-import com.csdy.diadema.ranges.HalfSphereDiademaRange;
+import com.csdy.diadema.api.ranges.HalfSphereDiademaRange;
 import com.csdy.effect.register.EffectRegister;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
-import com.csdy.frames.diadema.events.EntityEnteredDiademaEvent;
-import com.csdy.frames.diadema.events.EntityExitedDiademaEvent;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
-import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 // 如你所见，这个是领域的服务端类型，带个Client的是客户端类型，一般而言两个都要重写一份。然后拿去注册
@@ -44,7 +36,7 @@ public class WardenDiadema extends Diadema {
 
     private final HalfSphereDiademaRange range = new HalfSphereDiademaRange(this, RADIUS);
 
-    @Override public DiademaRange getRange() {
+    @Override public @NotNull DiademaRange getRange() {
         return range;
     }
 

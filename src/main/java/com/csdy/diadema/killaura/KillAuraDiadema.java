@@ -1,6 +1,6 @@
 package com.csdy.diadema.killaura;
 
-import com.csdy.diadema.ranges.SphereDiademaRange;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
@@ -9,6 +9,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class KillAuraDiadema extends Diadema {
     static final double DEFAULT_RADIUS = 6;
@@ -23,7 +24,7 @@ public class KillAuraDiadema extends Diadema {
     }
 
     @Override
-    public DiademaRange getRange() {
+    public @NotNull DiademaRange getRange() {
         return range;
     }
 

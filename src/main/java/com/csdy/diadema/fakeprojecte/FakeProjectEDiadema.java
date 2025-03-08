@@ -1,21 +1,17 @@
 package com.csdy.diadema.fakeprojecte;
 
-import com.csdy.diadema.ranges.SphereDiademaRange;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
-import moze_intel.projecte.api.capabilities.PECapabilities;
-import moze_intel.projecte.gameObjs.registries.PEDamageTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-
-import java.math.BigInteger;
+import org.jetbrains.annotations.NotNull;
 
 public class FakeProjectEDiadema extends Diadema {
     static final double RADIUS = 6;
@@ -28,7 +24,7 @@ public class FakeProjectEDiadema extends Diadema {
     private final SphereDiademaRange range = new SphereDiademaRange(this,RADIUS);
 
     @Override
-    public DiademaRange getRange() {
+    public @NotNull DiademaRange getRange() {
         return range;
     }
 

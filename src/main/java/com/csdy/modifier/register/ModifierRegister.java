@@ -21,9 +21,9 @@ public class ModifierRegister {
     public static final StaticModifier<KillAura> KILL_AURA_STATIC_MODIFIER = MODIFIERS.register("kill_aura", KillAura::new);
     public static final StaticModifier<FakeProjectE> FAKE_PROJECT_E_STATIC_MODIFIER = MODIFIERS.register("fake_projecte", FakeProjectE::new);
     public static final StaticModifier<ProjectE> PROJECT_E_STATIC_MODIFIER = MODIFIERS.register("projecte", ProjectE::new);
-
-
-
+    public static final StaticModifier<Wind> WIND_STATIC_MODIFIER = MODIFIERS.register("wind", Wind::new);
+    public static final StaticModifier<MeridiaVerse> MERIDIA_VERSE_STATIC_MODIFIER = MODIFIERS.register("meridia_verse", MeridiaVerse::new);
+    public static final StaticModifier<Avarita> AVARITA_STATIC_MODIFIER = MODIFIERS.register("avarita", Avarita::new);
 
 
 

@@ -15,7 +15,7 @@
 
   "tcondiadema_tab": "匠魂领域",
   "stat.tconstruct.slot.display.diadema": "领域",
-  "stat.tconstruct.slot.prefix.diadema": "领域槽 :",
+  "stat.tconstruct.slot.prefix.diadema": "领域槽：",
 
   "modifier.tcondiadema.forma": "极化",
   "modifier.tcondiadema.forma.flavor": "进行一次极化",
@@ -34,6 +34,9 @@
   "modifier.tcondiadema.kill_aura.flavor": "盐都不盐了",
   "modifier.tcondiadema.kill_aura.description": "无需多言",
 
+  "modifier.tcondiadema.avarita": "No.$$$-贪婪",
+  "modifier.tcondiadema.avarita.flavor": "玛门",
+  "modifier.tcondiadema.avarita.description": "领域内的所有方块都会变成金块,捡起金块时会获得永久存在的黄心",
 
   "modifier.tcondiadema.fake_projecte": "No.1024-炼金幻想",
   "modifier.tcondiadema.fake_projecte.flavor": "招笑之作",
@@ -44,12 +47,16 @@
   "modifier.tcondiadema.projecte.description": "每tick会给予领域内的其他生物1000点伤害,并获取等额的EMC",
 
   "modifier.tcondiadema.wind": "No.?-乘风行走之物",
-  "modifier.tcondiadema.wind.flavor": "伊塔库亚",
-  "modifier.tcondiadema.wind.description": "提升80%的闪避率,获得创造飞行和三倍的移动/飞行速度,进入领域的其他生物护甲值归0",
+  "modifier.tcondiadema.wind.flavor": "头顶的星空被乌云遮盖......这朵巨云有着人形的轮廓......尽管乌云密布，在它的顶层，那人形的头部，闪耀着两颗明光烁亮的星，如同两支巨眼。",
+  "modifier.tcondiadema.wind.description": "提升80%的闪避率,获得创造飞行和四倍的移动/飞行速度,进入领域的其他生物护甲值归0",
 
   "modifier.tcondiadema.abyss": "No.0-无限垂直落下",
   "modifier.tcondiadema.abyss.flavor": "我把他扔进了一个没有顶和底的地方",
   "modifier.tcondiadema.abyss.description": "领域内的其他生物Y轴不会高于-500",
+
+  "modifier.tcondiadema.meridia_verse": "No.360-经天纬地",
+  "modifier.tcondiadema.meridia_verse.flavor": "哈利路大旋风",
+  "modifier.tcondiadema.meridia_verse.description": "领域内的其他生物会绕中心以一种奇异搞笑的方式旋转",
 
   "modifier.tcondiadema.fake_meltdown": "No.yousa-炉心与融解相比",
   "modifier.tcondiadema.fake_meltdown.flavor": "这是到哪来了?",
@@ -75,5 +82,6 @@
   "effect.tcondiadema.scared": "惊恐",
   "effect.tcondiadema.physical_injury": "开放性物理创口",
   "effect.tcondiadema.fracture": "骨折",
-  "effect.tcondiadema.comminuted_fracture": "粉碎性骨折"
+  "effect.tcondiadema.comminuted_fracture": "粉碎性骨折",
+  "effect.tcondiadema.wind": "乘风行走之物"
 }

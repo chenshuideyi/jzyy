@@ -11,6 +11,7 @@ import com.csdy.frames.diadema.packets.DiademaUpdatePacket;
 import com.csdy.frames.diadema.range.DiademaRange;
 import io.netty.buffer.PooledByteBufAllocator;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
@@ -107,6 +108,7 @@ public abstract class Diadema {
         return position.z;
     }
 
+    @NonNull
     public abstract DiademaRange getRange();
 
     @Getter
@@ -185,6 +187,7 @@ public abstract class Diadema {
         entities.stream().filter(entity -> !inRange.contains(entity)).toList().forEach(this::removeEntity);
         inRange.forEach(this::addEntity);
     }
+
 
     private void sendSyncPack(){
         // 获取自定义数据

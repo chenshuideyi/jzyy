@@ -29,7 +29,7 @@ public class ParticlesRegister {
     public static final RegistryObject<SimpleParticleType> KILL_AURA_PARTICLE = PARTICLE_TYPES.register("kill_aura_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> MELTDOWN_PARTICLE = PARTICLE_TYPES.register("meltdown_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> LUXURIA_PARTICLE = PARTICLE_TYPES.register("luxuria_particle", () -> new SimpleParticleType(false));
-
+    public static final RegistryObject<SimpleParticleType> AVARITA_PARTICLE = PARTICLE_TYPES.register("avarita_particle", () -> new SimpleParticleType(false));
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void onClientSetup(RegisterParticleProvidersEvent event) {
@@ -45,5 +45,6 @@ public class ParticlesRegister {
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.KILL_AURA_PARTICLE.get(), KillAuraParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.MELTDOWN_PARTICLE.get(), MeltDownPartice.Provider::new);
         Minecraft.getInstance().particleEngine.register(ParticlesRegister.LUXURIA_PARTICLE.get(), LuxuriaParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(ParticlesRegister.AVARITA_PARTICLE.get(), AvaritaParticle.Provider::new);
     }
 }

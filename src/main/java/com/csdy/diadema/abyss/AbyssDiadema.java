@@ -1,12 +1,13 @@
 package com.csdy.diadema.abyss;
 
-import com.csdy.diadema.ranges.ColumnDiademaRange;
+import com.csdy.diadema.api.ranges.ColumnDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 public class AbyssDiadema extends Diadema {
     static final double RADIUS = 6, HUP = 9, HDOWN = -9;
@@ -18,7 +19,7 @@ public class AbyssDiadema extends Diadema {
 
     private final ColumnDiademaRange range = new ColumnDiademaRange(this, RADIUS, HDOWN, HUP);
 
-    @Override public DiademaRange getRange() {
+    @Override public @NotNull DiademaRange getRange() {
         return range;
     }
 

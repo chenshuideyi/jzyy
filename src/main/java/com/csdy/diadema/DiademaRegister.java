@@ -3,6 +3,8 @@ package com.csdy.diadema;
 import com.csdy.ModMain;
 import com.csdy.diadema.abyss.AbyssDiadema;
 import com.csdy.diadema.abyss.AbyssClientDiadema;
+import com.csdy.diadema.avaritia.AvaritaClientDiadema;
+import com.csdy.diadema.avaritia.AvaritaDiadema;
 import com.csdy.diadema.fakekillaura.FakeKillAuraClientDiadema;
 import com.csdy.diadema.fakekillaura.FakeKillAuraDiadema;
 import com.csdy.diadema.fakemeltdown.FakeMeltdownClientDiadema;
@@ -59,5 +61,7 @@ public class DiademaRegister {
             DIADEMA_TYPES.register("meltdown", () -> DiademaType.Create(MeltdownDiadema::new, MeltdownClientDiadema::new));
     public static final RegistryObject<DiademaType> FAKE_MELT_DOWN =
             DIADEMA_TYPES.register("fake_meltdown", () -> DiademaType.Create(FakeMeltdownDiadema::new, FakeMeltdownClientDiadema::new));
+    public static final RegistryObject<DiademaType> AVARITA =
+            DIADEMA_TYPES.register("avarita", () -> DiademaType.Create(AvaritaDiadema::new, AvaritaClientDiadema::new));
 
 }

@@ -1,15 +1,13 @@
 package com.csdy.diadema.fakemeltdown;
 
-import com.csdy.diadema.ranges.SphereDiademaRange;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 public class FakeMeltdownDiadema extends Diadema {
     public FakeMeltdownDiadema(DiademaType type, DiademaMovement movement) {
@@ -20,7 +18,7 @@ public class FakeMeltdownDiadema extends Diadema {
 
     private final SphereDiademaRange range = new SphereDiademaRange(this, RADIUS);
 
-    @Override public DiademaRange getRange() {
+    @Override public @NotNull DiademaRange getRange() {
         return range;
     }
 

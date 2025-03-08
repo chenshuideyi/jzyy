@@ -10,7 +10,10 @@
     "fake_kill_aura": "#FF0000",
     "kill_aura": "#FF0000",
     "fake_projecte": "#000000",
-    "projecte": "#000000"
+    "projecte": "#000000",
+    "wind": "#6e82dd",
+    "meridia_verse": "#ddcc00",
+    "abyss": "#ddcc00"
   }
 }
 

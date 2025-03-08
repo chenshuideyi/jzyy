@@ -30,7 +30,6 @@ public class SonicBoomUtil {
         ParticleSyncing.CHANNEL.send(PacketDistributor.NEAR.with(()->new PacketDistributor.TargetPoint(player.getX(), player.getY(), player.getZ(), 128,
                         player.level.dimension()))
                 ,new SonicBoomPacket(player.position,target.position));
-//        ParticleUtils.Drawline(1,target.getX(), target.getY()+0.5, target.getZ(), player.getX(), player.getY()+0.5, player.getZ(),ParticleTypes.SONIC_BOOM,level );
 
     }
 }

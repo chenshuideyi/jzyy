@@ -1,21 +1,17 @@
 package com.csdy.diadema.meltdown;
 
-import com.csdy.diadema.ranges.SphereDiademaRange;
+import com.csdy.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.DiademaType;
 import com.csdy.frames.diadema.movement.DiademaMovement;
 import com.csdy.frames.diadema.range.DiademaRange;
-import mekanism.common.command.RadiationCommand;
-import mekanism.common.lib.radiation.RadiationSource;
 import mekanism.common.registries.MekanismDamageTypes;
-import moze_intel.projecte.api.capabilities.PECapabilities;
-import moze_intel.projecte.gameObjs.registries.PEDamageTypes;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import mekanism.common.lib.radiation.RadiationManager;
+import org.jetbrains.annotations.NotNull;
 
 public class MeltdownDiadema extends Diadema {
     final static double RADIUS = 12;
@@ -26,7 +22,7 @@ public class MeltdownDiadema extends Diadema {
 
     private final SphereDiademaRange range = new SphereDiademaRange(this, RADIUS);
 
-    @Override public DiademaRange getRange() {
+    @Override public @NotNull DiademaRange getRange() {
         return range;
     }
     @Override protected void perTick() {

@@ -1,4 +1,4 @@
-package com.csdy.diadema.ranges;
+package com.csdy.diadema.api.ranges;
 
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.range.CommonDiademaRange;

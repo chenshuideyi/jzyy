@@ -1,4 +1,4 @@
-package com.csdy.diadema.ranges;
+package com.csdy.diadema.api.ranges;
 
 import com.csdy.frames.diadema.Diadema;
 import com.csdy.frames.diadema.range.CommonDiademaRange;
@@ -9,8 +9,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings({"LombokGetterMayBeUsed", "LombokSetterMayBeUsed"})
-public class HalfSphereDiademaRange extends CommonDiademaRange {
-    public HalfSphereDiademaRange(Diadema diadema, double radius) {
+public class SphereDiademaRange extends CommonDiademaRange {
+    public SphereDiademaRange(Diadema diadema, double radius) {
         super(diadema);
         this.radius = radius;
     }
@@ -21,11 +21,10 @@ public class HalfSphereDiademaRange extends CommonDiademaRange {
     @Override protected AABB getAABB() {
         var pos = diadema.getPosition();
         var r = new Vec3(radius, radius, radius);
-        var r1 = new Vec3(-radius, 0, -radius);
-        return new AABB(pos.add(r1), pos.add(r)); // pos - r, pos + r
+        return new AABB(pos.add(r.reverse()), pos.add(r)); // pos - r, pos + r
     }
 
     @Override public boolean ifInclude(Vec3 position) {
-        return position.y >= diadema.getPosY() && position.distanceToSqr(diadema.getPosition()) <= radius * radius;
+        return position.distanceToSqr(diadema.getPosition()) <= radius * radius;
     }
 }
