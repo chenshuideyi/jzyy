@@ -4,21 +4,24 @@
   "check_trait_level": true,
   "inputs": [
     {
-      "item": "tconstruct:sky_congealed_slime",
+      "item": "minecraft:gold_block",
       "amount_needed": 64
     },
     {
-      "item": "minecraft:elytra"
-    },
-    {
-      "item": "tconstruct:sky_congealed_slime",
+      "item": "minecraft:gold_block",
       "amount_needed": 64
     },
     {
-      "item": "minecraft:blue_ice"
+      "item": "minecraft:gold_block",
+      "amount_needed": 64
     },
     {
-      "item": "minecraft:blue_ice"
+      "item": "minecraft:gold_block",
+      "amount_needed": 64
+    },
+    {
+      "item": "minecraft:gold_block",
+      "amount_needed": 64
     }
   ],
   "level": {
