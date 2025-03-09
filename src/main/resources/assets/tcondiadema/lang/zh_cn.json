@@ -38,6 +38,11 @@
   "modifier.tcondiadema.avarita.flavor": "玛门",
   "modifier.tcondiadema.avarita.description": "领域内的所有方块都会变成金块,捡起金块时会获得永久存在的黄心",
 
+  "modifier.tcondiadema.superbia": "No.L-傲慢",
+  "modifier.tcondiadema.superbia.flavor": "路西法",
+  "modifier.tcondiadema.superbia.description": "范围内所有最大生命值小于你的生物都会被直接斩杀,每次斩杀都会提升最大生命值\n如果你的傲慢近乎狂妄......",
+
+
   "modifier.tcondiadema.fake_projecte": "No.1024-炼金幻想",
   "modifier.tcondiadema.fake_projecte.flavor": "招笑之作",
   "modifier.tcondiadema.fake_projecte.description": "每tick会给予领域内的其他生物1点伤害,并不会获取EMC\n也许你的世界化学战胜了练金术,下载等价交换重制版来将大局逆转吧",

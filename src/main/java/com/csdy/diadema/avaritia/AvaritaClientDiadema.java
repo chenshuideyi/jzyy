@@ -1,5 +1,6 @@
 package com.csdy.diadema.avaritia;
 
+import com.csdy.ParticleUtils;
 import com.csdy.frames.diadema.ClientDiadema;
 import com.csdy.particle.register.ParticlesRegister;
 import com.csdy.particleUtils.PointSets;
@@ -20,6 +21,5 @@ public class AvaritaClientDiadema extends ClientDiadema {
 
     private void drawParticle(Level level) {
         PointSets.Circle(6,160).map(vec3 -> vec3.add(getPosition())).forEach(vec3 -> level.addParticle(type, vec3.x,vec3.y+0.1,vec3.z,0,0,0));
-
     }
 }

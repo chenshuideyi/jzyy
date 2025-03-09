@@ -9,6 +9,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -34,7 +36,7 @@ public class LuxuriaDiadema extends Diadema {
         for (Entity entity : affectingEntities) {
             if (!(entity instanceof LivingEntity living)) continue;
             if (!entity.equals(player)) {
-                living.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.END_ROD));
+                if (!(entity instanceof Player)) living.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.END_ROD));
                 living.setHealth(living.getHealth()-living.getMaxHealth()*0.001f);
                 if (timer >= 180){
                     ItemEntity itemEntity = new ItemEntity(getLevel(),living.getX(),living.getY(),living.getZ(), Items.MILK_BUCKET.getDefaultInstance());
@@ -44,6 +46,10 @@ public class LuxuriaDiadema extends Diadema {
                 else if (timer % 40 == 0){
                     spawnExperienceOrb(living);
                     living.setHealth(living.getHealth()-10);
+                    AttributeInstance maxHealthAttr = player.getAttribute(Attributes.MAX_HEALTH);
+                    double originalMaxHealth = maxHealthAttr.getBaseValue();
+                    double reducedMaxHealth = originalMaxHealth + 2;
+                    maxHealthAttr.setBaseValue(reducedMaxHealth);
                 }
             }
             timer++;

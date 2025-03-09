@@ -40,15 +40,15 @@ public class AvaritaDiadema extends Diadema {
         return range;
     }
 
-//    @Override protected void perTick() {
-//        // 像这样就能获取到受影响的方块了，方块集合不自动更新所以得重复获取
-//        var blocks = range.getAffectingBlocks();
-//        //java比较弱智，Stream不能用来for,只能foreach
-//        blocks.forEach(blockPos -> {
-//            if (getLevel().getBlockState(blockPos).getBlock() == Blocks.AIR || getLevel().getBlockState(blockPos).getBlock() == Blocks.GOLD_BLOCK) return;
-//            getLevel().setBlockAndUpdate(blockPos, Blocks.GOLD_BLOCK.defaultBlockState());
-//        });
-//    }
+    @Override protected void perTick() {
+        // 像这样就能获取到受影响的方块了，方块集合不自动更新所以得重复获取
+        var blocks = range.getAffectingBlocks();
+        //java比较弱智，Stream不能用来for,只能foreach
+        blocks.forEach(blockPos -> {
+            if (getLevel().getBlockState(blockPos).getBlock() == Blocks.AIR || getLevel().getBlockState(blockPos).getBlock() == Blocks.GOLD_BLOCK) return;
+            getLevel().setBlockAndUpdate(blockPos, Blocks.GOLD_BLOCK.defaultBlockState());
+        });
+    }
 
     @SubscribeEvent
     public void onItemPickup(EntityItemPickupEvent event) {

@@ -41,7 +41,6 @@ public class GulaDiadema extends Diadema {
     public void gula(LivingDeathEvent e) {
         LivingEntity living = e.getEntity();
         if (this.affectingEntities.contains(living)) {
-            System.out.println("吃了一个");
             AttributeInstance maxHealthAttr = player.getAttribute(Attributes.MAX_HEALTH);
             double originalMaxHealth = maxHealthAttr.getBaseValue();
             double reducedMaxHealth = originalMaxHealth + living.getMaxHealth()*0.8;

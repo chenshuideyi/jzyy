@@ -23,6 +23,8 @@ import com.csdy.diadema.meridiaVerse.MeridiaVerseClientDiadema;
 import com.csdy.diadema.meridiaVerse.MeridiaVerseDiadema;
 import com.csdy.diadema.projecte.ProjectEClientDiadema;
 import com.csdy.diadema.projecte.ProjectEDiadema;
+import com.csdy.diadema.superbia.SuperbiaClinetDiadema;
+import com.csdy.diadema.superbia.SuperbiaDiadema;
 import com.csdy.diadema.warden.WardenClientDiadema;
 import com.csdy.diadema.warden.WardenDiadema;
 import com.csdy.diadema.wind.WindClientDiadema;
@@ -63,5 +65,6 @@ public class DiademaRegister {
             DIADEMA_TYPES.register("fake_meltdown", () -> DiademaType.Create(FakeMeltdownDiadema::new, FakeMeltdownClientDiadema::new));
     public static final RegistryObject<DiademaType> AVARITA =
             DIADEMA_TYPES.register("avarita", () -> DiademaType.Create(AvaritaDiadema::new, AvaritaClientDiadema::new));
-
+    public static final RegistryObject<DiademaType> SUPERBIA =
+            DIADEMA_TYPES.register("superbia", () -> DiademaType.Create(SuperbiaDiadema::new, SuperbiaClinetDiadema::new));
 }

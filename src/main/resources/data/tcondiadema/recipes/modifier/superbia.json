@@ -1,0 +1,32 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "minecraft:golden_axe"
+    },
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:enchanted_book"
+    },
+    {
+      "item": "minecraft:red_bed"
+    },
+    {
+      "item": "minecraft:end_crystal"
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "slots": {
+    "diadema": 1
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/worn"
+  },
+  "result": "tcondiadema:superbia"
+}

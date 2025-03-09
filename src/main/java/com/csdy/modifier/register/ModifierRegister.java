@@ -24,7 +24,7 @@ public class ModifierRegister {
     public static final StaticModifier<Wind> WIND_STATIC_MODIFIER = MODIFIERS.register("wind", Wind::new);
     public static final StaticModifier<MeridiaVerse> MERIDIA_VERSE_STATIC_MODIFIER = MODIFIERS.register("meridia_verse", MeridiaVerse::new);
     public static final StaticModifier<Avarita> AVARITA_STATIC_MODIFIER = MODIFIERS.register("avarita", Avarita::new);
-
+    public static final StaticModifier<Superbia> SUPERBIA_STATIC_MODIFIER = MODIFIERS.register("superbia", Superbia::new);
 
 
 
