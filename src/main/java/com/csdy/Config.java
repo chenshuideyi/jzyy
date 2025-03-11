@@ -2,6 +2,7 @@ package com.csdy;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+///为什么没有forge:config????
 public class Config {
     public static final ForgeConfigSpec.Builder EXBUILDER = new ForgeConfigSpec.Builder();
 
