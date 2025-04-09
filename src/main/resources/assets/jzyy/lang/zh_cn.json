@@ -1,0 +1,237 @@
+{
+  "jzyy_tab": "匠战妖域",
+
+  "item.jzyy.marisa_ingot": "魔，魔理沙？",
+  "item.jzyy.marisa_ingot.line1": "Web_13234的提案",
+
+  "item.jzyy.yue_zheng_ling": "石墨砖",
+  "item.jzyy.yue_zheng_ling.line1": "COPY",
+  "item.jzyy.yue_zheng_ling.line2": "CSDY的提案",
+
+  "item.jzyy.magic_uranium": "魔力铀",
+  "item.jzyy.magic_uranium.line1": "Urranium的提案",
+
+  "item.jzyy.overflowed_memory": "溢出的内存",
+
+  "item.jzyy.abyss_alloy": "海渊合金",
+  "item.jzyy.aybss_alloy_line1": "独爱流萤的提案",
+
+  "material.jzyy.overflowed_memory": "溢出的内存",
+  "material.jzyy.overflowed_memory.flavor": "这是啥？？？",
+  "material.jzyy.overflowed_memory.encyclopedia": "也许使用它就是个错误",
+
+  "material.jzyy.magic_uranium": "魔力铀",
+  "material.jzyy.magic_uranium.flavor": "充满魔力的铀，可以驱逐邪祟",
+  "material.jzyy.magic_uranium.encyclopedia": "可不要把我当成古明地恋了！",
+
+  "material.jzyy.marisa": "魔，魔理沙？",
+  "material.jzyy.marisa.flavor": "为啥啊？？？",
+  "material.jzyy.marisa.encyclopedia": "会偷走重要的东西",
+
+  "material.jzyy.etsh": "超究极etsh质子中子电子子孙孙无穷无尽齿轮之页",
+  "material.jzyy.etsh.flavor": "揭开时光中的秘密",
+  "material.jzyy.etsh.encyclopedia": "当渎神者的指尖烙上齿轮，钢铁便有了神性——那些被ETS-H抚触过的黄铜轮齿，不再屈从于凡间(锻炉圣经 7：11)",
+
+  "material.jzyy.abyss_alloy": "海渊合金",
+  "material.jzyy.abyss_alloy.flavor": "源于深海的金属",
+  "material.jzyy.abyss_alloy.encyclopedia": "深埋于冻洋之下的文明，又有谁曾见过其往日的辉煌",
+
+  "material.jzyy.yue_zheng_ling": "石墨砖",
+  "material.jzyy.yue_zheng_ling.flavor": "她好可爱",
+  "material.jzyy.yue_zheng_ling.encyclopedia": "2018 coming soon",
+
+  "modifier.jzyy.marisa": "行窃预兆DA☆ZE",
+  "modifier.jzyy.marisa.flavor": "在死前会还的DA☆ZE",
+  "modifier.jzyy.marisa.description": "飞行和移动会积攒充能，当充能达到100%时强制掉落一次目标生物的战利品表DA☆ZE",
+  "marisa.text": "行窃预兆DA☆ZE",
+
+  "modifier.jzyy.singer": "世末歌者",
+  "modifier.jzyy.singer.flavor": "用这双手拨出残缺染了锈迹的弦音",
+  "modifier.jzyy.singer.description": "造成的伤害会受游戏的系统音量影响",
+
+  "modifier.jzyy.echo": "回音",
+  "modifier.jzyy.echo.flavor": "用窒息的孤独感将身躯花葬",
+  "modifier.jzyy.echo.description": "你的攻击有概率生效两次",
+
+  "modifier.jzyy.summer_night": "夏夜空",
+  "modifier.jzyy.summer_night.flavor": "仅因我记得你已厌倦的梦",
+  "modifier.jzyy.summer_night.description": "获取你的系统时间，若处于夏天或在晚上，则获得伤害加成",
+
+  "modifier.jzyy.cumulonimbus": "世末积雨云",
+  "modifier.jzyy.cumulonimbus.flavor": "即使在这阴郁天空下无知无觉地死去",
+  "modifier.jzyy.cumulonimbus.description": "我的世界一直下雨，我处理不好",
+
+  "modifier.jzyy.convergent_worldline": "同归世界线",
+  "modifier.jzyy.convergent_worldline.flavor": "每次滂沱中低语，崩塌间呼吸",
+  "modifier.jzyy.convergent_worldline.description": "若处于雨天，则每次呼吸回复4点耐久",
+
+  "modifier.jzyy.shattered_dream": "碎梦",
+  "modifier.jzyy.shattered_dream.flavor": "笨拙打着拍子的陌生人都不见",
+  "modifier.jzyy.shattered_dream.description": "对幻翼一击必杀！",
+
+  "modifier.jzyy.cold_rain": "凉雨",
+  "modifier.jzyy.cold_rain.flavor": "雨迹的蜿蜒，干涸的思念，腐朽的栏杆锈迹斑斑",
+  "modifier.jzyy.cold_rain.description": "解除着火效果",
+
+  "modifier.jzyy.summer_wind": "夏风",
+  "modifier.jzyy.summer_wind.flavor": "若是坠落下去的话风会带我走吗",
+  "modifier.jzyy.summer_wind.description": "如果下落速度过快会给予缓降",
+
+  "modifier.jzyy.hello_bye_days": "Hello&bye，days",
+  "modifier.jzyy.hello_bye_days.flavor": "那日的歌，那日的我，仍在原地驻留",
+  "modifier.jzyy.hello_bye_days.description": "在主世界中获得更多挖掘速度",
+
+  "modifier.jzyy.clear_body": "恒净之躯",
+  "modifier.jzyy.clear_body.flavor": "比压迫感强何止一点",
+  "modifier.jzyy.clear_body.description": "强效清除身上所有的负面效果\n也许不是永远可靠",
+
+
+
+  "modifier.jzyy.ancient_ocean": "古海孑遗的权柄",
+  "modifier.jzyy.ancient_ocean.flavor": "来自深海",
+  "modifier.jzyy.ancient_ocean.description": "自身血量高于88%时目标无视100%护甲，攻击无护甲目标获得抗性提升。你的武器正常使用不再损耗耐久",
+
+  "modifier.jzyy.deep_ocean_blessing": "深海的恩惠",
+  "modifier.jzyy.deep_ocean_blessing.flavor": "谁家不灭之握",
+  "modifier.jzyy.deep_ocean_blessing.description": "基于回声点数，每100点提升1%伤害减免，最高95%，当生命值低于88%时，攻击目标立刻回复最大生命22%，冷却11秒，当有其他词条冷却时与其他共享冷却",
+
+  "modifier.jzyy.the_prophecy_of_the_sunk": "沉没的预言",
+  "modifier.jzyy.the_prophecy_of_the_sunk.flavor": "宣告灭绝的预兆",
+  "modifier.jzyy.the_prophecy_of_the_sunk.description": "你的攻击会大幅削减目标的血量,当攻击血量低于70%的目标时获得抗性提升3\n不是永远都有用......",
+
+  "modifier.jzyy.deep_ocean_echo": "深海的回声",
+  "modifier.jzyy.deep_ocean_echo.flavor": "你听到了吗",
+  "modifier.jzyy.deep_ocean_echo.description": "基于10000已经携带的经验*护甲值的60%*生命值的30%获得回声点数，每点回声提升0.5近战伤害，远程攻击力仅为2分之1（非面板）",
+
+  "modifier.jzyy.hush": "死寂",
+  "modifier.jzyy.hush.flavor": "百年孤独",
+  "modifier.jzyy.hush.description":"强力的代价是该部件全部词条均只可生效一级",
+
+  "modifier.jzyy.deep_ocean_protect": "海渊之护",
+  "modifier.jzyy.deep_ocean_protect.flavor": "来自深海的恐惧守护着你...穿上这套盔甲你时刻感觉到被注视着...",
+  "modifier.jzyy.deep_ocean_protect.description":"基于回声点数，获得至高95%伤害减免。每次受击回复33%最大生命值，并获得最大生命值二分之一的伤害吸收，冷却12秒",
+
+  "item.jzyy.primal_reversion": "原始回归宝珠",
+  "item.jzyy.primal_reversion_line1": "将部分材料回归到匠魂2时期（品相完美！）",
+
+  "modifier.jzyy.elemental": "原始回归·本源",
+  "modifier.jzyy.elemental.flavor": "我把你带回来了...",
+  "modifier.jzyy.elemental.description":"在玩家使用该工具攻击成功时，随机给予玩家两个正面效果,持续三秒（可以来自任何模组！）",
+
+  "modifier.jzyy.terrafirma": "原始回归·坚实基础",
+  "modifier.jzyy.terrafirma.flavor": "我把你带回来了...",
+  "modifier.jzyy.terrafirma.description":"每tick有5%的几率使得玩家恢复(效果等级÷3)点生命",
+
+  "modifier.jzyy.blood_mary": "原始回归·血腥玛丽",
+  "modifier.jzyy.blood_mary.flavor": "我把你带回来了...",
+  "modifier.jzyy.blood_mary.description":"根据目标已失去的生命值造成额外伤害",
+
+  "modifier.jzyy.life_steal": "原始回归·Life Steal",
+  "modifier.jzyy.life_steal.flavor": "我把你带回来了...",
+  "modifier.jzyy.life_steal.description":"攻击敌对生物后，获得持续5秒的等级为（伤害/4取整）的伤害吸收",
+
+  "modifier.jzyy.trade_off": "原始回归·Tradeoff",
+  "modifier.jzyy.trade_off.flavor": "我把你带回来了...",
+  "modifier.jzyy.trade_off.description":"作用于工具面板攻击、攻速、挖掘速度*2，作用于盔甲的击退抗性，护甲，韧性*2",
+
+  "modifier.jzyy.haorans_cult": "原始回归·Haoran的崇拜",
+  "modifier.jzyy.haorans_cult.flavor": "我把你带回来了...",
+  "modifier.jzyy.haorans_cult.description":"当你受到凋零效果时，每秒使范围内所有生物的HP减少30%",
+
+  "modifier.jzyy.imagine_breaker": "幻想杀手",
+  "modifier.jzyy.imagine_breaker.flavor": "和你的等级加成说再见吧",
+  "modifier.jzyy.imagine_breaker.description":"将目标的属性重置为他们的初始值",
+
+  "modifier.jzyy.blade_release1": "剑刃解放I",
+  "modifier.jzyy.blade_release1.flavor": "刃口传来婴儿啼哭般的震颤",
+  "modifier.jzyy.blade_release1.description":"近战伤害增加6点",
+
+  "modifier.jzyy.blade_release2": "剑刃解放II",
+  "modifier.jzyy.blade_release2.flavor": "刃锋尝过七种不同的绝望",
+  "modifier.jzyy.blade_release2.description":"近战伤害增加7点",
+
+  "modifier.jzyy.blade_release3": "剑刃解放III",
+  "modifier.jzyy.blade_release3.flavor": "鞘中充斥着渴望纷争的风",
+  "modifier.jzyy.blade_release3.description":"近战伤害增加8点",
+
+  "modifier.jzyy.expedite_suffering": "瞬时苦痛",
+  "modifier.jzyy.expedite_suffering.flavor": "没有痛苦，一瞬就会结束",
+  "modifier.jzyy.expedite_suffering.description":"引爆目标身上所有的负面效果，每个都会造成巨大创伤",
+
+  "modifier.jzyy.severance": "切断",
+  "modifier.jzyy.severance.flavor": "断口呈现出镜面般完美的结晶态",
+  "modifier.jzyy.severance.description":"造成额外10%的生命值剪切\n也就是说「切断」10%效能",
+
+  "modifier.jzyy.cleave_the_stars": "斩星",
+  "modifier.jzyy.cleave_the_stars.flavor": "现在，马玉灵真的能斩断星辰",
+  "modifier.jzyy.cleave_the_stars.description":"造成额外5%的生命值剪切\n也就是说「切断」5%效能",
+
+  "modifier.jzyy.dragon_power": "巨龙力量",
+  "modifier.jzyy.dragon_power.flavor": "毫不费力地撕开下界合金装甲",
+  "modifier.jzyy.dragon_power.description":"造成额外10%的生命值剪切\n也就是说「切断」10%效能",
+
+  "modifier.jzyy.void_touch": "虚空之触",
+  "modifier.jzyy.void_touch.flavor": "来自虚空的寒冷",
+  "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切断」20%效能",
+
+  "modifier.jzyy.cosmos": "寰宇支配",
+  "modifier.jzyy.cosmos.flavor": "一即全，全即一",
+  "modifier.jzyy.cosmos.description":"就像原本无尽剑那样\n绝对切断」100%效能",
+
+  "modifier.jzyy.fantasy_ending": "梦幻终焉",
+  "modifier.jzyy.fantasy_ending.flavor": "混沌与爱倒挂在坟墓之下，圣殿的灯油穿过叙事的橘子皮，无可挽救的终点啃食了梦幻,\n你是否仍感幸福?",
+  "modifier.jzyy.fantasy_ending.description":"「绝对切断」100%效能\n「梦终切断」1000%效能",
+
+  "modifier.jzyy.dragon_killer": "屠龙者",
+  "modifier.jzyy.dragon_killer.flavor": "你的名字将作为传奇",
+  "modifier.jzyy.dragon_killer.description":"对火龙，冰龙，电龙造成50%额外伤害",
+
+  "modifier.jzyy.dragon_fire": "龙焰",
+  "modifier.jzyy.dragon_fire.flavor": "火龙灼渊",
+  "modifier.jzyy.dragon_fire.description":"点燃目标，对着火目标造成50%额外伤害",
+
+  "modifier.jzyy.fire_dragon_armor": "龙焰",
+  "modifier.jzyy.fire_dragon_armor.flavor": "火龙灼渊",
+  "modifier.jzyy.fire_dragon_armor.description":"免疫火焰伤害",
+
+  "modifier.jzyy.dragon_ice": "龙霜",
+  "modifier.jzyy.dragon_ice.flavor": "冰龙叹霜",
+  "modifier.jzyy.dragon_ice.description":"使目标获得缓慢3,并吹飞他们",
+
+  "modifier.jzyy.ice_dragon_armor": "龙霜",
+  "modifier.jzyy.ice_dragon_armor.flavor": "冰龙叹霜",
+  "modifier.jzyy.ice_dragon_armor.description":"你的盔甲会损失更多护甲保护你，周围的生物会获得缓慢",
+
+  "modifier.jzyy.dragon_flash": "龙霆",
+  "modifier.jzyy.dragon_flash.flavor": "电龙雷殛",
+  "modifier.jzyy.dragon_flash.description":"招来雷霆使你的武器进入过载状态！",
+
+  "modifier.jzyy.flash_dragon_armor": "龙霆",
+  "modifier.jzyy.flash_dragon_armor.flavor": "电龙雷殛",
+  "modifier.jzyy.flash_dragon_armor.description":"被闪电击中后进入雷凯",
+
+  "modifier.jzyy.flesh_gear": "血肉齿轮",
+  "modifier.jzyy.flesh_gear.flavor": "你还无法理解",
+  "modifier.jzyy.flesh_gear.description":"你的显卡显存会降低你受到的伤害",
+
+  "modifier.jzyy.mind_gear": "思想齿轮",
+  "modifier.jzyy.mind_gear.flavor": "见证我的研究成果",
+  "modifier.jzyy.mind_gear.description":"你的显卡显存会增加你造成的伤害",
+
+  "modifier.jzyy.spirit_gear": "精神齿轮",
+  "modifier.jzyy.spirit_gear.flavor": "知识乃是你的救赎",
+  "modifier.jzyy.spirit_gear.description":"每个已装载mod会提供6.2134%全属性加成",
+
+  "modifier.jzyy.edge_runner": "边缘行者",
+  "modifier.jzyy.edge_runner.flavor": "小心，稍有差错就会万劫不复",
+  "modifier.jzyy.edge_runner.description":"分配给mc的内存越少造成的伤害越高",
+
+  "txet": "也许考虑只在愚人节使用",
+  "modifier.jzyy.fuck_memory_till_die": "决堤",
+  "modifier.jzyy.fuck_memory_till_die.flavor": "我称这招为——数据剪切\n by csdy",
+  "modifier.jzyy.fuck_memory_till_die.description":"让目标玩家的内存越来越少，直到内存溢出错误",
+
+
+  "effect.jzyy.overcharge": "过载",
+  "effect.jzyy.overcharge_armor": "雷凯"
+}

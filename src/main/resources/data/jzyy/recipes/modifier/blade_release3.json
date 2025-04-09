@@ -1,0 +1,20 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "item": "minecraft:netherite_sword"
+    }
+  ],
+  "level": {
+    "max": 1
+  },
+  "slots": {
+    "upgrades": 3
+  },
+  "tools": {
+    "tag": "tconstruct:modifiable/melee/weapon"
+  },
+  "result": "jzyy:blade_release3"
+}

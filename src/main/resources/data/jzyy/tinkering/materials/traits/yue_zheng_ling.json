@@ -1,0 +1,46 @@
+{
+  "perStat" : {
+    "tconstruct:head": [
+      {
+        "name": "jzyy:singer",
+        "level": 1
+      },
+      {
+        "name": "jzyy:echo",
+        "level": 1
+      },
+      {
+        "name": "jzyy:summer_night",
+        "level": 1
+      }
+    ],
+    "tconstruct:binding": [
+      {
+        "name": "jzyy:cumulonimbus",
+        "level": 1
+      },
+      {
+        "name": "jzyy:convergent_worldline",
+        "level": 1
+      },
+      {
+        "name": "jzyy:shattered_dream",
+        "level": 1
+      }
+    ],
+    "tconstruct:handle": [
+      {
+        "name": "jzyy:cold_rain",
+        "level": 1
+      },
+      {
+        "name": "jzyy:summer_wind",
+        "level": 1
+      },
+      {
+        "name": "jzyy:hello_bye_days",
+        "level": 1
+      }
+    ]
+  }
+}

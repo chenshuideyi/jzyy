@@ -1,0 +1,48 @@
+{
+  "modifier.jzyy": {
+    "marisa": "#fbff8e",
+    "summer_wind": "#ee3b29",
+    "hello_bye_days": "#4eb2db",
+    "cold_rain": "#4eb2db",
+    "shattered_dream": "#ee3b29",
+    "convergent_worldline": "#ee3b29",
+    "cumulonimbus": "#4eb2db",
+    "summer_night": "#ee3b29",
+    "echo": "#ee3b29",
+    "singer": "#ee3b29",
+    "deep_ocean_blessing": "#003366",
+    "deep_ocean_echo": "#003366",
+    "ancient_ocean": "#003366",
+    "abyss_alloy": "#003366",
+    "the_prophecy_of_the_sunk": "#003366",
+    "hush": "#003366",
+    "deep_ocean_protect": "#003366",
+    "clear_body": "#BCEE68",
+    "elemental": "#00FF00",
+    "terrafirma": "#00FF00",
+    "life_steal": "#BCEE68",
+    "trade_off": "#F08080",
+    "blood_mary": "#FF0000",
+    "haorans_cult": "#FF0000",
+    "imagine_breaker": "#8EE5EE",
+    "severance": "#CDC5BF",
+    "cleave_the_stars": "#7B68EE",
+    "dragon_power": "#CD661D",
+    "void_touch": "#4F4F4F",
+    "cosmos": "#FF0000",
+    "dragon_fire": "#CD0000",
+    "fire_dragon_armor": "#CD0000",
+    "dragon_ice": "#1E90FF",
+    "ice_dragon_armor": "#1E90FF",
+    "dragon_flash": "#AB82FF",
+    "flash_dragon_armor": "#AB82FF"
+  },
+  "material.jzyy": {
+    "overflowed_memory": "#FF68EE",
+    "magic_uranium": "#BCEE68",
+    "marisa": "#fbff8e",
+    "yue_zheng_ling": "#ee3b29",
+    "abyss_alloy": "#003366"
+  }
+}
+

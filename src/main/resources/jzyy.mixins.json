@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "priority": 2147483647,
+  "package": "com.csdy.jzyy.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jzyy.refmap.json",
+  "mixins": [
+    "SynchedEntityDataMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

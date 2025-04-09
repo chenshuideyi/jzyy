@@ -63,8 +63,8 @@ buildscript {
     }
     apply plugin: 'java'
     mixin {
-        add sourceSets.main, 'csdy.refmap.json'
-        config 'csdy.mixins.json'
+        add sourceSets.main, 'jzyy.refmap.json'
+        config 'jzyy.mixins.json'
         debug.verbose = true
         debug.export = true
     }
@@ -89,13 +89,6 @@ buildscript {
         annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
         implementation 'org.javassist:javassist:3.28.0-GA'
 
-        //ProjectE
-        implementation fg.deobf("curse.maven:projecte-226410:4901949")
-
-        //MEK
-        implementation fg.deobf("curse.maven:mekanism-generators-268566:6123081")
-        implementation fg.deobf("curse.maven:mekanism-268560:6123077")
-
         implementation fg.deobf("curse.maven:jei-238222:6075247")
 
         compileOnly 'org.projectlombok:lombok:1.18.36'
@@ -104,8 +97,32 @@ buildscript {
         testCompileOnly 'org.projectlombok:lombok:1.18.36'
         testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 
+        //oshi
+        implementation 'com.github.oshi:oshi-core:6.4.0'
+
+        // OSHI需要以下依赖
+        implementation 'net.java.dev.jna:jna:5.13.0'
+        implementation 'net.java.dev.jna:jna-platform:5.13.0'
+
+
+        //tic
         implementation fg.deobf("curse.maven:mantle-74924:6258424")
         implementation fg.deobf("curse.maven:tinkers-construct-74072:6266282")
+
+        implementation fg.deobf("curse.maven:etst-lib-1206379:6377848")
+        //ProjectE
+        implementation fg.deobf("curse.maven:projecte-226410:4901949")
+
+        //领域
+        implementation fg.deobf("curse.maven:tcondiadema-1218668:6394251")
+
+
+
+
+//        //假人
+//        implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
+//        //冰火
+//        implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
     }
     tasks.named('processResources', ProcessResources).configure {
         var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,

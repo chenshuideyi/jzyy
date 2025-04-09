@@ -1,0 +1,42 @@
+{
+  "default": [
+    {
+      "name": "jzyy:deep_ocean_blessing",
+      "level": 1
+    },
+    {
+      "name": "jzyy:deep_ocean_echo",
+      "level": 1
+    },
+    {
+      "name": "jzyy:ancient_ocean",
+      "level": 1
+    },
+    {
+      "name": "jzyy:the_prophecy_of_the_sunk",
+      "level": 1
+    },
+    {
+      "name": "jzyy:hush",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:binding":[
+      {
+        "name": "jzyy:deep_ocean_blessing",
+        "level": 1
+      },
+      {
+        "name": "jzyy:hush",
+        "level": 1
+      }
+    ],
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:deep_ocean_protect",
+        "level": 1
+      }
+    ]
+  }
+}

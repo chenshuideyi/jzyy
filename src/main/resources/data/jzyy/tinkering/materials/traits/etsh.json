@@ -1,0 +1,24 @@
+{
+  "default": [
+    {
+      "name": "jzyy:spirit_gear",
+      "level": 1
+    },
+    {
+      "name": "jzyy:mind_gear",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "jzyy:spirit_gear",
+        "level": 1
+      },
+      {
+        "name": "jzyy:flesh_gear",
+        "level": 1
+      }
+    ]
+  }
+}
