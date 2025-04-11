@@ -14,5 +14,12 @@ public class JzyySoundsRegister {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ModMain.MODID);
 
     // 注册声音事件
-    public static final RegistryObject<SoundEvent> IMAGINE_BREAKER = SOUND_EVENTS.register("imagine_breaker", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "imagine_breaker")));
+    public static final RegistryObject<SoundEvent> IMAGINE_BREAKER = SOUND_EVENTS.register("imagine_breaker",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "imagine_breaker")));
+
+    public static final RegistryObject<SoundEvent> CUMULONIMBUS = SOUND_EVENTS.register("cumulonimbus",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "cumulonimbus")));
+
+    public static final RegistryObject<SoundEvent> ONLY_WISH = SOUND_EVENTS.register("only_wish",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "only_wish")));
 }

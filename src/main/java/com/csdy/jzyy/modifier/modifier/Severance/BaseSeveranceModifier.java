@@ -5,16 +5,21 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import static com.csdy.jzyy.method.LivingEntityUtil.reflectionPenetratingDamage;
+import static com.csdy.jzyy.util.LivingEntityUtil.*;
 
 @Getter
 public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitModifierHook {
+    @Override
+    public int getPriority() {
+        return Integer.MIN_VALUE;
+    }
 
     private final float value;
 
@@ -23,14 +28,16 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
     }
 
     @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damageDealt) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null) {
-            reflectionPenetratingDamage(target,player,damageDealt * this.value);
-            System.out.println("切断！");
+            float severanceDamage = damage * this.value;
+            System.out.println("切断伤害" + severanceDamage);
+            System.out.println("吃我切断！");
+            reflectionPenetratingDamage(target,player,severanceDamage);
         }
-
+        return knockback;
     }
 
     @Override

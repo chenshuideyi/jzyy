@@ -1,19 +1,21 @@
 package com.csdy.jzyy.item;
 
+//import com.mega.uom.util.entity.EntityActuallyHurt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
 
-import static com.csdy.jzyy.method.LivingEntityUtil.*;
+import java.util.List;
+
+import static com.csdy.jzyy.util.LivingEntityUtil.*;
 
 public class Test extends Item {
     public Test() {
@@ -23,7 +25,7 @@ public class Test extends Item {
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
         if (target instanceof LivingEntity living) {
-            reflectionSetMaxHealth(living,player,1);
+//            new EntityActuallyHurt(living).actuallyHurt(living.level().damageSources().generic(), Float.POSITIVE_INFINITY, true);
 //            test(player,living);
 //            forceSetAllCandidateHealth(living,player,0);
         }
@@ -63,4 +65,20 @@ public class Test extends Item {
             serverLevel.addParticle(type, x, y, z, 0, 0, 0);
         }
     }
+
+//    @Override
+//    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
+//        if (entity instanceof Player player && !entity.level().isClientSide) {
+//                double range = 5;
+//                AABB attackBox = player.getBoundingBox().inflate(range);
+//                List<LivingEntity> targets = player.level().getEntitiesOfClass(LivingEntity.class, attackBox, e -> e != player);
+//                for (LivingEntity target : targets) {
+//                    // 判断是否为友军或目标免疫伤害
+//                    if (target instanceof Player) continue;
+//                    forceSetAllCandidateHealth(target, 0.0F);
+//                }
+//            }
+//        return super.onEntitySwing(stack, entity);
+//    }
+
 }

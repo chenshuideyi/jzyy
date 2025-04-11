@@ -1,10 +1,20 @@
 {
+  "only_wish": {
+    "sounds": [
+      "jzyy:only_wish"
+    ]
+  },
   "imagine_breaker": {
     "sounds": [
       {
         "name": "jzyy:imagine_breaker",
         "stream": false
       }
+    ]
+  },
+  "cumulonimbus": {
+    "sounds": [
+      "jzyy:cumulonimbus"
     ]
   }
 }

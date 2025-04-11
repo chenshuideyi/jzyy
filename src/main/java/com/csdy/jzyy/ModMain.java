@@ -19,7 +19,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(ModMain.MODID)
 @Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-//TODO 龙钢
+//TODO 耻辱下播 启示录FE材料联动
 public class ModMain {
 
     public static final String MODID = "jzyy";
