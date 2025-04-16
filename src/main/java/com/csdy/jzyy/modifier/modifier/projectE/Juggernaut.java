@@ -1,7 +1,9 @@
-package com.csdy.jzyy.modifier.modifier.etsh;
+package com.csdy.jzyy.modifier.modifier.projectE;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
+import moze_intel.projecte.api.capabilities.PECapabilities;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -18,19 +20,21 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.totalVideoMemory;
+import java.math.BigInteger;
 
-public class MindGear extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
+public class Juggernaut extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
-        return damage * totalVideoMemory;
+        if (!(context.getAttacker() instanceof Player player)) return damage;
+        if (context.getLivingTarget() == null) return damage;
+        return damage + context.getLivingTarget().getHealth()*0.2F;
     }
 
     @Override
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
-        if (attacker instanceof Player && target instanceof LivingEntity) {
-            return damage * totalVideoMemory;
+        if (attacker instanceof ServerPlayer player && target instanceof LivingEntity living) {
+            return damage + living.getHealth()*0.2F;
         }
         return damage;
     }
@@ -41,5 +45,7 @@ public class MindGear extends NoLevelsModifier implements MeleeDamageModifierHoo
         hookBuilder.addHook(this, EtSTLibHooks.ARROW_DAMAGE);
     }
 
-
 }
+
+
+

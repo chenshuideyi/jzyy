@@ -17,6 +17,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
+
 @Mod(ModMain.MODID)
 @Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 //TODO 耻辱下播 启示录FE材料联动
@@ -34,6 +36,7 @@ public class ModMain {
         HideRegister.ITEMS.register(bus);
         JzyySoundsRegister.SOUND_EVENTS.register(bus);
         JzyyEffectRegister.EFFECTS.register(bus);
+        gpuUtilInit();
     }
 
     @SubscribeEvent
@@ -51,5 +54,6 @@ public class ModMain {
             e.getEntity().getPersistentData().putBoolean("isPlayer",true);
         }
     }
+
 }
 

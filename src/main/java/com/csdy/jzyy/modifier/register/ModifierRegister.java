@@ -8,6 +8,8 @@ import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanBlessings;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanEcho;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.TheProphecyOfTheSunk;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.armor.DeepOceanProtect;
+import com.csdy.jzyy.modifier.modifier.alex_mob.Kangaroo;
+import com.csdy.jzyy.modifier.modifier.alex_mob.armor.VoidWalk;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
@@ -31,6 +33,9 @@ public class ModifierRegister {
     public static final StaticModifier<BladeRelease1> BLADE_RELEASE1_STATIC_MODIFIER = MODIFIERS.register("blade_release1", BladeRelease1::new);
     public static final StaticModifier<BladeRelease2> BLADE_RELEASE2_STATIC_MODIFIER = MODIFIERS.register("blade_release2", BladeRelease2::new);
     public static final StaticModifier<BladeRelease3> BLADE_RELEASE3_STATIC_MODIFIER = MODIFIERS.register("blade_release3", BladeRelease3::new);
+    public static final StaticModifier<AssAttack> ASS_ATTACK_STATIC_MODIFIER = MODIFIERS.register("ass_attack", AssAttack::new);
+
+
     ///分割线
     public static final StaticModifier<Test> TEST_STATIC_MODIFIER = MODIFIERS.register("test", Test::new);
     public static final StaticModifier<Marisa> MARISA_STATIC_MODIFIER = MODIFIERS.register("marisa", Marisa::new);
@@ -60,6 +65,12 @@ public class ModifierRegister {
     public static final StaticModifier<LifeSteal> LIFE_STEAL_STATIC_MODIFIER = MODIFIERS.register("life_steal", LifeSteal::new);
     public static final StaticModifier<BloodMary> BLOOD_MARY_STATIC_MODIFIER = MODIFIERS.register("blood_mary", BloodMary::new);
     public static final StaticModifier<HaoransCult> HAORANS_CULT_STATIC_MODIFIER = MODIFIERS.register("haorans_cult", HaoransCult::new);
+
+    ///alex生物
+    public static final StaticModifier<Kangaroo> KANGAROO_STATIC_MODIFIER = MODIFIERS.register("kangaroo", Kangaroo::new);
+    public static final StaticModifier<VoidWalk> VOID_WALK_STATIC_MODIFIER = MODIFIERS.register("void_walk", VoidWalk::new);
+
+
     ///强大词条
 
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);

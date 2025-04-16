@@ -35,14 +35,18 @@
     "dragon_ice": "#1E90FF",
     "ice_dragon_armor": "#1E90FF",
     "dragon_flash": "#AB82FF",
-    "flash_dragon_armor": "#AB82FF"
+    "flash_dragon_armor": "#AB82FF",
+    "flesh_gear": "#FF6347",
+    "mind_gear": "#F0E68C",
+    "spirit_gear": "#ADD8E6"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
     "magic_uranium": "#BCEE68",
     "marisa": "#fbff8e",
     "yue_zheng_ling": "#ee3b29",
-    "abyss_alloy": "#003366"
+    "abyss_alloy": "#003366",
+    "etsh": "#B5E61D"
   }
 }
 

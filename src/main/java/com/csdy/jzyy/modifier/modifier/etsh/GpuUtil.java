@@ -7,6 +7,10 @@ import oshi.hardware.HardwareAbstractionLayer;
 import java.util.List;
 
 public class GpuUtil {
+    public static void gpuUtilInit() {
+
+    }
+    static final float totalVideoMemory = getTotalVideoMemory();
 
     static float getTotalVideoMemory() {
         try {

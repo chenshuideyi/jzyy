@@ -21,7 +21,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class PlayerLayer extends RenderLayer {
-    //凋零护甲
+    //雷凯
     private static final ResourceLocation CREEPER_ARMOR_LOCATION = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
     private final HumanoidModel<Player> model;
 

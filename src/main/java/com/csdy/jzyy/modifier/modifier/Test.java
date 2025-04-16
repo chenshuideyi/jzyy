@@ -1,26 +1,32 @@
 package com.csdy.jzyy.modifier.modifier;
 
-import oshi.SystemInfo;
-import oshi.hardware.GraphicsCard;
-import oshi.hardware.HardwareAbstractionLayer;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
-public class Test extends NoLevelsModifier implements ToolStatsModifierHook, MeleeHitModifierHook {
+public class Test extends NoLevelsModifier implements ToolStatsModifierHook, MeleeHitModifierHook,InventoryTickModifierHook, TooltipModifierHook {
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry entry, ModifierStatsBuilder builder) {
@@ -42,13 +48,30 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.TOOL_STATS);
         hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
+        hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK);
+        hookBuilder.addHook(this, ModifierHooks.TOOLTIP);
     }
 
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damageDealt) {
 
     }
+        @Override
+        public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
+            if (!(holder instanceof Player player)) return;
+            if (isCorrectSlot){
+                player.noPhysics = true;
+                player.setNoGravity(true);
+                player.fallDistance = 0;
+                player.getAbilities().mayfly = true;
+                player.getAbilities().flying = true;
+            }
+        }
 
+    @Override
+    public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, slimeknights.mantle.client.TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
+        list.add(Component.literal("( •̀ ω •́ )✧"));
+    }
 
 
 

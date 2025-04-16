@@ -16,6 +16,9 @@
   "item.jzyy.abyss_alloy": "海渊合金",
   "item.jzyy.aybss_alloy_line1": "独爱流萤的提案",
 
+  "item.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
+  "item.jzyy.etsh.line1": "etsh的提案",
+
   "material.jzyy.overflowed_memory": "溢出的内存",
   "material.jzyy.overflowed_memory.flavor": "这是啥？？？",
   "material.jzyy.overflowed_memory.encyclopedia": "也许使用它就是个错误",
@@ -28,7 +31,7 @@
   "material.jzyy.marisa.flavor": "为啥啊？？？",
   "material.jzyy.marisa.encyclopedia": "会偷走重要的东西",
 
-  "material.jzyy.etsh": "超究极etsh质子中子电子子孙孙无穷无尽齿轮之页",
+  "material.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "material.jzyy.etsh.flavor": "揭开时光中的秘密",
   "material.jzyy.etsh.encyclopedia": "当渎神者的指尖烙上齿轮，钢铁便有了神性——那些被ETS-H抚触过的黄铜轮齿，不再屈从于凡间(锻炉圣经 7：11)",
 
@@ -59,7 +62,7 @@
 
   "modifier.jzyy.cumulonimbus": "世末积雨云",
   "modifier.jzyy.cumulonimbus.flavor": "即使在这阴郁天空下无知无觉地死去",
-  "modifier.jzyy.cumulonimbus.description": "我的世界一直下雨，我处理不好",
+  "modifier.jzyy.cumulonimbus.description": "我的世界一直下雨，我处理不好\n在背包里右键等待着夏日的风某一天停止飘摇",
 
   "modifier.jzyy.convergent_worldline": "同归世界线",
   "modifier.jzyy.convergent_worldline.flavor": "每次滂沱中低语，崩塌间呼吸",
@@ -220,13 +223,25 @@
   "modifier.jzyy.spirit_gear.flavor": "知识乃是你的救赎",
   "modifier.jzyy.spirit_gear.description":"每个已装载mod会提供6.2134%全属性加成",
 
+  "modifier.jzyy.ass_attack": "背刺",
+  "modifier.jzyy.ass_attack.flavor": "你再看看你后面呢",
+  "modifier.jzyy.ass_attack.description":"冲向目标身后",
+
+  "modifier.jzyy.kangaroo": "袋鼠跳",
+  "modifier.jzyy.kangaroo.flavor": "123跳",
+  "modifier.jzyy.kangaroo.description":"有概率躲开弹射物",
+
+  "modifier.jzyy.void_walk": "虚空行走",
+  "modifier.jzyy.void_walk.flavor": "我来了，我就没走",
+  "modifier.jzyy.void_walk.description":"你可以穿过头顶和脚底的方块",
+
   "modifier.jzyy.edge_runner": "边缘行者",
   "modifier.jzyy.edge_runner.flavor": "小心，稍有差错就会万劫不复",
   "modifier.jzyy.edge_runner.description":"分配给mc的内存越少造成的伤害越高",
 
   "txet": "也许考虑只在愚人节使用",
-  "modifier.jzyy.fuck_memory_till_die": "决堤",
-  "modifier.jzyy.fuck_memory_till_die.flavor": "我称这招为——数据剪切\n by csdy",
+  "modifier.jzyy.fuck_memory_till_die": "数据剪切",
+  "modifier.jzyy.fuck_memory_till_die.flavor": "“你以为你成为了最强。”\n“成为了世界之巅的存在。”\n“但，在我看来你不过是一串数据而已。”\n“不过，我会仁慈的给予你“重生”的机会。”\n一旦其资料量狂暴涌出，那便无人得以幸免",
   "modifier.jzyy.fuck_memory_till_die.description":"让目标玩家的内存越来越少，直到内存溢出错误",
 
 

@@ -116,8 +116,16 @@ buildscript {
         //领域
         implementation fg.deobf("curse.maven:tcondiadema-1218668:6394251")
 
+        //冰火
+//        implementation fg.deobf("curse.maven:IAF-264231:5633453")
 
+//        implementation fileTree("lib")
 
+        //铁魔法
+//        implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6371701")
+
+        //巫法
+//        implementation fg.deobf("curse.maven:goety-586095:6366932")
 
 //        //假人
 //        implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
