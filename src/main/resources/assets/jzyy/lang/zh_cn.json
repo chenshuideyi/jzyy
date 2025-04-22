@@ -131,6 +131,10 @@
   "modifier.jzyy.life_steal.flavor": "我把你带回来了...",
   "modifier.jzyy.life_steal.description":"攻击敌对生物后，获得持续5秒的等级为（伤害/4取整）的伤害吸收",
 
+  "modifier.jzyy.life_steal_armor": "原始回归·Life Steal",
+  "modifier.jzyy.life_steal_armor.flavor": "我把你带回来了...",
+  "modifier.jzyy.life_steal_armor.description":"受到伤害时获得4点伤害吸收",
+
   "modifier.jzyy.trade_off": "原始回归·Tradeoff",
   "modifier.jzyy.trade_off.flavor": "我把你带回来了...",
   "modifier.jzyy.trade_off.description":"作用于工具面板攻击、攻速、挖掘速度*2，作用于盔甲的击退抗性，护甲，韧性*2",
@@ -185,7 +189,7 @@
 
   "modifier.jzyy.dragon_killer": "屠龙者",
   "modifier.jzyy.dragon_killer.flavor": "你的名字将作为传奇",
-  "modifier.jzyy.dragon_killer.description":"对火龙，冰龙，电龙造成50%额外伤害",
+  "modifier.jzyy.dragon_killer.description":"对龙造成50%额外伤害（是dragon不是loong哦）",
 
   "modifier.jzyy.dragon_fire": "龙焰",
   "modifier.jzyy.dragon_fire.flavor": "火龙灼渊",
@@ -201,7 +205,7 @@
 
   "modifier.jzyy.ice_dragon_armor": "龙霜",
   "modifier.jzyy.ice_dragon_armor.flavor": "冰龙叹霜",
-  "modifier.jzyy.ice_dragon_armor.description":"你的盔甲会损失更多护甲保护你，周围的生物会获得缓慢",
+  "modifier.jzyy.ice_dragon_armor.description":"你的盔甲会损失更多耐久保护你，周围的生物会获得缓慢",
 
   "modifier.jzyy.dragon_flash": "龙霆",
   "modifier.jzyy.dragon_flash.flavor": "电龙雷殛",
@@ -223,9 +227,21 @@
   "modifier.jzyy.spirit_gear.flavor": "知识乃是你的救赎",
   "modifier.jzyy.spirit_gear.description":"每个已装载mod会提供6.2134%全属性加成",
 
+  "modifier.jzyy.hell_fire": "地狱之火",
+  "modifier.jzyy.hell_fire.description": "在下界群系时对生物造成更多伤害",
+  "modifier.jzyy.hell_fire.flavor": "地狱之火",
+
+  "modifier.jzyy.mythical_push": "神话推动",
+  "modifier.jzyy.mythical_push.description": "在下界破坏方块速度更快",
+  "modifier.jzyy.mythical_push.flavor": "神话推动",
+
   "modifier.jzyy.ass_attack": "背刺",
   "modifier.jzyy.ass_attack.flavor": "你再看看你后面呢",
   "modifier.jzyy.ass_attack.description":"冲向目标身后",
+
+  "modifier.jzyy.horn_toss": "长角抛物",
+  "modifier.jzyy.horn_toss.flavor": "看我猛犸颠勺",
+  "modifier.jzyy.horn_toss.description":"把目标扔到你的背后",
 
   "modifier.jzyy.kangaroo": "袋鼠跳",
   "modifier.jzyy.kangaroo.flavor": "123跳",
@@ -234,6 +250,10 @@
   "modifier.jzyy.void_walk": "虚空行走",
   "modifier.jzyy.void_walk.flavor": "我来了，我就没走",
   "modifier.jzyy.void_walk.description":"你可以穿过头顶和脚底的方块",
+
+  "modifier.jzyy.chaos_transmigration": "混沌转生",
+  "modifier.jzyy.chaos_transmigration.flavor": "下一次降临",
+  "modifier.jzyy.chaos_transmigration.description":"当你重生时，获得一分钟的力量效果，由你的最大生命值决定！",
 
   "modifier.jzyy.edge_runner": "边缘行者",
   "modifier.jzyy.edge_runner.flavor": "小心，稍有差错就会万劫不复",
@@ -244,6 +264,19 @@
   "modifier.jzyy.fuck_memory_till_die.flavor": "“你以为你成为了最强。”\n“成为了世界之巅的存在。”\n“但，在我看来你不过是一串数据而已。”\n“不过，我会仁慈的给予你“重生”的机会。”\n一旦其资料量狂暴涌出，那便无人得以幸免",
   "modifier.jzyy.fuck_memory_till_die.description":"让目标玩家的内存越来越少，直到内存溢出错误",
 
+  "modifier.jzyy.csdy_attack": "csdy的触碰",
+  "modifier.jzyy.csdy_attack.flavor": "死亡不过是祂剧本里最温柔的谎言。",
+  "modifier.jzyy.csdy_attack.description":"将目标生物转变成活体陈列的肉人偶",
+
+  "modifier.jzyy.csdy_armor": "csdy的死皮",
+  "modifier.jzyy.csdy_armor.flavor": "我的皮肤开始脱落——然后折皱，就像是披上了某种存在的“自我的外壳”。",
+  "modifier.jzyy.csdy_armor.description":"你无敌了，但并不完全\n输入/csdy protect激活完全形态 这很不稳定，但如果你有特殊需求",
+
+  "modifier.jzyy.csdy_whisper": "csdy的低语",
+  "modifier.jzyy.csdy_whisper.flavor": "这些声音......我听不懂。",
+  "modifier.jzyy.csdy_whisper.description":"§k我听到了什么我是否感到幸福我是一个凄美的结尾我够了江小白也是大便是青春期的特质，最后会成为杂质一万万又一万万又一万万万年那么我是败犬吗",
+
+  "entity.jzyy.sword_man_csdy": "剑人csdy",
 
   "effect.jzyy.overcharge": "过载",
   "effect.jzyy.overcharge_armor": "雷凯"

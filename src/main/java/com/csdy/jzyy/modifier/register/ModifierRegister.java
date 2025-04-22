@@ -13,12 +13,19 @@ import com.csdy.jzyy.modifier.modifier.alex_mob.armor.VoidWalk;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
+import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
+import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
+import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.*;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.*;
+import com.csdy.jzyy.modifier.modifier.jzyy.ChaosTransmigration;
+import com.csdy.jzyy.modifier.modifier.jzyy.HornToss;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
+import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
+import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.LifeStealArmor;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
@@ -34,7 +41,10 @@ public class ModifierRegister {
     public static final StaticModifier<BladeRelease2> BLADE_RELEASE2_STATIC_MODIFIER = MODIFIERS.register("blade_release2", BladeRelease2::new);
     public static final StaticModifier<BladeRelease3> BLADE_RELEASE3_STATIC_MODIFIER = MODIFIERS.register("blade_release3", BladeRelease3::new);
     public static final StaticModifier<AssAttack> ASS_ATTACK_STATIC_MODIFIER = MODIFIERS.register("ass_attack", AssAttack::new);
-
+    public static final StaticModifier<HellFire> HELL_FIRE_STATIC_MODIFIER = MODIFIERS.register("hell_fire", HellFire::new);
+    public static final StaticModifier<MythicalPush> MYTHICAL_PUSH_STATIC_MODIFIER = MODIFIERS.register("mythical_push", MythicalPush::new);
+    public static final StaticModifier<ChaosTransmigration> CHAOS_TRANSMIGRATION_STATIC_MODIFIER = MODIFIERS.register("chaos_transmigration", ChaosTransmigration::new);
+    public static final StaticModifier<HornToss> HORN_TOSS_STATIC_MODIFIER = MODIFIERS.register("horn_toss", HornToss::new);
 
     ///分割线
     public static final StaticModifier<Test> TEST_STATIC_MODIFIER = MODIFIERS.register("test", Test::new);
@@ -63,8 +73,10 @@ public class ModifierRegister {
     public static final StaticModifier<Terrafirma> TERRAFIRMA_STATIC_MODIFIER = MODIFIERS.register("terrafirma", Terrafirma::new);
     public static final StaticModifier<TradeOff> TRADE_OFF_STATIC_MODIFIER = MODIFIERS.register("trade_off", TradeOff::new);
     public static final StaticModifier<LifeSteal> LIFE_STEAL_STATIC_MODIFIER = MODIFIERS.register("life_steal", LifeSteal::new);
+    public static final StaticModifier<LifeStealArmor> LIFE_STEAL_ARMOR_STATIC_MODIFIER = MODIFIERS.register("life_steal_armor", LifeStealArmor::new);
     public static final StaticModifier<BloodMary> BLOOD_MARY_STATIC_MODIFIER = MODIFIERS.register("blood_mary", BloodMary::new);
     public static final StaticModifier<HaoransCult> HAORANS_CULT_STATIC_MODIFIER = MODIFIERS.register("haorans_cult", HaoransCult::new);
+
 
     ///alex生物
     public static final StaticModifier<Kangaroo> KANGAROO_STATIC_MODIFIER = MODIFIERS.register("kangaroo", Kangaroo::new);
@@ -105,5 +117,10 @@ public class ModifierRegister {
 
     ///csdy
     public static final StaticModifier<FuckMemoryTillDie> FUCK_MEMORY_TILL_DIE_STATIC_MODIFIER = MODIFIERS.register("fuck_memory_till_die", FuckMemoryTillDie::new);
+    public static final StaticModifier<CsdyArmor> CSDY_ARMOR_STATIC_MODIFIER = MODIFIERS.register("csdy_armor", CsdyArmor::new);
+    public static final StaticModifier<CsdyAttack> CSDY_ATTACK_STATIC_MODIFIER = MODIFIERS.register("csdy_attack", CsdyAttack::new);
+    public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
+
+
 
 }

@@ -20,7 +20,10 @@
     "clear_body": "#BCEE68",
     "elemental": "#00FF00",
     "terrafirma": "#00FF00",
+    "hell_fire": "#6db156",
+    "mythical_push": "#ec5541",
     "life_steal": "#BCEE68",
+    "life_steal_armor": "#BCEE68",
     "trade_off": "#F08080",
     "blood_mary": "#FF0000",
     "haorans_cult": "#FF0000",
@@ -38,7 +41,15 @@
     "flash_dragon_armor": "#AB82FF",
     "flesh_gear": "#FF6347",
     "mind_gear": "#F0E68C",
-    "spirit_gear": "#ADD8E6"
+    "spirit_gear": "#ADD8E6",
+    "void_walk": "#4F4F4F",
+    "ass_attack":"#4F4F4F",
+    "kangaroo": "#CDAA7D",
+    "chaos_transmigration": "#55097c",
+    "horn_toss": "#9d835f",
+    "csdy_attack": "#483D8B",
+    "csdy_armor": "#483D8B",
+    "csdy_whisper": "#483D8B"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

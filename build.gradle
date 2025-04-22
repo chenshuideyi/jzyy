@@ -116,6 +116,8 @@ buildscript {
         //领域
         implementation fg.deobf("curse.maven:tcondiadema-1218668:6394251")
 
+        //gecko 也就是说制作boss吧
+        implementation fg.deobf("curse.maven:geckolib-388172:6333474")
         //冰火
 //        implementation fg.deobf("curse.maven:IAF-264231:5633453")
 

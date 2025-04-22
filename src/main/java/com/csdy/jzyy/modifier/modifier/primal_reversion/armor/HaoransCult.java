@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier.primal_reversion;
+package com.csdy.jzyy.modifier.modifier.primal_reversion.armor;
 
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

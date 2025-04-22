@@ -34,6 +34,8 @@ public class PlayerLayer extends RenderLayer {
         this.model = new HumanoidModel<>(context.bakeLayer(ModelLayers.PLAYER));
     }
 
+
+
     protected float xOffset(float xOffset) {
         return xOffset * 0.01F;
     }
@@ -47,16 +49,41 @@ public class PlayerLayer extends RenderLayer {
     }
 
     @Override
-    public void render(PoseStack stack, MultiBufferSource bufferSource, int p_116972_, Entity entity, float p_116974_, float p_116975_, float tick, float p_116977_, float p_116978_, float p_116979_) {
-        Player player = (Player) entity;
+    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight,
+                       Entity entity, float limbSwing, float limbSwingAmount,
+                       float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+        if (!(entity instanceof Player player)) return;
         if (!player.hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get())) return;
-        float $$10 = (float)entity.tickCount + tick;
-        EntityModel<Player> playerEntityModel = this.model();
-        playerEntityModel.prepareMobModel((Player) entity, p_116974_, p_116975_, tick);
-        this.getParentModel().copyPropertiesTo(playerEntityModel);
-        VertexConsumer consumer = bufferSource.getBuffer(RenderType.energySwirl(this.getTextureLocation(), this.xOffset($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-        playerEntityModel.setupAnim((Player) entity, p_116974_, p_116975_, p_116977_, p_116978_, p_116979_);
-        playerEntityModel.renderToBuffer(stack, consumer, p_116972_, OverlayTexture.NO_OVERLAY, 0.5F, 0.5F, 0.5F, 1.0F);
 
+        // 1. 在盔甲层之后渲染
+        poseStack.pushPose();
+
+        // 2. 稍微放大模型使其显示在盔甲外面
+        float scale = 1.3f; // 2%放大
+        poseStack.scale(scale, scale, scale);
+
+        // 3. 调整渲染参数
+        float time = (float)player.tickCount + partialTicks;
+        VertexConsumer vertexConsumer = buffer.getBuffer(
+                RenderType.energySwirl(
+                        CREEPER_ARMOR_LOCATION,
+                        this.xOffset(time) % 1.0F,
+                        time * 0.01F % 1.0F
+                )
+        );
+
+        // 4. 设置模型动画并渲染
+        this.model.prepareMobModel(player, limbSwing, limbSwingAmount, partialTicks);
+        this.getParentModel().copyPropertiesTo(this.model);
+        this.model.setupAnim(player, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+        this.model.renderToBuffer(
+                poseStack,
+                vertexConsumer,
+                packedLight,
+                OverlayTexture.NO_OVERLAY,
+                0.5F, 0.5F, 1.0F, 1.0F // 调整颜色和透明度
+        );
+
+        poseStack.popPose();
     }
 }

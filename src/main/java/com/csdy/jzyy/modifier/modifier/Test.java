@@ -1,13 +1,20 @@
 package com.csdy.jzyy.modifier.modifier;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -56,25 +63,38 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
     public void afterMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damageDealt) {
 
     }
-        @Override
-        public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-            if (!(holder instanceof Player player)) return;
-            if (isCorrectSlot){
-                player.noPhysics = true;
-                player.setNoGravity(true);
-                player.fallDistance = 0;
-                player.getAbilities().mayfly = true;
-                player.getAbilities().flying = true;
-            }
-        }
+//        @Override
+//        public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
+//            if (!(holder instanceof Player player)) return;
+//            if (isCorrectSlot){
+//                player.noPhysics = true;
+//                player.setNoGravity(true);
+//                player.fallDistance = 0;
+//                player.getAbilities().mayfly = true;
+//                player.getAbilities().flying = true;
+//            }
+//        }
 
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, slimeknights.mantle.client.TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         list.add(Component.literal("( •̀ ω •́ )✧"));
     }
 
+    @Override
+    public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
 
+    }
 
+    public static void forceDropBlockLoot(Level level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        List<ItemStack> drops = state.getDrops(new LootParams.Builder((ServerLevel) level)
+                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                .withParameter(LootContextParams.BLOCK_STATE, state));
+
+        for (ItemStack stack : drops) {
+            Block.popResource(level, pos, stack);
+        }
+    }
 
 //    public static String getGPUName() {
 //        try {
