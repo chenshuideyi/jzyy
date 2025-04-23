@@ -1,5 +1,6 @@
 package com.csdy.jzyy.modifier.register;
 
+import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.modifier.modifier.*;
 import com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance;
 import com.csdy.jzyy.modifier.modifier.Severance.BaseSeveranceModifier;
@@ -27,6 +28,9 @@ import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.LifeStealArmor;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
+import com.csdy.tcondiadema.diadema.DiademaRegister;
+import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
+import com.csdy.tcondiadema.modifier.DiademaModifier;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
@@ -122,5 +126,6 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
 
 
-
+    ///领域
+    public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("alex_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.ALEX_MELTDOWN));
 }

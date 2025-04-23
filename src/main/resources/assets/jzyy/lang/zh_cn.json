@@ -1,6 +1,9 @@
 {
   "jzyy_tab": "匠战妖域",
 
+  "stat.tconstruct.slot.display.dx": "音乐",
+  "stat.tconstruct.slot.prefix.dx": "音乐槽：",
+
   "item.jzyy.marisa_ingot": "魔，魔理沙？",
   "item.jzyy.marisa_ingot.line1": "Web_13234的提案",
 
@@ -275,6 +278,11 @@
   "modifier.jzyy.csdy_whisper": "csdy的低语",
   "modifier.jzyy.csdy_whisper.flavor": "这些声音......我听不懂。",
   "modifier.jzyy.csdy_whisper.description":"§k我听到了什么我是否感到幸福我是一个凄美的结尾我够了江小白也是大便是青春期的特质，最后会成为杂质一万万又一万万又一万万万年那么我是败犬吗",
+
+  "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
+  "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",
+  "modifier.jzyy.alex_meltdown.description":"对领域内的所有生物施加巨量的辐射",
+
 
   "entity.jzyy.sword_man_csdy": "剑人csdy",
 

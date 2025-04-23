@@ -1,5 +1,7 @@
 package com.csdy.jzyy;
 
+import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
+import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.SwordManCsdy;
@@ -10,7 +12,6 @@ import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.PlayerLayer;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import com.csdy.tcondiadema.DiademaSlots;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -46,16 +47,20 @@ public class ModMain {
         JzyyEffectRegister.EFFECTS.register(bus);
         JzyyEntityRegister.JZYY_ENTITY.register(bus);
         gpuUtilInit();
+
+        JzyyDiademaRegister.DIADEMA_TYPES.register(bus);
+        //仅客户端运行
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            JzyyClientDiademaRegister.CLIENT_DIADEMA_TYPES.register(bus);
+        });
     }
 
     @SubscribeEvent
     public static void onFMLCommonSetup(FMLCommonSetupEvent event) {
         //网络包
         JzyySyncing.Init();
-//        // 以下代码仅在客户端运行
-//        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-//            registerRenderers();
-//        });
+        // 以下代码仅在客户端运行
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> DxSlots::init);
 
     }
 

@@ -1,6 +1,8 @@
 package com.csdy.jzyy.modifier.modifier;
 
+import com.csdy.jzyy.modifier.util.ReFont;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -15,6 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -32,6 +35,7 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Test extends NoLevelsModifier implements ToolStatsModifierHook, MeleeHitModifierHook,InventoryTickModifierHook, TooltipModifierHook {
 
@@ -49,6 +53,7 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
         ToolStats.ARMOR.multiply(builder, 1 * rate);
         ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1 * rate);
     }
+
 
 
     @Override
@@ -79,6 +84,8 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> list, slimeknights.mantle.client.TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
         list.add(Component.literal("( •̀ ω •́ )✧"));
     }
+
+
 
     @Override
     public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {

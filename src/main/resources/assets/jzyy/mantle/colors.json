@@ -49,7 +49,8 @@
     "horn_toss": "#9d835f",
     "csdy_attack": "#483D8B",
     "csdy_armor": "#483D8B",
-    "csdy_whisper": "#483D8B"
+    "csdy_whisper": "#483D8B",
+    "alex_meltdown": "#EE9A00"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -58,6 +59,9 @@
     "yue_zheng_ling": "#ee3b29",
     "abyss_alloy": "#003366",
     "etsh": "#B5E61D"
+  },
+  "stat.tconstruct.slot": {
+    "dx": "#00FFFF"
   }
 }
 
