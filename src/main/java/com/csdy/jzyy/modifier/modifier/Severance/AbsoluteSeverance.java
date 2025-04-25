@@ -46,10 +46,8 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         Player player = context.getPlayerAttacker();
         if (target != null && player != null) {
             float reHealth = target.getHealth() - damage * this.value;
-            System.out.println("绝对切断伤害" + damage * this.value);
             setAbsoluteSeveranceHealth(target,reHealth);
             forceSetAllCandidateHealth(target,reHealth);
-            System.out.println("吃我绝对切断！");
             if (reHealth <= 0){
                 //并非不能掉落
                 var playerKill = target.level().damageSources.playerAttack(player);

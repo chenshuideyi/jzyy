@@ -50,7 +50,16 @@
     "csdy_attack": "#483D8B",
     "csdy_armor": "#483D8B",
     "csdy_whisper": "#483D8B",
-    "alex_meltdown": "#EE9A00"
+    "alex_meltdown": "#EE9A00",
+    "music": "#00FFFF",
+    "ama_no_jyaku": "#c7d152",
+    "monster_song": "#39C5BB",
+    "six_trillion_years": "#f6eae9",
+    "thermal_anomaly": "#e04f0b",
+    "i_love_u": "#66CCFF",
+    "the_millennium_snow": "#EE0000",
+    "only_wish": "#003366",
+    "bedrock": "#1c1c1c"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -58,7 +67,8 @@
     "marisa": "#fbff8e",
     "yue_zheng_ling": "#ee3b29",
     "abyss_alloy": "#003366",
-    "etsh": "#B5E61D"
+    "etsh": "#B5E61D",
+    "dx": "#00FFFF"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

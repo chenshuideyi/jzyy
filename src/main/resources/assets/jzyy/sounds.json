@@ -14,7 +14,58 @@
   },
   "cumulonimbus": {
     "sounds": [
-      "jzyy:cumulonimbus"
+      {
+        "name":"jzyy:cumulonimbus",
+        "stream": true
+      }
+    ]
+  },
+  "ama_no_jyaku": {
+    "sounds": [
+      {
+        "name":"jzyy:ama_no_jyaku",
+      "stream": true
+      }
+    ]
+  },
+  "monster_song": {
+    "sounds": [
+      {
+        "name":"jzyy:monster_song",
+        "stream": true
+      }
+    ]
+  },
+  "six_trillion_years": {
+    "sounds": [
+      {
+        "name":"jzyy:six_trillion_years",
+        "stream": true
+      }
+    ]
+  },
+  "thermal_anomaly": {
+    "sounds": [
+      {
+        "name":"jzyy:thermal_anomaly",
+        "stream": true
+      }
+    ]
+  },
+  "i_love_u": {
+    "sounds": [
+      {
+        "name":"jzyy:i_love_u",
+        "stream": true
+      }
+    ]
+  },
+  "the_millennium_snow": {
+    "sounds": [
+      {
+        "name":"jzyy:the_millennium_snow",
+        "stream": true
+      }
     ]
   }
 }

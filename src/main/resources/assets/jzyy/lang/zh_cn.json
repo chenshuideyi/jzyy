@@ -1,8 +1,13 @@
 {
   "jzyy_tab": "匠战妖域",
 
+  "item.jzyy.mtf": "代码能力提升药",
+
   "stat.tconstruct.slot.display.dx": "音乐",
   "stat.tconstruct.slot.prefix.dx": "音乐槽：",
+
+  "item.jzyy.dx_ingot": "舞萌锭",
+  "item.jzyy.dx_ingot.line1": "mizi_ao的提案",
 
   "item.jzyy.marisa_ingot": "魔，魔理沙？",
   "item.jzyy.marisa_ingot.line1": "Web_13234的提案",
@@ -25,6 +30,10 @@
   "material.jzyy.overflowed_memory": "溢出的内存",
   "material.jzyy.overflowed_memory.flavor": "这是啥？？？",
   "material.jzyy.overflowed_memory.encyclopedia": "也许使用它就是个错误",
+
+  "material.jzyy.dx": "乌蒙锭",
+  "material.jzyy.dx.flavor": "提，提拉熊？",
+  "material.jzyy.dx.encyclopedia": "香香软软小蛋糕",
 
   "material.jzyy.magic_uranium": "魔力铀",
   "material.jzyy.magic_uranium.flavor": "充满魔力的铀，可以驱逐邪祟",
@@ -279,9 +288,48 @@
   "modifier.jzyy.csdy_whisper.flavor": "这些声音......我听不懂。",
   "modifier.jzyy.csdy_whisper.description":"§k我听到了什么我是否感到幸福我是一个凄美的结尾我够了江小白也是大便是青春期的特质，最后会成为杂质一万万又一万万又一万万万年那么我是败犬吗",
 
+  "modifier.jzyy.music": "选择曲目",
+  "modifier.jzyy.music.flavor": "要开始了哟",
+  "modifier.jzyy.music.description":"获得一个音乐槽",
+
+  "modifier.jzyy.ama_no_jyaku": "天之弱",
+  "modifier.jzyy.ama_no_jyaku.flavor": "骗子的我所吐出的 相反词的情歌",
+  "modifier.jzyy.ama_no_jyaku.description":"在背包里右键以播放",
+
+  "modifier.jzyy.monster_song": "怪物之歌",
+  "modifier.jzyy.monster_song.flavor": "sha la la la la",
+  "modifier.jzyy.monster_song.description":"在背包里右键以播放",
+
+  "modifier.jzyy.six_trillion_years": "六兆年零一夜物语",
+  "modifier.jzyy.six_trillion_years.flavor": "知らない知らない",
+  "modifier.jzyy.six_trillion_years.description":"在背包里右键以播放",
+
+  "modifier.jzyy.thermal_anomaly": "热异常",
+  "modifier.jzyy.thermal_anomaly.flavor": "近在咫尺 近在咫尺\n近在咫尺 近在咫尺\n近在咫尺 近在咫尺\n 近在咫尺 近在咫尺",
+  "modifier.jzyy.thermal_anomaly.description":"在背包里右键以播放",
+
+  "modifier.jzyy.i_love_u": "I LOVE U",
+  "modifier.jzyy.i_love_u.flavor": "就让我们用生命 许下这个约定",
+  "modifier.jzyy.i_love_u.description":"在背包里右键以播放",
+
+  "modifier.jzyy.the_millennium_snow": "霜雪千年",
+  "modifier.jzyy.the_millennium_snow.flavor": "千年后忆起你是谁",
+  "modifier.jzyy.the_millennium_snow.description":"在背包里右键以播放",
+
+  "modifier.jzyy.only_wish": "惟愿",
+  "modifier.jzyy.only_wish.flavor": "纯音乐，请欣赏",
+  "modifier.jzyy.only_wish.description":"在背包里右键以播放",
+
+
+  "modifier.jzyy.bedrock": "基岩化",
+  "modifier.jzyy.bedrock.flavor": "这是泰坦生物？",
+  "modifier.jzyy.bedrock.description":"获得100000点护甲和1000最大生命值",
+
+
   "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
   "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",
   "modifier.jzyy.alex_meltdown.description":"对领域内的所有生物施加巨量的辐射",
+
 
 
   "entity.jzyy.sword_man_csdy": "剑人csdy",

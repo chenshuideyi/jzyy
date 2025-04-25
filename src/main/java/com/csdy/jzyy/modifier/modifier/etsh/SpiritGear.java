@@ -1,6 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.etsh;
 
-import com.csdy.jzyy.modifier.util.ToolStatsUtil;
+import com.csdy.jzyy.modifier.util.CsdyModifierUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
@@ -15,7 +15,6 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class SpiritGear extends NoLevelsModifier implements ToolStatsModifierHoo
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry entry, ModifierStatsBuilder builder) {
-        ToolStatsUtil.multiplyAllToolStats(builder,1 + (0.062134 * getLoadedModCount()));
+        CsdyModifierUtil.multiplyAllToolStats(builder,1 + (0.062134 * getLoadedModCount()));
     }
 
     public int getLoadedModCount() {

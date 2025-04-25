@@ -9,7 +9,7 @@ import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanBlessings;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanEcho;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.TheProphecyOfTheSunk;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.armor.DeepOceanProtect;
-import com.csdy.jzyy.modifier.modifier.alex_mob.Kangaroo;
+import com.csdy.jzyy.modifier.modifier.alex_mob.armor.Kangaroo;
 import com.csdy.jzyy.modifier.modifier.alex_mob.armor.VoidWalk;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
@@ -17,6 +17,8 @@ import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
+import com.csdy.jzyy.modifier.modifier.dx.Music;
+import com.csdy.jzyy.modifier.modifier.dx.tool.BaseToolMusic;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
@@ -28,7 +30,7 @@ import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.LifeStealArmor;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
-import com.csdy.tcondiadema.diadema.DiademaRegister;
+import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
 import com.csdy.tcondiadema.modifier.DiademaModifier;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
@@ -90,7 +92,7 @@ public class ModifierRegister {
     ///强大词条
 
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
-
+    public static final StaticModifier<BedRock> BED_ROCK_STATIC_MODIFIER = MODIFIERS.register("bedrock", BedRock::new);
 
     ///切断及换皮
     public static final StaticModifier<BaseSeveranceModifier> SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("severance", () -> new BaseSeveranceModifier(0.1F));
@@ -113,6 +115,19 @@ public class ModifierRegister {
     public static final StaticModifier<FireDragonArmor> FIRE_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("fire_dragon_armor", FireDragonArmor::new);
     public static final StaticModifier<IceDragonArmor> ICE_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("ice_dragon_armor", IceDragonArmor::new);
     public static final StaticModifier<FlashDragonArmor> FLASH_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("flash_dragon_armor", FlashDragonArmor::new);
+
+    ///米子山民
+    public static final StaticModifier<Music> MUSIC_STATIC_MODIFIER = MODIFIERS.register("music", Music::new);
+
+    ///这里是工具的音乐
+    public static final StaticModifier<BaseToolMusic> AMA_NO_JYAKU = MODIFIERS.register("ama_no_jyaku", () -> new BaseToolMusic(JzyySoundsRegister.AMA_NO_JYAKU.get()));
+    public static final StaticModifier<BaseToolMusic> MONSTER_SONG = MODIFIERS.register("monster_song", () -> new BaseToolMusic(JzyySoundsRegister.MONSTER_SONG.get()));
+    public static final StaticModifier<BaseToolMusic> SIX_TRILLION_YEARS = MODIFIERS.register("six_trillion_years", () -> new BaseToolMusic(JzyySoundsRegister.SIX_TRILLION_YEARS.get()));
+    public static final StaticModifier<BaseToolMusic> THERMAL_ANOMALY = MODIFIERS.register("thermal_anomaly", () -> new BaseToolMusic(JzyySoundsRegister.THERMAL_ANOMALY.get()));
+    public static final StaticModifier<BaseToolMusic> I_LOVE_YOU = MODIFIERS.register("i_love_u", () -> new BaseToolMusic(JzyySoundsRegister.I_LOVE_U.get()));
+    public static final StaticModifier<BaseToolMusic> THE_MILLENNIUM_SNOW = MODIFIERS.register("the_millennium_snow", () -> new BaseToolMusic(JzyySoundsRegister.THE_MILLENNIUM_SNOW.get()));
+    public static final StaticModifier<BaseToolMusic> ONLY_WISH = MODIFIERS.register("only_wish", () -> new BaseToolMusic(JzyySoundsRegister.ONLY_WISH.get()));
+
 
     ///etsh
     public static final StaticModifier<SpiritGear> SPIRIT_GEAR_STATIC_MODIFIER = MODIFIERS.register("spirit_gear", SpiritGear::new);
