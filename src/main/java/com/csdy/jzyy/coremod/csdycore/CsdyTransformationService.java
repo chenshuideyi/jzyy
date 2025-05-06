@@ -2,7 +2,7 @@ package com.csdy.jzyy.coremod.csdycore;
 
 
 
-import com.csdy.jzyy.util.Helper;
+import com.csdy.jzyy.ms.util.Helper;
 import cpw.mods.modlauncher.LaunchPluginHandler;
 import cpw.mods.modlauncher.Launcher;
 import cpw.mods.modlauncher.api.IEnvironment;

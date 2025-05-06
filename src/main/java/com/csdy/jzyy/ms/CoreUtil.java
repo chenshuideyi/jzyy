@@ -1,16 +1,6 @@
 package com.csdy.jzyy.ms;
 
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-import static com.csdy.jzyy.util.LivingEntityUtil.clearAbsoluteSeveranceHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.clearAbsoluteSeveranceHealth;
 
 //public class CoreUtil {
 //

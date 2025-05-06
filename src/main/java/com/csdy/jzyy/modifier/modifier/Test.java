@@ -1,13 +1,13 @@
 package com.csdy.jzyy.modifier.modifier;
 
-import com.csdy.jzyy.modifier.util.ReFont;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.Font;
+import com.c2h6s.etstlib.register.EtSTLibHooks;
+import com.c2h6s.etstlib.tool.hooks.LeftClickModifierHook;
+import com.csdy.jzyy.modifier.register.ModifierRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -17,10 +17,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
@@ -30,14 +33,17 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.MaterialNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import java.util.List;
-import java.util.function.Consumer;
 
-public class Test extends NoLevelsModifier implements ToolStatsModifierHook, MeleeHitModifierHook,InventoryTickModifierHook, TooltipModifierHook {
+import java.util.List;
+
+import static com.csdy.jzyy.modifier.util.BlockInteractionLogic.forceBreakBlock;
+
+public class Test extends NoLevelsModifier implements ToolStatsModifierHook, MeleeHitModifierHook,InventoryTickModifierHook, TooltipModifierHook, LeftClickModifierHook {
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry entry, ModifierStatsBuilder builder) {
@@ -54,7 +60,11 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
         ToolStats.ARMOR_TOUGHNESS.multiply(builder, 1 * rate);
     }
 
+    @Override
+    public void onLeftClickBlock(IToolStackView tool, ModifierEntry entry, Player player, Level level, EquipmentSlot equipmentSlot, BlockState state, BlockPos pos) {
 
+        forceBreakBlock(player.level,pos.getX(),pos.getY(),pos.getZ(),player);
+    }
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
@@ -62,6 +72,7 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
         hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
         hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK);
         hookBuilder.addHook(this, ModifierHooks.TOOLTIP);
+        hookBuilder.addHook(this, EtSTLibHooks.LEFT_CLICK);
     }
 
     @Override
@@ -88,8 +99,8 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
 
 
     @Override
-    public void onInventoryTick(IToolStackView iToolStackView, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
-
+    public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
+        EvolutionTool((ToolStack) tool);
     }
 
     public static void forceDropBlockLoot(Level level, BlockPos pos) {
@@ -103,28 +114,34 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
         }
     }
 
-//    public static String getGPUName() {
-//        try {
-//            Process process = Runtime.getRuntime().exec("wmic path win32_VideoController get name");
-//            process.waitFor();
-//
-//            BufferedReader reader = new BufferedReader(
-//                    new InputStreamReader(process.getInputStream()));
-//
-//            String line;
-//            StringBuilder builder = new StringBuilder();
-//            // 跳过第一行(标题行)
-//            reader.readLine();
-//            while ((line = reader.readLine()) != null) {
-//                if (!line.trim().isEmpty()) {
-//                    builder.append(line.trim()).append("\n");
-//                }
-//            }
-//            return builder.toString().trim();
-//        } catch (IOException | InterruptedException e) {
-//            e.printStackTrace();
-//            return "无法获取显卡信息";
+//    public static int getLevel(int a){
+//        if (a==1){
+//            return 1;
 //        }
+//        else if (a==2){
+//            return 2;
+//        }
+//        else return 0;
+//    }
+//
+//    public static int getPersistentLevel(IToolStackView tool){
+//        int a = tool.getPersistentData().getInt(authenticationa);
+//        return getLevel(a);
 //    }
 
+    public static final MaterialVariantId bedrock = MaterialVariantId.create(new MaterialId("jzyy","bedrock"),"default");
+
+
+    public static void EvolutionTool(ToolStack tool) {
+        MaterialNBT materials = tool.getMaterials();
+        ModifierId modifierId = ModifierRegister.TEST_STATIC_MODIFIER.getId();
+        for (int i = 0; i < materials.size(); i++) {
+            MaterialVariant variant = materials.get(i);
+            if (variant.getVariant().getId().getPath().equals("harcadium") && variant.getVariant().getId().getNamespace().equals("jzyy")) {
+//                System.out.println("Current modifier level: " + tool.getModifierLevel(modifierId));
+                tool.replaceMaterial(i,bedrock);
+//                tool.removeModifier(modifierId,1);
+            }
+        }
+    }
 }

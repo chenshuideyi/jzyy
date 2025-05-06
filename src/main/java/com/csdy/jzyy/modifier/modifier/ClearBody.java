@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import static com.csdy.jzyy.util.LivingEntityUtil.forceRemoveAllNegativeEffects;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceRemoveAllNegativeEffects;
 
 public class ClearBody extends NoLevelsModifier implements InventoryTickModifierHook {
 

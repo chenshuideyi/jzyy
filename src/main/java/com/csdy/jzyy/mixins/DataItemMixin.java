@@ -1,6 +1,6 @@
 package com.csdy.jzyy.mixins;
 
-import com.csdy.jzyy.util.LivingEntityUtil;
+import com.csdy.jzyy.ms.util.LivingEntityUtil;
 import net.minecraft.network.syncher.SynchedEntityData;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

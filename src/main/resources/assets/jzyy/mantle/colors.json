@@ -59,7 +59,23 @@
     "i_love_u": "#66CCFF",
     "the_millennium_snow": "#EE0000",
     "only_wish": "#003366",
-    "bedrock": "#1c1c1c"
+    "bedrock": "#1c1c1c",
+    "decide": "#1c1c1c",
+    "mouse3": "#1c1c1c",
+    "hyper_beam": "#5D478B",
+    "tiamat": "#b81d1d",
+    "awaken_tiamat": "#b81d1d",
+    "pandora": "#a8aee3",
+    "awaken_pandora": "#a8aee3",
+    "equivalent_edge": "#000000",
+    "equivalent_armor": "#000000",
+    "juggernaut": "#FF0000",
+    "ultradense": "#FF0000",
+    "eat_stone": "#FF00FF",
+    "bedrock_breaker": "#FF00FF",
+    "_经验钢_": null,
+    "experience_killer": "#8bfe3e",
+    "real_experience": "#8bfe3e"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -67,8 +83,12 @@
     "marisa": "#fbff8e",
     "yue_zheng_ling": "#ee3b29",
     "abyss_alloy": "#003366",
+    "ice": "#00FFFF",
     "etsh": "#B5E61D",
-    "dx": "#00FFFF"
+    "dx": "#00FFFF",
+    "harcadium": "#FF00FF",
+    "bedrock": "#1c1c1c",
+    "experience_steel": "#8bfe3e"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.util;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import slimeknights.tconstruct.library.tools.stat.*;
 
+import java.lang.reflect.Field;
 import java.util.Collection;
 
 public class CsdyModifierUtil {
@@ -33,4 +35,25 @@ public class CsdyModifierUtil {
         if (id.getPath().contains(string)) return true;
         return className.contains(string);
     }
+
+    public boolean isBoss(LivingEntity living) {
+        try {
+            Class<?> clazz = living.getClass();
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                if (field.getType() == ServerBossEvent.class) {
+                    field.setAccessible(true);
+                    ServerBossEvent bossEvent = (ServerBossEvent) field.get(living);
+                    if (bossEvent != null) {
+                        return true;
+                    }
+                }
+            }
+        } catch (IllegalAccessException e) {
+            System.err.println("反射坠机，无法获取ServerBossEvent字段");
+        }
+        return false;
+    }
+
+
 }

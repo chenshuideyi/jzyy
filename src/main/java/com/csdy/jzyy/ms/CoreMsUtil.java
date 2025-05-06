@@ -2,7 +2,7 @@ package com.csdy.jzyy.ms;
 
 
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import com.csdy.jzyy.util.Helper;
+import com.csdy.jzyy.ms.util.Helper;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;

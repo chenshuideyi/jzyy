@@ -1,0 +1,26 @@
+{
+  "default": [
+    {
+      "name": "jzyy:eat_stone",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:harcadium_armor",
+        "level": 1
+      }
+    ],
+    "tconstruct:head":[
+      {
+        "name": "jzyy:eat_stone",
+        "level": 1
+      },
+      {
+        "name": "jzyy:bedrock_breaker",
+        "level": 1
+      }
+    ]
+  }
+}

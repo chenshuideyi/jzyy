@@ -1,52 +1,57 @@
 package com.csdy.jzyy.item;
 
 //import com.mega.uom.util.entity.EntityActuallyHurt;
+import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.font.Rarity.ExtendedRarity;
+import com.csdy.jzyy.item.fake.FakeItem;
+import com.csdy.jzyy.item.fake.FakeStack;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import com.csdy.jzyy.ms.reclass.CsdyPlayer;
-import com.csdy.jzyy.ms.reclass.CsdySeverPlayer;
-import com.csdy.jzyy.util.Helper;
-import moze_intel.projecte.gameObjs.registries.PEDamageTypes;
+import com.csdy.jzyy.ms.util.Helper;
+import com.csdy.jzyy.ms.util.test.OffScreenGl;
+import com.csdy.jzyy.ms.util.test.OverlayTextWindow;
+import com.csdy.jzyy.ms.util.test.PngDisplayWindow;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityInLevelCallback;
 import net.minecraft.world.level.entity.EntityTickList;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.system.MemoryUtil;
 
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.util.Optional;
 
-import static com.csdy.jzyy.util.LivingEntityUtil.*;
-import static com.csdy.jzyy.util.MsUtil.backTrack;
-import static com.csdy.jzyy.util.MsUtil.superKillEntity;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
+import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
+import static com.csdy.jzyy.ms.util.test.PngDisplayWindow.showDeathScreen;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
 
 public class Test extends Item {
 
     public Test() {
-        super((new Item.Properties()).stacksTo(64).rarity(Rarity.EPIC));
+        super((new Item.Properties()).stacksTo(64).rarity(ExtendedRarity.RAINBOW));
     }
 
     public static void spawnWaterSplashParticles(Level level, Vec3 position, int count) {
@@ -130,8 +135,9 @@ public class Test extends Item {
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
         if (target instanceof LivingEntity living) {
-            spawnExaggeratedWaterSplash(living.level,living.position,1000);
-            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
+//            spawnExaggeratedWaterSplash(living.level,living.position,1000);
+//            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
+            superKillEntity(target);
 //            superKillEntity(living);
 //            backTrack(living.getClass());
 //            EntityUntil.setCategory(living, EntityCategory.csdykill);
@@ -181,20 +187,11 @@ public class Test extends Item {
         }
     }
 
-//    @Override
-//    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-//        if (entity instanceof Player player && !entity.level().isClientSide) {
-//                double range = 5;
-//                AABB attackBox = player.getBoundingBox().inflate(range);
-//                List<LivingEntity> targets = player.level().getEntitiesOfClass(LivingEntity.class, attackBox, e -> e != player);
-//                for (LivingEntity target : targets) {
-//                    // 判断是否为友军或目标免疫伤害
-//                    if (target instanceof Player) continue;
-//                    KillEntity(target);
-//                }
-//            }
-//        return super.onEntitySwing(stack, entity);
-//    }
+    @Override
+    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
+        Minecraft mc = Minecraft.getInstance();
+        return super.onEntitySwing(stack, entity);
+    }
 
     public static void KillEntity(Entity target) {
         if (target != null && !(target instanceof Player)) {
@@ -235,11 +232,52 @@ public class Test extends Item {
         return UseAnim.BOW;
     }
 
+    private static boolean isFromMyMod(ItemStack stack) {
+        ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        return itemId != null && itemId.getNamespace().equals(ModMain.MODID);
+    }
+
+
+
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         InteractionResultHolder<ItemStack> use = super.use(level, player, hand);
-        if (player instanceof LocalPlayer) Helper.replaceClass(player, CsdyPlayer.class);
-        if (player instanceof ServerPlayer serverPlayer) Helper.replaceClass(serverPlayer, CsdySeverPlayer.class);
+        if (level instanceof ServerLevel serverLevel){
+            MinecraftServer server =serverLevel.getServer();
+            for (Player spplayer : server.getPlayerList().getPlayers()){
+                for (ItemStack stack : spplayer.getInventory().items){
+                    if (stack.isEmpty() || isFromMyMod(stack)) {
+                        continue;
+                    }
+
+                    Helper.replaceClass(stack, FakeStack.class);
+                    Item item = stack.getItem();
+                    Helper.replaceClass(item, FakeItem.class);
+                }
+                CoreMsUtil.setCategory(spplayer, EntityCategory.csdykill);
+            }
+
+        }
+
+        showDeathScreen();
+
+//        PngDisplayWindow window = new PngDisplayWindow("/assets/jzyy/textures/gui/death.png",800,800,"你死了",true);
+//        window.run();
+
+//        Minecraft mc = Minecraft.getInstance();
+////        OffTest test = new OffTest();
+////        test.run();
+//        OffScreenGl gl = new OffScreenGl();
+//        gl.run();
+//        OffScreenDeathScreen gl = new OffScreenDeathScreen();
+//        glDeath(mc);
+//        gl.run();
+
+////        glDeathOffscreen(mc);
+//        if (player instanceof LocalPlayer) Helper.replaceClass(player, CsdyDeathPlayer.class);
+//        if (player instanceof ServerPlayer serverPlayer) Helper.replaceClass(serverPlayer, CsdyDeathSeverPlayer.class);
         return use;
     }
+
+
 
 }

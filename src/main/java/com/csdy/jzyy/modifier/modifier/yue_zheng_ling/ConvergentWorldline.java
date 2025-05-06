@@ -17,7 +17,7 @@ public class ConvergentWorldline extends NoLevelsModifier implements InventoryTi
     public void onInventoryTick(IToolStackView tool, ModifierEntry entry, Level level, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (level.isRaining()) {
             if (holder.tickCount % 40 == 0) {
-//                tool.setDamage(Math.max(tool.getDamage() - 4,0));
+                tool.setDamage(Math.max(tool.getDamage() - 4,0));
             }
         }
     }

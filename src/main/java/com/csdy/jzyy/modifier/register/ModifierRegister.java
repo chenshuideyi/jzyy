@@ -11,6 +11,9 @@ import com.csdy.jzyy.modifier.modifier.abyss_alloy.TheProphecyOfTheSunk;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.armor.DeepOceanProtect;
 import com.csdy.jzyy.modifier.modifier.alex_mob.armor.Kangaroo;
 import com.csdy.jzyy.modifier.modifier.alex_mob.armor.VoidWalk;
+import com.csdy.jzyy.modifier.modifier.bedrock.BedRock;
+import com.csdy.jzyy.modifier.modifier.bedrock.Deicide;
+import com.csdy.jzyy.modifier.modifier.bedrock.Mouse3;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
@@ -18,21 +21,37 @@ import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
-import com.csdy.jzyy.modifier.modifier.dx.tool.BaseToolMusic;
+import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
+import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
+import com.csdy.jzyy.modifier.modifier.dx.tool.AwakenTiamat;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
+import com.csdy.jzyy.modifier.modifier.experience.ExperienceKiller;
+import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
+import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
+import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
+import com.csdy.jzyy.modifier.modifier.ice.HyperBeam;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.*;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.*;
+import com.csdy.jzyy.modifier.modifier.jzyy.AssAttack;
 import com.csdy.jzyy.modifier.modifier.jzyy.ChaosTransmigration;
 import com.csdy.jzyy.modifier.modifier.jzyy.HornToss;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.LifeStealArmor;
+import com.csdy.jzyy.modifier.modifier.projectE.EquivalentEdge;
+import com.csdy.jzyy.modifier.modifier.projectE.Juggernaut;
+import com.csdy.jzyy.modifier.modifier.projectE.armor.EquivalentArmor;
+import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
+import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
+import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
 import com.csdy.tcondiadema.modifier.DiademaModifier;
+import slimeknights.tconstruct.library.materials.definition.MaterialId;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
@@ -41,6 +60,16 @@ import static com.csdy.jzyy.ModMain.MODID;
 
 public class ModifierRegister {
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MODID);
+
+    ///工具专属
+    public static final StaticModifier<MagicFlying> MAGIC_FLYING_STATIC_MODIFIER = MODIFIERS.register("magic_flying", MagicFlying::new);
+
+
+
+
+
+
+
     ///弱小词条
     public static final StaticModifier<EdgeRunner> EDGE_RUNNER_STATIC_MODIFIER = MODIFIERS.register("edge_runner", EdgeRunner::new);
     public static final StaticModifier<BladeRelease1> BLADE_RELEASE1_STATIC_MODIFIER = MODIFIERS.register("blade_release1", BladeRelease1::new);
@@ -55,6 +84,7 @@ public class ModifierRegister {
     ///分割线
     public static final StaticModifier<Test> TEST_STATIC_MODIFIER = MODIFIERS.register("test", Test::new);
     public static final StaticModifier<Marisa> MARISA_STATIC_MODIFIER = MODIFIERS.register("marisa", Marisa::new);
+
     ///石墨砖
     public static final StaticModifier<Singer> SINGER_STATIC_MODIFIER = MODIFIERS.register("singer", Singer::new);
     public static final StaticModifier<Echo> ECHO_STATIC_MODIFIER = MODIFIERS.register("echo", Echo::new);
@@ -83,6 +113,24 @@ public class ModifierRegister {
     public static final StaticModifier<BloodMary> BLOOD_MARY_STATIC_MODIFIER = MODIFIERS.register("blood_mary", BloodMary::new);
     public static final StaticModifier<HaoransCult> HAORANS_CULT_STATIC_MODIFIER = MODIFIERS.register("haorans_cult", HaoransCult::new);
 
+    ///黑魔导冰清
+    public static final StaticModifier<HyperBeam> HYPER_BEAM_STATIC_MODIFIER = MODIFIERS.register("hyper_beam", HyperBeam::new);
+
+
+    ///桐
+    public static final StaticModifier<TongGreed> TONG_GREED_STATIC_MODIFIER = MODIFIERS.register("tong_greed", TongGreed::new);
+
+    /// 记得上色
+    public static final StaticModifier<EquivalentEdge> EQUIVALENT_EDGE_STATIC_MODIFIER = MODIFIERS.register("equivalent_edge", EquivalentEdge::new);
+    public static final StaticModifier<EquivalentArmor> EQUIVALENT_ARMOR_STATIC_MODIFIER = MODIFIERS.register("equivalent_armor", EquivalentArmor::new);
+    public static final StaticModifier<Ultradense> ULTRADENSE_STATIC_MODIFIER = MODIFIERS.register("ultradense", Ultradense::new);
+    public static final StaticModifier<Juggernaut> JUGGERNAUT_STATIC_MODIFIER = MODIFIERS.register("juggernaut", Juggernaut::new);
+
+
+
+
+
+
 
     ///alex生物
     public static final StaticModifier<Kangaroo> KANGAROO_STATIC_MODIFIER = MODIFIERS.register("kangaroo", Kangaroo::new);
@@ -92,7 +140,18 @@ public class ModifierRegister {
     ///强大词条
 
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
+
+    ///哈肯典姆
+    /// 记得上色
+    public static final StaticModifier<EatStone> EAT_STONE_STATIC_MODIFIER = MODIFIERS.register("eat_stone", EatStone::new);
+    public static final StaticModifier<NoLevelsModifier> BEDROCK_BREAK = MODIFIERS.register("bedrock_breaker", NoLevelsModifier::new);
+    public static final StaticModifier<HarcadiumArmor> HARCADIUM_ARMOR_STATIC_MODIFIER = MODIFIERS.register("harcadium_armor", HarcadiumArmor::new);
+
+    ///基岩
     public static final StaticModifier<BedRock> BED_ROCK_STATIC_MODIFIER = MODIFIERS.register("bedrock", BedRock::new);
+    public static final StaticModifier<Deicide> DEICIDE_STATIC_MODIFIER = MODIFIERS.register("deicide", Deicide::new);
+    public static final StaticModifier<Mouse3> MOUSE_3_STATIC_MODIFIER = MODIFIERS.register("mouse3", Mouse3::new);
+
 
     ///切断及换皮
     public static final StaticModifier<BaseSeveranceModifier> SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("severance", () -> new BaseSeveranceModifier(0.1F));
@@ -127,6 +186,15 @@ public class ModifierRegister {
     public static final StaticModifier<BaseToolMusic> I_LOVE_YOU = MODIFIERS.register("i_love_u", () -> new BaseToolMusic(JzyySoundsRegister.I_LOVE_U.get()));
     public static final StaticModifier<BaseToolMusic> THE_MILLENNIUM_SNOW = MODIFIERS.register("the_millennium_snow", () -> new BaseToolMusic(JzyySoundsRegister.THE_MILLENNIUM_SNOW.get()));
     public static final StaticModifier<BaseToolMusic> ONLY_WISH = MODIFIERS.register("only_wish", () -> new BaseToolMusic(JzyySoundsRegister.ONLY_WISH.get()));
+    public static final StaticModifier<BaseToolMusic> TIAMAT = MODIFIERS.register("tiamat", () -> new BaseToolMusic(JzyySoundsRegister.TIAMAT.get()));
+    public static final StaticModifier<BaseToolMusic> PANDORA = MODIFIERS.register("pandora", () -> new BaseToolMusic(JzyySoundsRegister.PANDORA.get()));
+
+
+
+    ///有效果的音乐
+    public static final StaticModifier<AwakenPandora> AWAKEN_PANDORA_STATIC_MODIFIER = MODIFIERS.register("awaken_pandora", AwakenPandora::new);
+    public static final StaticModifier<AwakenTiamat> AWAKEN_TIAMAT_STATIC_MODIFIER = MODIFIERS.register("awaken_tiamat", AwakenTiamat::new);
+
 
 
     ///etsh
@@ -139,6 +207,31 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyArmor> CSDY_ARMOR_STATIC_MODIFIER = MODIFIERS.register("csdy_armor", CsdyArmor::new);
     public static final StaticModifier<CsdyAttack> CSDY_ATTACK_STATIC_MODIFIER = MODIFIERS.register("csdy_attack", CsdyAttack::new);
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
+
+
+
+    ///真实形态
+    public static final StaticModifier<RealExperience> REAL_EXPERIENCE_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "real_experience",
+                    () -> new RealExperience(
+                            "experience_steel",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "real_experience_steel"),
+                                    "default"
+                            )
+                    )
+            );
+
+    ///经验钢
+    public static final StaticModifier<ExperienceKiller> EXPERIENCE_KILLER_STATIC_MODIFIER = MODIFIERS.register("experience_killer", ExperienceKiller::new);
+    public static final StaticModifier<RealExperienceKiller> REAL_EXPERIENCE_KILLER_STATIC_MODIFIER = MODIFIERS.register("real_experience_killer", RealExperienceKiller::new);
+
+
+
+
+
+
 
 
     ///领域

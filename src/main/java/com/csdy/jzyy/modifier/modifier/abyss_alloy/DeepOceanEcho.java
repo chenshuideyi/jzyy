@@ -26,8 +26,6 @@ import java.util.List;
 
 public class DeepOceanEcho extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook,TooltipModifierHook {
 
-//    private static final ResourceLocation DEEP_OCEAN_ECHO = new ResourceLocation(ModMain.MODID, "deep_ocean_echo");
-
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity attacker = context.getAttacker();

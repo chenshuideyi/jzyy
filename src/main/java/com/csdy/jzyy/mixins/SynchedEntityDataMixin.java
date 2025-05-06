@@ -1,5 +1,6 @@
 package com.csdy.jzyy.mixins;
 
+import com.csdy.jzyy.ms.util.LivingEntityUtil;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static com.csdy.jzyy.util.LivingEntityUtil.*;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.getAbsoluteSeveranceHealth;
 
 
 @Mixin(value = SynchedEntityData.class, priority = 1)
@@ -39,12 +40,12 @@ public abstract class SynchedEntityDataMixin {
             if (!Float.isNaN(destructionHealth)) {
                 if (value instanceof Float incomingHealth) {
                     float forcedHealth = Math.min(incomingHealth, destructionHealth);
-                    if (!WriteFlag.isInternalWrite()) {
-                        WriteFlag.beginWrite();
+                    if (!LivingEntityUtil.WriteFlag.isInternalWrite()) {
+                        LivingEntityUtil.WriteFlag.beginWrite();
                         try {
                             living.getEntityData().set((EntityDataAccessor<Float>) key, forcedHealth);
                         } finally {
-                            WriteFlag.endWrite();
+                            LivingEntityUtil.WriteFlag.endWrite();
                         }
                         ci.cancel();
                     }

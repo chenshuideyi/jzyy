@@ -67,5 +67,21 @@
         "stream": true
       }
     ]
+  },
+  "pandora": {
+    "sounds": [
+      {
+        "name":"jzyy:pandora",
+        "stream": true
+      }
+    ]
+  },
+  "tiamat": {
+    "sounds": [
+      {
+        "name":"jzyy:tiamat",
+        "stream": true
+      }
+    ]
   }
 }

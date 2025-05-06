@@ -42,4 +42,10 @@ public class JzyySoundsRegister {
 
     public static final RegistryObject<SoundEvent> ONLY_WISH = SOUND_EVENTS.register("only_wish",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "only_wish")));
+
+    public static final RegistryObject<SoundEvent> PANDORA = SOUND_EVENTS.register("pandora",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "pandora")));
+
+    public static final RegistryObject<SoundEvent> TIAMAT = SOUND_EVENTS.register("tiamat",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "tiamat")));
 }

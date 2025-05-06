@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "jzyy:item/experience_steel_ingot"
+  }
+}

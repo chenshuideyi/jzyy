@@ -1,6 +1,7 @@
 package com.csdy.jzyy.network;
 
 import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.network.packets.JzyySonicBoomPacket;
 import com.csdy.jzyy.network.packets.UnsafeMemoryPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +30,14 @@ public class JzyySyncing {
                 UnsafeMemoryPacket::encode,
                 UnsafeMemoryPacket::decode,
                 UnsafeMemoryPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
+        );
+        CHANNEL.registerMessage(
+                packetId++,
+                JzyySonicBoomPacket.class,
+                JzyySonicBoomPacket::encode,
+                JzyySonicBoomPacket::decode,
+                JzyySonicBoomPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
         );
     }

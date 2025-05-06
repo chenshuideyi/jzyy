@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:experience_killer",
+      "level": 1
+    },
+    {
+      "name": "tconstruct:experienced",
+      "level": 2
+    },
+    {
+      "name": "jzyy:real_experience",
+      "level": 1
+    }
+  ]
+}

@@ -134,10 +134,10 @@ public class SwordManCsdy extends Monster implements GeoEntity {
 
     }
 
-    @Override
-    public void setHealth(float value) {
-
-    }
+//    @Override
+//    public void setHealth(float value) {
+//
+//    }
 
 //    @Override
 //    public boolean hurt(DamageSource source, float amount) {

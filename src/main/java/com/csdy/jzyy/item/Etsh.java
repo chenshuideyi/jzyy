@@ -2,7 +2,7 @@ package com.csdy.jzyy.item;
 
 import com.csdy.jzyy.ModMain;
 import com.csdy.jzyy.item.register.ItemRegister;
-import com.csdy.jzyy.modifier.util.ReFont;
+import com.csdy.jzyy.modifier.util.font.ReFont;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
@@ -19,7 +19,6 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;

@@ -5,10 +5,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameRules;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
@@ -24,8 +22,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
-import static com.csdy.jzyy.util.LivingEntityUtil.*;
-import static com.csdy.jzyy.util.LivingEntityUtil.forceSetAllCandidateHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModifierHook {
     //TODO 切断死目标凋落物
