@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "jzyy:real_redstone_component",
+      "level": 1
+    },
+    {
+      "name": "jzyy:precision",
+      "level": 1
+    }
+  ]
+}

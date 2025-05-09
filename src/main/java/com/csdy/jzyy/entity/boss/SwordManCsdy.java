@@ -53,13 +53,13 @@ public class SwordManCsdy extends Monster implements GeoEntity {
     @Override
     public void startSeenByPlayer(@NotNull ServerPlayer player) {
         super.startSeenByPlayer(player);
-        this.bossEvent.addPlayer(player); // 玩家看到Boss时添加血条
+        this.bossEvent.addPlayer(player);
     }
 
     @Override
     public void stopSeenByPlayer(@NotNull ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        this.bossEvent.removePlayer(player); // 玩家不再看到时移除血条
+        this.bossEvent.removePlayer(player);
     }
 
     @Override
@@ -68,8 +68,8 @@ public class SwordManCsdy extends Monster implements GeoEntity {
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
         this.invulnerableTime = 0;
         if (!this.level().isClientSide && this.tickCount % 20 == 0) {
+            this.heal(10);
             ServerLevel serverLevel = (ServerLevel) this.level();
-            // 设置雷暴天气（持续时间20秒）
             serverLevel.setWeatherParameters(0, 400, true, true);
         }
     }
@@ -87,12 +87,12 @@ public class SwordManCsdy extends Monster implements GeoEntity {
             super.onRemovedFromWorld();
     }
 
-//    @Override
-//    public void onClientRemoval() {
-//        if (isDeadOrDying())  {
-//            super.onClientRemoval();
-//        }
-//    }
+    @Override
+    public void onClientRemoval() {
+        if (isDeadOrDying())  {
+            super.onClientRemoval();
+        }
+    }
 
     @Override
     public boolean isDeadOrDying() {
@@ -125,43 +125,23 @@ public class SwordManCsdy extends Monster implements GeoEntity {
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (!(source.getDirectEntity() instanceof Player)) return false;
         float realDamage = (float) Math.sqrt(damage);
-        System.out.println("伤害是"+realDamage);
         if (realDamage < 25F) {
             return false;
         }
-        this.entityData.set(DATA_HEALTH_ID,Math.max(this.getHealth()- realDamage,0));
         return super.hurt(source,damage);
-
     }
 
-//    @Override
-//    public void setHealth(float value) {
-//
-//    }
+    @Override
+    public void setHealth(float value) {
+        float currentHealth = this.getHealth();
+        float healthLoss = currentHealth - value;
+        float threshold = 25.0f;
+        if (healthLoss > threshold) {
+            value = currentHealth - threshold;
+        }
 
-//    @Override
-//    public boolean hurt(DamageSource source, float amount) {
-//        if (!(source.getDirectEntity() instanceof Player)) return false;
-//
-//        float realDamage = (float) Math.sqrt(amount);
-//        if (realDamage <= 25F) return false;
-//        // 直接修改血量（绕过setHealth）
-//        this.entityData.set(DATA_HEALTH_ID, Math.max(0, this.getHealth() - realDamage));
-//
-//        // 触发受伤效果
-//        this.hurtDuration = 10;
-//        this.hurtTime = this.hurtDuration;
-//        this.playHurtSound(source);
-//
-//        // 更新Boss血条
-//        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-//
-//        return true;
-//    }
-
-
-
-
+        super.setHealth(value);
+    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
@@ -177,7 +157,6 @@ public class SwordManCsdy extends Monster implements GeoEntity {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 2);
         builder = builder.add(Attributes.MAX_HEALTH, 750);
-//        builder = builder.add(Attributes.ARMOR, 24.0);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 100.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16.0);
         return builder;

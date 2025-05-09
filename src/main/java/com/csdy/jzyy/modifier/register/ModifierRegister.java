@@ -27,7 +27,9 @@ import com.csdy.jzyy.modifier.modifier.dx.tool.AwakenTiamat;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
+import com.csdy.jzyy.modifier.modifier.experience.ExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.ExperienceKiller;
+import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
@@ -37,6 +39,10 @@ import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.*;
 import com.csdy.jzyy.modifier.modifier.jzyy.AssAttack;
 import com.csdy.jzyy.modifier.modifier.jzyy.ChaosTransmigration;
 import com.csdy.jzyy.modifier.modifier.jzyy.HornToss;
+import com.csdy.jzyy.modifier.modifier.living_wood.Ecological;
+import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestAngry;
+import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestArmor;
+import com.csdy.jzyy.modifier.modifier.living_wood.real.Life;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.LifeStealArmor;
@@ -45,6 +51,11 @@ import com.csdy.jzyy.modifier.modifier.projectE.Juggernaut;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.EquivalentArmor;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
 import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
+import com.csdy.jzyy.modifier.modifier.real_form.RealLivingWood;
+import com.csdy.jzyy.modifier.modifier.real_form.RealRenstoneComponent;
+import com.csdy.jzyy.modifier.modifier.redstone_component.Precision;
+import com.csdy.jzyy.modifier.modifier.redstone_component.real.Disruptor;
+import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
@@ -142,7 +153,6 @@ public class ModifierRegister {
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
 
     ///哈肯典姆
-    /// 记得上色
     public static final StaticModifier<EatStone> EAT_STONE_STATIC_MODIFIER = MODIFIERS.register("eat_stone", EatStone::new);
     public static final StaticModifier<NoLevelsModifier> BEDROCK_BREAK = MODIFIERS.register("bedrock_breaker", NoLevelsModifier::new);
     public static final StaticModifier<HarcadiumArmor> HARCADIUM_ARMOR_STATIC_MODIFIER = MODIFIERS.register("harcadium_armor", HarcadiumArmor::new);
@@ -219,19 +229,55 @@ public class ModifierRegister {
                             MaterialVariantId.create(
                                     new MaterialId("jzyy", "real_experience_steel"),
                                     "default"
-                            )
+                            ),
+                            "经验钢达到了完美境界！"
                     )
             );
+
+    public static final StaticModifier<RealLivingWood> REAL_LIVING_WOOD_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "real_living_wood",
+                    () -> new RealLivingWood(
+                            "living_wood",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "real_living_wood"),
+                                    "default"
+                            ),
+                            "生命木在极端条件下突破了极限！"
+                    )
+            );
+
+    public static final StaticModifier<RealRenstoneComponent> REAL_RENSTONE_COMPONENT_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "real_redstone_component",
+                    () -> new RealRenstoneComponent(
+                            "unpowered_redstone_component",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "real_redstone_component"),
+                                    "default"
+                            ),
+                            "红石构件充能到了极致！"
+                    )
+            );
+
+
 
     ///经验钢
     public static final StaticModifier<ExperienceKiller> EXPERIENCE_KILLER_STATIC_MODIFIER = MODIFIERS.register("experience_killer", ExperienceKiller::new);
     public static final StaticModifier<RealExperienceKiller> REAL_EXPERIENCE_KILLER_STATIC_MODIFIER = MODIFIERS.register("real_experience_killer", RealExperienceKiller::new);
+    public static final StaticModifier<ExperienceArmor> EXPERIENCE_ARMOR_STATIC_MODIFIER = MODIFIERS.register("experience_armor", ExperienceArmor::new);
+    public static final StaticModifier<RealExperienceArmor> REAL_EXPERIENCE_ARMOR_STATIC_MODIFIER = MODIFIERS.register("real_experience_armor", RealExperienceArmor::new);
 
+    ///生命木
+    public static final StaticModifier<Ecological> ECOLOGICAL_STATIC_MODIFIER = MODIFIERS.register("ecological", Ecological::new);
+    public static final StaticModifier<ForestAngry> FOREST_ANGRY_STATIC_MODIFIER = MODIFIERS.register("forest_angry", ForestAngry::new);
+    public static final StaticModifier<ForestArmor> FOREST_ARMOR_STATIC_MODIFIER = MODIFIERS.register("forest_armor", ForestArmor::new);
+    public static final StaticModifier<Life> LIFE_STATIC_MODIFIER = MODIFIERS.register("life", Life::new);
 
-
-
-
-
+    ///红石构件
+    public static final StaticModifier<Disruptor> DISRUPTOR_STATIC_MODIFIER = MODIFIERS.register("disruptor", Disruptor::new);
+    public static final StaticModifier<FullOfEnergy> FULL_OF_ENERGY_STATIC_MODIFIER = MODIFIERS.register("full_of_energy", FullOfEnergy::new);
+    public static final StaticModifier<Precision> PRECISION_STATIC_MODIFIER = MODIFIERS.register("precision", Precision::new);
 
 
     ///领域

@@ -1,0 +1,28 @@
+{
+  "default": [
+    {
+      "name": "jzyy:full_of_energy",
+      "level": 1
+    },
+    {
+      "name": "jzyy:precision",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:full_of_energy",
+        "level": 1
+      },
+      {
+        "name": "jzyy:precision",
+        "level": 1
+      },
+      {
+        "name": "jzyy:disruptor",
+        "level": 1
+      }
+    ]
+  }
+}

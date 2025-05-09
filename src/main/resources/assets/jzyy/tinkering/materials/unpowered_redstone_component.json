@@ -1,0 +1,16 @@
+{
+  "color": "ffcc00",
+  "fallbacks": [
+    "metal"
+  ],
+  "generator": {
+    "ignoreMaterialStats": false,
+    "supportedStats": [
+      "tconstruct:head",
+      "tconstruct:handle",
+      "tconstruct:binding",
+      "tconstruct:limb",
+      "tconstruct:grip"
+    ]
+  }
+}

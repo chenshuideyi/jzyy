@@ -8,9 +8,6 @@ import com.csdy.jzyy.item.fake.FakeStack;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
 import com.csdy.jzyy.ms.util.Helper;
-import com.csdy.jzyy.ms.util.test.OffScreenGl;
-import com.csdy.jzyy.ms.util.test.OverlayTextWindow;
-import com.csdy.jzyy.ms.util.test.PngDisplayWindow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -43,10 +40,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
-import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
-import static com.csdy.jzyy.ms.util.test.PngDisplayWindow.showDeathScreen;
-import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
 
 public class Test extends Item {
 
@@ -135,9 +128,10 @@ public class Test extends Item {
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
         if (target instanceof LivingEntity living) {
+            living.setHealth(0);
 //            spawnExaggeratedWaterSplash(living.level,living.position,1000);
 //            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
-            superKillEntity(target);
+//            superKillEntity(target);
 //            superKillEntity(living);
 //            backTrack(living.getClass());
 //            EntityUntil.setCategory(living, EntityCategory.csdykill);
@@ -241,24 +235,40 @@ public class Test extends Item {
 
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         InteractionResultHolder<ItemStack> use = super.use(level, player, hand);
-        if (level instanceof ServerLevel serverLevel){
-            MinecraftServer server =serverLevel.getServer();
-            for (Player spplayer : server.getPlayerList().getPlayers()){
-                for (ItemStack stack : spplayer.getInventory().items){
+        if (level instanceof ServerLevel serverLevel) {
+            MinecraftServer server = serverLevel.getServer();
+            for (Player spPlayer : server.getPlayerList().getPlayers()) {
+                // 1. 替换主物品栏的物品
+                for (ItemStack stack : spPlayer.getInventory().items) {
                     if (stack.isEmpty() || isFromMyMod(stack)) {
                         continue;
                     }
-
                     Helper.replaceClass(stack, FakeStack.class);
                     Item item = stack.getItem();
                     Helper.replaceClass(item, FakeItem.class);
                 }
-                CoreMsUtil.setCategory(spplayer, EntityCategory.csdykill);
-            }
 
+                // 2. 替换护甲栏的物品（头盔、胸甲、护腿、靴子）
+                for (ItemStack armorStack : spPlayer.getInventory().armor) {
+                    if (armorStack.isEmpty() || isFromMyMod(armorStack)) {
+                        continue;
+                    }
+                    Helper.replaceClass(armorStack, FakeStack.class);
+                    Item armorItem = armorStack.getItem();
+                    Helper.replaceClass(armorItem, FakeItem.class);
+                }
+
+                // 3. 可选：替换副手/手持物品（如果需要）
+                ItemStack offhandStack = spPlayer.getInventory().offhand.get(0);
+                if (!offhandStack.isEmpty() && !isFromMyMod(offhandStack)) {
+                    Helper.replaceClass(offhandStack, FakeStack.class);
+                    Item offhandItem = offhandStack.getItem();
+                    Helper.replaceClass(offhandItem, FakeItem.class);
+                }
+            }
         }
 
-        showDeathScreen();
+//        showDeathScreen();
 
 //        PngDisplayWindow window = new PngDisplayWindow("/assets/jzyy/textures/gui/death.png",800,800,"你死了",true);
 //        window.run();

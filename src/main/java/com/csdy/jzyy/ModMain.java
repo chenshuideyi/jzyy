@@ -113,9 +113,9 @@ public class ModMain {
         if (renderer != null) {
             // 一次性添加所有可能的层
             renderer.addLayer(new PlayerLayer(renderer));
-            renderer.addLayer(new BloodLayer(renderer));
-            renderer.addLayer(new ScpLayer(renderer));
-            renderer.addLayer(new GocLayer(renderer));
+//            renderer.addLayer(new BloodLayer(renderer));
+//            renderer.addLayer(new ScpLayer(renderer));
+//            renderer.addLayer(new GocLayer(renderer));
         }
     }
 }

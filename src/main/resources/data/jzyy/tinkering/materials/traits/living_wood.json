@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "jzyy:ecological",
+      "level": 1
+    },
+    {
+      "name": "jzyy:real_living_wood",
+      "level": 1
+    }
+  ]
+}

@@ -4,5 +4,13 @@
       "name": "jzyy:real_experience_killer",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:real_experience_armor",
+        "level": 1
+      }
+    ]
+  }
 }

@@ -4,7 +4,9 @@
   "item.jzyy.mtf": "代码能力提升药",
   "item.jzyy.null": "死亡是向下的，而我已经失去了我的高度",
   "item.jzyy.harcadium": "哈肯典姆",
-
+  "item.jzyy.living_wood": "生命木",
+  "item.jzyy.experience_steel_ingot": "经验钢",
+  "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
 
 
   "stat.tconstruct.slot.display.dx": "音乐",
@@ -65,11 +67,23 @@
   "material.jzyy.marisa.flavor": "为啥啊？？？",
   "material.jzyy.marisa.encyclopedia": "会偷走重要的东西",
 
+  "material.jzyy.living_wood": "生命木",
+  "material.jzyy.living_wood.flavor": "会呼吸的木头",
+  "material.jzyy.living_wood.encyclopedia": "他是活的！也许我能让它变得更大",
+
+  "material.jzyy.unpowered_redstone_component": "未充能的红石构件",
+  "material.jzyy.unpowered_redstone_component.flavor": "一种基于热力的精密构件",
+  "material.jzyy.unpowered_redstone_component.encyclopedia": "也许需要把它带到红石信号高涨的地方",
+
+  "material.jzyy.real_redstone_component": "盈能红石构件",
+
+  "material.jzyy.real_living_wood": "莎拉达希尔",
+
   "material.jzyy.experience_steel": "经验钢",
   "material.jzyy.experience_steel.flavor": "充满了经验的力量",
   "material.jzyy.experience_steel.encyclopedia": "这绝不是它的真实形态",
 
-  "material.jzyy.real_experience_steel": "完美",
+  "material.jzyy.real_experience_steel": "完美经验钢",
 
   "material.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "material.jzyy.etsh.flavor": "揭开时光中的秘密",
@@ -331,7 +345,11 @@
   "modifier.jzyy.experience_killer.flavor": "阅历越丰富伤害越高",
   "modifier.jzyy.experience_killer.description": "每一级经验都会提供额外伤害，扣除你的经验等级作为驱动力",
 
-  "modifier.jzyy.real_experience": "？？？",
+  "modifier.jzyy.experience_armor": "经验护甲",
+  "modifier.jzyy.experience_armor.flavor": "阅历越丰富越耐揍",
+  "modifier.jzyy.experience_armor.description": "每一级经验都会帮你抵挡更多伤害，扣除你的经验等级作为驱动力",
+
+  "modifier.jzyy.real_experience": "答案-并非如此",
   "modifier.jzyy.real_experience.flavor": "使用它的时候，就像人类允许孩童挥舞未开刃的玩具剑，它的力量远不止此\n谨献给配灵魂比凡人厚重三百倍的人",
   "modifier.jzyy.real_experience.description": "揭示它的真实形态！",
 
@@ -339,10 +357,45 @@
   "modifier.jzyy.real_experience_killer.flavor": "苹果树从不向枝条询问他如何生长，狮子也不向马问如何捕猎",
   "modifier.jzyy.real_experience_killer.description": "每一级经验都会提供额外伤害，每一次攻击都会提升你的等级",
 
+  "modifier.jzyy.real_experience_armor": "知识壁垒",
+  "modifier.jzyy.real_experience_armor.flavor": "知识是一座一砖一瓦砌成的城市。但在城墙外的黑暗中等待的是什么？如果没有恐惧的对象，我们又何必筑起高墙",
+  "modifier.jzyy.real_experience_armor.description": "每一级经验都会帮你抵挡更多伤害，扣除你的经验等级作为驱动力",
 
+  "modifier.jzyy.ecological": "生态",
+  "modifier.jzyy.ecological.flavor": "就像匠魂2那样",
+  "modifier.jzyy.ecological.description": "你的工具会缓慢修复自身",
 
+  "modifier.jzyy.real_living_wood": "幼年体",
+  "modifier.jzyy.real_living_wood.flavor": "它就像幼童般稚嫩，或许有办法更进一步\n在硫磺与火之地润湿",
+  "modifier.jzyy.real_living_wood.description": "揭示它的真实形态！",
 
+  "modifier.jzyy.forest_angry": "森林之怒",
+  "modifier.jzyy.forest_angry.flavor": "森林也是会反抗的",
+  "modifier.jzyy.forest_angry.description": "附近的树越少，造成的伤害越高",
 
+  "modifier.jzyy.forest_armor": "森林之护",
+  "modifier.jzyy.forest_armor.flavor": "森林会保护你",
+  "modifier.jzyy.forest_armor.description": "附近的树越多，你的生命再生越强大",
+
+  "modifier.jzyy.life": "生命",
+  "modifier.jzyy.life.flavor": "荒野的美德",
+  "modifier.jzyy.life.description": "获得5点最大生命值",
+
+  "modifier.jzyy.precision": "精密",
+  "modifier.jzyy.precision.flavor": "集成红石学的产物",
+  "modifier.jzyy.precision.description": "每级获得4%的全属性加成",
+
+  "modifier.jzyy.real_redstone_component": "低耗能模式",
+  "modifier.jzyy.real_redstone_component.flavor": "它看起来不太妙，也许需要更多红石能量",
+  "modifier.jzyy.real_redstone_component.description": "揭示它的真实形态！",
+
+  "modifier.jzyy.full_of_energy": "盈能",
+  "modifier.jzyy.full_of_energy.flavor": "把充能顶到11档！",
+  "modifier.jzyy.full_of_energy.description": "增加一个强化槽，防御槽，能力槽",
+
+  "modifier.jzyy.disruptor": "信号不稳",
+  "modifier.jzyy.disruptor.flavor": "附近的红石趋于不稳定化",
+  "modifier.jzyy.disruptor.description": "附近的红石火把和红石粉会闪烁",
 
   "modifier.jzyy.edge_runner": "边缘行者",
   "modifier.jzyy.edge_runner.flavor": "小心，稍有差错就会万劫不复",

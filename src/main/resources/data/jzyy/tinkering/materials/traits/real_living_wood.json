@@ -1,0 +1,28 @@
+{
+  "default": [
+    {
+      "name": "jzyy:ecological",
+      "level": 5
+    },
+    {
+      "name": "jzyy:forest_angry",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:ecological",
+        "level": 5
+      },
+      {
+        "name": "jzyy:forest_armor",
+        "level": 1
+      },
+      {
+        "name": "jzyy:life",
+        "level": 1
+      }
+    ]
+  }
+}

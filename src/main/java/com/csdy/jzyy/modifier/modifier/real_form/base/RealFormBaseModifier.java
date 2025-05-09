@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.real_form.base;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -26,14 +27,17 @@ public abstract class RealFormBaseModifier extends NoLevelsModifier implements I
 
     private final String materialId;
     private final MaterialVariantId reMaterialId;
+    private final String text;
 
     /**
      * @param materialId   基础材料的ID
      * @param reMaterialId 真实形态的ID
+     * @param text 转变时的文本
      */
-    public RealFormBaseModifier(String materialId, MaterialVariantId reMaterialId) {
+    public RealFormBaseModifier(String materialId, MaterialVariantId reMaterialId,String text) {
         this.materialId = materialId;
         this.reMaterialId = reMaterialId;
+        this.text= text;
     }
 
     /**
@@ -61,8 +65,8 @@ public abstract class RealFormBaseModifier extends NoLevelsModifier implements I
                         player.getX(), player.getY(), player.getZ(),
                         SoundEvents.TOTEM_USE,
                         SoundSource.PLAYERS,
-                        1.0F,
-                        1.0F
+                        0.5F,
+                        1F
                 );
 
                 // 生成粒子效果
@@ -73,7 +77,7 @@ public abstract class RealFormBaseModifier extends NoLevelsModifier implements I
                         0.5, 0.5, 0.5,
                         0.2
                 );
-
+                player.displayClientMessage(Component.translatable(text), true);
 
             }
         }

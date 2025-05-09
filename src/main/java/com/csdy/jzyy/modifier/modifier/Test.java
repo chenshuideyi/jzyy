@@ -4,9 +4,16 @@ import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.LeftClickModifierHook;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,6 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
@@ -39,6 +47,7 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.csdy.jzyy.modifier.util.BlockInteractionLogic.forceBreakBlock;
@@ -75,10 +84,13 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
         hookBuilder.addHook(this, EtSTLibHooks.LEFT_CLICK);
     }
 
-    @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damageDealt) {
+    // 在Mod主类或工具类中定义常量
+    private static final double CHAIN_RADIUS = 5.0; // 闪电链作用半径
+    private static final int MAX_CHAIN_TARGETS = 4; // 最大连锁目标数
+    private static final float CHAIN_DAMAGE = 3.0f; // 每次连锁伤害
+    private static final int COOLDOWN_TICKS = 20; // 冷却时间(1秒)
 
-    }
+
 //        @Override
 //        public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
 //            if (!(holder instanceof Player player)) return;
@@ -99,8 +111,71 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
 
 
     @Override
-    public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int i, boolean b, boolean b1, ItemStack itemStack) {
-        EvolutionTool((ToolStack) tool);
+    public void onInventoryTick(IToolStackView tool, ModifierEntry modifierEntry, Level level, LivingEntity livingEntity, int l, boolean b, boolean b1, ItemStack itemStack) {
+        LivingEntity attacker = livingEntity;
+        LivingEntity target = livingEntity;
+
+        // 基础条件检查
+        if (attacker == null || target == null || attacker.level().isClientSide) return;
+
+        // 冷却检查(防止多重触发)
+        CompoundTag persistentData = tool.getPersistentData().getCopy();
+        long lastAttackTime = persistentData.getLong("LastChainTime");
+        if (attacker.tickCount - lastAttackTime < COOLDOWN_TICKS) return;
+
+        // 寻找范围内其他生物
+        List<LivingEntity> nearbyEntities = attacker.level().getEntitiesOfClass(
+                LivingEntity.class,
+                target.getBoundingBox().inflate(CHAIN_RADIUS),
+                e -> e != attacker && e != target && e.isAlive()
+        );
+
+        // 随机选择最多MAX_CHAIN_TARGETS个目标
+        Collections.shuffle(nearbyEntities);
+        int targetsHit = Math.min(nearbyEntities.size(), MAX_CHAIN_TARGETS);
+
+        // 对每个目标造成连锁闪电
+        for (int i = 0; i < targetsHit; i++) {
+            LivingEntity chainTarget = nearbyEntities.get(i);
+
+            // 造成伤害
+//            chainTarget.hurt(attacker.damageSources().lightningBolt(), CHAIN_DAMAGE);
+
+            // 生成闪电链视觉效果
+//            spawnChainLightning(attacker.level(), target.position(), chainTarget.position());
+
+            // 播放音效
+            attacker.level().playSound(
+                    null,
+                    chainTarget.getX(),
+                    chainTarget.getY(),
+                    chainTarget.getZ(),
+                    SoundEvents.LIGHTNING_BOLT_THUNDER,
+                    SoundSource.WEATHER,
+                    0.5F,
+                    1.0F + attacker.level().random.nextFloat() * 0.2F
+            );
+
+            // 次要目标着火2秒
+//            chainTarget.setSecondsOnFire(2);
+        }
+
+        // 记录最后触发时间
+        persistentData.putLong("LastChainTime", attacker.tickCount);
+
+        // 主目标额外特效
+        if (targetsHit > 0) {
+            attacker.level().playSound(
+                    null,
+                    target.getX(),
+                    target.getY(),
+                    target.getZ(),
+                    SoundEvents.LIGHTNING_BOLT_IMPACT,
+                    SoundSource.WEATHER,
+                    1.0F,
+                    1.0F
+            );
+        }
     }
 
     public static void forceDropBlockLoot(Level level, BlockPos pos) {
@@ -129,19 +204,5 @@ public class Test extends NoLevelsModifier implements ToolStatsModifierHook, Mel
 //        return getLevel(a);
 //    }
 
-    public static final MaterialVariantId bedrock = MaterialVariantId.create(new MaterialId("jzyy","bedrock"),"default");
 
-
-    public static void EvolutionTool(ToolStack tool) {
-        MaterialNBT materials = tool.getMaterials();
-        ModifierId modifierId = ModifierRegister.TEST_STATIC_MODIFIER.getId();
-        for (int i = 0; i < materials.size(); i++) {
-            MaterialVariant variant = materials.get(i);
-            if (variant.getVariant().getId().getPath().equals("harcadium") && variant.getVariant().getId().getNamespace().equals("jzyy")) {
-//                System.out.println("Current modifier level: " + tool.getModifierLevel(modifierId));
-                tool.replaceMaterial(i,bedrock);
-//                tool.removeModifier(modifierId,1);
-            }
-        }
-    }
 }

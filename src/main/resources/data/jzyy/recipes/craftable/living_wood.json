@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "STS",
+    "T T",
+    "STS"
+  ],
+  "key": {
+    "S": {
+      "tag": "minecraft:saplings"
+    },
+    "T": {
+      "item": "minecraft:vine"
+    }
+  },
+  "result": {
+    "item": "jzyy:living_wood",
+    "count": 1
+  }
+}

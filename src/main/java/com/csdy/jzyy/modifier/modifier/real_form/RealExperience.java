@@ -19,8 +19,8 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 ///我已达到顶点，而后只有衰败
 public class RealExperience extends RealFormBaseModifier {
 
-    public RealExperience(String materialId, MaterialVariantId reMaterialId) {
-        super(materialId, reMaterialId);
+    public RealExperience(String materialId, MaterialVariantId reMaterialId ,String text) {
+        super(materialId, reMaterialId,text);
     }
 
     @Override

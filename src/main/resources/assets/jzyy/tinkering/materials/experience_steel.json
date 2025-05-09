@@ -21,6 +21,42 @@
       "tconstruct:plating_shield",
       "tconstruct:maille",
       "tconstruct:armor_maille"
-    ]
+    ],
+    "transformer": {
+      "type": "tconstruct:recolor_sprite",
+      "color_mapping": {
+        "type": "tconstruct:grey_to_color",
+        "palette": [
+          {
+            "color": "FF000000",
+            "grey": 0
+          },
+          {
+            "color": "FF57ff45",
+            "grey": 63
+          },
+          {
+            "color": "FF57ff45",
+            "grey": 102
+          },
+          {
+            "color": "FF92ff3e",
+            "grey": 140
+          },
+          {
+            "color": "FF92ff3e",
+            "grey": 178
+          },
+          {
+            "color": "FFbfff33",
+            "grey": 216
+          },
+          {
+            "color": "FFf5ff35",
+            "grey": 255
+          }
+        ]
+      }
+    }
   }
 }

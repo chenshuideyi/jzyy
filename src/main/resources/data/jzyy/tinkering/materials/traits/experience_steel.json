@@ -12,5 +12,17 @@
       "name": "jzyy:real_experience",
       "level": 1
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:experience_armor",
+        "level": 1
+      },
+      {
+        "name": "jzyy:real_experience",
+        "level": 1
+      }
+    ]
+  }
 }

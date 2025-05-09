@@ -71,11 +71,26 @@
     "equivalent_armor": "#000000",
     "juggernaut": "#FF0000",
     "ultradense": "#FF0000",
+    "哈肯典姆": null,
     "eat_stone": "#FF00FF",
     "bedrock_breaker": "#FF00FF",
     "_经验钢_": null,
     "experience_killer": "#8bfe3e",
-    "real_experience": "#8bfe3e"
+    "real_experience": "#8bfe3e",
+    "real_experience_killer": "#8bfe3e",
+    "experience_armor": "#8bfe3e",
+    "real_experience_armor": "#8bfe3e",
+    "生态木": null,
+    "ecological": "#a2cda7",
+    "real_living_wood": "#a2cda7",
+    "forest_angry": "#a2cda7",
+    "forest_armor": "#a2cda7",
+    "life":"#a2cda7",
+    "红石构件": null,
+    "precision": "#fcff8d",
+    "real_redstone_component": "#fcff8d",
+    "full_of_energy": "#fcff8d",
+    "disruptor": "#fcff8d"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -88,7 +103,12 @@
     "dx": "#00FFFF",
     "harcadium": "#FF00FF",
     "bedrock": "#1c1c1c",
-    "experience_steel": "#8bfe3e"
+    "experience_steel": "#8bfe3e",
+    "real_experience_steel": "#8bfe3e",
+    "living_wood": "#a2cda7",
+    "real_living_wood": "#a2cda7",
+    "unpowered_redstone_component": "#fcff8d",
+    "real_redstone_component": "#ffcc00"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

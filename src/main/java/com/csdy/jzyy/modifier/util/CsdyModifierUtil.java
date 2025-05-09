@@ -1,10 +1,14 @@
 package com.csdy.jzyy.modifier.util;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import slimeknights.tconstruct.library.tools.stat.*;
@@ -21,6 +25,17 @@ public class CsdyModifierUtil {
         for (IToolStat<?> stat : allStats) {
             if (stat instanceof INumericToolStat<?> numericStat) {
                 numericStat.multiply(builder, multiplier);
+            }
+        }
+    }
+
+    public static void addAllToolStats(ModifierStatsBuilder builder, double multiplier) {
+
+        Collection<IToolStat<?>> allStats = ToolStats.getAllStats();
+
+        for (IToolStat<?> stat : allStats) {
+            if (stat instanceof INumericToolStat<?> numericStat) {
+                numericStat.add(builder, multiplier);
             }
         }
     }
@@ -55,5 +70,14 @@ public class CsdyModifierUtil {
         return false;
     }
 
+    public static boolean isEntityInSunlight(Entity entity) {
+        Level level = entity.level();
+        BlockPos pos = entity.blockPosition();
+
+        // 检查是否是白天 + 天空可见 + 天空光照足够高
+        return level.isDay()
+                && level.canSeeSky(pos)
+                && level.getBrightness(LightLayer.SKY, pos) >= 14;
+    }
 
 }
