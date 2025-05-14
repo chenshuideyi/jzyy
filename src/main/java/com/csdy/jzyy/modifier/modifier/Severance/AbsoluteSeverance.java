@@ -1,5 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.Severance;
 
+
+import com.csdy.jzyy.ModMain;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -24,6 +27,7 @@ import java.util.UUID;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
+@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModifierHook {
     //TODO 切断死目标凋落物
     @Override
@@ -41,8 +45,9 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
-        if (target != null && player != null) {
+        if (target != null && player != null && target.getHealth() > 0) {
             float reHealth = target.getHealth() - damage * this.value;
+            System.out.println("吃我绝对切断");
             setAbsoluteSeveranceHealth(target,reHealth);
             forceSetAllCandidateHealth(target,reHealth);
             if (reHealth <= 0){
@@ -53,6 +58,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
                 setEntityDead(target);
                 dropLoot(target,playerKill);
             }
+            System.out.println("目标血量是"+target.getHealth());
         }
         return knockback;
     }

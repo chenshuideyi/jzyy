@@ -45,6 +45,7 @@ public class Etsh extends Item {
     @SubscribeEvent
     public static void onPlayerInteractBlockRightClick(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
+        System.out.println("玩家最大生命值"+player.getMaxHealth());
         InteractionHand hand = event.getHand();
         ItemStack heldItem = player.getItemInHand(hand);
         Level world = event.getLevel();

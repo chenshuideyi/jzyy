@@ -2,7 +2,7 @@
   "fallbacks": [
     "metal"
   ],
-  "color": "B5E61D",
+  "color": "A9A9A9",
   "luminosity": 15,
   "generator": {
     "ignoreMaterialStats": false,

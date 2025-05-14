@@ -14,12 +14,13 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
+
 public class Life extends NoLevelsModifier implements AttributesModifierHook {
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry entry, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         if (slot.getType() == EquipmentSlot.Type.ARMOR) {
-            UUID uuid = UUID.fromString("420103200-e5f6-7890-a1b2-5f9191");
+            UUID uuid = UUID.nameUUIDFromBytes(("tool_health_boost_" + slot.getName()).getBytes());
             AttributeModifier modifier = new AttributeModifier(
                     uuid,
                     "tool_health_boost",

@@ -51,6 +51,10 @@
   "material.jzyy.bedrock.flavor": "主世界最硬的物质",
   "material.jzyy.bedrock.encyclopedia": "泰坦造物",
 
+  "material.jzyy.fake_bedrock": "基佬石头",
+  "material.jzyy.fake_bedrock.flavor": "除了硬一无是处",
+  "material.jzyy.fake_bedrock.encyclopedia": "没有泰坦诸神眷恋的小石头",
+
   "material.jzyy.tong_ban": "§d桐板",
   "material.jzyy.tong_ban.flavor": "还在眨眼睛",
   "material.jzyy.tong_ban.encyclopedia": "请输入文本",
@@ -217,10 +221,12 @@
   "modifier.jzyy.blade_release1.flavor": "刃口传来婴儿啼哭般的震颤",
   "modifier.jzyy.blade_release1.description":"近战伤害增加6点",
 
+  "modifier.jzyy.blade_release2.requirements": "需要剑刃解放I作为前置",
   "modifier.jzyy.blade_release2": "剑刃解放II",
   "modifier.jzyy.blade_release2.flavor": "刃锋尝过七种不同的绝望",
   "modifier.jzyy.blade_release2.description":"近战伤害增加7点",
 
+  "modifier.jzyy.blade_release3.requirements": "需要剑刃解放II作为前置",
   "modifier.jzyy.blade_release3": "剑刃解放III",
   "modifier.jzyy.blade_release3.flavor": "鞘中充斥着渴望纷争的风",
   "modifier.jzyy.blade_release3.description":"近战伤害增加8点",
@@ -398,8 +404,16 @@
   "modifier.jzyy.disruptor.description": "附近的红石火把和红石粉会闪烁",
 
   "modifier.jzyy.edge_runner": "边缘行者",
-  "modifier.jzyy.edge_runner.flavor": "小心，稍有差错就会万劫不复",
+  "modifier.jzyy.edge_runner.flavor": "Let's start at the rainbow",
   "modifier.jzyy.edge_runner.description":"分配给mc的内存越少造成的伤害越高",
+
+  "modifier.jzyy.echo_form": "回响形态",
+  "modifier.jzyy.echo_form.flavor": "我说回响卡我启动了",
+  "modifier.jzyy.echo_form.description":"你的特性与强化增伤会生效2次",
+
+  "modifier.jzyy.echo_form1": "回响形态",
+  "modifier.jzyy.echo_form1.flavor": "我说回响卡我启动了",
+  "modifier.jzyy.echo_form1.description":"你的特性与强化增伤会生效2次",
 
   "txet": "也许考虑只在愚人节使用",
   "modifier.jzyy.fuck_memory_till_die": "数据剪切",
@@ -494,11 +508,20 @@
   "modifier.jzyy.bedrock.flavor": "这是泰坦生物？",
   "modifier.jzyy.bedrock.description":"获得1500点最大生命值",
 
+  "modifier.jzyy.just_bed_and_rock": "只是一块基佬岩石",
+  "modifier.jzyy.just_bed_and_rock.flavor": "怎会如此？",
+  "modifier.jzyy.just_bed_and_rock.description":"没有泰坦之力的灌注，这也只不过是一块小石头",
+
 
   "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
   "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",
   "modifier.jzyy.alex_meltdown.description":"对领域内的所有生物施加巨量的辐射",
 
+  "赞助强化这一块": "",
+  "modifier.jzyy.final_sword.requirements": "需要剑刃解放III作为前置",
+  "modifier.jzyy.final_sword": "终剑",
+  "modifier.jzyy.final_sword.flavor": "终剑X的提案",
+  "modifier.jzyy.final_sword.description": "你的工具近战攻击力*2",
 
 
   "entity.jzyy.sword_man_csdy": "剑人csdy",

@@ -16,10 +16,12 @@ import java.util.function.BiConsumer;
 
 public class BedRock extends NoLevelsModifier implements AttributesModifierHook {
 
+
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry entry, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         if (slot.getType() == EquipmentSlot.Type.ARMOR) {
-            UUID uuid = UUID.fromString("420103200-e5f6-7890-a1b2-5f7890");
+            // 使用基于插槽和修饰符的固定UUID
+            UUID uuid = UUID.nameUUIDFromBytes(("tool_health_boost_" + slot.getName()).getBytes());
             AttributeModifier modifier = new AttributeModifier(
                     uuid,
                     "tool_health_boost",

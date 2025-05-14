@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:material",
   "ingredient": {
-    "item": "minecraft:bedrock"
+    "item": "omegafish:real_bedrock"
   },
   "value": 1,
   "needed": 1,

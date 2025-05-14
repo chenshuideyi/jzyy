@@ -38,7 +38,9 @@ import com.csdy.jzyy.modifier.modifier.ice_and_fire.*;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.*;
 import com.csdy.jzyy.modifier.modifier.jzyy.AssAttack;
 import com.csdy.jzyy.modifier.modifier.jzyy.ChaosTransmigration;
+import com.csdy.jzyy.modifier.modifier.jzyy.EchoForm;
 import com.csdy.jzyy.modifier.modifier.jzyy.HornToss;
+import com.csdy.jzyy.modifier.modifier.jzyy.sponsor.FinalSword;
 import com.csdy.jzyy.modifier.modifier.living_wood.Ecological;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestAngry;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestArmor;
@@ -61,11 +63,15 @@ import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
 import com.csdy.tcondiadema.modifier.DiademaModifier;
+import net.minecraft.world.entity.EquipmentSlot;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
+
+import java.util.UUID;
 
 import static com.csdy.jzyy.ModMain.MODID;
 
@@ -151,6 +157,8 @@ public class ModifierRegister {
     ///强大词条
 
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
+    public static final StaticModifier<EchoForm> ECHO_FORM_STATIC_MODIFIER = MODIFIERS.register("echo_form", EchoForm::new);
+    public static final StaticModifier<NoLevelsModifier> ECHO_FORM1_STATIC_MODIFIER = MODIFIERS.register("echo_form1", NoLevelsModifier::new);
 
     ///哈肯典姆
     public static final StaticModifier<EatStone> EAT_STONE_STATIC_MODIFIER = MODIFIERS.register("eat_stone", EatStone::new);
@@ -161,7 +169,8 @@ public class ModifierRegister {
     public static final StaticModifier<BedRock> BED_ROCK_STATIC_MODIFIER = MODIFIERS.register("bedrock", BedRock::new);
     public static final StaticModifier<Deicide> DEICIDE_STATIC_MODIFIER = MODIFIERS.register("deicide", Deicide::new);
     public static final StaticModifier<Mouse3> MOUSE_3_STATIC_MODIFIER = MODIFIERS.register("mouse3", Mouse3::new);
-
+    ///假的
+    public static final StaticModifier<NoLevelsModifier> JUST_BED_AND_ROCK = MODIFIERS.register("just_bed_and_rock", NoLevelsModifier::new);
 
     ///切断及换皮
     public static final StaticModifier<BaseSeveranceModifier> SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("severance", () -> new BaseSeveranceModifier(0.1F));
@@ -279,6 +288,8 @@ public class ModifierRegister {
     public static final StaticModifier<FullOfEnergy> FULL_OF_ENERGY_STATIC_MODIFIER = MODIFIERS.register("full_of_energy", FullOfEnergy::new);
     public static final StaticModifier<Precision> PRECISION_STATIC_MODIFIER = MODIFIERS.register("precision", Precision::new);
 
+    ///赞助强化这一块
+    public static final StaticModifier<FinalSword> FINAL_SWORD_STATIC_MODIFIER = MODIFIERS.register("final_sword", FinalSword::new);
 
     ///领域
     public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("alex_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.ALEX_MELTDOWN));

@@ -42,13 +42,13 @@ public final class CoreMethod {
 //        };
 //    }
 //
-    public static boolean isRemoved(Entity entity) {
-        return switch (CoreMsUtil.getCategory(entity)) {
-            case csdy -> false;
-            case csdykill -> true;
-            case normal -> entity.isRemoved();
-        };
-    }
+//    public static boolean isRemoved(Entity entity) {
+//        return switch (CoreMsUtil.getCategory(entity)) {
+//            case csdy -> false;
+//            case csdykill -> true;
+//            case normal -> entity.isRemoved();
+//        };
+//    }
 
 //    public static boolean isAlive(Entity entity) {
 //        return switch (CoreMsUtil.getCategory(entity)) {
@@ -66,14 +66,13 @@ public final class CoreMethod {
 //        return reason == null || reason.shouldSave();
 //    }
 
-//    public static boolean isDeadOrDying(LivingEntity entity, boolean originalResult) {
-//        // originalResult 已经是其他 Mixin 处理后的值
-//        return switch (EntityUntil.getCategory(entity)) {
-//            case csdy -> false;       // 强制返回 false
-//            case csdykill -> true;     // 强制返回 true
-//            case normal -> originalResult; // 保留 Mixin 的结果
-//        };
-//    }
+    public static boolean isDeadOrDying(LivingEntity living) {
+        return switch (CoreMsUtil.getCategory(living)) {
+            case csdy -> false;
+            case csdykill -> true;
+            case normal -> living.isDeadOrDying();
+        };
+    }
 //
 //    public static float getMaxHealth(LivingEntity living, Float returnValue) {
 //        if (EntityUntil.isCsdy(living)){

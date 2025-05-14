@@ -50,18 +50,18 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
 //                        rMethod(call, "shouldSave", "(Lnet/minecraft/world/entity/Entity$RemovalReason;)Z");
 //                        rewrite = true;
 //                    }
-                    case "m_213877_" -> {
-                        rMethod(call, "isRemoved", "(Lnet/minecraft/world/entity/Entity;)Z");
-                        rewrite = true;
-                    }
+//                    case "m_213877_" -> {
+//                        rMethod(call, "isRemoved", "(Lnet/minecraft/world/entity/Entity;)Z");
+//                        rewrite = true;
+//                    }
 //                    case "m_6084_" -> {
 //                        rMethod(call, "isAlive", "(Lnet/minecraft/world/entity/Entity;)Z");
 //                        rewrite = true;
 //                    }
-//                    case "m_21224_" -> {
-//                        rMethod(call, "isDeadOrDying", "(Lnet/minecraft/world/entity/LivingEntity;)Z");
-//                        rewrite = true;
-//                    }
+                    case "m_21224_" -> {
+                        rMethod(call, "isDeadOrDying", "(Lnet/minecraft/world/entity/LivingEntity;)Z");
+                        rewrite = true;
+                    }
 //                    case "m_21233_" -> {
 //                        rMethod(call, "getMaxHealth", "(Lnet/minecraft/world/entity/LivingEntity;)F");
 //                        rewrite = true;

@@ -19,7 +19,9 @@ import java.awt.*;
 
 import static com.csdy.jzyy.modifier.util.layer.TestRender.*;
 
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+
+///就是这里，做个标记点
+//@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientRenderEvents {
 
     @SubscribeEvent

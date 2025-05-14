@@ -90,7 +90,9 @@
     "precision": "#fcff8d",
     "real_redstone_component": "#fcff8d",
     "full_of_energy": "#fcff8d",
-    "disruptor": "#fcff8d"
+    "disruptor": "#fcff8d",
+    "赞助强化": null,
+    "final_sword": "#FF0000"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

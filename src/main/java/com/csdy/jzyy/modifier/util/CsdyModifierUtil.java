@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.tools.stat.*;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
+import java.util.UUID;
 
 public class CsdyModifierUtil {
 

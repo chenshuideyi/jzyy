@@ -12,6 +12,8 @@ import static slimeknights.tconstruct.library.tools.stat.ToolStats.ATTACK_DAMAGE
 
 public class BladeRelease1 extends NoLevelsModifier implements ToolStatsModifierHook {
 
+
+
     @Override
     public void addToolStats(IToolContext context, ModifierEntry entry, ModifierStatsBuilder builder) {
         ATTACK_DAMAGE.add(builder, 6);
