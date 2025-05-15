@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "name": "jzyy:molten_pla_steel",
+    "amount":90
+  },
+  "temperature":1500,
+  "output":"jzyy:pla_steel"
+}

@@ -31,6 +31,7 @@ import com.csdy.jzyy.modifier.modifier.experience.ExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.ExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
+import com.csdy.jzyy.modifier.modifier.pla_steel.Crystalline;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
 import com.csdy.jzyy.modifier.modifier.ice.HyperBeam;
@@ -52,6 +53,7 @@ import com.csdy.jzyy.modifier.modifier.projectE.EquivalentEdge;
 import com.csdy.jzyy.modifier.modifier.projectE.Juggernaut;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.EquivalentArmor;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
+import com.csdy.jzyy.modifier.modifier.real_form.RealEgo;
 import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
 import com.csdy.jzyy.modifier.modifier.real_form.RealLivingWood;
 import com.csdy.jzyy.modifier.modifier.real_form.RealRenstoneComponent;
@@ -63,15 +65,11 @@ import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
 import com.csdy.tcondiadema.modifier.DiademaModifier;
-import net.minecraft.world.entity.EquipmentSlot;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
-
-import java.util.UUID;
 
 import static com.csdy.jzyy.ModMain.MODID;
 
@@ -143,8 +141,8 @@ public class ModifierRegister {
     public static final StaticModifier<Ultradense> ULTRADENSE_STATIC_MODIFIER = MODIFIERS.register("ultradense", Ultradense::new);
     public static final StaticModifier<Juggernaut> JUGGERNAUT_STATIC_MODIFIER = MODIFIERS.register("juggernaut", Juggernaut::new);
 
-
-
+    ///玻璃钢
+    public static final StaticModifier<Crystalline> CRYSTALLINE_STATIC_MODIFIER = MODIFIERS.register("crystalline", Crystalline::new);
 
 
 
@@ -266,6 +264,19 @@ public class ModifierRegister {
                                     "default"
                             ),
                             "红石构件充能到了极致！"
+                    )
+            );
+
+    public static final StaticModifier<RealEgo> REAL_EGO_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "real_ego",
+                    () -> new RealEgo(
+                            "unpowered_redstone_component",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "real_redstone_component"),
+                                    "default"
+                            ),
+                            "E.G.O觉醒！"
                     )
             );
 

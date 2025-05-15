@@ -91,6 +91,11 @@
     "real_redstone_component": "#fcff8d",
     "full_of_energy": "#fcff8d",
     "disruptor": "#fcff8d",
+    "玻璃钢": null,
+    "crystalline": "#6b8e8c",
+    "故障机器人": null,
+    "echo_form": "#5AC1FF",
+    "echo_form1": "#5AC1FF",
     "赞助强化": null,
     "final_sword": "#FF0000"
   },
@@ -110,7 +115,8 @@
     "living_wood": "#a2cda7",
     "real_living_wood": "#a2cda7",
     "unpowered_redstone_component": "#fcff8d",
-    "real_redstone_component": "#ffcc00"
+    "real_redstone_component": "#ffcc00",
+    "pla_steel": "#6b8e8c"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

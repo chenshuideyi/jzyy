@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/ingot"
+  },
+  "cast_consumed": false,
+  "fluid": {
+    "name": "jzyy:molten_pla_steel",
+    "amount": 90
+  },
+  "result": "jzyy:item/pla_steel_ingot",
+  "cooling_time": 10
+}

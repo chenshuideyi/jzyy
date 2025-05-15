@@ -126,7 +126,7 @@ buildscript {
         //冰火
 //        implementation fg.deobf("curse.maven:IAF-264231:5633453")
 
-        implementation fileTree("lib")
+//        implementation fileTree("lib")
 
         //铁魔法
 //        implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6371701")

@@ -1,0 +1,9 @@
+{
+  "type":"tconstruct:material_melting",
+  "input": "jzyy:pla_steel_ingot",
+  "temperature": 1466,
+  "result":{
+    "fluid": "jzyy:molten_pla_steel",
+    "amount": 90
+  }
+}

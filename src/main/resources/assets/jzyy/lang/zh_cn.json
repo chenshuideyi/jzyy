@@ -8,6 +8,10 @@
   "item.jzyy.experience_steel_ingot": "经验钢",
   "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
 
+  "item.jzyy.pla_steel_ingot": "玻璃钢",
+  "fluid.jzyy.molten_pla_steel": "熔融玻璃钢",
+  "item.jzyy.molten_pla_steel_bucket": "熔融玻璃钢桶",
+
 
   "stat.tconstruct.slot.display.dx": "音乐",
   "stat.tconstruct.slot.prefix.dx": "音乐槽：",
@@ -38,6 +42,10 @@
 
   "item.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "item.jzyy.etsh.line1": "etsh的提案",
+
+  "material.jzyy.pla_steel": "玻璃钢",
+  "material.jzyy.pla_steel.flavor": "用在很多高科技设备上，尤其是飞船引擎和其他一些组件中",
+  "material.jzyy.pla_steel.encyclopedia": "先进的太空时代结构材料。因其独特的分子结构，玻璃钢拥有极高的强度。",
 
   "material.jzyy.overflowed_memory": "溢出的内存",
   "material.jzyy.overflowed_memory.flavor": "这是啥？？？",
@@ -414,6 +422,10 @@
   "modifier.jzyy.echo_form1": "回响形态",
   "modifier.jzyy.echo_form1.flavor": "我说回响卡我启动了",
   "modifier.jzyy.echo_form1.description":"你的特性与强化增伤会生效2次",
+
+  "modifier.jzyy.crystalline": "晶态",
+  "modifier.jzyy.crystalline.flavor": "买上一架小小钢琴",
+  "modifier.jzyy.crystalline.description":"你的工具每有200点耐久就会增加1点伤害",
 
   "txet": "也许考虑只在愚人节使用",
   "modifier.jzyy.fuck_memory_till_die": "数据剪切",

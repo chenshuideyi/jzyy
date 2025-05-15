@@ -6,6 +6,7 @@ import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.SwordManCsdy;
 import com.csdy.jzyy.entity.boss.render.JzyyEntityRenderer;
+import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
@@ -51,6 +52,7 @@ public class ModMain {
         JzyySoundsRegister.SOUND_EVENTS.register(bus);
         JzyyEffectRegister.EFFECTS.register(bus);
         JzyyEntityRegister.JZYY_ENTITY.register(bus);
+        JzyyFluidRegister.FLUIDS.register(bus);
         gpuUtilInit();
 
 

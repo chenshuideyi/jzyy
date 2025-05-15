@@ -10,6 +10,7 @@
     "SynchedEntityDataMixin"
   ],
   "client": [
+    "WindowMixin"
   ],
   "injectors": {
     "defaultRequire": 1
