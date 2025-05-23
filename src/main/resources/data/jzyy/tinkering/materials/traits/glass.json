@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:prism",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:loupe",
+        "level": 1
+      }
+    ]
+  }
+}
