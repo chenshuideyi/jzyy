@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:stinger",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:quill_spray",
+        "level": 1
+      }
+    ]
+  }
+}

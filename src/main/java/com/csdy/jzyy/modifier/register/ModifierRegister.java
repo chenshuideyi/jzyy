@@ -20,8 +20,7 @@ import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
-import com.csdy.jzyy.modifier.modifier.csdytinker.ScarySky;
-import com.csdy.jzyy.modifier.modifier.csdytinker.TeleKill;
+import com.csdy.jzyy.modifier.modifier.csdytinker.*;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
@@ -54,6 +53,8 @@ import com.csdy.jzyy.modifier.modifier.projectE.EquivalentEdge;
 import com.csdy.jzyy.modifier.modifier.projectE.Juggernaut;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.EquivalentArmor;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
+import com.csdy.jzyy.modifier.modifier.pufferfish.QuillSpray;
+import com.csdy.jzyy.modifier.modifier.pufferfish.Stinger;
 import com.csdy.jzyy.modifier.modifier.real_form.RealEgo;
 import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
 import com.csdy.jzyy.modifier.modifier.real_form.RealLivingWood;
@@ -219,6 +220,11 @@ public class ModifierRegister {
     public static final StaticModifier<Loupe> LOUPE_STATIC_MODIFIER = MODIFIERS.register("loupe", Loupe::new);
     public static final StaticModifier<Prism> PRISM_STATIC_MODIFIER = MODIFIERS.register("prism", Prism::new);
 
+    ///河豚
+    public static final StaticModifier<Stinger> STINGER_STATIC_MODIFIER = MODIFIERS.register("stinger", Stinger::new);
+    public static final StaticModifier<QuillSpray> QUILL_SPRAY_STATIC_MODIFIER = MODIFIERS.register("quill_spray", QuillSpray::new);
+
+
 
 
     ///etsh
@@ -233,9 +239,15 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
 
     ///csdytinker
-    /// 记得补文本和颜色
+    //TODO 记得补文本和颜色
     public static final StaticModifier<ScarySky> SCARY_SKY_STATIC_MODIFIER = MODIFIERS.register("scary_sky", ScarySky::new);
     public static final StaticModifier<TeleKill> TELE_KILL_STATIC_MODIFIER = MODIFIERS.register("tele_kill", TeleKill::new);
+    public static final StaticModifier<Apartheid> APARTHEID_STATIC_MODIFIER = MODIFIERS.register("apartheid", Apartheid::new);
+    public static final StaticModifier<CutOff> CUT_OFF_STATIC_MODIFIER = MODIFIERS.register("cut_off", CutOff::new);
+    public static final StaticModifier<CoupDeGrace> COUP_DE_GRACE_STATIC_MODIFIER = MODIFIERS.register("coup_de_grace", CoupDeGrace::new);
+    public static final StaticModifier<Kagerou> KAGEROU_STATIC_MODIFIER = MODIFIERS.register("kagerou", Kagerou::new);
+    public static final StaticModifier<Pulverize> PULVERIZE_STATIC_MODIFIER = MODIFIERS.register("pulverize", Pulverize::new);
+
 
 
     ///真实形态

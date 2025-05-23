@@ -19,9 +19,12 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
@@ -184,6 +187,24 @@ public class Test extends Item {
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
         Minecraft mc = Minecraft.getInstance();
+        for (int i = 0; i < 7; i++) {
+            Arrow arrow = new Arrow(entity.level, entity);
+
+            // 设置为中毒箭
+            arrow.addEffect(new MobEffectInstance(
+                    MobEffects.POISON,
+                    100,
+                    2
+            ));
+
+            // 随机散射
+            float spread = 15.0F; // 散射角度
+            float xRot = entity.getXRot() + (entity.level.random.nextFloat() - 0.5F) * spread;
+            float yRot = entity.getYRot() + (entity.level.random.nextFloat() - 0.5F) * spread;
+
+            arrow.shootFromRotation(entity, xRot, yRot, 0.0F, 1.5F, 1.0F);
+            entity.level.addFreshEntity(arrow);
+        }
         return super.onEntitySwing(stack, entity);
     }
 

@@ -96,6 +96,9 @@
     "故障机器人": null,
     "echo_form": "#5AC1FF",
     "echo_form1": "#5AC1FF",
+    "河豚": null,
+    "stinger": "#FFEEB5",
+    "quill_spray": "#FFEEB5",
     "赞助强化": null,
     "final_sword": "#FF0000"
   },
@@ -116,7 +119,8 @@
     "real_living_wood": "#a2cda7",
     "unpowered_redstone_component": "#fcff8d",
     "real_redstone_component": "#ffcc00",
-    "pla_steel": "#6b8e8c"
+    "pla_steel": "#6b8e8c",
+    "pufferfish": "#FFEEB5"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

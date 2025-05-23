@@ -118,6 +118,13 @@
   "material.jzyy.yue_zheng_ling.flavor": "她好可爱",
   "material.jzyy.yue_zheng_ling.encyclopedia": "2018 coming soon",
 
+  "material.jzyy.pufferfish": "河豚",
+  "material.jzyy.pufferfish.flavor": "扎手",
+  "material.jzyy.pufferfish.encyclopedia": "把活鱼做成工具是个技术活",
+  "material.jzyy.pufferfish.armor": "扎的不是我的手",
+
+
+
   "modifier.jzyy.hyper_beam": "破坏死光",
   "modifier.jzyy.hyper_beam.flavor": "黑·魔·导·爆·烈·破",
   "modifier.jzyy.hyper_beam.description": "空挥时会发射一道音爆，被音爆击中的目标等同受到一次你的全额攻击",
@@ -537,6 +544,13 @@
   "modifier.jzyy.just_bed_and_rock.flavor": "怎会如此？",
   "modifier.jzyy.just_bed_and_rock.description":"没有泰坦之力的灌注，这也只不过是一块小石头",
 
+  "modifier.jzyy.stinger": "毒刺",
+  "modifier.jzyy.stinger.flavor": "这会很扎手",
+  "modifier.jzyy.stinger.description":"被攻击的目标会中毒",
+
+  "modifier.jzyy.quill_spray": "刺针扫射",
+  "modifier.jzyy.quill_spray.flavor": "变身河豚！",
+  "modifier.jzyy.quill_spray.description":"受到伤害后会向周身发射出中毒箭",
 
   "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
   "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",
