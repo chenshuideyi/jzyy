@@ -20,6 +20,7 @@ import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
+import com.csdy.jzyy.modifier.modifier.csdytinker.ScarySky;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
@@ -31,16 +32,15 @@ import com.csdy.jzyy.modifier.modifier.experience.ExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.ExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
+import com.csdy.jzyy.modifier.modifier.glass.Loupe;
+import com.csdy.jzyy.modifier.modifier.glass.Prism;
+import com.csdy.jzyy.modifier.modifier.jzyy.*;
 import com.csdy.jzyy.modifier.modifier.pla_steel.Crystalline;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
 import com.csdy.jzyy.modifier.modifier.ice.HyperBeam;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.*;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.*;
-import com.csdy.jzyy.modifier.modifier.jzyy.AssAttack;
-import com.csdy.jzyy.modifier.modifier.jzyy.ChaosTransmigration;
-import com.csdy.jzyy.modifier.modifier.jzyy.EchoForm;
-import com.csdy.jzyy.modifier.modifier.jzyy.HornToss;
 import com.csdy.jzyy.modifier.modifier.jzyy.sponsor.FinalSword;
 import com.csdy.jzyy.modifier.modifier.living_wood.Ecological;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestAngry;
@@ -154,6 +154,8 @@ public class ModifierRegister {
 
     ///强大词条
 
+
+    public static final StaticModifier<ExpediteSuffering> EXPEDITE_SUFFERING_STATIC_MODIFIER = MODIFIERS.register("expedite_suffering", ExpediteSuffering::new);
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
     public static final StaticModifier<EchoForm> ECHO_FORM_STATIC_MODIFIER = MODIFIERS.register("echo_form", EchoForm::new);
     public static final StaticModifier<NoLevelsModifier> ECHO_FORM1_STATIC_MODIFIER = MODIFIERS.register("echo_form1", NoLevelsModifier::new);
@@ -212,6 +214,10 @@ public class ModifierRegister {
     public static final StaticModifier<AwakenPandora> AWAKEN_PANDORA_STATIC_MODIFIER = MODIFIERS.register("awaken_pandora", AwakenPandora::new);
     public static final StaticModifier<AwakenTiamat> AWAKEN_TIAMAT_STATIC_MODIFIER = MODIFIERS.register("awaken_tiamat", AwakenTiamat::new);
 
+    ///玻璃
+    public static final StaticModifier<Loupe> LOUPE_STATIC_MODIFIER = MODIFIERS.register("loupe", Loupe::new);
+    public static final StaticModifier<Prism> PRISM_STATIC_MODIFIER = MODIFIERS.register("prism", Prism::new);
+
 
 
     ///etsh
@@ -224,6 +230,9 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyArmor> CSDY_ARMOR_STATIC_MODIFIER = MODIFIERS.register("csdy_armor", CsdyArmor::new);
     public static final StaticModifier<CsdyAttack> CSDY_ATTACK_STATIC_MODIFIER = MODIFIERS.register("csdy_attack", CsdyAttack::new);
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
+
+    ///csdytinker
+    public static final StaticModifier<ScarySky> SCARY_SKY_STATIC_MODIFIER = MODIFIERS.register("scary_sky", ScarySky::new);
 
 
 

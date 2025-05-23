@@ -80,18 +80,19 @@ public class LivingEntityUtil {
 
     ///反射贯穿伤害<br/>
     ///@param target 目标<br/>
-    ///@param player 玩家<br/>
+    ///@param attacker 攻击者<br/>
     ///@param value 造成的伤害<br/>
     ///  打穿王八壳,放手一搏吧<br/>
     /// 普猫无视这个，不是永远都有用,,,,,
-    public static void reflectionPenetratingDamage(Entity target, Player player, float value) {
+    public static void reflectionPenetratingDamage(Entity target, LivingEntity attacker, float value) {
         if (!(target instanceof LivingEntity living)) return;
         if (DATA_HEALTH_ID == null) return;
         float currentHealth = living.getEntityData().get(DATA_HEALTH_ID);
         float newHealth = currentHealth-value;
         living.getEntityData().set(DATA_HEALTH_ID, newHealth);
         if (living.getHealth() <= 0.0F) {
-            living.die(living.level().damageSources().playerAttack(player));
+            if (living instanceof Player player) living.die(living.level().damageSources().playerAttack(player));
+            else living.die(living.level().damageSources.mobAttack(attacker));
         }
     }
 

@@ -43,6 +43,11 @@
   "item.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "item.jzyy.etsh.line1": "etsh的提案",
 
+  "material.jzyy.glass": "玻璃",
+  "material.jzyy.glass.flavor": "很脆",
+  "material.jzyy.glass.encyclopedia": "容易脆断",
+  "material.jzyy.glass.armor": "像是烧蚂蚁",
+
   "material.jzyy.pla_steel": "玻璃钢",
   "material.jzyy.pla_steel.flavor": "用在很多高科技设备上，尤其是飞船引擎和其他一些组件中",
   "material.jzyy.pla_steel.encyclopedia": "先进的太空时代结构材料。因其独特的分子结构，玻璃钢拥有极高的强度。",
@@ -242,6 +247,14 @@
   "modifier.jzyy.expedite_suffering": "瞬时苦痛",
   "modifier.jzyy.expedite_suffering.flavor": "没有痛苦，一瞬就会结束",
   "modifier.jzyy.expedite_suffering.description":"引爆目标身上所有的负面效果，每个都会造成巨大创伤",
+
+  "modifier.jzyy.loupe": "透镜",
+  "modifier.jzyy.loupe.flavor": "烧你就像烧蚂蚁",
+  "modifier.jzyy.loupe.description":"若你处于阳光下，光线会点燃你脚下的生物",
+
+  "modifier.jzyy.prism": "棱镜",
+  "modifier.jzyy.prism.flavor": "一刀一刀燃烧刀",
+  "modifier.jzyy.prism.description":"若你处于阳光下，点燃你攻击的生物",
 
   "modifier.jzyy.severance": "切断",
   "modifier.jzyy.severance.flavor": "断口呈现出镜面般完美的结晶态",
