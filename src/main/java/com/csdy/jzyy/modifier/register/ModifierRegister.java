@@ -21,6 +21,7 @@ import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
 import com.csdy.jzyy.modifier.modifier.csdytinker.ScarySky;
+import com.csdy.jzyy.modifier.modifier.csdytinker.TeleKill;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
@@ -232,8 +233,9 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
 
     ///csdytinker
+    /// 记得补文本和颜色
     public static final StaticModifier<ScarySky> SCARY_SKY_STATIC_MODIFIER = MODIFIERS.register("scary_sky", ScarySky::new);
-
+    public static final StaticModifier<TeleKill> TELE_KILL_STATIC_MODIFIER = MODIFIERS.register("tele_kill", TeleKill::new);
 
 
     ///真实形态

@@ -29,20 +29,15 @@ public class BlockInteractionLogic {
      * @param entity 触发动作的实体
      */
     public static void forceBreakBlock(LevelAccessor world, double x, double y, double z, Entity entity) {
-        if (entity == null) return; // 良好的实践：始终检查实体是否为null
-        // 将初始位置缓存为BlockPos
+        if (entity == null) return;
         BlockPos triggerPos = BlockPos.containing(x, y, z);
-        // 尝试获取ServerLevel用于生成实体（客户端可能为null）
         ServerLevel serverLevel = (world instanceof ServerLevel) ? (ServerLevel) world : null;
-
-
             BlockState targetBlockState = world.getBlockState(triggerPos);
             Block targetBlock = targetBlockState.getBlock();
 
             // 避免为空气生成物品
             if (!targetBlockState.isAir()) {
                 ItemStack itemStackToSpawn = new ItemStack(targetBlock);
-                // 仅在服务端生成物品
                 if (serverLevel != null) {
                     for (int i = 0; i < SINGLE_BLOCK_DROP_MULTIPLIER; ++i) {
                         spawnItemEntity(serverLevel, x, y, z, itemStackToSpawn.copy());
@@ -50,8 +45,7 @@ public class BlockInteractionLogic {
                 }
             }
 
-            // 破坏触发位置的方块（阻止默认掉落）
-            world.destroyBlock(triggerPos, false);
+        world.destroyBlock(triggerPos, false);
     }
 
 
