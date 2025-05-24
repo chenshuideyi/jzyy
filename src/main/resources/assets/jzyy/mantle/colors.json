@@ -100,7 +100,15 @@
     "stinger": "#FFEEB5",
     "quill_spray": "#FFEEB5",
     "赞助强化": null,
-    "final_sword": "#FF0000"
+    "final_sword": "#FF0000",
+    "csdytinker": null,
+    "scary_sky": "#4a5d63",
+    "tele_kill": "#789b97",
+    "apartheid": "#4169E1",
+    "cut_off": "#90234a",
+    "coup_de_grace": "#814f63",
+    "kagerou": "#ffd600",
+    "pulverize": "#432221"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

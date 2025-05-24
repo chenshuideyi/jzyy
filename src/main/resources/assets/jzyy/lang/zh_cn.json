@@ -552,6 +552,62 @@
   "modifier.jzyy.quill_spray.flavor": "变身河豚！",
   "modifier.jzyy.quill_spray.description":"受到伤害后会向周身发射出中毒箭",
 
+  "modifier.jzyy.scary_sky": "天宇的伤疤",
+  "modifier.jzyy.scary_sky.flavor": "太阳曾被分裂,此即其伤口\n(后果自负)",
+  "modifier.jzyy.scary_sky.description": "此术将复现太阳乖蹇的命运,愚蠢的学徒会在迫不得已时使用此术。",
+
+  "modifier.jzyy.tele_kill": "心灵折断",
+  "modifier.jzyy.tele_kill.flavor": "于现实稳定锚未曾谋面的岁月中被广泛使用",
+  "modifier.jzyy.tele_kill.description": "摧毁目标生物的心智 \n你不会对末影龙使用这个的对吧？",
+
+  "modifier.jzyy.apartheid": "孤傲",
+  "modifier.jzyy.apartheid.flavor": "到了只能相信自己力量的时刻了",
+  "modifier.jzyy.apartheid.description": "近战时击碎目标所有的护甲，但你会受到等同于目标护甲的伤害",
+
+  "modifier.jzyy.cut_off": "砍手",
+  "modifier.jzyy.cut_off.flavor": "拿手好戏",
+  "modifier.jzyy.cut_off.description": "缴械目标",
+
+  "modifier.jzyy.coup_de_grace": "恩赐解脱",
+  "modifier.jzyy.coup_de_grace.flavor": "神圣的一击，通过赐予对手死亡来向他们致以敬意",
+  "modifier.jzyy.coup_de_grace.description": "按照等级，你的近战攻击有22%的概率造成200%/325%/450%的伤害",
+
+  "modifier.jzyy.kagerou": "阳炎",
+  "modifier.jzyy.kagerou.flavor": "目隐都市的演绎者",
+  "modifier.jzyy.kagerou.description": "唤来日出",
+
+  "modifier.jzyy.pulverize": "淘汰弱者",
+  "modifier.jzyy.pulverize.flavor": "碾压",
+  "modifier.jzyy.pulverize.description": "近战时处决生命值低于你最大生命值的敌人",
+
+  "modifier.jzyy.1999": "重返1999",
+  "modifier.jzyy.1999.flavor": "这是哪个1999？",
+  "modifier.jzyy.1999.description": "随机与六人组中的一位共鸣，获取他的力量",
+
+  "modifier.jzyy.1999_arthur": "共鸣-亚瑟·Excalibur",
+  "modifier.jzyy.1999_arthur.flavor": "显赫刀剑",
+  "modifier.jzyy.1999_arthur.description": "使你的工具空挥时发出剑气",
+
+  "modifier.jzyy.1999_aoi": "共鸣-碧·Mag",
+  "modifier.jzyy.1999_aoi.flavor": "磁吸",
+  "modifier.jzyy.1999_aoi.description": "吸引附近的实体",
+
+  "modifier.jzyy.1999_amir": "共鸣-阿米尔·Volt",
+  "modifier.jzyy.1999_amir.flavor": "加速",
+  "modifier.jzyy.1999_amir.description": "获得75%的加速",
+
+  "modifier.jzyy.1999_quincy": "共鸣-昆西·Cyte-09",
+  "modifier.jzyy.1999_quincy.flavor": "补给",
+  "modifier.jzyy.1999_quincy.description": "获得25%的伤害倍率，攻击时随机附带两种攻击标签（可以来自任何模组）",
+
+  "modifier.jzyy.1999_leticia": "共鸣-莱蒂西娅·Trinity",
+  "modifier.jzyy.1999_leticia.flavor": "祝福",
+  "modifier.jzyy.1999_leticia.description": "回复周围生物的生命，如果是玩家则还会额外增加他们的经验",
+
+  "modifier.jzyy.1999_eleanor": "共鸣-埃莉诺·Nyx",
+  "modifier.jzyy.1999_eleanor.flavor": "混乱",
+  "modifier.jzyy.1999_eleanor.description": "强大的心灵冲击引起战场上的群体性歇斯底里，所有敌人因混乱而随机攻击",
+
   "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
   "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",
   "modifier.jzyy.alex_meltdown.description":"对领域内的所有生物施加巨量的辐射",

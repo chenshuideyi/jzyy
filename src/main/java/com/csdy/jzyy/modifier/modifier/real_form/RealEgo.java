@@ -22,14 +22,12 @@ public class RealEgo extends RealFormBaseModifier {
         if (!(holder instanceof Player player)) {
             return false;
         }
-        System.out.println("这里没问题");
         String toolName = String.valueOf(tool.getItem().getName(tool.createStack()));
         return isName(player,toolName);
     }
 
     private boolean isName(Player player,String toolName){
         String playerName = String.valueOf(player.getName());
-        System.out.println("这里也");
         return playerName.toLowerCase().contains(toolName.toLowerCase());
     }
 }

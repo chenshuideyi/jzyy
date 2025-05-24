@@ -29,6 +29,7 @@ public abstract class RealFormBaseModifier extends NoLevelsModifier implements I
     private final MaterialVariantId reMaterialId;
     private final String text;
 
+
     /**
      * @param materialId   基础材料的ID
      * @param reMaterialId 真实形态的ID
@@ -60,29 +61,37 @@ public abstract class RealFormBaseModifier extends NoLevelsModifier implements I
             if (variant.getVariant().getId().getPath().equals(this.materialId)) {
                 tool.replaceMaterial(i, this.reMaterialId);
                 ServerLevel level = (ServerLevel) player.level();
-                level.playSound(
-                        null,
-                        player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.TOTEM_USE,
-                        SoundSource.PLAYERS,
-                        0.5F,
-                        1F
-                );
+                playSound(level,player);
+                sendParticles(level,player);
 
-                // 生成粒子效果
-                level.sendParticles(
-                        ParticleTypes.TOTEM_OF_UNDYING,
-                        player.getX(), player.getY() + 1.0, player.getZ(),
-                        100, // 粒子数量
-                        0.5, 0.5, 0.5,
-                        0.2
-                );
                 player.displayClientMessage(Component.translatable(text), true);
 
             }
         }
 
     }
+
+    protected void playSound(Level level,LivingEntity holder){
+        level.playSound(
+                null,
+                holder.getX(), holder.getY(), holder.getZ(),
+                SoundEvents.TOTEM_USE,
+                SoundSource.PLAYERS,
+                0.5F,
+                1F
+        );
+    }
+
+    protected void sendParticles(ServerLevel level,LivingEntity holder){
+        level.sendParticles(
+                ParticleTypes.TOTEM_OF_UNDYING,
+                holder.getX(), holder.getY() + 1.0, holder.getZ(),
+                100, // 粒子数量
+                0.5, 0.5, 0.5,
+                0.2
+        );
+    }
+
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {

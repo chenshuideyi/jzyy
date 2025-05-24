@@ -63,6 +63,7 @@ import com.csdy.jzyy.modifier.modifier.redstone_component.Precision;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.Disruptor;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
+import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
@@ -239,7 +240,6 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
 
     ///csdytinker
-    //TODO 记得补文本和颜色
     public static final StaticModifier<ScarySky> SCARY_SKY_STATIC_MODIFIER = MODIFIERS.register("scary_sky", ScarySky::new);
     public static final StaticModifier<TeleKill> TELE_KILL_STATIC_MODIFIER = MODIFIERS.register("tele_kill", TeleKill::new);
     public static final StaticModifier<Apartheid> APARTHEID_STATIC_MODIFIER = MODIFIERS.register("apartheid", Apartheid::new);
@@ -247,6 +247,8 @@ public class ModifierRegister {
     public static final StaticModifier<CoupDeGrace> COUP_DE_GRACE_STATIC_MODIFIER = MODIFIERS.register("coup_de_grace", CoupDeGrace::new);
     public static final StaticModifier<Kagerou> KAGEROU_STATIC_MODIFIER = MODIFIERS.register("kagerou", Kagerou::new);
     public static final StaticModifier<Pulverize> PULVERIZE_STATIC_MODIFIER = MODIFIERS.register("pulverize", Pulverize::new);
+
+    ///雨幕
 
 
 
@@ -302,6 +304,20 @@ public class ModifierRegister {
                             "E.G.O觉醒！"
                     )
             );
+
+    public static final StaticModifier<Modifier1999> MODIFIER_1999_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "1999",
+                    () -> new Modifier1999(
+                            "yue_zheng_ling",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "bedrock"),
+                                    "default"
+                            ),
+                            "与六人组的一位取得了共鸣"
+                    )
+            );
+
 
 
 
