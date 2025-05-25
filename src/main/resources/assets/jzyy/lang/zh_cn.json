@@ -86,6 +86,15 @@
   "material.jzyy.marisa.flavor": "为啥啊？？？",
   "material.jzyy.marisa.encyclopedia": "会偷走重要的东西",
 
+  "material.jzyy.rain_curtain": "雨幕",
+  "material.jzyy.rain_curtain.flavor": "时代病",
+  "material.jzyy.rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
+
+  "material.jzyy.true_rain_curtain": "雨幕",
+  "material.jzyy.true_rain_curtain.flavor": "时代病",
+  "material.jzyy.true_rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
+
+
   "material.jzyy.living_wood": "生命木",
   "material.jzyy.living_wood.flavor": "会呼吸的木头",
   "material.jzyy.living_wood.encyclopedia": "他是活的！也许我能让它变得更大",
@@ -594,17 +603,17 @@
   "modifier.jzyy.1999_arthur.flavor": "突斩",
   "modifier.jzyy.1999_arthur.description": "你的工具空挥时让你向前突斩",
 
-  "modifier.jzyy.1999_aoi": "共鸣-碧·Mag",
-  "modifier.jzyy.1999_aoi.flavor": "磁吸",
-  "modifier.jzyy.1999_aoi.description": "吸引附近的实体",
-
   "modifier.jzyy.1999_amir": "共鸣-阿米尔·Volt",
   "modifier.jzyy.1999_amir.flavor": "加速",
-  "modifier.jzyy.1999_amir.description": "获得75%的加速",
+  "modifier.jzyy.1999_amir.description": "获得3点移动速度，攻击速度",
 
   "modifier.jzyy.1999_quincy": "共鸣-昆西·Cyte-09",
   "modifier.jzyy.1999_quincy.flavor": "补给",
   "modifier.jzyy.1999_quincy.description": "获得25%的伤害倍率，攻击时随机附带一种攻击类型",
+
+  "modifier.jzyy.1999_aoi": "共鸣-碧·Mag",
+  "modifier.jzyy.1999_aoi.flavor": "磁吸",
+  "modifier.jzyy.1999_aoi.description": "吸引附近的实体",
 
   "modifier.jzyy.1999_leticia": "共鸣-莱蒂西娅·Trinity",
   "modifier.jzyy.1999_leticia.flavor": "祝福",

@@ -323,7 +323,7 @@ public class ModifierRegister {
                     () -> new Modifier1999(
                             "rain_curtain",
                             MaterialVariantId.create(
-                                    new MaterialId("jzyy", "bedrock"),
+                                    new MaterialId("jzyy", "true_rain_curtain"),
                                     "default"
                             ),
                             "与六人组的一位取得了共鸣"
@@ -336,7 +336,7 @@ public class ModifierRegister {
                     () -> new ModifierArmor1999(
                             "rain_curtain",
                             MaterialVariantId.create(
-                                    new MaterialId("jzyy", "bedrock"),
+                                    new MaterialId("jzyy", "true_rain_curtain"),
                                     "default"
                             ),
                             "与六人组的一位取得了共鸣"

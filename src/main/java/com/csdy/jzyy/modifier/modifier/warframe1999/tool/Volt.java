@@ -18,7 +18,7 @@ public class Volt extends NoLevelsModifier implements AttributesModifierHook {
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry entry, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
-        if (slot.getType() == EquipmentSlot.Type.ARMOR) {
+        if (slot.getType() == EquipmentSlot.Type.HAND) {
             UUID uuid = UUID.nameUUIDFromBytes(("volt_speed" + slot.getName()).getBytes());
             AttributeModifier modifier = new AttributeModifier(
                     uuid,
@@ -27,7 +27,6 @@ public class Volt extends NoLevelsModifier implements AttributesModifierHook {
                     AttributeModifier.Operation.ADDITION
             );
             consumer.accept(Attributes.ATTACK_SPEED, modifier);
-            consumer.accept(Attributes.FLYING_SPEED, modifier);
             consumer.accept(Attributes.MOVEMENT_SPEED, modifier);
         }
     }

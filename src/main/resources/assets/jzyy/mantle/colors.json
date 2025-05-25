@@ -108,7 +108,10 @@
     "cut_off": "#90234a",
     "coup_de_grace": "#814f63",
     "kagerou": "#ffd600",
-    "pulverize": "#432221"
+    "pulverize": "#432221",
+    "雨幕": null,
+    "1999": "#4183c5",
+    "1999_armor": "#4183c5"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -128,7 +131,9 @@
     "unpowered_redstone_component": "#fcff8d",
     "real_redstone_component": "#ffcc00",
     "pla_steel": "#6b8e8c",
-    "pufferfish": "#FFEEB5"
+    "pufferfish": "#FFEEB5",
+    "rain_curtain": "#4183c5",
+    "true_rain_curtain": "#4183c5"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"
