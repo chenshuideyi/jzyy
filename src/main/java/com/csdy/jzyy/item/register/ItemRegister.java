@@ -25,6 +25,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> DX_INGOT = ITEMS.register("dx_ingot", DxIngot::new);
     public static final RegistryObject<Item> ICE = ITEMS.register("ice", Ice::new);
     public static final RegistryObject<Item> TONG_BAN = ITEMS.register("tong_ban", TongBan::new);
+    public static final RegistryObject<Item> RAIN_CURTAIN = ITEMS.register("rain_curtain", RainCurtain::new);
     public static final RegistryObject<Item> HARCADIUM = ITEMS.register("harcadium",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> EXPERIENCE_STEEL_INGOT = ITEMS.register("experience_steel_ingot",

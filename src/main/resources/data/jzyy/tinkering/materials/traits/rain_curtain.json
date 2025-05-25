@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:1999",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:1999_armor",
+        "level": 1
+      }
+    ]
+  }
+}

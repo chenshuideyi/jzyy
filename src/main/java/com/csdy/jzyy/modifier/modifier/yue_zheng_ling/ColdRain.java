@@ -19,6 +19,7 @@ public class ColdRain extends NoLevelsModifier implements InventoryTickModifierH
         if (isCorrectSlot && player.isOnFire()) player.setSecondsOnFire(0);
     }
 
+    @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK);
     }

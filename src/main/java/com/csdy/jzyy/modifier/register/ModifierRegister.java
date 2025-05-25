@@ -64,6 +64,13 @@ import com.csdy.jzyy.modifier.modifier.redstone_component.real.Disruptor;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
+import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
+import com.csdy.jzyy.modifier.modifier.warframe1999.armor.Mag;
+import com.csdy.jzyy.modifier.modifier.warframe1999.armor.Nyx;
+import com.csdy.jzyy.modifier.modifier.warframe1999.armor.Trinity;
+import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Cyte09;
+import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Excalibur;
+import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Volt;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
@@ -249,8 +256,13 @@ public class ModifierRegister {
     public static final StaticModifier<Pulverize> PULVERIZE_STATIC_MODIFIER = MODIFIERS.register("pulverize", Pulverize::new);
 
     ///雨幕
+    public static final StaticModifier<Cyte09> CYTE_09_STATIC_MODIFIER = MODIFIERS.register("1999_quincy", Cyte09::new);
+    public static final StaticModifier<Volt> VOLT_STATIC_MODIFIER = MODIFIERS.register("1999_amir", Volt::new);
+    public static final StaticModifier<Excalibur> EXCALIBUR_STATIC_MODIFIER = MODIFIERS.register("1999_arthur", Excalibur::new);
 
-
+    public static final StaticModifier<Mag> MAG_STATIC_MODIFIER = MODIFIERS.register("1999_aoi", Mag::new);
+    public static final StaticModifier<Trinity> TRINITY_STATIC_MODIFIER = MODIFIERS.register("1999_leticia", Trinity::new);
+    public static final StaticModifier<Nyx> NYX_STATIC_MODIFIER = MODIFIERS.register("1999_eleanor", Nyx::new);
 
     ///真实形态
     public static final StaticModifier<RealExperience> REAL_EXPERIENCE_STATIC_MODIFIER =
@@ -309,7 +321,7 @@ public class ModifierRegister {
             MODIFIERS.register(
                     "1999",
                     () -> new Modifier1999(
-                            "yue_zheng_ling",
+                            "rain_curtain",
                             MaterialVariantId.create(
                                     new MaterialId("jzyy", "bedrock"),
                                     "default"
@@ -318,7 +330,18 @@ public class ModifierRegister {
                     )
             );
 
-
+    public static final StaticModifier<ModifierArmor1999> MODIFIER_ARMOR_1999_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "1999_armor",
+                    () -> new ModifierArmor1999(
+                            "rain_curtain",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "bedrock"),
+                                    "default"
+                            ),
+                            "与六人组的一位取得了共鸣"
+                    )
+            );
 
 
     ///经验钢
