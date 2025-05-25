@@ -42,7 +42,6 @@ public class SonicBoomUtil {
         // 服务端伤害逻辑
         if (!level.isClientSide) {
             double range = 15.0 * power;
-            double damage = 10.0 * power;
 
             // 射线检测攻击实体
             AABB area = player.getBoundingBox()

@@ -77,8 +77,6 @@ public class CsdyWhisper extends NoLevelsModifier implements InventoryTickModifi
         if (!(holder instanceof Player player)) return;
         if(player.getCommandSenderWorld().isClientSide) return;
         if (player.tickCount % 2 != 0) return;
-//        int randomIndex = random.nextInt(array.length);
-//        String message = array[randomIndex];
         String coloredMessage = RainbowText.makeColour(generateRandomSentence());
         player.displayClientMessage(Component.literal(coloredMessage), true);
 
