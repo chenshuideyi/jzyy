@@ -1,7 +1,7 @@
 package com.csdy.jzyy.sounds;
 
 
-import com.csdy.tcondiadema.ModMain;
+import com.csdy.jzyy.ModMain;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;

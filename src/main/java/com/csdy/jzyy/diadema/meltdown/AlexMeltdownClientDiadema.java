@@ -47,14 +47,4 @@ public class AlexMeltdownClientDiadema extends ClientDiadema {
         points.map(v -> v.add(pos)).forEach(v -> level.addParticle(PARTICLE_TYPE, v.x, v.y+0.2, v.z, 0, 0.05, 0));
     }
 
-
-//            level.playSound(
-//                    null, // 播放声音的实体（可以为 null）
-//                    BlockPos.containing(getPosition()), // 播放声音的位置
-//            SoundsRegister.MELTDOWN.get(), // 声音事件
-//    SoundSource.PLAYERS, // 声音类别（PLAYERS、AMBIENT、BLOCKS 等）
-//            1.0F, // 音量
-//            1.0F // 音调
-//            );
-    //留给匠魂接口使用
 }

@@ -187,24 +187,6 @@ public class Test extends Item {
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
         Minecraft mc = Minecraft.getInstance();
-        for (int i = 0; i < 7; i++) {
-            Arrow arrow = new Arrow(entity.level, entity);
-
-            // 设置为中毒箭
-            arrow.addEffect(new MobEffectInstance(
-                    MobEffects.POISON,
-                    100,
-                    2
-            ));
-
-            // 随机散射
-            float spread = 15.0F; // 散射角度
-            float xRot = entity.getXRot() + (entity.level.random.nextFloat() - 0.5F) * spread;
-            float yRot = entity.getYRot() + (entity.level.random.nextFloat() - 0.5F) * spread;
-
-            arrow.shootFromRotation(entity, xRot, yRot, 0.0F, 1.5F, 1.0F);
-            entity.level.addFreshEntity(arrow);
-        }
         return super.onEntitySwing(stack, entity);
     }
 
