@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "iceandfire:dragonbone"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "jzyy:dragonbone"
+}

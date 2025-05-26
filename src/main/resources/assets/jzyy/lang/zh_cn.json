@@ -7,6 +7,7 @@
   "item.jzyy.living_wood": "生命木",
   "item.jzyy.experience_steel_ingot": "经验钢",
   "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
+  "item.jzyy.defect": "钴丈技奇人锭",
 
   "item.jzyy.pla_steel_ingot": "玻璃钢",
   "fluid.jzyy.molten_pla_steel": "熔融玻璃钢",
@@ -44,6 +45,14 @@
 
   "item.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "item.jzyy.etsh.line1": "etsh的提案",
+
+  "material.jzyy.defect": "钴丈技奇人",
+  "material.jzyy.defect.flavor": "全游戏第四强的材料",
+  "material.jzyy.defect.encyclopedia": "全游戏第四强的材料",
+
+  "material.jzyy.bread": "面包",
+  "material.jzyy.bread.flavor": "好吃",
+  "material.jzyy.bread.encyclopedia": "Yami Yami",
 
   "material.jzyy.glass": "玻璃",
   "material.jzyy.glass.flavor": "很脆",
@@ -94,6 +103,7 @@
   "material.jzyy.true_rain_curtain.flavor": "时代病",
   "material.jzyy.true_rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
 
+  "material.jzyy.dragonbone": "龙骨",
 
   "material.jzyy.living_wood": "生命木",
   "material.jzyy.living_wood.flavor": "会呼吸的木头",
@@ -135,6 +145,16 @@
   "material.jzyy.pufferfish.armor": "扎的不是我的手",
 
 
+
+
+
+
+
+
+
+  "modifier.jzyy.dragon_bone": "强制破坏",
+  "modifier.jzyy.dragon_bone.flavor": "龙骨镐神力",
+  "modifier.jzyy.dragon_bone.description": "无视挖掘等级，强制挖掘可破坏的方块",
 
   "modifier.jzyy.hyper_beam": "破坏死光",
   "modifier.jzyy.hyper_beam.flavor": "黑·魔·导·爆·烈·破",

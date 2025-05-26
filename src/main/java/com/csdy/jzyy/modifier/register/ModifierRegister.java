@@ -204,6 +204,10 @@ public class ModifierRegister {
     public static final StaticModifier<IceDragonArmor> ICE_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("ice_dragon_armor", IceDragonArmor::new);
     public static final StaticModifier<FlashDragonArmor> FLASH_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("flash_dragon_armor", FlashDragonArmor::new);
 
+    public static final StaticModifier<DragonBone> DRAGON_BONE_STATIC_MODIFIER = MODIFIERS.register("dragon_bone", DragonBone::new);
+
+
+
     ///米子山民
     public static final StaticModifier<Music> MUSIC_STATIC_MODIFIER = MODIFIERS.register("music", Music::new);
 

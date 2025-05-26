@@ -36,6 +36,10 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> PLA_STEEL_INGOT = ITEMS.register("pla_steel_ingot",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> DEFECT = ITEMS.register("defect",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
+
+
 //    public static final RegistryObject<DiscAloneInTheDarkItem> TEST_DISC = ITEMS.register("test_disc", DiscAloneInTheDarkItem::new);
 
 }

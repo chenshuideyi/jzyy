@@ -141,7 +141,7 @@ buildscript {
 //        //假人
 //        implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
 //        //冰火
-//        implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
+        implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
     }
     tasks.named('processResources', ProcessResources).configure {
         var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,

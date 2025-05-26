@@ -133,7 +133,9 @@
     "pla_steel": "#6b8e8c",
     "pufferfish": "#FFEEB5",
     "rain_curtain": "#4183c5",
-    "true_rain_curtain": "#4183c5"
+    "true_rain_curtain": "#4183c5",
+    "dragonbone": "#808080",
+    "defect": "#5AC1FF"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"
