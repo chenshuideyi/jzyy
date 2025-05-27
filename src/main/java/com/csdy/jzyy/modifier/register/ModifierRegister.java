@@ -25,6 +25,7 @@ import com.csdy.jzyy.modifier.modifier.dx.Music;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
 import com.csdy.jzyy.modifier.modifier.dx.tool.AwakenTiamat;
+import com.csdy.jzyy.modifier.modifier.ender.SaberExcalibur;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
@@ -81,7 +82,7 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
-import static com.csdy.jzyy.ModMain.MODID;
+import static com.csdy.jzyy.JzyyModMain.MODID;
 
 public class ModifierRegister {
     public static ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(MODID);
@@ -205,6 +206,9 @@ public class ModifierRegister {
     public static final StaticModifier<FlashDragonArmor> FLASH_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("flash_dragon_armor", FlashDragonArmor::new);
 
     public static final StaticModifier<DragonBone> DRAGON_BONE_STATIC_MODIFIER = MODIFIERS.register("dragon_bone", DragonBone::new);
+
+    ///ender
+    public static final StaticModifier<SaberExcalibur> SABER_EXCALIBUR_STATIC_MODIFIER = MODIFIERS.register("excalibur", SaberExcalibur::new);
 
 
 

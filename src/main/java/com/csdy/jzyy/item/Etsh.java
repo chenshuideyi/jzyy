@@ -1,6 +1,6 @@
 package com.csdy.jzyy.item;
 
-import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.modifier.util.font.ReFont;
 import net.minecraft.ChatFormatting;
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-@Mod.EventBusSubscriber(modid = ModMain.MODID)
+@Mod.EventBusSubscriber(modid = JzyyModMain.MODID)
 public class Etsh extends Item {
     public Etsh() {
         super((new Item.Properties()).stacksTo(64).rarity(Rarity.EPIC));

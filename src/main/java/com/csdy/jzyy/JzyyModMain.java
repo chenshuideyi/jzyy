@@ -10,11 +10,10 @@ import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
-import com.csdy.jzyy.modifier.util.layer.BloodLayer;
 import com.csdy.jzyy.modifier.util.layer.GocLayer;
-import com.csdy.jzyy.modifier.util.layer.ScpLayer;
 import com.csdy.jzyy.modifier.util.layer.PlayerLayer;
 import com.csdy.jzyy.network.JzyySyncing;
+import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
@@ -32,16 +31,16 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
-@Mod(ModMain.MODID)
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(JzyyModMain.MODID)
+@Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 //TODO 潘多拉，提亚马特和其他东西的注册名
-public class ModMain {
+public class JzyyModMain {
 
     public static int toolTip = 1;
     public static final String MODID = "jzyy";
     private static final Minecraft mc = Minecraft.getInstance();
 
-    public ModMain() {
+    public JzyyModMain() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         CsdyTab.CREATIVE_MODE_TABS.register(bus);
 
@@ -53,6 +52,7 @@ public class ModMain {
         JzyyEffectRegister.EFFECTS.register(bus);
         JzyyEntityRegister.JZYY_ENTITY.register(bus);
         JzyyFluidRegister.FLUIDS.register(bus);
+        JzyyParticlesRegister.PARTICLE_TYPES.register(bus);
         gpuUtilInit();
 
 

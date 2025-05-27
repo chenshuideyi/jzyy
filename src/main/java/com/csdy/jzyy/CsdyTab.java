@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-import static com.csdy.jzyy.ModMain.MODID;
+import static com.csdy.jzyy.JzyyModMain.MODID;
 import static com.csdy.jzyy.item.register.ItemRegister.MARISA;
 
 public class CsdyTab {

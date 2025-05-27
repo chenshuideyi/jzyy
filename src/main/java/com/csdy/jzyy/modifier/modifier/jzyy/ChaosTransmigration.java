@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
-import static com.csdy.jzyy.ModMain.MODID;
+import static com.csdy.jzyy.JzyyModMain.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ChaosTransmigration extends NoLevelsModifier {

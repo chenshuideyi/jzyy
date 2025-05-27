@@ -2,7 +2,7 @@ package com.csdy.jzyy.modifier.modifier.pla_steel;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
-import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.JzyyModMain;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +10,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
@@ -23,7 +22,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
 public class Crystalline extends NoLevelsModifier implements MeleeDamageModifierHook, ProjectileLaunchModifierHook,ArrowDamageModifierHook {
-    private static final String DAMAGE_UP = ModMain.MODID + ":damage_up";
+    private static final String DAMAGE_UP = JzyyModMain.MODID + ":damage_up";
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {

@@ -1,7 +1,6 @@
 package com.csdy.jzyy.item.team;
 
 import com.csdy.jzyy.modifier.util.font.DcFont;
-import com.csdy.jzyy.modifier.util.font.ReFont;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
@@ -17,7 +16,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.csdy.jzyy.ModMain.toolTip;
+import static com.csdy.jzyy.JzyyModMain.toolTip;
 
 
 public class StarLight extends Item {

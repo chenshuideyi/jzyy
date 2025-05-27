@@ -1,11 +1,9 @@
 package com.csdy.jzyy.modifier.modifier;
 
-import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.JzyyModMain;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,12 +13,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -41,8 +34,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 public class Marisa extends NoLevelsModifier implements MeleeHitModifierHook, ProjectileHitModifierHook,TooltipModifierHook, InventoryTickModifierHook, ProjectileLaunchModifierHook {
-    private static final ResourceLocation MARISA = new ResourceLocation(ModMain.MODID, "marisa");
-    private static final ResourceLocation STEAL = new ResourceLocation(ModMain.MODID, "steal");
+    private static final ResourceLocation MARISA = new ResourceLocation(JzyyModMain.MODID, "marisa");
+    private static final ResourceLocation STEAL = new ResourceLocation(JzyyModMain.MODID, "steal");
 
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {

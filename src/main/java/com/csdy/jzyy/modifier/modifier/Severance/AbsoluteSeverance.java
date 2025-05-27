@@ -1,7 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.Severance;
 
 
-import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.JzyyModMain;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -27,7 +27,7 @@ import java.util.UUID;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModifierHook {
     //TODO 切断死目标凋落物
     @Override

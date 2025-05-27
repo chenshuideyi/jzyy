@@ -1,6 +1,6 @@
 package com.csdy.jzyy.network;
 
-import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.network.packets.JzyySonicBoomPacket;
 import com.csdy.jzyy.network.packets.UnsafeMemoryPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -11,11 +11,11 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 import java.util.Optional;
 
-@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class JzyySyncing {
     private static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(ModMain.MODID, "jzyy"),
+            new ResourceLocation(JzyyModMain.MODID, "jzyy"),
             () -> PROTOCOL_VERSION,
             PROTOCOL_VERSION::equals,
             PROTOCOL_VERSION::equals

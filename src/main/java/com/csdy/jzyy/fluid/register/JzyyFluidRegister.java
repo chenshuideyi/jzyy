@@ -1,7 +1,7 @@
 package com.csdy.jzyy.fluid.register;
 
 
-import com.csdy.jzyy.ModMain;
+import com.csdy.jzyy.JzyyModMain;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -23,7 +23,7 @@ import static slimeknights.tconstruct.fluids.block.BurningLiquidBlock.createBurn
 
 public class JzyyFluidRegister {
 
-    public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(ModMain.MODID);
+    public static final FluidDeferredRegister FLUIDS = new FluidDeferredRegister(JzyyModMain.MODID);
     protected static Map<FluidObject<ForgeFlowingFluid>,Boolean> FLUID_MAP = new HashMap<>();
     public static Set<FluidObject<ForgeFlowingFluid>> getFluids(){
         return FLUID_MAP.keySet();
@@ -53,7 +53,7 @@ public class JzyyFluidRegister {
 
     private static FluidType.Properties hot(String name,int Temp,boolean gas) {
         return FluidType.Properties.create().density(gas?-2000:2000).viscosity(10000).temperature(Temp)
-                .descriptionId("fluid."+ModMain.MODID+"."+name)
+                .descriptionId("fluid."+ JzyyModMain.MODID+"."+name)
                 .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
                 .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                 .motionScale(0.0023333333333333335D)
