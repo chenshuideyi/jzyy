@@ -13,14 +13,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Ender extends Item {
-    public Ender() {
+public class YakumoEnder extends Item {
+    public YakumoEnder() {
         super((new Item.Properties()).stacksTo(64).rarity(Rarity.UNCOMMON));
     }
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
-        tooltip.add(Component.translatable("item.jzyy.ender.line1").withStyle(ChatFormatting.YELLOW).withStyle(ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.jzyy.yakumo_ender_line1").withStyle(ChatFormatting.YELLOW).withStyle(ChatFormatting.ITALIC));
     }
 
 }

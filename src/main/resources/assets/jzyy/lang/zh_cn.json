@@ -25,6 +25,9 @@
   "item.jzyy.rain_curtain": "雨幕",
   "item.jzyy.rain_curtain_line1": "惜念的提案",
 
+  "item.jzyy.yakumo_ender": "誓约胜利之锭",
+  "item.jzyy.yakumo_ender_line1": "tzdEnder的提案",
+
   "item.jzyy.yue_zheng_ling": "石墨砖",
   "item.jzyy.yue_zheng_ling.line1": "COPY",
   "item.jzyy.yue_zheng_ling.line2": "CSDY的提案",
@@ -138,6 +141,12 @@
   "material.jzyy.yue_zheng_ling": "石墨砖",
   "material.jzyy.yue_zheng_ling.flavor": "她好可爱",
   "material.jzyy.yue_zheng_ling.encyclopedia": "2018 coming soon",
+
+  "material.jzyy.yakumo_ender": "誓约胜利之锭",
+  "material.jzyy.yakumo_ender.flavor": "呆毛王！",
+  "material.jzyy.yakumo_ender.encyclopedia": "需要真名解放",
+
+  "material.jzyy.excalibar": "誓约胜利之",
 
   "material.jzyy.pufferfish": "河豚",
   "material.jzyy.pufferfish.flavor": "扎手",
@@ -642,6 +651,23 @@
   "modifier.jzyy.1999_eleanor": "共鸣-埃莉诺·Nyx",
   "modifier.jzyy.1999_eleanor.flavor": "混乱",
   "modifier.jzyy.1999_eleanor.description": "强大的心灵冲击引起战场上的群体性歇斯底里，所有敌人因混乱而随机攻击",
+
+  "modifier.jzyy.true_name_liberation": "真名解放",
+  "modifier.jzyy.true_name_liberation.flavor": "尘封",
+  "modifier.jzyy.true_name_liberation.description": "这把宝具正在沉睡，需要恢复它的真名",
+
+  "modifier.jzyy.excalibur": "誓约胜利之剑",
+  "modifier.jzyy.excalibur.flavor": "对城宝具",
+  "modifier.jzyy.excalibur.description": "长按右键解放宝具",
+
+
+
+
+
+
+
+
+
 
   "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
   "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",

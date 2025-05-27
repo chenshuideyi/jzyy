@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 
+
 public class Test extends Item {
 
     public Test() {
