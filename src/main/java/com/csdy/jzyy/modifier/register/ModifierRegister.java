@@ -26,6 +26,7 @@ import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
 import com.csdy.jzyy.modifier.modifier.dx.tool.AwakenTiamat;
 import com.csdy.jzyy.modifier.modifier.ender.SaberExcalibur;
+import com.csdy.jzyy.modifier.modifier.ender.TrueNameLiberation;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
@@ -309,6 +310,21 @@ public class ModifierRegister {
                                     "default"
                             ),
                             "红石构件充能到了极致！"
+                    )
+            );
+
+
+
+    public static final StaticModifier<TrueNameLiberation> TRUE_NAME_LIBERATION_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "true_name_liberation",
+                    () -> new TrueNameLiberation(
+                            "yakumo_ender",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "excalibar"),
+                                    "default"
+                            ),
+                            "真名解放！"
                     )
             );
 

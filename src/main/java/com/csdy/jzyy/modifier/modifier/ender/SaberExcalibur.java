@@ -1,19 +1,19 @@
 package com.csdy.jzyy.modifier.modifier.ender;
 
-import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
+import com.csdy.jzyy.network.JzyySyncing;
+import com.csdy.jzyy.network.packets.ExcaliburPacket;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -24,8 +24,6 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class SaberExcalibur extends NoLevelsModifier implements GeneralInteractionModifierHook {
-
-    SimpleParticleType type = JzyyParticlesRegister.SABER_PARTICLE.get();
 
     @Override
     public int getPriority() {
@@ -47,31 +45,11 @@ public class SaberExcalibur extends NoLevelsModifier implements GeneralInteracti
 
         int usedTicks = getUseDuration(tool, entry) - timeLeft;
 
-        if (player.level().isClientSide()) {
-            RandomSource random = player.getRandom();
-            for (int i = 0; i < 40; i++) { // 减少粒子数量但增强动态效果
-                // 1. 更柔和的初始位置分布（减少机械感）
-                float radius = 1.5f + random.nextFloat() * 5f; // 半径随机化
-                float angle = random.nextFloat() * Mth.TWO_PI;  // 360度随机角度
-                float x = Mth.cos(angle) * radius;
-                float z = Mth.sin(angle) * radius;
-
-                // 2. 飘逸运动参数
-                float speedX = (random.nextFloat() - 0.5f) * 0.02f; // 更小的水平速度
-                float speedY = 0.1f + random.nextFloat() * 0.3f;    // 缓慢上升
-                float speedZ = (random.nextFloat() - 0.5f) * 0.02f;
-
-                // 3. 添加粒子（使用自定义粒子类型或原版粒子）
-                player.level().addParticle(
-                        type, // 或你的自定义粒子
-                        player.getX() + x,
-                        player.getY() + 0.5,   // 从腰部高度发射
-                        player.getZ() + z,
-                        speedX,
-                        speedY,
-                        speedZ
-                );
-            }
+        if (!player.level().isClientSide()) {
+            JzyySyncing.CHANNEL.send(
+                    PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
+                    new ExcaliburPacket(player.getEyePosition())
+            );
         }
 
         // 客户端消息
@@ -125,41 +103,67 @@ public class SaberExcalibur extends NoLevelsModifier implements GeneralInteracti
                 );
             }
             if (!player.level.isClientSide()) {
-                destroyBlocksInFront(player, 100, 50, 30);
+                destroyBlocksInSector(player,160,50,60);
             }
-        }
+    }
 
-    private void destroyBlocksInFront(Player player, int length, int height, int width) {
+    /**
+     * 在玩家面前创建一个圆锥形的破坏区域。
+     * 锥尖大致在玩家面前，底部向外展开。
+     *
+     * @param player 触发者
+     * @param radius 圆锥的长度（从玩家面前开始计算的深度）
+     * @param angleDegrees 圆锥底部的最大宽度 (X方向直径)
+     * @param height 圆锥底部的最大高度 (Y方向直径)
+     */
+    public void destroyBlocksInSector(Player player, int radius, float angleDegrees, int height) {
         Level level = player.level;
 
-        // 获取玩家朝向的方向向量
-        Vec3 lookAngle = player.getLookAngle();
+        // 获取玩家位置和朝向
+        Vec3 playerPos = player.position();
+        Vec3 lookAngle = player.getLookAngle().normalize();
 
-        // 计算破坏区域的中心点（玩家前方 `length/2` 处）
-        BlockPos center = player.blockPosition()
-                .offset(
-                        (int) (lookAngle.x * length / 2),
-                        (int) (lookAngle.y * length / 2),
-                        (int) (lookAngle.z * length / 2)
-                );
+        // 计算扇形角度范围
+        float halfAngle = angleDegrees / 2;
+        double angleRad = Math.toRadians(halfAngle);
+        double cosThreshold = Math.cos(angleRad);
 
-        int halfWidth = width / 2;
-        int halfHeight = height / 2;
+        // 获取玩家所在的方块位置
+        BlockPos playerBlockPos = player.blockPosition();
 
-        // 遍历区域内的所有方块
-        for (int x = -halfWidth; x <= halfWidth; x++) {
-            for (int y = -halfHeight; y <= halfHeight; y++) {
-                for (int z = 0; z < length; z++) {
-                    // 计算当前方块的坐标（基于朝向调整）
-                    BlockPos targetPos = center
-                            .offset(
-                                    (int) (lookAngle.x * z - lookAngle.z * x),
-                                    y,
-                                    (int) (lookAngle.z * z + lookAngle.x * x)
-                            );
+        // 遍历高度范围内的每一层
+        for (int yOffset = 0; yOffset <= height; yOffset++) {
+            // 计算当前层的半径（随着高度增加而减小）
+            double currentRadius = radius * (1 - (double)yOffset / height);
+            int currentRadiusInt = (int)Math.ceil(currentRadius);
 
-                    // 破坏方块（空气替换）
-                    level.destroyBlock(targetPos, false, player);
+            // 遍历当前层的圆形区域
+            for (int xOffset = -currentRadiusInt; xOffset <= currentRadiusInt; xOffset++) {
+                for (int zOffset = -currentRadiusInt; zOffset <= currentRadiusInt; zOffset++) {
+                    // 跳过超出当前层半径的方块
+                    if (xOffset * xOffset + zOffset * zOffset > currentRadius * currentRadius) {
+                        continue;
+                    }
+
+                    BlockPos targetPos = playerBlockPos.offset(xOffset, yOffset, zOffset);
+
+                    // 计算从玩家到方块的向量
+                    Vec3 toBlock = new Vec3(
+                            targetPos.getX() + 0.5 - playerPos.x,
+                            0,
+                            targetPos.getZ() + 0.5 - playerPos.z
+                    ).normalize();
+
+                    // 计算点积
+                    double dotProduct = lookAngle.x * toBlock.x + lookAngle.z * toBlock.z;
+
+                    if (dotProduct >= cosThreshold) {
+                        // 只破坏可破坏的固体方块
+                        BlockState state = level.getBlockState(targetPos);
+                        if (state.getDestroySpeed(level, targetPos) >= 0 && !state.isAir()) {
+                            level.destroyBlock(targetPos, false, player);
+                        }
+                    }
                 }
             }
         }

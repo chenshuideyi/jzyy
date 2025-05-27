@@ -1,6 +1,7 @@
 package com.csdy.jzyy.network;
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.network.packets.ExcaliburPacket;
 import com.csdy.jzyy.network.packets.JzyySonicBoomPacket;
 import com.csdy.jzyy.network.packets.UnsafeMemoryPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +39,14 @@ public class JzyySyncing {
                 JzyySonicBoomPacket::encode,
                 JzyySonicBoomPacket::decode,
                 JzyySonicBoomPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
+        );
+        CHANNEL.registerMessage(
+                packetId++,
+                ExcaliburPacket.class,
+                ExcaliburPacket::encode,
+                ExcaliburPacket::decode,
+                ExcaliburPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
         );
     }
