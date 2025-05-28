@@ -1,40 +1,59 @@
 package com.csdy.jzyy.entity.boss;
 
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
+import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
+import com.csdy.jzyy.entity.boss.ai.FlyToTargetWhenStuckOrInLiquidGoal;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import com.csdy.tcondiadema.diadema.DiademaRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.RangedAttackMob;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.levelgen.Heightmap;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib.core.animation.AnimationState;
 
 import javax.annotation.Nullable;
 
-public class SwordManCsdy extends Monster implements GeoEntity {
+public class SwordManCsdy extends BossEntity implements GeoEntity {
+
+    // 更新 RawAnimation 定义以匹配你的JSON文件
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.model.stand");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.model.walk");
+    // 假设 "快慢刀" 是你的主要攻击动画
+    private static final RawAnimation ATTACK_KMS_ANIM = RawAnimation.begin().thenPlay("animation.model.快慢刀");
+    // 如果你有其他攻击动画，也为它们创建 RawAnimation 定义
+    private static final RawAnimation ATTACK_SL_ANIM = RawAnimation.begin().thenPlay("animation.model.奥义升龙");
+    private static final RawAnimation ATTACK_UDUD_ANIM = RawAnimation.begin().thenPlay("animation.model.上上下下");
+
+
+
     private static Diadema csdyWorld;
+
+    private transient BossMusic clientBossMusicInstance; // transient 防止序列化，客户端专用
+    private boolean musicStarted = false;
 
     public boolean isDead;
     private float oldHealth;
@@ -44,7 +63,7 @@ public class SwordManCsdy extends Monster implements GeoEntity {
     private boolean damageTooHigh;
 
     private final ServerBossEvent bossEvent;
-    public SwordManCsdy(EntityType<? extends Monster> type, Level level) {
+    public SwordManCsdy(EntityType<? extends BossEntity> type, Level level) {
         super(type, level);
         this.entityData.set(DATA_HEALTH_ID,this.getMaxHealth());
         this.setMaxUpStep(0.6F);
@@ -60,9 +79,6 @@ public class SwordManCsdy extends Monster implements GeoEntity {
         csdyWorld = JzyyDiademaRegister.CSDY_WORLD.get().CreateInstance(new FollowDiademaMovement(this));
     }
 
-//    protected SoundEvent getAmbientSound() {
-//        return JzyySoundsRegister.CUMULONIMBUS.get();
-//    }
 
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType,
@@ -95,33 +111,57 @@ public class SwordManCsdy extends Monster implements GeoEntity {
 
     @Override
     public void tick() {
-        super.tick();
+        super.tick(); // 调用父类的tick很重要
+
+        // 你已有的tick逻辑
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-        this.invulnerableTime = 0;
+        this.invulnerableTime = 0; // 为什么每tick都设置无敌时间为0？这可能导致它无法利用原版的无敌帧
         if (!this.level().isClientSide && this.tickCount % 20 == 0) {
             this.heal(10);
             ServerLevel serverLevel = (ServerLevel) this.level();
-            serverLevel.setWeatherParameters(0, 400, true, true);
+             serverLevel.setWeatherParameters(0, 400, true, true); // 每秒改变天气可能过于频繁
         }
+    }
+
+    // 确保在Boss实体被移除或死亡时，音乐也停止
+    @Override
+    public void onRemovedFromWorld() {
+        if (isDeadOrDying()) {
+            super.onRemovedFromWorld(); // 调用父类很重要
+            if (level().isClientSide()) {
+                if (clientBossMusicInstance != null) {
+                    Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
+                }
+                musicStarted = false;
+                clientBossMusicInstance = null; // 清理引用
+            }
+        }
+    }
+
+    @Override
+    public void die(DamageSource pSource) {
+        if (isDeadOrDying()) {
+            super.die(pSource); // 调用父类
+
+            if (level().isClientSide()) {
+                if (clientBossMusicInstance != null) {
+                    Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
+                }
+                musicStarted = false;
+                clientBossMusicInstance = null; // 清理引用
+            }
+        }
+    }
+
+    @Override
+    public SoundEvent getBossMusic() {
+        return JzyySoundsRegister.AMA_NO_JYAKU.get();
     }
 
     @Override
     public void remove(@NotNull RemovalReason reason) {
         if (isDeadOrDying()) {
             super.remove(reason);
-        }
-    }
-
-    @Override
-    public void onRemovedFromWorld() {
-        if (isDeadOrDying())
-            super.onRemovedFromWorld();
-    }
-
-    @Override
-    public void onClientRemoval() {
-        if (isDeadOrDying())  {
-            super.onClientRemoval();
         }
     }
 
@@ -174,15 +214,51 @@ public class SwordManCsdy extends Monster implements GeoEntity {
         super.setHealth(value);
     }
 
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
 
+
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals(); // 可选，如果基类有重要行为需要保留
+
+        // 行为选择器 (goalSelector)
+        this.goalSelector.addGoal(1, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
+        this.goalSelector.addGoal(1, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this)); // 5: 随机环顾四周
+
+        // 目标选择器 (targetSelector)
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this)); // 1: 被攻击时，将攻击者设为目标
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true)); // 2: 寻找最近的玩家作为目标
     }
+
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+
+    @Override
+    public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "Walking", 5, this::walkAnimController));
+    }
+
+    private PlayState walkAnimController(AnimationState<SwordManCsdy> state) {
+        if (state.isMoving())
+            return state.setAndContinue(WALK_ANIM);
+
+        return PlayState.STOP;
+    }
+
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return GeckoLibUtil.createInstanceCache(this);
+        return this.geoCache;
     }
+
+//    @Override
+//    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+//    }
+//
+//    @Override
+//    public AnimatableInstanceCache getAnimatableInstanceCache() {
+//        return GeckoLibUtil.createInstanceCache(this);
+//    }
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();

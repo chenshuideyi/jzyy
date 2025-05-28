@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isEntityInSunlight;
 
 public class TeleKill extends NoLevelsModifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
+
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity target = context.getLivingTarget();

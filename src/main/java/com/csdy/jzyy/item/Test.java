@@ -6,6 +6,7 @@ import com.csdy.jzyy.font.Rarity.ExtendedRarity;
 import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.fake.FakeStack;
 import com.csdy.jzyy.ms.util.Helper;
+import com.csdy.jzyy.ms.util.SoundPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -258,6 +259,8 @@ public class Test extends Item {
                 }
             }
         }
+
+        SoundPlayer.tryPlayMillenniumSnowAsync("propose.wav");
 
 //        showDeathScreen();
 
