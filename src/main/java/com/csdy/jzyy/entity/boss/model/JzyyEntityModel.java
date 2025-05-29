@@ -9,7 +9,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class JzyyEntityModel extends GeoModel<SwordManCsdy> {
     private final ResourceLocation model = new ResourceLocation(JzyyModMain.MODID, "geo/sword_man_csdy.geo.json");
     private final ResourceLocation texture = new ResourceLocation(JzyyModMain.MODID, "textures/entity/sword_man_csdy.png");
-    private final ResourceLocation animations = new ResourceLocation(JzyyModMain.MODID, "animations/sword_man_csdy.json");
+    private final ResourceLocation animations = new ResourceLocation(JzyyModMain.MODID, "animations/sword_man_csdy.animation.json");
 
     @Override
     public ResourceLocation getModelResource(SwordManCsdy swordManCsdy) {

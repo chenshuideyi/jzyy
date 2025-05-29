@@ -4,6 +4,10 @@ import com.csdy.jzyy.entity.boss.SwordManCsdy;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
+
+import java.util.List;
 
 public class CsdyMeleeGoal extends MeleeAttackGoal {
     private final SwordManCsdy boss; // 将 YourBossEntityClass 替换为你的Boss实体类名
@@ -14,21 +18,73 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
         this.boss = mob;
     }
 
-    // 当攻击开始时调用 (不是每tick，是攻击动作的开始)
+    private final double customAttackRange = 2D; // 例如，设置为1.5格。请根据需要调整。
+
     @Override
     protected void checkAndPerformAttack(LivingEntity target, double squaredDistance) {
-        super.checkAndPerformAttack(target, squaredDistance);
-        // 在实际造成伤害的时刻附近，我们可以认为攻击正在发生
-        // MeleeAttackGoal 内部的 attackTick 变量控制攻击计时
-        if (this.getAttackReachSqr(target) >= squaredDistance) { // 确认在攻击范围内
-            // this.resetAttackCooldown(); // super.checkAndPerformAttack 内部会调用
-            // this.mob.swing(InteractionHand.MAIN_HAND); // super.checkAndPerformAttack 内部会调用
-            target.invulnerableTime = 0;
-            this.mob.doHurtTarget(target); // super.checkAndPerformAttack 内部会调用
-            target.invulnerableTime = 0;
-            this.mob.doHurtTarget(target);
-            isAttackingCurrently = true; // 标记开始攻击动画
+        // 计算我们自定义的攻击距离的平方值
+        // 你也可以更精确地考虑目标宽度，但为了简单起见，我们先用固定距离。
+        // 例如: double effectiveRange = this.customAttackRange + target.getBbWidth() / 2.0;
+        // double desiredAttackReachSqr = effectiveRange * effectiveRange;
+        double desiredAttackReachSqr = this.customAttackRange * this.customAttackRange;
+
+        // 检查是否在自定义的更近攻击范围内，并且攻击冷却已过
+        // this.isTimeToAttack() 是 MeleeAttackGoal 中检查 attackTick <= 0 的方法
+        if (squaredDistance <= desiredAttackReachSqr && this.isTimeToAttack()) {
+            // 重置攻击冷却计时器
+            this.resetAttackCooldown(); // 这个方法来自 MeleeAttackGoal
+
+            // --- 四连击逻辑 ---
+            int hits = 4;
+            double aoeRadius = 2D; // 这是范围伤害的半径，与攻击触发距离是不同的概念
+
+            for (int i = 0; i < hits; i++) {
+                // --- 攻击主要目标 ---
+                if (target.isAlive()) { // 确保目标在连击过程中仍然存活
+                    target.invulnerableTime = 0; // 尝试取消无敌时间
+                    this.mob.doHurtTarget(target); // 对主要目标造成伤害
+                } else {
+                    break; // 如果主要目标死亡，则停止连击
+                }
+
+                // --- 对主要目标附近的生物进行范围攻击 ---
+                AABB aoeBox = this.mob.getBoundingBox().inflate(aoeRadius);
+                List<LivingEntity> nearbyEntities = this.mob.level.getEntitiesOfClass(LivingEntity.class, aoeBox,
+                        nearbyEntity -> nearbyEntity.isAlive() &&        // 必须存活
+                                nearbyEntity != this.mob &&       // 不能是攻击者自己
+                                nearbyEntity != target &&         // 不能是已经单独处理过的主目标
+                                this.mob.canAttack(nearbyEntity) && // 使用mob的canAttack进行通用可攻击性检查
+                                !nearbyEntity.isAlliedTo(this.mob) && // 再次确认非同盟
+                                !(nearbyEntity instanceof Player && ((Player) nearbyEntity).getAbilities().invulnerable) // 非创造/无敌玩家
+                );
+
+                for (LivingEntity nearbyTarget : nearbyEntities) {
+                    if (nearbyTarget.isAlive()) { // 再次检查存活状态
+                        nearbyTarget.invulnerableTime = 0; // 尝试取消无敌时间
+                        this.mob.doHurtTarget(nearbyTarget); // 对范围内的目标造成伤害
+                    }
+                }
+            }
+            // 如果你有 isAttackingCurrently 这样的标记，可以在这里设置
+            // isAttackingCurrently = true;
         }
+        // 注意：我们不再调用 super.checkAndPerformAttack(target, squaredDistance);
+        // 因为我们用自定义的逻辑和攻击距离完全替换了它。
+    }
+    @Override
+    protected double getAttackReachSqr(LivingEntity target) {
+        // 返回与 checkAndPerformAttack 中使用的自定义攻击距离的平方值
+        // 这样，生物会在进入 customAttackRange 范围时停止移动并尝试攻击。
+        // 如果希望索敌/停止移动的距离比实际攻击触发距离稍大一点，可以这样做：
+        // double engagementRange = this.customAttackRange + 0.5D; // 例如，索敌距离比攻击距离大0.5格
+        // return engagementRange * engagementRange;
+
+        // 如果希望索敌和攻击触发距离完全一致：
+        return this.customAttackRange * this.customAttackRange;
+
+        // 如果想更精确地考虑目标宽度 (这会使得对不同大小的目标有不同的绝对距离):
+        // double effectiveRange = this.customAttackRange + target.getBbWidth() / 2.0D;
+        // return effectiveRange * effectiveRange;
     }
 
     @Override

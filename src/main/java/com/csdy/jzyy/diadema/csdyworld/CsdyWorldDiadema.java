@@ -16,6 +16,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public class CsdyWorldDiadema extends Diadema {
-    final static double RADIUS = 12;
+    final static double RADIUS = 10;
     private final Entity holder = getCoreEntity();
 
     public CsdyWorldDiadema(DiademaType type, DiademaMovement movement) {
@@ -54,6 +55,7 @@ public class CsdyWorldDiadema extends Diadema {
         var core = getCoreEntity();
         if (core == null || entity.equals(core)) return;
         if (entity instanceof Player player) {
+            player.abilities.flying = false;
             player.abilities.mayfly = false;
             player.abilities.mayBuild = false;
             player.onUpdateAbilities(); // 同步能力到客户端
@@ -64,6 +66,7 @@ public class CsdyWorldDiadema extends Diadema {
     protected void onEntityExit(Entity entity) {
         var core = getCoreEntity();
         if (core == null || entity.equals(core)) return;
+        if (!(core instanceof Mob mob)) return;
 
         if (entity instanceof Player player) {
             if (!core.isAlive()) {
@@ -74,7 +77,7 @@ public class CsdyWorldDiadema extends Diadema {
             } else {
                 // 拉力逻辑
                 pullPlayerToCore(player, core);
-                player.setHealth(0);
+                mob.doHurtTarget(player);
             }
         }
     }
@@ -106,11 +109,6 @@ public class CsdyWorldDiadema extends Diadema {
         );
         player.setDeltaMovement(newMotion);
         player.hurtMarked = true;
-
-        player.displayClientMessage(
-                Component.literal("你是绝对无法躲开这个术的").withStyle(ChatFormatting.RED),
-                false
-        );
 
         player.level().playSound(
                 null,

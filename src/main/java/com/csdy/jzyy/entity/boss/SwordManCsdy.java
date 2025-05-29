@@ -42,13 +42,11 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     // 更新 RawAnimation 定义以匹配你的JSON文件
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.model.stand");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.model.walk");
-    // 假设 "快慢刀" 是你的主要攻击动画
-    private static final RawAnimation ATTACK_KMS_ANIM = RawAnimation.begin().thenPlay("animation.model.快慢刀");
-    // 如果你有其他攻击动画，也为它们创建 RawAnimation 定义
-    private static final RawAnimation ATTACK_SL_ANIM = RawAnimation.begin().thenPlay("animation.model.奥义升龙");
-    private static final RawAnimation ATTACK_UDUD_ANIM = RawAnimation.begin().thenPlay("animation.model.上上下下");
 
 
+    private CsdyMeleeGoal meleeGoal; // 持有对近战Goal的引用
+    private int attackBehaviorCooldown = 0; // 控制攻击行为（动画+伤害）的整体冷却
+    private AnimationController<SwordManCsdy> mainAnimationController; // 主动画控制器
 
     private static Diadema csdyWorld;
 
@@ -111,16 +109,19 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public void tick() {
-        super.tick(); // 调用父类的tick很重要
+        super.tick(); // 调用 BossEntity 基类的 tick（音乐播放逻辑应该在那里）
 
-        // 你已有的tick逻辑
-        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-        this.invulnerableTime = 0; // 为什么每tick都设置无敌时间为0？这可能导致它无法利用原版的无敌帧
+         if (!this.level().isClientSide && this.bossEvent != null) {
+             this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+         }
+
+        // 你原有的服务器端 tick 逻辑
         if (!this.level().isClientSide && this.tickCount % 20 == 0) {
-            this.heal(10);
             ServerLevel serverLevel = (ServerLevel) this.level();
-             serverLevel.setWeatherParameters(0, 400, true, true); // 每秒改变天气可能过于频繁
+            serverLevel.setWeatherParameters(0, 400, true, true); // 过于频繁改变天气
         }
+        this.invulnerableTime = 0; // 确保可以持续受伤，除非你有意设计无敌帧
+
     }
 
     // 确保在Boss实体被移除或死亡时，音乐也停止
@@ -215,20 +216,18 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
 
-
-
     @Override
     protected void registerGoals() {
         super.registerGoals(); // 可选，如果基类有重要行为需要保留
 
         // 行为选择器 (goalSelector)
-        this.goalSelector.addGoal(1, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
+        this.goalSelector.addGoal(0, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
         this.goalSelector.addGoal(1, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this)); // 5: 随机环顾四周
+        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
 
         // 目标选择器 (targetSelector)
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this)); // 1: 被攻击时，将攻击者设为目标
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true)); // 2: 寻找最近的玩家作为目标
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true)); // 2: 寻找最近的玩家作为目标
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -241,8 +240,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     private PlayState walkAnimController(AnimationState<SwordManCsdy> state) {
         if (state.isMoving())
             return state.setAndContinue(WALK_ANIM);
-
-        return PlayState.STOP;
+        else return state.setAndContinue(IDLE_ANIM);
     }
 
 
@@ -251,21 +249,14 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         return this.geoCache;
     }
 
-//    @Override
-//    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-//    }
-//
-//    @Override
-//    public AnimatableInstanceCache getAnimatableInstanceCache() {
-//        return GeckoLibUtil.createInstanceCache(this);
-//    }
+
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 2);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
         builder = builder.add(Attributes.MAX_HEALTH, 750);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 100.0);
-        builder = builder.add(Attributes.FOLLOW_RANGE, 16.0);
+        builder = builder.add(Attributes.FOLLOW_RANGE, 32.0);
         return builder;
     }
 

@@ -63,11 +63,10 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
             return false;
         }
 
-        // (可选) 如果生物已经在目标上方附近，可能不需要启动飞行
-        // if (this.mob.getY() > this.targetEntity.getY() + flightHeightOffset - 1.0 &&
-        //     this.mob.distanceToSqr(this.targetEntity.getX(), this.targetEntity.getY() + flightHeightOffset, this.targetEntity.getZ()) < 4.0) {
-        //     return false;
-        // }
+         if (this.mob.getY() > this.targetEntity.getY() + flightHeightOffset - 1.0 &&
+             this.mob.distanceToSqr(this.targetEntity.getX(), this.targetEntity.getY() + flightHeightOffset, this.targetEntity.getZ()) < 4.0) {
+             return false;
+         }
 
         return true;
     }
@@ -153,9 +152,6 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
         if (!isInLiquid && !isStuck) {
             return false;
         }
-
-        // 如果生物已经通过其他方式（如跳跃）脱困，也可以停止
-        // (这个判断比较复杂，可以暂时省略)
 
         return true; // 否则继续飞行
     }
