@@ -18,7 +18,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
         this.boss = mob;
     }
 
-    private final double customAttackRange = 2D; // 例如，设置为1.5格。请根据需要调整。
+    private final double customAttackRange = 4D; // 例如，设置为1.5格。请根据需要调整。
 
     @Override
     protected void checkAndPerformAttack(LivingEntity target, double squaredDistance) {
@@ -36,7 +36,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
 
             // --- 四连击逻辑 ---
             int hits = 4;
-            double aoeRadius = 2D; // 这是范围伤害的半径，与攻击触发距离是不同的概念
+            double aoeRadius = 4D; // 这是范围伤害的半径，与攻击触发距离是不同的概念
 
             for (int i = 0; i < hits; i++) {
                 // --- 攻击主要目标 ---
@@ -65,11 +65,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                     }
                 }
             }
-            // 如果你有 isAttackingCurrently 这样的标记，可以在这里设置
-            // isAttackingCurrently = true;
         }
-        // 注意：我们不再调用 super.checkAndPerformAttack(target, squaredDistance);
-        // 因为我们用自定义的逻辑和攻击距离完全替换了它。
     }
     @Override
     protected double getAttackReachSqr(LivingEntity target) {
@@ -117,14 +113,4 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
         // boss.setMovingState(true);
     }
 
-    // 公共方法供动画控制器查询
-    public boolean isCurrentlyAttacking() {
-        return isAttackingCurrently;
-    }
-
-    public boolean isChasing() {
-        // 如果行为正在使用 (canContinueToUse)，并且没有正在攻击，那么可以认为是追击状态
-        // 并且生物正在移动 (速度大于一个小阈值)
-        return this.canContinueToUse() && !isAttackingCurrently && this.mob.getDeltaMovement().lengthSqr() > 0.01;
-    }
 }

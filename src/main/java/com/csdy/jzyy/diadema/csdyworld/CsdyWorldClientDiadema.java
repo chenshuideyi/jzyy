@@ -42,41 +42,43 @@ public class CsdyWorldClientDiadema extends ClientDiadema {
                         particleWorldPos.z(),
                         0, 0, 0));
 
-        // --- 2. 第一个竖直圆 (例如，在实体的局部XY平面) ---
-        PointSets.Circle(RADIUS, 80)
+        // --- 1. 第一个竖直圆 (在实体的局部XY平面, X是宽度, Y是高度) ---
+        PointSets.Circle(RADIUS, 80) // 生成XZ平面上的点
                 .map(sourceHorizontalPoint -> {
-                    // sourceHorizontalPoint 是 PointSets.Circle 生成的原始XZ平面点 (x_src, 0, z_src)
-                    double newRelativeX = sourceHorizontalPoint.x(); // 用原始的 x 作为新圆的 x
-                    double newRelativeY = sourceHorizontalPoint.z(); // 用原始的 z 作为新圆的 y (高度)
-                    double newRelativeZ = 0;                         // 新圆的 z 固定为0 (在XY平面上)
-
-                    return entityPosition.add(newRelativeX, newRelativeY, newRelativeZ);
+                    double newRelativeX = sourceHorizontalPoint.x();
+                    double newRelativeY = sourceHorizontalPoint.z(); // 用原始的z作为新圆的y (高度)
+                    double newRelativeZ = 0;
+                    // 返回相对坐标，方便后续filter
+                    return new Vec3(newRelativeX, newRelativeY, newRelativeZ);
                 })
-                .forEach(particleWorldPos -> level.addParticle(type,
-                        particleWorldPos.x(),
-                        particleWorldPos.y() + yParticleDisplayOffset, // 应用统一的Y偏移
-                        particleWorldPos.z(),
-                        0, 0, 0));
+                .filter(relativePos -> relativePos.y >= 0) // 只保留相对Y坐标 >= 0 的点 (上半圆)
+                .forEach(relativePos -> {
+                    Vec3 particleWorldPos = entityPosition.add(relativePos);
+                    level.addParticle(type,
+                            particleWorldPos.x(),
+                            particleWorldPos.y() + yParticleDisplayOffset,
+                            particleWorldPos.z(),
+                            0, 0, 0);
+                });
 
-        // --- 3. 第二个竖直圆 (例如，在实体的局部YZ平面, 与上一个竖直圆垂直) ---
-        PointSets.Circle(RADIUS, 80)
+        // --- 2. 第二个竖直圆 (在实体的局部YZ平面, Y是高度, Z是深度) ---
+        PointSets.Circle(RADIUS, 80) // 生成XZ平面上的点
                 .map(sourceHorizontalPoint -> {
-                    // sourceHorizontalPoint 是 PointSets.Circle 生成的原始XZ平面点 (x_src, 0, z_src)
-                    double newRelativeX = 0;                         // 新圆的 x 固定为0 (在YZ平面上)
-                    double newRelativeY = sourceHorizontalPoint.x(); // 用原始的 x 作为新圆的 y (高度)
-                    // 注意：这里用 sourceHorizontalPoint.x() 作为高度，
-                    // 而上一个竖直圆用 sourceHorizontalPoint.z() 作为高度。
-                    // 这有助于确保即使 PointSets.Circle 生成的点在x和z上有特定模式，两个竖直圆也能良好地正交。
-                    // 如果用 sourceHorizontalPoint.z() 作为高度，可能会与第一个竖直圆重叠或方向不理想。
-                    double newRelativeZ = sourceHorizontalPoint.z(); // 用原始的 z 作为新圆的 z (深度)
-
-                    return entityPosition.add(newRelativeX, newRelativeY, newRelativeZ);
+                    double newRelativeX = 0;
+                    double newRelativeY = sourceHorizontalPoint.x(); // 用原始的x作为新圆的y (高度)
+                    double newRelativeZ = sourceHorizontalPoint.z();
+                    // 返回相对坐标，方便后续filter
+                    return new Vec3(newRelativeX, newRelativeY, newRelativeZ);
                 })
-                .forEach(particleWorldPos -> level.addParticle(type,
-                        particleWorldPos.x(),
-                        particleWorldPos.y() + yParticleDisplayOffset, // 应用统一的Y偏移
-                        particleWorldPos.z(),
-                        0, 0, 0));
+                .filter(relativePos -> relativePos.y >= 0) // 只保留相对Y坐标 >= 0 的点 (上半圆)
+                .forEach(relativePos -> {
+                    Vec3 particleWorldPos = entityPosition.add(relativePos);
+                    level.addParticle(type,
+                            particleWorldPos.x(),
+                            particleWorldPos.y() + yParticleDisplayOffset,
+                            particleWorldPos.z(),
+                            0, 0, 0);
+                });
     }
 
 }

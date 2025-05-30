@@ -1,6 +1,7 @@
 package com.csdy.jzyy.diadema.csdyworld;
 
 
+import com.csdy.tcondiadema.diadema.api.ranges.HalfSphereDiademaRange;
 import com.csdy.tcondiadema.diadema.api.ranges.SphereDiademaRange;
 import com.csdy.tcondiadema.diadema.warden.SonicBoomUtil;
 import com.csdy.tcondiadema.diadema.warden.WardenBlindnessEffect;
@@ -11,6 +12,7 @@ import com.csdy.tcondiadema.frames.diadema.movement.DiademaMovement;
 import com.csdy.tcondiadema.frames.diadema.range.DiademaRange;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,6 +22,9 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
@@ -32,14 +37,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CsdyWorldDiadema extends Diadema {
-    final static double RADIUS = 10;
+    final static double RADIUS = 8;
     private final Entity holder = getCoreEntity();
 
     public CsdyWorldDiadema(DiademaType type, DiademaMovement movement) {
         super(type, movement);
     }
 
-    private final SphereDiademaRange range = new SphereDiademaRange(this, RADIUS);
+    private final HalfSphereDiademaRange range = new HalfSphereDiademaRange(this, RADIUS);
 
     private static final int MAX_LIVING_ENTITIES_THRESHOLD = 5;
 
@@ -48,33 +53,79 @@ public class CsdyWorldDiadema extends Diadema {
         return range;
     }
 
+
+
     @Override
     protected void perTick() {
+
+        var affectingBlocks = range.getAffectingBlocks(); // 假设 range.getAffectingBlocks() 返回 Collection<BlockPos>
+
+        double coreY = holder.getY() + 10;
+
+        affectingBlocks.forEach(blockPos -> {
+            // 检查方块的Y轴是否高于核心的Y轴
+            // 注意：blockPos.getY() 是整数，coreY 可能是小数。
+            // 如果 coreY 是精确坐标，直接比较即可。
+            // 如果你想比较方块格子，确保 coreY 也被当作格子的Y来理解。
+            if (blockPos.getY() > coreY) {
+                BlockState currentState = getLevel().getBlockState(blockPos);
+                Block currentBlock = currentState.getBlock();
+
+                // 如果已经是空气，则不做任何操作
+                if (currentBlock == Blocks.AIR) {
+                    return; // Stream.forEach 中的 return 行为像 continue
+                }
+
+
+                // 将符合条件的方块设置为空气
+                // 使用 setBlockAndUpdate 或更底层的 setBlock 来改变方块
+                // setBlockAndUpdate 会处理方块更新和通知
+                getLevel().setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
+
+                getLevel().playSound(null, blockPos, currentState.getSoundType().getBreakSound(), SoundSource.BLOCKS, 0.5f, 1f);
+
+            } else {
+                // （保留你之前的逻辑）对于Y轴不高于核心的方块，如果不是空气或金块，则变成金块
+                // 注意：这个逻辑现在只对 Y <= coreY 的方块生效
+                BlockState currentState = getLevel().getBlockState(blockPos);
+                Block currentBlock = currentState.getBlock();
+
+                if (currentBlock == Blocks.AIR) {
+                    return;
+                }
+                // （可选）在这里也应该检查 isSafelyReplaceableWithGold() 之类的，避免把基岩变成金块
+
+                getLevel().setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
+
+            }
+        });
+
         if (affectingEntities == null || affectingEntities.isEmpty()) {
             return;
         }
 
         // 1. 筛选出范围内的所有 LivingEntity (不包括holder自身)
         List<LivingEntity> livingEntitiesInRange = new ArrayList<>();
-        List<Player> playersForCooldown = new ArrayList<>(); // 单独列表用于需要冷却的玩家
+        List<Player> playersForCooldown = new ArrayList<>();
 
         for (Entity entity : affectingEntities) {
-            if (entity.equals(holder)) continue; // 跳过holder自身
+            if (entity.equals(holder)) continue;
 
             if (entity instanceof LivingEntity living) {
+                Mob mob = (Mob)holder;
+                mob.doHurtTarget(living);
                 livingEntitiesInRange.add(living);
                 if (living instanceof Player player) {
-                    playersForCooldown.add(player); // 如果是玩家，也加入到待冷却列表
+                    playersForCooldown.add(player);
                 }
             }
         }
 
-        // 2. 检查 LivingEntity 数量是否超过阈值
         if (livingEntitiesInRange.size() > MAX_LIVING_ENTITIES_THRESHOLD) {
-            // 触发即死逻辑，对所有范围内的 LivingEntity
             for (LivingEntity entityToKill : livingEntitiesInRange) {
                 if (entityToKill.isAlive()) {
                     entityToKill.setHealth(0);
+                    ((Mob) holder).heal(750);
                 }
             }
         } else {
@@ -132,25 +183,26 @@ public class CsdyWorldDiadema extends Diadema {
 
         core.setTarget(player);
 
-        player.teleportTo(core.getX(),core.getY(),core.getZ());
+//        player.teleportTo(core.getX(),core.getY(),core.getZ());
 
+        core.doHurtTarget(player);
 
-//        // 1. 计算方向向量（从玩家指向核心）
-//        Vec3 direction = core.position()
-//                .subtract(player.position())
-//                .normalize(); // 单位化向量
-//
-//        // 2. 设置拉力参数
-//        double pullStrength = 70; // 拉力强度（可调整）
-//
-//        Vec3 currentMotion = player.getDeltaMovement();
-//        Vec3 newMotion = currentMotion.add(
-//                direction.x * pullStrength,
-//                direction.y * pullStrength,
-//                direction.z * pullStrength
-//        );
-//        player.setDeltaMovement(newMotion);
-//        player.hurtMarked = true;
+        // 1. 计算方向向量（从玩家指向核心）
+        Vec3 direction = core.position()
+                .subtract(player.position())
+                .normalize(); // 单位化向量
+
+        // 2. 设置拉力参数
+        double pullStrength = 15; // 拉力强度（可调整）
+
+        Vec3 currentMotion = player.getDeltaMovement();
+        Vec3 newMotion = currentMotion.add(
+                direction.x * pullStrength,
+                direction.y * pullStrength,
+                direction.z * pullStrength
+        );
+        player.setDeltaMovement(newMotion);
+        player.hurtMarked = true;
 
         player.level().playSound(
                 null,

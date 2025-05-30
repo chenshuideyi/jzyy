@@ -2,12 +2,10 @@ package com.csdy.jzyy.entity.boss;
 
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
-import com.csdy.jzyy.entity.boss.ai.FlyToTargetWhenStuckOrInLiquidGoal;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
@@ -81,17 +79,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType,
                                         @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
-        level.getLevel().sendParticles(
-                ParticleTypes.EXPLOSION_EMITTER,
-                this.getX(),
-                this.getY() + 1.0,
-                this.getZ(),
-                15,
-                0.7, 0.7, 0.7,
-                0.5
-        );
-
-
         return super.finalizeSpawn(level, difficulty, spawnType, spawnData, dataTag);
     }
 
@@ -109,18 +96,17 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public void tick() {
-        super.tick(); // 调用 BossEntity 基类的 tick（音乐播放逻辑应该在那里）
+        super.tick();
 
          if (!this.level().isClientSide && this.bossEvent != null) {
              this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
          }
 
-        // 你原有的服务器端 tick 逻辑
         if (!this.level().isClientSide && this.tickCount % 20 == 0) {
             ServerLevel serverLevel = (ServerLevel) this.level();
-            serverLevel.setWeatherParameters(0, 400, true, true); // 过于频繁改变天气
+            serverLevel.setWeatherParameters(0, 400, true, true);
         }
-        this.invulnerableTime = 0; // 确保可以持续受伤，除非你有意设计无敌帧
+        this.invulnerableTime = 0;
 
     }
 
@@ -143,7 +129,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public void die(DamageSource pSource) {
         if (isDeadOrDying()) {
             super.die(pSource); // 调用父类
-
             if (level().isClientSide()) {
                 if (clientBossMusicInstance != null) {
                     Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
@@ -156,7 +141,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public SoundEvent getBossMusic() {
-        return JzyySoundsRegister.AMA_NO_JYAKU.get();
+        return JzyySoundsRegister.GIRL_A.get();
     }
 
     @Override
@@ -221,9 +206,9 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         super.registerGoals(); // 可选，如果基类有重要行为需要保留
 
         // 行为选择器 (goalSelector)
-        this.goalSelector.addGoal(0, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
-        this.goalSelector.addGoal(1, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
+//        this.goalSelector.addGoal(0, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
+        this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
+        this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
 
         // 目标选择器 (targetSelector)
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this)); // 1: 被攻击时，将攻击者设为目标
@@ -238,9 +223,9 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
     private PlayState walkAnimController(AnimationState<SwordManCsdy> state) {
-        if (state.isMoving())
-            return state.setAndContinue(WALK_ANIM);
-        else return state.setAndContinue(IDLE_ANIM);
+        if (!state.isMoving() && this.getHealth() ==  this.getMaxHealth())
+            return state.setAndContinue(IDLE_ANIM);
+        else return state.setAndContinue(WALK_ANIM);
     }
 
 
@@ -253,9 +238,10 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 3.2);
         builder = builder.add(Attributes.MAX_HEALTH, 750);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 100.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 400.0);
+        builder = builder.add(Attributes.ATTACK_SPEED, 10.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 32.0);
         return builder;
     }
