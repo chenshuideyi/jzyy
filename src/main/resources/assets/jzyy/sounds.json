@@ -83,5 +83,13 @@
         "stream": true
       }
     ]
+  },
+  "girl_a": {
+    "sounds": [
+      {
+        "name":"jzyy:girl_a",
+        "stream": true
+      }
+    ]
   }
 }

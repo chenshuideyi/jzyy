@@ -1,5 +1,6 @@
 package com.csdy.jzyy.diadema.csdyworld;
 
+import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.tcondiadema.frames.diadema.ClientDiadema;
 import com.csdy.tcondiadema.particle.register.ParticlesRegister;
 import com.csdy.tcondiadema.particleUtils.PointSets;
@@ -12,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 import static com.csdy.jzyy.diadema.csdyworld.CsdyWorldDiadema.RADIUS;
 
 public class CsdyWorldClientDiadema extends ClientDiadema {
-    private static final SimpleParticleType type = ParticleTypes.CRIT;
+    private static final SimpleParticleType type = JzyyParticlesRegister.CSDY_PARTICLE.get();
     @Override protected void perTick() {
         var level = Minecraft.getInstance().level;
 

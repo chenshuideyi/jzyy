@@ -1,7 +1,56 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
+		"animation.model.stand": {
+			"animation_length": 0.8333,
+			"bones": {
+				"Left Arm": {
+					"rotation": {
+						"vector": [15, 0, 0]
+					}
+				},
+				"Right Arm": {
+					"rotation": {
+						"vector": [-157.5, 0, 0]
+					},
+					"position": {
+						"vector": [0, -3, 0]
+					}
+				},
+				"sword": {
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"sword2": {
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"Hat": {
+					"position": {
+						"vector": [0, 0, 1]
+					}
+				},
+				"Head": {
+					"position": {
+						"vector": [0, 0, 1]
+					}
+				},
+				"Right Leg": {
+					"rotation": {
+						"vector": [2.5, 0, 0]
+					}
+				},
+				"Left Leg": {
+					"rotation": {
+						"vector": [-2.5, 0, 0]
+					}
+				}
+			}
+		},
 		"animation.model.walk": {
+			"loop": true,
 			"animation_length": 2.25,
 			"bones": {
 				"Left Arm": {

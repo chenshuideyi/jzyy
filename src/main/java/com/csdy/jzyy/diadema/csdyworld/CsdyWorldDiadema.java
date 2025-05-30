@@ -23,7 +23,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import top.theillusivec4.curios.api.CuriosApi;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CsdyWorldDiadema extends Diadema {
     final static double RADIUS = 10;
@@ -35,6 +41,8 @@ public class CsdyWorldDiadema extends Diadema {
 
     private final SphereDiademaRange range = new SphereDiademaRange(this, RADIUS);
 
+    private static final int MAX_LIVING_ENTITIES_THRESHOLD = 5;
+
     @Override
     public @NotNull DiademaRange getRange() {
         return range;
@@ -42,10 +50,39 @@ public class CsdyWorldDiadema extends Diadema {
 
     @Override
     protected void perTick() {
+        if (affectingEntities == null || affectingEntities.isEmpty()) {
+            return;
+        }
+
+        // 1. 筛选出范围内的所有 LivingEntity (不包括holder自身)
+        List<LivingEntity> livingEntitiesInRange = new ArrayList<>();
+        List<Player> playersForCooldown = new ArrayList<>(); // 单独列表用于需要冷却的玩家
+
         for (Entity entity : affectingEntities) {
-            if (!entity.equals(holder)) {
-                if (!(entity instanceof Player player)) continue;
-                forceCooldownOnPlayer(player);
+            if (entity.equals(holder)) continue; // 跳过holder自身
+
+            if (entity instanceof LivingEntity living) {
+                livingEntitiesInRange.add(living);
+                if (living instanceof Player player) {
+                    playersForCooldown.add(player); // 如果是玩家，也加入到待冷却列表
+                }
+            }
+        }
+
+        // 2. 检查 LivingEntity 数量是否超过阈值
+        if (livingEntitiesInRange.size() > MAX_LIVING_ENTITIES_THRESHOLD) {
+            // 触发即死逻辑，对所有范围内的 LivingEntity
+            for (LivingEntity entityToKill : livingEntitiesInRange) {
+                if (entityToKill.isAlive()) {
+                    entityToKill.setHealth(0);
+                }
+            }
+        } else {
+            // 未触发即死，对范围内的每个玩家执行冷却逻辑
+            for (Player player : playersForCooldown) {
+                if (player.isAlive()) { // 确保玩家仍然存活
+                    forceCooldownOnPlayer(player);
+                }
             }
         }
     }
@@ -76,8 +113,8 @@ public class CsdyWorldDiadema extends Diadema {
                 player.onUpdateAbilities(); // 同步能力到客户端
             } else {
                 // 拉力逻辑
-                pullPlayerToCore(player, core);
-                mob.doHurtTarget(player);
+                pullPlayerToCore(player, mob);
+
             }
         }
     }
@@ -85,7 +122,7 @@ public class CsdyWorldDiadema extends Diadema {
     /**
      * 将玩家拉向核心实体
      */
-    private void pullPlayerToCore(Player player, Entity core) {
+    private void pullPlayerToCore(Player player, Mob core) {
         if (!player.isAlive()) return;
 
         player.displayClientMessage(
@@ -93,22 +130,27 @@ public class CsdyWorldDiadema extends Diadema {
                 false
         );
 
-        // 1. 计算方向向量（从玩家指向核心）
-        Vec3 direction = core.position()
-                .subtract(player.position())
-                .normalize(); // 单位化向量
+        core.setTarget(player);
 
-        // 2. 设置拉力参数
-        double pullStrength = 70; // 拉力强度（可调整）
+        player.teleportTo(core.getX(),core.getY(),core.getZ());
 
-        Vec3 currentMotion = player.getDeltaMovement();
-        Vec3 newMotion = currentMotion.add(
-                direction.x * pullStrength,
-                direction.y * pullStrength,
-                direction.z * pullStrength
-        );
-        player.setDeltaMovement(newMotion);
-        player.hurtMarked = true;
+
+//        // 1. 计算方向向量（从玩家指向核心）
+//        Vec3 direction = core.position()
+//                .subtract(player.position())
+//                .normalize(); // 单位化向量
+//
+//        // 2. 设置拉力参数
+//        double pullStrength = 70; // 拉力强度（可调整）
+//
+//        Vec3 currentMotion = player.getDeltaMovement();
+//        Vec3 newMotion = currentMotion.add(
+//                direction.x * pullStrength,
+//                direction.y * pullStrength,
+//                direction.z * pullStrength
+//        );
+//        player.setDeltaMovement(newMotion);
+//        player.hurtMarked = true;
 
         player.level().playSound(
                 null,
@@ -128,4 +170,5 @@ public class CsdyWorldDiadema extends Diadema {
             }
         }
     }
+
 }
