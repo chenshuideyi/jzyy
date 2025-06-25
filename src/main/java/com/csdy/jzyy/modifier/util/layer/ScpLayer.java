@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +21,7 @@ import org.joml.Matrix4f;
 
 
 import static com.csdy.jzyy.modifier.util.JzyyRenderType.SCP_RENDER;
-
+@OnlyIn(Dist.CLIENT)
 public class ScpLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
     private static final ResourceLocation SCP = new ResourceLocation("jzyy:textures/models/scp.png");
 

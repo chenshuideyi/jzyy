@@ -15,11 +15,13 @@ import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 import java.util.OptionalDouble;
-
+@OnlyIn(Dist.CLIENT)
 public class TestRender {
 //    private static final RenderType CUSTOM_LINES = RenderType.create(
 //            "custom_lines",

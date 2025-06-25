@@ -48,16 +48,6 @@ public class CsdyDeathPlayer extends LocalPlayer {
     }
 
     @Override
-    public void tick() {
-        super.tick();
-//        Minecraft mc = Minecraft.getInstance();
-//        if (mc.player != null && (mc.player instanceof CsdyPlayer && !mc.player.getInventory().contains(HideRegister.CSDY_SWORD.get().getDefaultInstance()))) {
-//            ItemHandlerHelper.giveItemToPlayer(mc.player, new ItemStack(HideRegister.CSDY_SWORD.get()));
-//            mc.player.getInventory().add(HideRegister.CSDY_SWORD.get().getDefaultInstance());
-//        }
-    }
-
-    @Override
     public void kill() {
 
     }

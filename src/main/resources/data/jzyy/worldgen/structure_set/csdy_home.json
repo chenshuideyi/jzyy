@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jzyy:csdy_home",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 14333848570,
+    "spacing": 32,
+    "separation": 16,
+    "type": "minecraft:random_spread"
+  }
+}

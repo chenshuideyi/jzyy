@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jzyy:smeltery",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 14333848570,
+    "spacing": 40,
+    "separation": 20,
+    "type": "minecraft:random_spread"
+  }
+}

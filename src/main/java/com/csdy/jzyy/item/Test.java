@@ -10,9 +10,11 @@ import com.csdy.jzyy.ms.util.SoundPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -29,6 +31,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 
@@ -119,22 +123,10 @@ public class Test extends Item {
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
-        if (target instanceof LivingEntity living) {
-            living.setHealth(0);
-//            spawnExaggeratedWaterSplash(living.level,living.position,1000);
-//            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
-//            superKillEntity(target);
-//            superKillEntity(living);
-//            backTrack(living.getClass());
-//            EntityUntil.setCategory(living, EntityCategory.csdykill);
-//            DamageSource src = new DamageSource(
-//                    player.level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
-//                            .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)
-//            );
-//            living.hurt(src ,10000);
-//            new EntityActuallyHurt(living).actuallyHurt(living.level().damageSources().generic(), Float.POSITIVE_INFINITY, true);
-//            test(player,living);
-//            forceSetAllCandidateHealth(living,player,0);
+        if (target instanceof ServerPlayer serverPlayer) {
+            Component kickMessage = Component.literal("你被踢出了服务器！");
+            serverPlayer.connection.disconnect(kickMessage);
+            return true;
         }
         return false;
     }
@@ -144,25 +136,6 @@ public class Test extends Item {
             forceSetAllCandidateHealth(living,0);
             living.getBrain().clearMemories();
 //            player.killedEntity(serverLevel, living);
-            serverLevel.broadcastEntityEvent(living, (byte) 3);
-            for (int loli = 0; loli < 20; loli++) {
-                int finalLoli = loli;
-                Thread thread = new Thread(() -> {
-                    try {
-                        while (Minecraft.getInstance().isRunning()) {
-                            if (finalLoli == 19) {
-                                living.remove(Entity.RemovalReason.KILLED);
-                                serverLevel.entityTickList.remove(living);
-                                addDeathParticle(serverLevel, living.getX(), living.getY(), living.getZ());
-                                break;
-                            }
-                        }
-                    } catch (Exception ignored) {
-                    }
-                });
-                thread.start();
-                thread.stop();
-            }
         }
     }
 

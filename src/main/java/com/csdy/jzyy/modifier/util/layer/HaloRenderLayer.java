@@ -12,10 +12,12 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
 
 import static com.csdy.jzyy.modifier.util.layer.TestRender.renderCircle;
-
+@OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HaloRenderLayer extends RenderLayer{
     // 光环模型 - 一个简单的圆环

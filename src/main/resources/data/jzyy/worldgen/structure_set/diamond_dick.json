@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jzyy:diamond_dick",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 14333848570,
+    "spacing": 8,
+    "separation": 4,
+    "type": "minecraft:random_spread"
+  }
+}

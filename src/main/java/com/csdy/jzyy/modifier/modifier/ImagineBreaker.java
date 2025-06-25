@@ -50,9 +50,9 @@ public class ImagineBreaker extends NoLevelsModifier implements MeleeDamageModif
     }
 
     ///把怪的属性回退到基础值
-    ///也就是说，卸掉恶意给的额外属性
+    ///也就是说，卸掉额外属性
     ///和你的等级加成说再见吧
-    /// 我称它为“幻想杀手”
+    ///我称它为“幻想杀手”
     private static void imagineBreaker(LivingEntity entity) {
         if (entity.level().isClientSide) return;
         if (entity instanceof ServerPlayer player){

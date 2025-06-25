@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jzyy:time_watch",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 14333848570,
+    "spacing": 64,
+    "separation": 32,
+    "type": "minecraft:random_spread"
+  }
+}
