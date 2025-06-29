@@ -684,5 +684,10 @@
 
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
-  "effect.jzyy.overcharge_armor": "雷凯"
+  "effect.jzyy.overcharge_armor": "雷凯",
+
+
+  "jzyy.tool.tab": "匠战妖域-工具",
+  "item.jzyy.lollipop": "棒棒糖",
+  "item.jzyy.lollipop.description": ""
 }

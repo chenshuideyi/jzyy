@@ -1,0 +1,17 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "part_1": "jzyy:item/tool/lollipop/part_1",
+    "part_2": "jzyy:item/tool/lollipop/part_2",
+    "broken_part": "jzyy:item/tool/lollipop/broken_part"
+  },
+  "modifier_roots":
+  [
+    "jzyy:item/tool/lollipop/modifiers/"
+  ],
+  "parts": [
+    {"name": "part_1", "index": 0, "broken": "broken_part"},
+    {"name": "part_2", "index": 1}
+  ]
+}

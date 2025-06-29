@@ -1,0 +1,23 @@
+{
+    "parts": [
+        {
+            "path": "jzyy:item/tool/lollipop/part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "jzyy:item/tool/lollipop/part_2",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "jzyy:item/tool/lollipop/broken_part_1",
+            "stat_type": "tconstruct:binding"
+        },
+        {
+            "path": "jzyy:item/tool/lollipop/broken_part_2",
+            "stat_type": "tconstruct:binding"
+        }
+
+
+    ],
+    "replace": false
+}

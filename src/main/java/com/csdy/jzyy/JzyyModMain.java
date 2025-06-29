@@ -9,6 +9,7 @@ import com.csdy.jzyy.entity.boss.render.JzyyEntityRenderer;
 import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
+import com.csdy.jzyy.item.tool.until.JzyyTools;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.layer.GocLayer;
 import com.csdy.jzyy.modifier.util.layer.PlayerLayer;
@@ -26,9 +27,13 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 
+import static com.csdy.jzyy.item.tool.until.JzyyTools.TINKER_ITEMS;
+import static com.csdy.jzyy.item.tool.until.JzyyTools.lollipop;
 import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)
@@ -43,6 +48,7 @@ public class JzyyModMain {
     public JzyyModMain() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         CsdyTab.CREATIVE_MODE_TABS.register(bus);
+        JzyyTools.initRegisters();
 
         MinecraftForge.EVENT_BUS.register(this);
         ModifierRegister.MODIFIERS.register(bus);
@@ -118,6 +124,16 @@ public class JzyyModMain {
 //            renderer.addLayer(new BloodLayer(renderer));
 //            renderer.addLayer(new ScpLayer(renderer));
             renderer.addLayer(new GocLayer(renderer));
+        }
+    }
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                TinkerItemProperties.registerToolProperties(lollipop.get());
+                TinkerItemProperties.registerBrokenProperty(lollipop.get());
+            });
         }
     }
 }
