@@ -1,5 +1,8 @@
 {
   "type": "tconstruct:tool_building",
+  "extra_requirements": [
+    { "item": "minecraft:sugar" }
+  ],
   "result": "jzyy:lollipop",
   "result_count": 1
 }

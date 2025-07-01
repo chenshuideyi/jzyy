@@ -1,0 +1,25 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "part_1": "jzyy:item/tool/tinker_loli_pickaxe/part_1",
+    "part_2": "jzyy:item/tool/tinker_loli_pickaxe/part_2",
+    "part_3": "jzyy:item/tool/tinker_loli_pickaxe/part_3",
+    "part_4": "jzyy:item/tool/tinker_loli_pickaxe/part_4",
+    "part_5": "jzyy:item/tool/tinker_loli_pickaxe/part_5",
+    "broken_part": "jzyy:item/tool/tinker_loli_pickaxe/broken_part",
+    "loli_pickaxe": "jzyy:item/tool/tinker_loli_pickaxe/loli_pickaxe"
+  },
+  "modifier_roots":
+  [
+    "jzyy:item/tool/tinker_loli_pickaxe/modifiers/"
+  ],
+  "parts": [
+    {"name": "part_1", "index": 0, "broken": "broken_part"},
+    {"name": "part_2", "index": 1},
+    {"name": "part_3", "index": 2},
+    {"name": "part_4", "index": 3},
+    {"name": "part_5", "index": 4},
+    {"name": "loli_pickaxe"}
+  ]
+}

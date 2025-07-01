@@ -2,6 +2,7 @@ package com.csdy.jzyy.item.tool.until;
 
 import com.csdy.jzyy.CsdyTab;
 import com.csdy.jzyy.item.tool.lollipop;
+import com.csdy.jzyy.item.tool.tinker_loli_pickaxe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -55,9 +56,11 @@ public class JzyyTools extends CsdyTab{
     }
 
     public static final ItemObject<ModifiableItem> lollipop = TINKER_ITEMS.register("lollipop",()->new lollipop(new Item.Properties().stacksTo(1)));
+    public static final ItemObject<ModifiableItem> tinker_loli_pickaxe = TINKER_ITEMS.register("tinker_loli_pickaxe",()->new tinker_loli_pickaxe(new Item.Properties().stacksTo(1)));
 
     private static void addTabItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {
         Consumer<ItemStack> output = tab::accept;
         acceptTool(output, JzyyTools.lollipop);
+        acceptTool(output, JzyyTools.tinker_loli_pickaxe);
     }
 }

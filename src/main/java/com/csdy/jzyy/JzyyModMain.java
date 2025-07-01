@@ -32,8 +32,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 
-import static com.csdy.jzyy.item.tool.until.JzyyTools.TINKER_ITEMS;
-import static com.csdy.jzyy.item.tool.until.JzyyTools.lollipop;
+import static com.csdy.jzyy.item.tool.until.JzyyTools.*;
 import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)
@@ -133,6 +132,9 @@ public class JzyyModMain {
             event.enqueueWork(() -> {
                 TinkerItemProperties.registerToolProperties(lollipop.get());
                 TinkerItemProperties.registerBrokenProperty(lollipop.get());
+
+                TinkerItemProperties.registerToolProperties(tinker_loli_pickaxe.get());
+                TinkerItemProperties.registerBrokenProperty(tinker_loli_pickaxe.get());
             });
         }
     }
