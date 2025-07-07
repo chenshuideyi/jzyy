@@ -46,6 +46,15 @@
         "abilities": 2,
         "upgrades": 3
       }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "name": "tconstruct:tasty",
+          "level": 1
+        }
+      ]
     }
   ]
 }

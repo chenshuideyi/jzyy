@@ -2,14 +2,17 @@ package com.csdy.jzyy.item.tool;
 
 
 import com.csdy.jzyy.item.tool.until.ToolDefinitions;
+import com.csdy.tcondiadema.sounds.SoundsRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +42,7 @@ import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.tools.modifiers.ability.interaction.BlockingModifier;
 import slimeknights.tconstruct.tools.modifiers.upgrades.ranged.ScopeModifier;
 
+import java.awt.*;
 import java.util.Iterator;
 import java.util.List;
 
@@ -90,5 +94,21 @@ public class tinker_loli_pickaxe extends ModifiableItem {
             entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
         }
         return tooltips;
+    }
+
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        int entityCount = 0;
+        InteractionResultHolder<ItemStack> use = super.use(level, player, hand);
+        if (level instanceof ServerLevel serverLevel) {
+            for (Entity entity : serverLevel.getEntities().getAll()) {
+                if (entity != null && !(entity instanceof Player)) {
+                    player.attack(entity);
+                    entityCount++;
+                }
+            }
+            player.displayClientMessage(Component.literal( "已攻击" + entityCount + "个实体"), false);
+        }
+        player.playSound(SoundsRegister.LOLI_SUCCRSS.get(),1,1);
+        return use;
     }
 }

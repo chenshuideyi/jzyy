@@ -31,6 +31,7 @@ public class JzyyFluidRegister {
     public static Map<FluidObject<ForgeFlowingFluid>,Boolean> getFluidMap(){
         return FLUID_MAP;
     }
+
     /// register FLUIDS<br/>
     /// name 名字<br/>
     /// temp 温度<br/>
