@@ -401,7 +401,7 @@
 
   "modifier.jzyy.equivalent_edge": "EMC利刃",
   "modifier.jzyy.equivalent_edge.flavor": "EMC就是力量",
-  "modifier.jzyy.equivalent_edge.description":"消耗你的EMC提升伤害",
+  "modifier.jzyy.equivalent_edge.description":"你的EMC越多，造成的伤害越多",
 
   "modifier.jzyy.juggernaut": "主宰",
   "modifier.jzyy.juggernaut.flavor": "暴君降临",
@@ -692,5 +692,5 @@
   "item.jzyy.lollipop.description": "一种猪猪侠最爱的匠魂工具，可以吃哦",
 
   "item.jzyy.tinker_loli_pickaxe": "普通萝莉",
-  "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n 右键对大范围的生物造成一次攻击 "
+  "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n右键对100*100*100的生物造成一次攻击 "
 }

@@ -1,5 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.primal_reversion;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -27,11 +28,22 @@ public class Elemental extends NoLevelsModifier implements MeleeHitModifierHook,
     private static final List<MobEffect> BENEFICIAL_EFFECTS = new ArrayList<>();
     private static final Random RANDOM = new Random();
 
+    ///因为一些稳定问题废除
+//    static {
+//        for (MobEffect effect : ForgeRegistries.MOB_EFFECTS) {
+//            if (effect.getCategory() == MobEffectCategory.BENEFICIAL) {
+//                BENEFICIAL_EFFECTS.add(effect);
+//            }
+//        }
+//    }
+
     static {
         for (MobEffect effect : ForgeRegistries.MOB_EFFECTS) {
-            if (effect.getCategory() == MobEffectCategory.BENEFICIAL) {
+            ResourceLocation effectId = ForgeRegistries.MOB_EFFECTS.getKey(effect);
+            if (effectId != null
+                    && effectId.getNamespace().equals("minecraft") // 仅限原版
+                    && effect.getCategory() == MobEffectCategory.BENEFICIAL) { // 正面效果
                 BENEFICIAL_EFFECTS.add(effect);
-//                System.out.println("添加一个"+effect.getClass().getName());
             }
         }
     }

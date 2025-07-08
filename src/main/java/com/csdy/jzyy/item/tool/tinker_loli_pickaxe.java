@@ -100,15 +100,20 @@ public class tinker_loli_pickaxe extends ModifiableItem {
         int entityCount = 0;
         InteractionResultHolder<ItemStack> use = super.use(level, player, hand);
         if (level instanceof ServerLevel serverLevel) {
-            for (Entity entity : serverLevel.getEntities().getAll()) {
+            for (LivingEntity entity : serverLevel.getEntitiesOfClass(LivingEntity.class,player.getBoundingBox().inflate(100))) {
                 if (entity != null && !(entity instanceof Player)) {
                     player.attack(entity);
                     entityCount++;
                 }
             }
-            player.displayClientMessage(Component.literal( "已攻击" + entityCount + "个实体"), false);
+            player.displayClientMessage(Component.literal( "已攻击" + entityCount + "个生物"), false);
         }
         player.playSound(SoundsRegister.LOLI_SUCCRSS.get(),1,1);
         return use;
+    }
+
+    @Override
+    public boolean isDamageable(ItemStack stack) {
+        return false;
     }
 }
