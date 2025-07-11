@@ -1,7 +1,10 @@
-package com.csdy.jzyy.entity.boss;
+package com.csdy.jzyy.entity.boss.entity;
 
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
+import com.csdy.jzyy.entity.boss.BossEntity;
+import com.csdy.jzyy.entity.boss.BossMusic;
 import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
+import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
@@ -203,16 +206,14 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     protected void registerGoals() {
-        super.registerGoals(); // 可选，如果基类有重要行为需要保留
+        super.registerGoals();
 
         // 行为选择器 (goalSelector)
-//        this.goalSelector.addGoal(0, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
-        this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
 
-        // 目标选择器 (targetSelector)
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this)); // 1: 被攻击时，将攻击者设为目标
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true)); // 2: 寻找最近的玩家作为目标
+        // 目标选择器 (targetSelector) - 修改后的版本
+        this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this)); // 自定义的持续仇恨目标
+//        this.targetSelector.addGoal(2, new PersistentNearestAttackableTargetGoal<>(this, LivingEntity.class, true)); // 自定义的持续最近目标
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);

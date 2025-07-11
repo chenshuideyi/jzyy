@@ -4,8 +4,8 @@ import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
-import com.csdy.jzyy.entity.boss.SwordManCsdy;
-import com.csdy.jzyy.entity.boss.render.JzyyEntityRenderer;
+import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
 import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
@@ -104,7 +104,7 @@ public class JzyyModMain {
         // 注册你的GeoEntity渲染器
         event.registerEntityRenderer(
                 JzyyEntityRegister.SWORD_MAN_CSDY.get(),
-                JzyyEntityRenderer::new // 渲染器构造函数引用
+                SwordManCsdyRenderer::new // 渲染器构造函数引用
         );
     }
 

@@ -93,7 +93,6 @@ public class CsdyWorldDiadema extends Diadema {
                 if (currentBlock == Blocks.AIR) {
                     return;
                 }
-                // （可选）在这里也应该检查 isSafelyReplaceableWithGold() 之类的，避免把基岩变成金块
 
                 getLevel().setBlock(blockPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
 
@@ -164,6 +163,9 @@ public class CsdyWorldDiadema extends Diadema {
                 player.onUpdateAbilities(); // 同步能力到客户端
             } else {
                 // 拉力逻辑
+                player.getAbilities().mayfly = true;
+                player.getAbilities().mayBuild = true;
+                player.onUpdateAbilities(); // 同步能力到客户端
                 pullPlayerToCore(player, mob);
 
             }
