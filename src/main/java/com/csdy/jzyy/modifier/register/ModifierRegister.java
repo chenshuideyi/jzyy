@@ -37,6 +37,7 @@ import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.glass.Loupe;
 import com.csdy.jzyy.modifier.modifier.glass.Prism;
 import com.csdy.jzyy.modifier.modifier.jzyy.*;
+import com.csdy.jzyy.modifier.modifier.ly.armor.Return;
 import com.csdy.jzyy.modifier.modifier.pla_steel.Crystalline;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
@@ -390,4 +391,7 @@ public class ModifierRegister {
 
     ///领域
     public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("alex_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.ALEX_MELTDOWN));
+
+    /// 落叶
+    public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return",Return::new);
 }
