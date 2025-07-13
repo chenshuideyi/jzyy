@@ -58,6 +58,7 @@ import com.csdy.jzyy.modifier.modifier.projectE.armor.EquivalentArmor;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
 import com.csdy.jzyy.modifier.modifier.pufferfish.QuillSpray;
 import com.csdy.jzyy.modifier.modifier.pufferfish.Stinger;
+import com.csdy.jzyy.modifier.modifier.rainbow.ColorModifier;
 import com.csdy.jzyy.modifier.modifier.real_form.RealEgo;
 import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
 import com.csdy.jzyy.modifier.modifier.real_form.RealLivingWood;
@@ -385,6 +386,11 @@ public class ModifierRegister {
     public static final StaticModifier<Disruptor> DISRUPTOR_STATIC_MODIFIER = MODIFIERS.register("disruptor", Disruptor::new);
     public static final StaticModifier<FullOfEnergy> FULL_OF_ENERGY_STATIC_MODIFIER = MODIFIERS.register("full_of_energy", FullOfEnergy::new);
     public static final StaticModifier<Precision> PRECISION_STATIC_MODIFIER = MODIFIERS.register("precision", Precision::new);
+
+    ///彩虹
+    public static final StaticModifier<ColorModifier> COLOR_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color", ColorModifier::new);
+    public static final StaticModifier<NoLevelsModifier> COLOR1_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color1", NoLevelsModifier::new);
+
 
     ///赞助强化这一块
     public static final StaticModifier<FinalSword> FINAL_SWORD_STATIC_MODIFIER = MODIFIERS.register("final_sword", FinalSword::new);

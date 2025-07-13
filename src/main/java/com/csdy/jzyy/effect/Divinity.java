@@ -26,7 +26,7 @@ public class Divinity extends MobEffect {
     @Override
     public void removeAttributeModifiers(@NotNull LivingEntity entity, @NotNull AttributeMap attributeMap, int amplifier) {
         super.removeAttributeModifiers(entity, attributeMap, amplifier);
-        entity.hurt(new DamageSource(Holder.direct(new DamageType("divinity", 0f))), 999999F);
+        entity.setHealth(0);
     }
 
 }
