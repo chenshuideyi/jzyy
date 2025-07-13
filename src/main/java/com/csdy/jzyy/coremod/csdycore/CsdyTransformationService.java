@@ -2,6 +2,7 @@ package com.csdy.jzyy.coremod.csdycore;
 
 
 
+import com.csdy.jzyy.agent.LxAgent;
 import com.csdy.jzyy.ms.util.Helper;
 import cpw.mods.modlauncher.LaunchPluginHandler;
 import cpw.mods.modlauncher.Launcher;
@@ -11,6 +12,8 @@ import cpw.mods.modlauncher.api.ITransformer;
 import cpw.mods.modlauncher.serviceapi.ILaunchPluginService;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,10 +38,12 @@ public class CsdyTransformationService implements ITransformationService {
 
     @Override
     public void initialize(IEnvironment environment) {
+
     }
 
     @Override
     public void onLoad(IEnvironment env, Set<String> otherServices) {
+
     }
 
     @Override

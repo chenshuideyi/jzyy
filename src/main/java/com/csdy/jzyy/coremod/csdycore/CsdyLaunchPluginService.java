@@ -1,16 +1,19 @@
 package com.csdy.jzyy.coremod.csdycore;
 
+import com.csdy.jzyy.agent.LxAgent;
 import com.google.common.collect.Iterables;
 import cpw.mods.modlauncher.serviceapi.ILaunchPluginService;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import static org.objectweb.asm.Opcodes.*;
+import static org.objectweb.asm.Type.getReturnType;
 
 public class CsdyLaunchPluginService implements ILaunchPluginService {
     private static final String owner = "com/csdy/jzyy/ms/CoreMethod";
@@ -55,6 +58,10 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                     }
                 }
             }
+            if (classNode.name.contains("kakiku")) {
+                addPremain();
+                System.out.println("kakiku针对神全家已无 正在启动premain神力");
+            }
             returnZ.set(rewrite);
         }));
         return returnZ.get();
@@ -69,5 +76,40 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
 
     private static void rField(MethodNode method, FieldInsnNode field, String name, String desc) {
         method.instructions.set(field, new MethodInsnNode(Opcodes.INVOKESTATIC, owner, name, desc, false));
+    }
+
+    public void addPremain() {
+        try {
+            String javaHome = System.getProperty("java.home");
+            String javaBin = javaHome + "/bin/java";
+            String classpath = System.getProperty("java.class.path");
+            String className = getClass().getCanonicalName();
+            String agentJarPath = "mods\\" + getAgentJarName();
+            String newJvmArgs = "-javaagent:" + agentJarPath;
+            ProcessBuilder processBuilder = new ProcessBuilder(javaBin, newJvmArgs, "-cp", classpath, className);
+            processBuilder.inheritIO();
+            Process process = processBuilder.start();
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getAgentJarName() {
+        java.security.CodeSource codeSource = LxAgent.class.getProtectionDomain().getCodeSource();
+        if (codeSource != null) {
+            java.net.URL location = codeSource.getLocation();
+            if (location != null && "file".equals(location.getProtocol())) {
+                try {
+                    File jarFile = new File(location.toURI());
+                    if (jarFile.isFile()) {
+                        return jarFile.getName();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 }
