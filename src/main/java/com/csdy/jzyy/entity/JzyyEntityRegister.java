@@ -2,6 +2,7 @@ package com.csdy.jzyy.entity;
 
 import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,6 +25,13 @@ public class JzyyEntityRegister {
                             .clientTrackingRange(14) // 客户端追踪距离
                             .build("jzyy:sword_man_csdy"));
 
+
+    public static final RegistryObject<EntityType<DogJiao>> DOG_JIAO =
+            JZYY_ENTITY.register("dog_jiao",
+                    () -> EntityType.Builder.of(DogJiao::new, MobCategory.MONSTER)
+                            .sized(1f, 1.95f) // 碰撞箱大小 (宽, 高)
+                            .clientTrackingRange(14) // 客户端追踪距离
+                            .build("jzyy:dog_jiao"));
 
     public JzyyEntityRegister(IEventBus modBus) {
         JZYY_ENTITY.register(modBus);
