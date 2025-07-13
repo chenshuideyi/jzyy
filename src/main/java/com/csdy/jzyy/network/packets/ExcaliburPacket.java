@@ -3,7 +3,6 @@ package com.csdy.jzyy.network.packets;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;

@@ -2,10 +2,6 @@ package com.csdy.jzyy.modifier.modifier.csdy;
 
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import com.csdy.tcondiadema.modifier.DiademaModifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -14,7 +10,6 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
 public class CsdyArmor extends NoLevelsModifier implements EquipmentChangeModifierHook {
     @Override

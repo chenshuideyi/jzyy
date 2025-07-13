@@ -13,8 +13,6 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.clearAbsoluteSeveranceHealth;
-
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DeathList {
     private static final Set<String> deadEntityUuids = new HashSet<>();

@@ -38,7 +38,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 
-import static com.csdy.jzyy.item.tool.until.JzyyTools.*;
+import static com.csdy.jzyy.item.tool.until.JzyyTools.lollipop;
+import static com.csdy.jzyy.item.tool.until.JzyyTools.tinker_loli_pickaxe;
 import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)

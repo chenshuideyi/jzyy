@@ -1,7 +1,5 @@
 package com.csdy.jzyy.modifier.modifier.jzyy.sponsor;
 
-import com.c2h6s.etstlib.register.EtSTLibHooks;
-import com.c2h6s.etstlib.tool.hooks.LeftClickModifierHook;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import net.minecraft.network.chat.Component;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;

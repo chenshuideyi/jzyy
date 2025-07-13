@@ -1,15 +1,8 @@
 package com.csdy.jzyy.modifier.modifier.csdytinker;
 
-import com.c2h6s.etstlib.register.EtSTLibHooks;
-import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -21,10 +14,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-
-import javax.annotation.Nullable;
-
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isEntityInSunlight;
 
 public class TeleKill extends NoLevelsModifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
 

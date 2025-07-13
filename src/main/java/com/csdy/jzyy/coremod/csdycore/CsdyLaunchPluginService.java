@@ -5,15 +5,15 @@ import com.google.common.collect.Iterables;
 import cpw.mods.modlauncher.serviceapi.ILaunchPluginService;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.objectweb.asm.Opcodes.*;
-import static org.objectweb.asm.Type.getReturnType;
 
 public class CsdyLaunchPluginService implements ILaunchPluginService {
     private static final String owner = "com/csdy/jzyy/ms/CoreMethod";

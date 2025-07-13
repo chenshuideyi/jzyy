@@ -9,7 +9,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.multiplyAllToolStats;
-import static slimeknights.tconstruct.library.tools.stat.ToolStats.ATTACK_DAMAGE;
 
 public class Precision extends Modifier implements ToolStatsModifierHook {
 

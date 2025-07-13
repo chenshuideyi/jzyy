@@ -2,10 +2,8 @@ package com.csdy.jzyy.diadema.csdyworld;
 
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.tcondiadema.frames.diadema.ClientDiadema;
-import com.csdy.tcondiadema.particle.register.ParticlesRegister;
 import com.csdy.tcondiadema.particleUtils.PointSets;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;

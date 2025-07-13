@@ -1,7 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.warframe1999.tool;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
-import com.c2h6s.etstlib.entity.specialDamageSources.PercentageBypassArmorSource;
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
 import com.c2h6s.etstlib.tool.hooks.ModifyDamageSourceModifierHook;
@@ -10,7 +9,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +26,6 @@ import java.util.List;
 import java.util.Random;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.damageSourcesFromForge;
-import static java.lang.Math.pow;
 
 public class Cyte09 extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook, ModifyDamageSourceModifierHook {
 

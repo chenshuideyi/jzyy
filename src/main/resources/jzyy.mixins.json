@@ -7,7 +7,8 @@
   "refmap": "jzyy.refmap.json",
   "mixins": [
     "EntityMixin",
-    "SynchedEntityDataMixin"
+    "SynchedEntityDataMixin",
+    "UILoadMixin"
   ],
   "client": [
     "WindowMixin"

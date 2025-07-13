@@ -1,11 +1,9 @@
 package com.csdy.jzyy.modifier.modifier.projectE.armor;
 
-import com.c2h6s.etstlib.register.EtSTLibHooks;
 import moze_intel.projecte.api.capabilities.PECapabilities;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.armor.DamageBlockModifierHook;

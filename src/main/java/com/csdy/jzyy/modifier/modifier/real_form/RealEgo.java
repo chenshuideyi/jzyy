@@ -1,8 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.real_form;
 
 import com.csdy.jzyy.modifier.modifier.real_form.base.RealFormBaseModifier;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;

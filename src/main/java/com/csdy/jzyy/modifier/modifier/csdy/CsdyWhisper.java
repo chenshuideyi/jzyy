@@ -13,7 +13,6 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import java.util.List;
 import java.util.Random;
 
 public class CsdyWhisper extends NoLevelsModifier implements InventoryTickModifierHook {

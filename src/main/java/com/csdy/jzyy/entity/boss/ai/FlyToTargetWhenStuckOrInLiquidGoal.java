@@ -1,19 +1,17 @@
 package com.csdy.jzyy.entity.boss.ai;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags; // 用于检测液体
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Comparator;
 
 public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
     protected final PathfinderMob mob;

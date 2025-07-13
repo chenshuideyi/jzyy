@@ -2,36 +2,24 @@ package com.csdy.jzyy.diadema.csdyworld;
 
 
 import com.csdy.tcondiadema.diadema.api.ranges.HalfSphereDiademaRange;
-import com.csdy.tcondiadema.diadema.api.ranges.SphereDiademaRange;
-import com.csdy.tcondiadema.diadema.warden.SonicBoomUtil;
-import com.csdy.tcondiadema.diadema.warden.WardenBlindnessEffect;
-import com.csdy.tcondiadema.effect.register.EffectRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.DiademaType;
 import com.csdy.tcondiadema.frames.diadema.movement.DiademaMovement;
 import com.csdy.tcondiadema.frames.diadema.range.DiademaRange;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
-import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
 import java.util.List;

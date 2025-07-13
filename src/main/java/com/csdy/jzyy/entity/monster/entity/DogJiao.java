@@ -1,9 +1,5 @@
 package com.csdy.jzyy.entity.monster.entity;
 
-import com.csdy.jzyy.entity.boss.BossEntity;
-import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
-import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;

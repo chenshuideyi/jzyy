@@ -13,7 +13,6 @@ import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
-import java.awt.*;
 import java.util.function.Function;
 
 public class NullFont extends Font {

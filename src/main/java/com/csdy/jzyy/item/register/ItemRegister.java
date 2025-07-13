@@ -1,15 +1,11 @@
 package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.item.*;
-import com.csdy.jzyy.item.tool.lollipop;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import slimeknights.mantle.registration.object.ItemObject;
-import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 import static com.csdy.jzyy.JzyyModMain.MODID;
 

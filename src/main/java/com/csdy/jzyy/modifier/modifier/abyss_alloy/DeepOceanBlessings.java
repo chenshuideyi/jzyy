@@ -2,8 +2,6 @@ package com.csdy.jzyy.modifier.modifier.abyss_alloy;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowHitModifierHook;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -19,7 +17,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class DeepOceanBlessings extends NoLevelsModifier implements MeleeHitModifierHook, ArrowHitModifierHook {
 
