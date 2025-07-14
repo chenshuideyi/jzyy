@@ -146,6 +146,10 @@
   "material.jzyy.yakumo_ender.flavor": "呆毛王！",
   "material.jzyy.yakumo_ender.encyclopedia": "需要真名解放",
 
+  "material.jzyy.ly": "落叶",
+  "material.jzyy.ly.flavor": "秋天到了哦",
+  "material.jzyy.ly.encyclopedia": "一声梧叶一声秋，一点芭蕉一点愁，三更归梦三更后。",
+
   "material.jzyy.excalibar": "誓约胜利之",
 
   "material.jzyy.pufferfish": "河豚",
@@ -153,11 +157,17 @@
   "material.jzyy.pufferfish.encyclopedia": "把活鱼做成工具是个技术活",
   "material.jzyy.pufferfish.armor": "扎的不是我的手",
 
+  "material.jzyy.rainbow": "彩虹物质",
+  "material.jzyy.rainbow.flavor": "聚集的祈愿",
+  "material.jzyy.rainbow.encyclopedia": "万国神匠的最高之作",
 
 
 
 
 
+  "modifier.jzyy.return": "滋养",
+  "modifier.jzyy.return.flavor": "红叶最多情",
+  "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
 
 
 

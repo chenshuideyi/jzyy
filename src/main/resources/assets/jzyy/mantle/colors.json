@@ -113,7 +113,8 @@
     "1999": "#4183c5",
     "1999_armor": "#4183c5",
     "true_name_liberation": "#f1c40f",
-    "excalibur": "#f1c40f"
+    "excalibur": "#f1c40f",
+    "ly": "#8FBC8F"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -139,7 +140,8 @@
     "dragonbone": "#808080",
     "defect": "#5AC1FF",
     "yakumo_ender": "#f1c40f",
-    "excalibar": "#f1c40f"
+    "excalibar": "#f1c40f",
+    "ly": "#8FBC8F"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"
