@@ -1,7 +1,10 @@
-package com.csdy.jzyy.entity.boss;
+package com.csdy.jzyy.entity.boss.entity;
 
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
+import com.csdy.jzyy.entity.boss.BossEntity;
+import com.csdy.jzyy.entity.boss.BossMusic;
 import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
+import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
@@ -17,9 +20,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -28,10 +29,10 @@ import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import software.bernie.geckolib.core.animation.AnimationState;
 
 import javax.annotation.Nullable;
 
@@ -182,7 +183,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (!(source.getDirectEntity() instanceof Player)) return false;
         float realDamage = (float) Math.sqrt(damage);
-        if (realDamage < 25F) {
+        if (realDamage < 100f) {
             return false;
         }
         return super.hurt(source,damage);
@@ -192,7 +193,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public void setHealth(float value) {
         float currentHealth = this.getHealth();
         float healthLoss = currentHealth - value;
-        float threshold = 25.0f;
+        float threshold = 100.0f;
         if (healthLoss > threshold) {
             value = currentHealth - threshold;
         }
@@ -203,16 +204,14 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     protected void registerGoals() {
-        super.registerGoals(); // 可选，如果基类有重要行为需要保留
+        super.registerGoals();
 
         // 行为选择器 (goalSelector)
-//        this.goalSelector.addGoal(0, new FlyToTargetWhenStuckOrInLiquidGoal(this, 6D));
-        this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
 
-        // 目标选择器 (targetSelector)
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this)); // 1: 被攻击时，将攻击者设为目标
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true)); // 2: 寻找最近的玩家作为目标
+        // 目标选择器 (targetSelector) - 修改后的版本
+        this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this)); // 自定义的持续仇恨目标
+//        this.targetSelector.addGoal(2, new PersistentNearestAttackableTargetGoal<>(this, LivingEntity.class, true)); // 自定义的持续最近目标
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -239,8 +238,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 3.2);
-        builder = builder.add(Attributes.MAX_HEALTH, 750);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 400.0);
+        builder = builder.add(Attributes.MAX_HEALTH, 3000);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 1600.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 10.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 32.0);
         return builder;

@@ -1,9 +1,5 @@
 package com.csdy.jzyy.modifier;
 
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-
 public class Test {
 //    @SubscribeEvent(priority = EventPriority.HIGHEST)
 //    public static void onHighest(LivingDeathEvent e) {

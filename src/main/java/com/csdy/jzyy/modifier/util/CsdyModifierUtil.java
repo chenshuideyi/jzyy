@@ -3,25 +3,29 @@ package com.csdy.jzyy.modifier.util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.tools.stat.*;
+import slimeknights.tconstruct.library.tools.stat.INumericToolStat;
+import slimeknights.tconstruct.library.tools.stat.IToolStat;
+import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -94,6 +98,54 @@ public class CsdyModifierUtil {
                 holder.getX() + range, holder.getY() + range, holder.getZ() + range);
     }
 
+    public static void SelfExplosion(Level level, int entryLevel, LivingEntity holder) {
+        // 确保只在服务端执行且持有者存活
+        if (level.isClientSide || !holder.isAlive()) return;
+
+        DamageSource source = level.damageSources().source(DamageTypes.EXPLOSION);
+
+        // 根据entryLevel决定爆炸属性
+        float power = 4.0f + entryLevel * 2.0f; // 基础4，每级增加2
+        boolean causesFire = entryLevel >= 3; // 3级以上爆炸产生火焰
+        Explosion.BlockInteraction mode = entryLevel >= 5 ?
+                Explosion.BlockInteraction.DESTROY_WITH_DECAY : // 5级以上破坏方块并有衰减效果
+                Explosion.BlockInteraction.DESTROY; // 默认破坏方块
+
+        // 创建爆炸对象（使用现代Minecraft构造函数）
+        Explosion explosion = new Explosion(
+                level,
+                holder, // 爆炸源实体// 如果是生物则使用生物攻击伤害源
+                source,
+                null, // 爆炸伤害计算器（可为null）
+                holder.getX(), // 爆炸X坐标
+                holder.getY(), // 爆炸Y坐标
+                holder.getZ(), // 爆炸Z坐标
+                power, // 爆炸威力
+                causesFire, // 是否产生火焰
+                mode // 方块破坏模式
+        );
+
+        // 执行爆炸
+        explosion.explode();
+        explosion.finalizeExplosion(true);
+
+        // 播放爆炸音效（使用holder的位置）
+        level.playSound(
+                null,
+                holder.getX(),
+                holder.getY(),
+                holder.getZ(),
+                SoundEvents.GENERIC_EXPLODE,
+                SoundSource.HOSTILE, // 使用HOSTILE音源分类更合适
+                4.0F,
+                (1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.2F) * 0.7F
+        );
+
+        // 可选：对持有者造成伤害（自爆效果）
+        if (entryLevel >= 2) {
+            holder.hurt(level.damageSources().explosion(explosion), Float.MAX_VALUE);
+        }
+    }
 
     public static final List<Function<LivingEntity, DamageSource>> DAMAGE_SOURCE_GENERATORS = List.of(
             living -> living.damageSources().anvil(living),

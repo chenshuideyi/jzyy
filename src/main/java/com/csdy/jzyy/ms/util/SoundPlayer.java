@@ -5,7 +5,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicBoolean; // 使用 AtomicBoolean 保证线程安全
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SoundPlayer {
 

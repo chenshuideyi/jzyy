@@ -1,7 +1,6 @@
 package com.csdy.jzyy.coremod.csdycore;
 
 
-
 import com.csdy.jzyy.ms.util.Helper;
 import cpw.mods.modlauncher.LaunchPluginHandler;
 import cpw.mods.modlauncher.Launcher;
@@ -35,10 +34,12 @@ public class CsdyTransformationService implements ITransformationService {
 
     @Override
     public void initialize(IEnvironment environment) {
+
     }
 
     @Override
     public void onLoad(IEnvironment env, Set<String> otherServices) {
+
     }
 
     @Override

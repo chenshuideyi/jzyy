@@ -12,7 +12,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -33,7 +32,6 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.Random;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionPenetratingDamage;
-import static slimeknights.tconstruct.library.tools.stat.ToolStats.ATTACK_DAMAGE;
 
 public class SaberExcalibur extends NoLevelsModifier implements GeneralInteractionModifierHook, InventoryTickModifierHook {
 

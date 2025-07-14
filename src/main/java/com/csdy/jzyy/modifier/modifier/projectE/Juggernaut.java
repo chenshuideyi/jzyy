@@ -2,7 +2,6 @@ package com.csdy.jzyy.modifier.modifier.projectE;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
-import moze_intel.projecte.api.capabilities.PECapabilities;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,8 +18,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-
-import java.math.BigInteger;
 
 public class Juggernaut extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
 

@@ -4,14 +4,18 @@ import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
-import com.csdy.jzyy.entity.boss.SwordManCsdy;
-import com.csdy.jzyy.entity.boss.render.JzyyEntityRenderer;
+import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
+import com.csdy.jzyy.entity.monster.entity.DogJiao;
+import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
 import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.item.tool.until.JzyyTools;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
+import com.csdy.jzyy.modifier.util.layer.BloodLayer;
 import com.csdy.jzyy.modifier.util.layer.GocLayer;
+import com.csdy.jzyy.modifier.util.layer.HaloRenderLayer;
 import com.csdy.jzyy.modifier.util.layer.PlayerLayer;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
@@ -19,7 +23,9 @@ import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -32,7 +38,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 
-import static com.csdy.jzyy.item.tool.until.JzyyTools.*;
+import static com.csdy.jzyy.item.tool.until.JzyyTools.lollipop;
+import static com.csdy.jzyy.item.tool.until.JzyyTools.tinker_loli_pickaxe;
 import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)
@@ -97,6 +104,7 @@ public class JzyyModMain {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void addAttribute(EntityAttributeCreationEvent event) {
         event.put(JzyyEntityRegister.SWORD_MAN_CSDY.get(), SwordManCsdy.createAttributes().build());
+        event.put(JzyyEntityRegister.DOG_JIAO.get(), DogJiao.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -104,7 +112,11 @@ public class JzyyModMain {
         // 注册你的GeoEntity渲染器
         event.registerEntityRenderer(
                 JzyyEntityRegister.SWORD_MAN_CSDY.get(),
-                JzyyEntityRenderer::new // 渲染器构造函数引用
+                SwordManCsdyRenderer::new // 渲染器构造函数引用
+        );
+        event.registerEntityRenderer(
+                JzyyEntityRegister.DOG_JIAO.get(),
+                DogJiaoRenderer::new // 渲染器构造函数引用
         );
     }
 
@@ -138,22 +150,22 @@ public class JzyyModMain {
             });
         }
     }
-}
 
-//    @SubscribeEvent
-//    @OnlyIn(Dist.CLIENT)
-//    public void onRenderPlayer(RenderPlayerEvent.Pre e) {
-//        // 凋零护甲
-//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get())) {
-//            e.getRenderer().addLayer(new PlayerLayer(e.getRenderer()));
-//        }
-//        // 血怒效果
-//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
-//            e.getRenderer().addLayer(new BloodLayer(e.getRenderer()));
-//        }
-//        if (e.getEntity() != null){
-//            e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
-//        }
-//}
-//}
+
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public void onRenderPlayer(RenderPlayerEvent.Pre e) {
+        // 凋零护甲
+        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get())) {
+            e.getRenderer().addLayer(new PlayerLayer(e.getRenderer()));
+        }
+        // 血怒效果
+        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
+            e.getRenderer().addLayer(new BloodLayer(e.getRenderer()));
+        }
+        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
+            e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
+        }
+    }
+}
 

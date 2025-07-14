@@ -14,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 import java.awt.*;
-import java.util.function.Function;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 
 public class ReFont extends Font {

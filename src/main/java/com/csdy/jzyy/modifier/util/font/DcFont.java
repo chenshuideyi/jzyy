@@ -1,6 +1,5 @@
 package com.csdy.jzyy.modifier.util.font;
 
-import java.util.function.Function;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -12,6 +11,8 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
+
+import java.util.function.Function;
 
 public class DcFont extends Font {
     public DcFont(Function<ResourceLocation, FontSet> p_243253_, boolean p_243245_) {

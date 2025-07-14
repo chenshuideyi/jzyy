@@ -7,7 +7,6 @@ import com.csdy.tcondiadema.frames.diadema.movement.DiademaMovement;
 import com.csdy.tcondiadema.frames.diadema.range.DiademaRange;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,8 +1,5 @@
 package com.csdy.jzyy.modifier.modifier;
 
-import com.csdy.jzyy.ms.CoreMsUtil;
-import com.csdy.jzyy.ms.enums.EntityCategory;
-import net.minecraft.client.telemetry.TelemetryProperty;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

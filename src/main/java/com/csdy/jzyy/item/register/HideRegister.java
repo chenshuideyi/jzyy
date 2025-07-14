@@ -1,8 +1,8 @@
 package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.Test;
+import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.food.CsdySword;
 import com.csdy.jzyy.item.team.StarLight;
 import net.minecraft.world.item.Item;

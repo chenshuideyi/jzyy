@@ -3,7 +3,6 @@ package com.csdy.jzyy.modifier.modifier.living_wood.real;
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +20,6 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
 import javax.annotation.Nullable;
-import java.util.*;
 //TODO 也许可以优化
 public class ForestAngry extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
 

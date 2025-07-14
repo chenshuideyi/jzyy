@@ -1,14 +1,5 @@
 package com.csdy.jzyy.modifier.util;
 
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-
-import java.util.Optional;
-
 public class CuriosUtil {
 
 //    @Deprecated

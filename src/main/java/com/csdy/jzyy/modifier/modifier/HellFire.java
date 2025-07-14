@@ -1,7 +1,9 @@
 package com.csdy.jzyy.modifier.modifier;
 
+import net.minecraft.core.Holder;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.registries.ForgeRegistries;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -11,10 +13,6 @@ import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifier
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import net.minecraft.core.Holder;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.biome.Biome;
 public class HellFire extends Modifier implements MeleeDamageModifierHook {
 
     @Override
