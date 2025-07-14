@@ -692,5 +692,10 @@
   "item.jzyy.lollipop.description": "一种猪猪侠最爱的匠魂工具，可以吃哦",
 
   "item.jzyy.tinker_loli_pickaxe": "普通萝莉",
-  "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n右键对100*100*100的生物造成一次攻击 "
+  "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n右键对100*100*100的生物造成一次攻击 ",
+
+  "material.jzyy.diexv": "无尽",
+  "modifier.jzyy.diexv": "Diexv's Kill",
+  "modifier.jzyy.diexv.description": "点击实体时，对目标造成正无穷的伤害，然后设置死亡，最后设置血量至0，并产生64倍掉落物与经验",
+  "modifier.jzyy.diexv.flavor": "无尽"
 }

@@ -21,6 +21,7 @@ import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
 import com.csdy.jzyy.modifier.modifier.csdytinker.*;
+import com.csdy.jzyy.modifier.modifier.diexv.Diexv;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
@@ -272,6 +273,10 @@ public class ModifierRegister {
     public static final StaticModifier<Mag> MAG_STATIC_MODIFIER = MODIFIERS.register("1999_aoi", Mag::new);
     public static final StaticModifier<Trinity> TRINITY_STATIC_MODIFIER = MODIFIERS.register("1999_leticia", Trinity::new);
     public static final StaticModifier<Nyx> NYX_STATIC_MODIFIER = MODIFIERS.register("1999_eleanor", Nyx::new);
+
+    /// Diexv
+    public static final StaticModifier<Diexv> DIEXV_STATIC_MODIFIER = MODIFIERS.register("diexv",Diexv::new);
+
 
     ///真实形态
     public static final StaticModifier<RealExperience> REAL_EXPERIENCE_STATIC_MODIFIER =

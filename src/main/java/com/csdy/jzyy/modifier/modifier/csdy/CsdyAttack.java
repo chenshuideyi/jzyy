@@ -21,6 +21,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
+import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
+
 public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
 
     @Override
@@ -28,7 +30,7 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
         var target = context.getLivingTarget();
         if (!(context.getAttacker() instanceof Player player)) return damage;
         if (context.getLivingTarget() == null) return damage;
-        CoreMsUtil.setCategory(target, EntityCategory.csdykill);
+        setCategory(target, EntityCategory.csdykill);
         return damage;
     }
 
