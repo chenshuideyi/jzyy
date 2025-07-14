@@ -12,6 +12,7 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionPenetratingDamage;
+import static slimeknights.tconstruct.library.tools.stat.ToolStats.ATTACK_DAMAGE;
 
 @Getter
 public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitModifierHook {
@@ -31,7 +32,7 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null) {
-            float severanceDamage = damage * this.value;;
+            float severanceDamage = damage + tool.getMultiplier(ATTACK_DAMAGE) * this.value;;
             reflectionPenetratingDamage(target,player,severanceDamage);
         }
         return knockback;

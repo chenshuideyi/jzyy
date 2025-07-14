@@ -1,14 +1,14 @@
 {
   "structures": [
     {
-      "structure": "jzyy:diamond_dick",
+      "structure": "jzyy:excalibur",
       "weight": 1
     }
   ],
   "placement": {
-    "salt": 5551234567,
-    "spacing": 8,
-    "separation": 4,
+    "salt": 78916662,
+    "spacing": 64,
+    "separation": 32,
     "type": "minecraft:random_spread"
   }
 }

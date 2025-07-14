@@ -144,7 +144,7 @@ public class CsdyWorldDiadema extends Diadema {
         if (!(core instanceof Mob mob)) return;
 
         if (entity instanceof Player player) {
-            if (!core.isAlive()) {
+            if (!core.isAlive() || player.isCreative() || player.isSpectator()) {
                 // 核心死亡时允许飞行和建造
                 player.getAbilities().mayfly = true;
                 player.getAbilities().mayBuild = true;

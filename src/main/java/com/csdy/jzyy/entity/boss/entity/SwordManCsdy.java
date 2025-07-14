@@ -222,7 +222,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
     private PlayState walkAnimController(AnimationState<SwordManCsdy> state) {
-        if (!state.isMoving() && this.getHealth() ==  this.getMaxHealth())
+        if (!state.isMoving() && this.getTarget() == null)
             return state.setAndContinue(IDLE_ANIM);
         else return state.setAndContinue(WALK_ANIM);
     }

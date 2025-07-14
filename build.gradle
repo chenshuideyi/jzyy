@@ -120,7 +120,7 @@ buildscript {
         implementation fg.deobf("curse.maven:geckolib-388172:6333474")
 
         //A洞，2024年最伟大的模组！
-        //伟大你妈我mixin炸了
+        //project id 在前 网址在后
         implementation fg.deobf("curse.maven:citadel-331936:6002521")
 
         implementation fg.deobf("curse.maven:curios-309927:6418456")
