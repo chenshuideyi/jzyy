@@ -181,11 +181,12 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public boolean hurt(@NotNull DamageSource source, float damage) {
-        if (!(source.getDirectEntity() instanceof Player)) return false;
+        if (!(source.getDirectEntity() instanceof Player player)) return false;
         float realDamage = (float) Math.sqrt(damage);
         if (realDamage < 100f) {
             return false;
         }
+        this.teleportTo(player.getX(),player.getY(),player.getZ());
         return super.hurt(source,damage);
     }
 
@@ -207,6 +208,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         super.registerGoals();
 
         // 行为选择器 (goalSelector)
+        this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
 
         // 目标选择器 (targetSelector) - 修改后的版本
