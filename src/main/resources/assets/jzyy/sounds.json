@@ -91,5 +91,13 @@
         "stream": true
       }
     ]
+  },
+  "umiyuri_kaiteitan": {
+    "sounds": [
+      {
+        "name":"jzyy:umiyuri_kaiteitan",
+        "stream": true
+      }
+    ]
   }
 }

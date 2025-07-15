@@ -4,7 +4,9 @@ import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
+import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.boss.render.MiziAoRenderer;
 import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
@@ -105,6 +107,7 @@ public class JzyyModMain {
     public static void addAttribute(EntityAttributeCreationEvent event) {
         event.put(JzyyEntityRegister.SWORD_MAN_CSDY.get(), SwordManCsdy.createAttributes().build());
         event.put(JzyyEntityRegister.DOG_JIAO.get(), DogJiao.createAttributes().build());
+        event.put(JzyyEntityRegister.MIZI_AO.get(), MiziAo.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -116,8 +119,13 @@ public class JzyyModMain {
         );
         event.registerEntityRenderer(
                 JzyyEntityRegister.DOG_JIAO.get(),
-                DogJiaoRenderer::new // 渲染器构造函数引用
+                DogJiaoRenderer::new
         );
+        event.registerEntityRenderer(
+                JzyyEntityRegister.MIZI_AO.get(),
+                MiziAoRenderer::new
+        );
+
     }
 
     @SubscribeEvent
