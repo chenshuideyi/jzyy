@@ -14,13 +14,13 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 public class CsdyArmor extends NoLevelsModifier implements EquipmentChangeModifierHook {
     @Override
     public void onEquip(@NotNull IToolStackView tool, @NotNull ModifierEntry entry, EquipmentChangeContext context) {
-//        if (!(context.getChangedSlot().isArmor())) return;
+        if (!(context.getChangedSlot().isArmor())) return;
         CoreMsUtil.setCategory(context.getEntity(), EntityCategory.csdy);
     }
 
     @Override
     public void onUnequip(@NotNull IToolStackView tool, @NotNull ModifierEntry entry, EquipmentChangeContext context) {
-//        if (!(context.getChangedSlot().isArmor())) return;
+        if (!(context.getChangedSlot().isArmor())) return;
         CoreMsUtil.setCategory(context.getEntity(), EntityCategory.normal);
     }
 
