@@ -72,22 +72,5 @@ public final class CoreMethod {
             case normal -> living.isDeadOrDying();
         };
     }
-//
-//    public static float getMaxHealth(LivingEntity living, Float returnValue) {
-//        if (EntityUntil.isCsdy(living)){
-//            return 20.0f;
-//        } if (EntityUntil.isCsdykill(living)){
-//            return 0.0f;
-//        }
-//        return (float)living.getAttributeValue(Attributes.MAX_HEALTH);
-//    }
-//
-//    public static float getMaxHealth(LivingEntity living) {
-//        if (EntityUntil.isCsdy(living)){
-//            return 20.0f;
-//        } if (EntityUntil.isCsdykill(living)){
-//            return 0.0f;
-//        }
-//        return (float)living.getAttributeValue(Attributes.MAX_HEALTH);
-//    }
+
 }

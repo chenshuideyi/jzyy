@@ -130,6 +130,8 @@ buildscript {
 
         implementation fg.deobf("curse.maven:IAF-264231:5633453")
 
+        //修紫妈的bug
+        //修不了一点
 //        implementation fileTree("lib")
 
         //铁魔法
