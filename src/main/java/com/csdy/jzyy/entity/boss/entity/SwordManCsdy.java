@@ -127,7 +127,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
     @Override
-    public void die(DamageSource pSource) {
+    public void die(@NotNull DamageSource pSource) {
         if (isDeadOrDying()) {
             super.die(pSource); // 调用父类
             if (level().isClientSide()) {
