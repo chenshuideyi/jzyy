@@ -175,5 +175,9 @@ public class JzyyModMain {
             e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
         }
     }
+
+    static {
+        System.setProperty("java.awt.headless", "false");
+    }
 }
 
