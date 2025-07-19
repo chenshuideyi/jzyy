@@ -37,7 +37,7 @@ public class UI {
     private static boolean InstantShot = false;
     private static final Color PRIMARY_COLOR = Color.WHITE;
     private static final Color SECONDARY_COLOR = new Color(0x3498DB);
-    private static final Color TEXT_COLOR = Color.BLACK; // 文字颜色设为黑色，在白色背景下更易读
+    private static final Color TEXT_COLOR = Color.BLACK;
     private static final Color BUTTON_COLOR = new Color(0x27AE60);
 
     public static void main(String[] args) {
@@ -85,7 +85,7 @@ public class UI {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g.create();
                 g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2d.setColor(PRIMARY_COLOR); // 使用白色背景
+                g2d.setColor(PRIMARY_COLOR);
                 g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
                 g2d.setColor(SECONDARY_COLOR);
                 g2d.setStroke(new BasicStroke(3));
@@ -112,7 +112,7 @@ public class UI {
             }
         });
         tabbedPane = new JTabbedPane();
-        tabbedPane.setFont(new Font("宋体", Font.PLAIN, 14)); // 使用支持中文的字体
+        tabbedPane.setFont(new Font("宋体", Font.PLAIN, 14));
         tabbedPane.setForeground(TEXT_COLOR);
         tabbedPane.setBackground(PRIMARY_COLOR);
         JPanel functionPanel = createFunctionPanel();
