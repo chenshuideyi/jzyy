@@ -392,6 +392,8 @@ public class ModifierRegister {
     ///ly
     public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);
 
+    ///来自你们投稿
+    public static final StaticModifier<DeepSeaGirl> DEEP_SEA_GIRL_STATIC_MODIFIER = MODIFIERS.register("deep_sea_girl", DeepSeaGirl::new);
 
 
 

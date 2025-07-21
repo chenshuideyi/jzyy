@@ -36,7 +36,7 @@ public class KeyPassNetworkValidation extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(6, 2));
 
-        add(new JLabel("输入卡密："));
+        add(new JLabel("输入卡密：(任意即可)"));
         codeField = new JTextField();
         add(codeField);
 
