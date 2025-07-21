@@ -31,7 +31,7 @@ public class KeyPassNetworkValidation extends JFrame {
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public KeyPassNetworkValidation() {
-        setTitle("卡密验证");
+        setTitle("卡密验证 (任何字符即可)");
         setSize(350, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(6, 2));

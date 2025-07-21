@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jzyy:blaze_jingguan",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 163847891,
+    "spacing": 24,
+    "separation": 16,
+    "type": "minecraft:random_spread"
+  }
+}

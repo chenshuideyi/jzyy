@@ -257,7 +257,7 @@
 
   "modifier.jzyy.elemental": "原始回归·本源",
   "modifier.jzyy.elemental.flavor": "我把你带回来了...",
-  "modifier.jzyy.elemental.description":"在玩家使用该工具攻击成功时，随机给予玩家两个正面效果,持续三秒（可以来自任何模组！）",
+  "modifier.jzyy.elemental.description":"在玩家使用该工具攻击成功时，随机给予玩家两个正面效果,持续三秒",
 
   "modifier.jzyy.terrafirma": "原始回归·坚实基础",
   "modifier.jzyy.terrafirma.flavor": "我把你带回来了...",
@@ -695,7 +695,7 @@
   "modifier.jzyy.final_sword.description": "你的工具近战攻击力*2",
 
 
-  "entity.jzyy.sword_man_csdy": "剑人csdy「剑刃风暴」",
+  "entity.jzyy.sword_man_csdy": "「剑人」CSDY",
 
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
