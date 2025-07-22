@@ -12,7 +12,10 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import sun.misc.Unsafe;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.invoke.MethodType;
 import java.lang.module.ResolvedModule;
@@ -25,6 +28,7 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.security.ProtectionDomain;
 import java.util.*;
 
 public final class Helper {
@@ -32,11 +36,21 @@ public final class Helper {
     private static final Lookup lookup;
     private static final Object internalUNSAFE;
     private static MethodHandle objectFieldOffsetInternal;
+    private static final Object JLA_INSTANCE;
+    private static final MethodHandle JLA_defineClassMethod;
+    private static final MethodHandle lookupConstructor;
 
     static {
         UNSAFE = getUnsafe();
         lookup = getFieldValue(Lookup.class, "IMPL_LOOKUP", Lookup.class);
         internalUNSAFE = getInternalUNSAFE();
+        try {
+            JLA_INSTANCE = lookup.unreflectVarHandle(Class.forName("jdk.internal.access.SharedSecrets").getDeclaredField("javaLangAccess")).get();
+            JLA_defineClassMethod = lookup.findVirtual(Class.forName("jdk.internal.access.JavaLangAccess"), "defineClass", MethodType.methodType(Class.class, ClassLoader.class, Class.class, String.class, byte[].class, ProtectionDomain.class, Boolean.TYPE, Integer.TYPE, Object.class));
+            lookupConstructor = lookup.findConstructor(MethodHandles.Lookup.class, MethodType.methodType(Void.TYPE, Class.class, Class.class, Integer.TYPE));
+        } catch (Throwable t) {
+            throw new ExceptionInInitializerError(t);
+        }
         try {
             Class<?> internalUNSAFEClass = lookup.findClass("jdk.internal.misc.Unsafe");
             objectFieldOffsetInternal = lookup.findVirtual(internalUNSAFEClass, "objectFieldOffset", MethodType.methodType(long.class, Field.class)).bindTo(internalUNSAFE);
@@ -371,5 +385,62 @@ public final class Helper {
         }
     }
 
+    //定义一个类
+    public static Class<?> defineClass(ClassLoader loader, String name) throws Throwable {
+        return defineClass(loader, name, read(name, loader));
+    }
 
+    public static Class<?> defineClass(ClassLoader loader, String name, byte[] bytes) throws Throwable {
+        MethodHandle mh = lookup.findVirtual(ClassLoader.class, "defineClass", MethodType.methodType(Class.class, String.class, byte[].class, int.class, int.class));
+        return (Class<?>) mh.invokeExact(loader, name, bytes, 0, bytes.length);
+    }
+
+    //定义一个隐藏类
+    public static Class<?> defineHiddenClass(String name, ClassLoader loader, boolean initialize, ClassOption... options) throws Throwable {
+        return defineHiddenClass(read(name, loader), null, initialize, null, null, null, options);
+    }
+
+    public static Class<?> defineHiddenClass(byte[] bytes, String name, boolean initialize, Class<?> lookupClass, ClassLoader loader, ProtectionDomain pd, ClassOption... options) throws Throwable {
+        Objects.requireNonNull(bytes);
+        Set<ClassOption> opts = Set.of(options);
+        int flags = 2 | ClassOption.optionsToFlag(opts);
+        if (loader == null) loader = ClassLoader.getSystemClassLoader();
+        if (loader == ClassLoader.getPlatformClassLoader()) flags |= 8;
+
+        MethodHandles.Lookup lookup = (MethodHandles.Lookup) lookupConstructor.invoke((Class<?>) JLA_defineClassMethod.invoke(JLA_INSTANCE, loader, lookupClass != null ? lookupClass : Object.class, name, bytes, pd, initialize, flags, null), null, 95);
+        return lookup.lookupClass();
+    }
+
+    //选项
+    //nestmate: 可与宿主类互相访问私有成员
+    //strong: 防止 GC 提前卸载
+    public enum ClassOption {
+        NESTMATE(1), STRONG(4);
+
+        private final int flag;
+
+        ClassOption(int flag) {
+            this.flag = flag;
+        }
+
+        //把选项集合转换为位掩码
+        static int optionsToFlag(Set<ClassOption> options) {
+            int flags = 0;
+
+            for(ClassOption cp : options) {
+                flags |= cp.flag;
+            }
+
+            return flags;
+        }
+    }
+
+    //名称读 .class 文件
+    public static byte[] read(String name, ClassLoader loader) throws IOException {
+        if (name == null) throw new NullPointerException();
+        try (InputStream in = loader.getResourceAsStream(name.replace('.', '/') + ".class")) {
+            if (in == null) throw new IOException("Resource not found: " + name);
+            return in.readAllBytes();
+        }
+    }
 }
