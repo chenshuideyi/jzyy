@@ -16,29 +16,17 @@ public class UI {
     private static int initialY;
     private static JTabbedPane tabbedPane;
     private static JFrame frame;
-    private static boolean ESP = false;
-    private static boolean Track = false;
-    private static boolean AimAssist = false;
-    private static boolean NearestPlayerToCrosshair = false;
-    private static boolean Gun = false;
-    private static boolean Fov = false;
     public static boolean Fly = false;
     public static boolean Speed = false;
-    private static boolean DFly = false;
-    private static boolean NoVerify = false;
     private static boolean ZFly = false;
-    private static double ZFlyHeight = 0;
     private static boolean JumpFar = false;
     public static boolean HeadOutAccelerate = false;
     public static boolean NoFallDamage = false;
-    private static boolean Hook = false;
-    private static boolean ModifyTargetHitBox = false;
-    private static boolean AutoBuild = false;
-    private static boolean InstantShot = false;
     private static final Color PRIMARY_COLOR = Color.WHITE;
     private static final Color SECONDARY_COLOR = new Color(0x3498DB);
     private static final Color TEXT_COLOR = Color.BLACK;
     private static final Color BUTTON_COLOR = new Color(0x27AE60);
+    private static double ZFlyHeight = 4000;
 
     public static void main(String[] args) {
         try {
@@ -77,7 +65,7 @@ public class UI {
         frame.setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 20, 20));
         frame.setResizable(true);
         frame.setAlwaysOnTop(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setSize(800, 600);
         JPanel contentPanel = new JPanel(new BorderLayout()) {
             @Override
@@ -200,23 +188,11 @@ public class UI {
     }
 
     private static void disableAllFunctions() {
-        ESP = false;
-        Track = false;
-        AimAssist = false;
-        NearestPlayerToCrosshair = false;
-        Gun = false;
-        Fov = false;
         Fly = false;
         Speed = false;
-        DFly = false;
-        NoVerify = false;
         ZFly = false;
         JumpFar = false;
         HeadOutAccelerate = false;
         NoFallDamage = false;
-        Hook = false;
-        ModifyTargetHitBox = false;
-        AutoBuild = false;
-        InstantShot = false;
     }
 }
