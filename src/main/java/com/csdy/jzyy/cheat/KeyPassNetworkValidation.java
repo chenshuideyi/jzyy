@@ -24,19 +24,18 @@ import java.util.concurrent.Executors;
 
 public class KeyPassNetworkValidation extends JFrame {
     private JTextField codeField;
-    private JButton buyKeyButton;
 
     private static final String APP_ID = "10117";
     private static final String API_HOST = "http://yz.xywyz.cn/api.php?api=kmlogon";
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public KeyPassNetworkValidation() {
-        setTitle("卡密验证 (任何字符即可)");
+        setTitle("卡密验证");
         setSize(350, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(6, 2));
 
-        add(new JLabel("输入卡密：(任意即可)"));
+        add(new JLabel("输入卡密："));
         codeField = new JTextField();
         add(codeField);
 
