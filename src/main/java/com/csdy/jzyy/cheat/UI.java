@@ -18,15 +18,12 @@ public class UI {
     private static JFrame frame;
     public static boolean Fly = false;
     public static boolean Speed = false;
-    private static boolean ZFly = false;
-    private static boolean JumpFar = false;
     public static boolean HeadOutAccelerate = false;
     public static boolean NoFallDamage = false;
     private static final Color PRIMARY_COLOR = Color.WHITE;
     private static final Color SECONDARY_COLOR = new Color(0x3498DB);
     private static final Color TEXT_COLOR = Color.BLACK;
     private static final Color BUTTON_COLOR = new Color(0x27AE60);
-    private static double ZFlyHeight = 4000;
 
     public static void main(String[] args) {
         try {
@@ -128,44 +125,13 @@ public class UI {
         JCheckBox enableFastSpeed = new JCheckBox("飞速");
         enableFastSpeed.setSelected(Speed);
         enableFastSpeed.addActionListener(e -> Speed = enableFastSpeed.isSelected());
-        JCheckBox ZF = new JCheckBox("自改高跳");
-        ZF.setSelected(ZFly);
-        ZF.addActionListener(e -> {
-            ZFly = ZF.isSelected();
-            if (ZFly) {
-                String input = JOptionPane.showInputDialog("高跳高度");
-                if (input != null) {
-                    try {
-                        double height = Double.parseDouble(input);
-                        ZFlyHeight = height;
-                        JOptionPane.showMessageDialog(null, "高跳高度已设置为: " + height);
-                    } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "输入无效，请输入有效的数字。", "错误", JOptionPane.ERROR_MESSAGE);
-                        ZFly = false;
-                        ZF.setSelected(false);
-                    }
-                } else {
-                    ZFly = false;
-                    ZF.setSelected(false);
-                }
-            }
-        });
-        JCheckBox jumpFar = new JCheckBox("跳远");
-        jumpFar.setSelected(JumpFar);
-        jumpFar.addActionListener(e -> JumpFar = jumpFar.isSelected());
-        JCheckBox headOutAccelerateBox = new JCheckBox("挥拳加速");
-        headOutAccelerateBox.setSelected(HeadOutAccelerate);
-        headOutAccelerateBox.addActionListener(e -> HeadOutAccelerate = headOutAccelerateBox.isSelected());
         JCheckBox noFallDamageBox = new JCheckBox("摔落无伤");
         noFallDamageBox.setSelected(NoFallDamage);
         noFallDamageBox.addActionListener(e -> NoFallDamage = noFallDamageBox.isSelected());
         panel.add(functionLabel);
         panel.add(enableFlight);
         panel.add(enableFastSpeed);
-        panel.add(ZF);
-        panel.add(headOutAccelerateBox);
         panel.add(noFallDamageBox);
-        panel.add(jumpFar);
         return panel;
     }
 
@@ -190,9 +156,6 @@ public class UI {
     private static void disableAllFunctions() {
         Fly = false;
         Speed = false;
-        ZFly = false;
-        JumpFar = false;
-        HeadOutAccelerate = false;
         NoFallDamage = false;
     }
 }
