@@ -31,6 +31,7 @@ public class FunctionSet {
             if (mc.getSingleplayerServer() != null && isPlayerPremium(mc.getSingleplayerServer(), player.getUUID(), player.getName().getString()) && mc.player.getDisplayName().equals("libLxHook_16384")) {
                 player.sendSystemMessage(Component.literal("正版账号验证通过，您是开发者落雪！"));
             }
+
         }
     }
 

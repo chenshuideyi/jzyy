@@ -3,19 +3,20 @@ package com.csdy.jzyy.cheat;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
+import net.minecraft.client.Minecraft;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,91 +24,258 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class KeyPassNetworkValidation extends JFrame {
-    private JTextField codeField;
+    private final JTextField usernameField;
+    private final JPasswordField passwordField;
+    private final JCheckBox autoLoginCheckBox;
+    Minecraft mc = Minecraft.getInstance();
 
     private static final String APP_ID = "10117";
-    private static final String API_HOST = "http://yz.xywyz.cn/api.php?api=kmlogon";
+    private static final String LOGIN_API_HOST = "http://yz.xywyz.cn/api.php?api=userlogon";
+    private static final String REGISTER_API_HOST = "http://yz.xywyz.cn/api.php?api=userreg";
+    private static final String SAVE_FILE_PATH = "login_info.dat";
+    private static final String ENCRYPTION_KEY = "LxTrackAutoLogin";
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public KeyPassNetworkValidation() {
-        setTitle("卡密验证");
-        setSize(350, 200);
+        setTitle("账号登录");
+        setSize(350, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(6, 2));
+        setLayout(new GridLayout(8, 2));
 
-        add(new JLabel("输入卡密："));
-        codeField = new JTextField();
-        add(codeField);
+        add(new JLabel("用户名："));
+        usernameField = new JTextField();
+        add(usernameField);
 
-        JButton validateButton = new JButton("验证");
-        validateButton.addActionListener(this::validateActivationCode);
-        add(validateButton);
+        add(new JLabel("密码："));
+        passwordField = new JPasswordField();
+        add(passwordField);
+
+
+        autoLoginCheckBox = new JCheckBox("自动登录");
+        add(autoLoginCheckBox);
+        add(new JLabel());
+
+        JButton loginButton = new JButton("登录");
+        loginButton.addActionListener(this::login);
+        add(loginButton);
+
+        JButton registerButton = new JButton("注册");
+        registerButton.addActionListener(this::register);
+        add(registerButton);
 
         setLocationRelativeTo(null);
         setVisible(true);
+
+        tryAutoLogin();
     }
 
-    private void validateActivationCode(ActionEvent e) {
-        String authCode = codeField.getText().trim();
+    private Map<String, Object> parseJsonResponse(String response) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            Gson gson = new Gson();
+            if (response != null && !response.trim().isEmpty() && response.trim().startsWith("<html>")) {
+                result.put("code", -2);
+                result.put("msg", "收到HTML响应，服务器可能已移动或不可用");
+                return result;
+            }
+            if (response == null || response.trim().isEmpty()) {
+                result.put("code", -4);
+                result.put("msg", "空响应内容");
+                return result;
+            }
 
-        if (authCode.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "请输入卡密", "错误", JOptionPane.ERROR_MESSAGE);
-            return;
+            result = gson.fromJson(response, HashMap.class);
+            if (!result.containsKey("code")) {
+                result.put("code", -3);
+                result.put("msg", "响应格式错误，缺少 code 字段: " + response);
+            }
+        } catch (JsonSyntaxException e) {
+            result.put("code", -1);
+            result.put("msg", "JSON 解析失败: " + response + ", 错误信息: " + e.getMessage());
+        } catch (Exception e) {
+            result.put("code", -4);
+            result.put("msg", "JSON 解析失败（异常）: " + response + ", 错误信息: " + e.getMessage());
         }
-
-        validateActivationCode(authCode);
+        return result;
     }
 
-    private void validateActivationCode(String authCode) {
-        if (authCode.isEmpty()) {
-            SwingUtilities.invokeLater(() ->
-                JOptionPane.showMessageDialog(this, "未找到有效卡密", "错误", JOptionPane.ERROR_MESSAGE)
-            );
+    private void tryAutoLogin() {
+        File saveFile = new File(SAVE_FILE_PATH);
+        if (saveFile.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(saveFile))) {
+                String encryptedUsername = br.readLine();
+                String encryptedPassword = br.readLine();
+                String username = decrypt(encryptedUsername);
+                String password = decrypt(encryptedPassword);
+
+                if (username != null && password != null) {
+                    usernameField.setText(username);
+                    passwordField.setText(password);
+                    autoLoginCheckBox.setSelected(true);
+                    login(null);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void saveLoginInfo(String username, String password) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(SAVE_FILE_PATH))) {
+            String encryptedUsername = encrypt(username);
+            String encryptedPassword = encrypt(password);
+            bw.write(encryptedUsername);
+            bw.newLine();
+            bw.write(encryptedPassword);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String encrypt(String data) {
+        try {
+            SecretKeySpec secretKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] encryptedBytes = cipher.doFinal(data.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(encryptedBytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private String decrypt(String encryptedData) {
+        try {
+            SecretKeySpec secretKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] decodedBytes = Base64.getDecoder().decode(encryptedData);
+            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+            return new String(decryptedBytes, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void login(ActionEvent e) {
+        String username = usernameField.getText().trim();
+        String password = new String(passwordField.getPassword()).trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            if (e != null) {
+                JOptionPane.showMessageDialog(this, "请输入用户名和密码", "错误", JOptionPane.ERROR_MESSAGE);
+            }
             return;
         }
 
         long timeStamp = System.currentTimeMillis() / 1000;
-        String deviceId = getDeviceId();
-
-        String finalUrl = String.format("%s&app=%s&kami=%s&markcode=%s&t=%d",
-                API_HOST, APP_ID, authCode, deviceId, timeStamp);
+        String finalUrl = String.format("%s&app=%s&user=%s&password=%s&t=%d",
+                LOGIN_API_HOST, APP_ID, username, password, timeStamp);
 
         executor.execute(() -> {
             try {
                 String response = sendValidationRequest(finalUrl);
-                System.out.println("原始响应内容: " + response);
+                System.out.println("登录响应内容: " + response);
                 Map<String, Object> result = parseJsonResponse(response);
 
                 SwingUtilities.invokeLater(() -> {
                     try {
-                        int code = Integer.parseInt(result.get("code").toString());
+                        int code = -4;
+                        if (result.containsKey("code")) {
+                            Object codeObj = result.get("code");
+                            if (codeObj instanceof Number) {
+                                code = ((Number) codeObj).intValue();
+                            }
+                        }
 
                         if (code == 200) {
-                            Map<String, Object> msg = (Map<String, Object>) result.get("msg");
-                            String vipTimestamp = (String) msg.get("vip");
-                            long vipTime = Long.parseLong(vipTimestamp) * 1000;
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                            String vipDate = sdf.format(new Date(vipTime));
-                            System.out.println("自动验证成功 到期时间 : " + vipDate);
+                            System.out.println("登录成功");
+                            if (autoLoginCheckBox.isSelected()) {
+                                saveLoginInfo(username, password);
+                            } else {
+                                File saveFile = new File(SAVE_FILE_PATH);
+                                if (saveFile.exists()) {
+                                    saveFile.delete();
+                                }
+                            }
                             UI.main(new String[]{});
                             dispose();
                         } else {
                             String msg = result.containsKey("msg") ?
                                     result.get("msg").toString() : "未知错误";
-                            JOptionPane.showMessageDialog(this, "验证失败：" + msg, "错误", JOptionPane.ERROR_MESSAGE);
-                            setVisible(true);
+                            JOptionPane.showMessageDialog(this, "登录失败：" + msg, "错误", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(this, "响应解析失败：" + response, "错误", JOptionPane.ERROR_MESSAGE);
-                        setVisible(true);
+                        System.err.println("登录响应处理异常: " + ex.getMessage());
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(this, "响应处理失败：" + response, "错误", JOptionPane.ERROR_MESSAGE);
                     }
                 });
             } catch (Exception ex) {
                 ex.printStackTrace();
                 SwingUtilities.invokeLater(() ->
-                    JOptionPane.showMessageDialog(this, "网络错误，请检查连接", "错误", JOptionPane.ERROR_MESSAGE)
+                        JOptionPane.showMessageDialog(this, "网络错误，请检查连接", "错误", JOptionPane.ERROR_MESSAGE)
                 );
-                setVisible(true);
+            }
+        });
+    }
+
+    private void register(ActionEvent e) {
+        String username = usernameField.getText().trim();
+        String password = new String(passwordField.getPassword()).trim();
+        String nickname = mc.player != null ? mc.player.getName().getString() : "";
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "请输入用户名和密码", "错误", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        long timeStamp = System.currentTimeMillis() / 1000;
+        if (mc.player == null) {
+            JOptionPane.showMessageDialog(this, "请在世界内注册！", "错误", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+            String finalUrl = String.format("%s&app=%s&user=%s&password=%s&name=%s&t=%d",
+                    REGISTER_API_HOST, APP_ID, username, password, nickname, timeStamp);
+
+        executor.execute(() -> {
+            try {
+                String response = sendValidationRequest(finalUrl);
+                System.out.println("注册响应内容: " + response);
+                Map<String, Object> result = parseJsonResponse(response);
+
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        int code = -4;
+                        if (result.containsKey("code")) {
+                            Object codeObj = result.get("code");
+                            if (codeObj instanceof Number) {
+                                code = ((Number) codeObj).intValue();
+                            }
+                        }
+
+                        if (code == 200) {
+                            String msg = result.containsKey("msg") ?
+                                    result.get("msg").toString() : "注册成功";
+                            JOptionPane.showMessageDialog(this, msg, "成功", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            String msg = result.containsKey("msg") ?
+                                    result.get("msg").toString() : "未知错误";
+                            JOptionPane.showMessageDialog(this, "注册失败：" + msg, "错误", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        System.err.println("注册响应处理异常: " + ex.getMessage());
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(this, "响应处理失败：" + response, "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                });
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                SwingUtilities.invokeLater(() ->
+                        JOptionPane.showMessageDialog(this, "网络错误，请检查连接", "错误", JOptionPane.ERROR_MESSAGE)
+                );
             }
         });
     }
@@ -156,78 +324,6 @@ public class KeyPassNetworkValidation extends JFrame {
         }
     }
 
-    private String getDeviceId() {
-        String userName = System.getProperty("user.name");
-        String osName = System.getProperty("os.name");
-        String osVersion = System.getProperty("os.version");
-        return String.format("%s-%s-%s", userName, osName, osVersion).hashCode() + "";
-    }
-
-    private Map<String, Object> parseJsonResponse(String response) {
-        try {
-            Gson gson = new Gson();
-            if (response != null && !response.trim().isEmpty() && response.trim().startsWith("<html>")) {
-                Map<String, Object> errorMap = new HashMap<>();
-                errorMap.put("code", -2);
-                errorMap.put("msg", "收到HTML响应，服务器可能已移动或不可用");
-                return errorMap;
-            }
-            if (response == null || response.trim().isEmpty()) {
-                Map<String, Object> errorMap = new HashMap<>();
-                errorMap.put("code", -4);
-                errorMap.put("msg", "空响应内容");
-                return errorMap;
-            }
-            JsonReader reader = new JsonReader(new StringReader(response));
-            reader.setLenient(true);
-            Map<String, Object> result = new HashMap<>();
-            reader.beginObject();
-            while (reader.hasNext()) {
-                String key = reader.nextName();
-                if (key.equals("code")) {
-                    result.put(key, reader.nextInt());
-                } else if (key.equals("msg")) {
-                    reader.beginObject();
-                    Map<String, Object> msgMap = new HashMap<>();
-                    while (reader.hasNext()) {
-                        String msgKey = reader.nextName();
-                        if (msgKey.equals("kami")) {
-                            msgMap.put(msgKey, reader.nextString());
-                        } else if (msgKey.equals("vip")) {
-                            msgMap.put(msgKey, reader.nextString());
-                        } else {
-                            reader.skipValue();
-                        }
-                    }
-                    reader.endObject();
-                    result.put(key, msgMap);
-                } else if (key.equals("time")) {
-                    result.put(key, reader.nextLong());
-                } else {
-                    reader.skipValue();
-                }
-            }
-            reader.endObject();
-            if (result.containsKey("msg") && result.get("msg") instanceof Map) {
-                return result;
-            } else {
-                Map<String, Object> errorMap = new HashMap<>();
-                errorMap.put("code", -3);
-                errorMap.put("msg", "响应格式错误，缺少msg字段或格式不正确: " + response);
-                return errorMap;
-            }
-        } catch (JsonSyntaxException e) {
-            Map<String, Object> errorMap = new HashMap<>();
-            errorMap.put("code", -1);
-            errorMap.put("msg", "JSON 解析失败: " + response);
-            return errorMap;
-        } catch (IOException e) {
-            Map<String, Object> errorMap = new HashMap<>();
-            errorMap.put("code", -4);
-            errorMap.put("msg", "JSON 解析失败（IO异常）: " + response);
-            return errorMap;
-        }
-    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(KeyPassNetworkValidation::new);
