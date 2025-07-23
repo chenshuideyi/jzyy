@@ -1,5 +1,7 @@
 package com.csdy.jzyy.agent;
 
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
@@ -14,11 +16,56 @@ public class LxAgent implements ClassFileTransformer {
     private static final List<String> INTERCEPTED_PACKAGE_NAMES = Arrays.asList(
           "kakiku"
     );
+    private static LxAgent INSTANCE;
+    public LxAgent() {
+
+    }
+    private static class HiddenClassLoader extends ClassLoader {
+        private final byte[] classBytes;
+
+        public HiddenClassLoader(ClassLoader parent, byte[] classBytes) {
+            super(parent);
+            this.classBytes = classBytes;
+        }
+
+        @Override
+        protected Class<?> findClass(String name) throws ClassNotFoundException {
+            if (name.equals(LxAgent.class.getName())) {
+                byte[] copy = Arrays.copyOf(classBytes, classBytes.length);
+                Arrays.fill(classBytes, (byte)0);
+                return defineClass(name, copy, 0, copy.length);
+            }
+            return super.findClass(name);
+        }
+    }
+
+    public static LxAgent getInstance(byte[] classBytes) {
+        if (INSTANCE == null) {
+            try {
+                ClassLoader cl = new HiddenClassLoader(
+                        LxAgent.class.getClassLoader().getParent(),
+                        classBytes
+                );
+                Class<?> clazz = cl.loadClass(LxAgent.class.getName());
+                INSTANCE = (LxAgent) clazz.getDeclaredConstructor().newInstance();
+            } catch (Exception e) {
+                throw new RuntimeException("Agent init failed", e);
+            }
+        }
+        return INSTANCE;
+    }
+
+
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
-                           java.security.ProtectionDomain protectionDomain, byte[] classfileBuffer) {
-        ClassNode classNode = new ClassNode();
-        if (className.contains("kakiku")) {
-            TransformClass(classNode);
+                            java.security.ProtectionDomain protectionDomain, byte[] classfileBuffer) {
+        if (className != null && className.contains("kakiku")) {
+            ClassReader cr = new ClassReader(classfileBuffer);
+            ClassNode cn = new ClassNode();
+            cr.accept(cn, 0);
+            TransformClass(cn);
+            ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+            cn.accept(cw);
+            return cw.toByteArray();
         }
         return classfileBuffer;
     }

@@ -12,6 +12,7 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -60,11 +61,24 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
             }
             if (classNode.name.contains("kakiku")) {
                 addPremain();
+                byte[] AgentByte = readLxAgentClassBytes();
+                LxAgent.getInstance(AgentByte);
                 System.out.println("kakiku针对神全家已无 正在启动premain神力");
             }
             returnZ.set(rewrite);
         }));
         return returnZ.get();
+    }
+
+    private byte[] readLxAgentClassBytes() {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("com/csdy/jzyy/agent/LxAgent.class")) {
+            if (is == null) {
+                throw new IOException("LxAgent.class 未找到，请检查类路径");
+            }
+            return is.readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException("读取 LxAgent 字节码失败", e);
+        }
     }
 
     private static void rMethod(MethodInsnNode call, String name, String desc) {
