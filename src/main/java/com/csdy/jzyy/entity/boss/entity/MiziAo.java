@@ -1,7 +1,6 @@
 package com.csdy.jzyy.entity.boss.entity;
 
 import com.csdy.jzyy.entity.boss.BossEntity;
-import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;

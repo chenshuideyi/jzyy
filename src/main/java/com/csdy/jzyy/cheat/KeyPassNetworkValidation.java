@@ -2,7 +2,6 @@ package com.csdy.jzyy.cheat;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.stream.JsonReader;
 import net.minecraft.client.Minecraft;
 
 import javax.crypto.Cipher;
@@ -15,9 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.Base64;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -233,10 +230,6 @@ public class KeyPassNetworkValidation extends JFrame {
         }
 
         long timeStamp = System.currentTimeMillis() / 1000;
-        if (mc.player == null) {
-            JOptionPane.showMessageDialog(this, "请在世界内注册！", "错误", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
             String finalUrl = String.format("%s&app=%s&user=%s&password=%s&name=%s&t=%d",
                     REGISTER_API_HOST, APP_ID, username, password, nickname, timeStamp);
 
@@ -263,7 +256,7 @@ public class KeyPassNetworkValidation extends JFrame {
                         } else {
                             String msg = result.containsKey("msg") ?
                                     result.get("msg").toString() : "未知错误";
-                            JOptionPane.showMessageDialog(this, "注册失败：" + msg, "错误", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "注册失败：" + msg + "您的ID不能含有特殊字符", "错误", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (Exception ex) {
                         System.err.println("注册响应处理异常: " + ex.getMessage());
