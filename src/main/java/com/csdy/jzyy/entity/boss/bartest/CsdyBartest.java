@@ -34,98 +34,98 @@ public class CsdyBartest {
 
     // 获取彩虹色
     public static int getRainbowColor(float offset, float saturation, float brightness) {
-        float hue = ((System.currentTimeMillis() - startTime + (long)(offset * 1000)) % 5000) / 5000.0f;
-        return Color.HSBtoRGB(hue, saturation, brightness);
+        float hue = ((System.currentTimeMillis() - startTime + (long)(offset * 3000)) % 2000 / 2000.0f);
+        // 添加随机亮度波动（0.8~1.0之间）
+        float flicker = 0.8f + (float)Math.sin(System.currentTimeMillis() / 200.0 + offset) * 0.2f;
+        return Color.HSBtoRGB(hue, saturation, brightness * flicker);
     }
 
     // 获取渐变彩虹色条
     public static void fillRainbow(GuiGraphics guiGraphics, int x, int y, int width, int height) {
+        int segmentSize = 4; // 每10像素为一个颜色段
         for (int i = 0; i < width; i++) {
-            float progress = (float)i / width;
-            int color = getRainbowColor(progress * 2.0f, 0.8f, 0.8f);
+            float progress = (float)(i / segmentSize) / ((float) width / segmentSize);
+            int color = getRainbowColor(progress * 3.0f, 1.0f, 1.0f);
             guiGraphics.fill(x + i, y, x + i + 1, y + height, color | 0xFF000000);
         }
     }
 
-    // 绘制不规则边框
     public static void drawIrregularBorder(GuiGraphics guiGraphics, int x, int y, int width, int height) {
         int borderColor = rgba(180, 180, 180, 200);
         int shadowColor = rgba(50, 50, 50, 150);
 
-        // 波浪参数
-        float waveFrequency = 0.1f;
-        float waveAmplitude = 2.5f;
-        long timeOffset = System.currentTimeMillis() / 50;
+        // 主边框（1像素宽）
+        guiGraphics.fill(x - 1, y - 1, x + width + 1, y, borderColor);         // 上边框
+        guiGraphics.fill(x - 1, y + height, x + width + 1, y + height + 1, borderColor); // 下边框
+        guiGraphics.fill(x - 1, y, x, y + height, borderColor);                // 左边框
+        guiGraphics.fill(x + width, y, x + width + 1, y + height, borderColor);// 右边框
 
-        // 顶部波浪边框
-        for (int i = 0; i < width; i++) {
-            float wave = (float)Math.sin(i * waveFrequency + timeOffset) * waveAmplitude;
-            guiGraphics.fill(x + i, y - 1 + (int)wave, x + i + 1, y + (int)wave, borderColor);
-            guiGraphics.fill(x + i, y - 2 + (int)wave, x + i + 1, y - 1 + (int)wave, shadowColor);
-        }
+        // 阴影效果（外扩1像素）
+        guiGraphics.fill(x - 2, y - 2, x + width + 2, y - 1, shadowColor);    // 顶部阴影
+        guiGraphics.fill(x - 2, y + height + 1, x + width + 2, y + height + 2, shadowColor); // 底部阴影
+        guiGraphics.fill(x - 2, y - 1, x - 1, y + height + 1, shadowColor);   // 左侧阴影
+        guiGraphics.fill(x + width + 1, y - 1, x + width + 2, y + height + 1, shadowColor); // 右侧阴影
 
-        // 底部波浪边框
-        for (int i = 0; i < width; i++) {
-            float wave = (float)Math.sin(i * waveFrequency + timeOffset + 3.14f) * waveAmplitude;
-            guiGraphics.fill(x + i, y + height + (int)wave, x + i + 1, y + height + 1 + (int)wave, borderColor);
-            guiGraphics.fill(x + i, y + height + 1 + (int)wave, x + i + 1, y + height + 2 + (int)wave, shadowColor);
-        }
-
-        // 两侧装饰性尖刺
         int spikeCount = 5;
+        int spikeWidth = 2;
         for (int i = 0; i < spikeCount; i++) {
             float pos = (float)i / (spikeCount - 1);
             int spikeX = x + (int)(width * pos);
-            int spikeHeight = 3 + (int)(Math.sin(pos * Math.PI * 2 + timeOffset * 0.02) * 2);
+            int spikeHeight = 4 + (int)(Math.sin(pos * Math.PI * 2  * 0.02) * 3); // 高度增加
 
-            // 左侧尖刺
-            guiGraphics.fill(spikeX - 1, y - spikeHeight, spikeX, y, borderColor);
-            // 右侧尖刺
-            guiGraphics.fill(spikeX - 1, y + height, spikeX, y + height + spikeHeight, borderColor);
+            // 左侧尖刺（加宽版）
+            guiGraphics.fill(spikeX - spikeWidth, y - spikeHeight, spikeX, y, borderColor);
+
+            // 右侧尖刺（加宽版）
+            guiGraphics.fill(spikeX - spikeWidth, y + height, spikeX, y + height + spikeHeight, borderColor);
+
         }
 
-        // 添加X形斜边装饰
-        int xThickness = 2; // X形斜边的粗细
-        int xLength = 15;   // X形斜边的长度
+        int xThickness = 2; // 斜线粗细
+        int xLength = 10;   // 斜线长度
 
-        // 左上到右下的斜边
-        for (int i = 0; i < xLength; i++) {
-            float progress = (float)i / xLength;
-            int x1 = x + (int)(progress * xLength);
-            int y1 = y - (int)(progress * xLength/2);
-            int x2 = x1 + xThickness;
-            int y2 = y1 + xThickness;
-            guiGraphics.fill(x1, y1, x2, y2, borderColor);
+        // 左上到右下斜线
+        drawDiagonalLine(guiGraphics,
+                x, y - 1,
+                x + xLength, y - 1 - xLength/2,
+                xThickness, borderColor);
+
+        // 右上到左下斜线
+        drawDiagonalLine(guiGraphics,
+                x + width, y - 1,
+                x + width - xLength, y - 1 - xLength/2,
+                xThickness, borderColor);
+
+        // 左下到右上斜线
+        drawDiagonalLine(guiGraphics,
+                x, y + height + 1,
+                x + xLength, y + height + 1 + xLength/2,
+                xThickness, borderColor);
+
+        // 右下到左上斜线
+        drawDiagonalLine(guiGraphics,
+                x + width, y + height + 1,
+                x + width - xLength, y + height + 1 + xLength/2,
+                xThickness, borderColor);
+    }
+
+    // 优化的斜线绘制方法
+    private static void drawDiagonalLine(GuiGraphics guiGraphics,
+                                         int x1, int y1, int x2, int y2, int thickness, int color) {
+
+        // 确保从左到右绘制
+        if (x1 > x2) {
+            int tx = x1; x1 = x2; x2 = tx;
+            int ty = y1; y1 = y2; y2 = ty;
         }
 
-        // 右上到左下的斜边
-        for (int i = 0; i < xLength; i++) {
-            float progress = (float)i / xLength;
-            int x1 = x + width - (int)(progress * xLength);
-            int y1 = y - (int)(progress * xLength/2);
-            int x2 = x1 + xThickness;
-            int y2 = y1 + xThickness;
-            guiGraphics.fill(x1, y1, x2, y2, borderColor);
-        }
-
-        // 左下到右上的斜边
-        for (int i = 0; i < xLength; i++) {
-            float progress = (float)i / xLength;
-            int x1 = x + (int)(progress * xLength);
-            int y1 = y + height + (int)(progress * xLength/2);
-            int x2 = x1 + xThickness;
-            int y2 = y1 + xThickness;
-            guiGraphics.fill(x1, y1, x2, y2, borderColor);
-        }
-
-        // 右下到左上的斜边
-        for (int i = 0; i < xLength; i++) {
-            float progress = (float)i / xLength;
-            int x1 = x + width - (int)(progress * xLength);
-            int y1 = y + height + (int)(progress * xLength/2);
-            int x2 = x1 + xThickness;
-            int y2 = y1 + xThickness;
-            guiGraphics.fill(x1, y1, x2, y2, borderColor);
+        float slope = (float)(y2 - y1) / (x2 - x1);
+        for (int x = x1; x <= x2; x++) {
+            int y = y1 + (int)(slope * (x - x1));
+            // 绘制有厚度的线
+            for (int t = 0; t < thickness; t++) {
+                guiGraphics.fill(x, y + t, x + 1, y + t + 1, color);
+            }
         }
     }
 
@@ -144,7 +144,7 @@ public class CsdyBartest {
                 int width = 256;
                 int height = 8; // 增加高度以适应波浪效果
                 int x = window.getGuiScaledWidth() / 2 - width / 2;
-                int y = event.getY() + 5; // 调整位置
+                int y = event.getY() + 10; // 调整位置
 
                 // 绘制不规则边框
                 drawIrregularBorder(guiGraphics, x, y, width, height);
@@ -161,6 +161,7 @@ public class CsdyBartest {
                     fillRainbow(guiGraphics, x, y, progressWidth, height);
 
                 }
+
 
                 // 绘制Boss名称
                 String bossName = bossStatusInfo.getName().getString();

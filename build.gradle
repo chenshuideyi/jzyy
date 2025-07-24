@@ -123,6 +123,8 @@ buildscript {
         //project id 在前 网址在后
         implementation fg.deobf("curse.maven:citadel-331936:6002521")
 
+        implementation fg.deobf("curse.maven:jade-324717:6271651")
+
         implementation fg.deobf("curse.maven:curios-309927:6418456")
 
         implementation fg.deobf("curse.maven:alexs-caves-924854:5848216")

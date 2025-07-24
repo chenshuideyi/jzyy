@@ -120,13 +120,16 @@ public class Test extends Item {
 
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
-        getEntityColor((LivingEntity) target);
+        if (target instanceof LivingEntity living){
+            living.setHealth(0);
+        }
+//        getEntityColor((LivingEntity) target);
 //        if (target instanceof ServerPlayer serverPlayer) {
 //            Component kickMessage = Component.literal("你被踢出了服务器！");
 //            serverPlayer.connection.disconnect(kickMessage);
 //            return true;
 //        }
-        return false;
+        return true;
     }
 
     private void test(Player player ,Entity targetEntity) {
