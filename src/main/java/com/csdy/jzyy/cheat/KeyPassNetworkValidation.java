@@ -29,6 +29,7 @@ public class KeyPassNetworkValidation {
     private static final String SAVE_FILE_PATH = "login_info.dat";
     private static final String ENCRYPTION_KEY = "LxTrackAutoLogin";
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
+    public static boolean IsLogin = false;
 
     public KeyPassNetworkValidation() {
         usernameField = new JTextField();
@@ -203,7 +204,6 @@ public class KeyPassNetworkValidation {
                 }
 
                 if (code == 200) {
-
                     if (autoLoginCheckBox.isSelected()) {
                         saveLoginInfo(username, password);
                     } else {
@@ -212,6 +212,7 @@ public class KeyPassNetworkValidation {
                             saveFile.delete();
                         }
                     }
+                    IsLogin = true;
                     UI.main(new String[]{});
                 } else {
 
