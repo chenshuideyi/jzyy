@@ -1,5 +1,6 @@
 package com.csdy.jzyy;
 
+import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.JzyyEffectRegister;
@@ -62,11 +63,13 @@ public class JzyyModMain {
         ModifierRegister.MODIFIERS.register(bus);
         ItemRegister.ITEMS.register(bus);
         HideRegister.ITEMS.register(bus);
+        BlockRegister.BLOCKS.register(bus);
         JzyySoundsRegister.SOUND_EVENTS.register(bus);
         JzyyEffectRegister.EFFECTS.register(bus);
         JzyyEntityRegister.JZYY_ENTITY.register(bus);
         JzyyFluidRegister.FLUIDS.register(bus);
         JzyyParticlesRegister.PARTICLE_TYPES.register(bus);
+
         gpuUtilInit();
 
 

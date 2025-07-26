@@ -1,6 +1,8 @@
 package com.csdy.jzyy.item.register;
 
+import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.item.*;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,8 +27,30 @@ public class ItemRegister {
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
 
 
-    public static final RegistryObject<Item> HARCADIUM = ITEMS.register("harcadium",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> HARCADIUM = ITEMS.register(
+            "harcadium",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .rarity(Rarity.RARE)
+            )
+    );
+
+    public static final RegistryObject<Item> HARCADIUM_ORE = ITEMS.register(
+            "harcadium_ore",
+            () -> new BlockItem(
+                    BlockRegister.HARCADIUM_ORE.get(),
+                    new Item.Properties()
+            )
+    );
+
+    public static final RegistryObject<Item> HARCADIUM_ORE_END_STONE = ITEMS.register(
+            "harcadium_ore_end_stone",
+            () -> new BlockItem(
+                    BlockRegister.HARCADIUM_ORE_END_STONE.get(),
+                    new Item.Properties()
+            )
+    );
+
     public static final RegistryObject<Item> EXPERIENCE_STEEL_INGOT = ITEMS.register("experience_steel_ingot",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> LIVING_WOOD = ITEMS.register("living_wood",

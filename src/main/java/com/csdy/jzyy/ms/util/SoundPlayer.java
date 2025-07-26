@@ -19,18 +19,16 @@ public class SoundPlayer {
      * @param sound  wav文件位置
      */
     public static void tryPlayMillenniumSnowAsync(String sound) {
-        // 尝试将 false 设置为 true，如果成功（原来是 false），则表示可以播放
+        // 将 false 设置为 true，如果成功（原来是 false），则表示可以播放
         if (isMillenniumSnowPlaying.compareAndSet(false, true)) {
-            // 只有在设置成功（即之前没有播放）时才启动新线程播放
             Thread soundThread = new Thread(() -> {
                 playSoundInternal(sound, () -> {
                     isMillenniumSnowPlaying.set(false);
                 });
-            }, "SoundPlayerThread-" + sound);
+            }, "开始播放" + sound);
             soundThread.start();
         } else {
-            // 如果 compareAndSet 返回 false，说明已经是 true（正在播放），则什么都不做
-            System.out.println("Sound '" + sound + "' is already playing. Skipping request.");
+            System.out.println("正在播放" + sound);
         }
     }
 
