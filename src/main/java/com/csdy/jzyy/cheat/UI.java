@@ -26,35 +26,38 @@ public class UI {
     private static final Color BUTTON_COLOR = new Color(0x27AE60);
 
     public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-        Font smoothFont = new Font("Microsoft YaHei", Font.PLAIN, 14);
-        UIManager.put("Label.font", smoothFont);
-        UIManager.put("CheckBox.font", smoothFont);
-        UIManager.put("TextField.font", smoothFont);
-        UIManager.put("Button.font", smoothFont);
-        UIManager.put("Slider.font", smoothFont);
-        UIManager.put("Panel.background", PRIMARY_COLOR);
-        UIManager.put("Label.foreground", TEXT_COLOR);
-        UIManager.put("CheckBox.foreground", TEXT_COLOR);
-        UIManager.put("TextField.background", new Color(0x34495E));
-        UIManager.put("TextField.foreground", TEXT_COLOR);
-        UIManager.put("Slider.foreground", TEXT_COLOR);
-        UIManager.put("Slider.background", PRIMARY_COLOR);
-        UIManager.put("Button.background", BUTTON_COLOR);
-        UIManager.put("Button.foreground", TEXT_COLOR);
-
-        SwingUtilities.invokeLater(UI::createAndShowGUI);
-        colorTimer = new Timer(5, e -> {
-            baseHue = (baseHue + 1) % 360;
-            if (frame != null) {
-                frame.repaint();
+        if (KeyPassNetworkValidation.IsLogin) {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                     UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
             }
-        });
-        colorTimer.start();
+            Font smoothFont = new Font("Microsoft YaHei", Font.PLAIN, 14);
+            UIManager.put("Label.font", smoothFont);
+            UIManager.put("CheckBox.font", smoothFont);
+            UIManager.put("TextField.font", smoothFont);
+            UIManager.put("Button.font", smoothFont);
+            UIManager.put("Slider.font", smoothFont);
+            UIManager.put("Panel.background", PRIMARY_COLOR);
+            UIManager.put("Label.foreground", TEXT_COLOR);
+            UIManager.put("CheckBox.foreground", TEXT_COLOR);
+            UIManager.put("TextField.background", new Color(0x34495E));
+            UIManager.put("TextField.foreground", TEXT_COLOR);
+            UIManager.put("Slider.foreground", TEXT_COLOR);
+            UIManager.put("Slider.background", PRIMARY_COLOR);
+            UIManager.put("Button.background", BUTTON_COLOR);
+            UIManager.put("Button.foreground", TEXT_COLOR);
+
+            SwingUtilities.invokeLater(UI::createAndShowGUI);
+            colorTimer = new Timer(5, e -> {
+                baseHue = (baseHue + 1) % 360;
+                if (frame != null) {
+                    frame.repaint();
+                }
+            });
+            colorTimer.start();
+        }
     }
     private static void createAndShowGUI() {
         frame = new JFrame("LXLOVESZH");
