@@ -171,12 +171,12 @@ public class JzyyModMain {
             e.getRenderer().addLayer(new PlayerLayer(e.getRenderer()));
         }
         // 血怒效果
-        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
-            e.getRenderer().addLayer(new BloodLayer(e.getRenderer()));
-        }
-        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
-            e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
-        }
+//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
+//            e.getRenderer().addLayer(new BloodLayer(e.getRenderer()));
+//        }
+//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
+//            e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
+//        }
     }
 
     static {

@@ -122,6 +122,8 @@ buildscript {
         //A洞，2024年最伟大的模组！
         //project id 在前 网址在后
         implementation fg.deobf("curse.maven:citadel-331936:6002521")
+        implementation fg.deobf("curse.maven:modern-ui-352491:6199942")
+
 
         implementation fg.deobf("curse.maven:jade-324717:6271651")
 

@@ -7,6 +7,8 @@
   "refmap": "jzyy.refmap.json",
   "mixins": [
     "EntityMixin",
+    "InventoryMixin",
+    "PreventDisarmamentMixin",
     "SynchedEntityDataMixin",
     "UILoadMixin"
   ],

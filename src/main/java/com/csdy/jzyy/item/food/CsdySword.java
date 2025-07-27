@@ -1,6 +1,6 @@
 package com.csdy.jzyy.item.food;
 
-import com.csdy.jzyy.modifier.util.font.ReFont;
+import com.csdy.jzyy.modifier.util.font.RainbowFont;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +35,7 @@ public class CsdySword extends ItemGenericFood {
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
             public @Nullable Font getFont(ItemStack stack, IClientItemExtensions.FontContext context) {
-                return ReFont.getFont();
+                return RainbowFont.getFont();
             }
         });
     }

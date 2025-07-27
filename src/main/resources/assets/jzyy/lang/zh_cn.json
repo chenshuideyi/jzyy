@@ -9,6 +9,9 @@
   "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
   "item.jzyy.defect": "钴丈技奇人锭",
 
+  "item.jzyy.portable_end_portal": "便携式末地传送门",
+  "item.jzyy.protable_end_portal.line1": "在指定方块上生成3*3的末地传送门",
+
   "item.jzyy.pla_steel_ingot": "玻璃钢",
   "fluid.jzyy.molten_pla_steel": "熔融玻璃钢",
   "item.jzyy.molten_pla_steel_bucket": "熔融玻璃钢桶",
@@ -36,6 +39,11 @@
   "item.jzyy.magic_uranium.line1": "Urranium的提案",
 
   "item.jzyy.overflowed_memory": "溢出的内存",
+
+  "item.jzyy.player_meat": "你的肉",
+
+  "item.jzyy.rainbow_material": "彩虹物质",
+  "item.jzyy.rainbow_material.line1": "他们飞一万万又一万万又一万万万年，终于又飞回到原点",
 
   "item.jzyy.tong_ban": "§b桐§d板",
   "item.jzyy.tong_ban.line1": "§b芝士§d猫猫桐§b的提案",
@@ -85,6 +93,10 @@
   "material.jzyy.tong_ban": "§d桐板",
   "material.jzyy.tong_ban.flavor": "还在眨眼睛",
   "material.jzyy.tong_ban.encyclopedia": "请输入文本",
+
+  "material.jzyy.rainbow_material": "彩虹物质",
+  "material.jzyy.rainbow_material.flavor": "看起来像云宝",
+  "material.jzyy.rainbow_material.encyclopedia": "据说曾经是9种意志的融合,世间最伟大之力",
 
   "material.jzyy.dx": "乌蒙锭",
   "material.jzyy.dx.flavor": "提，提拉熊？",
@@ -164,9 +176,12 @@
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
 
+  "modifier.jzyy.energy_recovery": "能量回收",
+  "modifier.jzyy.energy_recovery.flavor": "可不能浪费了",
+  "modifier.jzyy.energy_recovery.description":"在你受伤时掉落你的肉，吃下后可以回复等同于受到伤害的血量",
 
   "modifier.jzyy.return": "滋养",
-  "modifier.jzyy.return.flavor": "红叶最多情",
+  "modifier.jzyy.return.flavor": "落红不是无情物",
   "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
 
 
@@ -389,9 +404,9 @@
   "modifier.jzyy.ass_attack.flavor": "你再看看你后面呢",
   "modifier.jzyy.ass_attack.description":"冲向目标身后",
 
-  "modifier.jzyy.magic_flying": "魔法飞行",
+  "modifier.jzyy.magic_flying": "竹蜻蜓",
   "modifier.jzyy.magic_flying.flavor": "像女巫一样",
-  "modifier.jzyy.magic_flying.description": "拿在手中获得飞行，每秒都会失去五点耐久",
+  "modifier.jzyy.magic_flying.description": "戴在头上获得飞行，每秒都会失去五点耐久",
 
   "modifier.jzyy.horn_toss": "长角抛物",
   "modifier.jzyy.horn_toss.flavor": "看我猛犸颠勺",
@@ -546,6 +561,14 @@
   "modifier.jzyy.only_wish.flavor": "纯音乐，请欣赏",
   "modifier.jzyy.only_wish.description":"在背包里右键以播放",
 
+  "modifier.jzyy.girl_a": "少女A",
+  "modifier.jzyy.girl_a.flavor": "你的 你的 你的声音\n好远 好远 好远 好远 好远\n好远 好远 好远 好远 好远\n好远 好远 好远 好远",
+  "modifier.jzyy.girl_a.description":"在背包里右键以播放",
+
+  "modifier.jzyy.umiyuri_kaiteitan": "海底谭百合",
+  "modifier.jzyy.umiyuri_kaiteitan.flavor": "等等　我知道的啊 这算不上些什么所以请别取笑我的歌",
+  "modifier.jzyy.umiyuri_kaiteitan.description":"在背包里右键以播放",
+
   "modifier.jzyy.tiamat": "提亚马特",
   "modifier.jzyy.tiamat.flavor": "纯音乐，请欣赏",
   "modifier.jzyy.tiamat.description":"在背包里右键以播放",
@@ -672,14 +695,22 @@
 
   "modifier.jzyy.color": "染上你的颜色",
   "modifier.jzyy.color.flavor": "好想告诉你我喜欢你",
-  "modifier.jzyy.color.description": "蹲下攻击时根据目标生物的纹理为你的工具汲取一种“色彩",
+  "modifier.jzyy.color.description": "蹲下攻击时根据目标生物的纹理为你的工具汲取“色彩",
+  "tooltip.color_enchant.rgb_values": "取到的颜色: ",
+
+  "modifier.jzyy.color2": "色彩",
+  "modifier.jzyy.color2.flavor": "生命之色涡旋流转",
+  "modifier.jzyy.color2.description": " 根据色彩提供效果 \n 越红：造成的切割伤害越多 \n 越绿：提供的生命汲取越多 \n 越蓝：造成的护甲反噬越多",
 
   "modifier.jzyy.color1": "色彩",
   "modifier.jzyy.color1.flavor": "生命之色涡旋流转",
   "modifier.jzyy.color1.description": " 根据七种色彩提供不同的效果： \n 红: 处决生命值低于15%的生物。\n 橙: 处决生命值低于7.5%的生物，攻击会提供4点伤害吸收。\n 黄: 攻击会提供8点伤害吸收。\n 绿: 攻击会提供4点伤害吸收，并侵蚀目标25%的护甲。\n 青: 攻击会提供2点伤害吸收，并侵蚀目标37.5%的护甲。\n 蓝: 攻击会侵蚀目标50%护甲。\n 紫: 攻击会侵蚀目标25%的护甲，处决生命值低于7.5%的生物。",
 
+
+
+
   "modifier.jzyy.deep_sea_girl": "深海少女",
-  "modifier.jzyy.deep_sea_girl.flavor": "悲しみの海に沈んだ私\n目を開けるのも億劫\n",
+  "modifier.jzyy.deep_sea_girl.flavor": "悲しみの海に沈んだ私 \n 目を開けるのも億劫 \n ",
   "modifier.jzyy.deep_sea_girl.description": "获得潮涌核心buff，若你处于深海则提供额外的伤害减免",
 
 

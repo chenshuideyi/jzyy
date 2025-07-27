@@ -63,6 +63,7 @@ import com.csdy.jzyy.modifier.modifier.projectE.armor.EquivalentArmor;
 import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
 import com.csdy.jzyy.modifier.modifier.pufferfish.QuillSpray;
 import com.csdy.jzyy.modifier.modifier.pufferfish.Stinger;
+import com.csdy.jzyy.modifier.modifier.rainbow.ColorModifier;
 import com.csdy.jzyy.modifier.modifier.real_form.RealEgo;
 import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
 import com.csdy.jzyy.modifier.modifier.real_form.RealLivingWood;
@@ -230,6 +231,11 @@ public class ModifierRegister {
     public static final StaticModifier<BaseToolMusic> I_LOVE_YOU = MODIFIERS.register("i_love_u", () -> new BaseToolMusic(JzyySoundsRegister.I_LOVE_U.get()));
     public static final StaticModifier<BaseToolMusic> THE_MILLENNIUM_SNOW = MODIFIERS.register("the_millennium_snow", () -> new BaseToolMusic(JzyySoundsRegister.THE_MILLENNIUM_SNOW.get()));
     public static final StaticModifier<BaseToolMusic> ONLY_WISH = MODIFIERS.register("only_wish", () -> new BaseToolMusic(JzyySoundsRegister.ONLY_WISH.get()));
+    public static final StaticModifier<BaseToolMusic> GIRL_A = MODIFIERS.register("girl_a", () -> new BaseToolMusic(JzyySoundsRegister.GIRL_A.get()));
+    public static final StaticModifier<BaseToolMusic> UMIYURI_KAITEITAN = MODIFIERS.register("umiyuri_kaiteitan", () -> new BaseToolMusic(JzyySoundsRegister.UMIYURI_KAITEITAN.get()));
+
+
+
     public static final StaticModifier<BaseToolMusic> TIAMAT = MODIFIERS.register("tiamat", () -> new BaseToolMusic(JzyySoundsRegister.TIAMAT.get()));
     public static final StaticModifier<BaseToolMusic> PANDORA = MODIFIERS.register("pandora", () -> new BaseToolMusic(JzyySoundsRegister.PANDORA.get()));
 
@@ -247,8 +253,8 @@ public class ModifierRegister {
     public static final StaticModifier<Stinger> STINGER_STATIC_MODIFIER = MODIFIERS.register("stinger", Stinger::new);
     public static final StaticModifier<QuillSpray> QUILL_SPRAY_STATIC_MODIFIER = MODIFIERS.register("quill_spray", QuillSpray::new);
 
-
-
+    ///能量回收
+    public static final StaticModifier<EnergyRecovery> ENERGY_RECOVERY_STATIC_MODIFIER = MODIFIERS.register("energy_recovery", EnergyRecovery::new);
 
     ///etsh
     public static final StaticModifier<SpiritGear> SPIRIT_GEAR_STATIC_MODIFIER = MODIFIERS.register("spirit_gear", SpiritGear::new);
@@ -400,7 +406,9 @@ public class ModifierRegister {
     ///来自你们投稿
     public static final StaticModifier<DeepSeaGirl> DEEP_SEA_GIRL_STATIC_MODIFIER = MODIFIERS.register("deep_sea_girl", DeepSeaGirl::new);
 
-
+    ///彩虹物质
+    public static final StaticModifier<ColorModifier> COLOR_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color", ColorModifier::new);
+    public static final StaticModifier<NoLevelsModifier> COLOR1_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color1", NoLevelsModifier::new);
 
     ///领域
     public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("alex_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.ALEX_MELTDOWN));

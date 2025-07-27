@@ -25,6 +25,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> TONG_BAN = ITEMS.register("tong_ban", TongBan::new);
     public static final RegistryObject<Item> RAIN_CURTAIN = ITEMS.register("rain_curtain", RainCurtain::new);
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
+    public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
+    public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
 
 
     public static final RegistryObject<Item> HARCADIUM = ITEMS.register(
@@ -61,7 +63,7 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> DEFECT = ITEMS.register("defect",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
-    public static final RegistryObject<Item> INVOKE_CHEAT_UI = ITEMS.register("invokecheatui" , InvokeCheatUI::new);
+//    public static final RegistryObject<Item> INVOKE_CHEAT_UI = ITEMS.register("invokecheatui" , InvokeCheatUI::new);
 
 //    public static final RegistryObject<DiscAloneInTheDarkItem> TEST_DISC = ITEMS.register("test_disc", DiscAloneInTheDarkItem::new);
 

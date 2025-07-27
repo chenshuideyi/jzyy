@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 
-public class ReFont extends Font {
+public class RainbowFont extends Font {
     // 字体大小变化的配置常量
     private static final float WAVE_AMPLITUDE = 3.0f;
     private static final float WAVE_SPEED = 0.002f;
@@ -31,19 +31,19 @@ public class ReFont extends Font {
     private static final float RAINBOW_OFFSET_FACTOR = 0.1f;
 
     // 新增的大小变化参数
-    private static final float SIZE_OSCILLATION_AMPLITUDE = 0.2f; // 大小变化幅度 (20%)
+    private static final float SIZE_OSCILLATION_AMPLITUDE = 0.8f; // 大小变化幅度 (20%)
     private static final float SIZE_OSCILLATION_SPEED = 0.0015f; // 大小变化速度
     private static final float BASE_SCALE = 1.0f; // 基础大小
 
     // 用于存储每个字符的大小状态
     private final Map<Character, Float> charScales = new HashMap<>();
 
-    public ReFont(Function<ResourceLocation, FontSet> fontGetter, boolean filter) {
+    public RainbowFont(Function<ResourceLocation, FontSet> fontGetter, boolean filter) {
         super(fontGetter, filter);
     }
 
-    public static ReFont getFont() {
-        return new ReFont(Minecraft.getInstance().font.fonts, false);
+    public static RainbowFont getFont() {
+        return new RainbowFont(Minecraft.getInstance().font.fonts, false);
     }
 
     @Override
