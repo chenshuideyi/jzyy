@@ -766,4 +766,7 @@
   "modifier.jzyy.hungryhunter.flavor":"宝石恶鳞不会掉落这个宝石恶鳞牙齿",
   "modifier.jzyy.hungryhunter.description":"饥饿值越少，攻击力越高,攻击速度越快。"
 
+  "modifier.jzyy.eternalhunger": "永恒饥饿",
+  "modifier.jzyy.eternalhunger.flavor":"好饿好饿好饿",
+  "modifier.jzyy.eternalhunger.description":"每级减免一定比例的饥饿伤害，随着时间推移获得并升级饥饿Buff，随等级提升，饥饿buff升级速度越快。"
 }
