@@ -27,6 +27,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Objects;
+
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionPenetratingDamage;
+import static net.minecraft.world.entity.ai.attributes.Attributes.ARMOR;
 
 public class ColorModifier extends NoLevelsModifier implements MeleeHitModifierHook, TooltipModifierHook, MeleeDamageModifierHook {
 
@@ -38,7 +42,7 @@ public class ColorModifier extends NoLevelsModifier implements MeleeHitModifierH
     private static final ResourceLocation ENTITY_COLOR_BLUE = new ResourceLocation(JzyyModMain.MODID, "entity_color_blue");
 
     @Override
-    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float v, float v1) {
+    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity target = context.getLivingTarget();
         if (target != null) {
             ModDataNBT data = tool.getPersistentData();
@@ -50,7 +54,25 @@ public class ColorModifier extends NoLevelsModifier implements MeleeHitModifierH
             data.putInt(ENTITY_COLOR_BLUE, rgb[2]);
 
         }
-        return 0;
+        return damage;
+    }
+
+    @Override
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+        LivingEntity target = context.getLivingTarget();
+        if (target != null) {
+            ModDataNBT data = tool.getPersistentData();
+            var holder = context.getAttacker();
+            float redValue = data.getFloat(ENTITY_COLOR_RED);
+            float greenValue = data.getFloat(ENTITY_COLOR_GREEN);
+            reflectionPenetratingDamage(target,holder,redValue);
+            holder.heal(greenValue);
+            if (target.getAttribute(ARMOR) == null) return;
+            float blueValue = data.getFloat(ENTITY_COLOR_BLUE);
+            float armorValue = target.getArmorValue();
+            Objects.requireNonNull(target.getAttribute(ARMOR)).setBaseValue(armorValue - blueValue);
+        }
+
     }
 
     @Override
@@ -155,19 +177,5 @@ public class ColorModifier extends NoLevelsModifier implements MeleeHitModifierH
         hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
         hookBuilder.addHook(this, ModifierHooks.TOOLTIP);
     }
-
-//    @Override
-//    public void afterMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damageDealt) {
-//        LivingEntity target = context.getLivingTarget();
-//        if (target != null) {
-//            ModDataNBT data = tool.getPersistentData();
-//            int colorValue = getEntityColor(target);
-//            String colorName = getRainbowColorName(colorValue);
-//
-//            // 将颜色数据存入NBT
-//            data.putInt(ENTITY_COLOR, colorValue);
-//            data.putString(ResourceLocation.tryParse(ENTITY_COLOR + "_name"), colorName);
-//        }
-//    }
 
 }

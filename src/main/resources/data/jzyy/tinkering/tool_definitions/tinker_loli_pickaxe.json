@@ -71,6 +71,15 @@
         "abilities": 2,
         "upgrades": 3
       }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "name": "tconstruct:infinitum",
+          "level": 1
+        }
+      ]
     }
   ]
 }

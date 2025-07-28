@@ -178,6 +178,8 @@ public class ModifierRegister {
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
     public static final StaticModifier<EchoForm> ECHO_FORM_STATIC_MODIFIER = MODIFIERS.register("echo_form", EchoForm::new);
     public static final StaticModifier<NoLevelsModifier> ECHO_FORM1_STATIC_MODIFIER = MODIFIERS.register("echo_form1", NoLevelsModifier::new);
+    public static final StaticModifier<Infinitum> INFINITUM_STATIC_MODIFIER = MODIFIERS.register("infinitum", Infinitum::new);
+
 
     ///哈肯典姆
     public static final StaticModifier<EatStone> EAT_STONE_STATIC_MODIFIER = MODIFIERS.register("eat_stone", EatStone::new);
