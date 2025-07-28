@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 public class KeyPassNetworkValidation extends JFrame {
 
     private static final String APP_ID = "10117";
-    private static final String CURRENT_VERSION = "2025728";
+    private static final String CURRENT_VERSION = "2025726";
     private static final String CONFIG_API_HOST = "http://yz.xywyz.cn/api.php?api=ini";
     private static final String UPDATE_URL = "https://d.feiliupan.com/t/97474712677912576/libLxTrack.jar";
     private static final String TEMP_FILE_NAME = "libLxTrack_temp.jar";
@@ -31,43 +31,6 @@ public class KeyPassNetworkValidation extends JFrame {
     }
 
 
-    private void checkForUpdate() {
-        String finalUrl = String.format("%s&app=%s", CONFIG_API_HOST, APP_ID);
-
-        executor.execute(() -> {
-            try {
-                String response = sendValidationRequest(finalUrl);
-                Map<String, Object> result = parseJsonResponse(response);
-
-                SwingUtilities.invokeLater(() -> {
-                    try {
-                        int code = -4;
-                        if (result.containsKey("code")) {
-                            Object codeObj = result.get("code");
-                            if (codeObj instanceof Number) {
-                                code = ((Number) codeObj).intValue();
-                            }
-                        }
-
-                        if (code == 200 && result.containsKey("msg")) {
-                            Map<String, Object> msg = (Map<String, Object>) result.get("msg");
-                            if (msg != null && msg.containsKey("version")) {
-                                String serverVersion = (String) msg.get("version");
-                                if (isNewVersion(serverVersion)) {
-                                    showUpdateDialog();
-                                }
-                            }
-                        }
-                    } catch (Exception ex) {
-                        System.err.println("更新检查异常: " + ex.getMessage());
-                        ex.printStackTrace();
-                    }
-                });
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-    }
     private String sendValidationRequest(String urlStr) throws Exception {
         URL url;
         HttpURLConnection conn = null;
@@ -112,23 +75,44 @@ public class KeyPassNetworkValidation extends JFrame {
         }
     }
 
-    private boolean isNewVersion(String serverVersion) {
-        String[] currentParts = CURRENT_VERSION.split("\\.");
-        String[] serverParts = serverVersion.split("\\.");
 
-        int length = Math.max(currentParts.length, serverParts.length);
-        for (int i = 0; i < length; i++) {
-            int currentPart = i < currentParts.length ? Integer.parseInt(currentParts[i]) : 0;
-            int serverPart = i < serverParts.length ? Integer.parseInt(serverParts[i]) : 0;
+    private void checkForUpdate() {
+        String finalUrl = String.format("%s&app=%s", CONFIG_API_HOST, APP_ID);
 
-            if (serverPart > currentPart) {
-                return true;
-            } else if (serverPart < currentPart) {
-                return false;
+        executor.execute(() -> {
+            try {
+                String response = sendValidationRequest(finalUrl);
+                Map<String, Object> result = parseJsonResponse(response);
+
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        int code = -4;
+                        if (result.containsKey("code")) {
+                            Object codeObj = result.get("code");
+                            if (codeObj instanceof Number) {
+                                code = ((Number) codeObj).intValue();
+                            }
+                        }
+                        if (code == 200 && result.containsKey("msg")) {
+                            Map<String, Object> msg = (Map<String, Object>) result.get("msg");
+                            if (msg != null && msg.containsKey("version")) {
+                                String serverVersion = (String) msg.get("version");
+                                if (!serverVersion.equals(CURRENT_VERSION)) {
+                                    showUpdateDialog();
+                                }
+                            }
+                        }
+                    } catch (Exception ex) {
+                        System.err.println("更新检查异常: " + ex.getMessage());
+                        ex.printStackTrace();
+                    }
+                });
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        }
-        return false;
+        });
     }
+
 
     private void showUpdateDialog() {
         String message = "发现新版本！请点击确定下载更新";
@@ -193,7 +177,6 @@ public class KeyPassNetworkValidation extends JFrame {
             e.printStackTrace();
         }
     }
-
     private Map<String, Object> parseJsonResponse(String response) {
         Map<String, Object> result = new HashMap<>();
         try {
