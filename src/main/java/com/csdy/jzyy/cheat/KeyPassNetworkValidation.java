@@ -122,7 +122,6 @@ public class KeyPassNetworkValidation extends JFrame {
                 downloadUpdate();
                 replaceJarFile();
                 JOptionPane.showMessageDialog(this, "更新成功，重启游戏生效。", "提示", JOptionPane.INFORMATION_MESSAGE);
-                restartApplication();
             } catch (Exception ex) {
                 System.err.println("更新失败: " + ex.getMessage());
                 ex.printStackTrace();
@@ -155,27 +154,6 @@ public class KeyPassNetworkValidation extends JFrame {
         }
 
         Files.move(tempFile.toPath(), jarFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-    }
-
-    private void restartApplication() {
-        try {
-            final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
-            final File currentJar = new File(KeyPassNetworkValidation.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-
-            if (!currentJar.getName().endsWith(".jar")) {
-                return;
-            }
-
-            final StringBuilder cmd = new StringBuilder();
-            cmd.append(javaBin).append(" -jar ").append(currentJar.getPath());
-
-            final ProcessBuilder builder = new ProcessBuilder(cmd.toString().split(" "));
-            builder.start();
-            System.exit(0);
-        } catch (Exception e) {
-            System.err.println("重启失败: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
     private Map<String, Object> parseJsonResponse(String response) {
         Map<String, Object> result = new HashMap<>();
