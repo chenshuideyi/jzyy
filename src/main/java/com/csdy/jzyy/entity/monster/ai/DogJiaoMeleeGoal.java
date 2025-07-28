@@ -4,7 +4,6 @@ import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.item.ItemStack;
 
 public class DogJiaoMeleeGoal extends MeleeAttackGoal {
     private final DogJiao dogJiao; // 保存一个对我们实体本身的引用
