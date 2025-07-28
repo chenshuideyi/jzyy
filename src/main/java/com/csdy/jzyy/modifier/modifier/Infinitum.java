@@ -27,6 +27,6 @@ public class Infinitum extends NoLevelsModifier implements ToolDamageModifierHoo
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_DAMAGE,ModifierHooks.INVENTORY_TICK);
     }
 }

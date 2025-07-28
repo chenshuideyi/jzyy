@@ -739,5 +739,31 @@
   "item.jzyy.lollipop.description": "一种猪猪侠最爱的匠魂工具，可以吃哦",
 
   "item.jzyy.tinker_loli_pickaxe": "普通萝莉",
-  "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n右键对100*100*100的生物造成一次攻击 "
+  "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n右键对100*100*100的生物造成一次攻击 ",
+
+
+  "modifier.jzyy.slushing": "抗腐蚀",
+  "modifier.jzyy.slushing.flavor":"为什么要抗腐蚀",
+  "modifier.jzyy.color1.description":"装备时免疫腐蚀效果",
+
+  "modifier.jzyy.frostabsorption": "冰霜吸收",
+  "modifier.jzyy.frostabsorption.flavor":"可能大概不能抗寒",
+  "modifier.jzyy.frostabsorption.description":"每级减免一定比例的的冰霜伤害，并将受到冰霜伤害以等比例恢复生命值。",
+
+  "modifier.jzyy.lightningabsorption": "闪电吸收",
+  "modifier.jzyy.lightningabsorption.flavor":"闪电和电相比.闪电不要钱",
+  "modifier.jzyy.lightningabsorption.description":"每级减免一定比例的的闪电伤害，并将受到闪电伤害以等比例恢复生命值。",
+
+  "modifier.jzyy.fireabsorption": "火焰吸收",
+  "modifier.jzyy.fireabsorption.flavor":"可能大概也不能抗火",
+  "modifier.jzyy.fireabsorption.description":"每级减免一定比例的的火焰伤害，并将受到火焰伤害以等比例恢复生命值。",
+
+  "modifier.jzyy.ancientrespiration": "远古呼吸",
+  "modifier.jzyy.ancientrespiration.flavor":"宝石恶鳞不会掉落这个宝石恶鳞牙齿",
+  "modifier.jzyy.ancientrespiration.description":"每级减免一定比例的溺水伤害，并增加自己近战伤害。",
+
+  "modifier.jzyy.hungryhunter": "饥饿猎手",
+  "modifier.jzyy.hungryhunter.flavor":"宝石恶鳞不会掉落这个宝石恶鳞牙齿",
+  "modifier.jzyy.hungryhunter.description":"饥饿值越少，攻击力越高,攻击速度越快。"
+
 }
