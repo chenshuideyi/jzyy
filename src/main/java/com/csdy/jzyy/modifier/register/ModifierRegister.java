@@ -14,6 +14,7 @@ import com.csdy.jzyy.modifier.modifier.alex_mob.armor.VoidWalk;
 import com.csdy.jzyy.modifier.modifier.bedrock.BedRock;
 import com.csdy.jzyy.modifier.modifier.bedrock.Deicide;
 import com.csdy.jzyy.modifier.modifier.bedrock.Mouse3;
+import com.csdy.jzyy.modifier.modifier.bian.*;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
@@ -286,6 +287,18 @@ public class ModifierRegister {
     public static final StaticModifier<Mag> MAG_STATIC_MODIFIER = MODIFIERS.register("1999_aoi", Mag::new);
     public static final StaticModifier<Trinity> TRINITY_STATIC_MODIFIER = MODIFIERS.register("1999_leticia", Trinity::new);
     public static final StaticModifier<Nyx> NYX_STATIC_MODIFIER = MODIFIERS.register("1999_eleanor", Nyx::new);
+
+    ///j村
+    public static final StaticModifier<BitterRigidIce.slushing> SLUSHING_STATIC_MODIFIER = MODIFIERS.register("slushing", BitterRigidIce.slushing::new);
+    public static final StaticModifier<GiantMonsterHair.frostabsorption> FROSTABSORPTION_STATIC_MODIFIER = MODIFIERS.register("frostabsorption", GiantMonsterHair.frostabsorption::new);
+    public static final StaticModifier<LightningWormChitin.lightningabsorption> LIGHTNINGABSORPTION_STATIC_MODIFIER = MODIFIERS.register("lightningabsorption", LightningWormChitin.lightningabsorption::new);
+    public static final StaticModifier<FireSecretorAdhesive.fireabsorption> FIRESECRETORADHESIVE_STATIC_MODIFIER = MODIFIERS.register("fireabsorption", FireSecretorAdhesive.fireabsorption::new);
+    public static final StaticModifier<MalignasaurTeethArmor.ancientrespiration> MALIGNASAURTEETHARMOR_STATIC_MODIFIER = MODIFIERS.register("ancientrespiration", MalignasaurTeethArmor.ancientrespiration::new);
+    public static final StaticModifier<MalignasaurTeeth.hungryhunter> MALIGNASAURTEETH_STATIC_MODIFIER = MODIFIERS.register("hungryhunter", MalignasaurTeeth.hungryhunter::new);
+    public static final StaticModifier<MarineReptilesFineScale.eternalhunger> MARINEREPTILESFINESCALE_STATIC_MODIFIER = MODIFIERS.register("eternalhunger", MarineReptilesFineScale.eternalhunger::new);
+
+
+
 
     ///真实形态
     public static final StaticModifier<RealExperience> REAL_EXPERIENCE_STATIC_MODIFIER =

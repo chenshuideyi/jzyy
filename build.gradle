@@ -20,6 +20,7 @@ buildscript {
         id 'eclipse'
         id 'idea'
         id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+        id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     }
     apply plugin: 'org.spongepowered.mixin'
     group = mod_group_id
@@ -148,6 +149,12 @@ buildscript {
 //        implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")
 //        //冰火
         implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
+        //j村
+        implementation fg.deobf("curse.maven:jerotes-village-1004844:6678836")
+        //j村前置
+        implementation fg.deobf("curse.maven:jerotes-warehouse-1249728:6678785")
+
+
     }
     tasks.named('processResources', ProcessResources).configure {
         var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
