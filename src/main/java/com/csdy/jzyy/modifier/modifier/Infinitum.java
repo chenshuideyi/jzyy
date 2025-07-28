@@ -1,6 +1,5 @@
 package com.csdy.jzyy.modifier.modifier;
 
-import com.c2h6s.etstlib.register.EtSTLibHooks;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -12,8 +11,6 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickM
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isEntityInSunlight;
 
 public class Infinitum extends NoLevelsModifier implements ToolDamageModifierHook, InventoryTickModifierHook {
 

@@ -1,6 +1,5 @@
 package com.csdy.jzyy.item;
 
-import com.csdy.jzyy.cheat.UI;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
