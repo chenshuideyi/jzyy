@@ -7,6 +7,7 @@ import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.fake.FakeStack;
 import com.csdy.jzyy.ms.util.Helper;
 import com.csdy.jzyy.ms.util.SoundPlayer;
+import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -30,6 +31,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import static com.csdy.jzyy.entity.monster.event.NightDogJiaoSummon.trySpawnZombiesNearPlayer;
 import static com.csdy.jzyy.modifier.modifier.rainbow.ColorModifier.getEntityColor;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 
@@ -232,9 +234,14 @@ public class Test extends Item {
                     Helper.replaceClass(offhandItem, FakeItem.class);
                 }
             }
+
+            trySpawnZombiesNearPlayer(serverLevel, player);
         }
 
-        SoundPlayer.tryPlayMillenniumSnowAsync("propose.wav");
+
+        player.playSound(JzyySoundsRegister.DOG_JIAO_SUMMON.get(), 1, 1);
+
+        SoundPlayer.tryPlayMillenniumSnowAsync("the_millennium_snow.wav");
 
 //        showDeathScreen();
 

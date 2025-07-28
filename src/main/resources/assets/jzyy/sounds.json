@@ -99,5 +99,13 @@
         "stream": true
       }
     ]
+  },
+  "dog_jiao_summon": {
+    "sounds": [
+      {
+        "name":"jzyy:dog_jiao_summon",
+        "stream": false
+      }
+    ]
   }
 }

@@ -39,7 +39,7 @@ public class SoundPlayer {
      * @param onComplete    播放完成或失败时执行的回调
      */
     private static void playSoundInternal(String soundFileName, Runnable onComplete) {
-        String resourcePath = "assets/jzyy/sounds/" + soundFileName;
+        String resourcePath = "assets/jzyy/csdy_like_music/" + soundFileName;
         Clip clip = null;
 
         try (InputStream audioSrc = SoundPlayer.class.getClassLoader().getResourceAsStream(resourcePath);

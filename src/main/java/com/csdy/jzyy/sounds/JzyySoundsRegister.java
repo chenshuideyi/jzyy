@@ -54,4 +54,8 @@ public class JzyySoundsRegister {
 
     public static final RegistryObject<SoundEvent> UMIYURI_KAITEITAN = SOUND_EVENTS.register("umiyuri_kaiteitan",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "umiyuri_kaiteitan")));
+
+    public static final RegistryObject<SoundEvent> DOG_JIAO_SUMMON = SOUND_EVENTS.register("dog_jiao_summon",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "dog_jiao_summon")));
+
 }

@@ -3,7 +3,7 @@
 	"animations": {
 		"animation.dog_jiao.idle": {
 			"loop": "hold_on_last_frame",
-			"animation_length": 23.2,
+			"animation_length": 1,
 			"bones": {
 				"body": {
 					"rotation": {
@@ -36,12 +36,7 @@
 						"vector": [0, -45, 0]
 					},
 					"position": {
-						"0.0": {
-							"vector": [1, 0, -7]
-						},
-						"23.2": {
-							"vector": [0, 0, 0]
-						}
+						"vector": [1, 0, -7]
 					}
 				},
 				"up": {
@@ -133,7 +128,7 @@
 		},
 		"animation.dog_jiao.rush": {
 			"loop": true,
-			"animation_length": 23.2,
+			"animation_length": 0.6,
 			"bones": {
 				"body": {
 					"rotation": {
@@ -182,12 +177,7 @@
 						}
 					},
 					"position": {
-						"0.0": {
-							"vector": [1, 0, -7]
-						},
-						"23.2": {
-							"vector": [0, 0, 0]
-						}
+						"vector": [1, 0, -7]
 					}
 				},
 				"up": {
@@ -358,8 +348,8 @@
 			}
 		},
 		"animation.dog_jiao.attack": {
-			"loop": "hold_on_last_frame",
-			"animation_length": 23.2,
+			"loop": true,
+			"animation_length": 1,
 			"bones": {
 				"body": {
 					"rotation": {
@@ -455,9 +445,6 @@
 						},
 						"1.0": {
 							"vector": [0, 0, -6]
-						},
-						"23.2": {
-							"vector": [0, 0, 0]
 						}
 					},
 					"scale": {
@@ -502,15 +489,7 @@
 						}
 					},
 					"scale": {
-						"0.0": {
-							"vector": [1, 1, 1]
-						},
-						"0.72": {
-							"vector": [1, 1, 1]
-						},
-						"1.0": {
-							"vector": [1, 1, 1]
-						}
+						"vector": [1, 1, 1]
 					}
 				},
 				"down": {
@@ -543,12 +522,7 @@
 						}
 					},
 					"scale": {
-						"0.0": {
-							"vector": [1, 1, 1]
-						},
-						"1.0": {
-							"vector": [1, 1, 1]
-						}
+						"vector": [1, 1, 1]
 					}
 				},
 				"thighLF": {

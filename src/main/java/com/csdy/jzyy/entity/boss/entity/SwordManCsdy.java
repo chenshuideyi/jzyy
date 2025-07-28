@@ -21,6 +21,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -213,7 +214,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
         // 目标选择器 (targetSelector) - 修改后的版本
         this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this)); // 自定义的持续仇恨目标
-//        this.targetSelector.addGoal(2, new PersistentNearestAttackableTargetGoal<>(this, LivingEntity.class, true)); // 自定义的持续最近目标
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true));
     }
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);

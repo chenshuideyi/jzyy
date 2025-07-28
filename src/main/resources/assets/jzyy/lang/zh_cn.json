@@ -169,10 +169,6 @@
   "material.jzyy.pufferfish.encyclopedia": "把活鱼做成工具是个技术活",
   "material.jzyy.pufferfish.armor": "扎的不是我的手",
 
-  "material.jzyy.rainbow": "彩虹物质",
-  "material.jzyy.rainbow.flavor": "聚集的祈愿",
-  "material.jzyy.rainbow.encyclopedia": "万国神匠的最高之作",
-
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
 
@@ -695,16 +691,16 @@
 
   "modifier.jzyy.color": "染上你的颜色",
   "modifier.jzyy.color.flavor": "好想告诉你我喜欢你",
-  "modifier.jzyy.color.description": "蹲下攻击时根据目标生物的纹理为你的工具汲取“色彩",
+  "modifier.jzyy.color.description": "蹲下攻击时根据目标生物的纹理为你的工具汲取色彩",
   "tooltip.color_enchant.rgb_values": "取到的颜色: ",
-
-  "modifier.jzyy.color2": "色彩",
-  "modifier.jzyy.color2.flavor": "生命之色涡旋流转",
-  "modifier.jzyy.color2.description": " 根据色彩提供效果 \n 越红：造成的切割伤害越多 \n 越绿：提供的生命汲取越多 \n 越蓝：造成的护甲反噬越多",
 
   "modifier.jzyy.color1": "色彩",
   "modifier.jzyy.color1.flavor": "生命之色涡旋流转",
-  "modifier.jzyy.color1.description": " 根据七种色彩提供不同的效果： \n 红: 处决生命值低于15%的生物。\n 橙: 处决生命值低于7.5%的生物，攻击会提供4点伤害吸收。\n 黄: 攻击会提供8点伤害吸收。\n 绿: 攻击会提供4点伤害吸收，并侵蚀目标25%的护甲。\n 青: 攻击会提供2点伤害吸收，并侵蚀目标37.5%的护甲。\n 蓝: 攻击会侵蚀目标50%护甲。\n 紫: 攻击会侵蚀目标25%的护甲，处决生命值低于7.5%的生物。",
+  "modifier.jzyy.color1.description": " 根据色彩提供效果： \n 越红：造成的切割伤害越多。 \n 越绿：提供的生命汲取越多。 \n 越蓝：造成的护甲反噬越多。",
+
+  "modifier.jzyy.color2": "色彩",
+  "modifier.jzyy.color2.flavor": "生命之色涡旋流转",
+  "modifier.jzyy.color2.description": " 根据七种色彩提供不同的效果： \n 红: 处决生命值低于15%的生物。\n 橙: 处决生命值低于7.5%的生物，攻击会提供4点伤害吸收。\n 黄: 攻击会提供8点伤害吸收。\n 绿: 攻击会提供4点伤害吸收，并侵蚀目标25%的护甲。\n 青: 攻击会提供2点伤害吸收，并侵蚀目标37.5%的护甲。\n 蓝: 攻击会侵蚀目标50%护甲。\n 紫: 攻击会侵蚀目标25%的护甲，处决生命值低于7.5%的生物。",
 
 
 
@@ -729,6 +725,7 @@
 
 
   "entity.jzyy.sword_man_csdy": "「剑人」CSDY",
+  "entity.jzyy.dog_jiao": "大狗嚼",
 
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
