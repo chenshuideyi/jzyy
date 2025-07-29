@@ -23,7 +23,7 @@ public class Volt extends NoLevelsModifier implements AttributesModifierHook {
             AttributeModifier modifier = new AttributeModifier(
                     uuid,
                     "volt_speed",
-                    3,
+                    1,
                     AttributeModifier.Operation.ADDITION
             );
             consumer.accept(Attributes.ATTACK_SPEED, modifier);

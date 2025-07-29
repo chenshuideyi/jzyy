@@ -37,6 +37,7 @@ import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.glass.Loupe;
 import com.csdy.jzyy.modifier.modifier.glass.Prism;
+import com.csdy.jzyy.modifier.modifier.hallowed_bar.HolyProtection;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
 import com.csdy.jzyy.modifier.modifier.ice.HyperBeam;
@@ -420,6 +421,14 @@ public class ModifierRegister {
 
     ///来自你们投稿
     public static final StaticModifier<DeepSeaGirl> DEEP_SEA_GIRL_STATIC_MODIFIER = MODIFIERS.register("deep_sea_girl", DeepSeaGirl::new);
+    public static final StaticModifier<Reforge> REFORGE_STATIC_MODIFIER = MODIFIERS.register("reforge", Reforge::new);
+    public static final StaticModifier<FireEater> FIRE_EATER_STATIC_MODIFIER = MODIFIERS.register("fire_eater", FireEater::new);
+    public static final StaticModifier<Infested> INFESTED_STATIC_MODIFIER = MODIFIERS.register("infested", Infested::new);
+
+    ///神圣
+    public static final StaticModifier<HolyProtection> HOLY_PROTECTION_STATIC_MODIFIER = MODIFIERS.register("holy_protection", HolyProtection::new);
+
+
 
     ///彩虹物质
     public static final StaticModifier<ColorModifier> COLOR_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color", ColorModifier::new);

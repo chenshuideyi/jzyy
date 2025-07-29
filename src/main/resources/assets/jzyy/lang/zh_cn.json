@@ -40,6 +40,8 @@
 
   "item.jzyy.overflowed_memory": "溢出的内存",
 
+  "item.jzyy.hallowed_bar": "神圣锭",
+
   "item.jzyy.player_meat": "你的肉",
 
   "item.jzyy.rainbow_material": "彩虹物质",
@@ -158,9 +160,9 @@
   "material.jzyy.yakumo_ender.flavor": "呆毛王！",
   "material.jzyy.yakumo_ender.encyclopedia": "需要真名解放",
 
-  "material.jzyy.ly": "落叶",
-  "material.jzyy.ly.flavor": "秋天到了哦",
-  "material.jzyy.ly.encyclopedia": "一声梧叶一声秋，一点芭蕉一点愁，三更归梦三更后。",
+  "material.jzyy.hallowed_bar": "神圣",
+  "material.jzyy.hallowed_bar.flavor": "困难模式",
+  "material.jzyy.hallowed_bar.encyclopedia": "就是绑在头上也不止一点防御吧？？？",
 
   "material.jzyy.excalibar": "誓约胜利之",
 
@@ -179,6 +181,22 @@
   "modifier.jzyy.return": "滋养",
   "modifier.jzyy.return.flavor": "落红不是无情物",
   "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
+
+  "modifier.jzyy.holy_protection": "神圣防护",
+  "modifier.jzyy.holy_protection.flavor": "替代了钛金",
+  "modifier.jzyy.holy_protection.description": "闪避你受到的伤害，此效果拥有30秒冷却",
+
+  "modifier.jzyy.reforge": "重锻",
+  "modifier.jzyy.reforge.flavor": "被毁之物可被重铸。未毁之物必被重铸。",
+  "modifier.jzyy.reforge.description": "当你的工具损坏时，修复它",
+
+  "modifier.jzyy.infested": "Infested",
+  "modifier.jzyy.infested.flavor": "你为什么要摧毁我们？我们是你的血肉",
+  "modifier.jzyy.infested.description": "近战时，你的工具会撕咬目标的血肉造成额外伤害，回复你的血量，饱食度和工具耐久",
+
+  "modifier.jzyy.fire_eater": "食火者",
+  "modifier.jzyy.fire_eater.flavor": "你的工具会吞噬你身上的火焰为自己增加耐久",
+  "modifier.jzyy.fire_eater.description": "我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。",
 
 
 
@@ -401,7 +419,7 @@
   "modifier.jzyy.ass_attack.description":"冲向目标身后",
 
   "modifier.jzyy.magic_flying": "竹蜻蜓",
-  "modifier.jzyy.magic_flying.flavor": "像女巫一样",
+  "modifier.jzyy.magic_flying.flavor": "像哆啦A梦一样",
   "modifier.jzyy.magic_flying.description": "戴在头上获得飞行，每秒都会失去五点耐久",
 
   "modifier.jzyy.horn_toss": "长角抛物",
@@ -663,7 +681,7 @@
 
   "modifier.jzyy.1999_amir": "共鸣-阿米尔·Volt",
   "modifier.jzyy.1999_amir.flavor": "加速",
-  "modifier.jzyy.1999_amir.description": "获得3点移动速度，攻击速度",
+  "modifier.jzyy.1999_amir.description": "获得1点移动速度，攻击速度",
 
   "modifier.jzyy.1999_quincy": "共鸣-昆西·Cyte-09",
   "modifier.jzyy.1999_quincy.flavor": "补给",
@@ -675,7 +693,7 @@
 
   "modifier.jzyy.1999_leticia": "共鸣-莱蒂西娅·Trinity",
   "modifier.jzyy.1999_leticia.flavor": "祝福",
-  "modifier.jzyy.1999_leticia.description": "回复周围生物的生命，如果是玩家则还会额外增加他们的经验",
+  "modifier.jzyy.1999_leticia.description": "回复周围玩家的生命",
 
   "modifier.jzyy.1999_eleanor": "共鸣-埃莉诺·Nyx",
   "modifier.jzyy.1999_eleanor.flavor": "混乱",
@@ -764,6 +782,9 @@
 
   "modifier.jzyy.hungryhunter": "饥饿猎手",
   "modifier.jzyy.hungryhunter.flavor":"宝石恶鳞不会掉落这个宝石恶鳞牙齿",
-  "modifier.jzyy.hungryhunter.description":"饥饿值越少，攻击力越高,攻击速度越快。"
+  "modifier.jzyy.hungryhunter.description":"饥饿值越少，攻击力越高,攻击速度越快。",
 
+  "modifier.jzyy.eternalhunger": "永恒饥饿",
+  "modifier.jzyy.eternalhunger.flavor":"好饿好饿好饿",
+  "modifier.jzyy.eternalhunger.description":"每级减免一定比例的饥饿伤害，随着时间推移获得并升级饥饿Buff，随等级提升，饥饿buff升级速度越快。"
 }
