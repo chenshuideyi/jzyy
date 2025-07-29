@@ -25,6 +25,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -46,8 +47,9 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null && target.getHealth() > 0) {
+            if (isFromDummmmmmyMod(target)) return knockback;
             float reHealth = target.getHealth() - damage * this.value;
-            System.out.println("吃我绝对切断");
+//            System.out.println("吃我绝对切断");
             setAbsoluteSeveranceHealth(target,reHealth);
             forceSetAllCandidateHealth(target,reHealth);
             if (reHealth <= 0){
@@ -58,7 +60,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
                 setEntityDead(target);
                 dropLoot(target,playerKill);
             }
-            System.out.println("目标血量是"+target.getHealth());
+//            System.out.println("目标血量是"+target.getHealth());
         }
         return knockback;
     }
@@ -66,7 +68,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
     /**
      * 手动触发 Advancements (成就)
      */
-    private static void triggerKillAdvancement(LivingEntity target, DamageSource source) {
+    public static void triggerKillAdvancement(LivingEntity target, DamageSource source) {
         if (source.getEntity() instanceof ServerPlayer player) {
             CriteriaTriggers.PLAYER_KILLED_ENTITY.trigger(player, target, source);
         }
@@ -75,7 +77,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
     /**
      * 确保实体被正确标记为死亡
      */
-    private static void setEntityDead(LivingEntity entity) {
+    public static void setEntityDead(LivingEntity entity) {
         try {
             Field deadField = ObfuscationReflectionHelper.findField(LivingEntity.class, "f_20890_"); // isDead
             deadField.setBoolean(entity, true);
@@ -87,7 +89,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
     /**
      * 处理实体掉落的战利品
      */
-    private static void dropLoot(LivingEntity entity, DamageSource ds) {
+    public static void dropLoot(LivingEntity entity, DamageSource ds) {
         try {
             Method dropAllDeathLootMethod = ObfuscationReflectionHelper.findMethod(LivingEntity.class, "m_6668_", DamageSource.class);
             dropAllDeathLootMethod.invoke(entity, ds);

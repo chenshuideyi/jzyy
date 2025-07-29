@@ -193,4 +193,23 @@ public class CsdyModifierUtil {
                 .map(func -> func.apply(source))
                 .collect(Collectors.toList());
     }
+
+    /**
+     * 检测实体是否是假人
+     */
+    public static boolean isFromDummmmmmyMod(Entity entity) {
+        if (entity == null) {
+            return false;
+        }
+        // 方法1：检查实体的命名空间（推荐）
+        ResourceLocation entityId = EntityType.getKey(entity.getType());
+        if (entityId != null && entityId.getNamespace().equals("dummmmmmy")) {
+            return true;
+        }
+
+        // 方法2：检查实体的类路径（备用方案）
+        return entity.getClass().getName().contains("dummmmmmy");
+    }
+
+
 }

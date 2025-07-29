@@ -22,7 +22,7 @@ public class HolyProtection extends NoLevelsModifier  implements DamageBlockModi
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry entry, EquipmentContext context,
                                    EquipmentSlot slot, DamageSource source, float damage) {
-        if (context.getEntity().hasEffect(JzyyEffectRegister.HOLY_PROTECTION_COOLDOWN.get())){
+        if (!context.getEntity().hasEffect(JzyyEffectRegister.HOLY_PROTECTION_COOLDOWN.get())){
             context.getEntity().addEffect(new MobEffectInstance(JzyyEffectRegister.HOLY_PROTECTION_COOLDOWN.get(),600,0));
             return true;
         }

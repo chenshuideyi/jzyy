@@ -115,7 +115,8 @@
     "true_name_liberation": "#f1c40f",
     "excalibur": "#f1c40f",
     "ly": "#8FBC8F",
-    "deep_sea_girl": "#3D7CB8"
+    "deep_sea_girl": "#3D7CB8",
+    "holy_protection": "#ecc813"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -142,7 +143,8 @@
     "defect": "#5AC1FF",
     "yakumo_ender": "#f1c40f",
     "excalibar": "#f1c40f",
-    "ly": "#8FBC8F"
+    "ly": "#8FBC8F",
+    "hallowed_bar": "#ecc813"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

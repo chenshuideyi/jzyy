@@ -63,6 +63,10 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> DEFECT = ITEMS.register("defect",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> HALLOWED_BAR = ITEMS.register("hallowed_bar",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+
+
 //    public static final RegistryObject<Item> INVOKE_CHEAT_UI = ITEMS.register("invokecheatui" , InvokeCheatUI::new);
 
 //    public static final RegistryObject<DiscAloneInTheDarkItem> TEST_DISC = ITEMS.register("test_disc", DiscAloneInTheDarkItem::new);

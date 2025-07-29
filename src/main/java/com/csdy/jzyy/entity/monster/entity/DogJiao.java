@@ -23,7 +23,6 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class DogJiao extends Monster implements GeoEntity {
 
-    @Getter
     private boolean ATTACKING;
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.dog_jiao.idle");
