@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.warframe1999.armor;
 
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -17,19 +18,17 @@ import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.csdyAABB;
 public class Trinity extends NoLevelsModifier implements InventoryTickModifierHook {
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if (!world.isClientSide()) { // 只在服务端执行
-            float healAmount = 4.0f; // 每次恢复的生命值
-            int cooldownTicks = 20; // 冷却时间（20 ticks = 1秒）
+        if (!world.isClientSide()) {
+            float healAmount = 4.0f;
+            int cooldownTicks = 20;
 
-            // 避免每 tick 都执行，降低性能消耗
             if (holder.tickCount % cooldownTicks != 0) {
                 return;
             }
 
-            List<LivingEntity> nearbyEntities = world.getEntitiesOfClass(LivingEntity.class, csdyAABB(8,holder));
+            List<Player> nearbyEntities = world.getEntitiesOfClass(Player.class, csdyAABB(8,holder));
 
-            // 遍历并恢复生命
-            for (LivingEntity entity : nearbyEntities) {
+            for (Player entity : nearbyEntities) {
                 if (entity.isAlive()) {
                     entity.heal(healAmount);
                 }

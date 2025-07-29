@@ -401,7 +401,7 @@
   "modifier.jzyy.ass_attack.description":"冲向目标身后",
 
   "modifier.jzyy.magic_flying": "竹蜻蜓",
-  "modifier.jzyy.magic_flying.flavor": "像女巫一样",
+  "modifier.jzyy.magic_flying.flavor": "像哆啦A梦一样",
   "modifier.jzyy.magic_flying.description": "戴在头上获得飞行，每秒都会失去五点耐久",
 
   "modifier.jzyy.horn_toss": "长角抛物",
@@ -663,7 +663,7 @@
 
   "modifier.jzyy.1999_amir": "共鸣-阿米尔·Volt",
   "modifier.jzyy.1999_amir.flavor": "加速",
-  "modifier.jzyy.1999_amir.description": "获得3点移动速度，攻击速度",
+  "modifier.jzyy.1999_amir.description": "获得1点移动速度，攻击速度",
 
   "modifier.jzyy.1999_quincy": "共鸣-昆西·Cyte-09",
   "modifier.jzyy.1999_quincy.flavor": "补给",
@@ -675,7 +675,7 @@
 
   "modifier.jzyy.1999_leticia": "共鸣-莱蒂西娅·Trinity",
   "modifier.jzyy.1999_leticia.flavor": "祝福",
-  "modifier.jzyy.1999_leticia.description": "回复周围生物的生命，如果是玩家则还会额外增加他们的经验",
+  "modifier.jzyy.1999_leticia.description": "回复周围玩家的生命",
 
   "modifier.jzyy.1999_eleanor": "共鸣-埃莉诺·Nyx",
   "modifier.jzyy.1999_eleanor.flavor": "混乱",
