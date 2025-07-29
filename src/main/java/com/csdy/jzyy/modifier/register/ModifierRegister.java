@@ -295,7 +295,7 @@ public class ModifierRegister {
     public static final StaticModifier<FireSecretorAdhesive.fireabsorption> FIRESECRETORADHESIVE_STATIC_MODIFIER = MODIFIERS.register("fireabsorption", FireSecretorAdhesive.fireabsorption::new);
     public static final StaticModifier<MalignasaurTeethArmor.ancientrespiration> MALIGNASAURTEETHARMOR_STATIC_MODIFIER = MODIFIERS.register("ancientrespiration", MalignasaurTeethArmor.ancientrespiration::new);
     public static final StaticModifier<MalignasaurTeeth.hungryhunter> MALIGNASAURTEETH_STATIC_MODIFIER = MODIFIERS.register("hungryhunter", MalignasaurTeeth.hungryhunter::new);
-    public static final StaticModifier<MarineReptilesFineScale.eternalhunger> MARINEREPTILESFINESCALE_STATIC_MODIFIER = MODIFIERS.register("eternalhunger", MarineReptilesFineScale.eternalhunger::new);
+//    public static final StaticModifier<MarineReptilesFineScale.eternalhunger> MARINEREPTILESFINESCALE_STATIC_MODIFIER = MODIFIERS.register("eternalhunger", MarineReptilesFineScale.eternalhunger::new);
 
 
 
