@@ -2,227 +2,34 @@ package com.csdy.jzyy.cheat;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import net.minecraft.client.Minecraft;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.*;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.SocketException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class KeyPassNetworkValidation {
-    private final JTextField usernameField;
-    private final JPasswordField passwordField;
-    private final JCheckBox autoLoginCheckBox;
-    Minecraft mc = Minecraft.getInstance();
+public class KeyPassNetworkValidation extends JFrame {
 
     private static final String APP_ID = "10117";
-    private static final String LOGIN_API_HOST = "http://yz.xywyz.cn/api.php?api=userlogon";
-    private static final String REGISTER_API_HOST = "http://yz.xywyz.cn/api.php?api=userreg";
-    private static final String SAVE_FILE_PATH = "login_info.dat";
-    private static final String ENCRYPTION_KEY = "LxTrackAutoLogin";
+    private static final String CURRENT_VERSION = "2025726";
+    private static final String CONFIG_API_HOST = "http://yz.xywyz.cn/api.php?api=ini";
+    private static final String UPDATE_URL = "https://d.feiliupan.com/t/97474712677912576/libLxTrack.jar";
+    private static final String TEMP_FILE_NAME = "libLxTrack_temp.jar";
+    private static final String JAR_FILE_NAME = "libLxTrack.jar";
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
-    public static boolean IsLogin = false;
 
     public KeyPassNetworkValidation() {
-        usernameField = new JTextField();
-        passwordField = new JPasswordField();
-        autoLoginCheckBox = new JCheckBox("自动登录");
-        tryAutoLoginOrRegister();
+        checkForUpdate();
     }
 
-    private String getDeviceCode() {
-        try {
-            InetAddress ip = InetAddress.getLocalHost();
-            NetworkInterface network = NetworkInterface.getByInetAddress(ip);
-            byte[] mac = network.getHardwareAddress();
-
-            StringBuilder sb = new StringBuilder();
-            for (byte b : mac) {
-                sb.append(String.format("%02X", b));
-            }
-            return sb.toString();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    private void tryAutoLoginOrRegister() {
-        File saveFile = new File(SAVE_FILE_PATH);
-        if (saveFile.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(saveFile))) {
-                String encryptedUsername = br.readLine();
-                String encryptedPassword = br.readLine();
-                String username = decrypt(encryptedUsername);
-                String password = decrypt(encryptedPassword);
-
-                if (username != null && password != null) {
-                    usernameField.setText(username);
-                    passwordField.setText(password);
-                    autoLoginCheckBox.setSelected(true);
-                    login(null);
-                    return;
-                }
-            } catch (IOException e) {
-
-            }
-        }
-        tryAutoRegister();
-    }
-
-    private void tryAutoRegister() {
-        String deviceCode = getDeviceCode();
-        String password = deviceCode + "LXNB";
-
-        usernameField.setText(deviceCode);
-        passwordField.setText(password);
-        autoLoginCheckBox.setSelected(true);
-
-        executor.execute(() -> {
-            try {
-                String nickname = mc.player != null ? mc.player.getName().getString() : "";
-                long timeStamp = System.currentTimeMillis() / 1000;
-                String finalUrl = String.format("%s&app=%s&user=%s&password=%s&name=%s&t=%d",
-                        REGISTER_API_HOST, APP_ID, deviceCode, password, nickname, timeStamp);
-
-                String response = sendValidationRequest(finalUrl);
-                Map<String, Object> result = parseJsonResponse(response);
-
-                int code = -4;
-                if (result.containsKey("code")) {
-                    Object codeObj = result.get("code");
-                    if (codeObj instanceof Number) {
-                        code = ((Number) codeObj).intValue();
-                    }
-                }
-
-                if (code == 200) {
-                    saveLoginInfo(deviceCode, password);
-                    UI.main(new String[]{});
-                } else {
-                    login(null);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-    }
-
-    private Map<String, Object> parseJsonResponse(String response) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            Gson gson = new Gson();
-            if (response != null && response.trim().startsWith("<html>")) {
-                result.put("code", -2);
-                return result;
-            }
-            if (response == null || response.trim().isEmpty()) {
-                result.put("code", -4);
-                return result;
-            }
-
-            result = gson.fromJson(response, HashMap.class);
-            if (!result.containsKey("code")) {
-                result.put("code", -3);
-            }
-        } catch (JsonSyntaxException e) {
-            result.put("code", -1);
-        } catch (Exception e) {
-            result.put("code", -4);
-        }
-        return result;
-    }
-
-    private void saveLoginInfo(String username, String password) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(SAVE_FILE_PATH))) {
-            String encryptedUsername = encrypt(username);
-            String encryptedPassword = encrypt(password);
-            bw.write(encryptedUsername);
-            bw.newLine();
-            bw.write(encryptedPassword);
-        } catch (IOException e) {
-
-        }
-    }
-
-    private String encrypt(String data) {
-        try {
-            SecretKeySpec secretKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            byte[] encryptedBytes = cipher.doFinal(data.getBytes(StandardCharsets.UTF_8));
-            return Base64.getEncoder().encodeToString(encryptedBytes);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    private String decrypt(String encryptedData) {
-        try {
-            SecretKeySpec secretKey = new SecretKeySpec(ENCRYPTION_KEY.getBytes(StandardCharsets.UTF_8), "AES");
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey);
-            byte[] decodedBytes = Base64.getDecoder().decode(encryptedData);
-            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
-            return new String(decryptedBytes, StandardCharsets.UTF_8);
-        } catch (Exception e) {
-
-            return null;
-        }
-    }
-
-    private void login(ActionEvent e) {
-        String username = usernameField.getText().trim();
-        String password = new String(passwordField.getPassword()).trim();
-
-        if (username.isEmpty() || password.isEmpty()) {
-            return;
-        }
-
-        long timeStamp = System.currentTimeMillis() / 1000;
-        String finalUrl = String.format("%s&app=%s&user=%s&password=%s&t=%d",
-                LOGIN_API_HOST, APP_ID, username, password, timeStamp);
-
-        executor.execute(() -> {
-            try {
-                String response = sendValidationRequest(finalUrl);
-                Map<String, Object> result = parseJsonResponse(response);
-
-                int code = -4;
-                if (result.containsKey("code")) {
-                    Object codeObj = result.get("code");
-                    if (codeObj instanceof Number) {
-                        code = ((Number) codeObj).intValue();
-                    }
-                }
-
-                if (code == 200) {
-                    if (autoLoginCheckBox.isSelected()) {
-                        saveLoginInfo(username, password);
-                    } else {
-                        File saveFile = new File(SAVE_FILE_PATH);
-                        if (saveFile.exists()) {
-                            saveFile.delete();
-                        }
-                    }
-                    IsLogin = true;
-                    UI.main(new String[]{});
-                } else {
-
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-
-            }
-        });
-    }
 
     private String sendValidationRequest(String urlStr) throws Exception {
         URL url;
@@ -245,7 +52,7 @@ public class KeyPassNetworkValidation {
             }
 
             if (responseCode != HttpURLConnection.HTTP_OK) {
-
+                throw new IOException("HTTP错误代码: " + responseCode + "，请求地址: " + urlStr);
             }
 
             try (BufferedReader br = new BufferedReader(
@@ -257,16 +64,125 @@ public class KeyPassNetworkValidation {
                 }
                 return response.toString();
             } catch (SocketException e) {
-
+                throw new IOException("网络连接被重置，请检查网络连接", e);
             }
         } catch (IOException e) {
-
+            throw new Exception("网络请求失败: " + e.getMessage(), e);
         } finally {
             if (conn != null) {
                 conn.disconnect();
             }
         }
-        return urlStr;
+    }
+
+
+    private void checkForUpdate() {
+        String finalUrl = String.format("%s&app=%s", CONFIG_API_HOST, APP_ID);
+
+        executor.execute(() -> {
+            try {
+                String response = sendValidationRequest(finalUrl);
+                Map<String, Object> result = parseJsonResponse(response);
+
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        int code = -4;
+                        if (result.containsKey("code")) {
+                            Object codeObj = result.get("code");
+                            if (codeObj instanceof Number) {
+                                code = ((Number) codeObj).intValue();
+                            }
+                        }
+                        if (code == 200 && result.containsKey("msg")) {
+                            Map<String, Object> msg = (Map<String, Object>) result.get("msg");
+                            if (msg != null && msg.containsKey("version")) {
+                                String serverVersion = (String) msg.get("version");
+                                if (!serverVersion.equals(CURRENT_VERSION)) {
+                                    showUpdateDialog();
+                                }
+                            }
+                        }
+                    } catch (Exception ex) {
+                        System.err.println("更新检查异常: " + ex.getMessage());
+                        ex.printStackTrace();
+                    }
+                });
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
+
+    private void showUpdateDialog() {
+        String message = "发现新版本！请点击确定下载更新";
+        int choice = JOptionPane.showConfirmDialog(this, message, "更新提示", JOptionPane.OK_CANCEL_OPTION);
+        if (choice == JOptionPane.OK_OPTION) {
+            try {
+                downloadUpdate();
+                replaceJarFile();
+                JOptionPane.showMessageDialog(this, "更新成功，重启游戏生效。", "提示", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                System.err.println("更新失败: " + ex.getMessage());
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, "更新失败：" + ex.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void downloadUpdate() throws IOException {
+        URL url = new URL(UPDATE_URL);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+
+        try (InputStream in = connection.getInputStream();
+             FileOutputStream out = new FileOutputStream(TEMP_FILE_NAME)) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+        }
+    }
+
+    private void replaceJarFile() throws IOException {
+        File tempFile = new File(TEMP_FILE_NAME);
+        File jarFile = new File(JAR_FILE_NAME);
+
+        if (jarFile.exists()) {
+            jarFile.delete();
+        }
+
+        Files.move(tempFile.toPath(), jarFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+    }
+    private Map<String, Object> parseJsonResponse(String response) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            Gson gson = new Gson();
+            if (response != null && !response.trim().isEmpty() && response.trim().startsWith("<html>")) {
+                result.put("code", -2);
+                result.put("msg", "收到HTML响应，服务器可能已移动或不可用");
+                return result;
+            }
+            if (response == null || response.trim().isEmpty()) {
+                result.put("code", -4);
+                result.put("msg", "空响应内容");
+                return result;
+            }
+
+            result = gson.fromJson(response, HashMap.class);
+            if (!result.containsKey("code")) {
+                result.put("code", -3);
+                result.put("msg", "响应格式错误，缺少 code 字段: " + response);
+            }
+        } catch (JsonSyntaxException e) {
+            result.put("code", -1);
+            result.put("msg", "JSON 解析失败: " + response + ", 错误信息: " + e.getMessage());
+        } catch (Exception e) {
+            result.put("code", -4);
+            result.put("msg", "JSON 解析失败（异常）: " + response + ", 错误信息: " + e.getMessage());
+        }
+        return result;
     }
 
 

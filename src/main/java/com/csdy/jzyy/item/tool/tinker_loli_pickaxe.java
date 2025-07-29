@@ -49,14 +49,15 @@ public class tinker_loli_pickaxe extends ModifiableItem {
         return tool.getStats().get(ToolStats.MINING_SPEED);
     }
 
+
     @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
         return true;
     }
 
-    public boolean canBeDepleted() {
-        return false;
-    }
+//    public boolean canBeDepleted() {
+//        return false;//不毁
+//    }
 
     public List<Component> getStatInformation(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         tooltips = this.getTooltipStats(tool, player, tooltips, key, tooltipFlag);
@@ -64,7 +65,9 @@ public class tinker_loli_pickaxe extends ModifiableItem {
     }
     public List<Component> getTooltipStats(IToolStackView tool, @Nullable Player player, List<Component> tooltips, TooltipKey key, TooltipFlag tooltipFlag) {
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
-
+        if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
+            builder.add(ToolStats.DURABILITY);
+        }
         if (tool.hasTag(TinkerTags.Items.MELEE)) {
             builder.add(ToolStats.ATTACK_DAMAGE);
             builder.add(ToolStats.ATTACK_SPEED);

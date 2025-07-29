@@ -1,6 +1,7 @@
 package com.csdy.jzyy.item;
 
 //import com.mega.uom.util.entity.EntityActuallyHurt;
+
 import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.font.Rarity.ExtendedRarity;
 import com.csdy.jzyy.item.fake.FakeItem;
@@ -32,7 +33,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import static com.csdy.jzyy.entity.monster.event.NightDogJiaoSummon.trySpawnZombiesNearPlayer;
-import static com.csdy.jzyy.modifier.modifier.rainbow.ColorModifier.getEntityColor;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 
 

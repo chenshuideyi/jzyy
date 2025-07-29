@@ -76,7 +76,7 @@
       "type": "tconstruct:traits",
       "traits": [
         {
-          "name": "tconstruct:infinitum",
+          "name": "jzyy:infinitum",
           "level": 1
         }
       ]
