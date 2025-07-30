@@ -10,8 +10,7 @@
     "InventoryMixin",
     "PreventDisarmamentMixin",
     "SynchedEntityDataMixin",
-    "UILoadMixin",
-    "GameRenderer"
+    "UILoadMixin"
   ],
   "client": [
     "WindowMixin"
