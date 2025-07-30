@@ -23,6 +23,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+
 import javax.annotation.Nonnull;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
