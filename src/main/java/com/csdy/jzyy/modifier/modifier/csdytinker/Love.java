@@ -1,6 +1,9 @@
-package com.csdy.jzyy.modifier.modifier;
+package com.csdy.jzyy.modifier.modifier.csdytinker;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -10,13 +13,12 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class Reforge extends NoLevelsModifier implements InventoryTickModifierHook {
-
+public class Love extends NoLevelsModifier implements InventoryTickModifierHook {
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry entry, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        int currentDurability = tool.getCurrentDurability();
-        if (currentDurability <= 1) {
-            tool.setDamage(0);
+        if (holder instanceof Player player && isCorrectSlot && player.experienceLevel >= 20) {
+            holder.addEffect(new MobEffectInstance(MobEffects.REGENERATION,300,4));
+            holder.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,300,4));
         }
     }
 

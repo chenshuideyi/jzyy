@@ -14,8 +14,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.*;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionPenetratingDamage;
-import static slimeknights.tconstruct.library.tools.stat.ToolStats.ATTACK_DAMAGE;
 
 @Getter
 public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitModifierHook {

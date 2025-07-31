@@ -175,7 +175,7 @@ public class ModifierRegister {
 
     ///强大词条
 
-
+    public static final StaticModifier<LastSword> LAST_SWORD_STATIC_MODIFIER = MODIFIERS.register("last_sword", LastSword::new);
     public static final StaticModifier<ExpediteSuffering> EXPEDITE_SUFFERING_STATIC_MODIFIER = MODIFIERS.register("expedite_suffering", ExpediteSuffering::new);
     public static final StaticModifier<ImagineBreaker> IMAGINE_BREAKER_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker", ImagineBreaker::new);
     public static final StaticModifier<EchoForm> ECHO_FORM_STATIC_MODIFIER = MODIFIERS.register("echo_form", EchoForm::new);
@@ -296,9 +296,11 @@ public class ModifierRegister {
     public static final StaticModifier<FireSecretorAdhesive.fireabsorption> FIRESECRETORADHESIVE_STATIC_MODIFIER = MODIFIERS.register("fireabsorption", FireSecretorAdhesive.fireabsorption::new);
     public static final StaticModifier<MalignasaurTeethArmor.ancientrespiration> MALIGNASAURTEETHARMOR_STATIC_MODIFIER = MODIFIERS.register("ancientrespiration", MalignasaurTeethArmor.ancientrespiration::new);
     public static final StaticModifier<MalignasaurTeeth.hungryhunter> MALIGNASAURTEETH_STATIC_MODIFIER = MODIFIERS.register("hungryhunter", MalignasaurTeeth.hungryhunter::new);
-//    public static final StaticModifier<MarineReptilesFineScale.eternalhunger> MARINEREPTILESFINESCALE_STATIC_MODIFIER = MODIFIERS.register("eternalhunger", MarineReptilesFineScale.eternalhunger::new);
+    public static final StaticModifier<MarineReptilesFineScale.eternalhunger> MARINEREPTILESFINESCALE_STATIC_MODIFIER = MODIFIERS.register("eternalhunger", MarineReptilesFineScale.eternalhunger::new);
 
-
+    ///护甲补强
+    public static final StaticModifier<Refraction> REFRACTION_STATIC_MODIFIER = MODIFIERS.register("refraction", Refraction::new);
+    public static final StaticModifier<Love> LOVE_STATIC_MODIFIER = MODIFIERS.register("love", Love::new);
 
 
     ///真实形态

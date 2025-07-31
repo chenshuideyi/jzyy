@@ -7,16 +7,12 @@
   "refmap": "jzyy.refmap.json",
   "mixins": [
     "EntityMixin",
-    "GameRenderer",
     "InventoryMixin",
     "PreventDisarmamentMixin",
     "SynchedEntityDataMixin",
     "UILoadMixin"
   ],
   "client": [
-    "DeathScreenMixin",
-    "KeyMappingMixin",
-    "MouseHandlerMixin",
     "WindowMixin"
   ],
   "injectors": {
