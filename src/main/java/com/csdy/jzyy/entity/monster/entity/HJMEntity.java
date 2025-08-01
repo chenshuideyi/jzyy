@@ -32,7 +32,6 @@ public class HJMEntity extends Monster implements GeoEntity {
 	private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
 	private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
 	private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenLoop("attack");
-	private final ServerBossEvent bossInfo = new ServerBossEvent(this.getDisplayName(), ServerBossEvent.BossBarColor.YELLOW, ServerBossEvent.BossBarOverlay.PROGRESS);
 	private boolean ATTACKING;
 
 	public HJMEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -97,12 +96,12 @@ public class HJMEntity extends Monster implements GeoEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.45);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.4);
 		builder = builder.add(Attributes.MAX_HEALTH, 999);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 1);
 		builder = builder.add(Attributes.ATTACK_SPEED, 1);
 		builder = builder.add(Attributes.ATTACK_KNOCKBACK, 6);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 12);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 8);
 		return builder;
 	}
 	@Override
@@ -116,23 +115,6 @@ public class HJMEntity extends Monster implements GeoEntity {
 		super.onAddedToWorld();
 	}
 
-	@Override
-	public void startSeenByPlayer(ServerPlayer player) {
-		super.startSeenByPlayer(player);
-		this.bossInfo.addPlayer(player);
-	}
-
-	@Override
-	public void stopSeenByPlayer(ServerPlayer player) {
-		super.stopSeenByPlayer(player);
-		this.bossInfo.removePlayer(player);
-	}
-
-	@Override
-	public void customServerAiStep() {
-		super.customServerAiStep();
-		this.bossInfo.setProgress(this.getHealth() / this.getMaxHealth());
-	}
 	@Override
 	public void defineSynchedData() {
 		super.defineSynchedData();

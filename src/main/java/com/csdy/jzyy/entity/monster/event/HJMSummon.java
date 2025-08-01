@@ -1,21 +1,13 @@
 package com.csdy.jzyy.entity.monster.event;
 
 
-import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
-import com.csdy.jzyy.network.JzyySyncing;
-import com.csdy.jzyy.network.packets.PlaySoundPacket;
-import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 
 import java.util.Random;
 
@@ -25,9 +17,6 @@ import static com.csdy.jzyy.JzyyModMain.MODID;
 public class HJMSummon {
     static Random random = new Random();
 
-    private static final int COUNT = 1;
-    private static final int MIN_DISTANCE = 18;  // 最小距离(格)
-    private static final int MAX_DISTANCE = 30; // 最大距离(格)
     private static final int CHECK_INTERVAL = 200; // 10秒 = 200 ticks
     private static int timer = 0;
 
@@ -44,12 +33,12 @@ public class HJMSummon {
             }
             int a = random.nextInt(19);
             if (a==1) {
-                trySpawnZombiesNearPlayer((ServerLevel) event.level, player);
+                trySpawnHjmNearPlayer((ServerLevel) event.level, player,1,18,30);
             }
         }
     }
 
-    public static void trySpawnZombiesNearPlayer(ServerLevel level, Player player) {
+    public static void trySpawnHjmNearPlayer(ServerLevel level, Player player,int COUNT,int MIN_DISTANCE,int MAX_DISTANCE) {
         for (int i = 0; i < COUNT; i++) {
             double angle = random.nextDouble() * Math.PI * 2;
             double distance = MIN_DISTANCE + random.nextDouble() * (MAX_DISTANCE - MIN_DISTANCE);

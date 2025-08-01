@@ -764,6 +764,14 @@
   "entity.jzyy.dog_jiao": "大狗嚼",
 
   "entity.jzyy.hjm": "其名为耄",
+  "item.jzyy.lue_mao_qu": "§o略冒蛆§",
+  "item.jzyy.lue_mao_qu.tooltip1": "还没尝过呢! 尝起来怎么样?",
+  "msg.lue_mao_qu1": "多么独特的味道! 您可能获得了999颗红心",
+  "msg.lue_mao_qu2": "您可能获得了999颗红心. 您追寻独特食物的愿望终于得到满足.",
+  "msg.lue_mao_qu3": "该食物足以提升您的生命值.",
+  "msg.lue_mao_qu4": "该食物未被加入黑名单, 因此无法用于增加生命值.",
+  "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",
+  "msg.lue_mao_qu6": "这个是略人的梗😱😱😱",
 
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
