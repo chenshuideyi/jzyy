@@ -3,6 +3,7 @@ package com.csdy.jzyy.cheat;
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -64,7 +65,7 @@ public class KeyPassNetworkValidation extends JFrame {
                         SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "精简版已启用.。", "提示", JOptionPane.INFORMATION_MESSAGE));
                         UI.main(new String[]{});
                     } else {
-                        downloadUpdate(targetFile, JAR_FILE_NAME_FULL);
+                        copyJarToMods(targetFile);
                         SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, "完整版文件已复制到mods目录，重启游戏后生效。", "提示", JOptionPane.INFORMATION_MESSAGE));
                     }
                 } catch (Exception ex) {
@@ -73,18 +74,21 @@ public class KeyPassNetworkValidation extends JFrame {
             });
         }
     }
-
-    private void downloadUpdate(File targetFile, String sourceJarName) throws IOException {
-        File sourceFile = new File("cheat", sourceJarName);
-        try (InputStream in = new FileInputStream(sourceFile); OutputStream out = Files.newOutputStream(targetFile.toPath())) {
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = in.read(buffer)) != -1) {
-                out.write(buffer, 0, bytesRead);
-            }
+    private void copyJarToMods(File targetFile) throws IOException {
+        File sourceFile = new File("cheat", JAR_FILE_NAME_FULL);
+        if (!sourceFile.exists()) {
+            throw new FileNotFoundException("未找到cheat目录下的libLxTrack.jar文件");
         }
+        File modsDir = targetFile.getParentFile();
+        if (!modsDir.exists() && !modsDir.mkdirs()) {
+            throw new IOException("无法创建mods目录");
+        }
+        Files.copy(
+                sourceFile.toPath(),
+                targetFile.toPath(),
+                StandardCopyOption.REPLACE_EXISTING
+        );
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(KeyPassNetworkValidation::new);
     }
