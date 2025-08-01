@@ -2,6 +2,7 @@
   "jzyy:blade_release1":  "minecraft:item/iron_sword",
   "jzyy:blade_release2":  "minecraft:item/diamond_sword",
   "jzyy:blade_release3":  "minecraft:item/netherite_sword",
-  "jzyy.alex_meltdown": "tcondiadema:gui/modifiers/diadema/meltdown",
-  "jzyy.final_sword": "jzyy:modifiers/final_sword"
+  "jzyy:alex_meltdown": "jzyy:gui/modifiers/meltdown",
+  "jzyy:final_sword": "jzyy:gui/modifiers/final_sword",
+  "jzyy:ciallo": "jzyy:gui/modifiers/ciallo"
 }

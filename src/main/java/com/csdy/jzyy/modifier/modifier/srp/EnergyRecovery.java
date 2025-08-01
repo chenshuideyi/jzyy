@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier;
+package com.csdy.jzyy.modifier.modifier.srp;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;

@@ -15,5 +15,5 @@ public class JzyyEffectRegister {
     public static final RegistryObject<MobEffect> TRUE_MAN_LAST_DANCE = EFFECTS.register("true_man_last_dance", TrueManLastDance::new);
     public static final RegistryObject<MobEffect> DIVINITY = EFFECTS.register("divinity", Divinity::new);
     public static final RegistryObject<MobEffect> HOLY_PROTECTION_COOLDOWN = EFFECTS.register("holy_protection_cooldown", HolyProtectionCooldown::new);
-
+    public static final RegistryObject<MobEffect> CSDY = EFFECTS.register("csdy", Csdy::new);
 }

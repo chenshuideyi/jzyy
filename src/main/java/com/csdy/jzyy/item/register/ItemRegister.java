@@ -27,6 +27,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
     public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
     public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
+    public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
+
 
 
     public static final RegistryObject<Item> HARCADIUM = ITEMS.register(

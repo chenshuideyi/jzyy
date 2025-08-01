@@ -8,6 +8,8 @@ import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.fake.FakeStack;
 import com.csdy.jzyy.ms.util.Helper;
 import com.csdy.jzyy.ms.util.SoundPlayer;
+import com.csdy.jzyy.network.JzyySyncing;
+import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.entity.EntityInLevelCallback;
 import net.minecraft.world.level.entity.EntityTickList;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -236,10 +239,18 @@ public class Test extends Item {
             }
 
             trySpawnZombiesNearPlayer(serverLevel, player);
+
+            JzyySyncing.CHANNEL.send(
+                    PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
+                    new PlaySoundPacket(player.getEyePosition(), JzyySoundsRegister.CIALLO.get().getLocation(), 1, 1)
+            );
+
         }
 
 
-        player.playSound(JzyySoundsRegister.DOG_JIAO_SUMMON.get(), 1, 1);
+
+
+//        player.playSound(JzyySoundsRegister.DOG_JIAO_SUMMON.get(), 1, 1);
 
         SoundPlayer.tryPlayMillenniumSnowAsync("the_millennium_snow.wav");
 

@@ -49,6 +49,7 @@ import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.FireDragonArmor;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.FlashDragonArmor;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.IceDragonArmor;
 import com.csdy.jzyy.modifier.modifier.jzyy.*;
+import com.csdy.jzyy.modifier.modifier.jzyy.sponsor.Ciallo;
 import com.csdy.jzyy.modifier.modifier.jzyy.sponsor.FinalSword;
 import com.csdy.jzyy.modifier.modifier.living_wood.Ecological;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestAngry;
@@ -73,6 +74,8 @@ import com.csdy.jzyy.modifier.modifier.real_form.RealRenstoneComponent;
 import com.csdy.jzyy.modifier.modifier.redstone_component.Precision;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.Disruptor;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
+import com.csdy.jzyy.modifier.modifier.silence.SilenceAlmighty;
+import com.csdy.jzyy.modifier.modifier.srp.EnergyRecovery;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
@@ -417,6 +420,13 @@ public class ModifierRegister {
 
     ///赞助强化这一块
     public static final StaticModifier<FinalSword> FINAL_SWORD_STATIC_MODIFIER = MODIFIERS.register("final_sword", FinalSword::new);
+    public static final StaticModifier<Ciallo> CIALLO_STATIC_MODIFIER = MODIFIERS.register("ciallo", Ciallo::new);
+
+    ///寂静 目前最没有设计感的材料
+    public static final StaticModifier<SilenceAlmighty> SILENCE_ALMIGHTY_STATIC_MODIFIER = MODIFIERS.register("silence_almighty", SilenceAlmighty::new);
+
+
+
 
     ///ly
     public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);

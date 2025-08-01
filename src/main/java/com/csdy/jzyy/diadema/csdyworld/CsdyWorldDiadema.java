@@ -24,6 +24,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
+import static com.csdy.jzyy.ms.CoreMsUtil.Attack;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+
 public class CsdyWorldDiadema extends Diadema {
     final static double RADIUS = 8;
     private final Entity holder = getCoreEntity();
@@ -104,6 +109,15 @@ public class CsdyWorldDiadema extends Diadema {
                 livingEntitiesInRange.add(living);
                 if (living instanceof Player player) {
                     playersForCooldown.add(player);
+                }
+                else {
+                    if (!isFromDummmmmmyMod(living)) {
+                        float oldHealth = living.getHealth();
+                        float reHealth = living.getHealth() - living.getMaxHealth() * 0.01f;
+                        setAbsoluteSeveranceHealth(living,reHealth);
+                        forceSetAllCandidateHealth(living,reHealth);
+                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth) Attack(living);
+                    }
                 }
             }
         }
