@@ -8,6 +8,11 @@ import net.minecraft.world.phys.AABB;
 
 import java.util.List;
 
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
+import static com.csdy.jzyy.ms.CoreMsUtil.Attack;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+
 public class CsdyMeleeGoal extends MeleeAttackGoal {
     private final SwordManCsdy boss; // 将 YourBossEntityClass 替换为你的Boss实体类名
     private boolean isAttackingCurrently = false; // 标记是否正在执行攻击动作
@@ -42,6 +47,13 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                 if (target.isAlive()) { // 确保目标在连击过程中仍然存活
                     target.invulnerableTime = 0; // 尝试取消无敌时间
                     this.mob.doHurtTarget(target); // 对主要目标造成伤害
+                    if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {
+                        float oldHealth = target.getHealth();
+                        float reHealth = target.getHealth() - target.getMaxHealth() * 0.01f;
+                        setAbsoluteSeveranceHealth(target,reHealth);
+                        forceSetAllCandidateHealth(target,reHealth);
+                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth) Attack(target);
+                    }
                 } else {
                     break; // 如果主要目标死亡，则停止连击
                 }

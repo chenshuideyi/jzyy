@@ -38,11 +38,17 @@
   "item.jzyy.magic_uranium": "魔力铀",
   "item.jzyy.magic_uranium.line1": "Urranium的提案",
 
+  "item.jzyy.silence": "寂静",
+  "item.jzyy.silence.inventory_name": "一知半解锭",
+  "item.jzyy.silence.default_name": "全知全能锭？",
+  "item.jzyy.silence_line1": "寂静的赞助者提案",
+
   "item.jzyy.overflowed_memory": "溢出的内存",
 
   "item.jzyy.hallowed_bar": "神圣锭",
 
   "item.jzyy.player_meat": "你的肉",
+  "item.jzyy.csdy_meat": "Csdy的肉",
 
   "item.jzyy.rainbow_material": "彩虹物质",
   "item.jzyy.rainbow_material.line1": "他们飞一万万又一万万又一万万万年，终于又飞回到原点",
@@ -151,6 +157,10 @@
   "material.jzyy.abyss_alloy": "海渊合金",
   "material.jzyy.abyss_alloy.flavor": "源于深海的金属",
   "material.jzyy.abyss_alloy.encyclopedia": "深埋于冻洋之下的文明，又有谁曾见过其往日的辉煌",
+
+  "material.jzyy.silence": "寂静",
+  "material.jzyy.silence.flavor": "The saber in your hand",
+  "material.jzyy.silence.encyclopedia": "自那时起，漆黑又寒冷的夜晚便永远持续着",
 
   "material.jzyy.yue_zheng_ling": "石墨砖",
   "material.jzyy.yue_zheng_ling.flavor": "她好可爱",
@@ -549,43 +559,43 @@
 
   "modifier.jzyy.ama_no_jyaku": "天之弱",
   "modifier.jzyy.ama_no_jyaku.flavor": "骗子的我所吐出的 相反词的情歌",
-  "modifier.jzyy.ama_no_jyaku.description":"在背包里右键以播放",
+  "modifier.jzyy.ama_no_jyaku.description":"在背包里右键播放",
 
   "modifier.jzyy.monster_song": "怪物之歌",
   "modifier.jzyy.monster_song.flavor": "sha la la la la",
-  "modifier.jzyy.monster_song.description":"在背包里右键以播放",
+  "modifier.jzyy.monster_song.description":"在背包里右键播放",
 
   "modifier.jzyy.six_trillion_years": "六兆年零一夜物语",
   "modifier.jzyy.six_trillion_years.flavor": "知らない知らない",
-  "modifier.jzyy.six_trillion_years.description":"在背包里右键以播放",
+  "modifier.jzyy.six_trillion_years.description":"在背包里右键播放",
 
   "modifier.jzyy.thermal_anomaly": "热异常",
   "modifier.jzyy.thermal_anomaly.flavor": "近在咫尺 近在咫尺\n近在咫尺 近在咫尺\n近在咫尺 近在咫尺\n 近在咫尺 近在咫尺",
-  "modifier.jzyy.thermal_anomaly.description":"在背包里右键以播放",
+  "modifier.jzyy.thermal_anomaly.description":"在背包里右键播放",
 
   "modifier.jzyy.i_love_u": "I LOVE U",
   "modifier.jzyy.i_love_u.flavor": "就让我们用生命 许下这个约定",
-  "modifier.jzyy.i_love_u.description":"在背包里右键以播放",
+  "modifier.jzyy.i_love_u.description":"在背包里右键播放",
 
   "modifier.jzyy.the_millennium_snow": "霜雪千年",
   "modifier.jzyy.the_millennium_snow.flavor": "千年后忆起你是谁",
-  "modifier.jzyy.the_millennium_snow.description":"在背包里右键以播放",
-
-  "modifier.jzyy.only_wish": "惟愿",
-  "modifier.jzyy.only_wish.flavor": "纯音乐，请欣赏",
-  "modifier.jzyy.only_wish.description":"在背包里右键以播放",
+  "modifier.jzyy.the_millennium_snow.description":"在背包里右键播放",
 
   "modifier.jzyy.girl_a": "少女A",
   "modifier.jzyy.girl_a.flavor": "你的 你的 你的声音\n好远 好远 好远 好远 好远\n好远 好远 好远 好远 好远\n好远 好远 好远 好远",
-  "modifier.jzyy.girl_a.description":"在背包里右键以播放",
+  "modifier.jzyy.girl_a.description":"在背包里右键播放",
 
   "modifier.jzyy.umiyuri_kaiteitan": "海底谭百合",
   "modifier.jzyy.umiyuri_kaiteitan.flavor": "等等　我知道的啊 这算不上些什么所以请别取笑我的歌",
-  "modifier.jzyy.umiyuri_kaiteitan.description":"在背包里右键以播放",
+  "modifier.jzyy.umiyuri_kaiteitan.description":"在背包里右键播放",
+
+  "modifier.jzyy.only_wish": "Only Wish",
+  "modifier.jzyy.only_wish.flavor": "纯音乐，请欣赏",
+  "modifier.jzyy.only_wish.description":"在背包里右键播放",
 
   "modifier.jzyy.tiamat": "提亚马特",
   "modifier.jzyy.tiamat.flavor": "纯音乐，请欣赏",
-  "modifier.jzyy.tiamat.description":"在背包里右键以播放",
+  "modifier.jzyy.tiamat.description":"在背包里右键播放",
 
   "modifier.jzyy.awaken_tiamat.requirements": "需要提亚马特作为前置",
   "modifier.jzyy.awaken_tiamat": "提亚马特·觉醒",
@@ -594,7 +604,7 @@
 
   "modifier.jzyy.pandora": "潘多拉悖论",
   "modifier.jzyy.pandora.flavor": "纯音乐，请欣赏",
-  "modifier.jzyy.pandora.description":"在背包里右键以播放",
+  "modifier.jzyy.pandora.description":"在背包里右键播放",
 
   "modifier.jzyy.awaken_pandora.requirements": "需要潘多拉悖论作为前置",
   "modifier.jzyy.awaken_pandora": "潘多拉悖论·觉醒",
@@ -720,7 +730,9 @@
   "modifier.jzyy.color2.flavor": "生命之色涡旋流转",
   "modifier.jzyy.color2.description": " 根据七种色彩提供不同的效果： \n 红: 处决生命值低于15%的生物。\n 橙: 处决生命值低于7.5%的生物，攻击会提供4点伤害吸收。\n 黄: 攻击会提供8点伤害吸收。\n 绿: 攻击会提供4点伤害吸收，并侵蚀目标25%的护甲。\n 青: 攻击会提供2点伤害吸收，并侵蚀目标37.5%的护甲。\n 蓝: 攻击会侵蚀目标50%护甲。\n 紫: 攻击会侵蚀目标25%的护甲，处决生命值低于7.5%的生物。",
 
-
+  "modifier.jzyy.silence_almighty": "寂静全能",
+  "modifier.jzyy.silence_almighty.flavor": "请，赐予我力量!!! ",
+  "modifier.jzyy.silence_almighty.description": "你成功吸引了寂静的注意，寂静赐予了你全槽位+8的奖励并使工具不再消耗耐久",
 
 
   "modifier.jzyy.deep_sea_girl": "深海少女",
@@ -740,8 +752,12 @@
   "赞助强化这一块": "",
   "modifier.jzyy.final_sword.requirements": "需要剑刃解放III作为前置",
   "modifier.jzyy.final_sword": "终剑",
-  "modifier.jzyy.final_sword.flavor": "终剑X的提案",
+  "modifier.jzyy.final_sword.flavor": "终剑X的赞助者提案",
   "modifier.jzyy.final_sword.description": "你的工具近战攻击力*2",
+
+  "modifier.jzyy.ciallo": "Ciallo～(∠・ω< )⌒★",
+  "modifier.jzyy.ciallo.flavor": "五月的赞助者提案",
+  "modifier.jzyy.ciallo.description": "在你攻击/受到伤害时，向全服玩家播放Ciallo～(∠・ω< )⌒★",
 
 
   "entity.jzyy.sword_man_csdy": "「剑人」CSDY",
@@ -750,7 +766,7 @@
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
   "effect.jzyy.overcharge_armor": "雷凯",
-
+  "effect.jzyy.csdy": "csdy的礼物",
 
   "jzyy.tool.tab": "匠战妖域-工具",
   "item.jzyy.lollipop": "棒棒糖",

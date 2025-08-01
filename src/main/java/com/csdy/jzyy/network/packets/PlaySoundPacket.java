@@ -15,9 +15,9 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public record DogJiaoSummonPacket(Vec3 origin, ResourceLocation soundEvent, float volume, float pitch) {
+public record PlaySoundPacket(Vec3 origin, ResourceLocation soundEvent, float volume, float pitch) {
 
-    public static void encode(DogJiaoSummonPacket packet, FriendlyByteBuf buf) {
+    public static void encode(PlaySoundPacket packet, FriendlyByteBuf buf) {
         // 写入坐标
         buf.writeDouble(packet.origin.x);
         buf.writeDouble(packet.origin.y);
@@ -29,7 +29,7 @@ public record DogJiaoSummonPacket(Vec3 origin, ResourceLocation soundEvent, floa
         buf.writeFloat(packet.pitch);
     }
 
-    public static DogJiaoSummonPacket decode(FriendlyByteBuf buf) {
+    public static PlaySoundPacket decode(FriendlyByteBuf buf) {
         Vec3 origin = new Vec3(
                 buf.readDouble(),
                 buf.readDouble(),
@@ -38,11 +38,11 @@ public record DogJiaoSummonPacket(Vec3 origin, ResourceLocation soundEvent, floa
         ResourceLocation soundEvent = buf.readResourceLocation();
         float volume = buf.readFloat();
         float pitch = buf.readFloat();
-        return new DogJiaoSummonPacket(origin, soundEvent, volume, pitch);
+        return new PlaySoundPacket(origin, soundEvent, volume, pitch);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void handle(DogJiaoSummonPacket packet, Supplier<NetworkEvent.Context> ctx) {
+    public static void handle(PlaySoundPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ClientLevel level = Minecraft.getInstance().level;
             LocalPlayer player = Minecraft.getInstance().player;

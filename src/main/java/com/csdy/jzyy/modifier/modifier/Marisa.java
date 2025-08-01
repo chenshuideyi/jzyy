@@ -87,6 +87,7 @@ public class Marisa extends NoLevelsModifier implements MeleeHitModifierHook, Pr
 //            Method dropAllDeathLootMethod = ObfuscationReflectionHelper.findMethod(LivingEntity.class, "dropAllDeathLoot", DamageSource.class);
             Method dropAllDeathLootMethod = ObfuscationReflectionHelper.findMethod(LivingEntity.class, "m_6668_", DamageSource.class);
             dropAllDeathLootMethod.invoke(entity, ds);
+            System.out.println("魔理沙偷走了战利品表" + entity.getLootTable());
         } catch (Exception e) {
             throw new RuntimeException("调用战利品表失败", e);
         }

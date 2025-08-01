@@ -1,7 +1,7 @@
 package com.csdy.jzyy.network;
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.network.packets.DogJiaoSummonPacket;
+import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.network.packets.ExcaliburPacket;
 import com.csdy.jzyy.network.packets.JzyySonicBoomPacket;
 import com.csdy.jzyy.network.packets.UnsafeMemoryPacket;
@@ -52,10 +52,10 @@ public class JzyySyncing {
         );
         CHANNEL.registerMessage(
                 packetId++,
-                DogJiaoSummonPacket.class,
-                DogJiaoSummonPacket::encode,
-                DogJiaoSummonPacket::decode,
-                DogJiaoSummonPacket::handle,
+                PlaySoundPacket.class,
+                PlaySoundPacket::encode,
+                PlaySoundPacket::decode,
+                PlaySoundPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
         );
 

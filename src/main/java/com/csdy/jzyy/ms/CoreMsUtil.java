@@ -58,6 +58,7 @@ public class CoreMsUtil {
     public static boolean isCsdykill(Entity entity) {
         return getCategory(entity).equals(EntityCategory.csdykill);
     }
+
     @SuppressWarnings("unchecked")
     public static void Attack(Entity target) {
         if (target.level() instanceof ServerLevel surface) {

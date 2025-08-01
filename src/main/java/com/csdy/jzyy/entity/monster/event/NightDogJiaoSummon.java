@@ -4,7 +4,7 @@ package com.csdy.jzyy.entity.monster.event;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.network.JzyySyncing;
-import com.csdy.jzyy.network.packets.DogJiaoSummonPacket;
+import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -60,7 +60,7 @@ public class NightDogJiaoSummon {
             if (!player.level().isClientSide()) {
                 JzyySyncing.CHANNEL.send(
                         PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
-                        new DogJiaoSummonPacket(player.getEyePosition(), JzyySoundsRegister.DOG_JIAO_SUMMON.get().getLocation(),1,1)
+                        new PlaySoundPacket(player.getEyePosition(), JzyySoundsRegister.DOG_JIAO_SUMMON.get().getLocation(),1,1)
                 );
             }
         }

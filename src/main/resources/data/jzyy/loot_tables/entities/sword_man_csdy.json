@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{title:\"Csdy的信\", author:\"Csdy\", pages:[\"{\\\"text\\\":\\\"亲爱的：我输了，你征服了我，我把自己奉献与你。我将自己的一块残片封在信中，然后大步前去，拥抱自己的死亡。摄食我的残余吧，我们当合为一体，如制花人一直谋求的那样。摒弃你的'愉悦'罢，你身负的天命比那远大得多。你会发问：'这可是你最后的把戏？可是孤注一掷假意背叛的计谋？'而我只能回答：品尝我，然后且看。依然是，你美味的朋友\\\"}\"]}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jzyy:csdy_meat"
+        }
+      ]
+    }
+  ]
+}

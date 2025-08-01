@@ -107,5 +107,13 @@
         "stream": false
       }
     ]
+  },
+  "ciallo": {
+    "sounds": [
+      {
+        "name":"jzyy:ciallo",
+        "stream": false
+      }
+    ]
   }
 }
