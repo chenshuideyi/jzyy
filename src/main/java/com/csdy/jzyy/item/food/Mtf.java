@@ -23,6 +23,7 @@ public class Mtf extends ItemGenericFood {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
+        super.finishUsingItem(stack, worldIn, livingEntity);
         var player = (Player) livingEntity;
         if (player.level.isClientSide) player.displayClientMessage(Component.literal("代码能力+1！"), false);
         return stack;

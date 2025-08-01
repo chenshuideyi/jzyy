@@ -4,6 +4,11 @@ package com.csdy.jzyy.entity.monster.event;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,24 +38,25 @@ public class HJMSummon {
             }
             int a = random.nextInt(19);
             if (a==1) {
-                trySpawnHjmNearPlayer((ServerLevel) event.level, player,1,18,30);
+                trySpawnEntityNearPlayer(JzyyEntityRegister.HJM.get(),(ServerLevel) event.level, player,1,18,30,null,0,0);
             }
         }
     }
 
-    public static void trySpawnHjmNearPlayer(ServerLevel level, Player player,int COUNT,int MIN_DISTANCE,int MAX_DISTANCE) {
+    public static void trySpawnEntityNearPlayer(EntityType type, ServerLevel level, Player player, int COUNT, int MIN_DISTANCE, int MAX_DISTANCE, MobEffect effect,int duration,int amplifier) {
         for (int i = 0; i < COUNT; i++) {
             double angle = random.nextDouble() * Math.PI * 2;
             double distance = MIN_DISTANCE + random.nextDouble() * (MAX_DISTANCE - MIN_DISTANCE);
             double x = player.getX() + Math.cos(angle) * distance;
             double z = player.getZ() + Math.sin(angle) * distance;
             double y = player.getY() + random.nextInt(3) - 1;
-            if (level.noCollision(JzyyEntityRegister.HJM.get().getAABB(x, y, z))) {
-                HJMEntity hjm = JzyyEntityRegister.HJM.get().create(level);
-                if (hjm != null) {
-                    hjm.setPos(x, y, z);
-                    level.addFreshEntity(hjm);
-                }
+            if (level.noCollision(type.getAABB(x, y, z)) && type.create(level) instanceof LivingEntity living) {
+                living.setPos(x, y, z);
+                level.addFreshEntity(living);
+                if (effect == null || duration < 0 || amplifier < 0) return;
+                living.addEffect(new MobEffectInstance(
+                        effect, duration, amplifier, false, false
+                ));
             }
         }
     }
