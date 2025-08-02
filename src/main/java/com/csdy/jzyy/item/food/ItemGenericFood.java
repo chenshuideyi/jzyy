@@ -24,7 +24,7 @@ public class ItemGenericFood extends Item {
         this.saturation = saturation;
     }
 
-    public static final FoodProperties createFood(int amount, float saturation, boolean isWolfFood, boolean eatFast, boolean alwaysEdible, MobEffectInstance potion) {
+    public static FoodProperties createFood(int amount, float saturation, boolean isWolfFood, boolean eatFast, boolean alwaysEdible, MobEffectInstance potion) {
         FoodProperties.Builder builder = new FoodProperties.Builder();
         builder.nutrition(amount);
         builder.saturationMod(saturation);

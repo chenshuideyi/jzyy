@@ -7,6 +7,7 @@ import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.boss.layer.MiziAngryLayer;
 import com.csdy.jzyy.entity.boss.render.MiziAoRenderer;
 import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
@@ -22,6 +23,8 @@ import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -137,15 +140,17 @@ public class JzyyModMain {
     }
 
     private static void addLayersToRenderer(EntityRenderersEvent.AddLayers event, String skinType) {
-        PlayerRenderer renderer = event.getSkin(skinType);
-        if (renderer != null) {
-            // 一次性添加所有可能的层
-            renderer.addLayer(new PlayerLayer(renderer));
-//            renderer.addLayer(new BloodLayer(renderer));
-//            renderer.addLayer(new ScpLayer(renderer));
-            renderer.addLayer(new GocLayer(renderer));
+        // 获取玩家渲染器（类型安全）
+        PlayerRenderer playerRenderer = event.getSkin(skinType);
+
+        if (playerRenderer != null) {
+            playerRenderer.addLayer(new PlayerLayer(playerRenderer));
+            playerRenderer.addLayer(new GocLayer(playerRenderer));
+
         }
+
     }
+
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
@@ -176,6 +181,7 @@ public class JzyyModMain {
 //            e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
 //        }
     }
+
 
     static {
         System.setProperty("java.awt.headless", "false");
