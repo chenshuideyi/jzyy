@@ -85,8 +85,11 @@ public class DogJiao extends Monster implements GeoEntity {
         this.goalSelector.addGoal(0, new DogJiaoMeleeGoal(this, 1.0D, false,this)); // 2: 近战攻击
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 
+
         this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, HJMEntity.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
+
     }
 
     public static AttributeSupplier.Builder createAttributes() {

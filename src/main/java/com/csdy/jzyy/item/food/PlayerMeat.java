@@ -21,6 +21,7 @@ public class PlayerMeat extends Item {
 
     @Override
     public @NotNull ItemStack finishUsingItem(@NotNull ItemStack stack, Level level, @NotNull LivingEntity entity) {
+        super.finishUsingItem(stack, level, entity);
         if (!level.isClientSide && stack.hasTag()) {
             float healAmount = stack.getTag().getFloat("HealAmount");
             entity.heal(healAmount);

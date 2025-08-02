@@ -115,5 +115,13 @@
         "stream": false
       }
     ]
+  },
+  "haqi": {
+    "sounds": [
+      {
+        "name":"jzyy:haqi",
+        "stream": false
+      }
+    ]
   }
 }

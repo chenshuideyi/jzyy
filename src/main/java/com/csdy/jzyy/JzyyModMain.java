@@ -7,10 +7,14 @@ import com.csdy.jzyy.effect.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+
 import com.csdy.jzyy.entity.boss.render.MiziAoRenderer;
 import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
+import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
+import com.csdy.jzyy.entity.monster.render.HJMRenderer;
+import com.csdy.jzyy.event.LivingEvent;
 import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
@@ -58,6 +62,8 @@ public class JzyyModMain {
         JzyyTools.initRegisters();
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new LivingEvent());
+
         ModifierRegister.MODIFIERS.register(bus);
         ItemRegister.ITEMS.register(bus);
         HideRegister.ITEMS.register(bus);
@@ -109,6 +115,7 @@ public class JzyyModMain {
         event.put(JzyyEntityRegister.SWORD_MAN_CSDY.get(), SwordManCsdy.createAttributes().build());
         event.put(JzyyEntityRegister.DOG_JIAO.get(), DogJiao.createAttributes().build());
         event.put(JzyyEntityRegister.MIZI_AO.get(), MiziAo.createAttributes().build());
+        event.put(JzyyEntityRegister.HJM.get(), HJMEntity.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -125,6 +132,10 @@ public class JzyyModMain {
         event.registerEntityRenderer(
                 JzyyEntityRegister.MIZI_AO.get(),
                 MiziAoRenderer::new
+        );
+        event.registerEntityRenderer(
+                JzyyEntityRegister.HJM.get(),
+                HJMRenderer::new
         );
 
     }

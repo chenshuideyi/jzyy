@@ -38,7 +38,7 @@ public class NightDogJiaoSummon {
 
         if (event.phase != TickEvent.Phase.END ||
                 event.level.isClientSide ||
-                event.level.getDayTime() % 24000 > 12000) return; // 只在夜晚检测
+                !(event.level.getDayTime() % 24000 > 12000)) return; // 只在夜晚检测
 
 
         for (Player player : event.level.players()) {
