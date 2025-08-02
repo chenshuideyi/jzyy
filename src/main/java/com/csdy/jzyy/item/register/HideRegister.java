@@ -1,6 +1,7 @@
 package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.item.food.LueMaoQu;
 import com.csdy.jzyy.item.Test;
 import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.food.CsdyMeat;
@@ -20,6 +21,7 @@ public class HideRegister {
     public static final RegistryObject<Item> CSDY_SWORD = ITEMS.register("csdy_sword", CsdySword::new);
     public static final RegistryObject<Item> PLAYER_MEAT = ITEMS.register("player_meat", PlayerMeat::new);
     public static final RegistryObject<Item> CSDY_MEAT = ITEMS.register("csdy_meat", CsdyMeat::new);
+    public static final RegistryObject<Item> LUE_MAO_QU = ITEMS.register("lue_mao_qu", LueMaoQu::new);
 
 
 
