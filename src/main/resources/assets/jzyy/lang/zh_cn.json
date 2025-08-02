@@ -812,5 +812,25 @@
 
   "modifier.jzyy.eternalhunger": "永恒饥饿",
   "modifier.jzyy.eternalhunger.flavor":"好饿好饿好饿",
-  "modifier.jzyy.eternalhunger.description":"每级减免一定比例的饥饿伤害，随着时间推移获得并升级饥饿Buff，随等级提升，饥饿buff升级速度越快。"
+  "modifier.jzyy.eternalhunger.description":"每级减免一定比例的饥饿伤害，随着时间推移获得并升级饥饿Buff，随等级提升，饥饿buff升级速度越快。",
+
+  "modifier.jzyy.magickascale": "魔鳞",
+  "modifier.jzyy.magickascale.flavor":"魔法嘛.......",
+  "modifier.jzyy.magickascale.description":"每级减免一定比例的魔法伤害(?)",
+
+  "modifier.jzyy.sourceofmagic": "魔力之源",
+  "modifier.jzyy.sourceofmagic.flavor":"魔法嘛.......",
+  "modifier.jzyy.sourceofmagic.description":"每级使该武器造成的魔法伤害(?)更高",
+
+  "modifier.jzyy.wave": "波涛",
+  "modifier.jzyy.wave.flavor":"浪里个浪浪里个浪浪里个浪浪~",
+  "modifier.jzyy.wave.description":"攻击额外造成窒息伤害，如果对方免疫窒息，则改为更低的魔法伤害。",
+
+  "modifier.jzyy.shattertheemptiness": "破虚",
+  "modifier.jzyy.shattertheemptiness.flavor":"看破!",
+  "modifier.jzyy.shattertheemptiness.description":"击中使敌人的无敌帧更短。",
+
+  "modifier.jzyy.guixu": "归虚",
+  "modifier.jzyy.guixu.flavor":"归于虚妄",
+  "modifier.jzyy.guixu.description":"使自己的无敌帧更长。"
 }
