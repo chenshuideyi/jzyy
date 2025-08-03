@@ -2,86 +2,102 @@ package com.csdy.jzyy.entity.boss.ai.mizi;
 
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.player.Player;
 
-import static com.csdy.jzyy.entity.boss.entity.MiziAo.出警;
+import static com.csdy.jzyy.entity.boss.entity.MiziAo.RATING;
 
 public class MiziMeleeGoal extends MeleeAttackGoal {
-    private final MiziAo miziAo; // 保存一个对我们实体本身的引用
-    private int attackAnimationTicks; // 用于控制攻击动画状态持续时间的计时器
+    private final MiziAo miziAo;
+    // 重命名计时器，以更清晰地反映其作用：控制整个攻击序列
+    private int attackSequenceTicks;
 
-    public MiziMeleeGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen, MiziAo miziAo) {
+    public MiziMeleeGoal(MiziAo mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
         super(mob, speedModifier, followingTargetEvenIfNotSeen);
-        this.miziAo = miziAo;
+        this.miziAo = mob;
     }
 
-    private boolean isAttackingCurrently = false;
-
+    /**
+     * 此方法现在仅用于“启动”攻击序列，而不是直接造成伤害。
+     */
     @Override
-    protected void checkAndPerformAttack(LivingEntity target,double squaredDistance) {
-        if (this.mob.isWithinMeleeAttackRange(target)) {
+    protected void checkAndPerformAttack(LivingEntity target, double squaredDistance) {
+        double attackReachSqr = this.getAttackReachSqr(target);
+
+        // 检查：是否在攻击距离内、攻击冷却已好、并且当前没有正在进行的攻击序列
+        if (squaredDistance <= attackReachSqr && this.getTicksUntilNextAttack() <= 0 && this.attackSequenceTicks <= 0 && !miziAo.isDrinking()) {
+            // --- 开始攻击序列 ---
+
+            // 1. 重置攻击冷却，防止在动画期间再次触发此方法
             this.resetAttackCooldown();
 
+            // 2. 开始播放动画
             this.miziAo.setAttacking(true);
-            this.attackAnimationTicks = 40;
 
-            boolean hasNoArmor = true;
-            for (var armorPiece : target.getArmorSlots()) {
-                if (!armorPiece.isEmpty()) {
-                    hasNoArmor = false;
-                    break;
-                }
-            }
-
-            if (hasNoArmor) {
-                target.hurt(this.mob.damageSources().mobAttack(this.mob), 4000.0F);
-            } else {
-                this.mob.doHurtTarget(target);
-            }
+            // 3. 设置整个攻击序列的持续时间（例如40 ticks = 2秒）
+            this.attackSequenceTicks = 40;
         }
     }
 
-    // 每个tick都会调用这个方法
     @Override
     public void tick() {
-        super.tick();
-        // 如果攻击动画正在播放，则递减计时器
-        if (this.attackAnimationTicks > 0) {
-            this.attackAnimationTicks--;
-            // 当计时器结束，重置攻击动画状态
-            if(this.attackAnimationTicks <= 0) {
+        super.tick(); // 必须调用，以保证Boss在蓄力时也能追击目标
+
+        // 如果我们正处在一个攻击序列中...
+        if (this.attackSequenceTicks > 0) {
+            // 递减计时器
+            this.attackSequenceTicks--;
+
+            // --- 新增：在动画播放期间，周期性地破坏方块 ---
+            // 定义破坏方块的间隔（例如每4个tick一次）
+            int breakInterval = 4;
+            if (this.attackSequenceTicks > 1 && this.attackSequenceTicks % breakInterval == 0) {
+                // 调用实体自身的破坏方法
+                this.miziAo.breakBlocksInFront();
+            }
+            // ---------------------------------------------
+
+            // 在动画即将结束的瞬间 (例如，计时器为1时) 尝试造成伤害
+            if (this.attackSequenceTicks == 1) {
+                // (您已有的伤害逻辑保持不变)
+                LivingEntity target = this.mob.getTarget();
+                if (target != null) {
+                    double distanceSqr = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
+                    double reachSqr = this.getAttackReachSqr(target);
+                    if (distanceSqr <= reachSqr) {
+                        if (this.miziAo.isChujing()) {
+                            if (target instanceof Player player && player.experienceLevel > RATING) target.hurt(this.miziAo.damageSources().mobAttack(this.miziAo), RATING);
+                            else target.hurt(this.miziAo.damageSources().mobAttack(this.miziAo), RATING * 4);
+                        } else {
+                            this.miziAo.doHurtTarget(target);
+                        }
+                    }
+                }
+            }
+
+            // 当计时器结束时，停止播放动画
+            if (this.attackSequenceTicks <= 0) {
                 this.miziAo.setAttacking(false);
             }
         }
     }
 
-
     /**
-     * 重写此方法来设定自定义的攻击距离。
-     * 返回值是攻击距离的平方。
-     * @param target 攻击的目标
-     * @return 攻击距离的平方
+     * 当AI目标中断时（如目标死亡），必须重置所有状态。
      */
-    @Override
-    protected double getAttackReachSqr(LivingEntity target) {
-        if (出警) return (4.0 + mob.getBbWidth()) * (4.0 + mob.getBbWidth());
-        return (1.0 + mob.getBbWidth()) * (1.0 + mob.getBbWidth());
-    }
-
-    // 当AI行为停止时（例如目标死亡或超出范围），确保重置状态
     @Override
     public void stop() {
         super.stop();
-        this.attackAnimationTicks = 0;
+        this.attackSequenceTicks = 0;
         this.miziAo.setAttacking(false);
     }
 
+    // getAttackReachSqr 方法保持不变
     @Override
-    public void start() {
-        super.start();
-        isAttackingCurrently = true; // 行为开始时，还未攻击
-        // 可选: 通知Boss实体行为已开始
-        // boss.setMovingState(true);
+    protected double getAttackReachSqr(LivingEntity target) {
+        if (this.miziAo.isChujing()) {
+            return 6.0D * 6.0D;
+        }
+        return super.getAttackReachSqr(target);
     }
 }

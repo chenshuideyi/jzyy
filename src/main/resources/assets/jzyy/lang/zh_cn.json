@@ -49,6 +49,8 @@
 
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
+  "item.jzyy.summon_csdy": "天子的帽子",
+  "item.jzyy.summon_csdy.line1": "可以召唤csdy",
 
   "item.jzyy.rainbow_material": "彩虹物质",
   "item.jzyy.rainbow_material.line1": "他们飞一万万又一万万又一万万万年，终于又飞回到原点",
@@ -762,6 +764,8 @@
 
   "entity.jzyy.sword_man_csdy": "「剑人」CSDY",
   "entity.jzyy.dog_jiao": "大狗嚼",
+  "entity.jzyy.mizi_ao": "「舞萌高手」米子山民",
+  "entity.jzyy.mizi_ao.chujing": "「神碑的终结者」米子山民",
 
   "entity.jzyy.hjm": "其名为耄",
   "item.jzyy.lue_mao_qu": "§o略冒蛆§",

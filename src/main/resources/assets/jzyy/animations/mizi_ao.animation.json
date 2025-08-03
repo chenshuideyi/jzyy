@@ -217,6 +217,42 @@
 							"vector": [1, 1, 1]
 						}
 					}
+				},
+				"Leg": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, -0.8]
+						},
+						"0.75": {
+							"vector": [0, 0, -0.8]
+						}
+					}
+				},
+				"Chest": {
+					"rotation": {
+						"0.0": {
+							"vector": [7.5, 0, 0]
+						},
+						"0.75": {
+							"vector": [7.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.75": {
+							"vector": [1, 1, 1]
+						}
+					}
 				}
 			}
 		},
@@ -1033,6 +1069,22 @@
 						"0.75": {
 							"vector": [-0.1, 0, 0]
 						}
+					}
+				}
+			}
+		},
+		"animation.mizi_ao.stand": {
+			"loop": true,
+			"bones": {
+				"Eye": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [0, 0, 0]
 					}
 				}
 			}

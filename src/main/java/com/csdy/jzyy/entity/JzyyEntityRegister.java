@@ -8,6 +8,7 @@ import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -38,9 +39,10 @@ public class JzyyEntityRegister {
 
     public static final RegistryObject<EntityType<MiziAo>> MIZI_AO =
             JZYY_ENTITY.register("mizi_ao",
-                    () -> EntityType.Builder.of(MiziAo::new, MobCategory.MONSTER)
-                            .sized(1f, 1.95f) // 碰撞箱大小 (宽, 高)
-                            .clientTrackingRange(14) // 客户端追踪距离
+                    () -> EntityType.Builder.of(
+                                    MiziAo::new, MobCategory.MONSTER)
+                            .sized(1.2f, 2.55f)
+                            .clientTrackingRange(14)
                             .build("jzyy:mizi_ao"));
 
     public static final RegistryObject<EntityType<HJMEntity>> HJM =
