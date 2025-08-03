@@ -60,7 +60,7 @@ public class SummonCsdy extends Item {
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
-        tooltip.add(Component.translatable("item.summon_csdy.line1").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable("item.jzyy.summon_csdy_line1").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.ITALIC));
     }
 
 }
