@@ -300,6 +300,11 @@ public class ModifierRegister {
     public static final StaticModifier<MalignasaurTeethArmor.ancientrespiration> MALIGNASAURTEETHARMOR_STATIC_MODIFIER = MODIFIERS.register("ancientrespiration", MalignasaurTeethArmor.ancientrespiration::new);
     public static final StaticModifier<MalignasaurTeeth.hungryhunter> MALIGNASAURTEETH_STATIC_MODIFIER = MODIFIERS.register("hungryhunter", MalignasaurTeeth.hungryhunter::new);
     public static final StaticModifier<MarineReptilesFineScale.eternalhunger> MARINEREPTILESFINESCALE_STATIC_MODIFIER = MODIFIERS.register("eternalhunger", MarineReptilesFineScale.eternalhunger::new);
+    public static final StaticModifier<MarineReptilesFineScaleArmor.magickascale> MARINEREPTILESFINESCALARMAGICASCALE_STATIC_MODIFIER = MODIFIERS.register("magickascale", MarineReptilesFineScaleArmor.magickascale::new);
+    public static final StaticModifier<OceanGemstone.sourceofmagic> SOURCEOFMAGIC_STATIC_MODIFIER = MODIFIERS.register("sourceofmagic", OceanGemstone.sourceofmagic::new);
+    public static final StaticModifier<BulgeRod.wave> WAVE_STATIC_MODIFIER = MODIFIERS.register("wave", BulgeRod.wave::new);
+    public static final StaticModifier<VirtualCaveCrystalWeapon.shattertheemptiness> SHATTERTHEEMPTINESS_STATIC_MODIFIER = MODIFIERS.register("shattertheemptiness", VirtualCaveCrystalWeapon.shattertheemptiness::new);
+    public static final StaticModifier<VirtualCaveCrystalArmor.guixu> GUIXU_STATIC_MODIFIER = MODIFIERS.register("guixu", VirtualCaveCrystalArmor.guixu::new);
 
     ///护甲补强
     public static final StaticModifier<Refraction> REFRACTION_STATIC_MODIFIER = MODIFIERS.register("refraction", Refraction::new);
