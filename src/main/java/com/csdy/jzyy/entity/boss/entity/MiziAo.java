@@ -132,17 +132,6 @@ public class MiziAo extends BossEntity implements GeoEntity {
         musicGame = JzyyDiademaRegister.MUSIC_GAME.get().CreateInstance(new FollowDiademaMovement(this));
     }
 
-    @Override
-    public void setHealth(float value) {
-        float currentHealth = this.getHealth();
-        float healthLoss = currentHealth - value;
-        float threshold = PERFECT;
-        if (healthLoss > threshold) {
-            value = currentHealth - threshold;
-        }
-
-        super.setHealth(value);
-    }
 
 
     @Override
@@ -245,22 +234,25 @@ public class MiziAo extends BossEntity implements GeoEntity {
         }
     }
 
-    @Override
-    public boolean hurt(@NotNull DamageSource source, float damage) {
-        if (source.getDirectEntity() instanceof Player player) {
-            boolean isCritical = player.fallDistance > 0.0F && !player.onGround() && !player.isSwimming() &&
-                    !player.isPassenger() && !player.isDiscrete() && player.getAttackStrengthScale(0.5F) > 0.9F;
 
-            // 只在第一次被暴击时触发
+    @Override
+    public boolean hurt(@NotNull DamageSource source, float amount) {
+        float actualDamage = Math.min(amount, PERFECT);
+        if (source.getDirectEntity() instanceof Player player) {
+
+            boolean isCritical = player.fallDistance > 0.0F && !player.onGround() && !player.isSwimming() &&
+                    !player.isPassenger() && !player.hasEffect(MobEffects.BLINDNESS) && // 加上原版暴击需要的“非失明”条件
+                    player.getAttackStrengthScale(0.5F) > 0.9F;
+
             if (isCritical && !this.isChujing() && !this.isEnraging) {
-                // 1. 设置“正在激怒中”标志，而不是直接设置“出警”
+                // 设置“正在激怒中”的标志位，防止重复触发
                 this.isEnraging = true;
 
-                // 2. 启动喝饮料序列
                 this.startDrinkingSequence();
             }
         }
-        return super.hurt(source, damage);
+
+        return super.hurt(source, actualDamage);
     }
 
     // --- AI ---
