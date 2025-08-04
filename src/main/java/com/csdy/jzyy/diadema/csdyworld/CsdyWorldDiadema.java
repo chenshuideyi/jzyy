@@ -29,6 +29,7 @@ import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
 import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 public class CsdyWorldDiadema extends Diadema {
     final static double RADIUS = 8;
@@ -117,7 +118,10 @@ public class CsdyWorldDiadema extends Diadema {
                         float reHealth = living.getHealth() - living.getMaxHealth() * 0.01f;
                         setAbsoluteSeveranceHealth(living,reHealth);
                         forceSetAllCandidateHealth(living,reHealth);
-                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth) setCategory(living,csdykill);
+                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth){
+                            setCategory(living,csdykill);
+                            KillEntity(living);
+                        }
                     }
                 }
             }

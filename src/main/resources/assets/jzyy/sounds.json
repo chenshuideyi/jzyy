@@ -123,5 +123,13 @@
         "stream": false
       }
     ]
+  },
+  "disconnected": {
+    "sounds": [
+      {
+        "name":"jzyy:disconnected",
+        "stream": false
+      }
+    ]
   }
 }

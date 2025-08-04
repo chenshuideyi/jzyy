@@ -1,6 +1,7 @@
 package com.csdy.jzyy.entity.boss;
 
 
+import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
@@ -12,53 +13,54 @@ import javax.annotation.Nullable;
 
 public class BossMusic extends AbstractTickableSoundInstance {
     BossEntity boss;
+    private final float baseVolume; // 新增：用于存储这个音乐的基础音量
 
     protected BossMusic(BossEntity boss) {
         super(boss.getBossMusic(), SoundSource.RECORDS, RandomSource.create());
         this.boss = boss;
-        this.volume = 1.0f;
         this.pitch = 1.0f;
         this.looping = true;
+
+        this.baseVolume = 0.2f; // 为这首特定的音乐设置一个较低的基础音量（例如60%）
+
+        this.volume = this.baseVolume; // 初始化音量
     }
 
     @Override
     public void tick() {
         if (this.boss == null || !this.boss.isAlive() || Minecraft.getInstance().player == null) {
-            this.stop(); // Boss没了或玩家没了，就停止
+            this.stop();
             return;
         }
 
-        // 根据音乐设置调整主音量
         if (Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MUSIC) <= 0.0F) {
             this.volume = 0.0F;
-            // 可以考虑直接停止，而不是仅仅静音，因为听不到的循环音乐也是一种资源消耗
-            // this.stop();
             return;
-        } else {
-            // 恢复到基础音量（如果之前因为设置被静音了）
-            // 这个基础音量应该从构造函数或一个变量读取，而不是写死1.0f
-            this.volume = 1.0f; // 假设基础音量是1.0f
         }
+//        else {
+//            // 这里不再需要做什么，因为基础音量已经设置好了
+//        }
 
 
-        // 根据距离动态调整音量 (示例：线性衰减)
-        float maxDistance = 60.0f; // 音乐完全听不见的距离
+        // 根据距离动态调整音量
+        float maxDistance = 60.0f;
         float distance = this.boss.distanceTo(Minecraft.getInstance().player);
+        float playerMusicVolumeSetting = Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MUSIC);
 
         if (distance > maxDistance) {
             this.volume = 0.0f;
-            // 也可以选择停止音乐 this.stop();
-        } else if (distance < 5.0f) { // 5格内最大音量
-            this.volume = 1.0f * Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MUSIC); // 乘上用户设置
+        } else if (distance < 5.0f) {
+            // 修改：使用 baseVolume 替代 1.0f
+            this.volume = this.baseVolume * playerMusicVolumeSetting;
         }
         else {
-            // (1.0f - (distance / maxDistance)) 是一个从近到远 1 -> 0 的因子
-            this.volume = (1.0f - (Math.max(0, distance - 5.0f) / (maxDistance - 5.0f))) * Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MUSIC);
+            float distanceFactor = 1.0f - (Math.max(0, distance - 5.0f) / (maxDistance - 5.0f));
+            // 修改：使用 baseVolume 替代 1.0f
+            this.volume = this.baseVolume * distanceFactor * playerMusicVolumeSetting;
         }
-        this.volume = Mth.clamp(this.volume, 0.0f, 1.0f); // 确保音量在0-1之间
+        this.volume = Mth.clamp(this.volume, 0.0f, 1.0f);
 
 
-        // 更新声音实例的位置到Boss身上（如果Boss会移动）
         this.x = this.boss.getX();
         this.y = this.boss.getY();
         this.z = this.boss.getZ();

@@ -158,39 +158,7 @@ public class Test extends Item {
         return super.onEntitySwing(stack, entity);
     }
 
-    public static void KillEntity(Entity target) {
-        if (target != null && !(target instanceof Player)) {
-            MinecraftForge.EVENT_BUS.unregister(target);
 
-            EntityInLevelCallback inLevelCallback = EntityInLevelCallback.NULL;
-            target.levelCallback = inLevelCallback;
-            target.setLevelCallback(inLevelCallback);
-            target.getPassengers().forEach(Entity::stopRiding);
-            Entity.RemovalReason reason = Entity.RemovalReason.KILLED;
-            target.removalReason = reason;
-            target.onClientRemoval();
-            target.onRemovedFromWorld();
-            target.remove(reason);
-            target.setRemoved(reason);
-            target.isAddedToWorld = false;
-            target.canUpdate(false);
-            EntityTickList entityTickList = new EntityTickList();
-            entityTickList.remove(target);
-            entityTickList.active.clear();
-            entityTickList.passive.clear();
-            if (target instanceof LivingEntity living) {
-                living.getBrain().clearMemories();
-                for (String s : living.getTags()) {
-                    living.removeTag(s);
-                }
-                living.invalidateCaps();
-                forceSetAllCandidateHealth(living,0);
-            }
-
-
-        }
-
-    }
 
     @Override
     public UseAnim getUseAnimation(ItemStack p_41452_) {

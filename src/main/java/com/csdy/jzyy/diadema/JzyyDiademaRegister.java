@@ -3,6 +3,7 @@ package com.csdy.jzyy.diadema;
 import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.diadema.csdyworld.CsdyWorldDiadema;
 import com.csdy.jzyy.diadema.meltdown.AlexMeltdownDiadema;
+import com.csdy.jzyy.diadema.miziao.MusicGameDiadema;
 import com.csdy.tcondiadema.frames.CsdyRegistries;
 import com.csdy.tcondiadema.frames.diadema.DiademaType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,4 +17,8 @@ public class JzyyDiademaRegister {
 
     public static final RegistryObject<DiademaType> CSDY_WORLD =
             DIADEMA_TYPES.register("csdy_world", () -> DiademaType.create(CsdyWorldDiadema::new));
+
+    public static final RegistryObject<DiademaType> MUSIC_GAME =
+            DIADEMA_TYPES.register("music_game", () -> DiademaType.create(MusicGameDiadema::new));
+
 }

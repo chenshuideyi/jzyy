@@ -1,4 +1,4 @@
-package com.csdy.jzyy.diadema.csdyworld;
+package com.csdy.jzyy.diadema.miziao;
 
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.tcondiadema.frames.diadema.ClientDiadema;
@@ -7,11 +7,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-import static com.csdy.jzyy.diadema.csdyworld.CsdyWorldDiadema.RADIUS;
 
-public class CsdyWorldClientDiadema extends ClientDiadema {
+@OnlyIn(Dist.CLIENT)
+public class MusicGameClientDiadema extends ClientDiadema {
+    private static final double RADIUS = 16.0; // 效果范围
+
     private static final SimpleParticleType type = JzyyParticlesRegister.CSDY_PARTICLE.get();
+
     @Override protected void perTick() {
         var level = Minecraft.getInstance().level;
 

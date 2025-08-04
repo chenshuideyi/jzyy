@@ -13,6 +13,7 @@ import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
 import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 public class CsdyMeleeGoal extends MeleeAttackGoal {
     private final SwordManCsdy boss; // 将 YourBossEntityClass 替换为你的Boss实体类名
@@ -53,7 +54,10 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                         float reHealth = target.getHealth() - target.getMaxHealth() * 0.01f;
                         setAbsoluteSeveranceHealth(target,reHealth);
                         forceSetAllCandidateHealth(target,reHealth);
-                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth) setCategory(target,csdykill);
+                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth){
+                            setCategory(target,csdykill);
+                            KillEntity(target);
+                        }
                     }
                 } else {
                     break; // 如果主要目标死亡，则停止连击

@@ -1,11 +1,14 @@
 package com.csdy.jzyy.entity.boss.entity;
 
+import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.ai.mizi.MiziDrinkGoal;
 import com.csdy.jzyy.entity.boss.ai.mizi.MiziMeleeGoal;
 import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
+import com.csdy.tcondiadema.frames.diadema.Diadema;
+import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -50,6 +53,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 
 public class MiziAo extends BossEntity implements GeoEntity {
+
+    private static Diadema musicGame;
 
     private int drinkingTicks;
     public static final int RATING = 15203;
@@ -123,6 +128,8 @@ public class MiziAo extends BossEntity implements GeoEntity {
                 this.getDisplayName(),
                 BossEvent.BossBarColor.PURPLE, // 血条颜色
                 BossEvent.BossBarOverlay.PROGRESS); // 血条样式
+        if (level.isClientSide) return;
+        musicGame = JzyyDiademaRegister.MUSIC_GAME.get().CreateInstance(new FollowDiademaMovement(this));
     }
 
 
@@ -349,9 +356,13 @@ public class MiziAo extends BossEntity implements GeoEntity {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.MAX_HEALTH, RATING)
-                .add(Attributes.ARMOR, RATING).add(Attributes.ATTACK_DAMAGE, PERFECT).add(Attributes.ATTACK_SPEED, 1.0)
-                .add(Attributes.FOLLOW_RANGE, 32.0);
+        return Mob.createMobAttributes().
+                add(Attributes.MOVEMENT_SPEED, 0.3).
+                add(Attributes.MAX_HEALTH, RATING).
+                add(Attributes.ARMOR, RATING).
+                add(Attributes.ATTACK_DAMAGE, PERFECT).
+                add(Attributes.ATTACK_SPEED, 1.0).
+                add(Attributes.FOLLOW_RANGE, 32.0);
     }
 
     @Override
@@ -359,6 +370,8 @@ public class MiziAo extends BossEntity implements GeoEntity {
 
     @Override
     public SoundEvent getBossMusic() { return JzyySoundsRegister.UMIYURI_KAITEITAN.get(); }
+
+
 
     @Override
     public boolean isNoAi() { return false; }
@@ -419,11 +432,13 @@ public class MiziAo extends BossEntity implements GeoEntity {
                 // --- 添加所有您指定的强力效果 ---
                 // 参数：(效果, 持续时间(ticks), 等级(amplifier, 0=1级))
                 // 等级255对应amplifier为254，但对于如此高的值，直接用255也无妨
-                cloud.addEffect(new MobEffectInstance(MobEffects.POISON, 20 * 10, 255));
-                cloud.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 10, 255)); // 反胃在代码中是CONFUSION
-                cloud.addEffect(new MobEffectInstance(MobEffects.WITHER, 20 * 10, 255));
-                cloud.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20 * 10, 255));
-                cloud.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20 * 10, 255)); // 缓慢是MOVEMENT_SLOWDOWN
+                cloud.addEffect(new MobEffectInstance(MobEffects.POISON, 20 * 15, 255));
+                cloud.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 15, 255));
+                cloud.addEffect(new MobEffectInstance(MobEffects.WITHER, 20 * 15, 255));
+                cloud.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20 * 15, 255));
+                cloud.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20 * 15, 255));
+                cloud.addEffect(new MobEffectInstance(MobEffects.JUMP, 20 * 15, 128));
+
 
                 // 将配置好的云添加到世界中
                 this.level().addFreshEntity(cloud);
