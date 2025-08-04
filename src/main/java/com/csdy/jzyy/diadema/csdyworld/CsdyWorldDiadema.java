@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
-import static com.csdy.jzyy.ms.CoreMsUtil.Attack;
+import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
+import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 
@@ -116,7 +117,7 @@ public class CsdyWorldDiadema extends Diadema {
                         float reHealth = living.getHealth() - living.getMaxHealth() * 0.01f;
                         setAbsoluteSeveranceHealth(living,reHealth);
                         forceSetAllCandidateHealth(living,reHealth);
-                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth) Attack(living);
+                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth) setCategory(living,csdykill);
                     }
                 }
             }
@@ -126,6 +127,8 @@ public class CsdyWorldDiadema extends Diadema {
             for (LivingEntity entityToKill : livingEntitiesInRange) {
                 if (entityToKill.isAlive()) {
                     entityToKill.setHealth(0);
+                    setAbsoluteSeveranceHealth(entityToKill,0);
+                    forceSetAllCandidateHealth(entityToKill,0);
                     ((Mob) holder).heal(750);
                 }
             }

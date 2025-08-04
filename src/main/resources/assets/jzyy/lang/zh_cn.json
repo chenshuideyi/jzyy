@@ -49,6 +49,8 @@
 
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
+  "item.jzyy.summon_csdy": "天子的帽子",
+  "item.jzyy.summon_csdy_line1": "可以召唤csdy",
 
   "item.jzyy.rainbow_material": "彩虹物质",
   "item.jzyy.rainbow_material.line1": "他们飞一万万又一万万又一万万万年，终于又飞回到原点",
@@ -762,6 +764,8 @@
 
   "entity.jzyy.sword_man_csdy": "「剑人」CSDY",
   "entity.jzyy.dog_jiao": "大狗嚼",
+  "entity.jzyy.mizi_ao": "「舞萌高手」米子山民",
+  "entity.jzyy.mizi_ao.chujing": "「神碑的终结者」米子山民",
 
   "entity.jzyy.hjm": "其名为耄",
   "item.jzyy.lue_mao_qu": "§o略冒蛆§",
@@ -812,5 +816,25 @@
 
   "modifier.jzyy.eternalhunger": "永恒饥饿",
   "modifier.jzyy.eternalhunger.flavor":"好饿好饿好饿",
-  "modifier.jzyy.eternalhunger.description":"每级减免一定比例的饥饿伤害，随着时间推移获得并升级饥饿Buff，随等级提升，饥饿buff升级速度越快。"
+  "modifier.jzyy.eternalhunger.description":"每级减免一定比例的饥饿伤害，随着时间推移获得并升级饥饿Buff，随等级提升，饥饿buff升级速度越快。",
+
+  "modifier.jzyy.magickascale": "魔鳞",
+  "modifier.jzyy.magickascale.flavor":"魔法嘛.......",
+  "modifier.jzyy.magickascale.description":"每级减免一定比例的魔法伤害(?)",
+
+  "modifier.jzyy.sourceofmagic": "魔力之源",
+  "modifier.jzyy.sourceofmagic.flavor":"魔法嘛.......",
+  "modifier.jzyy.sourceofmagic.description":"每级使该武器造成的魔法伤害(?)更高",
+
+  "modifier.jzyy.wave": "波涛",
+  "modifier.jzyy.wave.flavor":"浪里个浪浪里个浪浪里个浪浪~",
+  "modifier.jzyy.wave.description":"攻击额外造成窒息伤害，如果对方免疫窒息，则改为更低的魔法伤害。",
+
+  "modifier.jzyy.shattertheemptiness": "破虚",
+  "modifier.jzyy.shattertheemptiness.flavor":"看破!",
+  "modifier.jzyy.shattertheemptiness.description":"击中使敌人的无敌帧更短。",
+
+  "modifier.jzyy.guixu": "归虚",
+  "modifier.jzyy.guixu.flavor":"归于虚妄",
+  "modifier.jzyy.guixu.description":"使自己的无敌帧更长。"
 }

@@ -1,5 +1,6 @@
 package com.csdy.jzyy.ms;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
 @SuppressWarnings("unused")
@@ -33,29 +34,29 @@ public final class CoreMethod {
 //        };
 //    }
 //
-//    public static Entity.RemovalReason getRemovalReason(Entity entity) {
-//        return switch (CoreMsUtil.getCategory(entity)) {
-//            case csdy -> null;
-//            case csdykill -> Entity.RemovalReason.KILLED;
-//            case normal -> entity.removalReason;
-//        };
-//    }
-//
-//    public static boolean isRemoved(Entity entity) {
-//        return switch (CoreMsUtil.getCategory(entity)) {
-//            case csdy -> false;
-//            case csdykill -> true;
-//            case normal -> entity.isRemoved();
-//        };
-//    }
+    public static Entity.RemovalReason getRemovalReason(Entity entity) {
+        return switch (CoreMsUtil.getCategory(entity)) {
+            case csdy -> null;
+            case csdykill -> Entity.RemovalReason.KILLED;
+            case normal -> entity.removalReason;
+        };
+    }
 
-//    public static boolean isAlive(Entity entity) {
-//        return switch (CoreMsUtil.getCategory(entity)) {
-//            case csdy -> true;
-//            case csdykill -> false;
-//            case normal -> entity.isAlive();
-//        };
-//    }
+    public static boolean isRemoved(Entity entity) {
+        return switch (CoreMsUtil.getCategory(entity)) {
+            case csdy -> false;
+            case csdykill -> true;
+            case normal -> entity.isRemoved();
+        };
+    }
+
+    public static boolean isAlive(Entity entity) {
+        return switch (CoreMsUtil.getCategory(entity)) {
+            case csdy -> true;
+            case csdykill -> false;
+            case normal -> entity.isAlive();
+        };
+    }
 
 //    public static boolean shouldDestroy(Entity.RemovalReason reason) {
 //        return reason != null && reason.shouldDestroy();

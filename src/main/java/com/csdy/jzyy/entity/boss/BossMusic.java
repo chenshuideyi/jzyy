@@ -8,6 +8,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 
+import javax.annotation.Nullable;
+
 public class BossMusic extends AbstractTickableSoundInstance {
     BossEntity boss;
 

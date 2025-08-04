@@ -162,7 +162,6 @@ public class BossEntity extends Monster {
             } else { // Boss 死亡或音乐关闭
                 if (musicStarted && clientBossMusicInstance != null) {
                     Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
-                    // clientBossMusicInstance.stop(); // 也可以，效果类似，会标记为停止
                     musicStarted = false;
                     clientBossMusicInstance = null; // 可选，下次需要时重新创建
                 }

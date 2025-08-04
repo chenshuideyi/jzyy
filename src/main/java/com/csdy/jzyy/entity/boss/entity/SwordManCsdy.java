@@ -230,7 +230,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
 
         // 目标选择器 (targetSelector) - 修改后的版本
-        this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this)); // 自定义的持续仇恨目标
+        this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true));
     }
 

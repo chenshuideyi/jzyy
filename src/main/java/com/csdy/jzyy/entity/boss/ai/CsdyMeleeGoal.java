@@ -9,7 +9,8 @@ import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
-import static com.csdy.jzyy.ms.CoreMsUtil.Attack;
+import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
+import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 
@@ -52,7 +53,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                         float reHealth = target.getHealth() - target.getMaxHealth() * 0.01f;
                         setAbsoluteSeveranceHealth(target,reHealth);
                         forceSetAllCandidateHealth(target,reHealth);
-                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth) Attack(target);
+                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth) setCategory(target,csdykill);
                     }
                 } else {
                     break; // 如果主要目标死亡，则停止连击
