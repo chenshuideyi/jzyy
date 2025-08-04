@@ -349,8 +349,12 @@ public class MiziAo extends BossEntity implements GeoEntity {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.MAX_HEALTH, RATING)
-                .add(Attributes.ARMOR, RATING).add(Attributes.ATTACK_DAMAGE, PERFECT).add(Attributes.ATTACK_SPEED, 1.0)
+        return Mob.createMobAttributes()
+                .add(Attributes.MOVEMENT_SPEED, 0.3)
+                .add(Attributes.MAX_HEALTH, RATING)
+                .add(Attributes.ARMOR, RATING)
+                .add(Attributes.ATTACK_DAMAGE, PERFECT)
+                .add(Attributes.ATTACK_SPEED, 1.0)
                 .add(Attributes.FOLLOW_RANGE, 32.0);
     }
 
