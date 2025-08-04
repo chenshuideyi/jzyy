@@ -132,6 +132,17 @@ public class MiziAo extends BossEntity implements GeoEntity {
         musicGame = JzyyDiademaRegister.MUSIC_GAME.get().CreateInstance(new FollowDiademaMovement(this));
     }
 
+    @Override
+    public void setHealth(float value) {
+        float currentHealth = this.getHealth();
+        float healthLoss = currentHealth - value;
+        float threshold = PERFECT;
+        if (healthLoss > threshold) {
+            value = currentHealth - threshold;
+        }
+
+        super.setHealth(value);
+    }
 
 
     @Override
