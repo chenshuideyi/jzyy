@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier.ly.armor;
+package com.csdy.jzyy.modifier.modifier.armor;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

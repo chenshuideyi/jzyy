@@ -49,7 +49,7 @@ import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-//TODO 潘多拉，提亚马特和其他东西的注册名
+//TODO 护甲补强和寄生虫词条上色
 public class JzyyModMain {
 
     public static int toolTip = 1;

@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier.srp;
+package com.csdy.jzyy.modifier.modifier.srp.base;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;

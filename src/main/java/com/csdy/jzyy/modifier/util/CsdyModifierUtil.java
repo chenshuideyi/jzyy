@@ -1,5 +1,6 @@
 package com.csdy.jzyy.modifier.util;
 
+import com.csdy.jzyy.modifier.register.ModifierRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
@@ -9,8 +10,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
@@ -19,6 +22,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.stat.INumericToolStat;
 import slimeknights.tconstruct.library.tools.stat.IToolStat;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
@@ -212,5 +216,14 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("dummmmmmy");
     }
 
-
+    public static boolean hasVoidWalk(Player player) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
+            ItemStack stack = player.getItemBySlot(slot);
+            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

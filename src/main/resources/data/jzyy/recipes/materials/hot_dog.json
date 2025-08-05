@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "jzyy:hot_dog"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "jzyy:hot_dog"
+}

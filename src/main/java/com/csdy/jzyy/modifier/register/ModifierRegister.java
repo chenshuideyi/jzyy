@@ -9,8 +9,7 @@ import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanBlessings;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanEcho;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.TheProphecyOfTheSunk;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.armor.DeepOceanProtect;
-import com.csdy.jzyy.modifier.modifier.alex_mob.armor.Kangaroo;
-import com.csdy.jzyy.modifier.modifier.alex_mob.armor.VoidWalk;
+import com.csdy.jzyy.modifier.modifier.armor.*;
 import com.csdy.jzyy.modifier.modifier.bedrock.BedRock;
 import com.csdy.jzyy.modifier.modifier.bedrock.Deicide;
 import com.csdy.jzyy.modifier.modifier.bedrock.Mouse3;
@@ -40,6 +39,7 @@ import com.csdy.jzyy.modifier.modifier.glass.Prism;
 import com.csdy.jzyy.modifier.modifier.hallowed_bar.HolyProtection;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
+import com.csdy.jzyy.modifier.modifier.hot_dog.AssWeCan;
 import com.csdy.jzyy.modifier.modifier.ice.HyperBeam;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonBone;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonFire;
@@ -55,7 +55,7 @@ import com.csdy.jzyy.modifier.modifier.living_wood.Ecological;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestAngry;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestArmor;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.Life;
-import com.csdy.jzyy.modifier.modifier.ly.armor.Return;
+import com.csdy.jzyy.modifier.modifier.armor.Return;
 import com.csdy.jzyy.modifier.modifier.pla_steel.Crystalline;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
@@ -75,7 +75,8 @@ import com.csdy.jzyy.modifier.modifier.redstone_component.Precision;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.Disruptor;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.silence.SilenceAlmighty;
-import com.csdy.jzyy.modifier.modifier.srp.EnergyRecovery;
+import com.csdy.jzyy.modifier.modifier.srp.Infested;
+import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
@@ -169,11 +170,11 @@ public class ModifierRegister {
     public static final StaticModifier<Crystalline> CRYSTALLINE_STATIC_MODIFIER = MODIFIERS.register("crystalline", Crystalline::new);
 
 
+    ///寄生虫 SRP
+    public static final StaticModifier<ItsLive> ITS_LIVE_STATIC_MODIFIER = MODIFIERS.register("its_live", ItsLive::new);
+    public static final StaticModifier<Infested> INFESTED_STATIC_MODIFIER = MODIFIERS.register("infested", Infested::new);
 
 
-    ///alex生物
-    public static final StaticModifier<Kangaroo> KANGAROO_STATIC_MODIFIER = MODIFIERS.register("kangaroo", Kangaroo::new);
-    public static final StaticModifier<VoidWalk> VOID_WALK_STATIC_MODIFIER = MODIFIERS.register("void_walk", VoidWalk::new);
 
 
     ///强大词条
@@ -184,6 +185,7 @@ public class ModifierRegister {
     public static final StaticModifier<EchoForm> ECHO_FORM_STATIC_MODIFIER = MODIFIERS.register("echo_form", EchoForm::new);
     public static final StaticModifier<NoLevelsModifier> ECHO_FORM1_STATIC_MODIFIER = MODIFIERS.register("echo_form1", NoLevelsModifier::new);
     public static final StaticModifier<Infinitum> INFINITUM_STATIC_MODIFIER = MODIFIERS.register("infinitum", Infinitum::new);
+    public static final StaticModifier<ImagineBreakerArmor> IMAGINE_BREAKER_ARMOR_STATIC_MODIFIER = MODIFIERS.register("imagine_breaker_armor", ImagineBreakerArmor::new);
 
 
     ///哈肯典姆
@@ -260,8 +262,7 @@ public class ModifierRegister {
     public static final StaticModifier<Stinger> STINGER_STATIC_MODIFIER = MODIFIERS.register("stinger", Stinger::new);
     public static final StaticModifier<QuillSpray> QUILL_SPRAY_STATIC_MODIFIER = MODIFIERS.register("quill_spray", QuillSpray::new);
 
-    ///能量回收
-    public static final StaticModifier<EnergyRecovery> ENERGY_RECOVERY_STATIC_MODIFIER = MODIFIERS.register("energy_recovery", EnergyRecovery::new);
+
 
     ///etsh
     public static final StaticModifier<SpiritGear> SPIRIT_GEAR_STATIC_MODIFIER = MODIFIERS.register("spirit_gear", SpiritGear::new);
@@ -307,9 +308,15 @@ public class ModifierRegister {
     public static final StaticModifier<VirtualCaveCrystalArmor.guixu> GUIXU_STATIC_MODIFIER = MODIFIERS.register("guixu", VirtualCaveCrystalArmor.guixu::new);
 
     ///护甲补强
+    public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);
     public static final StaticModifier<Refraction> REFRACTION_STATIC_MODIFIER = MODIFIERS.register("refraction", Refraction::new);
     public static final StaticModifier<Love> LOVE_STATIC_MODIFIER = MODIFIERS.register("love", Love::new);
-
+    public static final StaticModifier<KrakenShell> KRAKEN_SHELL_STATIC_MODIFIER = MODIFIERS.register("kraken_shell", KrakenShell::new);
+    public static final StaticModifier<LifeLine> LIFE_LINE_STATIC_MODIFIER = MODIFIERS.register("life_line", LifeLine::new);
+    public static final StaticModifier<EnergyRecovery> ENERGY_RECOVERY_STATIC_MODIFIER = MODIFIERS.register("energy_recovery", EnergyRecovery::new);
+    public static final StaticModifier<DurabilityRecovery> DURABILITY_RECOVERY_STATIC_MODIFIER = MODIFIERS.register("durability_recovery", DurabilityRecovery::new);
+    public static final StaticModifier<Kangaroo> KANGAROO_STATIC_MODIFIER = MODIFIERS.register("kangaroo", Kangaroo::new);
+    public static final StaticModifier<VoidWalk> VOID_WALK_STATIC_MODIFIER = MODIFIERS.register("void_walk", VoidWalk::new);
 
     ///真实形态
     public static final StaticModifier<RealExperience> REAL_EXPERIENCE_STATIC_MODIFIER =
@@ -433,17 +440,18 @@ public class ModifierRegister {
 
 
 
-    ///ly
-    public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);
 
     ///来自你们投稿
     public static final StaticModifier<DeepSeaGirl> DEEP_SEA_GIRL_STATIC_MODIFIER = MODIFIERS.register("deep_sea_girl", DeepSeaGirl::new);
     public static final StaticModifier<Reforge> REFORGE_STATIC_MODIFIER = MODIFIERS.register("reforge", Reforge::new);
     public static final StaticModifier<FireEater> FIRE_EATER_STATIC_MODIFIER = MODIFIERS.register("fire_eater", FireEater::new);
-    public static final StaticModifier<Infested> INFESTED_STATIC_MODIFIER = MODIFIERS.register("infested", Infested::new);
+
 
     ///神圣
     public static final StaticModifier<HolyProtection> HOLY_PROTECTION_STATIC_MODIFIER = MODIFIERS.register("holy_protection", HolyProtection::new);
+
+    ///热狗
+    public static final StaticModifier<AssWeCan> ASS_WE_CAN_STATIC_MODIFIER = MODIFIERS.register("ass_we_can", AssWeCan::new);
 
 
 

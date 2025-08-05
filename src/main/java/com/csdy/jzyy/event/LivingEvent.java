@@ -10,9 +10,16 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+import static com.csdy.jzyy.JzyyModMain.MODID;
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.hasVoidWalk;
+
+@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class LivingEvent {
     public LivingEvent() {
         MinecraftForge.EVENT_BUS.addListener(this::onLivingHurt);
@@ -46,6 +53,16 @@ public class LivingEvent {
             itemEntity.setGlowingTag(true);
             itemEntity.setPickUpDelay(20);
             level.addFreshEntity(itemEntity);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onWorldTick(TickEvent.PlayerTickEvent event) {
+        if (hasVoidWalk(event.player)){
+            event.player.noPhysics = true;
+        }
+        else if (!event.player.isSpectator()){
+            event.player.noPhysics = false;
         }
     }
 }

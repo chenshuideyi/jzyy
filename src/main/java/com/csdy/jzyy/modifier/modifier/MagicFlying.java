@@ -35,8 +35,10 @@ public class MagicFlying extends NoLevelsModifier implements InventoryTickModifi
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (!(holder instanceof Player player)) return;
-        if (isCorrectSlot) player.getAbilities().mayfly = true;
-        if (holder.tickCount % 20 == 0) tool.setDamage(tool.getDamage()+5);
+        if (isCorrectSlot){
+            player.getAbilities().mayfly = true;
+            if (holder.tickCount % 20 == 0) tool.setDamage(tool.getDamage()+5);
+        }
     }
 
 

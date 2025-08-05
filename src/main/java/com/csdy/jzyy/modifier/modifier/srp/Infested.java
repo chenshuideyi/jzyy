@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier;
+package com.csdy.jzyy.modifier.modifier.srp;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

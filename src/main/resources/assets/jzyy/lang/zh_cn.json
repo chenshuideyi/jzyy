@@ -47,6 +47,10 @@
 
   "item.jzyy.hallowed_bar": "神圣锭",
 
+  "item.jzyy.hot_dog": "热狗",
+  "item.jzyy.hot_dog.line1": "雯锌的赞助者提案",
+
+
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
   "item.jzyy.summon_csdy": "天子的帽子",
@@ -70,6 +74,10 @@
   "material.jzyy.defect": "钴丈技奇人",
   "material.jzyy.defect.flavor": "全游戏第四强的材料",
   "material.jzyy.defect.encyclopedia": "全游戏第四强的材料",
+
+  "material.jzyy.hot_dog": "热狗",
+  "material.jzyy.hot_dog.flavor": "我要吃热狗呀",
+  "material.jzyy.hot_dog.encyclopedia": "据说是一百个被鬼巫女所害的人热狗聚集而成",
 
   "material.jzyy.bread": "面包",
   "material.jzyy.bread.flavor": "好吃",
@@ -186,13 +194,6 @@
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
 
-  "modifier.jzyy.energy_recovery": "能量回收",
-  "modifier.jzyy.energy_recovery.flavor": "可不能浪费了",
-  "modifier.jzyy.energy_recovery.description":"在你受伤时掉落你的肉，吃下后可以回复等同于受到伤害的血量",
-
-  "modifier.jzyy.return": "滋养",
-  "modifier.jzyy.return.flavor": "落红不是无情物",
-  "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
 
   "modifier.jzyy.holy_protection": "神圣防护",
   "modifier.jzyy.holy_protection.flavor": "替代了钛金",
@@ -205,6 +206,21 @@
   "modifier.jzyy.infested": "Infested",
   "modifier.jzyy.infested.flavor": "你为什么要摧毁我们？我们是你的血肉",
   "modifier.jzyy.infested.description": "近战时，你的工具会撕咬目标的血肉造成额外伤害，回复你的血量，饱食度和工具耐久",
+
+  "modifier.jzyy.its_live": "它是活的！！！",
+  "modifier.jzyy.its_live.flavor": "如果这副盔甲没有吃饱，下一个就轮到我了",
+  "modifier.jzyy.its_live.description": "你的护甲会汲取你的血量回复自己的耐久",
+
+  "modifier.jzyy.srp_heal": "再生",
+  "modifier.jzyy.srp_heal.flavor": "即便烂的不成样子也还在蠕动的肉块",
+  "modifier.jzyy.srp_heal.description": "未着火状态每秒回复2点生命",
+
+  "modifier.jzyy.srp_max_health": "坚韧",
+  "modifier.jzyy.srp_max_health.flavor": "这个厚度....已经不能称之为普通生物了",
+  "modifier.jzyy.srp_max_health.description": "提供5点最大生命",
+
+
+
 
   "modifier.jzyy.fire_eater": "食火者",
   "modifier.jzyy.fire_eater.flavor": "你的工具会吞噬你身上的火焰为自己增加耐久",
@@ -293,6 +309,11 @@
   "modifier.jzyy.deep_ocean_protect.flavor": "来自深海的恐惧守护着你...穿上这套盔甲你时刻感觉到被注视着...",
   "modifier.jzyy.deep_ocean_protect.description":"基于回声点数，获得至高95%伤害减免。每次受击回复33%最大生命值，并获得最大生命值二分之一的伤害吸收，冷却12秒",
 
+  "modifier.jzyy.ass_we_can": "究极羞辱",
+  "modifier.jzyy.ass_we_can.flavor": "师父，救我呀！！！",
+  "modifier.jzyy.ass_we_can.description":"当你被蹂躏100次甚至更多后，你能给鬼巫女一点颜色看看......",
+
+
   "item.jzyy.primal_reversion": "原始回归宝珠",
   "item.jzyy.primal_reversion_line1": "将部分材料回归到匠魂2时期（品相完美！）",
 
@@ -327,6 +348,43 @@
   "modifier.jzyy.imagine_breaker": "幻想杀手",
   "modifier.jzyy.imagine_breaker.flavor": "和你的等级加成说再见吧",
   "modifier.jzyy.imagine_breaker.description":"将目标的属性重置为他们的初始值",
+
+
+  "modifier.jzyy.imagine_breaker_armor": "幻想杀手 · 里",
+  "modifier.jzyy.imagine_breaker_armor.flavor": "不是幻想杀手还阴啊？",
+  "modifier.jzyy.imagine_breaker_armor.description":"免疫大于7的伤害",
+
+  "modifier.jzyy.refraction": "折射",
+  "modifier.jzyy.refraction.flavor": "一个令人却步的任务出现在墨丘利的敌人面前——用刀剑和魔法消灭一个影子。",
+  "modifier.jzyy.refraction.description":"将受到的伤害折射给敌人，自己承受的伤害降低。",
+
+  "modifier.jzyy.life_line": "命脉",
+  "modifier.jzyy.life_line.flavor": "你以为击碎我的一颗心脏就能让我咽气？我有三颗。",
+  "modifier.jzyy.life_line.description":"你受到的单次伤害不会超过你最大生命值的一半",
+
+  "modifier.jzyy.durability_recovery": "耐久回收",
+  "modifier.jzyy.durability_recovery.flavor": "经久耐用！",
+  "modifier.jzyy.durability_recovery.description":"你受到伤害的一半会修复你的护甲",
+
+  "modifier.jzyy.kangaroo": "袋鼠跳",
+  "modifier.jzyy.kangaroo.flavor": "123跳",
+  "modifier.jzyy.kangaroo.description":"有概率躲开弹射物",
+
+  "modifier.jzyy.void_walk": "虚空行走",
+  "modifier.jzyy.void_walk.flavor": "我来了，我就没走",
+  "modifier.jzyy.void_walk.description":"你可以穿过方块",
+
+  "modifier.jzyy.energy_recovery": "能量回收",
+  "modifier.jzyy.energy_recovery.flavor": "可不能浪费了",
+  "modifier.jzyy.energy_recovery.description":"在你受伤时掉落你的肉，吃下后可以回复等同于受到伤害的血量",
+
+  "modifier.jzyy.return": "滋养",
+  "modifier.jzyy.return.flavor": "落红不是无情物",
+  "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
+
+  "modifier.jzyy.love": "暴力点数",
+  "modifier.jzyy.love.flavor": "I am made L-O-V-E",
+  "modifier.jzyy.love.description": "若你的等级超过20级，提供再生5",
 
   "modifier.jzyy.blade_release1": "剑刃解放I",
   "modifier.jzyy.blade_release1.flavor": "刃口传来婴儿啼哭般的震颤",
@@ -437,14 +495,6 @@
   "modifier.jzyy.horn_toss": "长角抛物",
   "modifier.jzyy.horn_toss.flavor": "看我猛犸颠勺",
   "modifier.jzyy.horn_toss.description":"把目标扔到你的背后",
-
-  "modifier.jzyy.kangaroo": "袋鼠跳",
-  "modifier.jzyy.kangaroo.flavor": "123跳",
-  "modifier.jzyy.kangaroo.description":"有概率躲开弹射物",
-
-  "modifier.jzyy.void_walk": "虚空行走",
-  "modifier.jzyy.void_walk.flavor": "我来了，我就没走",
-  "modifier.jzyy.void_walk.description":"你可以穿过头顶和脚底的方块",
 
   "modifier.jzyy.chaos_transmigration": "混沌转生",
   "modifier.jzyy.chaos_transmigration.flavor": "下一次降临",
@@ -836,5 +886,7 @@
 
   "modifier.jzyy.guixu": "归虚",
   "modifier.jzyy.guixu.flavor":"归于虚妄",
-  "modifier.jzyy.guixu.description":"使自己的无敌帧更长。"
+  "modifier.jzyy.guixu.description":"使自己的无敌帧更长。",
+
+  "entity.oni_miko.onimiko": "鬼巫女"
 }

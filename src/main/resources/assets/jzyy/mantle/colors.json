@@ -28,6 +28,7 @@
     "blood_mary": "#FF0000",
     "haorans_cult": "#FF0000",
     "imagine_breaker": "#8EE5EE",
+    "imagine_breaker_armor": "#8EE5EE",
     "severance": "#CDC5BF",
     "cleave_the_stars": "#7B68EE",
     "dragon_power": "#CD661D",
@@ -42,9 +43,7 @@
     "flesh_gear": "#FF6347",
     "mind_gear": "#F0E68C",
     "spirit_gear": "#ADD8E6",
-    "void_walk": "#4F4F4F",
     "ass_attack":"#4F4F4F",
-    "kangaroo": "#CDAA7D",
     "chaos_transmigration": "#55097c",
     "horn_toss": "#9d835f",
     "csdy_attack": "#483D8B",
@@ -114,10 +113,23 @@
     "1999_armor": "#4183c5",
     "true_name_liberation": "#f1c40f",
     "excalibur": "#f1c40f",
-    "ly": "#8FBC8F",
     "deep_sea_girl": "#3D7CB8",
     "holy_protection": "#ecc813",
-    "ciallo": "#DD7C6F"
+    "ciallo": "#DD7C6F",
+    "ass_we_can": "#F0A8A4",
+    "护甲补强": null,
+    "return": "#8FBC8F",
+    "love": "#FF0000",
+    "kangaroo": "#CDAA7D",
+    "void_walk": "#4F4F4F",
+    "refraction": "#1c1c1c",
+    "kraken_shell": "#003366",
+    "energy_recovery": "#CDAA7D",
+    "durability_recovery": "#CDAA7D",
+    "life_line": "#1E90FF",
+    "寄生虫": null,
+    "infested": "#569a72",
+    "its_live": "#569a72"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -145,7 +157,8 @@
     "yakumo_ender": "#f1c40f",
     "excalibar": "#f1c40f",
     "ly": "#8FBC8F",
-    "hallowed_bar": "#ecc813"
+    "hallowed_bar": "#ecc813",
+    "hot_dog": "#F0A8A4"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

@@ -54,7 +54,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                         float reHealth = target.getHealth() - target.getMaxHealth() * 0.01f;
                         setAbsoluteSeveranceHealth(target,reHealth);
                         forceSetAllCandidateHealth(target,reHealth);
-                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth){
+                        if (target.getHealth() >= oldHealth || target.getHealth() > reHealth || target.getHealth() <= 0){
                             setCategory(target,csdykill);
                             KillEntity(target);
                         }
@@ -85,18 +85,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
     }
     @Override
     protected double getAttackReachSqr(LivingEntity target) {
-        // 返回与 checkAndPerformAttack 中使用的自定义攻击距离的平方值
-        // 这样，生物会在进入 customAttackRange 范围时停止移动并尝试攻击。
-        // 如果希望索敌/停止移动的距离比实际攻击触发距离稍大一点，可以这样做：
-        // double engagementRange = this.customAttackRange + 0.5D; // 例如，索敌距离比攻击距离大0.5格
-        // return engagementRange * engagementRange;
-
-        // 如果希望索敌和攻击触发距离完全一致：
         return this.customAttackRange * this.customAttackRange;
-
-        // 如果想更精确地考虑目标宽度 (这会使得对不同大小的目标有不同的绝对距离):
-        // double effectiveRange = this.customAttackRange + target.getBbWidth() / 2.0D;
-        // return effectiveRange * effectiveRange;
     }
 
     @Override

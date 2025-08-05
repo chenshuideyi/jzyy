@@ -2,6 +2,7 @@ package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.item.*;
+import com.csdy.jzyy.item.food.HotDog;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -29,7 +30,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
     public static final RegistryObject<Item> SUMMON_CSDY = ITEMS.register("summon_csdy", SummonCsdy::new);
-
+    public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
 
 
 

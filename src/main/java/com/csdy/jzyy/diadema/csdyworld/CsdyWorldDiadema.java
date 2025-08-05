@@ -118,7 +118,7 @@ public class CsdyWorldDiadema extends Diadema {
                         float reHealth = living.getHealth() - living.getMaxHealth() * 0.01f;
                         setAbsoluteSeveranceHealth(living,reHealth);
                         forceSetAllCandidateHealth(living,reHealth);
-                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth){
+                        if (living.getHealth() >= oldHealth || living.getHealth() > reHealth || living.getHealth() <= 0){
                             setCategory(living,csdykill);
                             KillEntity(living);
                         }
