@@ -49,6 +49,10 @@ public class VoidWalk extends NoLevelsModifier implements InventoryTickModifierH
                 player.getAbilities().mayfly = false;
                 player.getAbilities().flying = false; // 同时关闭飞行状态
                 player.onUpdateAbilities(); // 同步到客户端
+            } else {
+                player.getAbilities().mayfly = true;
+                player.getAbilities().flying = true; // 同时关闭飞行状态
+                player.onUpdateAbilities(); // 同步到客户端
             }
         }
     }

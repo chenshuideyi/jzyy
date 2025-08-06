@@ -1,7 +1,7 @@
 package com.csdy.jzyy.modifier.util.layer;
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.effect.JzyyEffectRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;

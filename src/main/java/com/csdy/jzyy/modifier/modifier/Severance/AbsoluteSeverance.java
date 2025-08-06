@@ -49,7 +49,6 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         if (target != null && player != null && target.getHealth() > 0) {
             if (isFromDummmmmmyMod(target)) return knockback;
             float reHealth = target.getHealth() - damage * this.value - target.getMaxHealth() * 0.01f;
-//            System.out.println("吃我绝对切断");
             setAbsoluteSeveranceHealth(target,reHealth);
             forceSetAllCandidateHealth(target,reHealth);
             if (reHealth <= 0){
@@ -60,7 +59,6 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
                 setEntityDead(target);
                 dropLoot(target,playerKill);
             }
-//            System.out.println("目标血量是"+target.getHealth());
         }
         return knockback;
     }

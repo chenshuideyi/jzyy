@@ -3,7 +3,7 @@ package com.csdy.jzyy;
 import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
-import com.csdy.jzyy.effect.JzyyEffectRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
@@ -21,7 +21,7 @@ import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.item.tool.until.JzyyTools;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.layer.GocLayer;
-import com.csdy.jzyy.modifier.util.layer.PlayerLayer;
+import com.csdy.jzyy.modifier.util.layer.PlayerCreeperArmorLayer;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
@@ -151,7 +151,7 @@ public class JzyyModMain {
         PlayerRenderer renderer = event.getSkin(skinType);
         if (renderer != null) {
             // 一次性添加所有可能的层
-            renderer.addLayer(new PlayerLayer(renderer));
+            renderer.addLayer(new PlayerCreeperArmorLayer(renderer));
 //            renderer.addLayer(new BloodLayer(renderer));
 //            renderer.addLayer(new ScpLayer(renderer));
             renderer.addLayer(new GocLayer(renderer));
@@ -177,7 +177,7 @@ public class JzyyModMain {
     public void onRenderPlayer(RenderPlayerEvent.Pre e) {
         // 凋零护甲
         if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get())) {
-            e.getRenderer().addLayer(new PlayerLayer(e.getRenderer()));
+            e.getRenderer().addLayer(new PlayerCreeperArmorLayer(e.getRenderer()));
         }
         // 血怒效果
 //        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {

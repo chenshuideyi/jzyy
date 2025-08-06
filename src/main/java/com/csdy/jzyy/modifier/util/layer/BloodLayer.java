@@ -1,6 +1,6 @@
 package com.csdy.jzyy.modifier.util.layer;
 
-import com.csdy.jzyy.effect.JzyyEffectRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;

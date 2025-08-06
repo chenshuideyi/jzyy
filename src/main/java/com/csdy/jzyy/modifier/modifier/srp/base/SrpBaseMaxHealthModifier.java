@@ -19,9 +19,9 @@ public class SrpBaseMaxHealthModifier extends Modifier implements AttributesModi
     private final String name;
     private final float healthAmount;
 
-    public SrpBaseMaxHealthModifier(String name, float healthAmount, float healthAmount1) {
+    public SrpBaseMaxHealthModifier(String name, float healthAmount) {
         this.name = name;
-        this.healthAmount = healthAmount1;
+        this.healthAmount = healthAmount;
     }
 
     @Override

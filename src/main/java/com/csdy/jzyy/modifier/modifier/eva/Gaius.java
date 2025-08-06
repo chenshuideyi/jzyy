@@ -1,26 +1,29 @@
-package com.csdy.jzyy.modifier.modifier.srp.base;
+package com.csdy.jzyy.modifier.modifier.eva;
 
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickModifierHook;
-import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class SrpBaseHealModifier extends NoLevelsModifier implements InventoryTickModifierHook {
-
-    private final float healthAmount;
-
-    public SrpBaseHealModifier(float healthAmount){
-        this.healthAmount = healthAmount;
-    }
+public class Gaius extends Modifier implements InventoryTickModifierHook {
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry entry, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if(!holder.isOnFire() && holder.tickCount % 20 == 0) holder.heal(healthAmount * entry.getLevel());
+        if (!(holder instanceof Player player)) return;
+        if (!isCorrectSlot) return;
+        int fixValue = (20 * (entry.getLevel()) - 1 );
+        if (player.tickCount % 20 != 0) return;
+        for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+            ItemStack itemStack = player.getInventory().getItem(i);
+            if (itemStack.isEmpty() || !itemStack.isDamaged()) continue;
+            itemStack.setDamageValue(itemStack.getDamageValue() - (fixValue));
+        }
     }
 
     @Override
@@ -28,4 +31,3 @@ public class SrpBaseHealModifier extends NoLevelsModifier implements InventoryTi
         hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK);
     }
 }
-

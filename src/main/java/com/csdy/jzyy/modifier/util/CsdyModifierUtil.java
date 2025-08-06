@@ -34,6 +34,10 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.*;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+
 public class CsdyModifierUtil {
 
     public static void multiplyAllToolStats(ModifierStatsBuilder builder, double multiplier) {
@@ -215,6 +219,39 @@ public class CsdyModifierUtil {
         // 方法2：检查实体的类路径（备用方案）
         return entity.getClass().getName().contains("dummmmmmy");
     }
+
+    public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage,float value){
+        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        setAbsoluteSeveranceHealth(target,reHealth);
+        forceSetAllCandidateHealth(target,reHealth);
+        if (reHealth <= 0){
+            //并非不能掉落
+            var playerKill = target.level().damageSources.playerAttack(player);
+            target.die(playerKill);
+            triggerKillAdvancement(target,playerKill);
+            setEntityDead(target);
+            dropLoot(target,playerKill);
+        }
+    }
+
+    public static void modifierSeverance(LivingEntity target, Player player, float damage,float value){
+        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        forceSetAllCandidateHealth(target,reHealth);
+        if (reHealth <= 0){
+            //并非不能掉落
+            var playerKill = target.level().damageSources.playerAttack(player);
+            target.die(playerKill);
+            triggerKillAdvancement(target,playerKill);
+            setEntityDead(target);
+            dropLoot(target,playerKill);
+        }
+    }
+
+
+
+
+
+
 
     public static boolean hasVoidWalk(Player player) {
         for (EquipmentSlot slot : EquipmentSlot.values()) {

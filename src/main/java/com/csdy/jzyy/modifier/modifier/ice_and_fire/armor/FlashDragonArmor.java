@@ -1,6 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.ice_and_fire.armor;
 
-import com.csdy.jzyy.effect.JzyyEffectRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;

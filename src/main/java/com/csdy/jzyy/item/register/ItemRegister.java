@@ -31,8 +31,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
     public static final RegistryObject<Item> SUMMON_CSDY = ITEMS.register("summon_csdy", SummonCsdy::new);
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
-
-
+    public static final RegistryObject<Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot", StarmetalIngot::new);
+    public static final RegistryObject<Item> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot", EvangeAlloyIngot::new);
 
     public static final RegistryObject<Item> HARCADIUM = ITEMS.register(
             "harcadium",

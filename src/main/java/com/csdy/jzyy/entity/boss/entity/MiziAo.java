@@ -9,6 +9,7 @@ import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -374,7 +375,17 @@ public class MiziAo extends BossEntity implements GeoEntity {
     @Override
     public SoundEvent getBossMusic() { return JzyySoundsRegister.UMIYURI_KAITEITAN.get(); }
 
+    @Override
+    public void die(@NotNull DamageSource pSource) {
+        if (isDeadOrDying()) {
+            super.die(pSource);
+        }
+    }
 
+    @Override
+    public boolean isDeadOrDying() {
+        return getHealth() <= 0;
+    }
 
     @Override
     public boolean isNoAi() { return false; }

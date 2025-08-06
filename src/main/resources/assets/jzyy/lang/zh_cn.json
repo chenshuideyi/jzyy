@@ -50,6 +50,13 @@
   "item.jzyy.hot_dog": "热狗",
   "item.jzyy.hot_dog.line1": "雯锌的赞助者提案",
 
+  "item.jzyy.starmetal_ingot": "星辉锭",
+  "item.jzyy.starmetal_ingot.line1": "寡言之影的赞助者提案",
+
+  "item.jzyy.evange_alloy_ingot": "福音合金",
+  "item.jzyy.evange_alloy_ingot.line1": "asiramemasirik的提案",
+
+
 
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
@@ -156,6 +163,16 @@
 
   "material.jzyy.real_experience_steel": "完美经验钢",
 
+  "material.jzyy.starmetal_ingot": "星辉锭",
+  "material.jzyy.starmetal_ingot.flavor": "星星，排列好了！",
+  "material.jzyy.starmetal_ingot.encyclopedia": "我见证的是创造，而我带来的是毁灭",
+
+  "material.jzyy.evange_alloy_ingot": "福音合金",
+  "material.jzyy.evange_alloy_ingot.flavor": "请输入文本",
+  "material.jzyy.evange_alloy_ingot.encyclopedia": "请输入文本",
+
+
+
   "material.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "material.jzyy.etsh.flavor": "揭开时光中的秘密",
   "material.jzyy.etsh.encyclopedia": "当渎神者的指尖烙上齿轮，钢铁便有了神性——那些被ETS-H抚触过的黄铜轮齿，不再屈从于凡间(锻炉圣经 7：11)",
@@ -213,14 +230,27 @@
 
   "modifier.jzyy.srp_heal": "再生",
   "modifier.jzyy.srp_heal.flavor": "即便烂的不成样子也还在蠕动的肉块",
-  "modifier.jzyy.srp_heal.description": "未着火状态每秒回复2点生命",
+  "modifier.jzyy.srp_heal.description": "未着火状态每秒回复2点生命,随等级提升",
 
   "modifier.jzyy.srp_max_health": "坚韧",
   "modifier.jzyy.srp_max_health.flavor": "这个厚度....已经不能称之为普通生物了",
-  "modifier.jzyy.srp_max_health.description": "提供5点最大生命",
+  "modifier.jzyy.srp_max_health.description": "提供5点最大生命,随等级提升",
 
+  "modifier.jzyy.astral": "星能力共鸣 · 时钟座",
+  "modifier.jzyy.astral.flavor": "我把你带回来了......",
+  "modifier.jzyy.astral.description": "暴击时，停住目标的时间两秒",
 
+  "modifier.jzyy.longinus": "朗基努斯",
+  "modifier.jzyy.longinus.flavor": "请输入文本",
+  "modifier.jzyy.longinus.description": "敌人额外造成数值相当于1000倍主手武器面板伤害的切断伤害，此后每级在上一级的基础上乘以二",
 
+  "modifier.jzyy.cassius": "卡西乌斯",
+  "modifier.jzyy.cassius.flavor": "请输入文本",
+  "modifier.jzyy.cassius.description": "死亡时会复活一次，获得10秒的抗性提升13和伤害吸收13，CD200秒，随等级缩减",
+
+  "modifier.jzyy.gaius": "盖乌斯",
+  "modifier.jzyy.gaius.flavor": "请输入文本",
+  "modifier.jzyy.gaius.description": "本工具不毁。在一级时每秒回复背包内所有有耐久度的东西20点耐久度，此后每级回复的耐久度是上一级的两倍。",
 
   "modifier.jzyy.fire_eater": "食火者",
   "modifier.jzyy.fire_eater.flavor": "你的工具会吞噬你身上的火焰为自己增加耐久",
@@ -831,6 +861,8 @@
   "effect.jzyy.overcharge": "过载",
   "effect.jzyy.overcharge_armor": "雷凯",
   "effect.jzyy.csdy": "csdy的礼物",
+  "effect.jzyy.horologium_no_ai": "时间停止",
+
 
   "jzyy.tool.tab": "匠战妖域-工具",
   "item.jzyy.lollipop": "棒棒糖",

@@ -1,6 +1,6 @@
 package com.csdy.jzyy.modifier.util.layer;
 
-import com.csdy.jzyy.effect.JzyyEffectRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
@@ -20,13 +20,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class PlayerLayer extends RenderLayer {
+public class PlayerCreeperArmorLayer extends RenderLayer {
     //雷凯
     private static final ResourceLocation CREEPER_ARMOR_LOCATION = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
     private final HumanoidModel<Player> model;
     private final PlayerRenderer render;
 
-    public PlayerLayer(PlayerRenderer renderer) {
+    public PlayerCreeperArmorLayer(PlayerRenderer renderer) {
         super(renderer);
         Minecraft mc = Minecraft.getInstance();
         EntityRendererProvider.Context context = new EntityRendererProvider.Context(

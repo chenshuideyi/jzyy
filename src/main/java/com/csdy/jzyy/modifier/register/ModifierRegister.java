@@ -10,6 +10,7 @@ import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanEcho;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.TheProphecyOfTheSunk;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.armor.DeepOceanProtect;
 import com.csdy.jzyy.modifier.modifier.armor.*;
+import com.csdy.jzyy.modifier.modifier.astral.Astral;
 import com.csdy.jzyy.modifier.modifier.bedrock.BedRock;
 import com.csdy.jzyy.modifier.modifier.bedrock.Deicide;
 import com.csdy.jzyy.modifier.modifier.bedrock.Mouse3;
@@ -30,6 +31,9 @@ import com.csdy.jzyy.modifier.modifier.ender.TrueNameLiberation;
 import com.csdy.jzyy.modifier.modifier.etsh.FleshGear;
 import com.csdy.jzyy.modifier.modifier.etsh.MindGear;
 import com.csdy.jzyy.modifier.modifier.etsh.SpiritGear;
+import com.csdy.jzyy.modifier.modifier.eva.Cassius;
+import com.csdy.jzyy.modifier.modifier.eva.Gaius;
+import com.csdy.jzyy.modifier.modifier.eva.Longinus;
 import com.csdy.jzyy.modifier.modifier.experience.ExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.ExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
@@ -77,6 +81,8 @@ import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.silence.SilenceAlmighty;
 import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
+import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseHealModifier;
+import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseMaxHealthModifier;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
@@ -173,8 +179,8 @@ public class ModifierRegister {
     ///寄生虫 SRP
     public static final StaticModifier<ItsLive> ITS_LIVE_STATIC_MODIFIER = MODIFIERS.register("its_live", ItsLive::new);
     public static final StaticModifier<Infested> INFESTED_STATIC_MODIFIER = MODIFIERS.register("infested", Infested::new);
-
-
+    public static final StaticModifier<SrpBaseHealModifier> SRP_BASE_HEAL_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("srp_heal",() -> new SrpBaseHealModifier(2));
+    public static final StaticModifier<SrpBaseMaxHealthModifier> SRP_BASE_MAX_HEALTH_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("srp_max_health",() -> new SrpBaseMaxHealthModifier("base_srp_max_health1",5));
 
 
     ///强大词条
@@ -452,6 +458,14 @@ public class ModifierRegister {
 
     ///热狗
     public static final StaticModifier<AssWeCan> ASS_WE_CAN_STATIC_MODIFIER = MODIFIERS.register("ass_we_can", AssWeCan::new);
+
+    ///星辉
+    public static final StaticModifier<Astral> ASTRAL_STATIC_MODIFIER = MODIFIERS.register("astral", Astral::new);
+
+    ///eva
+    public static final StaticModifier<Cassius> CASSIUS_STATIC_MODIFIER = MODIFIERS.register("cassius", Cassius::new);
+    public static final StaticModifier<Gaius> GAIUS_STATIC_MODIFIER = MODIFIERS.register("gaius", Gaius::new);
+    public static final StaticModifier<Longinus> LONGINUS_STATIC_MODIFIER = MODIFIERS.register("longinus", Longinus::new);
 
 
 

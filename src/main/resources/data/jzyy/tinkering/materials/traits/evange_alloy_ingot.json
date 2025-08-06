@@ -1,0 +1,38 @@
+{
+  "default": [
+    {
+      "name": "jzyy:longinus",
+      "level": 1
+    },
+    {
+      "name": "jzyy:gaius",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:head":[
+      {
+        "name": "jzyy:longinus",
+        "level": 1
+      },
+      {
+        "name": "jzyy:gaius",
+        "level": 1
+      },
+      {
+        "name": "jzyy:bedrock_breaker",
+        "level": 1
+      }
+    ],
+    "tconstruct:armor": [
+      {
+        "name": "jzyy:cassius",
+        "level": 1
+      },
+      {
+        "name": "jzyy:gaius",
+        "level": 1
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@ package com.csdy.jzyy.effect;
 
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

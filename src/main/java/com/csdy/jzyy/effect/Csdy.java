@@ -1,5 +1,6 @@
 package com.csdy.jzyy.effect;
 
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

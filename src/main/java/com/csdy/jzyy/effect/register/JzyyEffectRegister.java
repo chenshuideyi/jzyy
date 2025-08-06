@@ -1,7 +1,8 @@
-package com.csdy.jzyy.effect;
+package com.csdy.jzyy.effect.register;
 
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.effect.*;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,4 +17,6 @@ public class JzyyEffectRegister {
     public static final RegistryObject<MobEffect> DIVINITY = EFFECTS.register("divinity", Divinity::new);
     public static final RegistryObject<MobEffect> HOLY_PROTECTION_COOLDOWN = EFFECTS.register("holy_protection_cooldown", HolyProtectionCooldown::new);
     public static final RegistryObject<MobEffect> CSDY = EFFECTS.register("csdy", Csdy::new);
+    public static final RegistryObject<MobEffect> HOROLOGIUM_NO_AI = EFFECTS.register("horologium_no_ai", HorologiumNoAI::new);
+
 }

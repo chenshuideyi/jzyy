@@ -129,7 +129,11 @@
     "life_line": "#1E90FF",
     "寄生虫": null,
     "infested": "#569a72",
-    "its_live": "#569a72"
+    "its_live": "#569a72",
+    "srp_max_health": "#569a72",
+    "srp_heal": "#569a72",
+    "星辉": null,
+    "astral": "#0033aa"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -158,7 +162,8 @@
     "excalibar": "#f1c40f",
     "ly": "#8FBC8F",
     "hallowed_bar": "#ecc813",
-    "hot_dog": "#F0A8A4"
+    "hot_dog": "#F0A8A4",
+    "starmetal_ingot": "#0033aa"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

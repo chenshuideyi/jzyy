@@ -1,6 +1,7 @@
 package com.csdy.jzyy.effect;
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.DeathScreen;
 import net.minecraft.world.effect.MobEffect;

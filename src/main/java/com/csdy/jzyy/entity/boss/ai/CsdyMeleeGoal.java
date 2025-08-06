@@ -14,6 +14,7 @@ import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
+import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
 
 public class CsdyMeleeGoal extends MeleeAttackGoal {
     private final SwordManCsdy boss; // 将 YourBossEntityClass 替换为你的Boss实体类名
@@ -56,7 +57,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                         forceSetAllCandidateHealth(target,reHealth);
                         if (target.getHealth() >= oldHealth || target.getHealth() > reHealth || target.getHealth() <= 0){
                             setCategory(target,csdykill);
-                            KillEntity(target);
+//                            superKillEntity(target);
                         }
                     }
                 } else {

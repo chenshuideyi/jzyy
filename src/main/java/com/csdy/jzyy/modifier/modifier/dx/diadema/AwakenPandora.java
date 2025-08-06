@@ -2,7 +2,7 @@ package com.csdy.jzyy.modifier.modifier.dx.diadema;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.OnDeathModifierHook;
-import com.csdy.jzyy.effect.JzyyEffectRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.tcondiadema.diadema.DiademaRegister;
 import com.csdy.tcondiadema.frames.diadema.DiademaType;
