@@ -21,7 +21,7 @@ public class BossMusic extends AbstractTickableSoundInstance {
         this.pitch = 1.0f;
         this.looping = true;
 
-        this.baseVolume = 0.2f; // 为这首特定的音乐设置一个较低的基础音量（例如60%）
+        this.baseVolume = 0.5f; // 为这首特定的音乐设置一个较低的基础音量（例如60%）
 
         this.volume = this.baseVolume; // 初始化音量
     }

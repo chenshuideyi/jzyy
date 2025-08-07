@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.eva;
 
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -29,7 +30,8 @@ public class Longinus extends Modifier implements MeleeHitModifierHook, Projecti
         var level = entry.getLevel();
         if (target != null && player != null) {
             if (isFromDummmmmmyMod(target)) return;
-            modifierSeverance(target,player,1000 * ToolStats.ATTACK_DAMAGE.getDefaultValue() * (level * 2 - 1) ,1);
+            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+            modifierSeverance(target,player,1000 * toolDamage * (level * 2 - 1) ,1);
         }
 
     }
@@ -40,7 +42,8 @@ public class Longinus extends Modifier implements MeleeHitModifierHook, Projecti
         if (projectile instanceof AbstractArrow arrow && target != null) {
             if (!(shooter instanceof Player player)) return false;
             if (isFromDummmmmmyMod(target)) return false;
-            modifierSeverance(target,player,1000 * ToolStats.ATTACK_DAMAGE.getDefaultValue() * (entry.getLevel() * 2 - 1) ,1);
+            float baseAttackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
+            modifierSeverance(target,player,1000 * baseAttackDamage * (entry.getLevel() * 2 - 1) ,1);
         }
         return false;
     }

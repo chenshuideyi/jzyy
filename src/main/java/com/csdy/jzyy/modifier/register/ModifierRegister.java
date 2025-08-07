@@ -24,6 +24,7 @@ import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
 import com.csdy.jzyy.modifier.modifier.csdytinker.*;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
+import com.csdy.jzyy.modifier.modifier.dx.Refill;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.tool.AwakenTiamat;
 import com.csdy.jzyy.modifier.modifier.ender.SaberExcalibur;
@@ -60,6 +61,9 @@ import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestAngry;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.ForestArmor;
 import com.csdy.jzyy.modifier.modifier.living_wood.real.Life;
 import com.csdy.jzyy.modifier.modifier.armor.Return;
+import com.csdy.jzyy.modifier.modifier.maggot.RimMaggot;
+import com.csdy.jzyy.modifier.modifier.maggot.armor.LiveMaggot;
+import com.csdy.jzyy.modifier.modifier.maggot.tool.Juicy;
 import com.csdy.jzyy.modifier.modifier.pla_steel.Crystalline;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.*;
 import com.csdy.jzyy.modifier.modifier.primal_reversion.armor.HaoransCult;
@@ -237,6 +241,8 @@ public class ModifierRegister {
 
     ///米子山民
     public static final StaticModifier<Music> MUSIC_STATIC_MODIFIER = MODIFIERS.register("music", Music::new);
+    public static final StaticModifier<Refill> REFILL_STATIC_MODIFIER = MODIFIERS.register("refill", Refill::new);
+
 
     ///这里是工具的音乐
     public static final StaticModifier<BaseToolMusic> AMA_NO_JYAKU = MODIFIERS.register("ama_no_jyaku", () -> new BaseToolMusic(JzyySoundsRegister.AMA_NO_JYAKU.get()));
@@ -443,12 +449,17 @@ public class ModifierRegister {
     ///寂静 目前最没有设计感的材料
     public static final StaticModifier<SilenceAlmighty> SILENCE_ALMIGHTY_STATIC_MODIFIER = MODIFIERS.register("silence_almighty", SilenceAlmighty::new);
 
-
-
+    ///蛆
+    public static final StaticModifier<RimMaggot> RIM_MAGGOT_STATIC_MODIFIER = MODIFIERS.register("rim_maggot", RimMaggot::new);
+    public static final StaticModifier<LiveMaggot> LIVE_MAGGOT_STATIC_MODIFIER = MODIFIERS.register("live_maggot", LiveMaggot::new);
+    public static final StaticModifier<Juicy> JUICY_STATIC_MODIFIER = MODIFIERS.register("juicy", Juicy::new);
 
 
     ///来自你们投稿
     public static final StaticModifier<DeepSeaGirl> DEEP_SEA_GIRL_STATIC_MODIFIER = MODIFIERS.register("deep_sea_girl", DeepSeaGirl::new);
+
+
+    ///耐久
     public static final StaticModifier<Reforge> REFORGE_STATIC_MODIFIER = MODIFIERS.register("reforge", Reforge::new);
     public static final StaticModifier<FireEater> FIRE_EATER_STATIC_MODIFIER = MODIFIERS.register("fire_eater", FireEater::new);
 

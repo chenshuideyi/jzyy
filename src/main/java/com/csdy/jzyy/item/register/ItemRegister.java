@@ -20,16 +20,15 @@ public class ItemRegister {
     public static final RegistryObject<Item> MAGIC_URANIUM = ITEMS.register("magic_uranium", MagicUranium::new);
     public static final RegistryObject<Item> OVERFLOWED_MEMORY = ITEMS.register("overflowed_memory", OverflowedMemory::new);
     public static final RegistryObject<Item> ETSH = ITEMS.register("etsh", Etsh::new);
-//    public static final RegistryObject<Item> MTF = ITEMS.register("mtf", Mtf::new);
     public static final RegistryObject<Item> DX_INGOT = ITEMS.register("dx_ingot", DxIngot::new);
     public static final RegistryObject<Item> ICE = ITEMS.register("ice", Ice::new);
     public static final RegistryObject<Item> TONG_BAN = ITEMS.register("tong_ban", TongBan::new);
     public static final RegistryObject<Item> RAIN_CURTAIN = ITEMS.register("rain_curtain", RainCurtain::new);
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
-    public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
+
     public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
-    public static final RegistryObject<Item> SUMMON_CSDY = ITEMS.register("summon_csdy", SummonCsdy::new);
+    public static final RegistryObject<Item> MAGGOT = ITEMS.register("maggot", Maggot::new);
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
     public static final RegistryObject<Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot", StarmetalIngot::new);
     public static final RegistryObject<Item> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot", EvangeAlloyIngot::new);
@@ -72,8 +71,12 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
 
 
-//    public static final RegistryObject<Item> INVOKE_CHEAT_UI = ITEMS.register("invokecheatui" , InvokeCheatUI::new);
+    public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
 
-//    public static final RegistryObject<DiscAloneInTheDarkItem> TEST_DISC = ITEMS.register("test_disc", DiscAloneInTheDarkItem::new);
+    public static final RegistryObject<Item> MOZHUA_CAP = ITEMS.register("mozhua_cap",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> SUMMON_CSDY = ITEMS.register("summon_csdy", SummonCsdy::new);
+
 
 }

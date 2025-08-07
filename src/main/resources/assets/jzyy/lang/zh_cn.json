@@ -8,6 +8,8 @@
   "item.jzyy.experience_steel_ingot": "经验钢",
   "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
   "item.jzyy.defect": "钴丈技奇人锭",
+  "item.jzyy.mozhua_cap": "再来一瓶",
+
 
   "item.jzyy.portable_end_portal": "便携式末地传送门",
   "item.jzyy.protable_end_portal.line1": "在指定方块上生成3*3的末地传送门",
@@ -56,7 +58,8 @@
   "item.jzyy.evange_alloy_ingot": "福音合金",
   "item.jzyy.evange_alloy_ingot.line1": "asiramemasirik的提案",
 
-
+  "item.jzyy.maggot": "一块蛆",
+  "item.jzyy.maggot.line1": "（l＝l）的赞助者提案",
 
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
@@ -117,7 +120,7 @@
 
   "material.jzyy.tong_ban": "§d桐板",
   "material.jzyy.tong_ban.flavor": "还在眨眼睛",
-  "material.jzyy.tong_ban.encyclopedia": "请输入文本",
+  "material.jzyy.tong_ban.encyclopedia": "小桐的贪欲化为实体，并凝聚在这块由紫水晶青铜和钻石刻蚀的魔纹板上，她十分乐意于推动玩家走向贪婪，用她的大手为你夺取更多的战利品。",
 
   "material.jzyy.rainbow_material": "彩虹物质",
   "material.jzyy.rainbow_material.flavor": "看起来像云宝",
@@ -170,6 +173,11 @@
   "material.jzyy.evange_alloy_ingot": "福音合金",
   "material.jzyy.evange_alloy_ingot.flavor": "请输入文本",
   "material.jzyy.evange_alloy_ingot.encyclopedia": "请输入文本",
+
+  "material.jzyy.maggot": "蛆",
+  "material.jzyy.maggot.flavor": "呃，这真是有够恶心！",
+  "material.jzyy.maggot.encyclopedia": "＿Ω＿Ω＿Ω＿Ω＿Ω＿Ω",
+
 
 
 
@@ -252,9 +260,42 @@
   "modifier.jzyy.gaius.flavor": "请输入文本",
   "modifier.jzyy.gaius.description": "本工具不毁。在一级时每秒回复背包内所有有耐久度的东西20点耐久度，此后每级回复的耐久度是上一级的两倍。",
 
+  "modifier.jzyy.rim_maggot": "环蛆",
+  "modifier.jzyy.rim_maggot.flavor": "介绍被蛆了",
+  "modifier.jzyy.rim_maggot.description": "蛆消你耐久！",
+
+  "modifier.jzyy.juicy": "爆浆",
+  "modifier.jzyy.juicy.flavor": "鲜嫩多汁啊噶人们",
+  "modifier.jzyy.juicy.description": "让被攻击的目标感到恶心并糊住他们的视线",
+
+  "modifier.jzyy.live_maggot": "活蛆",
+  "modifier.jzyy.live_maggot.flavor": "自动喂食模块...但是我吃的是?",
+  "modifier.jzyy.live_maggot.description": "每过一段时间为你补充饱食度",
+
+
+
+
+
+
+
+
+
+
+
+
   "modifier.jzyy.fire_eater": "食火者",
   "modifier.jzyy.fire_eater.flavor": "你的工具会吞噬你身上的火焰为自己增加耐久",
   "modifier.jzyy.fire_eater.description": "我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。",
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -638,6 +679,11 @@
   "modifier.jzyy.music": "选择曲目",
   "modifier.jzyy.music.flavor": "要开始了哟",
   "modifier.jzyy.music.description":"获得一个音乐槽",
+
+  "modifier.jzyy.refill": "再来一瓶！",
+  "modifier.jzyy.refill.flavor": "来干来干",
+  "modifier.jzyy.refill.description":"造成伤害或者受到伤害后，有概率获得“再来一瓶”",
+
 
   "modifier.jzyy.ama_no_jyaku": "天之弱",
   "modifier.jzyy.ama_no_jyaku.flavor": "骗子的我所吐出的 相反词的情歌",

@@ -1,0 +1,24 @@
+{
+  "default": [
+    {
+      "name": "jzyy:rim_maggot",
+      "level": 1
+    },
+    {
+      "name": "jzyy:juicy",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:live_maggot",
+        "level": 1
+      },
+      {
+        "name": "jzyy:rim_maggot",
+        "level": 1
+      }
+    ]
+  }
+}

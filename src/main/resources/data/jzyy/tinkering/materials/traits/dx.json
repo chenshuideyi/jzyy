@@ -3,6 +3,10 @@
     {
       "name": "jzyy:music",
       "level": 1
+    },
+    {
+      "name": "jzyy:refill",
+      "level": 1
     }
   ]
 }

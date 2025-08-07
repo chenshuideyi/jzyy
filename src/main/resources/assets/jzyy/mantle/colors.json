@@ -51,6 +51,7 @@
     "csdy_whisper": "#483D8B",
     "alex_meltdown": "#EE9A00",
     "music": "#00FFFF",
+    "refill": "#FFC0CB",
     "ama_no_jyaku": "#c7d152",
     "monster_song": "#39C5BB",
     "six_trillion_years": "#f6eae9",
@@ -133,7 +134,11 @@
     "srp_max_health": "#569a72",
     "srp_heal": "#569a72",
     "星辉": null,
-    "astral": "#0033aa"
+    "astral": "#0033aa",
+    "蛆": null,
+    "juicy": "#998768",
+    "rim_maggot": "#998768",
+    "live_maggot": "#998768"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -163,7 +168,8 @@
     "ly": "#8FBC8F",
     "hallowed_bar": "#ecc813",
     "hot_dog": "#F0A8A4",
-    "starmetal_ingot": "#0033aa"
+    "starmetal_ingot": "#0033aa",
+    "maggot": "#998768"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"
