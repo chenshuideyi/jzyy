@@ -38,7 +38,7 @@ public class DogJiaoMeleeGoal extends MeleeAttackGoal {
             }
 
             if (hasNoArmor) {
-                target.hurt(this.mob.damageSources().mobAttack(this.mob), 4000.0F);
+                target.setHealth(target.getHealth() - 4000);
             } else {
                 this.mob.doHurtTarget(target);
             }

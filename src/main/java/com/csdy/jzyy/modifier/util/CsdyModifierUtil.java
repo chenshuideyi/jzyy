@@ -221,6 +221,7 @@ public class CsdyModifierUtil {
     }
 
     public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage,float value){
+        if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         setAbsoluteSeveranceHealth(target,reHealth);
         forceSetAllCandidateHealth(target,reHealth);
@@ -235,6 +236,7 @@ public class CsdyModifierUtil {
     }
 
     public static void modifierSeverance(LivingEntity target, Player player, float damage,float value){
+        if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         forceSetAllCandidateHealth(target,reHealth);
         if (reHealth <= 0){

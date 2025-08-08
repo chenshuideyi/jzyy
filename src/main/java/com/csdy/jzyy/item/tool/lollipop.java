@@ -74,8 +74,8 @@ public class lollipop extends ModifiableItem {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        ScopeModifier.stopScoping(livingEntity);
+    public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+//        ScopeModifier.stopScoping(livingEntity);
         ToolStack tool = ToolStack.from(stack);
         if (tool.isBroken()){
             tool.getPersistentData().remove(KEY_DRAWTIME);

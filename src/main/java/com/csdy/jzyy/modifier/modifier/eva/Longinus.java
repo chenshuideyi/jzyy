@@ -22,18 +22,24 @@ import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 
 public class Longinus extends Modifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
 
+    @Override
+    public int getPriority() {
+        return Integer.MAX_VALUE;
+    }
 
     @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damageDealt) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         var level = entry.getLevel();
         if (target != null && player != null) {
-            if (isFromDummmmmmyMod(target)) return;
+            if (isFromDummmmmmyMod(target)) return knockback;
+            if (target.getHealth() <= 0 ) return knockback;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             modifierSeverance(target,player,1000 * toolDamage * (level * 2 - 1) ,1);
         }
 
+        return knockback;
     }
 
 
