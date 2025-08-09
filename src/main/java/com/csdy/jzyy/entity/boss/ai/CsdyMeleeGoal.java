@@ -10,12 +10,8 @@ import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
-import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
-import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
-import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
-import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
 
 public class CsdyMeleeGoal extends MeleeAttackGoal {
 
@@ -146,8 +142,6 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
             setAbsoluteSeveranceHealth(target, reHealth);
             forceSetAllCandidateHealth(target, reHealth);
             if (target.getHealth() >= oldHealth || target.getHealth() > reHealth || target.getHealth() <= 0) {
-                setCategory(target, csdykill);
-                // superKillEntity(target);
             }
         }
     }

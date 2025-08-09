@@ -6,9 +6,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 
-public class CsdySeverPlayer extends ServerPlayer {
+public class CsdyServerPlayer extends ServerPlayer {
     static final String name = "Paradox-Ishmerai-Netra-Cogito-Hinanawi-Kirisame-Veni,Vidi,Vici-Atramentum-Veritas-Csdy";
-    public CsdySeverPlayer(MinecraftServer p_143384_, ServerLevel p_143385_, GameProfile p_143386_) {
+    public CsdyServerPlayer(MinecraftServer p_143384_, ServerLevel p_143385_, GameProfile p_143386_) {
         super(p_143384_, p_143385_, p_143386_);
     }
 

@@ -2,8 +2,6 @@ package com.csdy.jzyy.modifier.modifier.csdy;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
-import com.csdy.jzyy.ms.CoreMsUtil;
-import com.csdy.jzyy.ms.enums.EntityCategory;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,8 +19,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
-
 public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
 
     @Override
@@ -30,14 +26,12 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
         var target = context.getLivingTarget();
         if (!(context.getAttacker() instanceof Player player)) return damage;
         if (context.getLivingTarget() == null) return damage;
-        setCategory(target, EntityCategory.csdykill);
         return damage;
     }
 
     @Override
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
         if (attacker instanceof ServerPlayer player && target instanceof LivingEntity living) {
-            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
             return damage;
         }
         return damage;

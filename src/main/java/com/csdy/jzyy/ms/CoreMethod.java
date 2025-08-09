@@ -1,6 +1,5 @@
 package com.csdy.jzyy.ms;
 
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
 @SuppressWarnings("unused")

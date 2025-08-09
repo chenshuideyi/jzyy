@@ -25,12 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
-import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
-import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
-import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
-import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
 
 public class CsdyWorldDiadema extends Diadema {
     final static double RADIUS = 8;
@@ -120,7 +116,7 @@ public class CsdyWorldDiadema extends Diadema {
                         setAbsoluteSeveranceHealth(living,reHealth);
                         forceSetAllCandidateHealth(living,reHealth);
                         if (living.getHealth() >= oldHealth || living.getHealth() > reHealth || living.getHealth() <= 0){
-                            setCategory(living,csdykill);
+//                            setCategory(living,csdykill);
 //                            superKillEntity(living);
                         }
                     }
