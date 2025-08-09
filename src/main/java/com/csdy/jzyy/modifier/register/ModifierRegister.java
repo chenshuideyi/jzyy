@@ -41,6 +41,9 @@ import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.glass.Loupe;
 import com.csdy.jzyy.modifier.modifier.glass.Prism;
+import com.csdy.jzyy.modifier.modifier.golden_strawberry.Gift;
+import com.csdy.jzyy.modifier.modifier.golden_strawberry.OneUp;
+import com.csdy.jzyy.modifier.modifier.golden_strawberry.RareFruit;
 import com.csdy.jzyy.modifier.modifier.hallowed_bar.HolyProtection;
 import com.csdy.jzyy.modifier.modifier.harcadium.EatStone;
 import com.csdy.jzyy.modifier.modifier.harcadium.HarcadiumArmor;
@@ -50,6 +53,7 @@ import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonBone;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonFire;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonFlash;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonIce;
+import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.Exoskeleton;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.FireDragonArmor;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.FlashDragonArmor;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.IceDragonArmor;
@@ -232,6 +236,8 @@ public class ModifierRegister {
     public static final StaticModifier<IceDragonArmor> ICE_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("ice_dragon_armor", IceDragonArmor::new);
     public static final StaticModifier<FlashDragonArmor> FLASH_DRAGON_ARMOR_STATIC_MODIFIER = MODIFIERS.register("flash_dragon_armor", FlashDragonArmor::new);
 
+
+    public static final StaticModifier<Exoskeleton> EXOSKELETON_STATIC_MODIFIER = MODIFIERS.register("exoskeleton", Exoskeleton::new);
     public static final StaticModifier<DragonBone> DRAGON_BONE_STATIC_MODIFIER = MODIFIERS.register("dragon_bone", DragonBone::new);
 
     ///ender
@@ -478,7 +484,10 @@ public class ModifierRegister {
     public static final StaticModifier<Gaius> GAIUS_STATIC_MODIFIER = MODIFIERS.register("gaius", Gaius::new);
     public static final StaticModifier<Longinus> LONGINUS_STATIC_MODIFIER = MODIFIERS.register("longinus", Longinus::new);
 
-
+    ///金草莓
+    public static final StaticModifier<OneUp> ONE_UP_STATIC_MODIFIER = MODIFIERS.register("one_up", OneUp::new);
+    public static final StaticModifier<RareFruit> RARE_FRUIT_STATIC_MODIFIER = MODIFIERS.register("rare_fruit", RareFruit::new);
+    public static final StaticModifier<Gift> GIFT_STATIC_MODIFIER = MODIFIERS.register("gift", Gift::new);
 
     ///彩虹物质
     public static final StaticModifier<ColorModifier> COLOR_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color", ColorModifier::new);

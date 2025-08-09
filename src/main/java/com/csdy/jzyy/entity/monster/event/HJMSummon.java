@@ -3,6 +3,7 @@ package com.csdy.jzyy.entity.monster.event;
 
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -39,6 +40,7 @@ public class HJMSummon {
             int a = random.nextInt(19);
             if (a==1) {
                 trySpawnEntityNearPlayer(JzyyEntityRegister.HJM.get(),(ServerLevel) event.level, player,1,18,30,null,0,0);
+                player.displayClientMessage(Component.literal("感觉到了[哈！]的气息…"), true);
             }
         }
     }

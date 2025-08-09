@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "jzyy:golden_strawberry"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "jzyy:golden_strawberry"
+}

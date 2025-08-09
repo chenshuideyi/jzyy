@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_melting",
+    "input": "jzyy:rainbow_material",
+    "temperature": 6666,
+    "result": {
+        "fluid": "jzyy:molten_rainbow_material",
+        "amount": 90
+    }
+}

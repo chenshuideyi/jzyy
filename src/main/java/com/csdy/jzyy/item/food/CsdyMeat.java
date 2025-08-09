@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 public class CsdyMeat extends ItemGenericFood {
 
     public CsdyMeat() {
-        super(16384, 16384, false, true, true, 1);
+        super(16384, 16384, false, true, true, 64);
     }
 
     @Override

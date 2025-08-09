@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:one_up",
+      "level": 1
+    },
+    {
+      "name": "jzyy:rare_fruit",
+      "level": 1
+    },
+    {
+      "name": "jzyy:gift",
+      "level": 1
+    }
+  ]
+}
