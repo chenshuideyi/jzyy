@@ -1009,5 +1009,19 @@
   "modifier.jzyy.guixu.flavor":"归于虚妄",
   "modifier.jzyy.guixu.description":"使自己的无敌帧更长。",
 
+  "modifier.jzyy.merortoughness": "莫厄韧性",
+  "modifier.jzyy.merortoughness.flavor":"merormoir",
+  "modifier.jzyy.merortoughness.description":"减免非莫厄伤害。",
+
+  "modifier.jzyy.merorbroken": "莫厄破韧",
+  "modifier.jzyy.merorbroken.flavor":"merormoir",
+  "modifier.jzyy.merorbroken.description":"击中使敌人收到流血效果无视莫厄韧性",
+
+  "modifier.jzyy.merorbroken": "低伤无视",
+  "modifier.jzyy.merorbroken.flavor":"refinemerormoir",
+  "modifier.jzyy.merorbroken.description":"免疫小于7的伤害",
+
+
+
   "entity.oni_miko.onimiko": "鬼巫女"
 }
