@@ -318,6 +318,9 @@ public class ModifierRegister {
     public static final StaticModifier<BulgeRod.wave> WAVE_STATIC_MODIFIER = MODIFIERS.register("wave", BulgeRod.wave::new);
     public static final StaticModifier<VirtualCaveCrystalWeapon.shattertheemptiness> SHATTERTHEEMPTINESS_STATIC_MODIFIER = MODIFIERS.register("shattertheemptiness", VirtualCaveCrystalWeapon.shattertheemptiness::new);
     public static final StaticModifier<VirtualCaveCrystalArmor.guixu> GUIXU_STATIC_MODIFIER = MODIFIERS.register("guixu", VirtualCaveCrystalArmor.guixu::new);
+    public static final StaticModifier<Meror.merorbroken> MERORBROKEN_STATIC_MODIFIER = MODIFIERS.register("merorbroken", Meror.merorbroken::new);
+    public static final StaticModifier<MerorArmor.merortoughness> MERORToughness_STATIC_MODIFIER = MODIFIERS.register("merortoughness", MerorArmor.merortoughness::new);
+    public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("low_injury_disregard", RefineMerorArmor.lowinjurydisregard::new);
 
     ///护甲补强
     public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);
