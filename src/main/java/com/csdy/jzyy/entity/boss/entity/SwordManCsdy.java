@@ -10,6 +10,9 @@ import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
@@ -22,6 +25,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -92,12 +96,22 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         return LOOT_TABLE;
     }
 
-
-
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType,
-                                        @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnData, dataTag);
+    public void defineSynchedData() {
+        super.defineSynchedData();
+        // 注册同步数据并设置默认值
+        this.entityData.define(DATA_IS_ATTACKING, false);
+    }
+
+    private static final EntityDataAccessor<Boolean> DATA_IS_ATTACKING =
+            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
+
+    public boolean isAttacking() {
+        return this.entityData.get(DATA_IS_ATTACKING);
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.entityData.set(DATA_IS_ATTACKING, attacking);
     }
 
     @Override
@@ -212,7 +226,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public void setHealth(float value) {
         float currentHealth = this.getHealth();
         float healthLoss = currentHealth - value;
-        float threshold = 100.0f;
+        float threshold = 325.0f;
         if (healthLoss > threshold) {
             value = currentHealth - threshold;
         }
@@ -227,6 +241,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
         // 行为选择器 (goalSelector)
         this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
+        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
 
         // 目标选择器 (targetSelector) - 修改后的版本
@@ -238,14 +253,17 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "Walking", 5, this::walkAnimController));
+        // 您可以将控制器命名得通用一些，比如 "controller" 或 "main"
+        controllers.add(new AnimationController<>(this, "controller", 5, this::mainAnimController));
     }
 
-    private PlayState walkAnimController(AnimationState<SwordManCsdy> state) {
-        if (!state.isMoving() && this.getTarget() == null)
-            return state.setAndContinue(IDLE_ANIM);
-        else return state.setAndContinue(WALK_ANIM);
+    private PlayState mainAnimController(AnimationState<SwordManCsdy> state) {
+        if (state.isMoving() || this.getTarget() != null || isAttacking()) {
+            return state.setAndContinue(WALK_ANIM);
+        }
+        return state.setAndContinue(IDLE_ANIM);
     }
+
 
 
     @Override
@@ -257,11 +275,11 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 3.2);
-        builder = builder.add(Attributes.MAX_HEALTH, 3000);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 1600.0);
-        builder = builder.add(Attributes.ATTACK_SPEED, 10.0);
-        builder = builder.add(Attributes.FOLLOW_RANGE, 32.0);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 3.4);
+        builder = builder.add(Attributes.MAX_HEALTH, 8000);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 1200.0);
+        builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
+        builder = builder.add(Attributes.FOLLOW_RANGE, 36.0);
         return builder;
     }
 

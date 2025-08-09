@@ -20,12 +20,13 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -42,25 +43,29 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         this.value = value;
     }
 
+//    @Override
+//    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+//        LivingEntity target = context.getLivingTarget();
+//        Player player = context.getPlayerAttacker();
+//        if (target != null && player != null && target.getHealth() > 0) {
+//            if (target.getHealth() <= 0) return knockback;
+//            if (isFromDummmmmmyMod(target)) return knockback;
+//            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+//            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
+//        }
+//        return knockback;
+//    }
+
     @Override
-    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null && target.getHealth() > 0) {
-            if (isFromDummmmmmyMod(target)) return knockback;
-            float reHealth = target.getHealth() - damage * this.value - target.getMaxHealth() * 0.01f;
-            setAbsoluteSeveranceHealth(target,reHealth);
-            forceSetAllCandidateHealth(target,reHealth);
-            if (reHealth <= 0){
-                //并非不能掉落
-                var playerKill = target.level().damageSources.playerAttack(player);
-                target.die(playerKill);
-                triggerKillAdvancement(target,playerKill);
-                setEntityDead(target);
-                dropLoot(target,playerKill);
-            }
+            if (target.getHealth() <= 0) return;
+            if (isFromDummmmmmyMod(target)) return;
+            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
         }
-        return knockback;
     }
 
     /**

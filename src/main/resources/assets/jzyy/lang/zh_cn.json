@@ -17,6 +17,13 @@
   "item.jzyy.pla_steel_ingot": "玻璃钢",
   "fluid.jzyy.molten_pla_steel": "熔融玻璃钢",
   "item.jzyy.molten_pla_steel_bucket": "熔融玻璃钢桶",
+  "block.jzyy.molten_pla_steel_fluid": "熔融玻璃钢",
+
+  "item.jzyy.rainbow_material": "彩虹物质",
+  "item.jzyy.rainbow_material.line1": "他们飞一万万又一万万又一万万万年，终于又飞回到原点",
+  "fluid.jzyy.molten_rainbow_material": "熔融彩虹物质",
+  "item.jzyy.molten_rainbow_material_bucket": "熔融彩虹物质桶",
+  "block.jzyy.molten_rainbow_material_fluid": "熔融彩虹物质",
 
   "stat.tconstruct.slot.display.dx": "音乐",
   "stat.tconstruct.slot.prefix.dx": "音乐槽：",
@@ -61,13 +68,16 @@
   "item.jzyy.maggot": "一块蛆",
   "item.jzyy.maggot.line1": "（l＝l）的赞助者提案",
 
+  "item.jzyy.golden_strawberry": "金草莓",
+  "item.jzyy.golden_strawberry.line1": "某白冻的赞助者提案",
+
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
   "item.jzyy.summon_csdy": "天子的帽子",
   "item.jzyy.summon_csdy_line1": "可以召唤csdy",
 
-  "item.jzyy.rainbow_material": "彩虹物质",
-  "item.jzyy.rainbow_material.line1": "他们飞一万万又一万万又一万万万年，终于又飞回到原点",
+
+
 
   "item.jzyy.tong_ban": "§b桐§d板",
   "item.jzyy.tong_ban.line1": "§b芝士§d猫猫桐§b的提案",
@@ -88,6 +98,10 @@
   "material.jzyy.hot_dog": "热狗",
   "material.jzyy.hot_dog.flavor": "我要吃热狗呀",
   "material.jzyy.hot_dog.encyclopedia": "据说是一百个被鬼巫女所害的人热狗聚集而成",
+
+  "material.jzyy.golden_strawberry": "金草莓",
+  "material.jzyy.golden_strawberry.flavor": "亮闪闪的",
+  "material.jzyy.golden_strawberry.encyclopedia": "好吃还好玩",
 
   "material.jzyy.bread": "面包",
   "material.jzyy.bread.flavor": "好吃",
@@ -216,6 +230,10 @@
   "material.jzyy.pufferfish.encyclopedia": "把活鱼做成工具是个技术活",
   "material.jzyy.pufferfish.armor": "扎的不是我的手",
 
+  "material.jzyy.chitin": "甲壳",
+  "material.jzyy.chitin.flavor": "虫子的智慧",
+  "material.jzyy.chitin.encyclopedia": "比想象中更硬，更轻",
+  
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
 
@@ -249,15 +267,15 @@
   "modifier.jzyy.astral.description": "暴击时，停住目标的时间两秒",
 
   "modifier.jzyy.longinus": "朗基努斯",
-  "modifier.jzyy.longinus.flavor": "请输入文本",
-  "modifier.jzyy.longinus.description": "敌人额外造成数值相当于1000倍主手武器面板伤害的切断伤害，此后每级在上一级的基础上乘以二",
+  "modifier.jzyy.longinus.flavor": "绝望",
+  "modifier.jzyy.longinus.description": "额外造成1000倍主手武器面板的伤害，此后每级在上一级的基础上乘以二",
 
   "modifier.jzyy.cassius": "卡西乌斯",
-  "modifier.jzyy.cassius.flavor": "请输入文本",
+  "modifier.jzyy.cassius.flavor": "希望",
   "modifier.jzyy.cassius.description": "死亡时会复活一次，获得10秒的抗性提升13和伤害吸收13，CD200秒，随等级缩减",
 
   "modifier.jzyy.gaius": "盖乌斯",
-  "modifier.jzyy.gaius.flavor": "请输入文本",
+  "modifier.jzyy.gaius.flavor": "第三把枪",
   "modifier.jzyy.gaius.description": "本工具不毁。在一级时每秒回复背包内所有有耐久度的东西20点耐久度，此后每级回复的耐久度是上一级的两倍。",
 
   "modifier.jzyy.rim_maggot": "环蛆",
@@ -272,7 +290,17 @@
   "modifier.jzyy.live_maggot.flavor": "自动喂食模块...但是我吃的是?",
   "modifier.jzyy.live_maggot.description": "每过一段时间为你补充饱食度",
 
+  "modifier.jzyy.one_up": "1UP",
+  "modifier.jzyy.one_up.flavor": "再来再来！",
+  "modifier.jzyy.one_up.description": "击杀八个生物后获得一次复活机会",
 
+  "modifier.jzyy.rare_fruit": "珍稀水果",
+  "modifier.jzyy.rare_fruit.flavor": "你学不会凌波微步的，别做梦了",
+  "modifier.jzyy.rare_fruit.description": "获得速度2，跳跃提升2",
+
+  "modifier.jzyy.gift": "一份薄礼",
+  "modifier.jzyy.gift.flavor": "适合朋友，家人，甚至另一个自己",
+  "modifier.jzyy.gift.description": "攻击额外造成80%持有者最大生命值的魔法伤害，随等级提升",
 
 
 
@@ -299,9 +327,7 @@
 
 
 
-  "modifier.jzyy.dragon_bone": "强制破坏",
-  "modifier.jzyy.dragon_bone.flavor": "龙骨镐神力",
-  "modifier.jzyy.dragon_bone.description": "无视挖掘等级，强制挖掘可破坏的方块",
+
 
   "modifier.jzyy.hyper_beam": "破坏死光",
   "modifier.jzyy.hyper_beam.flavor": "黑·魔·导·爆·烈·破",
@@ -453,6 +479,10 @@
   "modifier.jzyy.return.flavor": "落红不是无情物",
   "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
 
+  "modifier.jzyy.kraken_shell": "海妖外壳",
+  "modifier.jzyy.kraken_shell.flavor": "铁帆海军里有一个传言，说是有只强大的海兽，明明被矛刺中被剑砍伤依然能践踏舰队",
+  "modifier.jzyy.kraken_shell.description": "减少你受到的伤害",
+
   "modifier.jzyy.love": "暴力点数",
   "modifier.jzyy.love.flavor": "I am made L-O-V-E",
   "modifier.jzyy.love.description": "若你的等级超过20级，提供再生5",
@@ -507,6 +537,8 @@
   "modifier.jzyy.fantasy_ending.flavor": "混沌与爱倒挂在坟墓之下，圣殿的灯油穿过叙事的橘子皮，无可挽救的终点啃食了梦幻,\n你是否仍感幸福?",
   "modifier.jzyy.fantasy_ending.description":"「绝对切断」100%效能\n「梦终切断」1000%效能",
 
+
+
   "modifier.jzyy.dragon_killer": "屠龙者",
   "modifier.jzyy.dragon_killer.flavor": "你的名字将作为传奇",
   "modifier.jzyy.dragon_killer.description":"对龙造成50%额外伤害（是dragon不是loong哦）",
@@ -534,6 +566,17 @@
   "modifier.jzyy.flash_dragon_armor": "龙霆",
   "modifier.jzyy.flash_dragon_armor.flavor": "电龙雷殛",
   "modifier.jzyy.flash_dragon_armor.description":"被闪电击中后进入雷凯",
+
+  "modifier.jzyy.dragon_bone": "强制破坏",
+  "modifier.jzyy.dragon_bone.flavor": "龙骨镐神力",
+  "modifier.jzyy.dragon_bone.description": "无视挖掘等级，强制挖掘可破坏的方块",
+
+  "modifier.jzyy.exoskeleton": "外骨骼",
+  "modifier.jzyy.exoskeleton.flavor": "虫子从来没有被真正消灭过",
+  "modifier.jzyy.exoskeleton.description": "受到的伤害减少1点",
+
+
+
 
   "modifier.jzyy.flesh_gear": "血肉齿轮",
   "modifier.jzyy.flesh_gear.flavor": "你还无法理解",
@@ -819,7 +862,7 @@
 
   "modifier.jzyy.1999_amir": "共鸣-阿米尔·Volt",
   "modifier.jzyy.1999_amir.flavor": "加速",
-  "modifier.jzyy.1999_amir.description": "获得1点移动速度，攻击速度",
+  "modifier.jzyy.1999_amir.description": "获得五倍移动速度，攻击速度",
 
   "modifier.jzyy.1999_quincy": "共鸣-昆西·Cyte-09",
   "modifier.jzyy.1999_quincy.flavor": "补给",
@@ -908,7 +951,7 @@
   "effect.jzyy.overcharge_armor": "雷凯",
   "effect.jzyy.csdy": "csdy的礼物",
   "effect.jzyy.horologium_no_ai": "时间停止",
-
+  "effect.jzyy.holy_protection_cooldown": "神圣闪避冷却中",
 
   "jzyy.tool.tab": "匠战妖域-工具",
   "item.jzyy.lollipop": "棒棒糖",

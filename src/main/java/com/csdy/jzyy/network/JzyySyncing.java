@@ -1,10 +1,7 @@
 package com.csdy.jzyy.network;
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.network.packets.PlaySoundPacket;
-import com.csdy.jzyy.network.packets.ExcaliburPacket;
-import com.csdy.jzyy.network.packets.JzyySonicBoomPacket;
-import com.csdy.jzyy.network.packets.UnsafeMemoryPacket;
+import com.csdy.jzyy.network.packets.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
@@ -58,8 +55,22 @@ public class JzyySyncing {
                 PlaySoundPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
         );
-
-
+        CHANNEL.registerMessage(
+                packetId++,
+                UndyingAnimationPacket.class,
+                UndyingAnimationPacket::encode,
+                UndyingAnimationPacket::decode,
+                UndyingAnimationPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
+        );
+        CHANNEL.registerMessage(
+                packetId++,
+                HolyProtectionParticlePacket.class,
+                HolyProtectionParticlePacket::encode,
+                HolyProtectionParticlePacket::decode,
+                HolyProtectionParticlePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
+        );
 
     }
 }

@@ -28,7 +28,6 @@ public class Refill extends NoLevelsModifier implements MeleeHitModifierHook, On
     public void onAttacked(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource damageSource, float amount, boolean isDirectDamage) {
         if (!(context.getEntity() instanceof Player player)) return;
 
-        // 检查2%的概率 (0.02 = 2%)
         if (random.nextFloat() <= 0.02f) {
             ItemStack cap = new ItemStack(ItemRegister.MOZHUA_CAP.get());
 
@@ -49,7 +48,6 @@ public class Refill extends NoLevelsModifier implements MeleeHitModifierHook, On
         Player player = context.getPlayerAttacker();
         if (target != null && player != null && context.isCritical()) {
 
-            // 检查2%的概率 (0.02 = 2%)
             if (random.nextFloat() <= 0.02f) {
                 ItemStack cap = new ItemStack(ItemRegister.MOZHUA_CAP.get());
 

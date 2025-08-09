@@ -20,6 +20,7 @@ import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.item.tool.until.JzyyTools;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
+import com.csdy.jzyy.modifier.util.JzyyAnimationHandler;
 import com.csdy.jzyy.modifier.util.layer.GocLayer;
 import com.csdy.jzyy.modifier.util.layer.PlayerCreeperArmorLayer;
 import com.csdy.jzyy.network.JzyySyncing;
@@ -73,6 +74,7 @@ public class JzyyModMain {
         JzyyEntityRegister.JZYY_ENTITY.register(bus);
         JzyyFluidRegister.FLUIDS.register(bus);
         JzyyParticlesRegister.PARTICLE_TYPES.register(bus);
+        MinecraftForge.EVENT_BUS.register(JzyyAnimationHandler.class);
 
         gpuUtilInit();
 
