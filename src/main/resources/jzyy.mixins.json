@@ -9,6 +9,7 @@
     "CsdyProtectionLivingEntityMixin",
     "InventoryMixin",
     "LivingEntityMixin",
+    "PlayerMixin",
     "PreventDisarmamentMixin",
     "SynchedEntityDataMixin",
     "UILoadMixin",

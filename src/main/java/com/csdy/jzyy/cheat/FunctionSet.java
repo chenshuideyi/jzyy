@@ -64,18 +64,14 @@ public class FunctionSet {
             checkBooleanVariables(player);
         }
     }
+
     private static void checkBooleanVariables(Player player) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) {
             if (FieldList.Fly) {
                 mc.player.getAbilities().mayfly = true;
+                mc.player.getAbilities().flying = true;
             }
-//            else {
-//                if (!mc.player.isCreative() || !mc.player.getAbilities().mayfly) {
-//                    mc.player.getAbilities().mayfly = false;
-//                    mc.player.getAbilities().flying = false;
-//                }
-//            }
             if (FieldList.Speed) {
                 mc.player.getAbilities().setFlyingSpeed(0.3f);
             } else {
@@ -101,6 +97,7 @@ public class FunctionSet {
             }
         }
     }
+
     public static void RecordPlayerPosition() {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null && mc.level != null) {

@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -16,6 +17,8 @@ import slimeknights.tconstruct.library.modifiers.hook.armor.OnAttackedModifierHo
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+
+import java.util.concurrent.TimeUnit;
 
 public class QuillSpray extends Modifier implements OnAttackedModifierHook {
 
@@ -42,7 +45,10 @@ public class QuillSpray extends Modifier implements OnAttackedModifierHook {
                 float yRot = holder.getYRot() + (level.random.nextFloat() - 0.5F) * spread;
 
                 arrow.shootFromRotation(holder, xRot, yRot, 0.0F, 1.5F, 1.0F);
+                arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
+                arrow.life = 1100;
                 level.addFreshEntity(arrow);
+
             }
 
             level.playSound(null, holder.getX(), holder.getY(), holder.getZ(),

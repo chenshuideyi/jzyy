@@ -33,7 +33,7 @@ public class KeyPassNetworkValidation extends JFrame {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 JTextArea agreementArea = new JTextArea(15, 40);
-                agreementArea.setText("1. 本追踪仅用于单人使用，不得用于任何服务器。\n2. 用户需自行承担因使用本追踪而产生的所有法律责任。\n3. 本追踪不提供任何形式的技术支持或保证。\n4.本追踪会上传您的游戏ID至服务器用于统计使用人数，如果您不希望上传您的游戏ID，请取消勾选同意用户守则。");
+                agreementArea.setText("1. 本追踪仅用于“匠战妖域”整合包单人或与朋友联机使用，无法用于任何服务器和其他整合包。\n2. 本追踪不提供任何形式的技术支持或保证。");
                 agreementArea.setEditable(false);
                 JScrollPane scrollPane = new JScrollPane(agreementArea);
                 JOptionPane.showMessageDialog(KeyPassNetworkValidation.this, scrollPane, "用户守则", JOptionPane.INFORMATION_MESSAGE);
@@ -45,13 +45,13 @@ public class KeyPassNetworkValidation extends JFrame {
         JLabel versionLabel = new JLabel("选择版本：");
         panel.add(versionLabel);
         JRadioButton lightRadio = new JRadioButton("精简版");
-        JRadioButton fullRadio = new JRadioButton("完整版");
+//        JRadioButton fullRadio = new JRadioButton("完整版");
         lightRadio.setSelected(true);
         ButtonGroup versionGroup = new ButtonGroup();
         versionGroup.add(lightRadio);
-        versionGroup.add(fullRadio);
+//        versionGroup.add(fullRadio);
         panel.add(lightRadio);
-        panel.add(fullRadio);
+//        panel.add(fullRadio);
         int choice = JOptionPane.showOptionDialog(this, panel, "提示", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"确定", "取消"}, "确定");
 
         if (choice == JOptionPane.OK_OPTION) {
