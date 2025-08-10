@@ -39,6 +39,8 @@ import com.csdy.jzyy.modifier.modifier.experience.ExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.ExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
+import com.csdy.jzyy.modifier.modifier.failed_gobbers.TriplingBless;
+import com.csdy.jzyy.modifier.modifier.failed_gobbers.TriplingCurse;
 import com.csdy.jzyy.modifier.modifier.glass.Loupe;
 import com.csdy.jzyy.modifier.modifier.glass.Prism;
 import com.csdy.jzyy.modifier.modifier.golden_strawberry.Gift;
@@ -305,6 +307,9 @@ public class ModifierRegister {
     public static final StaticModifier<CoupDeGrace> COUP_DE_GRACE_STATIC_MODIFIER = MODIFIERS.register("coup_de_grace", CoupDeGrace::new);
     public static final StaticModifier<Kagerou> KAGEROU_STATIC_MODIFIER = MODIFIERS.register("kagerou", Kagerou::new);
     public static final StaticModifier<Pulverize> PULVERIZE_STATIC_MODIFIER = MODIFIERS.register("pulverize", Pulverize::new);
+    ///俯首戈伯
+    public static final StaticModifier<TriplingBless> TRIPLING_BLESS = MODIFIERS.register("triplingbless", TriplingBless::new);
+    public static final StaticModifier<TriplingCurse> TRIPLING_CURSE = MODIFIERS.register("triplingcurse", TriplingCurse::new);
 
     ///雨幕
     public static final StaticModifier<Cyte09> CYTE_09_STATIC_MODIFIER = MODIFIERS.register("1999_quincy", Cyte09::new);

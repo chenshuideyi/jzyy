@@ -56,7 +56,7 @@ public class BlockBreakEventHandler {
             return;
         }
 
-        Tier tier = MiningTierToolHook.getTier(tool);
+        Tier tier = tool.getStats().get(ToolStats.HARVEST_TIER);
         ItemStack toolStack = player.getMainHandItem(); // 获取实际手持物品
 
         for (int dx = -expandedLevel; dx <= expandedLevel; dx++) {

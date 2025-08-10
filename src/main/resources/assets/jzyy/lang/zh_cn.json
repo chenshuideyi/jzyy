@@ -9,6 +9,8 @@
   "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
   "item.jzyy.defect": "钴丈技奇人锭",
   "item.jzyy.mozhua_cap": "再来一瓶",
+  "item.jzyy.dog_jiao_spawn_egg": "大狗嚼刷怪蛋",
+  "item.jzyy.hjm_spawn_egg": "[其名为耄]刷怪蛋",
 
 
   "item.jzyy.portable_end_portal": "便携式末地传送门",
@@ -90,6 +92,10 @@
 
   "item.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "item.jzyy.etsh.line1": "etsh的提案",
+
+  "item.jzyy.failed_gobbers": "俯首戈伯",
+  "item.jzyy.failed_gobbers.line1": "被屈打成招",
+
 
   "material.jzyy.defect": "钴丈技奇人",
   "material.jzyy.defect.flavor": "全游戏第四强的材料",
@@ -233,7 +239,11 @@
   "material.jzyy.chitin": "甲壳",
   "material.jzyy.chitin.flavor": "虫子的智慧",
   "material.jzyy.chitin.encyclopedia": "比想象中更硬，更轻",
-  
+
+  "material.jzyy.failed_gobbers": "俯首戈伯",
+  "material.jzyy.failed_gobbers.flavor": "",
+  "material.jzyy.failed_gobbers.encyclopedia": "",
+
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
 
@@ -927,6 +937,13 @@
   "modifier.jzyy.infinitum.flavor": "由归纳而证明！",
   "modifier.jzyy.infinitum.description": "这件装备无法被破坏。",
 
+  "modifier.jzyy.triplingbless": "心智之殁",
+  "modifier.jzyy.triplingbless.flavor": "你用惨绝人寰的方式暴力粉碎了戈伯可悲的自尊，它的肉体坏灭，灵性薨殁",
+  "modifier.jzyy.triplingbless.description": "你的工具减少99.99%的全属性",
+
+  "modifier.jzyy.triplingcurse": "内源之力",
+  "modifier.jzyy.triplingcurse.flavor": "戈伯强大力量的源头已被通晓，权柄已被篡夺。你可以运用它真正的力量——随你的意志，而不是它的",
+  "modifier.jzyy.triplingcurse.description": "每级增加全槽位一个，该工具其他所有因特性而增加的槽位都会格外生效一次。每个槽位将全属性修正为原先的133%——在上一个槽位的基础上！",
 
 
   "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
@@ -949,11 +966,11 @@
   "entity.jzyy.mizi_ao": "「舞萌高手」米子山民",
   "entity.jzyy.mizi_ao.chujing": "「神碑的终结者」米子山民",
 
-  "entity.jzyy.hjm": "其名为耄",
+  "entity.jzyy.hjm": "[其名为耄]",
   "item.jzyy.lue_mao_qu": "§o略冒蛆§",
   "item.jzyy.lue_mao_qu.tooltip1": "还没尝过呢! 尝起来怎么样?",
-  "msg.lue_mao_qu1": "多么独特的味道! 您可能获得了999颗红心",
-  "msg.lue_mao_qu2": "您可能获得了999颗红心. 您追寻独特食物的愿望终于得到满足.",
+  "msg.lue_mao_qu1": "多么独特的味道! 您获得了0颗红心",
+  "msg.lue_mao_qu2": "您获得了0颗红心. 您追寻独特食物的愿望终于得到满足.",
   "msg.lue_mao_qu3": "该食物足以提升您的生命值.",
   "msg.lue_mao_qu4": "该食物未被加入黑名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",

@@ -30,7 +30,7 @@ public class LueMaoQu extends ItemGenericFood {
             String[] array = new String[]{"msg.lue_mao_qu1", "msg.lue_mao_qu2", "msg.lue_mao_qu3", "msg.lue_mao_qu4", "msg.lue_mao_qu5"};
             Random random = new Random();
             int randomIndex = random.nextInt(array.length);
-            int a = random.nextInt(9);
+            int a = random.nextInt(20);
             if (a != 1) {
                 player.sendSystemMessage(Component.translatable(array[randomIndex]));
             } else {

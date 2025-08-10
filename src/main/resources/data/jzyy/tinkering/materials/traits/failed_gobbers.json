@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "jzyy:triplingbless",
+      "level": 1
+    },
+    {
+      "name": "jzyy:triplingcurse",
+      "level": 1
+    }
+  ]
+}
