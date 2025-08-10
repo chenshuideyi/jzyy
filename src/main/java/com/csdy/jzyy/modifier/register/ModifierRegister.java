@@ -118,8 +118,8 @@ public class ModifierRegister {
     ///工具专属
     public static final StaticModifier<MagicFlying> MAGIC_FLYING_STATIC_MODIFIER = MODIFIERS.register("magic_flying", MagicFlying::new);
 
-
-
+    ///雾中人
+    public static final StaticModifier<EndlessHunger> ENDLESS_HUNGER_STATIC_MODIFIER = MODIFIERS.register("endless_hunger", EndlessHunger::new);
 
 
 
@@ -224,7 +224,11 @@ public class ModifierRegister {
 
     ///绝对切断及换皮
     public static final StaticModifier<AbsoluteSeverance> ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("absolute_severance", () -> new AbsoluteSeverance(0.5F));
-    public static final StaticModifier<Cosmos> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos",() -> new Cosmos(1F));
+
+    public static final StaticModifier<AbsoluteSeverance> REVELATION_STATIC_MODIFIER = MODIFIERS.register("revelation", () -> new AbsoluteSeverance(0.2F));
+    public static final StaticModifier<AbsoluteSeverance> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos", () -> new AbsoluteSeverance(0.5F));
+    public static final StaticModifier<AbsoluteSeverance> ULTIMA_STATIC_MODIFIER = MODIFIERS.register("ultima", () -> new AbsoluteSeverance(1F));
+    public static final StaticModifier<AbsoluteSeverance> OPTIMA_STATIC_MODIFIER = MODIFIERS.register("optima", () -> new AbsoluteSeverance(1F));
 
     ///冰火
 
@@ -324,7 +328,7 @@ public class ModifierRegister {
     public static final StaticModifier<BulgeRod.wave> WAVE_STATIC_MODIFIER = MODIFIERS.register("wave", BulgeRod.wave::new);
     public static final StaticModifier<VirtualCaveCrystalWeapon.shattertheemptiness> SHATTERTHEEMPTINESS_STATIC_MODIFIER = MODIFIERS.register("shattertheemptiness", VirtualCaveCrystalWeapon.shattertheemptiness::new);
     public static final StaticModifier<VirtualCaveCrystalArmor.guixu> GUIXU_STATIC_MODIFIER = MODIFIERS.register("guixu", VirtualCaveCrystalArmor.guixu::new);
-    public static final StaticModifier<Meror.merorbroken> MERORBROKEN_STATIC_MODIFIER = MODIFIERS.register("merorbroken", Meror.merorbroken::new);
+//    public static final StaticModifier<Meror.merorbroken> MERORBROKEN_STATIC_MODIFIER = MODIFIERS.register("merorbroken", Meror.merorbroken::new);
     public static final StaticModifier<MerorArmor.merortoughness> MERORToughness_STATIC_MODIFIER = MODIFIERS.register("merortoughness", MerorArmor.merortoughness::new);
     public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("low_injury_disregard", RefineMerorArmor.lowinjurydisregard::new);
 

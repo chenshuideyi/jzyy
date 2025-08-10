@@ -1,6 +1,7 @@
 package com.csdy.jzyy.diadema.csdyworld;
 
 
+import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 import com.csdy.tcondiadema.diadema.api.ranges.HalfSphereDiademaRange;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.DiademaType;
@@ -30,7 +31,7 @@ import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 
 public class CsdyWorldDiadema extends Diadema {
     final static double RADIUS = 8;
-    private final Entity holder = getCoreEntity();
+    private final SwordManCsdy holder = (SwordManCsdy) getCoreEntity();
 
     public CsdyWorldDiadema(DiademaType type, DiademaMovement movement) {
         super(type, movement);
@@ -103,11 +104,14 @@ public class CsdyWorldDiadema extends Diadema {
             if (entity.equals(holder)) continue;
 
             if (entity instanceof LivingEntity living) {
-                Mob mob = (Mob)holder;
-                mob.doHurtTarget(living);
+                ((Mob)holder).doHurtTarget(living);
                 livingEntitiesInRange.add(living);
                 if (living instanceof Player player) {
                     playersForCooldown.add(player);
+                    if (this.holder.isReal()) {
+                        setAbsoluteSeveranceHealth(living,0);
+                        forceSetAllCandidateHealth(living,0);
+                    }
                 }
                 else {
                     if (!isFromDummmmmmyMod(living)) {

@@ -142,7 +142,11 @@
     "金草莓": null,
     "one_up": "#FFD700",
     "rare_fruit": "#FFD700",
-    "gift": "#FFD700"
+    "gift": "#FFD700",
+    "endless_hunger": "#66CCFF",
+    "revelation": "#8B0000",
+    "ultima": "#48415d",
+    "optima": "#FF00FF"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

@@ -18,6 +18,7 @@ public class CsdyMeat extends ItemGenericFood {
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
         super.finishUsingItem(stack, worldIn, livingEntity);
         var player = (Player) livingEntity;
+        if (player.hasEffect(JzyyEffectRegister.CSDY.get())) return stack;
         player.addEffect(new MobEffectInstance(JzyyEffectRegister.CSDY.get(),221 * 20,0));
         if (player.level.isClientSide) {
             player.playSound(JzyySoundsRegister.GIRL_A.get());

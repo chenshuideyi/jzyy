@@ -529,9 +529,22 @@
   "modifier.jzyy.void_touch.flavor": "来自虚空的寒冷",
   "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切断」20%效能",
 
+  "modifier.jzyy.revelation": "炼狱",
+  "modifier.jzyy.revelation.flavor": "你已踏遍荒芜的冥界，那心中的祈愿，终究落于何方？",
+  "modifier.jzyy.revelation.description":"「绝对切断」20%效能",
+
   "modifier.jzyy.cosmos": "寰宇支配",
   "modifier.jzyy.cosmos.flavor": "一即全，全即一",
-  "modifier.jzyy.cosmos.description":"就像原本无尽剑那样\n绝对切断」100%效能",
+  "modifier.jzyy.cosmos.description":"「绝对切断」50%效能",
+
+  "modifier.jzyy.ultima": "创世",
+  "modifier.jzyy.ultima.flavor": "无限の力！",
+  "modifier.jzyy.ultima.description":"「绝对切断」100%效能",
+
+  "modifier.jzyy.optima": "完美",
+  "modifier.jzyy.optima.flavor": "无限の力！",
+  "modifier.jzyy.optima.description":"「绝对切断」100%效能",
+
 
   "modifier.jzyy.fantasy_ending": "梦幻终焉",
   "modifier.jzyy.fantasy_ending.flavor": "混沌与爱倒挂在坟墓之下，圣殿的灯油穿过叙事的橘子皮，无可挽救的终点啃食了梦幻,\n你是否仍感幸福?",
@@ -960,6 +973,10 @@
   "item.jzyy.tinker_loli_pickaxe": "普通萝莉",
   "item.jzyy.tinker_loli_pickaxe.description": "来自1.12的遥远遗产，可以同时作为镐子，铲子和斧头！\n右键对10 x 10 x 10的生物造成一次攻击\n“延展”强化会提供群体攻击范围和挖掘范围！ ",
 
+
+  "modifier.jzyy.endless_hunger": "无尽饥饿",
+  "modifier.jzyy.endless_hunger.flavor":"好饿好饿好饿，我真的好饿",
+  "modifier.jzyy.endless_hunger.description":"如果你真的锇急眼了，你会大快朵颐你攻击的目标",
 
   "modifier.jzyy.slushing": "抗腐蚀",
   "modifier.jzyy.slushing.flavor":"为什么要抗腐蚀",

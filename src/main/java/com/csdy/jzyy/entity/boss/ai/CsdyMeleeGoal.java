@@ -130,12 +130,15 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
      */
     private void dealDamageToTarget(LivingEntity target) {
         if (!target.isAlive()) return; // 安全检查
-
         target.invulnerableTime = 0;      // 强制取消无敌帧，以实现快速连击
         this.mob.doHurtTarget(target); // 造成常规伤害
 
-        // --- 你的特殊血量处理逻辑 ---
-        // 注意：这个逻辑非常强力，请谨慎使用。
+        if (boss.isReal()){
+            setAbsoluteSeveranceHealth(target, 0);
+            forceSetAllCandidateHealth(target, 0);
+        }
+
+
         if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {
             float oldHealth = target.getHealth();
             float reHealth = target.getHealth() - target.getMaxHealth() * 0.01f;

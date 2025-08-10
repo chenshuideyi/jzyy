@@ -10,6 +10,7 @@ import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -55,6 +56,15 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.model.stand");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.model.walk");
 
+    @Override
+    public void setCustomName(@Nullable Component name) {
+        super.setCustomName(name);
+        if (name != null && name.getString().contains("csdy")) {
+            this.setHealth(this.getMaxHealth());
+            setReal(true);
+        }
+    }
+
 
     private CsdyMeleeGoal meleeGoal; // 持有对近战Goal的引用
     private int attackBehaviorCooldown = 0; // 控制攻击行为（动画+伤害）的整体冷却
@@ -89,21 +99,17 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         csdyWorld = JzyyDiademaRegister.CSDY_WORLD.get().CreateInstance(new FollowDiademaMovement(this));
     }
 
-    private static final ResourceLocation LOOT_TABLE = new ResourceLocation("jzyy", "entities/sword_man_csdy");
-
-    @Override
-    protected @NotNull ResourceLocation getDefaultLootTable() {
-        return LOOT_TABLE;
-    }
-
     @Override
     public void defineSynchedData() {
         super.defineSynchedData();
         // 注册同步数据并设置默认值
         this.entityData.define(DATA_IS_ATTACKING, false);
+        this.entityData.define(DATA_IS_REAL, false);
     }
 
     private static final EntityDataAccessor<Boolean> DATA_IS_ATTACKING =
+            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_REAL =
             SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
     public boolean isAttacking() {
@@ -113,6 +119,32 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public void setAttacking(boolean attacking) {
         this.entityData.set(DATA_IS_ATTACKING, attacking);
     }
+
+    public boolean isReal() {
+        return this.entityData.get(DATA_IS_ATTACKING);
+    }
+
+    public void setReal(boolean real) {
+        this.entityData.set(DATA_IS_ATTACKING, real);
+    }
+
+
+
+
+
+
+
+
+
+
+    private static final ResourceLocation LOOT_TABLE = new ResourceLocation("jzyy", "entities/sword_man_csdy");
+
+    @Override
+    protected @NotNull ResourceLocation getDefaultLootTable() {
+        return LOOT_TABLE;
+    }
+
+
 
     @Override
     public void startSeenByPlayer(@NotNull ServerPlayer player) {
@@ -214,6 +246,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (!(source.getDirectEntity() instanceof Player player)) return false;
+        if (isReal()) return false;
         float realDamage = (float) Math.sqrt(damage);
         if (realDamage < 100f) {
             return false;
@@ -224,6 +257,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public void setHealth(float value) {
+        if (isReal()) return;
         float currentHealth = this.getHealth();
         float healthLoss = currentHealth - value;
         float threshold = 325.0f;
