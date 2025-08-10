@@ -9,6 +9,7 @@ public class RainbowText {
     private static final ChatFormatting[] colour2;
     private static final ChatFormatting[] colour3;
     private static final ChatFormatting[] echo;
+    private static final ChatFormatting[] tc;
 
     public RainbowText() {
     }
@@ -59,11 +60,16 @@ public class RainbowText {
     public static String DeepOceanEcho(String input) {
         return formatting(input, echo, 50.0);
     }
+    public static String TriplingCurse(String input) {
+        return formatting(input, tc, 80.0F);
+    }
 
     static {
         colour = new ChatFormatting[]{ChatFormatting.RED, ChatFormatting.GOLD, ChatFormatting.YELLOW, ChatFormatting.GREEN, ChatFormatting.AQUA, ChatFormatting.BLUE, ChatFormatting.LIGHT_PURPLE};
         colour2 = new ChatFormatting[]{ChatFormatting.RED, ChatFormatting.DARK_RED, ChatFormatting.YELLOW, ChatFormatting.GOLD, ChatFormatting.GOLD};
         colour3 = new ChatFormatting[]{ChatFormatting.AQUA, ChatFormatting.DARK_AQUA, ChatFormatting.BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.WHITE, ChatFormatting.GRAY};
         echo = new ChatFormatting[]{ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.DARK_BLUE, ChatFormatting.BLUE, ChatFormatting.AQUA};
+        tc = new ChatFormatting[]{ChatFormatting.DARK_BLUE, ChatFormatting.AQUA, ChatFormatting.BLUE, ChatFormatting.DARK_AQUA, ChatFormatting.DARK_GREEN, ChatFormatting.DARK_PURPLE, ChatFormatting.GOLD, ChatFormatting.DARK_RED, ChatFormatting.YELLOW, ChatFormatting.RED, ChatFormatting.GREEN, ChatFormatting.LIGHT_PURPLE};
+
     }
 }

@@ -28,6 +28,7 @@ import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -158,6 +159,10 @@ public class JzyyModMain {
 //            renderer.addLayer(new ScpLayer(renderer));
             renderer.addLayer(new GocLayer(renderer));
         }
+    }
+
+    public static ResourceLocation getResourceLoc(String id) {
+        return new ResourceLocation(MODID,id);
     }
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {

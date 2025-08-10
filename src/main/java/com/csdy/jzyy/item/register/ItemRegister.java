@@ -1,12 +1,14 @@
 package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.block.BlockRegister;
+import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.item.*;
 import com.csdy.jzyy.item.food.GoldenStrawberry;
 import com.csdy.jzyy.item.food.HotDog;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,6 +28,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> TONG_BAN = ITEMS.register("tong_ban", TongBan::new);
     public static final RegistryObject<Item> RAIN_CURTAIN = ITEMS.register("rain_curtain", RainCurtain::new);
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
+    public static final RegistryObject<Item> FAILED_GOBBERS = ITEMS.register("failed_gobbers", FaliedGobbers::new);
 
     public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
@@ -35,6 +38,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot", EvangeAlloyIngot::new);
     public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
 
+    public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
+    public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));
 
     public static final RegistryObject<Item> HARCADIUM = ITEMS.register(
             "harcadium",

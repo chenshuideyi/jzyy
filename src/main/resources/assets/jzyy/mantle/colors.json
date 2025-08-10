@@ -109,6 +109,9 @@
     "coup_de_grace": "#814f63",
     "kagerou": "#ffd600",
     "pulverize": "#432221",
+    "俯首戈伯": null,
+    "triplingbless": "#002FA7",
+    "triplingcurse": "#002FA7",
     "雨幕": null,
     "1999": "#4183c5",
     "1999_armor": "#4183c5",
@@ -178,7 +181,8 @@
     "hot_dog": "#F0A8A4",
     "starmetal_ingot": "#0033aa",
     "maggot": "#998768",
-    "golden_strawberry": "#FFD700"
+    "golden_strawberry": "#FFD700",
+    "failed_gobbers": "#003366"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -15,6 +16,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.List;
 import java.util.Random;
 
 import static com.csdy.jzyy.JzyyModMain.MODID;
@@ -31,13 +33,18 @@ public class HJMSummon {
         if (++timer < CHECK_INTERVAL) return;
         timer = 0;
         if (event.phase != TickEvent.Phase.END || event.level.isClientSide) return;
+
+
         for (Player player : event.level.players()) {
             if (player.isSpectator() ||
                     player.isCreative() ||
                     player.isUnderWater()) {
                 return;
             }
-            int a = random.nextInt(19);
+            List<HJMEntity> list = event.level.getEntitiesOfClass(HJMEntity.class,player.getBoundingBox().inflate(200));
+            if (list.size()>3)return;
+
+            int a = random.nextInt(40);
             if (a==1) {
                 trySpawnEntityNearPlayer(JzyyEntityRegister.HJM.get(),(ServerLevel) event.level, player,1,18,30,null,0,0);
                 player.displayClientMessage(Component.literal("感觉到了[哈！]的气息…"), true);
