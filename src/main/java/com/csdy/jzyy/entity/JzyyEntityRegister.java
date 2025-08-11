@@ -1,14 +1,13 @@
 package com.csdy.jzyy.entity;
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.entity.boss.entity.TitanWarden;
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -51,6 +50,14 @@ public class JzyyEntityRegister {
                             .sized(0.65f, 0.65f) // 碰撞箱大小 (宽, 高)
                             .clientTrackingRange(33) // 客户端追踪距离
                             .build("jzyy:hjm"));
+
+    public static final RegistryObject<EntityType<TitanWarden>> AAA =
+            JZYY_ENTITY.register("titan_warden",
+                    () -> EntityType.Builder.of(
+                                    TitanWarden::new, MobCategory.MONSTER)
+                            .sized(2f, 3f)
+                            .clientTrackingRange(140)
+                            .build("jzyy:titan_warden"));
 
     public JzyyEntityRegister(IEventBus modBus) {
         JZYY_ENTITY.register(modBus);
