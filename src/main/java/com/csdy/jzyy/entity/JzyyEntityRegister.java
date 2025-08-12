@@ -6,6 +6,7 @@ import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -51,13 +52,15 @@ public class JzyyEntityRegister {
                             .clientTrackingRange(33) // 客户端追踪距离
                             .build("jzyy:hjm"));
 
-    public static final RegistryObject<EntityType<TitanWarden>> AAA =
+    public static final RegistryObject<EntityType<TitanWarden>> TITAN_WARDEN =
             JZYY_ENTITY.register("titan_warden",
                     () -> EntityType.Builder.of(
                                     TitanWarden::new, MobCategory.MONSTER)
-                            .sized(2f, 3f)
-                            .clientTrackingRange(140)
+                            //.sized(0.9F, 2.9F)
+                            .sized(5.4F, 87F)
+                            .clientTrackingRange(200)
                             .build("jzyy:titan_warden"));
+
 
     public JzyyEntityRegister(IEventBus modBus) {
         JZYY_ENTITY.register(modBus);

@@ -1,13 +1,18 @@
 package com.csdy.jzyy.entity.boss.ai.TitanWarden;
 
+import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.boss.entity.TitanWarden;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
 
 public class TitanWardenAttackGoal extends MeleeAttackGoal {
     private final TitanWarden titanWarden;
@@ -31,7 +36,7 @@ public class TitanWardenAttackGoal extends MeleeAttackGoal {
 
             this.titanWarden.setAttacking(true);
 
-            this.attackSequenceTicks = 7;
+            this.attackSequenceTicks = 116;
         }
     }
 
@@ -45,19 +50,25 @@ public class TitanWardenAttackGoal extends MeleeAttackGoal {
             this.attackSequenceTicks--;
 
             // 在动画即将结束的瞬间 (例如，计时器为1时) 尝试造成伤害
-            if (this.attackSequenceTicks == 1) {
+            if (this.attackSequenceTicks == 44) {
                 breakBlocksInFront();
                 // (您已有的伤害逻辑保持不变)
                 LivingEntity target = this.mob.getTarget();
                 if (target != null) {
-                    double distanceSqr = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
                     double reachSqr = this.getAttackReachSqr(target);
-                    if (distanceSqr <= reachSqr) {
-                        if (this.titanWarden.isLock()) {
-                            float a = (float) this.titanWarden.getAttributeValue(Attributes.ATTACK_DAMAGE);
-                            target.hurt(this.titanWarden.damageSources().mobAttack(this.titanWarden), a);
-                        } else {
-                            this.titanWarden.doHurtTarget(target);
+                    Vec3 vec3 = this.titanWarden.position();
+                    AABB aabb = new AABB(
+                            vec3.x - reachSqr, vec3.y - this.titanWarden.getBbWidth()*0.2f, vec3.z - reachSqr,
+                            vec3.x + reachSqr, vec3.y + this.titanWarden.getBbWidth()*0.2f, vec3.z + reachSqr
+                    );
+                    float a = (float) this.titanWarden.getAttributeValue(Attributes.ATTACK_DAMAGE);
+                    List<LivingEntity> list=this.titanWarden.level().getEntitiesOfClass(LivingEntity.class,aabb);
+                    for (LivingEntity living:list) {
+                        if (living!=this.titanWarden) {
+                            living.invulnerableTime = 0;
+                            living.hurt(LegacyDamageSource.mobAttack(this.titanWarden), a);
+                            Vec3 vec = living.position().subtract(this.titanWarden.position()).normalize().scale(10);
+                            living.push(vec.x, this.titanWarden.getBbWidth()*0.8f, vec.z);
                         }
                     }
                 }
@@ -75,19 +86,18 @@ public class TitanWardenAttackGoal extends MeleeAttackGoal {
         if (this.titanWarden.level().isClientSide) {
             return;
         }
-        AABB box = this.titanWarden.getBoundingBox();   // 碰撞箱
-        int yStart = (int) Math.floor(box.minY - 0.001); // 脚下第一格
-        int yEnd   = level.getMinBuildHeight();
+        Vec3 vec3 = this.titanWarden.position();
+        int yEnd = (int) Math.floor(vec3.y - 1.001);
+        double a = this.getAttackReachSqr(this.titanWarden)*0.5f;
         // 遍历水平区域
-        for (int x = (int) Math.floor(box.minX); x <= (int) Math.floor(box.maxX); x++) {
-            for (int z = (int) Math.floor(box.minZ); z <= (int) Math.floor(box.maxZ); z++) {
-                for (int y = yStart; y >= yEnd; y--) {
+        for (int x = (int) Math.floor(vec3.x-a); x <= (int) Math.floor(vec3.x+a); x++) {
+            for (int z = (int) Math.floor(vec3.z-a); z <= (int) Math.floor(vec3.z+a); z++) {
+                for (int y = (int) Math.floor(vec3.y+this.titanWarden.getBbHeight()*0.2f); y >= yEnd; y--) {
                     BlockPos pos = new BlockPos(x, y, z);
                     BlockState state = level.getBlockState(pos);
                     // 这里可按需过滤：硬度、不可破坏方块、需要工具等
                     if (state.isAir() || state.getDestroySpeed(level, pos) < 0) continue;
-                    // 直接破坏（无掉落）
-                    level.destroyBlock(pos, false);
+                    level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 
                 }
             }

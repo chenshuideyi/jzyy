@@ -2,7 +2,7 @@ package com.csdy.jzyy.particle.register;
 
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.entity.boss.ai.TitanWarden.BigSonicBoomParticle;
+import com.csdy.jzyy.particle.BigSonicBoomParticle;
 import com.csdy.jzyy.particle.CsdyParticle;
 import com.csdy.jzyy.particle.SaberParticle;
 import net.minecraft.client.Minecraft;

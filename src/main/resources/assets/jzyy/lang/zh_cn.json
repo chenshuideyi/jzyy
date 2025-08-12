@@ -1009,6 +1009,9 @@
   "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu6": "这个是略人的梗😱😱😱",
 
+  "entity.jzyy.titan_warden": "坚守者泰坦（未锁敌）",
+  "entity.jzyy.titan_warden.lock": "坚守者泰坦（已锁定）",
+
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
   "effect.jzyy.overcharge_armor": "雷凯",

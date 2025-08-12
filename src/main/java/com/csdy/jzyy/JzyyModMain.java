@@ -121,7 +121,7 @@ public class JzyyModMain {
         event.put(JzyyEntityRegister.DOG_JIAO.get(), DogJiao.createAttributes().build());
         event.put(JzyyEntityRegister.MIZI_AO.get(), MiziAo.createAttributes().build());
         event.put(JzyyEntityRegister.HJM.get(), HJMEntity.createAttributes().build());
-        event.put(JzyyEntityRegister.AAA.get(), TitanWarden.createAttributes().build());
+        event.put(JzyyEntityRegister.TITAN_WARDEN.get(), TitanWarden.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -144,7 +144,7 @@ public class JzyyModMain {
                 HJMRenderer::new
         );
         event.registerEntityRenderer(
-                JzyyEntityRegister.AAA.get(),
+                JzyyEntityRegister.TITAN_WARDEN.get(),
                 TitanWardenRenderer::new
         );
     }
