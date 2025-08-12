@@ -470,7 +470,7 @@
   "modifier.jzyy.life_line.flavor": "你以为击碎我的一颗心脏就能让我咽气？我有三颗。",
   "modifier.jzyy.life_line.description":"你受到的单次伤害不会超过你最大生命值的一半",
 
-  "modifier.jzyy.durability_recovery": "耐久回收",
+  "modifier.jzyy.durability_recovery": "幽魂修复",
   "modifier.jzyy.durability_recovery.flavor": "经久耐用！",
   "modifier.jzyy.durability_recovery.description":"你受到伤害的一半会修复你的护甲",
 
@@ -483,7 +483,7 @@
   "modifier.jzyy.void_walk.description":"你可以穿过方块",
 
   "modifier.jzyy.energy_recovery": "能量回收",
-  "modifier.jzyy.energy_recovery.flavor": "可不能浪费了",
+  "modifier.jzyy.energy_recovery.flavor": "可不能浪费了....这真的是我的肉吗",
   "modifier.jzyy.energy_recovery.description":"在你受伤时掉落你的肉，吃下后可以回复等同于受到伤害的血量",
 
   "modifier.jzyy.return": "滋养",
@@ -520,7 +520,7 @@
 
   "modifier.jzyy.fire_armor": "浴火",
   "modifier.jzyy.fire_armor.flavor": "不死鸟",
-  "modifier.jzyy.fire_armor.description": "如果你正在着火，就减少20%受到的伤害",
+  "modifier.jzyy.fire_armor.description": "如果你正在着火，就减少30%受到的伤害",
 
   "modifier.jzyy.catch_the_rainbow": "彩虹捕手",
   "modifier.jzyy.catch_the_rainbow.flavor": "雨停之后，我就会死",
