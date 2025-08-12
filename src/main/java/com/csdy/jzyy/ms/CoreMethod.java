@@ -4,6 +4,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
+import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
+
 @SuppressWarnings("unused")
 public final class CoreMethod {
 
@@ -18,7 +20,7 @@ public final class CoreMethod {
                     if (!(entity instanceof Player player)){
                         yield 0.0F;
                     }
-                    entity.remove(Entity.RemovalReason.DISCARDED);
+                    KillEntity(entity);
                     yield 0.0F;
                 } else {
                     yield health;

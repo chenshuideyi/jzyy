@@ -30,6 +30,7 @@ import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
 import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
 
 public class CsdyWorldDiadema extends Diadema {
@@ -124,7 +125,7 @@ public class CsdyWorldDiadema extends Diadema {
                         forceSetAllCandidateHealth(living,reHealth);
                         if (living.getHealth() == oldHealth || (living.getHealth() <= 0 && living.isAlive())) {
                             setCategory(living, csdykill);
-                            superKillEntity(living);
+                            KillEntity(living);
                         }
                     }
                 }

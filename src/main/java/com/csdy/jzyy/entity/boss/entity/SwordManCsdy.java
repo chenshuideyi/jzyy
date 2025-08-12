@@ -8,8 +8,6 @@ import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
-import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -20,7 +18,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -28,16 +25,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.material.FluidState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -49,6 +38,7 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
 public class SwordManCsdy extends BossEntity implements GeoEntity {
 
@@ -228,14 +218,17 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public boolean hurt(@NotNull DamageSource source, float damage) {
-        if (!(source.getDirectEntity() instanceof Player player)) return false;
         if (isReal()) return false;
         float realDamage = (float) Math.sqrt(damage);
         if (realDamage < 100f) {
             return false;
         }
-        this.teleportTo(player.getX(),player.getY(),player.getZ());
         return super.hurt(source,damage);
+    }
+
+    @Override
+    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate) {
+
     }
 
     @Override

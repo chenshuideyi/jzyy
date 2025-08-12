@@ -16,7 +16,7 @@ public class FireArmor extends NoLevelsModifier implements ModifyDamageModifierH
     public float modifyDamageTaken(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource damageSource, float amount, boolean isDirectDamage) {
         var entity = context.getEntity();
         if (entity == null || !entity.isOnFire()) return amount;
-        return amount * 0.8f;
+        return amount * 0.7f;
     }
 
     @Override
