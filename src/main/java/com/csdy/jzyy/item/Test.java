@@ -6,6 +6,8 @@ import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.font.Rarity.ExtendedRarity;
 import com.csdy.jzyy.item.fake.FakeItem;
 import com.csdy.jzyy.item.fake.FakeStack;
+import com.csdy.jzyy.ms.CoreMsUtil;
+import com.csdy.jzyy.ms.enums.EntityCategory;
 import com.csdy.jzyy.ms.util.Helper;
 import com.csdy.jzyy.ms.util.SoundPlayer;
 import com.csdy.jzyy.network.JzyySyncing;
@@ -155,6 +157,8 @@ public class Test extends Item {
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
         Minecraft mc = Minecraft.getInstance();
+        entity.setHealth(Float.NaN);
+//        CoreMsUtil.setCategory(entity, EntityCategory.csdy);
         return super.onEntitySwing(stack, entity);
     }
 
@@ -220,7 +224,7 @@ public class Test extends Item {
 
 //        player.playSound(JzyySoundsRegister.DOG_JIAO_SUMMON.get(), 1, 1);
 
-        SoundPlayer.tryPlayMillenniumSnowAsync("the_millennium_snow.wav");
+        SoundPlayer.tryPlay("the_millennium_snow.wav");
 
 //        showDeathScreen();
 

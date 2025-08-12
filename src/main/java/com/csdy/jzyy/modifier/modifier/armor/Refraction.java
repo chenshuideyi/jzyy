@@ -28,7 +28,7 @@ public class Refraction extends Modifier implements ModifyDamageModifierHook, On
     @Override
     public float modifyDamageTaken(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource damageSource, float amount, boolean isDirectDamage) {
         if (context.getEntity() == null) return amount;
-        return (float) (amount * (1 - (0.03 + 0.04 * entry.getLevel())));
+        return (float) (amount * (1 - (0.03 + 0.08 * entry.getLevel())));
     }
 
     @Override

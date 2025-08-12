@@ -18,7 +18,7 @@ public class SoundPlayer {
      * 在新线程中异步执行。
      * @param sound  wav文件位置
      */
-    public static void tryPlayMillenniumSnowAsync(String sound) {
+    public static void tryPlay(String sound) {
         // 将 false 设置为 true，如果成功（原来是 false），则表示可以播放
         if (isMillenniumSnowPlaying.compareAndSet(false, true)) {
             Thread soundThread = new Thread(() -> {
@@ -46,7 +46,7 @@ public class SoundPlayer {
              BufferedInputStream bufferedIn = (audioSrc != null) ? new BufferedInputStream(audioSrc) : null) { // 使用 try-with-resources
 
             if (bufferedIn == null) {
-                System.err.println("Sound resource not found: " + resourcePath);
+                System.err.println("无法找到音乐" + resourcePath);
                 return; // 退出线程
             }
 
@@ -60,7 +60,7 @@ public class SoundPlayer {
                         // 确保 Clip 没有被提前关闭（例如在异常中）
                         if (finalClip != null && finalClip.isOpen()) {
                             finalClip.close(); // 在监听器中关闭 Clip
-                            System.out.println("Clip closed via listener for: " + soundFileName);
+                            System.out.println("已关闭Clip: " + soundFileName);
                         }
                         if (syncLatch.getCount() > 0) {
                             syncLatch.countDown();
@@ -69,13 +69,11 @@ public class SoundPlayer {
                 });
 
                 clip.open(audioStream);
-                System.out.println("Playing sound: " + soundFileName);
                 clip.start();
 
                 try {
                     syncLatch.await(); // 等待播放结束 (STOP 或 CLOSE 事件)
                 } catch (InterruptedException e) {
-                    System.err.println("Sound playback interrupted for: " + soundFileName);
                     if (clip != null && clip.isOpen()) {
                         clip.stop(); // 停止播放
                     }

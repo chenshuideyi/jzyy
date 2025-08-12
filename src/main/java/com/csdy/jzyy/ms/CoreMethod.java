@@ -1,14 +1,29 @@
 package com.csdy.jzyy.ms;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 
 @SuppressWarnings("unused")
 public final class CoreMethod {
+
     public static float getHealth(LivingEntity entity) {
         return switch (CoreMsUtil.getCategory(entity)) {
             case csdy -> 20.0F;
             case csdykill -> 0.0F;
-            case normal -> entity.getHealth();
+            case normal -> {
+                float health = entity.getHealth();
+                if (Float.isNaN(health)) {
+                    System.err.println("尝试修复一个假死，实体为" + entity.getClass());
+                    if (!(entity instanceof Player player)){
+                        yield 0.0F;
+                    }
+                    entity.remove(Entity.RemovalReason.DISCARDED);
+                    yield 0.0F;
+                } else {
+                    yield health;
+                }
+            }
         };
     }
 

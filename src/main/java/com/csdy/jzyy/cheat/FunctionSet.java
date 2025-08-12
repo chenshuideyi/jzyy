@@ -70,7 +70,9 @@ public class FunctionSet {
         if (mc.player != null) {
             if (FieldList.Fly) {
                 mc.player.getAbilities().mayfly = true;
-                mc.player.getAbilities().flying = true;
+                if (mc.player.getAbilities().flying){
+                    mc.player.getAbilities().flying = true;
+                }
             }
             if (FieldList.Speed) {
                 mc.player.getAbilities().setFlyingSpeed(0.3f);

@@ -101,7 +101,7 @@ public class tinker_loli_pickaxe extends ModifiableItem {
 
         if (level instanceof ServerLevel serverLevel) {
             for (LivingEntity entity : serverLevel.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range))) {
-                if (entity != null && !(entity instanceof Player)) {
+                if (entity != null && !(entity instanceof Player) && entity.isAlive()) {
                     player.attack(entity);
                     entityCount++;
                 }

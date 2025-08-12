@@ -237,6 +237,7 @@ public class CsdyModifierUtil {
 
     public static void modifierSeverance(LivingEntity target, Player player, float damage,float value){
         if (target.getHealth() <= 0) return;
+        System.out.println("当前时点他的血量是" + target.getHealth());
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         forceSetAllCandidateHealth(target,reHealth);
         if (reHealth <= 0){

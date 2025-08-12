@@ -43,30 +43,30 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         this.value = value;
     }
 
-//    @Override
-//    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-//        LivingEntity target = context.getLivingTarget();
-//        Player player = context.getPlayerAttacker();
-//        if (target != null && player != null && target.getHealth() > 0) {
-//            if (target.getHealth() <= 0) return knockback;
-//            if (isFromDummmmmmyMod(target)) return knockback;
-//            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-//            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
-//        }
-//        return knockback;
-//    }
-
     @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null && target.getHealth() > 0) {
-            if (target.getHealth() <= 0) return;
-            if (isFromDummmmmmyMod(target)) return;
+            if (target.getHealth() <= 0) return knockback;
+            if (isFromDummmmmmyMod(target)) return knockback;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             modifierAbsoluteSeverance(target,player,toolDamage,this.value);
         }
+        return knockback;
     }
+
+//    @Override
+//    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
+//        LivingEntity target = context.getLivingTarget();
+//        Player player = context.getPlayerAttacker();
+//        if (target != null && player != null && target.getHealth() > 0) {
+//            if (target.getHealth() <= 0) return;
+//            if (isFromDummmmmmyMod(target)) return;
+//            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+//            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
+//        }
+//    }
 
     /**
      * 手动触发 Advancements (成就)

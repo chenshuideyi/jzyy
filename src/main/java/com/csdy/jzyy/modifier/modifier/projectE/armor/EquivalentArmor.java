@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.projectE.armor;
 
 import moze_intel.projecte.api.capabilities.PECapabilities;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -32,6 +33,7 @@ public class EquivalentArmor extends NoLevelsModifier implements DamageBlockModi
             BigInteger cost = BigInteger.valueOf((long)(damage * 100));
 
             if (EMC.compareTo(cost) >= 0) {
+                player.displayClientMessage(Component.literal("消耗了emc"+cost), false);
                 knowledge.setEmc(EMC.subtract(cost));
                 blocked.set(true);
             }

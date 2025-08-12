@@ -73,6 +73,7 @@
   "item.jzyy.golden_strawberry": "金草莓",
   "item.jzyy.golden_strawberry.line1": "某白冻的赞助者提案",
 
+
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
   "item.jzyy.summon_csdy": "天子的帽子",
@@ -278,7 +279,7 @@
 
   "modifier.jzyy.longinus": "朗基努斯",
   "modifier.jzyy.longinus.flavor": "绝望",
-  "modifier.jzyy.longinus.description": "额外造成1000倍主手武器面板的伤害，此后每级在上一级的基础上乘以二",
+  "modifier.jzyy.longinus.description": "额外造成100倍主手武器面板的伤害，此后每级在上一级的基础上乘以二，若造成的伤害高于2147483647则不生效",
 
   "modifier.jzyy.cassius": "卡西乌斯",
   "modifier.jzyy.cassius.flavor": "希望",
@@ -487,7 +488,7 @@
 
   "modifier.jzyy.return": "滋养",
   "modifier.jzyy.return.flavor": "落红不是无情物",
-  "modifier.jzyy.return.description": "损耗耐久时获得抗性提升与伤害吸收",
+  "modifier.jzyy.return.description": "损耗耐久时获得抗性提升3与伤害吸收3",
 
   "modifier.jzyy.kraken_shell": "海妖外壳",
   "modifier.jzyy.kraken_shell.flavor": "铁帆海军里有一个传言，说是有只强大的海兽，明明被矛刺中被剑砍伤依然能践踏舰队",
@@ -496,6 +497,34 @@
   "modifier.jzyy.love": "暴力点数",
   "modifier.jzyy.love.flavor": "I am made L-O-V-E",
   "modifier.jzyy.love.description": "若你的等级超过20级，提供再生5",
+
+  "modifier.jzyy.hold": "守住",
+  "modifier.jzyy.hold.flavor": "留住最后一口气",
+  "modifier.jzyy.hold.description": "咬紧牙关，可以用氧气值抵御接下来的攻击！",
+
+  "modifier.jzyy.heavy_equipment": "重装",
+  "modifier.jzyy.heavy_equipment.flavor": "我是高贵的板甲全施法职业",
+  "modifier.jzyy.heavy_equipment.description": "若你的护甲超过100，减少20%受到的伤害",
+
+  "modifier.jzyy.roshan": "肉山",
+  "modifier.jzyy.roshan.flavor": "你是个可怕的人",
+  "modifier.jzyy.roshan.description": "你的最大生命值越多，受到的伤害越少",
+
+  "modifier.jzyy.metallicize": "金属化",
+  "modifier.jzyy.metallicize.flavor": "有效减少战损",
+  "modifier.jzyy.metallicize.description": "减少5%受到的伤害",
+
+  "modifier.jzyy.barkskin": "树皮术",
+  "modifier.jzyy.barkskin.flavor": "德鲁伊的皮肤变得如树皮一样坚硬",
+  "modifier.jzyy.barkskin.description": "如果你没有着火，就减少20%受到的伤害",
+
+  "modifier.jzyy.fire_armor": "浴火",
+  "modifier.jzyy.fire_armor.flavor": "不死鸟",
+  "modifier.jzyy.fire_armor.description": "如果你正在着火，就减少20%受到的伤害",
+
+  "modifier.jzyy.catch_the_rainbow": "彩虹捕手",
+  "modifier.jzyy.catch_the_rainbow.flavor": "雨停之后，我就会死",
+  "modifier.jzyy.catch_the_rainbow.description": "在雨天减少20%受到的伤害，否则增加20%受到的伤害",
 
   "modifier.jzyy.blade_release1": "剑刃解放I",
   "modifier.jzyy.blade_release1.flavor": "刃口传来婴儿啼哭般的震颤",
@@ -510,6 +539,10 @@
   "modifier.jzyy.blade_release3": "剑刃解放III",
   "modifier.jzyy.blade_release3.flavor": "鞘中充斥着渴望纷争的风",
   "modifier.jzyy.blade_release3.description":"近战伤害增加8点",
+
+  "modifier.jzyy.last_sword": " 最终之剑",
+  "modifier.jzyy.last_sword.flavor": "原来，你一直在我身边",
+  "modifier.jzyy.last_sword.description":"近战伤害增加7999999874453995500点",
 
   "modifier.jzyy.expedite_suffering": "瞬时苦痛",
   "modifier.jzyy.expedite_suffering.flavor": "没有痛苦，一瞬就会结束",
@@ -647,7 +680,7 @@
 
   "modifier.jzyy.equivalent_armor": "EMC护甲",
   "modifier.jzyy.equivalent_armor.flavor": "EMC就是力量",
-  "modifier.jzyy.equivalent_armor.description":"消耗你的EMC减免伤害",
+  "modifier.jzyy.equivalent_armor.description":"消耗你的EMC格挡伤害,1000点EMC可以减少一点伤害",
 
   "modifier.jzyy.ultradense": "超致密",
   "modifier.jzyy.ultradense.flavor": "你甚至不能擦伤我",
@@ -659,7 +692,7 @@
 
   "modifier.jzyy.experience_armor": "经验护甲",
   "modifier.jzyy.experience_armor.flavor": "阅历越丰富越耐揍",
-  "modifier.jzyy.experience_armor.description": "每一级经验都会帮你抵挡更多伤害，扣除你的经验等级作为驱动力",
+  "modifier.jzyy.experience_armor.description": "每一级经验都会帮你抵挡2点伤害，扣除你的经验等级作为驱动力",
 
   "modifier.jzyy.real_experience": "答案-并非如此",
   "modifier.jzyy.real_experience.flavor": "使用它的时候，就像人类允许孩童挥舞未开刃的玩具剑，它的力量远不止此\n谨献给配灵魂比凡人厚重三百倍的人",
@@ -671,7 +704,7 @@
 
   "modifier.jzyy.real_experience_armor": "知识壁垒",
   "modifier.jzyy.real_experience_armor.flavor": "知识是一座一砖一瓦砌成的城市。但在城墙外的黑暗中等待的是什么？如果没有恐惧的对象，我们又何必筑起高墙",
-  "modifier.jzyy.real_experience_armor.description": "每一级经验都会帮你抵挡更多伤害，扣除你的经验等级作为驱动力",
+  "modifier.jzyy.real_experience_armor.description": "每一级经验都会帮你抵挡5点伤害，扣除你的经验等级作为驱动力",
 
   "modifier.jzyy.ecological": "生态",
   "modifier.jzyy.ecological.flavor": "就像匠魂2那样",
@@ -893,7 +926,7 @@
 
   "modifier.jzyy.1999_aoi": "共鸣-碧·Mag",
   "modifier.jzyy.1999_aoi.flavor": "磁吸",
-  "modifier.jzyy.1999_aoi.description": "吸引附近的实体",
+  "modifier.jzyy.1999_aoi.description": "吸引附近的掉落物",
 
   "modifier.jzyy.1999_leticia": "共鸣-莱蒂西娅·Trinity",
   "modifier.jzyy.1999_leticia.flavor": "祝福",

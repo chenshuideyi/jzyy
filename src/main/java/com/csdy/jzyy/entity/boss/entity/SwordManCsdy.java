@@ -59,7 +59,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public void setCustomName(@Nullable Component name) {
         super.setCustomName(name);
-        if (name != null && name.getString().contains("csdy")) {
+        if (name != null && name.getString().contains("沉睡的艺") && !isReal()) {
             this.setHealth(this.getMaxHealth());
             setReal(true);
         }
@@ -102,7 +102,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public void defineSynchedData() {
         super.defineSynchedData();
-        // 注册同步数据并设置默认值
         this.entityData.define(DATA_IS_ATTACKING, false);
         this.entityData.define(DATA_IS_REAL, false);
     }
@@ -121,11 +120,11 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
     public boolean isReal() {
-        return this.entityData.get(DATA_IS_ATTACKING);
+        return this.entityData.get(DATA_IS_REAL);
     }
 
     public void setReal(boolean real) {
-        this.entityData.set(DATA_IS_ATTACKING, real);
+        this.entityData.set(DATA_IS_REAL, real);
     }
 
 
@@ -174,33 +173,17 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     }
 
-    // 确保在Boss实体被移除或死亡时，音乐也停止
     @Override
     public void onRemovedFromWorld() {
-        if (isDeadOrDying()) {
-            super.onRemovedFromWorld(); // 调用父类很重要
-            if (level().isClientSide()) {
-                if (clientBossMusicInstance != null) {
-                    Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
-                }
-                musicStarted = false;
-                clientBossMusicInstance = null; // 清理引用
-            }
-        }
+        super.onRemovedFromWorld();
+        // 确保当Boss死亡或被移除时，血条也从所有玩家屏幕上消失
+        this.bossEvent.removeAllPlayers();
     }
 
     @Override
     public void die(@NotNull DamageSource pSource) {
         if (isDeadOrDying()) {
-            super.die(pSource); // 调用父类
-            if (level().isClientSide()) {
-                if (clientBossMusicInstance != null) {
-                    Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
-                }
-                musicStarted = false;
-                clientBossMusicInstance = null; // 清理引用
-
-            }
+            super.die(pSource);
         }
     }
 
@@ -310,8 +293,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 3.4);
-        builder = builder.add(Attributes.MAX_HEALTH, 8000);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 1200.0);
+        builder = builder.add(Attributes.MAX_HEALTH, 6000);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 600.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 36.0);
         return builder;

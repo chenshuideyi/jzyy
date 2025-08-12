@@ -18,6 +18,7 @@ import com.csdy.jzyy.modifier.modifier.bian.*;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
+import com.csdy.jzyy.modifier.modifier.command_block.Gamemode1;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
@@ -299,6 +300,9 @@ public class ModifierRegister {
     public static final StaticModifier<CsdyAttack> CSDY_ATTACK_STATIC_MODIFIER = MODIFIERS.register("csdy_attack", CsdyAttack::new);
     public static final StaticModifier<CsdyWhisper> CSDY_WHISPER_STATIC_MODIFIER = MODIFIERS.register("csdy_whisper", CsdyWhisper::new);
 
+    ///命令方块
+    public static final StaticModifier<Gamemode1> GAMEMODE_1_STATIC_MODIFIER = MODIFIERS.register("gamemode1", Gamemode1::new);
+
     ///csdytinker
     public static final StaticModifier<ScarySky> SCARY_SKY_STATIC_MODIFIER = MODIFIERS.register("scary_sky", ScarySky::new);
     public static final StaticModifier<TeleKill> TELE_KILL_STATIC_MODIFIER = MODIFIERS.register("tele_kill", TeleKill::new);
@@ -333,7 +337,7 @@ public class ModifierRegister {
     public static final StaticModifier<BulgeRod.wave> WAVE_STATIC_MODIFIER = MODIFIERS.register("wave", BulgeRod.wave::new);
     public static final StaticModifier<VirtualCaveCrystalWeapon.shattertheemptiness> SHATTERTHEEMPTINESS_STATIC_MODIFIER = MODIFIERS.register("shattertheemptiness", VirtualCaveCrystalWeapon.shattertheemptiness::new);
     public static final StaticModifier<VirtualCaveCrystalArmor.guixu> GUIXU_STATIC_MODIFIER = MODIFIERS.register("guixu", VirtualCaveCrystalArmor.guixu::new);
-//    public static final StaticModifier<Meror.merorbroken> MERORBROKEN_STATIC_MODIFIER = MODIFIERS.register("merorbroken", Meror.merorbroken::new);
+    public static final StaticModifier<Meror.merorbroken> MERORBROKEN_STATIC_MODIFIER = MODIFIERS.register("merorbroken", Meror.merorbroken::new);
     public static final StaticModifier<MerorArmor.merortoughness> MERORToughness_STATIC_MODIFIER = MODIFIERS.register("merortoughness", MerorArmor.merortoughness::new);
     public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("low_injury_disregard", RefineMerorArmor.lowinjurydisregard::new);
 
@@ -347,6 +351,18 @@ public class ModifierRegister {
     public static final StaticModifier<DurabilityRecovery> DURABILITY_RECOVERY_STATIC_MODIFIER = MODIFIERS.register("durability_recovery", DurabilityRecovery::new);
     public static final StaticModifier<Kangaroo> KANGAROO_STATIC_MODIFIER = MODIFIERS.register("kangaroo", Kangaroo::new);
     public static final StaticModifier<VoidWalk> VOID_WALK_STATIC_MODIFIER = MODIFIERS.register("void_walk", VoidWalk::new);
+    public static final StaticModifier<Hold> HOLD_STATIC_MODIFIER = MODIFIERS.register("hold", Hold::new);
+    public static final StaticModifier<HeavyEquipment> HEAVY_EQUIPMENT_STATIC_MODIFIER = MODIFIERS.register("heavy_equipment", HeavyEquipment::new);
+    public static final StaticModifier<Metallicize> MODIFIER = MODIFIERS.register("metallicize", Metallicize::new);
+    public static final StaticModifier<Roshan> ROSHAN_STATIC_MODIFIER = MODIFIERS.register("roshan", Roshan::new);
+    public static final StaticModifier<Barkskin> BARKSKIN_STATIC_MODIFIER = MODIFIERS.register("barkskin", Barkskin::new);
+    public static final StaticModifier<FireArmor> FIRE_ARMOR_STATIC_MODIFIER = MODIFIERS.register("fire_armor", FireArmor::new);
+    public static final StaticModifier<CatchTheRainbow> CATCH_THE_RAINBOW_STATIC_MODIFIER = MODIFIERS.register("catch_the_rainbow", CatchTheRainbow::new);
+
+
+
+
+
 
     ///真实形态
     public static final StaticModifier<RealExperience> REAL_EXPERIENCE_STATIC_MODIFIER =

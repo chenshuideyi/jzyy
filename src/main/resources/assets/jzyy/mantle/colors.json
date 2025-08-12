@@ -149,7 +149,16 @@
     "endless_hunger": "#66CCFF",
     "revelation": "#8B0000",
     "ultima": "#48415d",
-    "optima": "#FF00FF"
+    "optima": "#FF00FF",
+    "last_sword": "#00e396",
+    "护甲二次补强": null,
+    "hold": "#AAAAAA",
+    "heavy_equipment": "#CCCCCC",
+    "roshan": "#880000",
+    "metallicize": "#999999",
+    "barkskin": "#886600",
+    "fire_armor": "#FF6600",
+    "catch_the_rainbow": "#55AAFF"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

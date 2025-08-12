@@ -133,10 +133,10 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
         target.invulnerableTime = 0;      // 强制取消无敌帧，以实现快速连击
         this.mob.doHurtTarget(target); // 造成常规伤害
 
-        if (boss.isReal()){
-            setAbsoluteSeveranceHealth(target, 0);
-            forceSetAllCandidateHealth(target, 0);
-        }
+//        if (boss.isReal()){
+//            setAbsoluteSeveranceHealth(target, 0);
+//            forceSetAllCandidateHealth(target, 0);
+//        }
 
 
         if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {

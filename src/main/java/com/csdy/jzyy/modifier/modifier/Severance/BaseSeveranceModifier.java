@@ -28,30 +28,30 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
         this.value = value;
     }
 
-    @Override
-    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        LivingEntity target = context.getLivingTarget();
-        Player player = context.getPlayerAttacker();
-        if (target != null && player != null) {
-            if (target.getHealth() <= 0) return;
-            if (isFromDummmmmmyMod(target)) return;
-            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierSeverance(target,player,toolDamage,this.value);
-        }
-    }
-
 //    @Override
-//    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+//    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
 //        LivingEntity target = context.getLivingTarget();
 //        Player player = context.getPlayerAttacker();
 //        if (target != null && player != null) {
-//            if (target.getHealth() <= 0) return knockback;
-//            if (isFromDummmmmmyMod(target)) return knockback;
+//            if (target.getHealth() <= 0) return;
+//            if (isFromDummmmmmyMod(target)) return;
 //            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
 //            modifierSeverance(target,player,toolDamage,this.value);
 //        }
-//        return knockback;
 //    }
+
+    @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        LivingEntity target = context.getLivingTarget();
+        Player player = context.getPlayerAttacker();
+        if (target != null && player != null) {
+            if (target.getHealth() <= 0) return knockback;
+            if (isFromDummmmmmyMod(target)) return knockback;
+            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+            modifierSeverance(target,player,toolDamage,this.value);
+        }
+        return knockback;
+    }
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {

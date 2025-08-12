@@ -23,11 +23,11 @@ public class RealExperienceArmor extends NoLevelsModifier implements DamageBlock
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource source, float damage) {
         if (!(context.getEntity() instanceof Player player)) return false;
-        if (damage < player.experienceLevel * 2) {
+        if (damage < player.experienceLevel * 5) {
             int levelsToConsume = (int) damage;
-            player.giveExperienceLevels(-levelsToConsume /2);
+            player.giveExperienceLevels(-levelsToConsume /5);
 
-            spawnExperienceOrbs(player, levelsToConsume / 2);
+            spawnExperienceOrbs(player, levelsToConsume / 5);
             return true;
         }
         return false;

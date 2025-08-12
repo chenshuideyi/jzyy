@@ -2,6 +2,7 @@ package com.csdy.jzyy.modifier.modifier.warframe1999.armor;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -25,7 +26,7 @@ public class Mag extends NoLevelsModifier implements InventoryTickModifierHook {
             List<Entity> entities = world.getEntities(null, csdyAABB(5,holder));
 
             for (Entity entity : entities) {
-                if (entity != holder && entity.isAlive()) { // 排除持有者自身且只对活着的实体生效
+                if (entity != holder && entity.isAlive() && entity instanceof ItemEntity) { // 排除持有者自身且只对活着的实体生效
                     // 计算从实体指向持有者的方向向量
                     Vec3 direction = new Vec3(holder.getX() - entity.getX(),
                             holder.getY() - entity.getY(),
