@@ -2,6 +2,7 @@ package com.csdy.jzyy.particle.register;
 
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.entity.boss.ai.TitanWarden.BigSonicBoomParticle;
 import com.csdy.jzyy.particle.CsdyParticle;
 import com.csdy.jzyy.particle.SaberParticle;
 import net.minecraft.client.Minecraft;
@@ -21,6 +22,7 @@ public class JzyyParticlesRegister {
 
     public static final RegistryObject<SimpleParticleType> SABER_PARTICLE = PARTICLE_TYPES.register("saber_particle", () -> new SimpleParticleType(false));
     public static final RegistryObject<SimpleParticleType> CSDY_PARTICLE = PARTICLE_TYPES.register("csdy_particle", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> BIG_SONIC_BOOM = PARTICLE_TYPES.register("big_sonic_boom", () -> new SimpleParticleType(false));
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
@@ -28,5 +30,7 @@ public class JzyyParticlesRegister {
         // 注册粒子工厂
         Minecraft.getInstance().particleEngine.register(JzyyParticlesRegister.SABER_PARTICLE.get(), SaberParticle.Provider::new);
         Minecraft.getInstance().particleEngine.register(JzyyParticlesRegister.CSDY_PARTICLE.get(), CsdyParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(JzyyParticlesRegister.BIG_SONIC_BOOM.get(), BigSonicBoomParticle.Provider::new);
+
     }
 }
