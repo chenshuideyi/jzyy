@@ -2,6 +2,7 @@ package com.csdy.jzyy.event;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
+import com.csdy.jzyy.entity.boss.entity.TitanWarden;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.server.level.ServerLevel;
@@ -41,6 +42,14 @@ public class LivingEvent {
             }
             if (a.getType() == JzyyEntityRegister.HJM.get() && living.getType() == JzyyEntityRegister.DOG_JIAO.get()) {
                 a.hurt(LegacyDamageSource.mobAttack(living), a.getMaxHealth());
+            }
+        }
+        if (a instanceof TitanWarden warden) {
+            if (warden.isLocking()){
+                event.setAmount(event.getAmount()*0.1f);
+            }
+            if (warden.isRemote()||warden.isAttacking()){
+                event.setAmount(event.getAmount()*0.4f);
             }
         }
     }

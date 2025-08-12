@@ -1,4 +1,4 @@
-package com.csdy.jzyy.entity.boss.ai.TitanWarden;
+package com.csdy.jzyy.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -10,9 +10,10 @@ import org.jetbrains.annotations.NotNull;
 public class BigSonicBoomParticle extends HugeExplosionParticle {
     protected BigSonicBoomParticle(ClientLevel level, double x, double y, double z, double pQuadSizeMultiplier, SpriteSet pSprites) {
         super(level, x, y, z, pQuadSizeMultiplier,pSprites);
-        this.setSize(100F, 100F); // 粒子大小
+        this.setSize(10F, 10F); // 粒子大小
+        //this.scale(10F);
         this.lifetime = 16;
-        this.quadSize = 1.5F;
+        this.quadSize = 25F;
         this.setSpriteFromAge(pSprites);
     }
 

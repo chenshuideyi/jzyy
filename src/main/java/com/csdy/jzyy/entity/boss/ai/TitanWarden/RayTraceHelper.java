@@ -28,6 +28,7 @@ public class RayTraceHelper {
      * @param step      步进精度（方块）
      * @param filterEnt 额外过滤生物的条件（可 null）
      */
+
     public static TraceResult trace(Entity from,
                                     Entity to,
                                     double length,
@@ -35,21 +36,20 @@ public class RayTraceHelper {
                                     double step,
                                     Predicate<Entity> filterEnt) {
 
+        float a = 1f;
         Level level = from.level();
         TraceResult res = new TraceResult();
-        Vec3 start =new Vec3(from.position().x,from.position().y+from.getBbHeight()*0.6f,from.position().z) ;
+        Vec3 start =new Vec3(from.position().x,from.position().y+from.getBbHeight()*0.575f*a,from.position().z) ;
         Vec3 dir   = to.position().subtract(start).normalize();
         // 未指定长度 => 取实体间距离
-        if (length <= 0) length = start.distanceTo(new Vec3(to.position().x,to.position().y+to.getBbHeight()*0.6f,to.position().z) );
+        if (length <= 0) length = start.distanceTo(new Vec3(to.position().x,to.position().y+to.getBbHeight()*0.575f*a,to.position().z) );
         // 扫描
         for (double d = 0; d <= length; d += step) {
             Vec3 p = start.add(dir.scale(d));
-            /* 1. 方块 */
             BlockPos bp = BlockPos.containing(p);
             if (!res.blocks.contains(bp)) {
                 res.blocks.add(bp);
             }
-            /* 2. 生物：以当前点为中心、半径为 radius 的 AABB */
             AABB box = new AABB(p.x - radius, p.y - radius, p.z - radius,
                     p.x + radius, p.y + radius, p.z + radius);
 
@@ -64,8 +64,59 @@ public class RayTraceHelper {
         return res;
     }
 
-    /* 简易重载 */
     public static TraceResult trace(Entity from, Entity to, double length, double radius) {
         return trace(from, to, length, radius, 0.25, null);
     }
+
+    //太几把卡了
+
+    public static TraceResult tracea(Entity from,
+                                    Entity to,
+                                    double length,
+                                    double radius,  // 检测实体的半径
+                                    double blockRadius,   // 检测方块的半径
+                                    double step,
+                                    Predicate<Entity> filterEnt) {
+
+        Level level = from.level();
+        TraceResult res = new TraceResult();
+        Vec3 start =new Vec3(from.position().x,from.position().y+from.getBbHeight()*0.575f*5f,from.position().z) ;
+        Vec3 dir   = to.position().subtract(start).normalize();
+        // 未指定长度 => 取实体间距离
+        if (length <= 0) length = start.distanceTo(new Vec3(to.position().x,to.position().y+to.getBbHeight()*0.575f*5f,to.position().z) );
+        // 扫描
+        for (double d = 0; d <= length; d += step) {
+            Vec3 p = start.add(dir.scale(d));
+            //1. 方块检测（扩大范围）
+            BlockPos center = BlockPos.containing(p);
+            // 检测 blockRadius 范围内的所有方块
+            for (int x = (int) -blockRadius; x <= blockRadius; x++) {
+                for (int y = (int) -blockRadius; y <= blockRadius; y++) {
+                    for (int z = (int) -blockRadius; z <= blockRadius; z++) {
+                        BlockPos bp = center.offset(x, y, z);
+                        if (!res.blocks.contains(bp)) {
+                            res.blocks.add(bp);
+                        }
+                    }
+                }
+            }
+            //2. 生物：以当前点为中心、半径为 radius 的 AABB
+            AABB box = new AABB(p.x - radius, p.y - radius, p.z - radius,
+                    p.x + radius, p.y + radius, p.z + radius);
+
+            List<LivingEntity> found = level.getEntitiesOfClass(LivingEntity.class, box,
+                    e -> e != null && e != from  && (filterEnt == null || filterEnt.test(e)));
+            for (LivingEntity e : found) {
+                if (!res.entities.contains(e)) {
+                    res.entities.add(e);
+                }
+            }
+        }
+        return res;
+    }
+
+    public static TraceResult tracea(Entity from, Entity to, double length, double radius, double blockRadius) {
+        return tracea(from, to, length, radius, blockRadius,0.25, null);
+    }
+
 }
