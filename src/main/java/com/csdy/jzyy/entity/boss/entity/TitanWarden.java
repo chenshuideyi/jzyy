@@ -160,7 +160,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
             //远程
             double attackReachSqr = this.getMeleeAttackRangeSqr();
             if (this.isLock()&&this.getTarget() != null&&!this.isAttacking()&&!this.isLocking()&&!this.isRemote()){
-                if (this.remoteTicks<60){
+                if (this.remoteTicks<120){
                     this.remoteTicks++;
                 }else {
                     this.startRemote();
