@@ -1091,6 +1091,9 @@
   "modifier.jzyy.merorbroken.flavor":"refinemerormoir",
   "modifier.jzyy.merorbroken.description":"免疫小于7的伤害",
 
+  "modifier.jzyy.refinemeror": "莫厄反应",
+  "modifier.jzyy.refinemeror.flavor":"refinemeror",
+  "modifier.jzyy.refinemeror.description":"装备时会自动攻击",
 
 
   "entity.oni_miko.onimiko": "鬼巫女"
