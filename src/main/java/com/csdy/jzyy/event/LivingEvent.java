@@ -45,11 +45,15 @@ public class LivingEvent {
             }
         }
         if (a instanceof TitanWarden warden) {
+            float e = event.getAmount();
+            if (e>warden.getMaxHealth()*0.04f){
+                event.setAmount(warden.getMaxHealth()*0.04f);
+            }
             if (warden.isLocking()){
-                event.setAmount(event.getAmount()*0.1f);
+                event.setAmount(event.getAmount()*0.05f);
             }
             if (warden.isRemote()||warden.isAttacking()){
-                event.setAmount(event.getAmount()*0.4f);
+                event.setAmount(event.getAmount()*0.2f);
             }
         }
     }

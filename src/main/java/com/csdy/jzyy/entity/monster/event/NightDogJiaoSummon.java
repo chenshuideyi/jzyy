@@ -6,6 +6,7 @@ import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -49,6 +50,10 @@ public class NightDogJiaoSummon {
                 return;
             }
 
+            String s = "no_da_gou_jiao";
+            if (player.getPersistentData().getBoolean(s)){
+                return;
+            }
             if (player.getPersistentData().getLong("LastDogJiaoSpawn") + 24000 > event.level.getGameTime()) {
                 return;
             }

@@ -2,8 +2,10 @@ package com.csdy.jzyy.item.food;
 
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -32,10 +34,17 @@ public class LueMaoQu extends ItemGenericFood {
             int randomIndex = random.nextInt(array.length);
             int a = random.nextInt(20);
             if (a != 1) {
-                player.sendSystemMessage(Component.translatable(array[randomIndex]));
+                player.displayClientMessage(Component.translatable(array[randomIndex]),true);
             } else {
-                player.sendSystemMessage(Component.translatable("msg.lue_mao_qu6"));
+                player.displayClientMessage(Component.translatable("msg.lue_mao_qu6"),true);
                 trySpawnEntityNearPlayer(JzyyEntityRegister.HJM.get(),(ServerLevel) player.level, player, 1, 3, 6, MobEffects.GLOWING,300,0);
+            }
+            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+            String s = "no_da_gou_jiao";
+            player.getPersistentData().getBoolean(s);
+            if (!tag.getBoolean(s)){
+                tag.putBoolean(s, true);
+                player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
             }
         }
         return stack;
