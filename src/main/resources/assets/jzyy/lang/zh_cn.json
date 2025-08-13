@@ -174,6 +174,9 @@
 
   "material.jzyy.dragonbone": "龙骨",
 
+
+
+
   "material.jzyy.living_wood": "生命木",
   "material.jzyy.living_wood.flavor": "会呼吸的木头",
   "material.jzyy.living_wood.encyclopedia": "他是活的！也许我能让它变得更大",
@@ -1038,7 +1041,7 @@
 
   "modifier.jzyy.slushing": "抗腐蚀",
   "modifier.jzyy.slushing.flavor":"为什么要抗腐蚀",
-  "modifier.jzyy.color1.description":"装备时免疫腐蚀效果",
+  "modifier.jzyy.slushing.description":"装备时免疫腐蚀效果",
 
   "modifier.jzyy.frostabsorption": "冰霜吸收",
   "modifier.jzyy.frostabsorption.flavor":"可能大概不能抗寒",
@@ -1092,13 +1095,26 @@
   "modifier.jzyy.merorbroken.flavor":"merormoir",
   "modifier.jzyy.merorbroken.description":"击中使敌人收到流血效果无视莫厄韧性",
 
-  "modifier.jzyy.merorbroken": "低伤无视",
-  "modifier.jzyy.merorbroken.flavor":"refinemerormoir",
-  "modifier.jzyy.merorbroken.description":"免疫小于7的伤害",
+  "modifier.jzyy.lowinjurydisregard": "低伤无视",
+  "modifier.jzyy.lowinjurydisregard.flavor":"refinemerormoir",
+  "modifier.jzyy.lowinjurydisregard.description":"免疫小于7的伤害",
 
   "modifier.jzyy.refinemeror": "莫厄反应",
   "modifier.jzyy.refinemeror.flavor":"refinemeror",
-  "modifier.jzyy.refinemeror.description":"装备时会自动攻击",
+  "modifier.jzyy.refinemeror.description":"装备时会让你自动攻击敌人",
+
+  "material.jzyy.bitter_cold_firm_ice": "苦寒坚冰",
+  "material.jzyy.frost_yeti_hair.json": "寒霜雪怪毛发",
+  "material.jzyy.lightning_worm_chitin": "闪电蠕虫甲壳",
+  "material.jzyy.fire_secretor_adhesive": "泌火恶怪黏胶",
+  "material.jzyy.malignasaur_teet": "恶鳞牙齿",
+  "material.jzyy.marine_reptiles_fine_scale": "海爬细鳞",
+  "material.jzyy.ocean_gemstone": "海洋宝石",
+  "material.jzyy.virtual_cave_evil_crystal": "虚洞邪恶水晶",
+  "material.jzyy.refine_meror_metal_ingot": "精炼莫厄金属锭",
+  "material.jzyy.meror_metal_ingot": "莫厄金属锭",
+
+
 
 
   "entity.oni_miko.onimiko": "鬼巫女"

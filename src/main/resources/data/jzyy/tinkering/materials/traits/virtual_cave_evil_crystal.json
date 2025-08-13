@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:shattertheemptiness",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:guixu",
+        "level": 1
+      }
+    ]
+  }
+}

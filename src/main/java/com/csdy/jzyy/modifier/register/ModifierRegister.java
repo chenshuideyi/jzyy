@@ -339,7 +339,7 @@ public class ModifierRegister {
     public static final StaticModifier<VirtualCaveCrystalArmor.guixu> GUIXU_STATIC_MODIFIER = MODIFIERS.register("guixu", VirtualCaveCrystalArmor.guixu::new);
     public static final StaticModifier<Meror.merorbroken> MERORBROKEN_STATIC_MODIFIER = MODIFIERS.register("merorbroken", Meror.merorbroken::new);
     public static final StaticModifier<MerorArmor.merortoughness> MERORToughness_STATIC_MODIFIER = MODIFIERS.register("merortoughness", MerorArmor.merortoughness::new);
-    public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("low_injury_disregard", RefineMerorArmor.lowinjurydisregard::new);
+    public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("lowinjurydisregard", RefineMerorArmor.lowinjurydisregard::new);
     public static final StaticModifier<RefineMeror> REFINEMEROR_STATIC_MODIFIER = MODIFIERS.register("refinemeror", RefineMeror::new);
 
     ///护甲补强

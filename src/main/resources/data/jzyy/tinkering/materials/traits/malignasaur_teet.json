@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:hungryhunter",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:ancientrespiratio",
+        "level": 1
+      }
+    ]
+  }
+}

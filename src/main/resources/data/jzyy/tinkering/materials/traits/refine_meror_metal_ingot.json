@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:refinemeror",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:lowinjurydisregard",
+        "level": 1
+      }
+    ]
+  }
+}

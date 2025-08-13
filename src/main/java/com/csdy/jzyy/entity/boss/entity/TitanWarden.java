@@ -403,12 +403,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
         return super.getBossMusic();
     }
 
-    @Override
-    public void remove(@NotNull RemovalReason reason) {
-        if (isDeadOrDying()) {
-            super.remove(reason);
-        }
-    }
+
 
     @Override
     public void die(@NotNull DamageSource pSource) {
