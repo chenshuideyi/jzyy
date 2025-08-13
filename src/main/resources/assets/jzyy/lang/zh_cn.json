@@ -11,7 +11,7 @@
   "item.jzyy.mozhua_cap": "再来一瓶",
   "item.jzyy.dog_jiao_spawn_egg": "大狗嚼刷怪蛋",
   "item.jzyy.hjm_spawn_egg": "[其名为耄]刷怪蛋",
-  "item.jzyy.titan_warden_spawn_egg": "监守者泰坦刷怪蛋",
+
 
   "item.jzyy.portable_end_portal": "便携式末地传送门",
   "item.jzyy.protable_end_portal.line1": "在指定方块上生成3*3的末地传送门",
@@ -763,6 +763,7 @@
   "modifier.jzyy.crystalline.flavor": "买上一架小小钢琴",
   "modifier.jzyy.crystalline.description":"你的工具每有200点耐久就会增加1点伤害",
 
+  "txet": "也许考虑只在愚人节使用",
   "modifier.jzyy.fuck_memory_till_die": "数据剪切",
   "modifier.jzyy.fuck_memory_till_die.flavor": "“你以为你成为了最强。”\n“成为了世界之巅的存在。”\n“但，在我看来你不过是一串数据而已。”\n“不过，我会仁慈的给予你“重生”的机会。”\n一旦其资料量狂暴涌出，那便无人得以幸免",
   "modifier.jzyy.fuck_memory_till_die.description":"让目标玩家的内存越来越少，直到内存溢出错误",
@@ -1013,7 +1014,8 @@
   "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu6": "这个是略人的梗😱😱😱",
 
-  "entity.jzyy.titan_warden": "监守者泰坦",
+  "entity.jzyy.titan_warden": "监守者泰坦（未锁敌）",
+  "entity.jzyy.titan_warden.lock": "监守者泰坦（已锁定）",
 
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",
@@ -1094,6 +1096,9 @@
   "modifier.jzyy.merorbroken.flavor":"refinemerormoir",
   "modifier.jzyy.merorbroken.description":"免疫小于7的伤害",
 
+  "modifier.jzyy.refinemeror": "莫厄反应",
+  "modifier.jzyy.refinemeror.flavor":"refinemeror",
+  "modifier.jzyy.refinemeror.description":"装备时会自动攻击",
 
 
   "entity.oni_miko.onimiko": "鬼巫女"
