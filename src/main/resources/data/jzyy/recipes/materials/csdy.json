@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "jzyy:csdy_sword"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "jzyy:csdy"
+}

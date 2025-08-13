@@ -6,7 +6,9 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -18,74 +20,96 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class PlayerCreeperArmorLayer extends RenderLayer {
-    //雷凯
-    private static final ResourceLocation CREEPER_ARMOR_LOCATION = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
-    private final HumanoidModel<Player> model;
-    private final PlayerRenderer render;
+public class PlayerCreeperArmorLayer extends RenderLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+    private static final ResourceLocation LIGHTNING_TEXTURE = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
+    private final PlayerModel<AbstractClientPlayer> model;
+    private final PlayerRenderer renderer;
 
     public PlayerCreeperArmorLayer(PlayerRenderer renderer) {
         super(renderer);
+        this.renderer = renderer;
         Minecraft mc = Minecraft.getInstance();
         EntityRendererProvider.Context context = new EntityRendererProvider.Context(
-                mc.getEntityRenderDispatcher(),mc.getItemRenderer(),mc.blockRenderer,mc.gameRenderer.itemInHandRenderer, mc.getResourceManager(),mc.getEntityModels(),mc.font
+                mc.getEntityRenderDispatcher(),
+                mc.getItemRenderer(),
+                mc.getBlockRenderer(),
+                mc.getEntityRenderDispatcher().getItemInHandRenderer(),
+                mc.getResourceManager(),
+                mc.getEntityModels(),
+                mc.font
         );
-        this.model = new HumanoidModel<>(context.bakeLayer(ModelLayers.PLAYER));
-        this.render=renderer;
-    }
-
-
-
-    protected float xOffset(float xOffset) {
-        return xOffset * 0.01F;
-    }
-
-    protected ResourceLocation getTextureLocation() {
-        return CREEPER_ARMOR_LOCATION;
-    }
-
-    protected EntityModel<Player> model() {
-        return this.model;
+        this.model = new PlayerModel<>(context.bakeLayer(ModelLayers.PLAYER), false);
+        this.model.setAllVisible(true);
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight,
-                       Entity entity, float limbSwing, float limbSwingAmount,
+    public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource buffer, int packedLight,
+                       @NotNull AbstractClientPlayer player, float limbSwing, float limbSwingAmount,
                        float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (!(entity instanceof Player player)) return;
         if (!player.hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get())) return;
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.isPaused()) return;
 
-        // 1. 在盔甲层之后渲染
         poseStack.pushPose();
 
-        // 2. 稍微放大模型使其显示在盔甲外面
-        float scale = 1.3f; // 2%放大
-        poseStack.scale(scale, scale, scale);
+        try {
+            // 关键修改1：移除translate调整，让模型自然跟随玩家
+            poseStack.translate(0.0D, -1.301D, 0.0D);
 
-        // 3. 调整渲染参数
-        float time = (float)player.tickCount + partialTicks;
-        VertexConsumer vertexConsumer = buffer.getBuffer(
-                RenderType.energySwirl(
-                        CREEPER_ARMOR_LOCATION,
-                        this.xOffset(time) % 1.0F,
-                        time * 0.01F % 1.0F
-                )
-        );
+            // 调整缩放比例，稍微放大以包裹玩家
+            float scale = 1.82f; // 比玩家稍大
+            poseStack.scale(scale, scale, scale);
 
-        // 4. 设置模型动画并渲染
-        this.model.prepareMobModel(player, limbSwing, limbSwingAmount, partialTicks);
-        this.getParentModel().copyPropertiesTo(this.model);
-        this.model.setupAnim(player, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-        this.model.renderToBuffer(
-                poseStack,
-                vertexConsumer,
-                packedLight,
-                OverlayTexture.NO_OVERLAY,
-                0.5F, 0.5F, 1.0F, 1.0F // 调整颜色和透明度
-        );
+            float time = player.tickCount + partialTicks;
 
-        poseStack.popPose();
+            // 关键修改2：使用能量漩涡渲染类型
+            VertexConsumer vertexConsumer = buffer.getBuffer(
+                    RenderType.energySwirl(
+                            LIGHTNING_TEXTURE,
+                            this.getLightningXOffset(time) % 1.0F,
+                            time * 0.03F % 1.0F
+                    )
+            );
+
+            // 关键修改3：正确复制模型属性
+            this.model.copyPropertiesTo(this.getParentModel()); // 注意是copyPropertiesFrom
+            this.model.prepareMobModel(player, limbSwing, limbSwingAmount, partialTicks);
+            this.model.setupAnim(player, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+
+            // 渲染主闪电层
+            this.model.renderToBuffer(
+                    poseStack,
+                    vertexConsumer,
+                    packedLight,
+                    OverlayTexture.NO_OVERLAY,
+                    0.2F, 0.5F, 1.0F, 0.7F // 蓝白色闪电
+            );
+
+            // 添加第二层增强效果
+            VertexConsumer secondPass = buffer.getBuffer(
+                    RenderType.energySwirl(
+                            LIGHTNING_TEXTURE,
+                            this.getLightningXOffset(time * 1.5F) % 1.0F,
+                            time * 0.02F % 1.0F
+                    )
+            );
+
+            this.model.renderToBuffer(
+                    poseStack,
+                    secondPass,
+                    packedLight,
+                    OverlayTexture.NO_OVERLAY,
+                    0.7F, 0.8F, 1.0F, 0.5F // 更亮的第二层
+            );
+        } finally {
+            poseStack.popPose();
+        }
+    }
+
+    private float getLightningXOffset(float time) {
+        return time * 0.02F;
     }
 }

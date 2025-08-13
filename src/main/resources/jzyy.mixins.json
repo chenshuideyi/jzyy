@@ -7,7 +7,6 @@
   "refmap": "jzyy.refmap.json",
   "mixins": [
     "CsdyProtectionLivingEntityMixin",
-    "InventoryMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "PlayerMixin",

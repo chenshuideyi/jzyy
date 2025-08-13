@@ -26,6 +26,14 @@ public class BossMusic extends AbstractTickableSoundInstance {
         this.volume = this.baseVolume; // 初始化音量
     }
 
+    @Nullable
+    public static BossMusic create(BossEntity boss) {
+        if (boss == null || boss.getBossMusic() == null) {
+            return null; // 如果 boss 或音乐是 null，返回 null
+        }
+        return new BossMusic(boss);
+    }
+
     @Override
     public void tick() {
         if (this.boss == null || !this.boss.isAlive() || Minecraft.getInstance().player == null) {
@@ -37,10 +45,6 @@ public class BossMusic extends AbstractTickableSoundInstance {
             this.volume = 0.0F;
             return;
         }
-//        else {
-//            // 这里不再需要做什么，因为基础音量已经设置好了
-//        }
-
 
         // 根据距离动态调整音量
         float maxDistance = 60.0f;

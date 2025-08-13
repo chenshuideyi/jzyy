@@ -11,7 +11,7 @@
   "item.jzyy.mozhua_cap": "再来一瓶",
   "item.jzyy.dog_jiao_spawn_egg": "大狗嚼刷怪蛋",
   "item.jzyy.hjm_spawn_egg": "[其名为耄]刷怪蛋",
-
+  "item.jzyy.titan_warden_spawn_egg": "监守者泰坦刷怪蛋",
 
   "item.jzyy.portable_end_portal": "便携式末地传送门",
   "item.jzyy.protable_end_portal.line1": "在指定方块上生成3*3的末地传送门",
@@ -97,6 +97,11 @@
   "item.jzyy.failed_gobbers": "俯首戈伯",
   "item.jzyy.failed_gobbers.line1": "被屈打成招",
 
+
+
+  "material.jzyy.csdy": "csdy",
+  "material.jzyy.csdy.flavor": "万籁悉数寂静后 仅剩落空的祈求",
+  "material.jzyy.csdy.encyclopedia": "我的心头传来了瘙痒,就像小刀刺进了心脏",
 
   "material.jzyy.defect": "钴丈技奇人",
   "material.jzyy.defect.flavor": "全游戏第四强的材料",
@@ -758,18 +763,17 @@
   "modifier.jzyy.crystalline.flavor": "买上一架小小钢琴",
   "modifier.jzyy.crystalline.description":"你的工具每有200点耐久就会增加1点伤害",
 
-  "txet": "也许考虑只在愚人节使用",
   "modifier.jzyy.fuck_memory_till_die": "数据剪切",
   "modifier.jzyy.fuck_memory_till_die.flavor": "“你以为你成为了最强。”\n“成为了世界之巅的存在。”\n“但，在我看来你不过是一串数据而已。”\n“不过，我会仁慈的给予你“重生”的机会。”\n一旦其资料量狂暴涌出，那便无人得以幸免",
   "modifier.jzyy.fuck_memory_till_die.description":"让目标玩家的内存越来越少，直到内存溢出错误",
 
   "modifier.jzyy.csdy_attack": "csdy的触碰",
-  "modifier.jzyy.csdy_attack.flavor": "死亡不过是祂剧本里最温柔的谎言。",
-  "modifier.jzyy.csdy_attack.description":"将目标生物转变成活体陈列的肉人偶",
+  "modifier.jzyy.csdy_attack.flavor": "这不会很好受的。",
+  "modifier.jzyy.csdy_attack.description":"只是很轻，很轻的摸一下",
 
   "modifier.jzyy.csdy_armor": "csdy的死皮",
-  "modifier.jzyy.csdy_armor.flavor": "我的皮肤开始脱落——然后折皱，就像是披上了某种存在的“自我的外壳”。",
-  "modifier.jzyy.csdy_armor.description":"你无敌了，但并不完全\n输入/csdy protect激活完全形态 这很不稳定，但如果你有特殊需求",
+  "modifier.jzyy.csdy_armor.flavor": "真是一场好长好长，又浅眠的梦",
+  "modifier.jzyy.csdy_armor.description":"csdy会保留你的最后一口气，无论你愿不愿意",
 
   "modifier.jzyy.csdy_whisper": "csdy的低语",
   "modifier.jzyy.csdy_whisper.flavor": "这些声音......我听不懂。",
@@ -1009,8 +1013,7 @@
   "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu6": "这个是略人的梗😱😱😱",
 
-  "entity.jzyy.titan_warden": "坚守者泰坦（未锁敌）",
-  "entity.jzyy.titan_warden.lock": "坚守者泰坦（已锁定）",
+  "entity.jzyy.titan_warden": "监守者泰坦",
 
   "effect.jzyy.true_man_last_dance": "真男人20秒",
   "effect.jzyy.overcharge": "过载",

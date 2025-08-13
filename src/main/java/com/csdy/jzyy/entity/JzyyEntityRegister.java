@@ -58,7 +58,7 @@ public class JzyyEntityRegister {
                                     TitanWarden::new, MobCategory.MONSTER)
                             //.sized(0.9F, 2.9F)
                             .sized(5.4F, 87F)
-                            .clientTrackingRange(200)
+                            .clientTrackingRange(120)
                             .build("jzyy:titan_warden"));
 
 

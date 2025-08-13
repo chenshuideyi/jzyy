@@ -111,6 +111,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
     }
+
     @Override
     public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate){
 
@@ -119,7 +120,6 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     public void tick() {
         super.tick();
 
-        updateDynamicName();
         manageSpeedModifier();
 
         if (!this.level().isClientSide) {
@@ -394,7 +394,16 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() { return this.geoCache; }
 
     @Override
-    public SoundEvent getBossMusic() { return JzyySoundsRegister.UMIYURI_KAITEITAN.get(); }
+    public SoundEvent getBossMusic() {
+        return super.getBossMusic();
+    }
+
+    @Override
+    public void remove(@NotNull RemovalReason reason) {
+        if (isDeadOrDying()) {
+            super.remove(reason);
+        }
+    }
 
     @Override
     public void die(@NotNull DamageSource pSource) {
@@ -424,25 +433,5 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     public void setInvisible(boolean invisible) {
     }
 
-    private void updateDynamicName() {
-        boolean currentState = this.isLock();
-        // 只有当状态与上一tick不同时，才进行更新
-        if (currentState != this.lastLockState) {
-            Component newName;
-            if (currentState) {
-                newName = Component.translatable("entity.jzyy.titan_warden.lock");
-            } else {
-                newName = Component.translatable("entity.jzyy.titan_warden");
-            }
-
-            // 主动设置自定义名称，这将自动同步到客户端
-            this.setCustomName(newName);
-            // 确保名字总是可见的（可选，但推荐）
-            this.setCustomNameVisible(true);
-
-            // 更新记录的状态
-            this.lastLockState = currentState;
-        }
-    }
 
 }

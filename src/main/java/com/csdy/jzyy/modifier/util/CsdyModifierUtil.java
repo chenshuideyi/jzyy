@@ -220,6 +220,13 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("dummmmmmy");
     }
 
+    public static boolean isFromOmniMod(Entity entity) {
+        if (entity == null) {
+            return false;
+        }
+        return entity.getClass().getName().contains("omnimobs");
+    }
+
     public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage,float value){
         if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;

@@ -50,14 +50,11 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                         rMethod(call, "isDeadOrDying", "(Lnet/minecraft/world/entity/LivingEntity;)Z");
                         rewrite = true;
                     }
-//                    case "m_213877_" -> {
-//                        rMethod(call, "isRemoved", "(Lnet/minecraft/world/entity/Entity;)Z");
+//                    case "m_135370_" -> {
+//                        rMethod(call, "get", "(Lnet/minecraft/network/syncher/EntityDataAccessor;)Ljava/lang/Object;");
 //                        rewrite = true;
 //                    }
-//                    case "m_6084_" -> {
-//                        rMethod(call, "isAlive", "(Lnet/minecraft/world/entity/Entity;)Z");
-//                        rewrite = true;
-//                    }
+
                 }
             } else if (insn instanceof FieldInsnNode field && field.getOpcode() == Opcodes.GETFIELD) {
                 switch (field.name) {
@@ -65,10 +62,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                         rField(method, field, "getDeathTime", "(Lnet/minecraft/world/entity/LivingEntity;)I");
                         rewrite = true;
                     }
-//                    case "f_146795_" -> {
-//                        rField(method, field, "getRemovalReason", "(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity$RemovalReason;");
-//                        rewrite = true;
-//                    }
                 }
             }
             if (classNode.name.contains("kakiku")) {
@@ -80,17 +73,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
             returnZ.set(rewrite);
         }));
         return returnZ.get();
-    }
-
-    private byte[] readLxAgentClassBytes() {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("com/csdy/jzyy/agent/LxAgent.class")) {
-            if (is == null) {
-                throw new IOException("LxAgent.class 未找到，请检查类路径");
-            }
-            return is.readAllBytes();
-        } catch (IOException e) {
-            throw new RuntimeException("读取 LxAgent 字节码失败", e);
-        }
     }
 
     private static void rMethod(MethodInsnNode call, String name, String desc) {
@@ -118,6 +100,17 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
             System.exit(0);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private byte[] readLxAgentClassBytes() {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("com/csdy/jzyy/agent/LxAgent.class")) {
+            if (is == null) {
+                throw new IOException("LxAgent.class 未找到，请检查类路径");
+            }
+            return is.readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException("读取 LxAgent 字节码失败", e);
         }
     }
 

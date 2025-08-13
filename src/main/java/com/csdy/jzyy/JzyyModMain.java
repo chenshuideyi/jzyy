@@ -163,7 +163,7 @@ public class JzyyModMain {
             renderer.addLayer(new PlayerCreeperArmorLayer(renderer));
 //            renderer.addLayer(new BloodLayer(renderer));
 //            renderer.addLayer(new ScpLayer(renderer));
-            renderer.addLayer(new GocLayer(renderer));
+//            renderer.addLayer(new GocLayer(renderer));
         }
     }
 

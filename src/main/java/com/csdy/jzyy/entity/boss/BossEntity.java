@@ -32,7 +32,7 @@ public class BossEntity extends Monster {
 
     public BossEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.bossEvent = (ServerBossEvent)(new ServerBossEvent(
+        this.bossEvent = (new ServerBossEvent(
                 this.getDisplayName(),
                 BossEvent.BossBarColor.PURPLE, // 血条颜色
                 BossEvent.BossBarOverlay.PROGRESS // 血条样式
@@ -63,8 +63,14 @@ public class BossEntity extends Monster {
         return Minecraft.getInstance().font;
     }
 
+    @Nullable
     public SoundEvent getBossMusic() {
         return null;
+    }
+
+    @Override
+    public boolean isPersistenceRequired() {
+        return true; // 强制生物不会被自然卸载
     }
 
     public float getMaxDamageHurt() {
@@ -140,34 +146,49 @@ public class BossEntity extends Monster {
     @Override
     public void tick() {
         super.tick();
-        // bossEvent 更新逻辑保持不变
+
+        // Boss 血条和名称更新
         this.bossEvent.setName(this.getDisplayName());
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-        this.resetFallDistance(); // 你有两行关于fallDistance的，保留一个即可
+        this.resetFallDistance();
 
+        // 只在客户端处理音乐
         if (level().isClientSide()) {
-            // 音乐播放逻辑
-            if (this.isAlive() && Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MUSIC) > 0.0F) {
-                if (!musicStarted) { // 如果音乐还没开始
-                    if (clientBossMusicInstance == null || clientBossMusicInstance.isStopped()) {
-                        clientBossMusicInstance = new BossMusic(this); // 创建/重新创建实例
-                    }
-                    // 简化播放条件：如果实例不在播放列表中，就播放它
-                    // SoundManager.play() 内部会处理一些重复播放同个实例的情况
-                    if (!Minecraft.getInstance().getSoundManager().isActive(clientBossMusicInstance)) {
-                        Minecraft.getInstance().getSoundManager().play(clientBossMusicInstance);
-                    }
-                    musicStarted = true;
-                }
-            } else { // Boss 死亡或音乐关闭
-                if (musicStarted && clientBossMusicInstance != null) {
-                    Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
-                    musicStarted = false;
-                    clientBossMusicInstance = null; // 可选，下次需要时重新创建
-                }
+            handleBossMusic();
+        }
+    }
+
+    // 分离出的音乐处理逻辑（更清晰且符合@Nullable）
+    private void handleBossMusic() {
+        Minecraft mc = Minecraft.getInstance();
+        float musicVolume = mc.options.getSoundSourceVolume(SoundSource.MUSIC);
+
+        // 条件1：Boss存活且音乐未静音
+        if (this.isAlive() && musicVolume > 0.0F) {
+            // 条件2：音乐未开始或需要重新创建实例
+            if (!musicStarted || clientBossMusicInstance == null || clientBossMusicInstance.isStopped()) {
+                clientBossMusicInstance = BossMusic.create(this); // 使用工厂方法（可能返回null）
             }
 
+            // 安全播放检查（包括null检查）
+            if (clientBossMusicInstance != null && !mc.getSoundManager().isActive(clientBossMusicInstance)) {
+                mc.getSoundManager().play(clientBossMusicInstance);
+                musicStarted = true;
+            }
         }
+        // Boss死亡或音乐静音时的清理逻辑
+        else if (musicStarted) {
+            stopBossMusic();
+        }
+    }
+
+    // 安全的音乐停止方法
+    private void stopBossMusic() {
+        if (clientBossMusicInstance != null) {
+            Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
+        }
+        musicStarted = false;
+        clientBossMusicInstance = null; // 显式置空
     }
 
     @Override
