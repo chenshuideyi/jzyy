@@ -254,12 +254,6 @@ public class TitanWarden extends BossEntity implements GeoEntity {
         super.onRemovedFromWorld();
         this.bossEvent.removeAllPlayers();
     }
-    @Override
-    public void remove(@NotNull RemovalReason reason) {
-        if (isDeadOrDying()) {
-            super.remove(reason);
-        }
-    }
 
     private static final UUID LOCK_SPEED_BOOST_UUID = UUID.fromString("41D1790F-2154-F941-26BD-0A4D929E6077");
     private static final AttributeModifier LOCK_SPEED_BOOST = new AttributeModifier(

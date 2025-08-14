@@ -15,11 +15,8 @@ public class Pulverize extends NoLevelsModifier implements MeleeHitModifierHook 
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         var target = context.getLivingTarget();
         var attacker = context.getAttacker();
-        if (target.getHealth() < attacker.getMaxHealth()){
-            if (attacker instanceof  Player player) {
-                target.die(target.level().damageSources.playerAttack(player));
-            }
-            else target.die(target.level().damageSources.mobAttack(attacker));
+        if (target != null && target.getHealth() < attacker.getMaxHealth()) {
+            target.setHealth(0);
         }
         return knockback;
     }

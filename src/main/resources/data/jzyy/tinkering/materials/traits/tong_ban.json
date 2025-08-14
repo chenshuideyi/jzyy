@@ -3,6 +3,14 @@
     {
       "name": "jzyy:tong_greed",
       "level": 1
+    },
+    {
+      "name": "jzyy:fortune",
+      "level": 1
+    },
+    {
+      "name": "jzyy:experienced",
+      "level": 1
     }
   ]
 }
