@@ -1,0 +1,16 @@
+{
+  "default": [
+    {
+      "name": "jzyy:merorbroken",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:merortoughness",
+        "level": 1
+      }
+    ]
+  }
+}

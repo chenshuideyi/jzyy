@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "jerotesvillage:bitter_cold_firm_ice"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "jzyy:bitter_cold_firm_ice"
+}
