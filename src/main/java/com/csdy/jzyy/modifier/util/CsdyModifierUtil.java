@@ -260,7 +260,16 @@ public class CsdyModifierUtil {
 
 
 
-
+    public static boolean hasImagineBreakArmor(Player player) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
+            ItemStack stack = player.getItemBySlot(slot);
+            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.IMAGINE_BREAKER_ARMOR_STATIC_MODIFIER.getId()) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public static boolean hasVoidWalk(Player player) {

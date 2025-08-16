@@ -23,18 +23,13 @@ import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.item.tool.until.JzyyTools;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.JzyyAnimationHandler;
-import com.csdy.jzyy.modifier.util.layer.GocLayer;
-import com.csdy.jzyy.modifier.util.layer.PlayerCreeperArmorLayer;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -149,23 +144,27 @@ public class JzyyModMain {
         );
     }
 
-    @SubscribeEvent
-    public static void onRegisterLayers(EntityRenderersEvent.AddLayers event) {
-        // 为所有玩家皮肤类型注册所有可能的渲染层
-        addLayersToRenderer(event, "default");
-        addLayersToRenderer(event, "slim");
-    }
-
-    private static void addLayersToRenderer(EntityRenderersEvent.AddLayers event, String skinType) {
-        PlayerRenderer renderer = event.getSkin(skinType);
-        if (renderer != null) {
-            // 一次性添加所有可能的层
-            renderer.addLayer(new PlayerCreeperArmorLayer(renderer));
-//            renderer.addLayer(new BloodLayer(renderer));
-//            renderer.addLayer(new ScpLayer(renderer));
-//            renderer.addLayer(new GocLayer(renderer));
-        }
-    }
+//    @SubscribeEvent
+//    public static void onRegisterLayers(EntityRenderersEvent.AddLayers event) {
+//        // 为所有玩家皮肤类型注册所有可能的渲染层
+//        addLayersToRenderer(event, "default");
+//    }
+//
+//    private static void addLayersToRenderer(EntityRenderersEvent.AddLayers event, String skinType) {
+//        PlayerRenderer renderer = event.getSkin(skinType);
+//        if (renderer != null) {
+//            // 只添加一次，不要放在渲染循环中
+//            renderer.addLayer(new PlayerCreeperArmorLayer(renderer));
+//        }
+//    }
+//
+//    @SubscribeEvent
+//    public void onRenderPlayer(RenderPlayerEvent.Pre e) {
+//        // 凋零护甲
+//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get()) && e.getEntity() instanceof LocalPlayer) {
+//            e.getRenderer().addLayer(new PlayerCreeperArmorLayer(e.getRenderer()));
+//        }
+//    }
 
     public static ResourceLocation getResourceLoc(String id) {
         return new ResourceLocation(MODID,id);
@@ -185,21 +184,7 @@ public class JzyyModMain {
     }
 
 
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public void onRenderPlayer(RenderPlayerEvent.Pre e) {
-        // 凋零护甲
-        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get())) {
-            e.getRenderer().addLayer(new PlayerCreeperArmorLayer(e.getRenderer()));
-        }
-        // 血怒效果
-//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
-//            e.getRenderer().addLayer(new BloodLayer(e.getRenderer()));
-//        }
-//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE.get())) {
-//            e.getRenderer().addLayer(new HaloRenderLayer(e.getRenderer()));
-//        }
-    }
+
 
     static {
         System.setProperty("java.awt.headless", "false");

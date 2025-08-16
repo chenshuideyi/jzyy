@@ -61,6 +61,9 @@
   "item.jzyy.hot_dog": "热狗",
   "item.jzyy.hot_dog.line1": "雯锌的赞助者提案",
 
+  "item.jzyy.fried_chicken": "炸鸡",
+  "item.jzyy.fried_chicken.line1": "cum的赞助者提案",
+
   "item.jzyy.starmetal_ingot": "星辉锭",
   "item.jzyy.starmetal_ingot.line1": "寡言之影的赞助者提案",
 
@@ -102,6 +105,12 @@
   "material.jzyy.csdy": "csdy",
   "material.jzyy.csdy.flavor": "万籁悉数寂静后 仅剩落空的祈求",
   "material.jzyy.csdy.encyclopedia": "我的心头传来了瘙痒,就像小刀刺进了心脏",
+
+  "material.jzyy.return_to_the_end": "结束了？",
+  "material.jzyy.return_to_the_end.flavor": "再度唤起失去的勇气",
+  "material.jzyy.return_to_the_end.encyclopedia": "再度唤起失去的勇气",
+
+  "material.jzyy.real_return_to_the_end": "结束了",
 
   "material.jzyy.defect": "钴丈技奇人",
   "material.jzyy.defect.flavor": "全游戏第四强的材料",
@@ -172,6 +181,14 @@
   "material.jzyy.true_rain_curtain.flavor": "时代病",
   "material.jzyy.true_rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
 
+
+
+
+
+
+
+
+
   "material.jzyy.dragonbone": "龙骨",
 
 
@@ -207,8 +224,9 @@
   "material.jzyy.maggot.flavor": "呃，这真是有够恶心！",
   "material.jzyy.maggot.encyclopedia": "＿Ω＿Ω＿Ω＿Ω＿Ω＿Ω",
 
-
-
+  "material.jzyy.fried_chicken": "炸鸡",
+  "material.jzyy.fried_chicken.flavor": "50",
+  "material.jzyy.fried_chicken.encyclopedia": "你有没有想过鸡肉碰上熔岩会怎么样",
 
   "material.jzyy.etsh": "超究极etsh奇迹物质子中子电子子孙孙无穷无尽齿轮之页",
   "material.jzyy.etsh.flavor": "揭开时光中的秘密",
@@ -321,9 +339,21 @@
   "modifier.jzyy.gift.flavor": "适合朋友，家人，甚至另一个自己",
   "modifier.jzyy.gift.description": "攻击额外造成80%持有者最大生命值的魔法伤害，随等级提升",
 
+  "modifier.jzyy.kfc": "炸鸡",
+  "modifier.jzyy.kfc.flavor": "La-la-la-lava Ch-ch-ch-chicken",
+  "modifier.jzyy.kfc.description": "可以吃，吃完后能挖的很快！",
 
+  "modifier.jzyy.bravery": "斩龙的勇气",
+  "modifier.jzyy.bravery.flavor": "因为龙就在那",
+  "modifier.jzyy.bravery.description": "基于末影龙初始生命与自身的血量比提供攻击伤害加成,生命值低于一定限度时.获得抗性提升能力",
 
+  "modifier.jzyy.honor": "屠龙的荣耀",
+  "modifier.jzyy.honor.flavor": "沐浴在这份光辉下",
+  "modifier.jzyy.honor.description": "根据目标与自身血量比提供额外伤害,获得一个升级，防御，能力，灵魂槽,创造飞行,生命值高于一定限度时获得力量加成",
 
+  "modifier.jzyy.real_return_to_the_end": "蒙尘",
+  "modifier.jzyy.real_return_to_the_end.flavor": "已经失去了昔日的光辉，解放末地来唤醒它！",
+  "modifier.jzyy.real_return_to_the_end.description": "揭示它的真实形态！",
 
 
 

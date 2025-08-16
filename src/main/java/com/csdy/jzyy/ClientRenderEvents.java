@@ -8,8 +8,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import static com.csdy.jzyy.modifier.util.layer.TestRender.renderSmoothSolidCircle;
-
 
 ///就是这里，做个标记点
 //@Mod.EventBusSubscriber(modid = ModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
@@ -57,15 +55,15 @@ public class ClientRenderEvents {
 //                    32,   // 分段数
 //                    r, g, b, 0.5f  // RGBA颜色(红色)
 //            );
-            renderSmoothSolidCircle(
-                    poseStack,
-                    bufferSource,
-                    player,
-                    partialTicks,
-                    6.0f,  // 半径
-                    12  // 分段数
-//                    r, g, b, 0.5f  // RGBA颜色(红色)
-            );
+//            renderSmoothSolidCircle(
+//                    poseStack,
+//                    bufferSource,
+//                    player,
+//                    partialTicks,
+//                    6.0f,  // 半径
+//                    12  // 分段数
+////                    r, g, b, 0.5f  // RGBA颜色(红色)
+//            );
         } finally {
             // 恢复变换状态
             poseStack.popPose();

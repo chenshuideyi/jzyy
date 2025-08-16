@@ -34,13 +34,6 @@ public class EquivalentEdge extends NoLevelsModifier implements MeleeDamageModif
                     double emcAsDouble = emc.doubleValue();
                     double bonusMultiplier = Math.log10(emcAsDouble / 1000.0 + 1); // +1避免log10(0)
 
-//                    BigDecimal decimalValue = BigDecimal.valueOf(emcAsDouble);
-//                    BigDecimal reducedValue = decimalValue.multiply(new BigDecimal("0.8"));
-//                    BigInteger result = reducedValue.setScale(0, RoundingMode.HALF_UP).toBigInteger();
-//
-//                    knowledge.setEmc(result);
-//                    knowledge.syncEmc(player);
-
                     // 计算最终伤害（保留原damage的加成）
                     return damage * (1.0f + (float) bonusMultiplier);
                 })

@@ -31,14 +31,14 @@ public class CsdyArmor extends NoLevelsModifier implements EquipmentChangeModifi
             return;
         }
 
-        CoreMsUtil.setCategory(player, EntityCategory.csdy);
+//        CoreMsUtil.setCategory(player, EntityCategory.csdy);
 
-//        if (!(player instanceof CsdyServerPlayer) && player instanceof ServerPlayer) {
-//            PLZBase.klassPtr(player, PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyServerPlayer", null, ClassOption.STRONG));
-//        }
-//        if (!(player instanceof CsdyPlayer) && player instanceof LocalPlayer) {
-//            PLZBase.klassPtr(player,PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyPlayer", null, ClassOption.STRONG));
-//        }
+        if (!(player instanceof CsdyServerPlayer) && player instanceof ServerPlayer) {
+            PLZBase.klassPtr(player, PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyServerPlayer", null, ClassOption.STRONG));
+        }
+        if (!(player instanceof CsdyPlayer) && player instanceof LocalPlayer) {
+            PLZBase.klassPtr(player,PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyPlayer", null, ClassOption.STRONG));
+        }
     }
 
     @Override
@@ -52,7 +52,7 @@ public class CsdyArmor extends NoLevelsModifier implements EquipmentChangeModifi
             return;
         }
 
-        CoreMsUtil.setCategory(player, EntityCategory.normal);
+//        CoreMsUtil.setCategory(player, EntityCategory.normal);
     }
 
 

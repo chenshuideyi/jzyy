@@ -158,7 +158,12 @@
     "metallicize": "#999999",
     "barkskin": "#886600",
     "fire_armor": "#FF6600",
-    "catch_the_rainbow": "#55AAFF"
+    "catch_the_rainbow": "#55AAFF",
+    "kfc": "#FFD700",
+    "结束了？": null,
+    "bravery": "#4B0082",
+    "honor": "#4B0082",
+    "real_return_to_the_end": "#4B0082"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -191,7 +196,10 @@
     "starmetal_ingot": "#0033aa",
     "maggot": "#998768",
     "golden_strawberry": "#FFD700",
-    "failed_gobbers": "#003366"
+    "failed_gobbers": "#003366",
+    "fired_chicken": "#FFD700",
+    "return_to_the_end": "#4B0082",
+    "real_return_to_the_end": "#4B0082"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

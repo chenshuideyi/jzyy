@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 public class CsdySword extends ItemGenericFood {
 
     public CsdySword() {
-        super(16384, 16384, false, true, true, 1);
+        super(16384, 16384, false, true, true, 64);
     }
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {

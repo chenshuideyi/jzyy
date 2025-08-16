@@ -42,6 +42,7 @@ import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceArmor;
 import com.csdy.jzyy.modifier.modifier.experience.real.RealExperienceKiller;
 import com.csdy.jzyy.modifier.modifier.failed_gobbers.TriplingBless;
 import com.csdy.jzyy.modifier.modifier.failed_gobbers.TriplingCurse;
+import com.csdy.jzyy.modifier.modifier.fired_chicken.Kfc;
 import com.csdy.jzyy.modifier.modifier.glass.Loupe;
 import com.csdy.jzyy.modifier.modifier.glass.Prism;
 import com.csdy.jzyy.modifier.modifier.golden_strawberry.Gift;
@@ -82,13 +83,12 @@ import com.csdy.jzyy.modifier.modifier.projectE.armor.Ultradense;
 import com.csdy.jzyy.modifier.modifier.pufferfish.QuillSpray;
 import com.csdy.jzyy.modifier.modifier.pufferfish.Stinger;
 import com.csdy.jzyy.modifier.modifier.rainbow.ColorModifier;
-import com.csdy.jzyy.modifier.modifier.real_form.RealEgo;
-import com.csdy.jzyy.modifier.modifier.real_form.RealExperience;
-import com.csdy.jzyy.modifier.modifier.real_form.RealLivingWood;
-import com.csdy.jzyy.modifier.modifier.real_form.RealRenstoneComponent;
+import com.csdy.jzyy.modifier.modifier.real_form.*;
 import com.csdy.jzyy.modifier.modifier.redstone_component.Precision;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.Disruptor;
 import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
+import com.csdy.jzyy.modifier.modifier.return_to_the_end.Bravery;
+import com.csdy.jzyy.modifier.modifier.return_to_the_end.Honor;
 import com.csdy.jzyy.modifier.modifier.silence.SilenceAlmighty;
 import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
@@ -459,6 +459,25 @@ public class ModifierRegister {
                     )
             );
 
+    public static final StaticModifier<RealReturnToTheEnd> REAL_RETURN_TO_THE_END_STATIC_MODIFIER =
+            MODIFIERS.register(
+                    "real_return_to_the_end",
+                    () -> new RealReturnToTheEnd(
+                            "return_to_the_end",
+                            MaterialVariantId.create(
+                                    new MaterialId("jzyy", "real_return_to_the_end"),
+                                    "default"
+                            ),
+                            "这份荣誉带来了晋升！"
+                    )
+            );
+
+
+    ///归终
+    public static final StaticModifier<Bravery> BRAVERY_STATIC_MODIFIER = MODIFIERS.register("bravery", Bravery::new);
+    public static final StaticModifier<Honor> HONOR_STATIC_MODIFIER = MODIFIERS.register("honor", Honor::new);
+
+
 
     ///经验钢
     public static final StaticModifier<ExperienceKiller> EXPERIENCE_KILLER_STATIC_MODIFIER = MODIFIERS.register("experience_killer", ExperienceKiller::new);
@@ -517,6 +536,12 @@ public class ModifierRegister {
     public static final StaticModifier<OneUp> ONE_UP_STATIC_MODIFIER = MODIFIERS.register("one_up", OneUp::new);
     public static final StaticModifier<RareFruit> RARE_FRUIT_STATIC_MODIFIER = MODIFIERS.register("rare_fruit", RareFruit::new);
     public static final StaticModifier<Gift> GIFT_STATIC_MODIFIER = MODIFIERS.register("gift", Gift::new);
+
+    ///炸鸡
+    public static final StaticModifier<Kfc> KFC_STATIC_MODIFIER = MODIFIERS.register("kfc", Kfc::new);
+
+
+
 
     ///彩虹物质
     public static final StaticModifier<ColorModifier> COLOR_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color", ColorModifier::new);

@@ -25,10 +25,10 @@ public final class CoreMethod {
                 float health = entity.getHealth();
                 if (Float.isNaN(health)) {
                     System.err.println("尝试修复一个假死，实体为" + entity.getClass());
-                    if (!(entity instanceof Player player)){
+                    if ((entity instanceof Player player)){
                         yield 0.0F;
                     }
-                    invokeKillEntity(entity);
+                    KillEntity(entity);
                     yield 0.0F;
                 } else {
                     yield health;

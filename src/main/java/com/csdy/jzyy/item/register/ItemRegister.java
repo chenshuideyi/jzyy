@@ -3,6 +3,7 @@ package com.csdy.jzyy.item.register;
 import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.item.*;
+import com.csdy.jzyy.item.food.FriedChicken;
 import com.csdy.jzyy.item.food.GoldenStrawberry;
 import com.csdy.jzyy.item.food.HotDog;
 import net.minecraft.world.item.BlockItem;
@@ -37,6 +38,8 @@ public class ItemRegister {
     public static final RegistryObject<Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot", StarmetalIngot::new);
     public static final RegistryObject<Item> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot", EvangeAlloyIngot::new);
     public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
+    public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("fried_chicken", FriedChicken::new);
+
 
     public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));
