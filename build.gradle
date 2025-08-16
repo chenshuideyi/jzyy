@@ -152,7 +152,8 @@ buildscript {
         //j村前置
         implementation fg.deobf("curse.maven:jerotes-warehouse-1249728:6678785")
 
-
+        //矿石菌种
+        implementation fg.deobf("curse.maven:craziness-awakened-963163:6837395")
     }
     tasks.named('processResources', ProcessResources).configure {
         var replaceProperties = [minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,

@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:chicken"
+  },
+  "cast_consumed": true,
+  "cooling_time": 60,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct:magma"
+  },
+  "result": "jzyy:fried_chicken"
+}

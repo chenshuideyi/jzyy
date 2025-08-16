@@ -199,34 +199,34 @@ public class CsdyWorldDiadema extends Diadema {
 
         core.setTarget(player);
 
-//        player.teleportTo(core.getX(),core.getY(),core.getZ());
+        player.teleportTo(core.getX(),core.getY(),core.getZ());
 
-        core.doHurtTarget(player);
-
-        // 1. 计算方向向量（从玩家指向核心）
-        Vec3 direction = core.position()
-                .subtract(player.position())
-                .normalize(); // 单位化向量
-
-        // 2. 设置拉力参数
-        double pullStrength = 15; // 拉力强度（可调整）
-
-        Vec3 currentMotion = player.getDeltaMovement();
-        Vec3 newMotion = currentMotion.add(
-                direction.x * pullStrength,
-                direction.y * pullStrength,
-                direction.z * pullStrength
-        );
-        player.setDeltaMovement(newMotion);
+//        core.doHurtTarget(player);
+//
+//        // 1. 计算方向向量（从玩家指向核心）
+//        Vec3 direction = core.position()
+//                .subtract(player.position())
+//                .normalize(); // 单位化向量
+//
+//        // 2. 设置拉力参数
+//        double pullStrength = 15; // 拉力强度（可调整）
+//
+//        Vec3 currentMotion = player.getDeltaMovement();
+//        Vec3 newMotion = currentMotion.add(
+//                direction.x * pullStrength,
+//                direction.y * pullStrength,
+//                direction.z * pullStrength
+//        );
+//        player.setDeltaMovement(newMotion);
         player.hurtMarked = true;
 
-        player.level().playSound(
-                null,
-                player.getX(), player.getY(), player.getZ(),
-                SoundEvents.ENDERMAN_TELEPORT, // 使用末影人传送音效
-                SoundSource.HOSTILE,
-                0.5F, 1.0F
-        );
+//        player.level().playSound(
+//                null,
+//                player.getX(), player.getY(), player.getZ(),
+//                SoundEvents.ENDERMAN_TELEPORT, // 使用末影人传送音效
+//                SoundSource.HOSTILE,
+//                0.5F, 1.0F
+//        );
 
     }
 

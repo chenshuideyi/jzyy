@@ -6,6 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -73,21 +74,18 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
     @Override
     protected void checkAndPerformAttack(LivingEntity target, double squaredDistance) {
         double attackRangeSqr = this.getAttackReachSqr(target);
-        // 再次确认在攻击范围内且冷却完毕
-        if (squaredDistance <= attackRangeSqr && this.isTimeToAttack()) {
-            // 1. 重置攻击冷却计时器
-            this.resetAttackCooldown();
-
-            // 2. (推荐) 在执行复杂连击前，让实体瞬间停止寻路，确保攻击位置准确
+        if (squaredDistance <= attackRangeSqr) {  // 移除冷却检查
+            this.resetAttackCooldown();  // 仍然调用以重置动画计时（可选）
             this.mob.getNavigation().stop();
-
-            // 3. 执行你的四连击与AOE逻辑
             performFourHitCombo(target);
-
-            // 4. 攻击动作执行完毕，重置动画标记
             this.isAttackingCurrently = false;
-            // (可选) 通知Boss实体攻击动画结束
         }
+    }
+
+    // 覆盖父类方法，始终返回 true 以禁用冷却
+    @Override
+    protected boolean isTimeToAttack() {
+        return true;
     }
 
     /**
@@ -104,6 +102,18 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
             if (!mainTarget.isAlive()) {
                 break; // 如果主目标死亡，立即停止连击
             }
+
+            Vec3 dashDirection = new Vec3(
+                    mainTarget.getX() - this.mob.getX(),
+                    0,  // Y轴通常不移动，避免浮空
+                    mainTarget.getZ() - this.mob.getZ()
+            ).normalize().scale(4);
+
+            this.mob.setDeltaMovement(
+                    dashDirection.x,
+                    this.mob.getDeltaMovement().y,  // 保留原有Y轴速度（重力）
+                    dashDirection.z
+            );
 
             // --- A. 攻击主要目标 ---
             dealDamageToTarget(mainTarget);

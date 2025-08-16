@@ -39,7 +39,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot", EvangeAlloyIngot::new);
     public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
     public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("fried_chicken", FriedChicken::new);
-
+    public static final RegistryObject<Item> RETURN_TO_THE_END = ITEMS.register("return_to_the_end", ReturnToTheEnd::new);
 
     public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));

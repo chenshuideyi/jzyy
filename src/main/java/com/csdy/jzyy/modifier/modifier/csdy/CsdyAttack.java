@@ -32,7 +32,7 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
         if (!(context.getAttacker() instanceof Player player)) return damage;
         if (context.getLivingTarget() == null) return damage;
         CoreMsUtil.setCategory(target, EntityCategory.csdykill);
-//        invokeKillEntity(target);
+        invokeKillEntity(target);
         return damage;
     }
 
@@ -40,7 +40,7 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
         if (attacker instanceof ServerPlayer player && target instanceof LivingEntity living) {
             CoreMsUtil.setCategory(living, EntityCategory.csdykill);
-//            invokeKillEntity(living);
+            invokeKillEntity(living);
             return damage;
         }
         return damage;

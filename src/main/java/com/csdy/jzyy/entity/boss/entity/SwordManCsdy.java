@@ -287,7 +287,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 3.4);
         builder = builder.add(Attributes.MAX_HEALTH, 6000);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 600.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 800.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 36.0);
         return builder;
