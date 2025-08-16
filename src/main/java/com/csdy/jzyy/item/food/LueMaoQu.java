@@ -39,12 +39,9 @@ public class LueMaoQu extends ItemGenericFood {
                 player.displayClientMessage(Component.translatable("msg.lue_mao_qu6"),true);
                 trySpawnEntityNearPlayer(JzyyEntityRegister.HJM.get(),(ServerLevel) player.level, player, 1, 3, 6, MobEffects.GLOWING,300,0);
             }
-            CompoundTag tag = player.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
             String s = "no_da_gou_jiao";
-            player.getPersistentData().getBoolean(s);
-            if (!tag.getBoolean(s)){
-                tag.putBoolean(s, true);
-                player.getPersistentData().put(Player.PERSISTED_NBT_TAG, tag);
+            if (!player.getPersistentData().getBoolean(s)){
+                player.getPersistentData().putBoolean(s, true);
             }
         }
         return stack;
