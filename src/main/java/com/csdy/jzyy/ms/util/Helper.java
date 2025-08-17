@@ -1,5 +1,6 @@
 package com.csdy.jzyy.ms.util;
 
+import com.csdy.jzyy.ms.enums.ClassOption;
 import cpw.mods.modlauncher.Launcher;
 import cpw.mods.modlauncher.ModuleLayerHandler;
 import cpw.mods.modlauncher.api.NamedPath;
@@ -382,65 +383,6 @@ public final class Helper {
         } catch (Exception e) {
             LOGGER.error("CRITICAL: Unexpected error removing final modifier from field: {}.", field.getName(), e);
             return false;
-        }
-    }
-
-    //定义一个类
-    public static Class<?> defineClass(ClassLoader loader, String name) throws Throwable {
-        return defineClass(loader, name, read(name, loader));
-    }
-
-    public static Class<?> defineClass(ClassLoader loader, String name, byte[] bytes) throws Throwable {
-        MethodHandle mh = lookup.findVirtual(ClassLoader.class, "defineClass", MethodType.methodType(Class.class, String.class, byte[].class, int.class, int.class));
-        return (Class<?>) mh.invokeExact(loader, name, bytes, 0, bytes.length);
-    }
-
-    //定义一个隐藏类
-    public static Class<?> defineHiddenClass(String name, ClassLoader loader, boolean initialize, ClassOption... options) throws Throwable {
-        return defineHiddenClass(read(name, loader), null, initialize, null, null, null, options);
-    }
-
-    public static Class<?> defineHiddenClass(byte[] bytes, String name, boolean initialize, Class<?> lookupClass, ClassLoader loader, ProtectionDomain pd, ClassOption... options) throws Throwable {
-        Objects.requireNonNull(bytes);
-        Set<ClassOption> opts = Set.of(options);
-        int flags = 2 | ClassOption.optionsToFlag(opts);
-        if (loader == null) loader = ClassLoader.getSystemClassLoader();
-        if (loader == ClassLoader.getPlatformClassLoader()) flags |= 8;
-
-        MethodHandles.Lookup lookup = (MethodHandles.Lookup) lookupConstructor.invoke((Class<?>) JLA_defineClassMethod.invoke(JLA_INSTANCE, loader, lookupClass != null ? lookupClass : Object.class, name, bytes, pd, initialize, flags, null), null, 95);
-        return lookup.lookupClass();
-    }
-
-    //选项
-    //nestmate: 可与宿主类互相访问私有成员
-    //strong: 防止 GC 提前卸载
-    public enum ClassOption {
-        NESTMATE(1), STRONG(4);
-
-        private final int flag;
-
-        ClassOption(int flag) {
-            this.flag = flag;
-        }
-
-        //把选项集合转换为位掩码
-        static int optionsToFlag(Set<ClassOption> options) {
-            int flags = 0;
-
-            for(ClassOption cp : options) {
-                flags |= cp.flag;
-            }
-
-            return flags;
-        }
-    }
-
-    //名称读 .class 文件
-    public static byte[] read(String name, ClassLoader loader) throws IOException {
-        if (name == null) throw new NullPointerException();
-        try (InputStream in = loader.getResourceAsStream(name.replace('.', '/') + ".class")) {
-            if (in == null) throw new IOException("Resource not found: " + name);
-            return in.readAllBytes();
         }
     }
 
