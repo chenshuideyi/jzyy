@@ -1,8 +1,15 @@
 package com.csdy.jzyy.entity.monster.entity;
 
 import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
+import com.csdy.jzyy.entity.boss.entity.MiziAo;
+import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 import com.csdy.jzyy.entity.monster.ai.DogJiaoMeleeGoal;
+import com.csdy.tcondiadema.item.sword.Dog;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -35,12 +42,21 @@ public class DogJiao extends Monster implements GeoEntity {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
 
+    @Override
+    public void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_IS_ATTACKING, false);
+    }
+
+    private static final EntityDataAccessor<Boolean> DATA_IS_ATTACKING =
+            SynchedEntityData.defineId(DogJiao.class, EntityDataSerializers.BOOLEAN);
+
     public boolean isAttacking() {
-        return this.ATTACKING;
+        return this.entityData.get(DATA_IS_ATTACKING);
     }
 
     public void setAttacking(boolean attacking) {
-        this.ATTACKING = attacking;
+        this.entityData.set(DATA_IS_ATTACKING, attacking);
     }
 
     @Override
@@ -50,29 +66,20 @@ public class DogJiao extends Monster implements GeoEntity {
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        // 1. Attack 最先检查（最高优先级）
-        controllers.add(new AnimationController<>(this, "attack", 0, this::attackAnimController));
-        // 2. Walk 其次
-        controllers.add(new AnimationController<>(this, "move", 0, this::moveAnimController));
-        // 3. Idle 最后（最低优先级）
-        controllers.add(new AnimationController<>(this, "idle", 0, this::idleAnimController));
+        controllers.add(new AnimationController<>(this, "main_controller", 0, this::predicate));
     }
 
-
-
-    private PlayState attackAnimController(AnimationState<DogJiao> state) {
-        if (isAttacking())
+    private PlayState predicate(AnimationState<DogJiao> state) {
+        if (this.isAttacking()) {
             return state.setAndContinue(ATTACK_ANIM);
+        }
 
-        return PlayState.STOP;
-    }
-
-    private PlayState moveAnimController(AnimationState<DogJiao> state) {
-
-        if (state.isMoving())
+        if (state.isMoving()) {
             return state.setAndContinue(WALK_ANIM);
+        }
 
-        return PlayState.STOP;
+        return state.setAndContinue(IDLE_ANIM);
+
     }
 
     private PlayState idleAnimController(AnimationState<DogJiao> state) {

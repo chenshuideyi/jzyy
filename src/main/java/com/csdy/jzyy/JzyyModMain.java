@@ -9,9 +9,11 @@ import com.csdy.jzyy.entity.boss.entity.TitanWarden;
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 
+import com.csdy.jzyy.entity.boss.entity.Web13234;
 import com.csdy.jzyy.entity.boss.render.TitanWardenRenderer;
 import com.csdy.jzyy.entity.boss.render.MiziAoRenderer;
 import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
+import com.csdy.jzyy.entity.boss.render.Web13234Renderer;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
@@ -117,6 +119,7 @@ public class JzyyModMain {
         event.put(JzyyEntityRegister.MIZI_AO.get(), MiziAo.createAttributes().build());
         event.put(JzyyEntityRegister.HJM.get(), HJMEntity.createAttributes().build());
         event.put(JzyyEntityRegister.TITAN_WARDEN.get(), TitanWarden.createAttributes().build());
+        event.put(JzyyEntityRegister.WEB_13234.get(), Web13234.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -141,6 +144,10 @@ public class JzyyModMain {
         event.registerEntityRenderer(
                 JzyyEntityRegister.TITAN_WARDEN.get(),
                 TitanWardenRenderer::new
+        );
+        event.registerEntityRenderer(
+                JzyyEntityRegister.WEB_13234.get(),
+                Web13234Renderer::new
         );
     }
 

@@ -67,6 +67,7 @@ public class JzyySoundsRegister {
     public static final RegistryObject<SoundEvent> DISCONNECTED = SOUND_EVENTS.register("disconnected",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "disconnected")));
 
-
+    public static final RegistryObject<SoundEvent> HELLO_AND_BYE_DAYS = SOUND_EVENTS.register("hello_and_bye_days",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jzyy", "hello_and_bye_days")));
 
 }

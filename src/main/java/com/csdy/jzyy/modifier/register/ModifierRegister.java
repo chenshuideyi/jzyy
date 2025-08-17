@@ -57,10 +57,7 @@ import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonBone;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonFire;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonFlash;
 import com.csdy.jzyy.modifier.modifier.ice_and_fire.DragonIce;
-import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.Exoskeleton;
-import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.FireDragonArmor;
-import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.FlashDragonArmor;
-import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.IceDragonArmor;
+import com.csdy.jzyy.modifier.modifier.ice_and_fire.armor.*;
 import com.csdy.jzyy.modifier.modifier.jzyy.*;
 import com.csdy.jzyy.modifier.modifier.jzyy.sponsor.Ciallo;
 import com.csdy.jzyy.modifier.modifier.jzyy.sponsor.FinalSword;
@@ -246,6 +243,12 @@ public class ModifierRegister {
 
     public static final StaticModifier<Exoskeleton> EXOSKELETON_STATIC_MODIFIER = MODIFIERS.register("exoskeleton", Exoskeleton::new);
     public static final StaticModifier<DragonBone> DRAGON_BONE_STATIC_MODIFIER = MODIFIERS.register("dragon_bone", DragonBone::new);
+
+    public static final StaticModifier<DragonFly> DRAGON_FLY_STATIC_MODIFIER = MODIFIERS.register("dragon_fly", DragonFly::new);
+    public static final StaticModifier<DragonHeart> DRAGON_HEART_STATIC_MODIFIER = MODIFIERS.register("dragon_heart", DragonHeart::new);
+
+
+
 
     ///ender
     public static final StaticModifier<SaberExcalibur> SABER_EXCALIBUR_STATIC_MODIFIER = MODIFIERS.register("excalibur", SaberExcalibur::new);

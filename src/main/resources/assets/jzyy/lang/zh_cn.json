@@ -364,9 +364,13 @@
   "modifier.jzyy.fire_eater.flavor": "你的工具会吞噬你身上的火焰为自己增加耐久",
   "modifier.jzyy.fire_eater.description": "我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。",
 
+  "modifier.jzyy.dragon_heart": "恐鳌之心",
+  "modifier.jzyy.dragon_heart.flavor": "魔龙的心脏",
+  "modifier.jzyy.dragon_heart.description": "提升45点生命值和1.6%的生命回复",
 
-
-
+  "modifier.jzyy.dragon_fly": "龙翼",
+  "modifier.jzyy.dragon_fly.flavor": "遮天蔽日，梦魇降临",
+  "modifier.jzyy.dragon_fly.description": "获得创造飞行,但是这样真的饿得很快！",
 
 
 
@@ -1036,6 +1040,7 @@
   "entity.jzyy.dog_jiao": "大狗嚼",
   "entity.jzyy.mizi_ao": "「舞萌高手」米子山民",
   "entity.jzyy.mizi_ao.chujing": "「神碑的终结者」米子山民",
+  "entity.jzyy.web_13234": "这个史莱姆大概是雾雨烨？",
 
   "entity.jzyy.hjm": "[其名为耄]",
   "item.jzyy.lue_mao_qu": "§o略冒蛆§",

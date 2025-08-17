@@ -87,6 +87,7 @@ public class DogJiaoMeleeGoal extends MeleeAttackGoal {
     public void start() {
         super.start();
         isAttackingCurrently = true; // 行为开始时，还未攻击
+        this.dogJiao.setAttacking(true);
         // 可选: 通知Boss实体行为已开始
         // boss.setMovingState(true);
     }

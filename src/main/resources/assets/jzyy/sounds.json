@@ -100,6 +100,14 @@
       }
     ]
   },
+  "hello_and_bye_days": {
+    "sounds": [
+      {
+        "name":"jzyy:hello_and_bye_days",
+        "stream": true
+      }
+    ]
+  },
   "dog_jiao_summon": {
     "sounds": [
       {

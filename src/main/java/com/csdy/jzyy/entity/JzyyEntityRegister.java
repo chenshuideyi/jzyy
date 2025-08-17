@@ -4,6 +4,7 @@ import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.entity.boss.entity.TitanWarden;
 import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.boss.entity.Web13234;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import net.minecraft.world.entity.Entity;
@@ -29,6 +30,12 @@ public class JzyyEntityRegister {
                             .clientTrackingRange(14) // 客户端追踪距离
                             .build("jzyy:sword_man_csdy"));
 
+    public static final RegistryObject<EntityType<Web13234>> WEB_13234 =
+            JZYY_ENTITY.register("web_13234",
+                    () -> EntityType.Builder.of(Web13234::new, MobCategory.MONSTER)
+                            .sized(1f, 1.95f) // 碰撞箱大小 (宽, 高)
+                            .clientTrackingRange(14) // 客户端追踪距离
+                            .build("jzyy:web_13234"));
 
     public static final RegistryObject<EntityType<DogJiao>> DOG_JIAO =
             JZYY_ENTITY.register("dog_jiao",
