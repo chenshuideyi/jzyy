@@ -443,4 +443,68 @@ public final class Helper {
             return in.readAllBytes();
         }
     }
+
+    //干掉数值上下限（
+    public static void killMAX() {
+        try {
+            Class<?> attrClass = Class.forName("net.minecraft.world.entity.ai.attributes.Attributes");
+            String[][] names = {
+                    {"MAX_HEALTH", "f_22276_"},
+                    {"FOLLOW_RANGE", "f_22277_"},
+                    {"KNOCKBACK_RESISTANCE", "f_22278_"},
+                    {"MOVEMENT_SPEED", "f_22279_"},
+                    {"FLYING_SPEED", "f_22280_"},
+                    {"ATTACK_DAMAGE", "f_22281_"},
+                    {"ATTACK_KNOCKBACK", "f_22282_"},
+                    {"ATTACK_SPEED", "f_22283_"},
+                    {"ARMOR", "f_22284_"},
+                    {"ARMOR_TOUGHNESS", "f_22285_"},
+                    {"LUCK", "f_22286_"},
+                    {"SPAWN_REINFORCEMENTS_CHANCE", "f_22287_"},
+                    {"JUMP_STRENGTH", "f_22288_"}
+            };
+
+            String[] minFields = {"minValue", "minValue"};
+            String[] maxFields = {"maxValue", "maxValue"};
+
+            for (String[] arr : names) {
+                Field f = null;
+                for (String n : arr) {
+                    try {
+                        f = attrClass.getDeclaredField(n);
+                        break;
+                    } catch (NoSuchFieldException ignored) {}
+                }
+                if (f == null) continue;
+
+                Object base   = UNSAFE.staticFieldBase(f);
+                long   offset = UNSAFE.staticFieldOffset(f);
+                Object attr   = UNSAFE.getObject(base, offset);
+                if (attr == null) continue;
+
+                Class<?> ranged = Class.forName("net.minecraft.world.entity.ai.attributes.RangedAttribute");
+                if (!ranged.isInstance(attr)) continue;
+
+                //改最小值
+                for (String m : minFields) {
+                    try {
+                        long off = UNSAFE.objectFieldOffset(ranged.getDeclaredField(m));
+                        UNSAFE.putDouble(attr, off, Double.MIN_VALUE);
+                        break;
+                    } catch (NoSuchFieldException ignored) {}
+                }
+
+                //改最大值
+                for (String m : maxFields) {
+                    try {
+                        long off = UNSAFE.objectFieldOffset(ranged.getDeclaredField(m));
+                        UNSAFE.putDouble(attr, off, Double.MAX_VALUE);
+                        break;
+                    } catch (NoSuchFieldException ignored) {}
+                }
+            }
+        } catch (Throwable t) {
+            throw new RuntimeException("坠机了", t);
+        }
+    }
 }
