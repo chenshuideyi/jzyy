@@ -276,6 +276,16 @@ public class TitanWarden extends BossEntity implements GeoEntity {
 
     @Override
     public boolean hurt(@NotNull DamageSource source, float amount) {
+        amount*=0.2f;
+        if (amount >this.getMaxHealth()*0.04f){
+            amount=this.getMaxHealth()*0.04f;
+        }
+        if (this.isLocking()){
+            amount*=0.002f;
+        }
+        if (this.isRemote()||this.isAttacking()){
+            amount*=0.004f;
+        }
         if (source.getDirectEntity() instanceof Player player) {
             if (!this.isLock()) {
                 this.setLock(true);

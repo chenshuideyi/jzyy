@@ -44,18 +44,6 @@ public class LivingEvent {
                 a.hurt(LegacyDamageSource.mobAttack(living), a.getMaxHealth());
             }
         }
-        if (a instanceof TitanWarden warden) {
-            float e = event.getAmount();
-            if (e>warden.getMaxHealth()*0.04f){
-                event.setAmount(warden.getMaxHealth()*0.04f);
-            }
-            if (warden.isLocking()){
-                event.setAmount(event.getAmount()*0.05f);
-            }
-            if (warden.isRemote()||warden.isAttacking()){
-                event.setAmount(event.getAmount()*0.2f);
-            }
-        }
     }
 
     private void onEntityDeath(LivingDeathEvent event) {

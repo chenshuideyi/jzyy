@@ -1,5 +1,6 @@
 package com.csdy.jzyy.ms.util;
 
+import com.csdy.jzyy.ms.enums.ClassOption;
 import cpw.mods.modlauncher.Launcher;
 import cpw.mods.modlauncher.ModuleLayerHandler;
 import cpw.mods.modlauncher.api.NamedPath;
@@ -385,62 +386,67 @@ public final class Helper {
         }
     }
 
-    //定义一个类
-    public static Class<?> defineClass(ClassLoader loader, String name) throws Throwable {
-        return defineClass(loader, name, read(name, loader));
-    }
+    //干掉数值上下限（
+    public static void killMAX() {
+        try {
+            Class<?> attrClass = Class.forName("net.minecraft.world.entity.ai.attributes.Attributes");
+            String[][] names = {
+                    {"MAX_HEALTH", "f_22276_"},
+                    {"FOLLOW_RANGE", "f_22277_"},
+                    {"KNOCKBACK_RESISTANCE", "f_22278_"},
+                    {"MOVEMENT_SPEED", "f_22279_"},
+                    {"FLYING_SPEED", "f_22280_"},
+                    {"ATTACK_DAMAGE", "f_22281_"},
+                    {"ATTACK_KNOCKBACK", "f_22282_"},
+                    {"ATTACK_SPEED", "f_22283_"},
+                    {"ARMOR", "f_22284_"},
+                    {"ARMOR_TOUGHNESS", "f_22285_"},
+                    {"LUCK", "f_22286_"},
+                    {"SPAWN_REINFORCEMENTS_CHANCE", "f_22287_"},
+                    {"JUMP_STRENGTH", "f_22288_"}
+            };
 
-    public static Class<?> defineClass(ClassLoader loader, String name, byte[] bytes) throws Throwable {
-        MethodHandle mh = lookup.findVirtual(ClassLoader.class, "defineClass", MethodType.methodType(Class.class, String.class, byte[].class, int.class, int.class));
-        return (Class<?>) mh.invokeExact(loader, name, bytes, 0, bytes.length);
-    }
+            String[] minFields = {"minValue", "minValue"};
+            String[] maxFields = {"maxValue", "maxValue"};
 
-    //定义一个隐藏类
-    public static Class<?> defineHiddenClass(String name, ClassLoader loader, boolean initialize, ClassOption... options) throws Throwable {
-        return defineHiddenClass(read(name, loader), null, initialize, null, null, null, options);
-    }
+            for (String[] arr : names) {
+                Field f = null;
+                for (String n : arr) {
+                    try {
+                        f = attrClass.getDeclaredField(n);
+                        break;
+                    } catch (NoSuchFieldException ignored) {}
+                }
+                if (f == null) continue;
 
-    public static Class<?> defineHiddenClass(byte[] bytes, String name, boolean initialize, Class<?> lookupClass, ClassLoader loader, ProtectionDomain pd, ClassOption... options) throws Throwable {
-        Objects.requireNonNull(bytes);
-        Set<ClassOption> opts = Set.of(options);
-        int flags = 2 | ClassOption.optionsToFlag(opts);
-        if (loader == null) loader = ClassLoader.getSystemClassLoader();
-        if (loader == ClassLoader.getPlatformClassLoader()) flags |= 8;
+                Object base   = UNSAFE.staticFieldBase(f);
+                long   offset = UNSAFE.staticFieldOffset(f);
+                Object attr   = UNSAFE.getObject(base, offset);
+                if (attr == null) continue;
 
-        MethodHandles.Lookup lookup = (MethodHandles.Lookup) lookupConstructor.invoke((Class<?>) JLA_defineClassMethod.invoke(JLA_INSTANCE, loader, lookupClass != null ? lookupClass : Object.class, name, bytes, pd, initialize, flags, null), null, 95);
-        return lookup.lookupClass();
-    }
+                Class<?> ranged = Class.forName("net.minecraft.world.entity.ai.attributes.RangedAttribute");
+                if (!ranged.isInstance(attr)) continue;
 
-    //选项
-    //nestmate: 可与宿主类互相访问私有成员
-    //strong: 防止 GC 提前卸载
-    public enum ClassOption {
-        NESTMATE(1), STRONG(4);
+                //改最小值
+                for (String m : minFields) {
+                    try {
+                        long off = UNSAFE.objectFieldOffset(ranged.getDeclaredField(m));
+                        UNSAFE.putDouble(attr, off, Double.MIN_VALUE);
+                        break;
+                    } catch (NoSuchFieldException ignored) {}
+                }
 
-        private final int flag;
-
-        ClassOption(int flag) {
-            this.flag = flag;
-        }
-
-        //把选项集合转换为位掩码
-        static int optionsToFlag(Set<ClassOption> options) {
-            int flags = 0;
-
-            for(ClassOption cp : options) {
-                flags |= cp.flag;
+                //改最大值
+                for (String m : maxFields) {
+                    try {
+                        long off = UNSAFE.objectFieldOffset(ranged.getDeclaredField(m));
+                        UNSAFE.putDouble(attr, off, Double.MAX_VALUE);
+                        break;
+                    } catch (NoSuchFieldException ignored) {}
+                }
             }
-
-            return flags;
-        }
-    }
-
-    //名称读 .class 文件
-    public static byte[] read(String name, ClassLoader loader) throws IOException {
-        if (name == null) throw new NullPointerException();
-        try (InputStream in = loader.getResourceAsStream(name.replace('.', '/') + ".class")) {
-            if (in == null) throw new IOException("Resource not found: " + name);
-            return in.readAllBytes();
+        } catch (Throwable t) {
+            throw new RuntimeException("坠机了", t);
         }
     }
 }
