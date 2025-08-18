@@ -276,7 +276,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
 
     @Override
     public boolean hurt(@NotNull DamageSource source, float amount) {
-        amount*=0.02f;
+        amount*=0.2f;
         if (amount >this.getMaxHealth()*0.04f){
             amount=this.getMaxHealth()*0.04f;
         }
