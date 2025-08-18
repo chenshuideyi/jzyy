@@ -201,7 +201,7 @@ public class CsdyWorldDiadema extends Diadema {
 
         player.teleportTo(core.getX(),core.getY(),core.getZ());
 
-//        core.doHurtTarget(player);
+        core.doHurtTarget(player);
 //
 //        // 1. 计算方向向量（从玩家指向核心）
 //        Vec3 direction = core.position()

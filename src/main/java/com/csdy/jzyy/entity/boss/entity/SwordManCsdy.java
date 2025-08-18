@@ -219,11 +219,24 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (isReal()) return false;
+
         float realDamage = (float) Math.sqrt(damage);
         if (realDamage < 100f) {
             return false;
         }
-        return super.hurt(source,damage);
+        teleportToAttacker(source);
+        return super.hurt(source, damage);
+    }
+
+    private void teleportToAttacker(DamageSource source) {
+        Entity attacker = source.getEntity();
+        if (attacker == null || attacker == this) return;
+
+        double x = attacker.getX() + (random.nextDouble() - 0.5) * 1.2;
+        double y = attacker.getY() + random.nextInt(2);
+        double z = attacker.getZ() + (random.nextDouble() - 0.5) * 1.2;
+
+        this.teleportTo(x,y,z);
     }
 
     @Override
@@ -287,7 +300,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 3.4);
         builder = builder.add(Attributes.MAX_HEALTH, 6000);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 800.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 1000.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 36.0);
         return builder;

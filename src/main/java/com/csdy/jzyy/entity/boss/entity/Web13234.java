@@ -145,7 +145,7 @@ public class Web13234 extends BossEntity implements GeoEntity {
     }
 
     @Override
-    public SoundEvent getBossMusic() { return JzyySoundsRegister.HELLO_AND_BYE_DAYS.get(); }
+    public SoundEvent getBossMusic() { return JzyySoundsRegister.GOM.get(); }
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {

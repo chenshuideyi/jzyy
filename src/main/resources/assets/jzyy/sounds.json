@@ -108,6 +108,14 @@
       }
     ]
   },
+  "gom": {
+    "sounds": [
+      {
+        "name":"jzyy:gom",
+        "stream": true
+      }
+    ]
+  },
   "dog_jiao_summon": {
     "sounds": [
       {
