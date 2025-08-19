@@ -1,0 +1,36 @@
+{
+  "parent": "jzyy:jzyy_advancements",
+  "criteria": {
+    "accuracy": {
+      "conditions": {
+        "items": [
+          {
+            "type": "tconstruct:tool_stack",
+            "predicate": {
+              "type": "tconstruct:stat_in_range",
+              "min": 999.0,
+              "stat": "tconstruct:projectile_damage"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.jzyy.compound_bow.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:target"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.jzyy.compound_bow.title"
+    }
+  },
+  "sends_telemetry_event": true
+}

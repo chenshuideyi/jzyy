@@ -8,6 +8,7 @@ import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -49,10 +50,13 @@ public class NightDogJiaoSummon {
                     player.isUnderWater()) {
                 return;
             }
-
-            String s = "no_da_gou_jiao";
-            if (player.level instanceof ServerLevel&&player.getPersistentData().getBoolean(s)){
-                return;
+            if (player instanceof ServerPlayer player1) {
+                CompoundTag tag = player1.getPersistentData().getCompound(Player.PERSISTED_NBT_TAG);
+                String s = "no_da_gou_jiao";
+                player1.getPersistentData().getBoolean(s);
+                if (tag.getBoolean(s)) {
+                    return;
+                }
             }
             if (player.getPersistentData().getLong("LastDogJiaoSpawn") + 24000 > event.level.getGameTime()) {
                 return;

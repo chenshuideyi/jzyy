@@ -257,7 +257,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
 
     private static final UUID LOCK_SPEED_BOOST_UUID = UUID.fromString("41D1790F-2154-F941-26BD-0A4D929E6077");
     private static final AttributeModifier LOCK_SPEED_BOOST = new AttributeModifier(
-            LOCK_SPEED_BOOST_UUID, "aaa_speed", 1.2, AttributeModifier.Operation.MULTIPLY_BASE);
+            LOCK_SPEED_BOOST_UUID, "aaa_speed", 0.2, AttributeModifier.Operation.MULTIPLY_BASE);
 
     private void manageSpeedModifier() {
         AttributeInstance attributeInstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
@@ -391,7 +391,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MOVEMENT_SPEED, 0.8)
+                .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.MAX_HEALTH, 500000000)
                 .add(Attributes.ATTACK_DAMAGE, 3)
                 .add(Attributes.ATTACK_SPEED, 1)

@@ -3,6 +3,7 @@ package com.csdy.jzyy.entity.monster.event;
 
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
@@ -12,9 +13,16 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.library.json.predicate.tool.StatInRangePredicate;
+import slimeknights.tconstruct.library.json.predicate.tool.ToolStackItemPredicate;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
 import java.util.Random;
@@ -44,7 +52,15 @@ public class HJMSummon {
             List<HJMEntity> list = event.level.getEntitiesOfClass(HJMEntity.class,player.getBoundingBox().inflate(200));
             if (list.size()>3)return;
 
-            int a = random.nextInt(40);
+            for (int i=0;i<player.getInventory().items.size();i++) {
+                ItemStack stack = player.getInventory().getItem(i);
+                ToolStack tool = ToolStack.from(stack);
+                if (tool.hasTag(TinkerTags.Items.BOWS)&&tool.getStats().get(ToolStats.PROJECTILE_DAMAGE) >= 999) {
+                    return;
+                }
+            }
+
+            int a = random.nextInt(50);
             if (a==1) {
                 trySpawnEntityNearPlayer(JzyyEntityRegister.HJM.get(),(ServerLevel) event.level, player,1,18,30,null,0,0);
                 player.displayClientMessage(Component.literal("感觉到了[哈！]的气息…"), true);
