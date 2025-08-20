@@ -54,6 +54,7 @@ public class NightDogJiaoSummon {
             if (player.level instanceof ServerLevel&&player.getPersistentData().getBoolean(s)){
                 return;
             }
+
             if (player.getPersistentData().getLong("LastDogJiaoSpawn") + 24000 > event.level.getGameTime()) {
                 return;
             }

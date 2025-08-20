@@ -10,7 +10,6 @@
     "ItemStackMixin",
     "LivingEntityMixin",
     "PlayerAttackParticleMixin",
-    "PlayerMixin",
     "PreventDisarmamentMixin",
     "SynchedEntityDataMixin",
     "TheKingMixin",

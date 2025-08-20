@@ -10,6 +10,7 @@ import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,6 +36,9 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     }
 
     private boolean transform(ClassNode classNode) {
+
+        checkJavaVersion();
+
         if (!classNode.name.startsWith("net/minecraft/") && !classNode.name.startsWith("net/minecraftforge/"))
             return false;
         AtomicBoolean returnZ = new AtomicBoolean(false);
@@ -50,11 +54,10 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                         rMethod(call, "isDeadOrDying", "(Lnet/minecraft/world/entity/LivingEntity;)Z");
                         rewrite = true;
                     }
-//                    case "m_135370_" -> {
-//                        rMethod(call, "get", "(Lnet/minecraft/network/syncher/EntityDataAccessor;)Ljava/lang/Object;");
+//                    case "m_6084_" -> {
+//                        rMethod(call, "isAlive", "(Lnet/minecraft/world/entity/Entity;)Z");
 //                        rewrite = true;
 //                    }
-
                 }
             } else if (insn instanceof FieldInsnNode field && field.getOpcode() == Opcodes.GETFIELD) {
                 switch (field.name) {
@@ -131,4 +134,16 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         }
         return null;
     }
+
+    public static void checkJavaVersion() {
+        String version = System.getProperty("java.version");
+        if (!version.startsWith("17")) {
+            JOptionPane.showMessageDialog(null,
+                    "请更换Java版本为17\n当前版本: " + version,
+                    "Java版本错误",
+                    JOptionPane.ERROR_MESSAGE);
+            System.exit(1); // 结束进程
+        }
+    }
+
 }

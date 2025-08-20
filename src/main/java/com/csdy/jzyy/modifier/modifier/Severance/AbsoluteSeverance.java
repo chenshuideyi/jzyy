@@ -2,19 +2,23 @@ package com.csdy.jzyy.modifier.modifier.Severance;
 
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -30,7 +34,7 @@ import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModifierHook {
+public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageModifierHook {
     //TODO 切断死目标凋落物
     @Override
     public int getPriority() {
@@ -43,18 +47,33 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         this.value = value;
     }
 
+
     @Override
-    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null && target.getHealth() > 0) {
-            if (target.getHealth() <= 0) return knockback;
-            if (isFromDummmmmmyMod(target)) return knockback;
+            if (target.getHealth() <= 0) return damage;
+            if (isFromDummmmmmyMod(target)) return damage;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             modifierAbsoluteSeverance(target,player,toolDamage,this.value);
         }
-        return knockback;
+        return damage;
     }
+
+
+//    @Override
+//    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+//        LivingEntity target = context.getLivingTarget();
+//        Player player = context.getPlayerAttacker();
+//        if (target != null && player != null && target.getHealth() > 0) {
+//            if (target.getHealth() <= 0) return knockback;
+//            if (isFromDummmmmmyMod(target)) return knockback;
+//            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+//            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
+//        }
+//        return knockback;
+//    }
 
 //    @Override
 //    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
@@ -104,7 +123,8 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
+//        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
     }
 
     /**
@@ -125,6 +145,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
                 }
             } else {
                 clearAbsoluteSeveranceHealth(uuid);
+                clearAbsoluteSeveranceHealth(entity);
             }
         }
     }

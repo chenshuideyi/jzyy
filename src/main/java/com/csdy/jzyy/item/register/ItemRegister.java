@@ -6,6 +6,7 @@ import com.csdy.jzyy.item.*;
 import com.csdy.jzyy.item.food.FriedChicken;
 import com.csdy.jzyy.item.food.GoldenStrawberry;
 import com.csdy.jzyy.item.food.HotDog;
+import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -31,15 +32,29 @@ public class ItemRegister {
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
     public static final RegistryObject<Item> FAILED_GOBBERS = ITEMS.register("failed_gobbers", FaliedGobbers::new);
 
+    public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
+    public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("fried_chicken", FriedChicken::new);
+
     public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
     public static final RegistryObject<Item> MAGGOT = ITEMS.register("maggot", Maggot::new);
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
-    public static final RegistryObject<Item> STARMETAL_INGOT = ITEMS.register("starmetal_ingot", StarmetalIngot::new);
-    public static final RegistryObject<Item> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot", EvangeAlloyIngot::new);
-    public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
-    public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("fried_chicken", FriedChicken::new);
-    public static final RegistryObject<Item> RETURN_TO_THE_END = ITEMS.register("return_to_the_end", ReturnToTheEnd::new);
+
+
+    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("evange_alloy_ingot",
+            () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.starmetal_ingot.line1", ChatFormatting.ITALIC));
+
+    public static final RegistryObject<BaseSponsorshipItem> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot",
+            () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.evange_alloy_ingot.line1", ChatFormatting.AQUA));
+
+    public static final RegistryObject<BaseSponsorshipItem> RETURN_TO_THE_END = ITEMS.register("return_to_the_end",
+            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.return_to_the_end.line1", ChatFormatting.DARK_PURPLE));
+
+    public static final RegistryObject<BaseSponsorshipItem> YING = ITEMS.register("ying",
+            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.ying.line1", ChatFormatting.BLACK));
+
+    public static final RegistryObject<BaseSponsorshipItem> YANG = ITEMS.register("yang",
+            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.yang.line1", ChatFormatting.WHITE));
 
     public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));

@@ -50,7 +50,9 @@ import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-//TODO 护甲补强和寄生虫词条上色
+//TODO 写阴阳材料，步骤如下：
+//1 创造两个材料“阳”和“阳”，阴熔铸成流体阳，反之亦然
+//2 写一个词条Ying 检测到工具不含材料阳和阴 但是拥有特性阳的时候去除自身和阳的并添加其他三个特性
 public class JzyyModMain {
 
     public static int toolTip = 1;
@@ -151,31 +153,10 @@ public class JzyyModMain {
         );
     }
 
-//    @SubscribeEvent
-//    public static void onRegisterLayers(EntityRenderersEvent.AddLayers event) {
-//        // 为所有玩家皮肤类型注册所有可能的渲染层
-//        addLayersToRenderer(event, "default");
-//    }
-//
-//    private static void addLayersToRenderer(EntityRenderersEvent.AddLayers event, String skinType) {
-//        PlayerRenderer renderer = event.getSkin(skinType);
-//        if (renderer != null) {
-//            // 只添加一次，不要放在渲染循环中
-//            renderer.addLayer(new PlayerCreeperArmorLayer(renderer));
-//        }
-//    }
-//
-//    @SubscribeEvent
-//    public void onRenderPlayer(RenderPlayerEvent.Pre e) {
-//        // 凋零护甲
-//        if (e.getEntity().hasEffect(JzyyEffectRegister.OVERCHARGE_ARMOR.get()) && e.getEntity() instanceof LocalPlayer) {
-//            e.getRenderer().addLayer(new PlayerCreeperArmorLayer(e.getRenderer()));
-//        }
-//    }
-
     public static ResourceLocation getResourceLoc(String id) {
         return new ResourceLocation(MODID,id);
     }
+
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent

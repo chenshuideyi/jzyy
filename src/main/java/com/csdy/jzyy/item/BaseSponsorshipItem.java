@@ -13,14 +13,21 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EvangeAlloyIngot  extends Item {
-    public EvangeAlloyIngot() {
-        super((new Item.Properties()).stacksTo(64).rarity(Rarity.RARE));
+public class BaseSponsorshipItem extends Item {
+
+    private final String line;
+    private final ChatFormatting chatFormatting;
+
+    public BaseSponsorshipItem(Rarity rarity,String line,ChatFormatting chatFormatting) {
+        super((new Item.Properties()).stacksTo(64).rarity(rarity));
+        this.line = line;
+        this.chatFormatting = chatFormatting;
     }
+
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
-        tooltip.add(Component.translatable("item.jzyy.evange_alloy_ingot.line1").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.ITALIC));
+        tooltip.add(Component.translatable(this.line).withStyle(this.chatFormatting).withStyle(ChatFormatting.ITALIC));
     }
 
 }

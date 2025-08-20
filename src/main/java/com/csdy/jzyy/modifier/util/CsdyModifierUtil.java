@@ -234,11 +234,13 @@ public class CsdyModifierUtil {
         forceSetAllCandidateHealth(target,reHealth);
         if (reHealth <= 0){
             //并非不能掉落
+            target.setHealth(0.0f);
             var playerKill = target.level().damageSources.playerAttack(player);
             target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
             setEntityDead(target);
             dropLoot(target,playerKill);
+            target.dropAllDeathLoot(playerKill);
         }
     }
 
@@ -249,11 +251,13 @@ public class CsdyModifierUtil {
         forceSetAllCandidateHealth(target,reHealth);
         if (reHealth <= 0){
             //并非不能掉落
+            target.setHealth(0.0f);
             var playerKill = target.level().damageSources.playerAttack(player);
             target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
             setEntityDead(target);
             dropLoot(target,playerKill);
+            target.dropAllDeathLoot(playerKill);
         }
     }
 

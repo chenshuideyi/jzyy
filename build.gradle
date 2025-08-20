@@ -138,7 +138,7 @@ buildscript {
 //        implementation fileTree("lib")
 
         //铁魔法
-//        implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6371701")
+        implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6371701")
 
         //巫法
         implementation fg.deobf("curse.maven:goety-586095:6366932")

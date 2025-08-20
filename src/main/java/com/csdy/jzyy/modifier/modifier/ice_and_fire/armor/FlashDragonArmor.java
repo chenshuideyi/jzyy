@@ -1,6 +1,9 @@
 package com.csdy.jzyy.modifier.modifier.ice_and_fire.armor;
 
 import com.csdy.jzyy.effect.register.JzyyEffectRegister;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.effect.ChargeEffect;
+import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,6 +31,7 @@ public class FlashDragonArmor extends NoLevelsModifier implements ModifyDamageMo
             || damageSource.getMsgId().contains("f_268450_")
         ) {
             holder.addEffect(new MobEffectInstance(JzyyEffectRegister.OVERCHARGE_ARMOR.get(),600,0));
+            holder.addEffect(new MobEffectInstance(MobEffectRegistry.CHARGED.get(),600,1));
             return 0; // 完全免疫雷电伤害
         }
         return amount;

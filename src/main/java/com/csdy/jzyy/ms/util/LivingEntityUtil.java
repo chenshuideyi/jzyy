@@ -235,7 +235,7 @@ public class LivingEntityUtil {
     /**
      * 清除某个实体的绝对切断伤害记录
      */
-    public static void clearAbsoluteSeveranceHealth(LivingEntity entity) {
+    public static void clearAbsoluteSeveranceHealth(Entity entity) {
         if (entity != null) {
             ABSOLUTE_SEVERANCE_HEALTH_MAP.remove(entity.getUUID());
         }
