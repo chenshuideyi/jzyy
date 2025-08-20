@@ -1056,6 +1056,7 @@
   "msg.lue_mao_qu4": "该食物未被加入黑名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu6": "这个是略人的梗😱😱😱",
+  "msg.lue_mao_qu7": "来自耄的馈赠使得大狗不再主动找你的麻烦",
 
   "entity.jzyy.titan_warden": "监守者泰坦（未锁敌）",
   "entity.jzyy.titan_warden.lock": "监守者泰坦（已锁定）",
@@ -1157,5 +1158,11 @@
 
 
 
-  "entity.oni_miko.onimiko": "鬼巫女"
+  "entity.oni_miko.onimiko": "鬼巫女",
+
+
+  "advancements.jzyy.jzyy_advancements.title": "匠战之途",
+  "advancements.jzyy.jzyy_advancements.description": "只是一个开始",
+  "advancements.jzyy.compound_bow.title": "复合弓",
+  "advancements.jzyy.compound_bow.description": "背包存在弹射物伤害超过999的弓类匠魂工具时，小耄们将不敢靠近你"
 }

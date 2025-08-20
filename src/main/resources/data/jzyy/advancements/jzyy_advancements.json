@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "jzyy:marisa_ingot"
+    },
+    "title": {
+      "translate": "advancements.jzyy.jzyy_advancements.title"
+    },
+    "description": {
+      "translate": "advancements.jzyy.jzyy_advancements.description"
+    },
+    "background": "tconstruct:textures/gui/advancement_background.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "custom_test_name": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}
