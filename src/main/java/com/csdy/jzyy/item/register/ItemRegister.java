@@ -41,7 +41,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
 
 
-    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("evange_alloy_ingot",
+    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
             () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.starmetal_ingot.line1", ChatFormatting.ITALIC));
 
     public static final RegistryObject<BaseSponsorshipItem> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot",
