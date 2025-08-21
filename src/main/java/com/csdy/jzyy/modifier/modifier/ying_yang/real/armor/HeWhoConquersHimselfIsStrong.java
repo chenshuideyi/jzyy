@@ -25,14 +25,14 @@ public class HeWhoConquersHimselfIsStrong extends NoLevelsModifier implements At
     public void addAttributes(IToolStackView tool, ModifierEntry entry, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         if (slot.getType() == EquipmentSlot.Type.ARMOR) {
             // 最大生命值翻倍（乘法）
-            UUID multiplyUuid = UUID.nameUUIDFromBytes(("tool_health_multiply_" + slot.getName()).getBytes());
-            AttributeModifier multiplyModifier = new AttributeModifier(
-                    multiplyUuid,
+            UUID healthUuid = UUID.nameUUIDFromBytes((this.getClass().getSimpleName() + "_health_" + slot.getName()).getBytes());
+            AttributeModifier healthModifier = new AttributeModifier(
+                    healthUuid,
                     "yin_yang_health_multiply",
-                    2.0, // 乘以2
-                    AttributeModifier.Operation.MULTIPLY_TOTAL
+                    1.0, // 增加100%，即翻倍
+                    AttributeModifier.Operation.MULTIPLY_BASE
             );
-            consumer.accept(Attributes.MAX_HEALTH, multiplyModifier);
+            consumer.accept(Attributes.MAX_HEALTH, healthModifier);
 
             // 免疫击退（100%击退抗性）
             UUID knockbackUuid = UUID.nameUUIDFromBytes(("tool_knockback_resistance_" + slot.getName()).getBytes());

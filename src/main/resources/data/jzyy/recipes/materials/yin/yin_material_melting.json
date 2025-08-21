@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_melting",
+    "input": "jzyy:yin",
+    "temperature": 6666,
+    "result": {
+        "fluid": "jzyy:molten_yang",
+        "amount": 90
+    }
+}

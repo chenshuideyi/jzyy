@@ -19,9 +19,12 @@ import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Predicate;
 
 
 public class BossEntity extends Monster {
@@ -189,6 +192,54 @@ public class BossEntity extends Monster {
         }
         musicStarted = false;
         clientBossMusicInstance = null; // 显式置空
+    }
+
+    @Override
+    public void die(@NotNull DamageSource pSource) {
+        if (isDeadOrDying()) {
+            super.die(pSource);
+        }
+    }
+
+
+
+    @Override
+    public void remove(@NotNull RemovalReason reason) {
+        if (isDeadOrDying()) {
+            super.remove(reason);
+        }
+    }
+
+    @Override
+    public boolean isDeadOrDying() {
+        return getHealth() <= 0;
+    }
+
+    @Override
+    public void knockback(double strength, double x, double z) {
+    }
+
+    @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public void setInvisible(boolean invisible) {
+    }
+
+    @Override
+    public boolean isNoAi() {
+        return false;
+    }
+
+    @Override
+    public void setNoAi(boolean noAi) {
+    }
+
+    @Override
+    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate) {
+
     }
 
     @Override

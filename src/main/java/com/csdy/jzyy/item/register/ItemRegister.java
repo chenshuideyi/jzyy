@@ -41,7 +41,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
 
 
-    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("evange_alloy_ingot",
+    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
             () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.starmetal_ingot.line1", ChatFormatting.ITALIC));
 
     public static final RegistryObject<BaseSponsorshipItem> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot",
@@ -50,8 +50,8 @@ public class ItemRegister {
     public static final RegistryObject<BaseSponsorshipItem> RETURN_TO_THE_END = ITEMS.register("return_to_the_end",
             () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.return_to_the_end.line1", ChatFormatting.DARK_PURPLE));
 
-    public static final RegistryObject<BaseSponsorshipItem> YING = ITEMS.register("ying",
-            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.ying.line1", ChatFormatting.BLACK));
+    public static final RegistryObject<BaseSponsorshipItem> YIN = ITEMS.register("yin",
+            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.yin.line1", ChatFormatting.BLACK));
 
     public static final RegistryObject<BaseSponsorshipItem> YANG = ITEMS.register("yang",
             () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.yang.line1", ChatFormatting.WHITE));

@@ -37,7 +37,7 @@ public class ApparentSealUp extends NoLevelsModifier implements InventoryTickMod
 
             player.addEffect(new MobEffectInstance(
                     MobEffects.NIGHT_VISION,  // 夜视
-                    20, 0,
+                    600, 0,
                     false, false, true
             ));
 
@@ -46,7 +46,7 @@ public class ApparentSealUp extends NoLevelsModifier implements InventoryTickMod
                     20, 0,
                     false, false, true
             ));
-
+            player.abilities.flying = true;
         }
     }
 

@@ -101,7 +101,7 @@ import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Cyte09;
 import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Excalibur;
 import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Volt;
 import com.csdy.jzyy.modifier.modifier.ying_yang.Yin;
-import com.csdy.jzyy.modifier.modifier.ying_yang.real.armor.ReceptiveAsAHollowValley;
+import com.csdy.jzyy.modifier.modifier.ying_yang.real.armor.*;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
@@ -546,15 +546,15 @@ public class ModifierRegister {
     public static final StaticModifier<Kfc> KFC_STATIC_MODIFIER = MODIFIERS.register("kfc", Kfc::new);
 
     ///阴阳
-//    public static final StaticModifier<Yin> YIN_STATIC_MODIFIER = MODIFIERS.register("yin", Yin::new);
-//    public static final StaticModifier<NoLevelsModifier> YANG_STATIC_MODIFIER = MODIFIERS.register("yang", NoLevelsModifier::new);
-//    public static final StaticModifier<ReceptiveAsAHollowValley> RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER = MODIFIERS.register("receptive_as_a_hollow_valley", ReceptiveAsAHollowValley::new);
+    public static final StaticModifier<Yin> YIN_STATIC_MODIFIER = MODIFIERS.register("yin", Yin::new);
+    public static final StaticModifier<NoLevelsModifier> YANG_STATIC_MODIFIER = MODIFIERS.register("yang", NoLevelsModifier::new);
 
-
-
-
-
-
+    public static final StaticModifier<ReceptiveAsAHollowValley> RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER = MODIFIERS.register("receptive_as_a_hollow_valley", ReceptiveAsAHollowValley::new);
+    public static final StaticModifier<HeWhoConquersHimselfIsStrong> HE_WHO_CONQUERS_HIMSELF_IS_STRONG_STATIC_MODIFIER = MODIFIERS.register("he_who_conquers_himself_is_strong", HeWhoConquersHimselfIsStrong::new);
+    public static final StaticModifier<ApparentSealUp> APPARENT_SEAL_UP_STATIC_MODIFIER = MODIFIERS.register("apparent_seal_up", ApparentSealUp::new);
+    public static final StaticModifier<ToCycleWithoutCease> TO_CYCLE_WITHOUT_CEASE_STATIC_MODIFIER = MODIFIERS.register("to_cycle_without_cease", ToCycleWithoutCease::new);
+    public static final StaticModifier<CleansingTheDarkMirrorOfTheHeart> CLEANSING_THE_DARK_MIRROR_OF_THE_HEART_STATIC_MODIFIER = MODIFIERS.register("cleansing_the_dark_mirror_of_the_heart", CleansingTheDarkMirrorOfTheHeart::new);
+    public static final StaticModifier<ToEmbraceTheOneAndGuardTheOrigin> TO_EMBRACE_THE_ONE_AND_GUARD_THE_ORIGIN_STATIC_MODIFIER = MODIFIERS.register("to_embrace_the_one_and_guard_the_origin", ToEmbraceTheOneAndGuardTheOrigin::new);
 
 
 

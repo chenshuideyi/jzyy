@@ -235,6 +235,8 @@ public class CsdyModifierUtil {
         if (reHealth <= 0){
             //并非不能掉落
             target.setHealth(0.0f);
+            forceSetAllCandidateHealth(target,0);
+            setAbsoluteSeveranceHealth(target,0);
             var playerKill = target.level().damageSources.playerAttack(player);
             target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
@@ -246,12 +248,13 @@ public class CsdyModifierUtil {
 
     public static void modifierSeverance(LivingEntity target, Player player, float damage,float value){
         if (target.getHealth() <= 0) return;
-        System.out.println("当前时点他的血量是" + target.getHealth());
+//        System.out.println("当前时点他的血量是" + target.getHealth());
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         forceSetAllCandidateHealth(target,reHealth);
         if (reHealth <= 0){
             //并非不能掉落
             target.setHealth(0.0f);
+            forceSetAllCandidateHealth(target,0);
             var playerKill = target.level().damageSources.playerAttack(player);
             target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
@@ -280,7 +283,7 @@ public class CsdyModifierUtil {
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
             ItemStack stack = player.getItemBySlot(slot);
-            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0 || ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0) {
+            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0 || ModifierUtil.getModifierLevel(stack, ModifierRegister.RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER.getId()) > 0) {
                 return true;
             }
         }

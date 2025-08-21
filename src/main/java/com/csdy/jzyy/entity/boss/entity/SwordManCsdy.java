@@ -171,49 +171,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
     @Override
-    public void die(@NotNull DamageSource pSource) {
-        if (isDeadOrDying()) {
-            super.die(pSource);
-        }
-    }
-
-    @Override
     public SoundEvent getBossMusic() {
         return JzyySoundsRegister.GIRL_A.get();
-    }
-
-    @Override
-    public void remove(@NotNull RemovalReason reason) {
-        if (isDeadOrDying()) {
-            super.remove(reason);
-        }
-    }
-
-    @Override
-    public boolean isDeadOrDying() {
-        return getHealth() <= 0;
-    }
-
-    @Override
-    public void knockback(double strength, double x, double z) {
-    }
-
-    @Override
-    public boolean isPushable() {
-        return false;
-    }
-
-    @Override
-    public void setInvisible(boolean invisible) {
-    }
-
-    @Override
-    public boolean isNoAi() {
-        return false;
-    }
-
-    @Override
-    public void setNoAi(boolean noAi) {
     }
 
     @Override
@@ -239,10 +198,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         this.teleportTo(x,y,z);
     }
 
-    @Override
-    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate) {
 
-    }
 
     @Override
     public void setHealth(float value) {

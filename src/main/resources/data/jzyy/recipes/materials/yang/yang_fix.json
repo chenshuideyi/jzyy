@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material",
+    "ingredient": {
+        "item": "jzyy:yang"
+    },
+    "value": 1,
+    "needed": 1,
+    "material": "jzyy:yang"
+}

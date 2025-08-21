@@ -76,11 +76,17 @@
   "item.jzyy.golden_strawberry": "金草莓",
   "item.jzyy.golden_strawberry.line1": "某白冻的赞助者提案",
 
-  "item.jzyy.ying": "阴",
-  "item.jzyy.ying.line1": "清火的赞助者提案",
+  "item.jzyy.yin": "阴",
+  "item.jzyy.yin.line1": "清火的赞助者提案",
+  "fluid.jzyy.molten_yin": "熔融阴",
+  "item.jzyy.molten_yin_bucket": "熔融阴桶",
+  "block.jzyy.molten_yin_fluid": "熔融阴",
 
   "item.jzyy.yang": "阳",
   "item.jzyy.yang.line1": "清火的赞助者提案",
+  "fluid.jzyy.molten_yang": "熔融阳",
+  "item.jzyy.molten_yang_bucket": "熔融阳桶",
+  "block.jzyy.molten_yang_fluid": "熔融阳",
 
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
@@ -110,12 +116,12 @@
 
 
   "material.jzyy.yin": "阴",
-  "material.jzyy.yin.flavor": "万籁悉数寂静后 仅剩落空的祈求",
-  "material.jzyy.yin.encyclopedia": "我的心头传来了瘙痒,就像小刀刺进了心脏",
+  "material.jzyy.yin.flavor": "“阴”能给这世界带来混沌，但同时也能将混沌从这世界抹除。",
+  "material.jzyy.yin.encyclopedia": "现在，你已化做穹顶，而我则变成大地。",
 
   "material.jzyy.yang": "阳",
-  "material.jzyy.yang.flavor": "万籁悉数寂静后 仅剩落空的祈求",
-  "material.jzyy.yang.encyclopedia": "我的心头传来了瘙痒,就像小刀刺进了心脏",
+  "material.jzyy.yang.flavor": "漆黑的鲤鱼摆动着尾巴试图接近那片光明；而洁白的鲤鱼却努力游向混沌。",
+  "material.jzyy.yang.encyclopedia": "然而，存在于这世界上的不只有温暖与光明。",
 
   "material.jzyy.csdy": "csdy",
   "material.jzyy.csdy.flavor": "万籁悉数寂静后 仅剩落空的祈求",
@@ -370,8 +376,37 @@
   "modifier.jzyy.real_return_to_the_end.flavor": "已经失去了昔日的光辉，解放末地来唤醒它！",
   "modifier.jzyy.real_return_to_the_end.description": "揭示它的真实形态！",
 
+  "modifier.jzyy.yin": "阴",
+  "modifier.jzyy.yin.flavor": "孤阴不长",
+  "modifier.jzyy.yin.description": "把它与与阳一起刻印会？",
 
+  "modifier.jzyy.yang": "阳",
+  "modifier.jzyy.yang.flavor": "孤阳不生",
+  "modifier.jzyy.yang.description": "把它与与阴一起刻印会？",
 
+  "modifier.jzyy.he_who_conquers_himself_is_strong": "自胜者强",
+  "modifier.jzyy.he_who_conquers_himself_is_strong.flavor": "知人者智，自知者明。胜人者有力，自胜者强。",
+  "modifier.jzyy.he_who_conquers_himself_is_strong.description": "获得2个强化，防御，能力和灵魂槽，免疫击退并提升100%最大生命值",
+
+  "modifier.jzyy.receptive_as_a_hollow_valley": "虚怀若谷",
+  "modifier.jzyy.receptive_as_a_hollow_valley.flavor": "敦兮其若朴，旷兮其若谷。",
+  "modifier.jzyy.receptive_as_a_hollow_valley.description": "获得创造飞行，并且可以穿过方块",
+
+  "modifier.jzyy.apparent_seal_up": "如封似闭",
+  "modifier.jzyy.apparent_seal_up.flavor": "犹如盗来即闭户，此谓之如封之意也。",
+  "modifier.jzyy.apparent_seal_up.description": "获得生命恢复，夜视，饱和，抗性提升5",
+
+  "modifier.jzyy.to_cycle_without_cease": "周行不殆",
+  "modifier.jzyy.to_cycle_without_cease.flavor": "有物混成，先天地生。寂兮寥兮，独立不改，周行而不殆",
+  "modifier.jzyy.to_cycle_without_cease.description": "这件工具不会被损坏",
+
+  "modifier.jzyy.cleansing_the_dark_mirror_of_the_heart": "涤除玄览",
+  "modifier.jzyy.cleansing_the_dark_mirror_of_the_heart.flavor": "致虚极，守静笃。万物并作，吾以观复",
+  "modifier.jzyy.cleansing_the_dark_mirror_of_the_heart.description": "每33秒清理一次全图掉落物",
+
+  "modifier.jzyy.to_embrace_the_one_and_guard_the_origin": "包元守一",
+  "modifier.jzyy.to_embrace_the_one_and_guard_the_origin.flavor": "载营魄抱一，能无离乎？",
+  "modifier.jzyy.to_embrace_the_one_and_guard_the_origin.description": "免疫100点以下的伤害，获得99%的伤害减免",
 
 
 

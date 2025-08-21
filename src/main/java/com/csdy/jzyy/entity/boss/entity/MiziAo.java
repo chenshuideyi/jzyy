@@ -5,20 +5,15 @@ import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.ai.mizi.MiziDrinkGoal;
 import com.csdy.jzyy.entity.boss.ai.mizi.MiziMeleeGoal;
 import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
-import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -380,27 +375,6 @@ public class MiziAo extends BossEntity implements GeoEntity {
         if (isDeadOrDying()) {
             super.die(pSource);
         }
-    }
-
-    @Override
-    public boolean isDeadOrDying() {
-        return getHealth() <= 0;
-    }
-
-    @Override
-    public boolean isNoAi() { return false; }
-
-    @Override
-    public void knockback(double strength, double x, double z) {
-    }
-
-    @Override
-    public boolean isPushable() {
-        return false;
-    }
-
-    @Override
-    public void setInvisible(boolean invisible) {
     }
 
     private void spawnLingeringCloudAttack() {

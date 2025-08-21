@@ -54,6 +54,10 @@ public class JzyyFluidRegister {
 
     public static final FluidObject<ForgeFlowingFluid> RAINBOW_MATERIAL = registerHotBurning(FLUIDS,"molten_rainbow_material",6666,14,32,777f,false);
 
+    public static final FluidObject<ForgeFlowingFluid> YIN = registerHotBurning(FLUIDS,"molten_yin",6666,14,32,777f,false);
+
+    public static final FluidObject<ForgeFlowingFluid> YANG = registerHotBurning(FLUIDS,"molten_yang",6666,14,32,777f,false);
+
     private static FluidType.Properties hot(String name,int Temp,boolean gas) {
         return FluidType.Properties.create().density(gas?-2000:2000).viscosity(10000).temperature(Temp)
                 .descriptionId("fluid."+ JzyyModMain.MODID+"."+name)

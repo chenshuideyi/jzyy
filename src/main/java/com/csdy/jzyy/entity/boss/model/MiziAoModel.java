@@ -8,8 +8,8 @@ import software.bernie.geckolib.model.GeoModel;
 
 public class MiziAoModel extends GeoModel<MiziAo> {
     private final ResourceLocation model = new ResourceLocation(JzyyModMain.MODID, "geo/mizi_ao.geo.json");
-    private final ResourceLocation texture = new ResourceLocation(JzyyModMain.MODID, "textures/entity/web_13234.png");
-    private final ResourceLocation animations = new ResourceLocation(JzyyModMain.MODID, "animations/web_13234.animation.json");
+    private final ResourceLocation texture = new ResourceLocation(JzyyModMain.MODID, "textures/entity/mizi_ao.png");
+    private final ResourceLocation animations = new ResourceLocation(JzyyModMain.MODID, "animations/mizi_ao.animation.json");
 
     @Override
     public ResourceLocation getModelResource(MiziAo miziAo) {

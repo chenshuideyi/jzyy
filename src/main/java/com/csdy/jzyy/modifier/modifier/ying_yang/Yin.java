@@ -22,9 +22,12 @@ import javax.annotation.Nullable;
 public class Yin extends NoLevelsModifier implements InventoryTickModifierHook {
 
     private static final ModifierId[] POSSIBLE_MODIFIERS = {
-            ModifierRegister.INFINITUM_STATIC_MODIFIER.getId(),
-            ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId(),
-            ModifierRegister.TRINITY_STATIC_MODIFIER.getId(),
+            ModifierRegister.RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER.getId(),
+            ModifierRegister.HE_WHO_CONQUERS_HIMSELF_IS_STRONG_STATIC_MODIFIER.getId(),
+            ModifierRegister.APPARENT_SEAL_UP_STATIC_MODIFIER.getId(),
+            ModifierRegister.TO_CYCLE_WITHOUT_CEASE_STATIC_MODIFIER.getId(),
+            ModifierRegister.CLEANSING_THE_DARK_MIRROR_OF_THE_HEART_STATIC_MODIFIER.getId(),
+            ModifierRegister.TO_EMBRACE_THE_ONE_AND_GUARD_THE_ORIGIN_STATIC_MODIFIER.getId(),
     };
 
     private final String yinMaterialId = "yin";
@@ -61,6 +64,7 @@ public class Yin extends NoLevelsModifier implements InventoryTickModifierHook {
 
             // 无论是否添加了modifier，都移除自身这个modifier
             tool.removeModifier(getId(), 1);
+            tool.removeModifier(ModifierRegister.YANG_STATIC_MODIFIER.getId(), 1);
         }
     }
 

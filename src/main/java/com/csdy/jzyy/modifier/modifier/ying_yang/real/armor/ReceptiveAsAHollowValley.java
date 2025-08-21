@@ -1,7 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.ying_yang.real.armor;
 
-import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
+import com.csdy.jzyy.modifier.modifier.armor.VoidWalk;
 
-public class ReceptiveAsAHollowValley extends NoLevelsModifier {
+public class ReceptiveAsAHollowValley extends VoidWalk {
     ///虚怀若谷
 }

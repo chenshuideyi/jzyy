@@ -199,7 +199,8 @@
     "failed_gobbers": "#003366",
     "fired_chicken": "#FFD700",
     "return_to_the_end": "#4B0082",
-    "real_return_to_the_end": "#4B0082"
+    "real_return_to_the_end": "#4B0082",
+    "yin": "#000000"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"
