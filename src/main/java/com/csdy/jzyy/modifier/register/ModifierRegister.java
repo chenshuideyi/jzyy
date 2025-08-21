@@ -100,6 +100,8 @@ import com.csdy.jzyy.modifier.modifier.warframe1999.armor.Trinity;
 import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Cyte09;
 import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Excalibur;
 import com.csdy.jzyy.modifier.modifier.warframe1999.tool.Volt;
+import com.csdy.jzyy.modifier.modifier.ying_yang.Yin;
+import com.csdy.jzyy.modifier.modifier.ying_yang.real.armor.ReceptiveAsAHollowValley;
 import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
@@ -542,6 +544,17 @@ public class ModifierRegister {
 
     ///炸鸡
     public static final StaticModifier<Kfc> KFC_STATIC_MODIFIER = MODIFIERS.register("kfc", Kfc::new);
+
+    ///阴阳
+//    public static final StaticModifier<Yin> YIN_STATIC_MODIFIER = MODIFIERS.register("yin", Yin::new);
+//    public static final StaticModifier<NoLevelsModifier> YANG_STATIC_MODIFIER = MODIFIERS.register("yang", NoLevelsModifier::new);
+//    public static final StaticModifier<ReceptiveAsAHollowValley> RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER = MODIFIERS.register("receptive_as_a_hollow_valley", ReceptiveAsAHollowValley::new);
+
+
+
+
+
+
 
 
 

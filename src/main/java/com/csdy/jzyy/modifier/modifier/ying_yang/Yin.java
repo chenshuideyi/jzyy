@@ -1,13 +1,12 @@
 package com.csdy.jzyy.modifier.modifier.ying_yang;
 
 import com.csdy.jzyy.modifier.register.ModifierRegister;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariant;
+import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
@@ -20,26 +19,48 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import javax.annotation.Nullable;
 
-public class Ying extends NoLevelsModifier implements InventoryTickModifierHook {
+public class Yin extends NoLevelsModifier implements InventoryTickModifierHook {
 
     private static final ModifierId[] POSSIBLE_MODIFIERS = {
-            ModifierRegister.MAG_STATIC_MODIFIER.getId(),
-            ModifierRegister.NYX_STATIC_MODIFIER.getId(),
+            ModifierRegister.INFINITUM_STATIC_MODIFIER.getId(),
+            ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId(),
             ModifierRegister.TRINITY_STATIC_MODIFIER.getId(),
     };
 
-    private boolean shouldRevealRealForm(ToolStack tool, @Nullable LivingEntity holder) {
-        return false;
-    }
+    private final String yinMaterialId = "yin";
+    private final String yangMaterialId = "yang";
 
-    public void transformerRealForm(ToolStack tool,@Nullable LivingEntity holder) {
+    public void transformerRealForm(ToolStack tool, @Nullable LivingEntity holder) {
         if (!(holder instanceof Player player)) return;
         if (player.level().isClientSide) return;
-        if (!shouldRevealRealForm(tool, holder)) return;
+
+        // 检查工具上是否没有yin和yang材料
+        boolean hasYinOrYang = false;
         MaterialNBT materials = tool.getMaterials();
+
         for (int i = 0; i < materials.size(); i++) {
             MaterialVariant variant = materials.get(i);
+            String materialPath = variant.getVariant().getId().getPath();
+            if (materialPath.equals(yinMaterialId) || materialPath.equals(yangMaterialId)) {
+                hasYinOrYang = true;
+                break; // 只要找到一个就跳出循环
+            }
+        }
 
+        // 只有在没有yin和yang材料时才触发
+        if (!hasYinOrYang) {
+            boolean addedAny = false;
+
+            // 一次性添加所有缺失的modifier
+            for (ModifierId modifier : POSSIBLE_MODIFIERS) {
+                if (tool.getModifier(modifier) == ModifierEntry.EMPTY) {
+                    tool.addModifier(modifier, 1);
+                    addedAny = true;
+                }
+            }
+
+            // 无论是否添加了modifier，都移除自身这个modifier
+            tool.removeModifier(getId(), 1);
         }
     }
 

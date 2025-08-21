@@ -53,6 +53,7 @@ import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 //TODO 写阴阳材料，步骤如下：
 //1 创造两个材料“阳”和“阳”，阴熔铸成流体阳，反之亦然
 //2 写一个词条Ying 检测到工具不含材料阳和阴 但是拥有特性阳的时候去除自身和阳的并添加其他三个特性
+// 两个一起刻印上去生效,亘古永恒，无视地形飞行，伤害减免，抗性5夜视饱和生命回复，生命上限翻倍
 public class JzyyModMain {
 
     public static int toolTip = 1;

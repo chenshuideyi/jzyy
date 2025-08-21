@@ -280,7 +280,7 @@ public class CsdyModifierUtil {
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
             ItemStack stack = player.getItemBySlot(slot);
-            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0) {
+            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0 || ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0) {
                 return true;
             }
         }
