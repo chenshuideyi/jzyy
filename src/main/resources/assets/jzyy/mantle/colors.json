@@ -202,7 +202,8 @@
     "return_to_the_end": "#4B0082",
     "real_return_to_the_end": "#4B0082",
     "yin": "#000000",
-    "mega_manyullyn": "#9b59b6"
+    "mega_manyullyn": "#9b59b6",
+    "ardite": "#c84e17"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

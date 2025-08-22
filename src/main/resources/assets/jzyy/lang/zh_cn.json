@@ -14,9 +14,14 @@
   "item.jzyy.dog_jiao_spawn_egg": "大狗嚼刷怪蛋",
   "item.jzyy.hjm_spawn_egg": "[其名为耄]刷怪蛋",
   "item.jzyy.titan_warden_egg": "泰坦监守者刷怪蛋",
+  "item.jzyy.mega_manyullyn_booster_energy": "超级玛玉灵驱劲能量",
 
   "item.jzyy.portable_end_portal": "便携式末地传送门",
   "item.jzyy.protable_end_portal.line1": "在指定方块上生成3*3的末地传送门",
+
+  "item.jzyy.ardite_ingot": "阿迪特",
+  "item.jzyy.ardite_ingot.line1": "沉睡于下界堡垒的宝箱中",
+
 
   "item.jzyy.pla_steel_ingot": "玻璃钢",
   "fluid.jzyy.molten_pla_steel": "熔融玻璃钢",
@@ -117,6 +122,12 @@
   "fluid.jzyy.molten_mega_manyullyn": "熔融超级玛玉灵",
   "item.jzyy.molten_mega_manyullyn_bucket": "熔融超级玛玉灵桶",
   "block.jzyy.molten_mega_manyullyn_fluid": "熔融超级玛玉灵",
+
+  "item.jzyy.ardite": "阿迪特",
+  "fluid.jzyy.molten_ardite": "熔融阿迪特",
+  "item.jzyy.molten_ardite_bucket": "熔融阿迪特桶",
+  "block.jzyy.molten_ardite_fluid": "熔融阿迪特",
+
 
 
   "material.jzyy.yin": "阴",
@@ -300,7 +311,9 @@
   "material.jzyy.mega_manyullyn.flavor": "这种对手怎么可能让我出汗",
   "material.jzyy.mega_manyullyn.encyclopedia": "取回了神力，不多，但够用",
 
-
+  "material.jzyy.ardite": "阿迪特",
+  "material.jzyy.ardite.flavor": "过去的梦该醒了",
+  "material.jzyy.ardite.encyclopedia": "大声呼救，坐地大哭，只因为不想被下界合金替代",
 
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",

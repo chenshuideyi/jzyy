@@ -1,0 +1,15 @@
+{
+"fallbacks": [
+"metal"
+],
+  "color": "c84e17",
+  "luminosity": 5,
+  "generator": {
+  "ignoreMaterialStats": false,
+  "supportedStats": [
+  "tconstruct:head",
+  "tconstruct:handle",
+  "tconstruct:binding"
+  ]
+  }
+}

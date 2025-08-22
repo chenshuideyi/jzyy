@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "tag": "minecraft:template"
+  },
+  "base": {
+    "item": "tconstruct:manyullyn_ingot"
+  },
+  "addition": {
+    "item": "jzyy:mega_manyullyn_booster_energy"
+  },
+  "result": {
+    "item": "jzyy:mega_manyullyn"
+  }
+}

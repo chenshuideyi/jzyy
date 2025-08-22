@@ -60,7 +60,7 @@ public class JzyyFluidRegister {
 
     public static final FluidObject<ForgeFlowingFluid> MEGA_MANYULLYN = registerHotBurning(FLUIDS,"molten_mega_manyullyn",6666,15,32,7777f,false);
 
-
+    public static final FluidObject<ForgeFlowingFluid> ARDITE = registerHotBurning(FLUIDS,"molten_ardite",648,12,4,4f,false);
 
 
 

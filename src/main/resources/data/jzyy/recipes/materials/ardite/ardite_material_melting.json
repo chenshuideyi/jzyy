@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_melting",
+    "input": "jzyy:ardite_ingot",
+    "temperature": 648,
+    "result": {
+        "fluid": "jzyy:molten_ardite",
+        "amount": 90
+    }
+}

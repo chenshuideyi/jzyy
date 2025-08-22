@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "abc",
+    "def",
+    "hig"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:red_bed"
+    },
+    "b": {
+      "tag": "minecraft:chainmail"
+    },
+    "c": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "d": {
+      "item": "minecraft:stonecutter"
+    },
+    "e": {
+      "item": "jzyy:ardite_ingot"
+    },
+    "f": {
+      "item": "minecraft:beacon"
+    },
+    "g": {
+      "item": "minecraft:leather_horse_armor"
+    },
+    "h": {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    "i": {
+      "item": "kubejs:nether_reactor"
+    }
+  },
+  "result": {
+    "item": "jzyy:mega_manyullyn_booster_energy",
+    "count": 1
+  }
+}

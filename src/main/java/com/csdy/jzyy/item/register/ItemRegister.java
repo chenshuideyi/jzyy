@@ -60,6 +60,9 @@ public class ItemRegister {
     public static final RegistryObject<BaseSponsorshipItem> YANG = ITEMS.register("yang",
             () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.yang.line1", ChatFormatting.WHITE));
 
+    public static final RegistryObject<BaseSponsorshipItem> ARDITE_INGOT = ITEMS.register("ardite_ingot",
+            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.ardite_ingot.line1", ChatFormatting.WHITE));
+
     public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));
     public static final RegistryObject<Item> TITAN_WARDEN_SPAWN_EGG = ITEMS.register("titan_warden_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.TITAN_WARDEN,  993082, 330000, new Item.Properties()));
@@ -102,6 +105,10 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> MEGA_MANYULLYN = ITEMS.register("mega_manyullyn",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> MEGA_MANYULLYN_BOOSTER_ENERGY = ITEMS.register("mega_manyullyn_booster_energy",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
+
+
 
     public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
 
