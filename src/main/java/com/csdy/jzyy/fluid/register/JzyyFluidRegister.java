@@ -58,6 +58,15 @@ public class JzyyFluidRegister {
 
     public static final FluidObject<ForgeFlowingFluid> YANG = registerHotBurning(FLUIDS,"molten_yang",6666,14,32,777f,false);
 
+    public static final FluidObject<ForgeFlowingFluid> MEGA_MANYULLYN = registerHotBurning(FLUIDS,"molten_mega_manyullyn",6666,15,32,7777f,false);
+
+
+
+
+
+
+
+
     private static FluidType.Properties hot(String name,int Temp,boolean gas) {
         return FluidType.Properties.create().density(gas?-2000:2000).viscosity(10000).temperature(Temp)
                 .descriptionId("fluid."+ JzyyModMain.MODID+"."+name)

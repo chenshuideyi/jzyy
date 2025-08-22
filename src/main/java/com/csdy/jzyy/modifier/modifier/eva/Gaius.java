@@ -11,6 +11,8 @@ import slimeknights.tconstruct.library.modifiers.hook.interaction.InventoryTickM
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.repairItem;
+
 public class Gaius extends Modifier implements InventoryTickModifierHook {
 
     @Override
@@ -22,9 +24,11 @@ public class Gaius extends Modifier implements InventoryTickModifierHook {
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack itemStack = player.getInventory().getItem(i);
             if (itemStack.isEmpty() || !itemStack.isDamaged()) continue;
-            itemStack.setDamageValue(itemStack.getDamageValue() - (fixValue));
+            repairItem(stack,fixValue);
         }
     }
+
+
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {

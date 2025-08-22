@@ -55,6 +55,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageMo
         if (target != null && player != null && target.getHealth() > 0) {
             if (target.getHealth() <= 0) return damage;
             if (isFromDummmmmmyMod(target)) return damage;
+            if (isDefender(target)) return damage;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             modifierAbsoluteSeverance(target,player,toolDamage,this.value);
         }

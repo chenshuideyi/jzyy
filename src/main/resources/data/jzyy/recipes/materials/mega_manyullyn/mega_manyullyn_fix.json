@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material",
+    "ingredient": {
+        "item": "jzyy:mega_manyullyn"
+    },
+    "value": 1,
+    "needed": 1,
+    "material": "jzyy:mega_manyullyn"
+}

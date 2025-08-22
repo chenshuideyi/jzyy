@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.util;
 
 import com.csdy.jzyy.modifier.register.ModifierRegister;
+import com.yellowbrossproductions.yellowbrossextras.entities.DefenderEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -220,6 +222,20 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("dummmmmmy");
     }
 
+    public static boolean isDefender(Entity entity) {
+        if (entity == null) {
+            return false;
+        }
+
+        if (entity instanceof DefenderEntity defender){
+//            System.out.println("防御者状态为"+defender.getPhase());
+            return defender.getPhase() == 0;
+        }
+        return false;
+    }
+
+
+
     public static boolean isFromOmniMod(Entity entity) {
         if (entity == null) {
             return false;
@@ -230,14 +246,15 @@ public class CsdyModifierUtil {
     public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage,float value){
         if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        var playerKill = target.level().damageSources.playerAttack(player);
+        target.hurt(playerKill,1);
         setAbsoluteSeveranceHealth(target,reHealth);
         forceSetAllCandidateHealth(target,reHealth);
-        if (reHealth <= 0){
+        if (reHealth <= 0 || target.getHealth() <= 0){
+            System.out.println("绝对切断强制掉落");
             //并非不能掉落
-            target.setHealth(0.0f);
             forceSetAllCandidateHealth(target,0);
             setAbsoluteSeveranceHealth(target,0);
-            var playerKill = target.level().damageSources.playerAttack(player);
             target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
             setEntityDead(target);
@@ -248,14 +265,14 @@ public class CsdyModifierUtil {
 
     public static void modifierSeverance(LivingEntity target, Player player, float damage,float value){
         if (target.getHealth() <= 0) return;
-//        System.out.println("当前时点他的血量是" + target.getHealth());
+        var playerKill = target.level().damageSources.playerAttack(player);
+        target.hurt(playerKill,1);
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         forceSetAllCandidateHealth(target,reHealth);
-        if (reHealth <= 0){
+        if (reHealth <= 0 || target.getHealth() <= 0){
+            System.out.println("切断强制掉落");
             //并非不能掉落
-            target.setHealth(0.0f);
             forceSetAllCandidateHealth(target,0);
-            var playerKill = target.level().damageSources.playerAttack(player);
             target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
             setEntityDead(target);
@@ -265,7 +282,15 @@ public class CsdyModifierUtil {
     }
 
 
-
+    public static void repairItem(ItemStack stack, int amount) {
+        if (amount > 0) {
+            int damage = stack.getDamageValue();
+            if (damage != 0) {
+                int newDamage = damage - Math.min(amount, damage);
+                stack.setDamageValue(newDamage);
+            }
+        }
+    }
 
     public static boolean hasImagineBreakArmor(Player player) {
         for (EquipmentSlot slot : EquipmentSlot.values()) {

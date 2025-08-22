@@ -19,6 +19,9 @@ import static com.csdy.jzyy.JzyyModMain.MODID;
 
 public class ItemRegister {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+
+    public static final RegistryObject<Item> MINI_CSDY = ITEMS.register("mini_csdy", MiniCsdy::new);
+
     public static final RegistryObject<Item> MARISA = ITEMS.register("marisa_ingot", MarisaIngot::new);
     public static final RegistryObject<Item> YUE_ZHENG_LING = ITEMS.register("yue_zheng_ling", YueZhengLing::new);
     public static final RegistryObject<Item> ABYSS_ALLOY = ITEMS.register("abyss_alloy", AbyssAlloy::new);
@@ -39,6 +42,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
     public static final RegistryObject<Item> MAGGOT = ITEMS.register("maggot", Maggot::new);
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
+
 
 
     public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
@@ -96,7 +100,8 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> HALLOWED_BAR = ITEMS.register("hallowed_bar",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
-
+    public static final RegistryObject<Item> MEGA_MANYULLYN = ITEMS.register("mega_manyullyn",
+            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
 

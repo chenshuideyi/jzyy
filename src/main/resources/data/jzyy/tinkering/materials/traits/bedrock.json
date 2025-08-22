@@ -3,12 +3,20 @@
     {
       "name": "jzyy:deicide",
       "level": 1
+    },
+    {
+      "name": "jzyy:infinitum",
+      "level": 1
     }
   ],
   "perStat": {
     "tconstruct:armor":[
       {
         "name": "jzyy:bedrock",
+        "level": 1
+      },
+      {
+        "name": "jzyy:infinitum",
         "level": 1
       }
     ],
@@ -19,6 +27,10 @@
       },
       {
         "name": "jzyy:mouse3",
+        "level": 1
+      },
+      {
+        "name": "jzyy:infinitum",
         "level": 1
       }
     ]

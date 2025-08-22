@@ -147,6 +147,7 @@
     "rare_fruit": "#FFD700",
     "gift": "#FFD700",
     "endless_hunger": "#66CCFF",
+    "sever": "#7B68EE",
     "revelation": "#8B0000",
     "ultima": "#48415d",
     "optima": "#FF00FF",
@@ -200,7 +201,8 @@
     "fired_chicken": "#FFD700",
     "return_to_the_end": "#4B0082",
     "real_return_to_the_end": "#4B0082",
-    "yin": "#000000"
+    "yin": "#000000",
+    "mega_manyullyn": "#9b59b6"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

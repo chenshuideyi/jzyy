@@ -29,6 +29,8 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isDefender;
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionPenetratingDamage;
 import static net.minecraft.world.entity.ai.attributes.Attributes.ARMOR;
 
@@ -63,14 +65,18 @@ public class ColorModifier extends NoLevelsModifier implements MeleeHitModifierH
         if (target != null) {
             ModDataNBT data = tool.getPersistentData();
             var holder = context.getAttacker();
-            float redValue = data.getFloat(ENTITY_COLOR_RED);
+
             float greenValue = data.getFloat(ENTITY_COLOR_GREEN);
-            reflectionPenetratingDamage(target,holder,redValue);
             holder.heal(greenValue);
             if (target.getAttribute(ARMOR) == null) return;
             float blueValue = data.getFloat(ENTITY_COLOR_BLUE);
             float armorValue = target.getArmorValue();
             Objects.requireNonNull(target.getAttribute(ARMOR)).setBaseValue(armorValue - blueValue);
+            if (isDefender(target)) return;
+            if (isFromDummmmmmyMod(target)) return;
+
+            float redValue = data.getFloat(ENTITY_COLOR_RED);
+            reflectionPenetratingDamage(target,holder,redValue);
         }
 
     }

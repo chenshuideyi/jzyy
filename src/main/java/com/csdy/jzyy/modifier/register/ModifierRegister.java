@@ -227,10 +227,12 @@ public class ModifierRegister {
     ///绝对切断及换皮
     public static final StaticModifier<AbsoluteSeverance> ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("absolute_severance", () -> new AbsoluteSeverance(0.5F));
 
+    public static final StaticModifier<AbsoluteSeverance> SEVER_STATIC_MODIFIER = MODIFIERS.register("sever", () -> new AbsoluteSeverance(0.05F));
     public static final StaticModifier<AbsoluteSeverance> REVELATION_STATIC_MODIFIER = MODIFIERS.register("revelation", () -> new AbsoluteSeverance(0.2F));
     public static final StaticModifier<AbsoluteSeverance> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos", () -> new AbsoluteSeverance(0.5F));
     public static final StaticModifier<AbsoluteSeverance> ULTIMA_STATIC_MODIFIER = MODIFIERS.register("ultima", () -> new AbsoluteSeverance(1F));
     public static final StaticModifier<AbsoluteSeverance> OPTIMA_STATIC_MODIFIER = MODIFIERS.register("optima", () -> new AbsoluteSeverance(1F));
+
 
     ///冰火
 

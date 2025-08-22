@@ -47,6 +47,7 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
         if (target != null && player != null) {
             if (target.getHealth() <= 0) return knockback;
             if (isFromDummmmmmyMod(target)) return knockback;
+            if (isDefender(target)) return knockback;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             modifierSeverance(target,player,toolDamage,this.value);
         }

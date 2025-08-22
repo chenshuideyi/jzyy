@@ -123,6 +123,9 @@ buildscript {
         implementation fg.deobf("curse.maven:citadel-331936:6002521")
         implementation fg.deobf("curse.maven:modern-ui-352491:6199942")
 
+        implementation fg.deobf("curse.maven:yellowbrosss-extras-836959:5955721")
+
+
 
         implementation fg.deobf("curse.maven:jade-324717:6271651")
 

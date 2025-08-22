@@ -1,6 +1,8 @@
 {
   "jzyy_tab": "匠战妖域",
 
+  "item.jzyy.mini_csdy": "作者的话",
+
   "item.jzyy.mtf": "代码能力提升药",
   "item.jzyy.null": "死亡是向下的，而我已经失去了我的高度",
   "item.jzyy.harcadium": "哈肯典姆",
@@ -11,7 +13,7 @@
   "item.jzyy.mozhua_cap": "再来一瓶",
   "item.jzyy.dog_jiao_spawn_egg": "大狗嚼刷怪蛋",
   "item.jzyy.hjm_spawn_egg": "[其名为耄]刷怪蛋",
-
+  "item.jzyy.titan_warden_egg": "泰坦监守者刷怪蛋",
 
   "item.jzyy.portable_end_portal": "便携式末地传送门",
   "item.jzyy.protable_end_portal.line1": "在指定方块上生成3*3的末地传送门",
@@ -94,7 +96,7 @@
   "item.jzyy.summon_csdy_line1": "可以召唤csdy",
 
   "item.jzyy.return_to_the_end": "归终锭",
-  "item.jzyy.return_to_the_end_line1": "无梦的赞助者提案",
+  "item.jzyy.return_to_the_end.line1": "无梦的赞助者提案",
 
   "item.jzyy.tong_ban": "§b桐§d板",
   "item.jzyy.tong_ban.line1": "§b芝士§d猫猫桐§b的提案",
@@ -111,8 +113,10 @@
   "item.jzyy.failed_gobbers": "俯首戈伯",
   "item.jzyy.failed_gobbers.line1": "被屈打成招",
 
-
-
+  "item.jzyy.mega_manyullyn": "超级玛玉灵",
+  "fluid.jzyy.molten_mega_manyullyn": "熔融超级玛玉灵",
+  "item.jzyy.molten_mega_manyullyn_bucket": "熔融超级玛玉灵桶",
+  "block.jzyy.molten_mega_manyullyn_fluid": "熔融超级玛玉灵",
 
 
   "material.jzyy.yin": "阴",
@@ -289,8 +293,14 @@
   "material.jzyy.chitin.encyclopedia": "比想象中更硬，更轻",
 
   "material.jzyy.failed_gobbers": "俯首戈伯",
-  "material.jzyy.failed_gobbers.flavor": "",
-  "material.jzyy.failed_gobbers.encyclopedia": "",
+  "material.jzyy.failed_gobbers.flavor": "随着凝望月亮时呼出的最后一口气，就这样永久的消散了",
+  "material.jzyy.failed_gobbers.encyclopedia": "“我本该死去，但我的伤口是门扉”",
+
+  "material.jzyy.mega_manyullyn": "超级玛玉灵",
+  "material.jzyy.mega_manyullyn.flavor": "这种对手怎么可能让我出汗",
+  "material.jzyy.mega_manyullyn.encyclopedia": "取回了神力，不多，但够用",
+
+
 
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
@@ -663,6 +673,14 @@
   "modifier.jzyy.void_touch": "虚空之触",
   "modifier.jzyy.void_touch.flavor": "来自虚空的寒冷",
   "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切断」20%效能",
+
+  "modifier.jzyy.sever": "断绝",
+  "modifier.jzyy.sever.flavor": "可悲的尝试",
+  "modifier.jzyy.sever.description":"「绝对切断」5%效能",
+
+  "modifier.jzyy.death_perception": "直死之魔眼",
+  "modifier.jzyy.death_perception.flavor": "只要是活着的东西，就算是神也杀给你看！",
+  "modifier.jzyy.death_perception.description":"「绝对切断」10%效能",
 
   "modifier.jzyy.revelation": "炼狱",
   "modifier.jzyy.revelation.flavor": "你已踏遍荒芜的冥界，那心中的祈愿，终究落于何方？",

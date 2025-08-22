@@ -107,7 +107,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                     mainTarget.getX() - this.mob.getX(),
                     0,  // Y轴通常不移动，避免浮空
                     mainTarget.getZ() - this.mob.getZ()
-            ).normalize().scale(4);
+            ).normalize().scale(14);
 
             this.mob.setDeltaMovement(
                     dashDirection.x,
@@ -142,12 +142,6 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
         if (!target.isAlive()) return; // 安全检查
         target.invulnerableTime = 0;      // 强制取消无敌帧，以实现快速连击
         this.mob.doHurtTarget(target); // 造成常规伤害
-
-//        if (boss.isReal()){
-//            setAbsoluteSeveranceHealth(target, 0);
-//            forceSetAllCandidateHealth(target, 0);
-//        }
-
 
         if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {
             float oldHealth = target.getHealth();

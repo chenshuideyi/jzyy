@@ -1,0 +1,9 @@
+{
+    "type": "tconstruct:material_fluid",
+    "fluid": {
+        "name": "jzyy:molten_mega_manyullyn",
+        "amount": 90
+    },
+    "temperature": 6666,
+    "output": "jzyy:mega_manyullyn"
+}
