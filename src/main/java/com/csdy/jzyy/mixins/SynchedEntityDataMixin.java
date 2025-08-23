@@ -16,10 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromOmniMod;
-import static com.csdy.jzyy.ms.ReflectionUtil.invokeKillEntity;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.getAbsoluteSeveranceHealth;
-import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 
 @Mixin(value = SynchedEntityData.class, priority = 1)
@@ -96,7 +93,7 @@ public abstract class SynchedEntityDataMixin {
                     dataKeyName.contains("omnimobs_time_data")) {
                 return 0.0F;
             }
-            if (isFromOmniMod(entity)) invokeKillEntity(entity);
+//            if (isFromOmniMod(entity)) invokeKillEntity(entity);
         }
 
         if (key == LivingEntity.DATA_HEALTH_ID ||

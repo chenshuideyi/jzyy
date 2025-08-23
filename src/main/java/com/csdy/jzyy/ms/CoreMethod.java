@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import static com.csdy.jzyy.ms.ReflectionUtil.invokeKillEntity;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 @SuppressWarnings("unused")
@@ -36,53 +35,6 @@ public final class CoreMethod {
             }
         };
     }
-
-//    public static <T> T get(SynchedEntityData data, EntityDataAccessor<T> key) {
-//        Entity entity = getEntityFromData(data);
-//
-//        return switch (CoreMsUtil.getCategory(entity instanceof LivingEntity ? (LivingEntity)entity : null)) {
-//            case csdy -> {
-//                if (key.getSerializer() == EntityDataSerializers.FLOAT) {
-//                    yield (T)(Float)20.0F;
-//                } else if (key.getSerializer() == EntityDataSerializers.INT) {
-//                    yield (T)(Integer)0;
-//                }
-//                yield getOriginalValue(data, key);
-//            }
-//            case csdykill -> {
-//                if (key.getSerializer() == EntityDataSerializers.FLOAT) {
-//                    yield (T)(Float)0.0F;
-//                } else if (key.getSerializer() == EntityDataSerializers.INT) {
-//                    yield (T)(Integer)0;
-//                }
-//                yield getOriginalValue(data, key);
-//            }
-//            case normal -> getOriginalValue(data, key);
-//        };
-//    }
-//
-//    private static Entity getEntityFromData(SynchedEntityData data) {
-//        try {
-//            Field entityField = SynchedEntityData.class.getDeclaredField("entity");
-//            entityField.setAccessible(true);
-//            return (Entity) entityField.get(data);
-//        } catch (Exception e) {
-//            throw new RuntimeException("未能从SynchedEntityData获取entity", e);
-//        }
-//    }
-//
-//    private static <T> T getOriginalValue(SynchedEntityData data, EntityDataAccessor<T> key) {
-//        try {
-//            Method getItem = SynchedEntityData.class.getDeclaredMethod("getItem", EntityDataAccessor.class);
-//            getItem.setAccessible(true);
-//            Object dataItem = getItem.invoke(data, key);
-//
-//            Method getValue = dataItem.getClass().getDeclaredMethod("getValue");
-//            return (T) getValue.invoke(dataItem);
-//        } catch (Exception e) {
-//            throw new RuntimeException("获取不到value", e);
-//        }
-//    }
 
     public static boolean isDeadOrDying(LivingEntity living) {
         return switch (CoreMsUtil.getCategory(living)) {
