@@ -22,7 +22,11 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
+import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.dropLoot;
+import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.setEntityDead;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromOmniMod;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 
@@ -32,7 +36,13 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
         var target = context.getLivingTarget();
         if (!(context.getAttacker() instanceof Player player)) return damage;
-        if (context.getLivingTarget() == null) return damage;
+        if (target == null) return damage;
+        var playerKill = target.level().damageSources.playerAttack(player);
+        forceSetAllCandidateHealth(target,0);
+        setAbsoluteSeveranceHealth(target,0);
+        setEntityDead(target);
+        dropLoot(target,playerKill);
+        target.dropAllDeathLoot(playerKill);
         CoreMsUtil.setCategory(target, EntityCategory.csdykill);
         if (isFromOmniMod(target)) KillEntity(target);
 //        invokeKillEntity(target);
@@ -42,8 +52,14 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
     @Override
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
         if (attacker instanceof ServerPlayer player && target instanceof LivingEntity living) {
+            var playerKill = target.level().damageSources.playerAttack(player);
+            forceSetAllCandidateHealth(living,0);
+            setAbsoluteSeveranceHealth(living,0);
+            setEntityDead(living);
+            dropLoot(living,playerKill);
+            living.dropAllDeathLoot(playerKill);
             CoreMsUtil.setCategory(living, EntityCategory.csdykill);
-            if (isFromOmniMod(target)) KillEntity(target);
+            if (isFromOmniMod(living)) KillEntity(living);
 //            invokeKillEntity(living);
             return damage;
         }

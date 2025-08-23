@@ -28,13 +28,14 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Iterator;
 import java.util.UUID;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageModifierHook {
+public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModifierHook {
     //TODO 切断死目标凋落物
     @Override
     public int getPriority() {
@@ -48,8 +49,36 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageMo
     }
 
 
+//    @Override
+//    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
+//        LivingEntity target = context.getLivingTarget();
+//        Player player = context.getPlayerAttacker();
+//        if (target != null && player != null && target.getHealth() > 0) {
+//            if (target.getHealth() <= 0) return damage;
+//            if (isFromDummmmmmyMod(target)) return damage;
+//            if (isDefender(target)) return damage;
+//            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+//            modifierAbsoluteSeverance(target,player,toolDamage,this.value + 1);
+//        }
+//        return damage;
+//    }
+
+
     @Override
-    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
+    public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
+        LivingEntity target = context.getLivingTarget();
+        Player player = context.getPlayerAttacker();
+        if (target != null && player != null && target.getHealth() > 0) {
+            if (target.getHealth() <= 0) return;
+            if (isFromDummmmmmyMod(target)) return;
+            if (isDefender(target)) return;
+            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
+        }
+    }
+
+    @Override
+    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
         if (target != null && player != null && target.getHealth() > 0) {
@@ -59,22 +88,8 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageMo
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
             modifierAbsoluteSeverance(target,player,toolDamage,this.value);
         }
-        return damage;
+        return knockback;
     }
-
-
-//    @Override
-//    public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-//        LivingEntity target = context.getLivingTarget();
-//        Player player = context.getPlayerAttacker();
-//        if (target != null && player != null && target.getHealth() > 0) {
-//            if (target.getHealth() <= 0) return knockback;
-//            if (isFromDummmmmmyMod(target)) return knockback;
-//            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-//            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
-//        }
-//        return knockback;
-//    }
 
 //    @Override
 //    public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
@@ -124,8 +139,8 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageMo
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-//        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
+//        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
     }
 
     /**
@@ -137,16 +152,35 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeDamageMo
     public static void onLevelTick(TickEvent.LevelTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         if (!(event.level instanceof ServerLevel serverLevel)) return;
-        for (UUID uuid : getAbsoluteSeveranceHealthMap().keySet()) {
+
+        // 使用迭代器安全地遍历和移除元素
+        for (Iterator<UUID> iterator = getAbsoluteSeveranceHealthMap().keySet().iterator(); iterator.hasNext();) {
+            UUID uuid = iterator.next();
             Entity entity = serverLevel.getEntity(uuid);
+
             if (entity instanceof LivingEntity living) {
                 float expected = getAbsoluteSeveranceHealth(living);
-                if (!Float.isNaN(expected) && Math.abs(living.getHealth() - expected) > 0.1f) {
-                    forceSetAllCandidateHealth(living, expected);
+
+                if (!Float.isNaN(expected)) {
+                    float actualHealth = living.getHealth();
+
+                    // 核心修复点：
+                    // 如果实际血量低于预期血量，更新预期血量
+                    if (actualHealth < expected) {
+                        setAbsoluteSeveranceHealth(living, actualHealth);
+                        // 确保下一个循环周期中，这个生物的血量不会被抬高
+                        expected = actualHealth;
+                    }
+
+                    // 如果实际血量高于预期血量，强制将其降低
+                    if (Math.abs(actualHealth - expected) > 0.1f) {
+                        forceSetAllCandidateHealth(living, expected);
+                    }
                 }
             } else {
+                // 如果实体不存在，则安全地从迭代器中移除记录
+                iterator.remove();
                 clearAbsoluteSeveranceHealth(uuid);
-                clearAbsoluteSeveranceHealth(entity);
             }
         }
     }

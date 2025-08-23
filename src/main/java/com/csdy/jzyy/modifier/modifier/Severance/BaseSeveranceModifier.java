@@ -49,9 +49,22 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
             if (isFromDummmmmmyMod(target)) return knockback;
             if (isDefender(target)) return knockback;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierSeverance(target,player,toolDamage,this.value);
+            modifierSeverance(target,player,toolDamage,this.value + 1);
         }
         return knockback;
+    }
+
+    @Override
+    public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
+        LivingEntity target = context.getLivingTarget();
+        Player player = context.getPlayerAttacker();
+        if (target != null && player != null) {
+            if (target.getHealth() <= 0) return;
+            if (isFromDummmmmmyMod(target)) return;
+            if (isDefender(target)) return;
+            float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+            modifierSeverance(target,player,toolDamage,this.value + 1);
+        }
     }
 
     @Override

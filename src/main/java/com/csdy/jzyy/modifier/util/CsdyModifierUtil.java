@@ -243,22 +243,21 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("omnimobs");
     }
 
-    public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage,float value){
+    public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage, float value){
         if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         var playerKill = target.level().damageSources.playerAttack(player);
         target.hurt(playerKill,1);
-        setAbsoluteSeveranceHealth(target,reHealth);
+        setAbsoluteSeveranceHealth(target, reHealth);
         forceSetAllCandidateHealth(target,reHealth);
         if (reHealth <= 0 || target.getHealth() <= 0){
             System.out.println("绝对切断强制掉落");
-            //并非不能掉落
-            forceSetAllCandidateHealth(target,0);
-            setAbsoluteSeveranceHealth(target,0);
+            forceSetAllCandidateHealth(target, 0);
+            setAbsoluteSeveranceHealth(target, 0);
             target.die(playerKill);
-            triggerKillAdvancement(target,playerKill);
+            triggerKillAdvancement(target, playerKill);
             setEntityDead(target);
-            dropLoot(target,playerKill);
+            dropLoot(target, playerKill);
             target.dropAllDeathLoot(playerKill);
         }
     }
