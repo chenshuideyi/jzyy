@@ -1221,15 +1221,25 @@
   "modifier.jzyy.refinemeror.description":"装备时会让你自动攻击敌人",
 
   "material.jzyy.bitter_cold_firm_ice": "苦寒坚冰",
-  "material.jzyy.frost_yeti_hair.json": "寒霜雪怪毛发",
+  "material.jzyy.bitter_cold_firm_ice.flavor": "非常寒冷的冰?",
+  "material.jzyy.frost_yeti_hair": "寒霜雪怪毛发",
+  "material.jzyy.frost_yeti_hair.flavor": "元素材料之一",
   "material.jzyy.lightning_worm_chitin": "闪电蠕虫甲壳",
+  "material.jzyy.lightning_worm_chitin.flavor": "元素材料之一",
   "material.jzyy.fire_secretor_adhesive": "泌火恶怪黏胶",
-  "material.jzyy.malignasaur_teet": "恶鳞牙齿",
+  "material.jzyy.fire_secretor_adhesive.flavor": "元素材料之一",
+  "material.jzyy.malignasaur_teeth": "恶鳞牙齿",
+  "material.jzyy.malignasaur_teeth.flavor": "其实是宝石恶鳞的牙齿化石,但是宝石恶鳞不会掉落这个",
   "material.jzyy.marine_reptiles_fine_scale": "海爬细鳞",
+  "material.jzyy.marine_reptiles_fine_scale.flavor": "宝石恶鳞会掉落这个",
   "material.jzyy.ocean_gemstone": "海洋宝石",
+  "material.jzyy.ocean_gemstone.flavor": "无尽海洋",
   "material.jzyy.virtual_cave_evil_crystal": "虚洞邪恶水晶",
+  "material.jzyy.virtual_cave_evil_crystal.flavor": "老实说它看上去并不邪恶",
   "material.jzyy.refine_meror_metal_ingot": "精炼莫厄金属锭",
+  "material.jzyy.refine_meror_metal_ingot.flavor": "真正的莫厄金属?",
   "material.jzyy.meror_metal_ingot": "莫厄金属锭",
+  "material.jzyy.meror_metal_ingot.flavor": "旧时代遗物",
 
 
 
