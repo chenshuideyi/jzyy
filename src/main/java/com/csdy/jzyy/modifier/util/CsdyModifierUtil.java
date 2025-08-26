@@ -3,6 +3,7 @@ package com.csdy.jzyy.modifier.util;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.yellowbrossproductions.yellowbrossextras.entities.DefenderEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -250,6 +251,14 @@ public class CsdyModifierUtil {
         target.hurt(playerKill,1);
         setAbsoluteSeveranceHealth(target, reHealth);
         forceSetAllCandidateHealth(target,reHealth);
+        if (isFromOmniMod(target)) {
+            CompoundTag tag = new CompoundTag();
+            tag.putFloat("Health", reHealth);
+            try {
+                target.readAdditionalSaveData(tag);
+            } catch (Exception ignored) {
+            }
+        }
         if (reHealth <= 0 || target.getHealth() <= 0){
             System.out.println("绝对切断强制掉落");
             forceSetAllCandidateHealth(target, 0);
@@ -268,6 +277,14 @@ public class CsdyModifierUtil {
         target.hurt(playerKill,1);
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         forceSetAllCandidateHealth(target,reHealth);
+        if (isFromOmniMod(target)) {
+            CompoundTag tag = new CompoundTag();
+            tag.putFloat("Health", reHealth);
+            try {
+                target.readAdditionalSaveData(tag);
+            } catch (Exception ignored) {
+            }
+        }
         if (reHealth <= 0 || target.getHealth() <= 0){
             System.out.println("切断强制掉落");
             //并非不能掉落

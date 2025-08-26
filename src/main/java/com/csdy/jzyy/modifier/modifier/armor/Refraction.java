@@ -15,13 +15,28 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 ///ug的折射，护甲词条
 public class Refraction extends Modifier implements ModifyDamageModifierHook, OnAttackedModifierHook {
 
+    private static final ThreadLocal<Boolean> IS_HANDLING_ATTACK = ThreadLocal.withInitial(() -> false);
+
     @Override
     public void onAttacked(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource damageSource, float amount, boolean isDirectDamage) {
+
+        if (IS_HANDLING_ATTACK.get()) {
+            return;
+        }
+
         if (!(context.getEntity() instanceof Player player)) return;
-        // 获取攻击者（如果存在）
+
         Entity attacker = damageSource.getEntity();
-        if (attacker != null && !player.getCooldowns().isOnCooldown(tool.getItem())) {
-            attacker.hurt(player.damageSources().playerAttack(player), amount);
+        if (attacker != null && !player.getCooldowns().isOnCooldown(tool.getItem()) && !attacker.equals(player)) {
+            try {
+                IS_HANDLING_ATTACK.set(true);
+
+                attacker.hurt(player.damageSources().playerAttack(player), amount);
+
+                player.getCooldowns().addCooldown(tool.getItem(), 20);
+            } finally {
+                IS_HANDLING_ATTACK.set(false);
+            }
         }
     }
 

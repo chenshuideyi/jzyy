@@ -5,6 +5,7 @@ import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
 import com.csdy.jzyy.ms.util.MsUtil;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,7 +45,17 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
         dropLoot(target,playerKill);
         target.dropAllDeathLoot(playerKill);
         CoreMsUtil.setCategory(target, EntityCategory.csdykill);
-        if (isFromOmniMod(target)) KillEntity(target);
+        if (isFromOmniMod(target)){
+            System.out.println("尝试覆盖哈基米");
+            CompoundTag tag = new CompoundTag();
+            tag.putFloat("Health",0);
+            try {
+                target.readAdditionalSaveData(tag);
+            } catch (Exception ignored) {
+            }
+            System.out.println("哈基米生命" + target.getHealth());
+//            KillEntity(target);
+        }
 //        invokeKillEntity(target);
         return damage;
     }

@@ -6,6 +6,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "jzyy.refmap.json",
   "mixins": [
+    "AbsoluteSeveranceHealthMixin",
+    "AttackHelperMixin",
     "CsdyProtectionLivingEntityMixin",
     "ItemStackMixin",
     "LivingEntityMixin",

@@ -1,6 +1,6 @@
 package com.csdy.jzyy.ms.util;
 
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.*;
 import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -30,7 +30,7 @@ public class LivingEntityUtil {
 
     //现在没问题了，我想
     private static EntityDataAccessor<Float> getHealthDataAccessor() {
-        for (String fieldName : new String[]{"DATA_HEALTH_ID", "f_20961_"}) {
+        for (String fieldName : new String[]{"DATA_HEALTH_ID", "f_20961_","health"}) {
             try {
                 Field field = LivingEntity.class.getDeclaredField(fieldName);
                 field.setAccessible(true);
@@ -293,18 +293,285 @@ public class LivingEntityUtil {
      * 同时也有Attribute修改
      * 我称它为“绝对切断”（Absolute Severance）
      */
-    public static void forceSetAllCandidateHealth(LivingEntity entity,float newHealth) {
-        // 先尝试覆盖原版生命值
-        reflectionSeverance(entity,newHealth);
-        // 如果实体生命值仍不符合预期，则进一步查找候选字段并覆盖
-        if (Math.abs(entity.getHealth() - newHealth) > 0.1f) {
+    public static void forceSetAllCandidateHealth(LivingEntity entity, float newHealth) {
+        // 1. 先尝试覆盖原版生命值
+        reflectionSeverance(entity, newHealth);
+
+        // 2. 如果实体生命值仍不符合预期，则使用综合方案
+
+            // 方法A: 使用DataAccessor查找和修改
             List<EntityDataAccessor<Number>> candidates = findCandidateHealthAccessors(entity);
             for (EntityDataAccessor<Number> accessor : candidates) {
                 forceSetHealthByAccessor(entity, accessor, newHealth);
             }
-            forceSetCandidateNBT(entity, newHealth);
+
+            // 方法B: 使用增强的NBT遍历修改
+            forceSetCandidateNBTEnhanced(entity, newHealth);
+
+            // 方法C: 激进的全数值字段清零（备用方案）
+            if (Math.abs(entity.getHealth() - newHealth) > 0.1f) {
+                aggressivelyModifyAllHealthFields(entity, newHealth);
+            }
+    }
+
+
+    public static void forceSetCandidateNBTEnhanced(LivingEntity entity, float newHealth) {
+        try {
+            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
+            boolean modified = enhanceNbtHealthModification(tag, entity, newHealth);
+
+            if (modified) {
+                try {
+                    // 使用反射调用readAdditionalSaveData
+                    Method readMethod = LivingEntity.class.getDeclaredMethod("readAdditionalSaveData", CompoundTag.class);
+                    readMethod.setAccessible(true);
+                    readMethod.invoke(entity, tag);
+                } catch (NoSuchMethodException e) {
+                    // 尝试使用混淆方法名
+                    try {
+                        Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
+                        readMethod.setAccessible(true);
+                        readMethod.invoke(entity, tag);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
+    /**
+     * 增强的NBT健康字段修改逻辑 - 结合精确匹配和模糊匹配
+     */
+    private static boolean enhanceNbtHealthModification(CompoundTag tag, LivingEntity entity, float newHealth) {
+        boolean modified = false;
+        float currentHealth = entity.getHealth();
+        float maxHealth = entity.getMaxHealth();
+
+        // 已知的健康字段名称（跨模组兼容）
+        Set<String> knownHealthFields = Set.of(
+                "Health", "health", "HEALTH",
+                "Hp", "hp", "HP",
+                "Life", "life", "LIFE",
+                "HitPoints", "hitpoints", "HITPOINTS",
+                "CurrentHealth", "currenthealth", "CURRENT_HEALTH",
+                "EntityHealth", "entityhealth", "ENTITY_HEALTH"
+        );
+
+        // 递归处理所有字段
+        modified |= recursivelyModifyHealthFields(tag, knownHealthFields, currentHealth, maxHealth, newHealth);
+
+        return modified;
+    }
+
+    /**
+     * 递归修改NBT中的健康字段
+     */
+    private static boolean recursivelyModifyHealthFields(CompoundTag tag, Set<String> knownHealthFields,
+                                                         float currentHealth, float maxHealth, float newHealth) {
+        boolean modified = false;
+
+        for (String key : tag.getAllKeys()) {
+            Tag value = tag.get(key);
+
+            if (value instanceof CompoundTag compoundTag) {
+                // 递归处理嵌套CompoundTag
+                modified |= recursivelyModifyHealthFields(compoundTag, knownHealthFields, currentHealth, maxHealth, newHealth);
+            }
+            else if (value instanceof ListTag listTag) {
+                // 处理ListTag中的CompoundTag元素
+                modified |= processHealthInListTag(listTag, knownHealthFields, currentHealth, maxHealth, newHealth);
+            }
+            else if (isNumericHealthField(key, value, knownHealthFields, currentHealth, maxHealth)) {
+                // 修改匹配的健康字段
+                setNumericTagValue(tag, key, value, newHealth);
+                modified = true;
+            }
+        }
+
+        return modified;
+    }
+
+    /**
+     * 处理ListTag中的健康字段
+     */
+    private static boolean processHealthInListTag(ListTag list, Set<String> knownHealthFields,
+                                                  float currentHealth, float maxHealth, float newHealth) {
+        boolean modified = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            Tag element = list.get(i);
+            if (element instanceof CompoundTag compoundTag) {
+                modified |= recursivelyModifyHealthFields(compoundTag, knownHealthFields, currentHealth, maxHealth, newHealth);
+            }
+        }
+
+        return modified;
+    }
+
+    /**
+     * 判断是否为健康数值字段
+     */
+    private static boolean isNumericHealthField(String key, Tag value, Set<String> knownHealthFields,
+                                                float currentHealth, float maxHealth) {
+        if (!isNumericTag(value)) {
+            return false;
+        }
+
+        // 获取数值
+        float numericValue = getFloatValue(value);
+
+        // 1. 精确字段名匹配
+        if (knownHealthFields.contains(key)) {
+            return true;
+        }
+
+        // 2. 模糊字段名匹配（包含health、hp等关键词）
+        String lowerKey = key.toLowerCase();
+        boolean nameMatches = lowerKey.contains("health") ||
+                lowerKey.contains("hp") ||
+                lowerKey.contains("life") ||
+                lowerKey.contains("hitpoint") ||
+                lowerKey.contains("vital") ||
+                lowerKey.contains("blood");
+
+        // 3. 数值匹配：与当前生命值接近或等于最大生命值
+        boolean valueMatches = Math.abs(numericValue - currentHealth) < 1.0f ||
+                Math.abs(numericValue - maxHealth) < 0.1f;
+
+        return nameMatches || valueMatches;
+    }
+
+    /**
+     * 设置数值标签的值
+     */
+    private static void setNumericTagValue(CompoundTag tag, String key, Tag originalValue, float newValue) {
+        if (originalValue instanceof ByteTag) {
+            tag.putByte(key, (byte) newValue);
+        } else if (originalValue instanceof ShortTag) {
+            tag.putShort(key, (short) newValue);
+        } else if (originalValue instanceof IntTag) {
+            tag.putInt(key, (int) newValue);
+        } else if (originalValue instanceof LongTag) {
+            tag.putLong(key, (long) newValue);
+        } else if (originalValue instanceof FloatTag) {
+            tag.putFloat(key, newValue);
+        } else if (originalValue instanceof DoubleTag) {
+            tag.putDouble(key, (double) newValue);
+        } else if (originalValue instanceof NumericTag) {
+            tag.putFloat(key, newValue);
+        }
+    }
+
+    /**
+     * 从Tag获取float值
+     */
+    private static float getFloatValue(Tag tag) {
+        if (tag instanceof NumericTag numeric) {
+            return numeric.getAsFloat();
+        } else if (tag instanceof ByteTag byteTag) {
+            return byteTag.getAsByte();
+        } else if (tag instanceof ShortTag shortTag) {
+            return shortTag.getAsShort();
+        } else if (tag instanceof IntTag intTag) {
+            return intTag.getAsInt();
+        } else if (tag instanceof LongTag longTag) {
+            return longTag.getAsLong();
+        } else if (tag instanceof FloatTag floatTag) {
+            return floatTag.getAsFloat();
+        } else if (tag instanceof DoubleTag doubleTag) {
+            return (float) doubleTag.getAsDouble();
+        }
+        return 0;
+    }
+
+    /**
+     * 判断是否为数值类型的Tag
+     */
+    private static boolean isNumericTag(Tag tag) {
+        return tag instanceof NumericTag ||
+                tag instanceof ByteTag ||
+                tag instanceof ShortTag ||
+                tag instanceof IntTag ||
+                tag instanceof LongTag ||
+                tag instanceof FloatTag ||
+                tag instanceof DoubleTag;
+    }
+
+    /**
+     * 激进的全字段修改（备用方案）
+     */
+    private static void aggressivelyModifyAllHealthFields(LivingEntity entity, float newHealth) {
+        try {
+            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
+            aggressivelyModifyAllNumericFields(tag, newHealth);
+
+            // 尝试通过反射加载修改后的数据
+            try {
+                Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
+                readMethod.setAccessible(true);
+                readMethod.invoke(entity, tag);
+            } catch (Exception e) {
+                // 备用方案
+            }
+        } catch (Exception e) {
+            // 忽略错误
+        }
+    }
+
+    /**
+     * 激进地修改所有数值字段
+     */
+    private static void aggressivelyModifyAllNumericFields(CompoundTag tag, float newValue) {
+        for (String key : tag.getAllKeys()) {
+            Tag value = tag.get(key);
+
+            if (value instanceof CompoundTag compound) {
+                aggressivelyModifyAllNumericFields(compound, newValue);
+            }
+            else if (value instanceof ListTag list) {
+                for (Tag element : list) {
+                    if (element instanceof CompoundTag compound) {
+                        aggressivelyModifyAllNumericFields(compound, newValue);
+                    }
+                }
+            }
+            else if (isNumericTag(value)) {
+                setNumericTagValue(tag, key, value, newValue);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 查找所有可能的生命值候选字段（DataAccessor），依据字段值与实体当前生命值的接近程度判断

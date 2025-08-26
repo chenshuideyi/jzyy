@@ -124,7 +124,7 @@ buildscript {
         implementation fg.deobf("curse.maven:modern-ui-352491:6199942")
 
         implementation fg.deobf("curse.maven:yellowbrosss-extras-836959:5955721")
-
+        implementation fg.deobf("curse.maven:slashblade-resharped-1022428:6918435")
 
 
         implementation fg.deobf("curse.maven:jade-324717:6271651")
@@ -145,6 +145,11 @@ buildscript {
 
         //巫法
         implementation fg.deobf("curse.maven:goety-586095:6366932")
+
+
+
+
+
 
 //        //假人
 //        implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")

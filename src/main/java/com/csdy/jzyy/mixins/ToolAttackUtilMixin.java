@@ -20,4 +20,22 @@ public class ToolAttackUtilMixin {
     private static int limitDamageParticles(int originalCount) {
         return Math.min(originalCount, 1);
     }
+
+    @ModifyArg(
+            method = "spawnAttackParticle",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/server/level/ServerLevel;sendParticles(Lnet/minecraft/core/particles/ParticleOptions;DDDIDDDD)I"
+            ),
+            index = 4
+    )
+    private static int limitDamageParticles2(int originalCount) {
+        return Math.min(originalCount, 1);
+    }
+
+
+
+
+
+
 }
