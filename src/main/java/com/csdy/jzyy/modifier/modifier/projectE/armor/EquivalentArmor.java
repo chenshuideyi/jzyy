@@ -30,7 +30,7 @@ public class EquivalentArmor extends NoLevelsModifier implements DamageBlockModi
 
         player.getCapability(PECapabilities.KNOWLEDGE_CAPABILITY).ifPresent(knowledge -> {
             BigInteger EMC = knowledge.getEmc();
-            BigInteger cost = BigInteger.valueOf((long)(damage * 100));
+            BigInteger cost = BigInteger.valueOf((long)(damage * 2000));
 
             if (EMC.compareTo(cost) >= 0) {
                 player.displayClientMessage(Component.literal("消耗了emc"+cost), false);

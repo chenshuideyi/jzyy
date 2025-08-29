@@ -46,15 +46,13 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
         target.dropAllDeathLoot(playerKill);
         CoreMsUtil.setCategory(target, EntityCategory.csdykill);
         if (isFromOmniMod(target)){
-            System.out.println("尝试覆盖哈基米");
             CompoundTag tag = new CompoundTag();
             tag.putFloat("Health",0);
             try {
                 target.readAdditionalSaveData(tag);
             } catch (Exception ignored) {
             }
-            System.out.println("哈基米生命" + target.getHealth());
-//            KillEntity(target);
+            KillEntity(target);
         }
 //        invokeKillEntity(target);
         return damage;

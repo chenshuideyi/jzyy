@@ -222,9 +222,9 @@ public class ModifierRegister {
     public static final StaticModifier<BaseSeveranceModifier> CLEAVE_THE_STARS = MODIFIERS.register("cleave_the_stars", () -> new BaseSeveranceModifier(0.05F));
     public static final StaticModifier<BaseSeveranceModifier> DRAGON_POWER_STATIC_MODIFIER = MODIFIERS.register("dragon_power", () -> new BaseSeveranceModifier(0.1F));
     public static final StaticModifier<BaseSeveranceModifier> VOID_TOUCH_STATIC_MODIFIER = MODIFIERS.register("void_touch", () -> new BaseSeveranceModifier(0.2F));
+    public static final StaticModifier<BaseSeveranceModifier> STAR_POWER_STATIC_MODIFIER = MODIFIERS.register("star_power", () -> new BaseSeveranceModifier(0.5F));
 
 
-    ///绝对切断及换皮
     public static final StaticModifier<AbsoluteSeverance> ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("absolute_severance", () -> new AbsoluteSeverance(0.5F));
 
     public static final StaticModifier<AbsoluteSeverance> SEVER_STATIC_MODIFIER = MODIFIERS.register("sever", () -> new AbsoluteSeverance(0.05F));
@@ -318,6 +318,7 @@ public class ModifierRegister {
     public static final StaticModifier<CoupDeGrace> COUP_DE_GRACE_STATIC_MODIFIER = MODIFIERS.register("coup_de_grace", CoupDeGrace::new);
     public static final StaticModifier<Kagerou> KAGEROU_STATIC_MODIFIER = MODIFIERS.register("kagerou", Kagerou::new);
     public static final StaticModifier<Pulverize> PULVERIZE_STATIC_MODIFIER = MODIFIERS.register("pulverize", Pulverize::new);
+
     ///俯首戈伯
     public static final StaticModifier<TriplingBless> TRIPLING_BLESS = MODIFIERS.register("triplingbless", TriplingBless::new);
     public static final StaticModifier<TriplingCurse> TRIPLING_CURSE = MODIFIERS.register("triplingcurse", TriplingCurse::new);
@@ -558,7 +559,15 @@ public class ModifierRegister {
     public static final StaticModifier<CleansingTheDarkMirrorOfTheHeart> CLEANSING_THE_DARK_MIRROR_OF_THE_HEART_STATIC_MODIFIER = MODIFIERS.register("cleansing_the_dark_mirror_of_the_heart", CleansingTheDarkMirrorOfTheHeart::new);
     public static final StaticModifier<ToEmbraceTheOneAndGuardTheOrigin> TO_EMBRACE_THE_ONE_AND_GUARD_THE_ORIGIN_STATIC_MODIFIER = MODIFIERS.register("to_embrace_the_one_and_guard_the_origin", ToEmbraceTheOneAndGuardTheOrigin::new);
 
-
+    ///再次补强
+    public static final StaticModifier<Runner> RUNNER_STATIC_MODIFIER = MODIFIERS.register("runner", Runner::new);
+    public static final StaticModifier<Zeno> ZENO_STATIC_MODIFIER = MODIFIERS.register("zeno", Zeno::new);
+    public static final StaticModifier<Adaptation> ADAPTATION_STATIC_MODIFIER = MODIFIERS.register("adaptation", Adaptation::new);
+    public static final StaticModifier<TemporalAmplifier> TEMPORAL_AMPLIFIER_STATIC_MODIFIER = MODIFIERS.register("temporal_amplifier", TemporalAmplifier::new);
+    public static final StaticModifier<FirstBlood> FIRST_BLOOD_STATIC_MODIFIER = MODIFIERS.register("first_blood", FirstBlood::new);
+    public static final StaticModifier<HeavyBlade> HEAVY_BLADE_STATIC_MODIFIER = MODIFIERS.register("heavy_blade", HeavyBlade::new);
+    public static final StaticModifier<MaliciouslySlandering> MALICIOUSLY_SLANDERING_STATIC_MODIFIER = MODIFIERS.register("maliciously_slandering", MaliciouslySlandering::new);
+    public static final StaticModifier<AcidicBlood> ACIDIC_BLOOD_STATIC_MODIFIER = MODIFIERS.register("acidic_blood", AcidicBlood::new);
 
 
     ///彩虹物质

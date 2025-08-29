@@ -687,6 +687,10 @@
   "modifier.jzyy.void_touch.flavor": "来自虚空的寒冷",
   "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切断」20%效能",
 
+  "modifier.jzyy.star_power": "星之力",
+  "modifier.jzyy.star_power.flavor": "宇宙的尘埃",
+  "modifier.jzyy.star_power.description":"造成额外50%的生命值剪切\n也就是说「切断」50%效能",
+
   "modifier.jzyy.sever": "断绝",
   "modifier.jzyy.sever.flavor": "可悲的尝试",
   "modifier.jzyy.sever.description":"「绝对切断」5%效能",
@@ -751,7 +755,7 @@
   "modifier.jzyy.dragon_bone.description": "无视挖掘等级，强制挖掘可破坏的方块",
 
   "modifier.jzyy.exoskeleton": "外骨骼",
-  "modifier.jzyy.exoskeleton.flavor": "虫子从来没有被真正消灭过",
+  "modifier.jzyy.exoskeleton.flavor": "广泛运用于昆虫",
   "modifier.jzyy.exoskeleton.description": "受到的伤害减少1点",
 
 
@@ -1241,6 +1245,37 @@
   "material.jzyy.meror_metal_ingot": "莫厄金属锭",
   "material.jzyy.meror_metal_ingot.flavor": "旧时代遗物",
 
+  "modifier.jzyy.runner": "一人行者",
+  "modifier.jzyy.runner.flavor":"天亮 那路在呼唤 我的行囊和我的吉他",
+  "modifier.jzyy.runner.description":"你的视角越广，速度越快,反之亦然",
+
+  "modifier.jzyy.zeno": "芝诺",
+  "modifier.jzyy.zeno.flavor":"悖论",
+  "modifier.jzyy.zeno.description":"你受到的伤害会一直* 0.99，直到它等于0",
+
+  "modifier.jzyy.adaptation": "适应",
+  "modifier.jzyy.adaptation.flavor":"虫子从来没有被真正消灭过",
+  "modifier.jzyy.adaptation.description":"你不会受到小于上次伤害的伤害",
+
+  "modifier.jzyy.first_blood": "第一滴血",
+  "modifier.jzyy.first_blood.flavor":"初见杀也是游戏的一部分",
+  "modifier.jzyy.first_blood.description":"对满血目标造成5倍伤害",
+
+  "modifier.jzyy.heavy_blade": "重刃",
+  "modifier.jzyy.heavy_blade.flavor":"跳劈！",
+  "modifier.jzyy.heavy_blade.description":"暴击时造成5倍伤害",
+
+  "modifier.jzyy.temporal_amplifier": "异形",
+  "modifier.jzyy.temporal_amplifier.flavor":"在缓慢的转变",
+  "modifier.jzyy.temporal_amplifier.description":"随着时间推移提升你的属性",
+
+  "modifier.jzyy.maliciously_slandering": "恶意中伤",
+  "modifier.jzyy.maliciously_slandering.flavor":"为什么他们都叫我恶魔\n因为你杀人啦\n可是我分明救人了\n因为他们没有看见啊\n为什么他们都叫你天使\n因为我救人啦\n可是你分明杀人了\n呵呵，因为他们没有看见啊",
+  "modifier.jzyy.maliciously_slandering.description":"造成伤害后让附近的生物攻击目标",
+
+  "modifier.jzyy.acidic_blood": "酸性血液",
+  "modifier.jzyy.acidic_blood.flavor":"它们的血会腐蚀舱门！",
+  "modifier.jzyy.acidic_blood.description":"受到伤害后对攻击者造成相应的「绝对切断」",
 
 
 

@@ -260,7 +260,7 @@ public class CsdyModifierUtil {
             }
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
-            System.out.println("绝对切断强制掉落");
+//            System.out.println("绝对切断强制掉落");
             forceSetAllCandidateHealth(target, 0);
             setAbsoluteSeveranceHealth(target, 0);
             target.die(playerKill);
@@ -286,7 +286,7 @@ public class CsdyModifierUtil {
             }
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
-            System.out.println("切断强制掉落");
+//            System.out.println("切断强制掉落");
             //并非不能掉落
             forceSetAllCandidateHealth(target,0);
             target.die(playerKill);

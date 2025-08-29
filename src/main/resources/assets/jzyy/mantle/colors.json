@@ -164,7 +164,18 @@
     "结束了？": null,
     "bravery": "#4B0082",
     "honor": "#4B0082",
-    "real_return_to_the_end": "#4B0082"
+    "real_return_to_the_end": "#4B0082",
+    "二次补强": null,
+    "star_power": "#0033aa",
+    "runner": "#FF6B35",
+    "zeno": "#8A2BE2",
+    "adaptation": "#32CD32",
+    "first_blood": "#DC143C",
+    "heavy_blade": "#2F4F4F",
+    "temporal_amplifier": "#00CED1",
+    "maliciously_slandering": "#9370DB",
+    "acidic_blood": "#7CFC00"
+
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
