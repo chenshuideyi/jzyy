@@ -87,6 +87,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                     method.instructions.insert(newInstructions);
 
                     System.out.println("成功修改 LivingEntity::getHealth 方法体！");
+                    new Throwable().printStackTrace();
                     transformed.set(true);
                 });
         return transformed.get();

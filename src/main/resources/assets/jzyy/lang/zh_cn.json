@@ -1277,6 +1277,36 @@
   "modifier.jzyy.acidic_blood.flavor":"它们的血会腐蚀舱门！",
   "modifier.jzyy.acidic_blood.description":"受到伤害后对攻击者造成相应的「绝对切断」",
 
+  "modifier.jzyy.boss_killer": "Boss杀手",
+  "modifier.jzyy.boss_killer.flavor":"我渴望有价值的对手",
+  "modifier.jzyy.boss_killer.description":"对Boss造成五倍伤害",
+
+  "modifier.jzyy.prime": "Prime",
+  "modifier.jzyy.prime.flavor":"利用Orokin技术强化！",
+  "modifier.jzyy.prime.description":"获得2强化槽，2防御槽和15%全属性",
+
+  "modifier.jzyy.umbra": "Umbra",
+  "modifier.jzyy.umbra.flavor":"如果你可以交换，你会吗？这是肯定的，然而所有的奇迹都需要牺牲。用你的生命--换他们的。",
+  "modifier.jzyy.umbra.description":"获得2灵魂槽和50点全属性",
+
+  "modifier.jzyy.ender_man_soul": "末影人的灵魂",
+  "modifier.jzyy.ender_man_soul.flavor":"得到了一些先天特征",
+  "modifier.jzyy.ender_man_soul.description":"闪避投射物，但水是有害的",
+
+  "modifier.jzyy.bat_soul": "蝙蝠的灵魂",
+  "modifier.jzyy.bat_soul.flavor":"得到了一些先天特征",
+  "modifier.jzyy.bat_soul.description":"获得飞行，但看不见",
+
+  "modifier.jzyy.undead_soul": "不死者的灵魂",
+  "modifier.jzyy.undead_soul.flavor":"得到了一些先天特征",
+  "modifier.jzyy.undead_soul.description":"拥有夜视，但无法承受阳炎",
+
+  "modifier.jzyy.apostle_soul": "使徒的灵魂",
+  "modifier.jzyy.apostle_soul.flavor":"得到了一些先天特征",
+  "modifier.jzyy.apostle_soul.description":"伤口流出了不洁之血",
+
+
+
 
 
   "entity.oni_miko.onimiko": "鬼巫女",

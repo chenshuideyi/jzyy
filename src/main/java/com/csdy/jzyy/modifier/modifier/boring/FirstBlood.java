@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier;
+package com.csdy.jzyy.modifier.modifier.boring;
 
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -12,6 +12,7 @@ public class FirstBlood extends NoLevelsModifier implements MeleeDamageModifierH
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
+        if (context.getLivingTarget() == null) return damage;
         if (context.getLivingTarget().getHealth() >= context.getLivingTarget().getMaxHealth()) return damage * 5f;
         return damage;
     }

@@ -5,6 +5,8 @@ import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.BossMusic;
 import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
 import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
+import com.csdy.jzyy.shader.BatBlindnessEffect;
+import com.csdy.jzyy.shader.BloodSkyEffect;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
@@ -139,12 +141,14 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public void startSeenByPlayer(@NotNull ServerPlayer player) {
         super.startSeenByPlayer(player);
         this.bossEvent.addPlayer(player);
+        BloodSkyEffect.SetEnableTo(player, true);
     }
 
     @Override
     public void stopSeenByPlayer(@NotNull ServerPlayer player) {
         super.stopSeenByPlayer(player);
         this.bossEvent.removePlayer(player);
+        BloodSkyEffect.SetEnableTo(player, false);
     }
 
     @Override

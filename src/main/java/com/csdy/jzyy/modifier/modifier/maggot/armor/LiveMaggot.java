@@ -17,7 +17,7 @@ public class LiveMaggot extends NoLevelsModifier implements InventoryTickModifie
     @Override
     public void onInventoryTick(@NotNull IToolStackView tool, @NotNull ModifierEntry modifier, @NotNull Level world, @NotNull LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, @NotNull ItemStack stack) {
         if (!(holder instanceof Player player)) return;
-        if (isCorrectSlot && player.tickCount % 100 == 0) {
+        if (isCorrectSlot && player.tickCount % 3000 == 0) {
             player.getFoodData().eat(2, 2);
         }
     }

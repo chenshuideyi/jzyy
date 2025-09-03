@@ -155,7 +155,7 @@ public class CsdyModifierUtil {
 
         // 可选：对持有者造成伤害（自爆效果）
         if (entryLevel >= 2) {
-            holder.hurt(level.damageSources().explosion(explosion), Float.MAX_VALUE);
+            holder.hurt(level.damageSources().explosion(explosion),entryLevel*5);
         }
     }
 
@@ -297,6 +297,19 @@ public class CsdyModifierUtil {
         }
     }
 
+    public static void modifierCutting(LivingEntity target, Player player, float damage,float value){
+        if (target.getHealth() <= 0) return;
+        var playerKill = target.level().damageSources.playerAttack(player);
+        target.hurt(playerKill,1);
+        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        target.setHealth(reHealth);
+        if (reHealth <= 0 || target.getHealth() <= 0){
+//            System.out.println("切断强制掉落");
+            target.die(playerKill);
+            target.dropAllDeathLoot(playerKill);
+        }
+    }
+
 
     public static void repairItem(ItemStack stack, int amount) {
         if (amount > 0) {
@@ -325,6 +338,17 @@ public class CsdyModifierUtil {
             if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
             ItemStack stack = player.getItemBySlot(slot);
             if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.VOID_WALK_STATIC_MODIFIER.getId()) > 0 || ModifierUtil.getModifierLevel(stack, ModifierRegister.RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER.getId()) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasClearBody(Player player) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
+            ItemStack stack = player.getItemBySlot(slot);
+            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.CLEAR_BODY_STATIC_MODIFIER.getId()) > 0 || ModifierUtil.getModifierLevel(stack, ModifierRegister.RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER.getId()) > 0) {
                 return true;
             }
         }

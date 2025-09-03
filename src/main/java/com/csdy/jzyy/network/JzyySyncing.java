@@ -1,7 +1,9 @@
 package com.csdy.jzyy.network;
 
 import com.csdy.jzyy.JzyyModMain;
+import com.csdy.jzyy.shader.BatBlindnessEffect;
 import com.csdy.jzyy.network.packets.*;
+import com.csdy.jzyy.shader.BloodSkyEffect;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.NetworkDirection;
@@ -71,6 +73,21 @@ public class JzyySyncing {
                 HolyProtectionParticlePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT) // 明确指定方向
         );
-
+        CHANNEL.registerMessage(
+                packetId++,
+                BatBlindnessEffect.Packet.class,
+                BatBlindnessEffect.Packet::encode,
+                BatBlindnessEffect.Packet::decode,
+                BatBlindnessEffect.Packet::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT)
+        );
+        CHANNEL.registerMessage(
+                packetId++,
+                BloodSkyEffect.Packet.class,
+                BloodSkyEffect.Packet::encode,
+                BloodSkyEffect.Packet::decode,
+                BloodSkyEffect.Packet::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT)
+        );
     }
 }

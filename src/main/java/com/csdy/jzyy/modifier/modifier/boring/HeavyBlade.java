@@ -1,32 +1,19 @@
-package com.csdy.jzyy.modifier.modifier.csdytinker;
+package com.csdy.jzyy.modifier.modifier.boring;
 
-import net.minecraft.world.entity.LivingEntity;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
+import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import java.util.Random;
+public class HeavyBlade extends NoLevelsModifier implements MeleeDamageModifierHook {
 
-public class CoupDeGrace extends Modifier implements MeleeDamageModifierHook {
-    //恩赐解脱
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
-        LivingEntity target = context.getLivingTarget();
-        if (target != null) {
-            var level = entry.getLevel();
-            Random random = new Random();
-            int randomNum = random.nextInt(100);
-            if (randomNum >= 78) {
-                if (level > 3) {
-                    level = 3;
-                }
-                return damage * ((level - 1) * 1.25f) + damage;
-            }
-        }
+        if (context.getLivingTarget() == null) return damage;
+        if (context.isCritical()) return damage * 5f;
         return damage;
     }
 

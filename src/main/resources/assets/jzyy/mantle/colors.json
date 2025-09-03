@@ -174,8 +174,14 @@
     "heavy_blade": "#2F4F4F",
     "temporal_amplifier": "#00CED1",
     "maliciously_slandering": "#9370DB",
-    "acidic_blood": "#7CFC00"
-
+    "acidic_blood": "#7CFC00",
+    "boss_killer": "#FF5555",
+    "prime": "#C5B358",
+    "umbra": "#A9A9A9",
+    "ender_man_soul": "#7F00FF",
+    "bat_soul": "#483C32",
+    "undead_soul": "#008000",
+    "apostle_soul": "#DC143C"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

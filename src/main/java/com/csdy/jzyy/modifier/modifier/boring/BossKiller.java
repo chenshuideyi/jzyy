@@ -1,4 +1,4 @@
-package com.csdy.jzyy.modifier.modifier;
+package com.csdy.jzyy.modifier.modifier.boring;
 
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -8,11 +8,14 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class HeavyBlade extends NoLevelsModifier implements MeleeDamageModifierHook {
+import static snownee.jade.util.CommonProxy.isBoss;
+
+public class BossKiller extends NoLevelsModifier implements MeleeDamageModifierHook {
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
-        if (context.isCritical()) return damage * 5f;
+        if (context.getLivingTarget() == null) return damage;
+        if (isBoss(context.getLivingTarget())) return damage * 5f;
         return damage;
     }
 

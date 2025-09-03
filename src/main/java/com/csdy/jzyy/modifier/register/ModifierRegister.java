@@ -18,6 +18,7 @@ import com.csdy.jzyy.modifier.modifier.bian.*;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
+import com.csdy.jzyy.modifier.modifier.boring.*;
 import com.csdy.jzyy.modifier.modifier.command_block.Gamemode1;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
@@ -87,6 +88,10 @@ import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.return_to_the_end.Bravery;
 import com.csdy.jzyy.modifier.modifier.return_to_the_end.Honor;
 import com.csdy.jzyy.modifier.modifier.silence.SilenceAlmighty;
+import com.csdy.jzyy.modifier.modifier.soul.ApostleSoul;
+import com.csdy.jzyy.modifier.modifier.soul.BatSoul;
+import com.csdy.jzyy.modifier.modifier.soul.EnderManSoul;
+import com.csdy.jzyy.modifier.modifier.soul.UnDeadSoul;
 import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseHealModifier;
@@ -568,11 +573,21 @@ public class ModifierRegister {
     public static final StaticModifier<HeavyBlade> HEAVY_BLADE_STATIC_MODIFIER = MODIFIERS.register("heavy_blade", HeavyBlade::new);
     public static final StaticModifier<MaliciouslySlandering> MALICIOUSLY_SLANDERING_STATIC_MODIFIER = MODIFIERS.register("maliciously_slandering", MaliciouslySlandering::new);
     public static final StaticModifier<AcidicBlood> ACIDIC_BLOOD_STATIC_MODIFIER = MODIFIERS.register("acidic_blood", AcidicBlood::new);
-
+    public static final StaticModifier<Prime> PRIME_STATIC_MODIFIER = MODIFIERS.register("prime", Prime::new);
+    public static final StaticModifier<Umbra> UMBRA_STATIC_MODIFIER = MODIFIERS.register("umbra", Umbra::new);
+    public static final StaticModifier<Range> RANGE_STATIC_MODIFIER = MODIFIERS.register("range", Range::new);
+    public static final StaticModifier<BossKiller> BOSS_KILLER_STATIC_MODIFIER = MODIFIERS.register("boss_killer", BossKiller::new);
 
     ///彩虹物质
     public static final StaticModifier<ColorModifier> COLOR_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color", ColorModifier::new);
     public static final StaticModifier<NoLevelsModifier> COLOR1_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("color1", NoLevelsModifier::new);
+
+    ///灵魂
+    public static final StaticModifier<EnderManSoul> ENDER_MAN_SOUL_STATIC_MODIFIER = MODIFIERS.register("ender_man_soul", EnderManSoul::new);
+    public static final StaticModifier<BatSoul> BAT_SOUL_STATIC_MODIFIER = MODIFIERS.register("bat_soul", BatSoul::new);
+    public static final StaticModifier<UnDeadSoul> UN_DEAD_SOUL_STATIC_MODIFIER = MODIFIERS.register("undead_soul", UnDeadSoul::new);
+    public static final StaticModifier<ApostleSoul> APOSTLE_SOUL_STATIC_MODIFIER = MODIFIERS.register("apostle_soul", ApostleSoul::new);
+
 
     ///领域
     public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("alex_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.ALEX_MELTDOWN));

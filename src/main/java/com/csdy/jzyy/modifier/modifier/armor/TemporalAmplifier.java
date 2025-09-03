@@ -157,7 +157,6 @@ public class TemporalAmplifier extends NoLevelsModifier implements AttributesMod
         if (currentLevel == null || newLevel != currentLevel) {
             currentBonusLevelMap.put(playerId, newLevel);
         }
-        System.out.println("这里也触发了");
     }
 
     private void updateAttributes(Player player) {
@@ -185,7 +184,6 @@ public class TemporalAmplifier extends NoLevelsModifier implements AttributesMod
         player.getAttribute(Attributes.ARMOR).addTransientModifier(new AttributeModifier(
                 getArmorUuid(slot), ARMOR_MODIFIER_NAME, armorBonus, AttributeModifier.Operation.ADDITION
         ));
-        System.out.println("应该是生效了");
     }
 
     private void removeAllAttributes(Player player, EquipmentSlot slot) {

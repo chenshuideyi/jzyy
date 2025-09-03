@@ -23,10 +23,12 @@ import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
 import com.csdy.jzyy.item.tool.until.JzyyTools;
+import com.csdy.jzyy.shader.BatBlindnessEffect;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.JzyyAnimationHandler;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
+import com.csdy.jzyy.shader.BloodSkyEffect;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -112,7 +114,8 @@ public class JzyyModMain {
         JzyySyncing.Init();
         // 以下代码仅在客户端运行
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> DxSlots::init);
-
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BatBlindnessEffect::init));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BloodSkyEffect::init));
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
