@@ -210,7 +210,7 @@ public class Test extends Item {
                 }
             }
 
-            trySpawnZombiesNearPlayer(serverLevel, player);
+//            trySpawnZombiesNearPlayer(serverLevel, player);
 
             JzyySyncing.CHANNEL.send(
                     PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),

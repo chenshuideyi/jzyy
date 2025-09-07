@@ -229,6 +229,11 @@ public class BossEntity extends Monster {
     }
 
     @Override
+    public boolean isInvisible() {
+        return false;
+    }
+
+    @Override
     public boolean isNoAi() {
         return false;
     }

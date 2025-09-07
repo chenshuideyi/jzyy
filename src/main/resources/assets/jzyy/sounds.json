@@ -147,5 +147,29 @@
         "stream": false
       }
     ]
+  },
+  "scream1": {
+    "sounds": [
+      {
+        "name":"jzyy:scream1",
+        "stream": false
+      }
+    ]
+  },
+  "scream2": {
+    "sounds": [
+      {
+        "name":"jzyy:scream2",
+        "stream": false
+      }
+    ]
+  },
+  "scream3": {
+    "sounds": [
+      {
+        "name":"jzyy:scream3",
+        "stream": false
+      }
+    ]
   }
 }

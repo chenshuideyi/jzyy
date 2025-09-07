@@ -23,9 +23,11 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
     }
 
     private final float value;
+    private final float baseDamage;
 
-    public BaseSeveranceModifier(float value) {
+    public BaseSeveranceModifier(float value,float baseDamage) {
         this.value = value;
+        this.baseDamage = baseDamage;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
             if (isFromDummmmmmyMod(target)) return knockback;
             if (isDefender(target)) return knockback;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierSeverance(target,player,toolDamage,this.value);
+            modifierSeverance(target,player,toolDamage,this.value + this.baseDamage);
         }
         return knockback;
     }
@@ -51,7 +53,7 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
             if (isFromDummmmmmyMod(target)) return;
             if (isDefender(target)) return;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierSeverance(target,player,toolDamage,this.value);
+            modifierSeverance(target,player,toolDamage,this.value + this.baseDamage);
         }
     }
 

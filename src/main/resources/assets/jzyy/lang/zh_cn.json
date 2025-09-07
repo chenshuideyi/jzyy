@@ -349,7 +349,7 @@
 
   "modifier.jzyy.longinus": "朗基努斯",
   "modifier.jzyy.longinus.flavor": "绝望",
-  "modifier.jzyy.longinus.description": "额外造成100倍主手武器面板的伤害，此后每级在上一级的基础上乘以二，若造成的伤害高于2147483647则不生效",
+  "modifier.jzyy.longinus.description": "额外造成100倍伤害，此后每级在上一级的基础上乘以二。",
 
   "modifier.jzyy.cassius": "卡西乌斯",
   "modifier.jzyy.cassius.flavor": "希望",
@@ -506,7 +506,7 @@
 
   "modifier.jzyy.clear_body": "恒净之躯",
   "modifier.jzyy.clear_body.flavor": "比压迫感强何止一点",
-  "modifier.jzyy.clear_body.description": "强效清除身上所有的负面效果\n也许不是永远可靠",
+  "modifier.jzyy.clear_body.description": "强效清除身上所有的负面效果\n同时也会免疫灵魂强化带来的负面特质",
 
   "modifier.jzyy.ancient_ocean": "古海孑遗的权柄",
   "modifier.jzyy.ancient_ocean.flavor": "来自深海",
@@ -673,23 +673,39 @@
 
   "modifier.jzyy.severance": "切断",
   "modifier.jzyy.severance.flavor": "断口呈现出镜面般完美的结晶态",
-  "modifier.jzyy.severance.description":"造成额外10%的生命值剪切\n也就是说「切断」10%效能",
+  "modifier.jzyy.severance.description":"造成额外10%的纯粹生命值剪切\n也就是说「切断」10%效能",
 
   "modifier.jzyy.cleave_the_stars": "斩星",
   "modifier.jzyy.cleave_the_stars.flavor": "现在，马玉灵真的能斩断星辰",
-  "modifier.jzyy.cleave_the_stars.description":"造成额外5%的生命值剪切\n也就是说「切断」5%效能",
+  "modifier.jzyy.cleave_the_stars.description":"造成额外100点的纯粹生命值剪切\n也就是说「切断」100点",
+
+  "modifier.jzyy.coda": "终幕",
+  "modifier.jzyy.coda.flavor": "来自90年代的科腐者带来的力量",
+  "modifier.jzyy.coda.description":"造成额外1%的纯粹生命值剪切\n也就是说「切断」1%效能",
+
+  "modifier.jzyy.kuva": "赤毒",
+  "modifier.jzyy.kuva.flavor": "接受了双子女皇的赤毒强化",
+  "modifier.jzyy.kuva.description":"造成额外1%的纯粹生命值剪切\n也就是说「切断」1%效能",
+
+  "modifier.jzyy.tenet": "信条",
+  "modifier.jzyy.tenet.flavor": "回应了风暴的呼唤",
+  "modifier.jzyy.tenet.description":"造成额外1%的纯粹生命值剪切\n也就是说「切断」1%效能",
+
+
+
+
 
   "modifier.jzyy.dragon_power": "巨龙力量",
   "modifier.jzyy.dragon_power.flavor": "毫不费力地撕开下界合金装甲",
-  "modifier.jzyy.dragon_power.description":"造成额外10%的生命值剪切\n也就是说「切断」10%效能",
+  "modifier.jzyy.dragon_power.description":"造成额外10%的生命值剪切\n也就是说「切割」10%效能",
 
   "modifier.jzyy.void_touch": "虚空之触",
   "modifier.jzyy.void_touch.flavor": "来自虚空的寒冷",
-  "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切断」20%效能",
+  "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切割」20%效能",
 
   "modifier.jzyy.star_power": "星之力",
   "modifier.jzyy.star_power.flavor": "宇宙的尘埃",
-  "modifier.jzyy.star_power.description":"造成额外50%的生命值剪切\n也就是说「切断」50%效能",
+  "modifier.jzyy.star_power.description":"造成额外50%的生命值剪切\n也就是说「切割」50%效能",
 
   "modifier.jzyy.sever": "断绝",
   "modifier.jzyy.sever.flavor": "可悲的尝试",
@@ -714,13 +730,6 @@
   "modifier.jzyy.optima": "完美",
   "modifier.jzyy.optima.flavor": "无限の力！",
   "modifier.jzyy.optima.description":"「绝对切断」100%效能",
-
-
-  "modifier.jzyy.fantasy_ending": "梦幻终焉",
-  "modifier.jzyy.fantasy_ending.flavor": "混沌与爱倒挂在坟墓之下，圣殿的灯油穿过叙事的橘子皮，无可挽救的终点啃食了梦幻,\n你是否仍感幸福?",
-  "modifier.jzyy.fantasy_ending.description":"「绝对切断」100%效能\n「梦终切断」1000%效能",
-
-
 
   "modifier.jzyy.dragon_killer": "屠龙者",
   "modifier.jzyy.dragon_killer.flavor": "你的名字将作为传奇",
@@ -805,9 +814,9 @@
   "modifier.jzyy.juggernaut.flavor": "暴君降临",
   "modifier.jzyy.juggernaut.description":"额外造成目标当前生命值20%的伤害",
 
-  "modifier.jzyy.equivalent_armor": "EMC护甲",
+  "modifier.jzyy.equivalent_armor": "EMC护盾",
   "modifier.jzyy.equivalent_armor.flavor": "EMC就是力量",
-  "modifier.jzyy.equivalent_armor.description":"消耗你的EMC格挡伤害,1000点EMC可以减少一点伤害",
+  "modifier.jzyy.equivalent_armor.description":"消耗你的EMC格挡伤害,2000点EMC可以减少一点伤害。\n受到巨量伤害时需要时间重启，重启阈值随等级提升",
 
   "modifier.jzyy.ultradense": "超致密",
   "modifier.jzyy.ultradense.flavor": "你甚至不能擦伤我",
@@ -1126,6 +1135,7 @@
   "entity.jzyy.mizi_ao": "「舞萌高手」米子山民",
   "entity.jzyy.mizi_ao.chujing": "「神碑的终结者」米子山民",
   "entity.jzyy.web_13234": "这个史莱姆大概是雾雨烨？",
+  "entity.jzyy.dog_jiao_jiao_jiao": "大狗大狗嚼嚼嚼",
 
   "entity.jzyy.hjm": "[其名为耄]",
   "item.jzyy.lue_mao_qu": "§o略冒蛆§",

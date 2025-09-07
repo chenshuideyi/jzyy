@@ -43,9 +43,11 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
     }
 
     private final float value;
+    private final float baseDamage;
 
-    public AbsoluteSeverance(float value) {
+    public AbsoluteSeverance(float value,float baseDamage) {
         this.value = value;
+        this.baseDamage = baseDamage;
     }
 
 
@@ -73,7 +75,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
             if (isFromDummmmmmyMod(target)) return;
             if (isDefender(target)) return;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
+            modifierAbsoluteSeverance(target,player,toolDamage,this.value + this.baseDamage);
         }
     }
 
@@ -86,7 +88,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
             if (isFromDummmmmmyMod(target)) return damage;
             if (isDefender(target)) return damage;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierAbsoluteSeverance(target,player,toolDamage,this.value);
+            modifierAbsoluteSeverance(target,player,toolDamage,this.value + this.baseDamage);
         }
         return knockback;
     }

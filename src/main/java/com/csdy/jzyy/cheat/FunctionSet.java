@@ -61,7 +61,7 @@ public class FunctionSet {
     @SubscribeEvent
     public static void onPlayerTick(LivingEvent.LivingTickEvent event) {
         if (event.getEntity() instanceof Player player) {
-            checkBooleanVariables(player);
+            if (FieldList.Fly) checkBooleanVariables(player);
         }
     }
 

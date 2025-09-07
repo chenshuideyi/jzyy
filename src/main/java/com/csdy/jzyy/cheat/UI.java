@@ -30,7 +30,7 @@ public class UI {
     }
 
     private static void createAndShowGUI() {
-        frame = new JFrame("LXiSZH");
+        frame = new JFrame("LXiSZH - 匠战妖域官方外挂");
         frame.setUndecorated(true);
         frame.setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 20, 20));
         frame.setResizable(true);

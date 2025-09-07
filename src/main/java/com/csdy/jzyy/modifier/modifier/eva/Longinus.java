@@ -27,19 +27,18 @@ public class Longinus extends Modifier implements MeleeDamageModifierHook, Arrow
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
+        LivingEntity target = context.getLivingTarget();
         int level = entry.getLevel();
-        float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-        float amount = 100 * toolDamage * (level * 2 - 1);
-        if (damage * amount < 2147483647) return damage * amount;
-        return damage;
+        if (target == null) return baseDamage;
+        float amount = 100 * (level * 2 - 1);
+        return damage * amount;
     }
 
     @Override
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
         if (target instanceof LivingEntity) {
             int level = entry.getLevel();
-            float arrowDamage = (float) arrow.getBaseDamage();
-            float amount = 1000 * arrowDamage * (level * 2 - 1);
+            float amount = 100 * (level * 2 - 1);
             return damage * amount;
         }
         return damage;

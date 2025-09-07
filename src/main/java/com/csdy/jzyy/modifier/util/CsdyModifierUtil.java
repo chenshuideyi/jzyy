@@ -348,10 +348,22 @@ public class CsdyModifierUtil {
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
             ItemStack stack = player.getItemBySlot(slot);
-            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.CLEAR_BODY_STATIC_MODIFIER.getId()) > 0 || ModifierUtil.getModifierLevel(stack, ModifierRegister.RECEPTIVE_AS_A_HOLLOW_VALLEY_STATIC_MODIFIER.getId()) > 0) {
+            if (!stack.isEmpty() && ModifierUtil.getModifierLevel(stack, ModifierRegister.CLEAR_BODY_STATIC_MODIFIER.getId()) > 0) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static int levelOfEMCArmor(Player player) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() != EquipmentSlot.Type.ARMOR) continue;
+            ItemStack stack = player.getItemBySlot(slot);
+            int level =  ModifierUtil.getModifierLevel(stack, ModifierRegister.EQUIVALENT_ARMOR_STATIC_MODIFIER.getId());
+            if (!stack.isEmpty() && level > 0) {
+                return level;
+            }
+        }
+        return 0;
     }
 }

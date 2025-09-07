@@ -82,10 +82,6 @@ public class DogJiao extends Monster implements GeoEntity {
 
     }
 
-    private PlayState idleAnimController(AnimationState<DogJiao> state) {
-        return state.setAndContinue(IDLE_ANIM);
-    }
-
     @Override
     protected void registerGoals() {
         super.registerGoals();
@@ -102,7 +98,7 @@ public class DogJiao extends Monster implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 0.8);
-        builder = builder.add(Attributes.MAX_HEALTH, 12);
+        builder = builder.add(Attributes.MAX_HEALTH, 16);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 8);
         builder = builder.add(Attributes.ATTACK_SPEED, 2);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16);

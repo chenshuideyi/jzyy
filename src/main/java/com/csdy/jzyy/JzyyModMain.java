@@ -5,15 +5,9 @@ import com.csdy.jzyy.diadema.JzyyClientDiademaRegister;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
-import com.csdy.jzyy.entity.boss.entity.TitanWarden;
-import com.csdy.jzyy.entity.boss.entity.MiziAo;
-import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.entity.boss.entity.*;
 
-import com.csdy.jzyy.entity.boss.entity.Web13234;
-import com.csdy.jzyy.entity.boss.render.TitanWardenRenderer;
-import com.csdy.jzyy.entity.boss.render.MiziAoRenderer;
-import com.csdy.jzyy.entity.boss.render.SwordManCsdyRenderer;
-import com.csdy.jzyy.entity.boss.render.Web13234Renderer;
+import com.csdy.jzyy.entity.boss.render.*;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
@@ -122,6 +116,7 @@ public class JzyyModMain {
     public static void addAttribute(EntityAttributeCreationEvent event) {
         event.put(JzyyEntityRegister.SWORD_MAN_CSDY.get(), SwordManCsdy.createAttributes().build());
         event.put(JzyyEntityRegister.DOG_JIAO.get(), DogJiao.createAttributes().build());
+        event.put(JzyyEntityRegister.DOG_JIAO_JIAO_JIAO.get(), DogJiaoJiaoJiao.createAttributes().build());
         event.put(JzyyEntityRegister.MIZI_AO.get(), MiziAo.createAttributes().build());
         event.put(JzyyEntityRegister.HJM.get(), HJMEntity.createAttributes().build());
         event.put(JzyyEntityRegister.TITAN_WARDEN.get(), TitanWarden.createAttributes().build());
@@ -142,6 +137,10 @@ public class JzyyModMain {
         event.registerEntityRenderer(
                 JzyyEntityRegister.MIZI_AO.get(),
                 MiziAoRenderer::new
+        );
+        event.registerEntityRenderer(
+                JzyyEntityRegister.DOG_JIAO_JIAO_JIAO.get(),
+                DogJiaoJiaoJiaoRenderer::new
         );
         event.registerEntityRenderer(
                 JzyyEntityRegister.HJM.get(),

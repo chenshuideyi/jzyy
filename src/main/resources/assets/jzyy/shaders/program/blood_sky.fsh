@@ -42,6 +42,20 @@ float noise(vec2 x) {
     return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
+// 更复杂的噪声函数，用于撕裂效果
+float fbm(vec2 p) {
+    float value = 0.0;
+    float amplitude = 0.5;
+    float frequency = 1.0;
+
+    for (int i = 0; i < 5; i++) {
+        value += amplitude * noise(p * frequency);
+        amplitude *= 0.5;
+        frequency *= 2.0;
+    }
+    return value;
+}
+
 // 脉动效果
 float pulse(float x, float speed, float intensity) {
     return 0.5 + 0.5 * sin(x * speed) * intensity;
@@ -57,6 +71,51 @@ vec3 bloodVeins(vec2 uv, float time) {
     veins = smoothstep(0.3, 0.7, veins);
 
     return vec3(veins * 0.3);
+}
+
+// 创建撕裂效果
+float createTear(vec2 uv, float time) {
+    // 创建多个撕裂线
+    float tear1 = 1.0 - smoothstep(0.0, 0.1, abs(uv.y - 0.3 + sin(uv.x * 3.0 + time * 0.5) * 0.1));
+    float tear2 = 1.0 - smoothstep(0.0, 0.15, abs(uv.x - 0.6 + sin(uv.y * 2.0 + time * 0.3) * 0.2));
+    float tear3 = 1.0 - smoothstep(0.0, 0.12, abs(uv.y + 0.2 - cos(uv.x * 4.0 + time * 0.7) * 0.15));
+
+    // 使用噪声创建不规则的撕裂区域
+    vec2 tearUV = uv * 2.0 + time * 0.1;
+    float noiseTear = fbm(tearUV * 4.0);
+    noiseTear = smoothstep(0.4, 0.6, noiseTear);
+
+    // 组合所有撕裂效果
+    float tears = max(tear1, max(tear2, tear3));
+    tears = max(tears, noiseTear * 0.7);
+
+    return tears;
+}
+
+// 创建闪电效果，增强撕裂感
+float lightning(vec2 uv, float time) {
+    // 创建闪电路径
+    vec2 lightningUV = uv * vec2(1.5, 3.0);
+    lightningUV.x += sin(lightningUV.y * 2.0 + time * 0.5) * 0.2;
+
+    // 闪电主干
+    float mainBolt = 1.0 - smoothstep(0.0, 0.02, abs(lightningUV.x - 0.5));
+    mainBolt *= smoothstep(0.2, 0.8, lightningUV.y);
+
+    // 闪电分支
+    float branch1 = 1.0 - smoothstep(0.0, 0.015, abs(lightningUV.x - 0.3 - sin(lightningUV.y * 5.0) * 0.1));
+    branch1 *= smoothstep(0.4, 0.6, lightningUV.y);
+
+    float branch2 = 1.0 - smoothstep(0.0, 0.015, abs(lightningUV.x - 0.7 + cos(lightningUV.y * 4.0) * 0.1));
+    branch2 *= smoothstep(0.5, 0.7, lightningUV.y);
+
+    // 组合闪电效果
+    float lightning = max(mainBolt, max(branch1, branch2));
+
+    // 添加闪烁效果
+    lightning *= pulse(time, 10.0, 0.5) + 0.5;
+
+    return lightning;
 }
 
 bool isSky(float depth) {
@@ -98,11 +157,23 @@ void main() {
     // 血丝效果
     vec3 veins = bloodVeins(uv, time);
 
+    // 撕裂效果
+    float tears = createTear(texCoord, time);
+
+    // 闪电效果
+    float lightning = lightning(texCoord, time);
+
     // 颜色混合
     vec3 dynamicColor = baseBlood * overallPulse;
     dynamicColor += vec3(noisePattern * 0.2);
     dynamicColor += vec3(swirl * 0.15);
     dynamicColor += veins;
+
+    // 添加撕裂效果 - 在撕裂处显示更亮的血色
+    dynamicColor = mix(dynamicColor, dynamicColor * 1.5 + vec3(0.3, 0.0, 0.0), tears);
+
+    // 添加闪电效果 - 闪电区域显示亮白色
+    dynamicColor = mix(dynamicColor, vec3(1.0, 1.0, 1.0), lightning * 0.7);
 
     // 边缘变暗效果
     float edgeDarken = 1.0 - smoothstep(0.7, 1.2, dist);

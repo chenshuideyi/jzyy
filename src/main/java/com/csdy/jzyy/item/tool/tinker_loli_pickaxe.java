@@ -100,6 +100,7 @@ public class tinker_loli_pickaxe extends ModifiableItem {
         double range = Math.min(baseRange + 10 * expandedLevel, 100);
 
         if (level instanceof ServerLevel serverLevel) {
+            // 攻击生物
             for (LivingEntity entity : serverLevel.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range))) {
                 if (entity != null && !(entity instanceof Player) && entity.isAlive()) {
                     player.attack(entity);
@@ -107,22 +108,27 @@ public class tinker_loli_pickaxe extends ModifiableItem {
                 }
             }
 
+            // 吸引物品 - 使用更高效的方式
             for (ItemEntity item : serverLevel.getEntitiesOfClass(ItemEntity.class, player.getBoundingBox().inflate(range))) {
                 if (item != null && !item.isRemoved()) {
-                    item.moveTo(player.getX(), player.getY(), player.getZ());
+                    // 使用setPos代替moveTo，可能减少一些更新
+                    item.setPos(player.getX(), player.getY(), player.getZ());
                     itemCount++;
                 }
             }
 
-            // 吸引经验球部分
+            // 吸引经验球
             for (ExperienceOrb xpOrb : serverLevel.getEntitiesOfClass(ExperienceOrb.class, player.getBoundingBox().inflate(range))) {
                 if (xpOrb != null && !xpOrb.isRemoved()) {
-                    xpOrb.moveTo(player.getX(), player.getY(), player.getZ());
+                    xpOrb.setPos(player.getX(), player.getY(), player.getZ());
                     xpCount++;
                 }
             }
 
-            player.displayClientMessage(Component.literal("已攻击" + entityCount + "个生物，吸引" + itemCount + "个物品和" + xpCount + "个经验球"), false);
+            // 只在有操作时发送消息
+            if (entityCount > 0 || itemCount > 0 || xpCount > 0) {
+                player.displayClientMessage(Component.literal("已攻击" + entityCount + "个生物，吸引" + itemCount + "个物品和" + xpCount + "个经验球"), false);
+            }
         }
 
         player.playSound(SoundsRegister.LOLI_SUCCRSS.get(), 1, 1);

@@ -1,10 +1,7 @@
 package com.csdy.jzyy.entity;
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.entity.boss.entity.TitanWarden;
-import com.csdy.jzyy.entity.boss.entity.MiziAo;
-import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
-import com.csdy.jzyy.entity.boss.entity.Web13234;
+import com.csdy.jzyy.entity.boss.entity.*;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import net.minecraft.world.entity.Entity;
@@ -51,6 +48,14 @@ public class JzyyEntityRegister {
                             .sized(1.2f, 2.55f)
                             .clientTrackingRange(14)
                             .build("jzyy:mizi_ao"));
+
+    public static final RegistryObject<EntityType<DogJiaoJiaoJiao>> DOG_JIAO_JIAO_JIAO =
+            JZYY_ENTITY.register("dog_jiao_jiao_jiao",
+                    () -> EntityType.Builder.of(
+                                    DogJiaoJiaoJiao::new, MobCategory.MONSTER)
+                            .sized(10f, 10f)
+                            .clientTrackingRange(14)
+                            .build("jzyy:dog_jiao_jiao_jiao"));
 
     public static final RegistryObject<EntityType<HJMEntity>> HJM =
             JZYY_ENTITY.register("hjm",

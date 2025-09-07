@@ -3,6 +3,7 @@ package com.csdy.jzyy.modifier.register;
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.modifier.modifier.*;
 import com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance;
+import com.csdy.jzyy.modifier.modifier.Severance.BaseCuttingModifier;
 import com.csdy.jzyy.modifier.modifier.Severance.BaseSeveranceModifier;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.AncientOcean;
 import com.csdy.jzyy.modifier.modifier.abyss_alloy.DeepOceanBlessings;
@@ -156,6 +157,7 @@ public class ModifierRegister {
     public static final StaticModifier<ColdRain> COLD_RAIN_STATIC_MODIFIER = MODIFIERS.register("cold_rain", ColdRain::new);
     public static final StaticModifier<SummerWind> SUMMER_WIND_STATIC_MODIFIER = MODIFIERS.register("summer_wind", SummerWind::new);
     public static final StaticModifier<HelloAndByeDays> HELLO_AND_BYE_DAYS_STATIC_MODIFIER = MODIFIERS.register("hello_bye_days", HelloAndByeDays::new);
+
     ///海渊
     public static final StaticModifier<AncientOcean> ANCIENT_OCEAN_STATIC_MODIFIER = MODIFIERS.register("ancient_ocean", AncientOcean::new);
     public static final StaticModifier<DeepOceanBlessings> DEEP_OCEAN_BLESSINGS_STATIC_MODIFIER = MODIFIERS.register("deep_ocean_blessing", DeepOceanBlessings::new);
@@ -163,8 +165,10 @@ public class ModifierRegister {
     public static final StaticModifier<DeepOceanEcho> DEEP_OCEAN_ECHO_STATIC_MODIFIER = MODIFIERS.register("deep_ocean_echo", DeepOceanEcho::new);
     public static final StaticModifier<NoLevelsModifier> HUSH_STATIC_MODIFIER = MODIFIERS.register("hush", NoLevelsModifier::new);
     public static final StaticModifier<DeepOceanProtect> DEEP_OCEAN_PROTECT_STATIC_MODIFIER = MODIFIERS.register("deep_ocean_protect", DeepOceanProtect::new);
+
     ///魔力铀
     public static final StaticModifier<ClearBody> CLEAR_BODY_STATIC_MODIFIER = MODIFIERS.register("clear_body", ClearBody::new);
+
     ///原始回归相关
     public static final StaticModifier<Elemental> ELEMENTAL_STATIC_MODIFIER = MODIFIERS.register("elemental", Elemental::new);
     public static final StaticModifier<Terrafirma> TERRAFIRMA_STATIC_MODIFIER = MODIFIERS.register("terrafirma", Terrafirma::new);
@@ -222,21 +226,29 @@ public class ModifierRegister {
     public static final StaticModifier<NoLevelsModifier> JUST_BED_AND_ROCK = MODIFIERS.register("just_bed_and_rock", NoLevelsModifier::new);
 
     ///切断及换皮
-    public static final StaticModifier<BaseSeveranceModifier> SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("severance", () -> new BaseSeveranceModifier(0.1F));
+    public static final StaticModifier<BaseSeveranceModifier> SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("severance", () -> new BaseSeveranceModifier(0.1F,0));
 
-    public static final StaticModifier<BaseSeveranceModifier> CLEAVE_THE_STARS = MODIFIERS.register("cleave_the_stars", () -> new BaseSeveranceModifier(0.05F));
-    public static final StaticModifier<BaseSeveranceModifier> DRAGON_POWER_STATIC_MODIFIER = MODIFIERS.register("dragon_power", () -> new BaseSeveranceModifier(0.1F));
-    public static final StaticModifier<BaseSeveranceModifier> VOID_TOUCH_STATIC_MODIFIER = MODIFIERS.register("void_touch", () -> new BaseSeveranceModifier(0.2F));
-    public static final StaticModifier<BaseSeveranceModifier> STAR_POWER_STATIC_MODIFIER = MODIFIERS.register("star_power", () -> new BaseSeveranceModifier(0.5F));
+    public static final StaticModifier<BaseSeveranceModifier> CLEAVE_THE_STARS = MODIFIERS.register("cleave_the_stars", () -> new BaseSeveranceModifier(0,100));
+    public static final StaticModifier<BaseSeveranceModifier> CODA = MODIFIERS.register("coda", () -> new BaseSeveranceModifier(0.01f,0));
 
 
-    public static final StaticModifier<AbsoluteSeverance> ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("absolute_severance", () -> new AbsoluteSeverance(0.5F));
 
-    public static final StaticModifier<AbsoluteSeverance> SEVER_STATIC_MODIFIER = MODIFIERS.register("sever", () -> new AbsoluteSeverance(0.05F));
-    public static final StaticModifier<AbsoluteSeverance> REVELATION_STATIC_MODIFIER = MODIFIERS.register("revelation", () -> new AbsoluteSeverance(0.2F));
-    public static final StaticModifier<AbsoluteSeverance> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos", () -> new AbsoluteSeverance(0.5F));
-    public static final StaticModifier<AbsoluteSeverance> ULTIMA_STATIC_MODIFIER = MODIFIERS.register("ultima", () -> new AbsoluteSeverance(1F));
-    public static final StaticModifier<AbsoluteSeverance> OPTIMA_STATIC_MODIFIER = MODIFIERS.register("optima", () -> new AbsoluteSeverance(1F));
+
+
+
+
+    public static final StaticModifier<BaseCuttingModifier> DRAGON_POWER_STATIC_MODIFIER = MODIFIERS.register("dragon_power", () -> new BaseCuttingModifier(0.1F,0));
+    public static final StaticModifier<BaseCuttingModifier> VOID_TOUCH_STATIC_MODIFIER = MODIFIERS.register("void_touch", () -> new BaseCuttingModifier(0.2F,0));
+    public static final StaticModifier<BaseCuttingModifier> STAR_POWER_STATIC_MODIFIER = MODIFIERS.register("star_power", () -> new BaseCuttingModifier(0.5F,0));
+
+
+    public static final StaticModifier<AbsoluteSeverance> ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("absolute_severance", () -> new AbsoluteSeverance(0.5F,0));
+
+    public static final StaticModifier<AbsoluteSeverance> SEVER_STATIC_MODIFIER = MODIFIERS.register("sever", () -> new AbsoluteSeverance(0.05F,0));
+    public static final StaticModifier<AbsoluteSeverance> REVELATION_STATIC_MODIFIER = MODIFIERS.register("revelation", () -> new AbsoluteSeverance(0.2F,0));
+    public static final StaticModifier<AbsoluteSeverance> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos", () -> new AbsoluteSeverance(0.5F,0));
+    public static final StaticModifier<AbsoluteSeverance> ULTIMA_STATIC_MODIFIER = MODIFIERS.register("ultima", () -> new AbsoluteSeverance(1F,0));
+    public static final StaticModifier<AbsoluteSeverance> OPTIMA_STATIC_MODIFIER = MODIFIERS.register("optima", () -> new AbsoluteSeverance(1F,0));
 
 
     ///冰火
