@@ -230,8 +230,8 @@ public class ModifierRegister {
 
     public static final StaticModifier<BaseSeveranceModifier> CLEAVE_THE_STARS = MODIFIERS.register("cleave_the_stars", () -> new BaseSeveranceModifier(0,100));
     public static final StaticModifier<BaseSeveranceModifier> CODA = MODIFIERS.register("coda", () -> new BaseSeveranceModifier(0.01f,0));
-
-
+    public static final StaticModifier<BaseSeveranceModifier> KUVA = MODIFIERS.register("kuva", () -> new BaseSeveranceModifier(0.01f,0));
+    public static final StaticModifier<BaseSeveranceModifier> TENET = MODIFIERS.register("tenet", () -> new BaseSeveranceModifier(0.01f,0));
 
 
 

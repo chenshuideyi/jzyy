@@ -178,10 +178,15 @@
     "boss_killer": "#FF5555",
     "prime": "#C5B358",
     "umbra": "#A9A9A9",
+    "灵魂": null,
     "ender_man_soul": "#7F00FF",
     "bat_soul": "#483C32",
     "undead_soul": "#008000",
-    "apostle_soul": "#DC143C"
+    "apostle_soul": "#DC143C",
+    "更新后切断": null,
+    "coda": "#8A2BE2",
+    "kuva": "#DC143C",
+    "tenet": "#20B2AA"
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",

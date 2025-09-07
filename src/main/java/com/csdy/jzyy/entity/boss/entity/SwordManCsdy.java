@@ -183,12 +183,16 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (isReal()) return false;
 
-        float realDamage = (float) Math.sqrt(damage);
+        // 计算开方后的伤害
+        float sqrtDamage = (float) Math.sqrt(damage);
+        // 减少80%（即只保留20%）
+        float realDamage = sqrtDamage * 0.2f;
+
         if (realDamage < 100f) {
             return false;
         }
         teleportToAttacker(source);
-        return super.hurt(source, damage);
+        return super.hurt(source, realDamage); // 传递处理后的伤害值
     }
 
     private void teleportToAttacker(DamageSource source) {
@@ -207,11 +211,16 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public void setHealth(float value) {
         if (isReal()) return;
+
         float currentHealth = this.getHealth();
         float healthLoss = currentHealth - value;
+
+        // 对血量损失进行同样的处理：开方后减80%
+        float processedHealthLoss = (float) (Math.sqrt(healthLoss) * 0.2f);
+
         float threshold = 325.0f;
-        if (healthLoss > threshold) {
-            value = currentHealth - threshold;
+        if (processedHealthLoss > threshold) {
+            value = currentHealth - processedHealthLoss * 0.2f;
         }
 
         super.setHealth(value);
