@@ -1,7 +1,10 @@
 package com.csdy.jzyy.entity.boss.ai;
 
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.ms.CoreMsUtil;
+import com.csdy.jzyy.ms.enums.EntityCategory;
 import lombok.Getter;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.player.Player;
@@ -10,6 +13,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
+import static com.csdy.jzyy.entity.Util.forceHurt;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
@@ -142,6 +146,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
         if (!target.isAlive()) return; // 安全检查
         target.invulnerableTime = 0;      // 强制取消无敌帧，以实现快速连击
         this.mob.doHurtTarget(target); // 造成常规伤害
+        forceHurt(target, this.mob.damageSources().mobAttack(this.mob),1);
 
         if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {
             float oldHealth = target.getHealth();
@@ -149,6 +154,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
             setAbsoluteSeveranceHealth(target, reHealth);
             forceSetAllCandidateHealth(target, reHealth);
             if (target.getHealth() >= oldHealth || target.getHealth() > reHealth || target.getHealth() <= 0) {
+                CoreMsUtil.setCategory(target, EntityCategory.csdykill);
             }
         }
     }
