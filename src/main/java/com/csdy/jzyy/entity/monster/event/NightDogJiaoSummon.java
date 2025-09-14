@@ -18,7 +18,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
@@ -32,11 +34,10 @@ public class NightDogJiaoSummon {
     static Random random = new Random();
 
     private static final int COUNT = 5;
-    private static final int MIN_DISTANCE = 6;  // 最小距离(格)
-    private static final int MAX_DISTANCE = 12; // 最大距离(格)
-    private static final int CHECK_INTERVAL = 200; // 10秒 = 200 ticks
+    private static final int MIN_DISTANCE = 6;
+    private static final int MAX_DISTANCE = 12;
+    private static final int CHECK_INTERVAL = 200;
     private static int timer = 0;
-
 
     @SubscribeEvent
     public static void onWorldTick(TickEvent.LevelTickEvent event) {
@@ -52,75 +53,111 @@ public class NightDogJiaoSummon {
                 continue;
             }
 
-            // 检查是否已经召唤过大狗叫叫叫
+            // 检查玩家是否刚刚复活（死亡冷却）
+            if (player.getPersistentData().contains("DeathTime")) {
+                long deathTime = player.getPersistentData().getLong("DeathTime");
+                if (event.level.getGameTime() - deathTime < 6000) {
+                    continue;
+                }
+            }
+
+            // 获取持久化NBT数据
             CompoundTag persistentData = player.getPersistentData();
             CompoundTag playerTag = persistentData.getCompound(Player.PERSISTED_NBT_TAG);
 
+            // 检查是否已经召唤过大狗叫叫叫
             if (playerTag.getBoolean("HasSpawnedDogJiaoJiaoJiao")) {
-                continue; // 已经召唤过，不再处理
+                continue;
             }
 
-            if (player.getPersistentData().getLong("LastDogJiaoSpawn") + 24000 > event.level.getGameTime()) {
+            // 检查冷却时间
+            long lastSpawnTime = playerTag.getLong("LastDogJiaoSpawn");
+            if (lastSpawnTime + 24000 > event.level.getGameTime()) {
                 continue;
             }
 
             // 获取召唤计数
             int summonCount = playerTag.getInt("DogJiaoSummonCount");
 
-            if (summonCount == 9) { // 第十次召唤（0-9）
-                // 启动预警线程
-                new Thread(() -> {
-                    try {
-                        // 发送预警消息
-                        if (player instanceof ServerPlayer serverPlayer) {
-                            serverPlayer.sendSystemMessage(Component.literal("你感到一个巨大的存在正在靠近你"));
-                        }
-
-                        // 等待30秒
-                        Thread.sleep(30000);
-
-                        // 在主线程执行生成逻辑
-                        Minecraft.getInstance().execute(() -> {
-                            if (!player.level().isClientSide()) {
-                                trySpawnDogJiaoJiaoJiao((ServerLevel) event.level, player);
-
-                                // 标记已召唤过大狗叫叫叫
-                                playerTag.putBoolean("HasSpawnedDogJiaoJiaoJiao", true);
-                                persistentData.put(Player.PERSISTED_NBT_TAG, playerTag);
-                            }
-                        });
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }).start();
-
-                // 增加计数并设置冷却
-                playerTag.putInt("DogJiaoSummonCount", summonCount + 1);
-                persistentData.put(Player.PERSISTED_NBT_TAG, playerTag);
-                player.getPersistentData().putLong("LastDogJiaoSpawn", event.level.getGameTime());
-
+            if (summonCount == 9) {
+                handleFinalSummon(event.level, player, playerTag);
             } else if (summonCount < 9) {
-                // 普通召唤僵尸
-                trySpawnZombiesNearPlayer((ServerLevel) event.level, player, COUNT);
-
-                // 增加召唤计数
-                playerTag.putInt("DogJiaoSummonCount", summonCount + 1);
-                persistentData.put(Player.PERSISTED_NBT_TAG, playerTag);
-                player.getPersistentData().putLong("LastDogJiaoSpawn", event.level.getGameTime());
-
-                if (!player.level().isClientSide()) {
-                    JzyySyncing.CHANNEL.send(
-                            PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
-                            new PlaySoundPacket(player.getEyePosition(),
-                                    JzyySoundsRegister.DOG_JIAO_SUMMON.get().getLocation(), 1, 1)
-                    );
-                }
+                handleNormalSummon((ServerLevel) event.level, player, playerTag);
             }
         }
     }
 
-    // 简化的生成大狗叫叫叫方法
+    // 处理最终召唤
+    private static void handleFinalSummon(Level level, Player player, CompoundTag playerTag) {
+        if (level.isClientSide()) return;
+
+        // 发送预警消息
+        if (player instanceof ServerPlayer serverPlayer) {
+            serverPlayer.sendSystemMessage(Component.literal("你感到一个巨大的存在正在靠近你"));
+        }
+
+        // 使用定时任务而不是新线程
+        level.getServer().execute(() -> {
+            try {
+                Thread.sleep(30000); // 30秒等待
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
+
+            level.getServer().execute(() -> {
+                if (!player.isRemoved() && player.isAlive()) {
+                    trySpawnDogJiaoJiaoJiao((ServerLevel) level, player);
+
+                    // 更新玩家数据
+                    CompoundTag persistentData = player.getPersistentData();
+                    CompoundTag updatedTag = persistentData.getCompound(Player.PERSISTED_NBT_TAG);
+                    updatedTag.putBoolean("HasSpawnedDogJiaoJiaoJiao", true);
+                    updatedTag.putInt("DogJiaoSummonCount", 10);
+                    updatedTag.putLong("LastDogJiaoSpawn", level.getGameTime());
+                    persistentData.put(Player.PERSISTED_NBT_TAG, updatedTag);
+                }
+            });
+        });
+    }
+
+    // 处理普通召唤
+    private static void handleNormalSummon(ServerLevel level, Player player, CompoundTag playerTag) {
+        trySpawnDogJiao(level, player, COUNT);
+
+        // 更新玩家数据
+        CompoundTag persistentData = player.getPersistentData();
+        CompoundTag updatedTag = persistentData.getCompound(Player.PERSISTED_NBT_TAG);
+        int newCount = updatedTag.getInt("DogJiaoSummonCount") + 1;
+        updatedTag.putInt("DogJiaoSummonCount", newCount);
+        updatedTag.putLong("LastDogJiaoSpawn", level.getGameTime());
+        persistentData.put(Player.PERSISTED_NBT_TAG, updatedTag);
+
+        // 播放音效
+        if (!level.isClientSide()) {
+            JzyySyncing.CHANNEL.send(
+                    PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
+                    new PlaySoundPacket(player.getEyePosition(),
+                            JzyySoundsRegister.DOG_JIAO_SUMMON.get().getLocation(), 1, 1)
+            );
+        }
+    }
+
+    // 添加玩家死亡事件监听
+    @SubscribeEvent
+    public static void onPlayerDeath(LivingDeathEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            // 记录死亡时间
+            player.getPersistentData().putLong("DeathTime", player.level().getGameTime());
+
+            // 可选：重置某些状态
+            CompoundTag persistentData = player.getPersistentData();
+            CompoundTag playerTag = persistentData.getCompound(Player.PERSISTED_NBT_TAG);
+            playerTag.putLong("LastDogJiaoSpawn", player.level().getGameTime());
+            persistentData.put(Player.PERSISTED_NBT_TAG, playerTag);
+        }
+    }
+
     private static void trySpawnDogJiaoJiaoJiao(ServerLevel level, Player player) {
         // 在玩家附近生成
         double angle = level.getRandom().nextDouble() * Math.PI * 2;
@@ -151,7 +188,7 @@ public class NightDogJiaoSummon {
         }
     }
 
-    public static void trySpawnZombiesNearPlayer(ServerLevel level, Entity player,int count) {
+    public static void trySpawnDogJiao(ServerLevel level, Entity player,int count) {
 
         for (int i = 0; i < count; i++) {
             // 计算随机位置
@@ -176,5 +213,4 @@ public class NightDogJiaoSummon {
             }
         }
     }
-
 }

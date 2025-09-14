@@ -38,12 +38,6 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
         var target = context.getLivingTarget();
         if (!(context.getAttacker() instanceof Player player)) return damage;
         if (target == null) return damage;
-        var playerKill = target.level().damageSources.playerAttack(player);
-        forceSetAllCandidateHealth(target,0);
-        setAbsoluteSeveranceHealth(target,0);
-        setEntityDead(target);
-        dropLoot(target,playerKill);
-        target.dropAllDeathLoot(playerKill);
         CoreMsUtil.setCategory(target, EntityCategory.csdykill);
         if (isFromOmniMod(target)){
             CompoundTag tag = new CompoundTag();
@@ -61,12 +55,6 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
     @Override
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
         if (attacker instanceof ServerPlayer player && target instanceof LivingEntity living) {
-            var playerKill = target.level().damageSources.playerAttack(player);
-            forceSetAllCandidateHealth(living,0);
-            setAbsoluteSeveranceHealth(living,0);
-            setEntityDead(living);
-            dropLoot(living,playerKill);
-            living.dropAllDeathLoot(playerKill);
             CoreMsUtil.setCategory(living, EntityCategory.csdykill);
             if (isFromOmniMod(living)) KillEntity(living);
 //            invokeKillEntity(living);

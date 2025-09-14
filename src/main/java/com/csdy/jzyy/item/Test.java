@@ -37,7 +37,6 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
-import static com.csdy.jzyy.entity.monster.event.NightDogJiaoSummon.trySpawnZombiesNearPlayer;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 
 

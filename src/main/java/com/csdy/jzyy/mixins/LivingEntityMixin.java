@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.hasClearBody;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.hasImagineBreakArmor;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.getAbsoluteSeveranceHealth;
 
 @Mixin(value = LivingEntity.class, priority = Integer.MAX_VALUE)
 public abstract class LivingEntityMixin {
@@ -31,6 +32,16 @@ public abstract class LivingEntityMixin {
     @Inject(method = "setHealth", at = @At("HEAD"), cancellable = true)
     private void onSetHealth(float health, CallbackInfo ci) {
         LivingEntity entity = (LivingEntity)(Object)this;
+        float destructionHealth = getAbsoluteSeveranceHealth(entity);
+
+        // 添加绝对切断拦截：如果生物正在流血，拦截正向的setHealth
+        if (!Float.isNaN(destructionHealth)) {
+            // 如果尝试设置的血量高于当前预期血量，则拦截
+            if (health > destructionHealth) {
+                ci.cancel();
+                return;
+            }
+        }
 
         if (!(entity instanceof Player player) || !player.isAddedToWorld()) {
             return;

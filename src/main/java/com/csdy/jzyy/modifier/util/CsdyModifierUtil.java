@@ -236,12 +236,18 @@ public class CsdyModifierUtil {
     }
 
 
-
     public static boolean isFromOmniMod(Entity entity) {
         if (entity == null) {
             return false;
         }
         return entity.getClass().getName().contains("omnimobs");
+    }
+
+    public static boolean isFromIceAndFire(Entity entity) {
+        if (entity == null) {
+            return false;
+        }
+        return entity.getClass().getName().contains("iceandfire");
     }
 
     public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage, float value){
@@ -263,7 +269,7 @@ public class CsdyModifierUtil {
 //            System.out.println("绝对切断强制掉落");
             forceSetAllCandidateHealth(target, 0);
             setAbsoluteSeveranceHealth(target, 0);
-            target.die(playerKill);
+//            target.die(playerKill);
             triggerKillAdvancement(target, playerKill);
             setEntityDead(target);
             dropLoot(target, playerKill);
@@ -271,11 +277,11 @@ public class CsdyModifierUtil {
         }
     }
 
-    public static void modifierSeverance(LivingEntity target, Player player, float damage,float value){
+    public static void modifierSeverance(LivingEntity target, Player player, float damage,float value,float baseDamage){
         if (target.getHealth() <= 0) return;
         var playerKill = target.level().damageSources.playerAttack(player);
         target.hurt(playerKill,1);
-        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f - baseDamage;
         forceSetAllCandidateHealth(target,reHealth);
         if (isFromOmniMod(target)) {
             CompoundTag tag = new CompoundTag();
@@ -286,10 +292,7 @@ public class CsdyModifierUtil {
             }
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
-//            System.out.println("切断强制掉落");
-            //并非不能掉落
             forceSetAllCandidateHealth(target,0);
-            target.die(playerKill);
             triggerKillAdvancement(target,playerKill);
             setEntityDead(target);
             dropLoot(target,playerKill);
@@ -304,8 +307,6 @@ public class CsdyModifierUtil {
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         target.setHealth(reHealth);
         if (reHealth <= 0 || target.getHealth() <= 0){
-//            System.out.println("切断强制掉落");
-            target.die(playerKill);
             target.dropAllDeathLoot(playerKill);
         }
     }

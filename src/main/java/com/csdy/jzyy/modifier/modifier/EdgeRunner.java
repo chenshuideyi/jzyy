@@ -29,7 +29,7 @@ public class EdgeRunner extends NoLevelsModifier implements MeleeDamageModifierH
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
         long vmMax = rt.maxMemory()/byteToMb;
-        float value = (float) pow(2, (double) (4096 - vmMax) / (256));
+        float value = (float) pow(2, (double) (8192 - vmMax) / (256));
         return damage * value;
     }
 
@@ -37,7 +37,7 @@ public class EdgeRunner extends NoLevelsModifier implements MeleeDamageModifierH
     public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
         if (attacker instanceof Player && target instanceof LivingEntity) {
             long vmMax = rt.maxMemory()/byteToMb;
-            float value = (float) pow(2, (double) (4096 - vmMax) / (256));
+            float value = (float) pow(2, (double) (8192 - vmMax) / (256));
             return damage * value;
         }
         return damage;

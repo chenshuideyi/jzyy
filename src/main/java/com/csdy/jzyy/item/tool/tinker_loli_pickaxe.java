@@ -18,6 +18,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.TierSortingRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,7 @@ import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.tools.definition.module.mining.MiningTierToolHook;
+import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -88,7 +90,6 @@ public class tinker_loli_pickaxe extends ModifiableItem {
 
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         InteractionResultHolder<ItemStack> use = super.use(level, player, hand);
-
         int entityCount = 0;
         int itemCount = 0;
         int xpCount = 0;
@@ -98,37 +99,43 @@ public class tinker_loli_pickaxe extends ModifiableItem {
         int expandedLevel = tool.getModifierLevel(TinkerModifiers.expanded.getId());
 
         double range = Math.min(baseRange + 10 * expandedLevel, 100);
+        double rangeSq = range * range;
 
-        if (level instanceof ServerLevel serverLevel) {
-            // 攻击生物
-            for (LivingEntity entity : serverLevel.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(range))) {
-                if (entity != null && !(entity instanceof Player) && entity.isAlive()) {
-                    player.attack(entity);
+        if (level instanceof ServerLevel serverLevel && !level.isClientSide) {
+
+            double playerX = player.getX();
+            double playerY = player.getY();
+            double playerZ = player.getZ();
+
+            AABB searchArea = new AABB(playerX - range, playerY - range, playerZ - range,
+                    playerX + range, playerY + range, playerZ + range);
+
+            for (ItemEntity item : serverLevel.getEntitiesOfClass(ItemEntity.class, searchArea, e ->
+                    !e.isRemoved() && e.distanceToSqr(player) <= rangeSq)) {
+                item.setPos(playerX, playerY, playerZ);
+                itemCount++;
+            }
+
+            for (ExperienceOrb xpOrb : serverLevel.getEntitiesOfClass(ExperienceOrb.class, searchArea, e ->
+                    !e.isRemoved() && e.distanceToSqr(player) <= rangeSq)) {
+                xpOrb.setPos(playerX, playerY, playerZ);
+                xpCount++;
+            }
+
+            for (LivingEntity entity : serverLevel.getEntitiesOfClass(LivingEntity.class, searchArea, e ->
+                    e != null && e.isAlive() && !(e instanceof Player) && e.distanceToSqr(player) <= rangeSq)) {
+
+                // 添加安全检查，防止递归
+                if (!entity.isRemoved() && !entity.isDeadOrDying()) {
+                    ToolAttackUtil.attackEntity(stack, player, entity);
                     entityCount++;
                 }
             }
 
-            // 吸引物品 - 使用更高效的方式
-            for (ItemEntity item : serverLevel.getEntitiesOfClass(ItemEntity.class, player.getBoundingBox().inflate(range))) {
-                if (item != null && !item.isRemoved()) {
-                    // 使用setPos代替moveTo，可能减少一些更新
-                    item.setPos(player.getX(), player.getY(), player.getZ());
-                    itemCount++;
-                }
-            }
-
-            // 吸引经验球
-            for (ExperienceOrb xpOrb : serverLevel.getEntitiesOfClass(ExperienceOrb.class, player.getBoundingBox().inflate(range))) {
-                if (xpOrb != null && !xpOrb.isRemoved()) {
-                    xpOrb.setPos(player.getX(), player.getY(), player.getZ());
-                    xpCount++;
-                }
-            }
-
-            // 只在有操作时发送消息
             if (entityCount > 0 || itemCount > 0 || xpCount > 0) {
                 player.displayClientMessage(Component.literal("已攻击" + entityCount + "个生物，吸引" + itemCount + "个物品和" + xpCount + "个经验球"), false);
             }
+
         }
 
         player.playSound(SoundsRegister.LOLI_SUCCRSS.get(), 1, 1);

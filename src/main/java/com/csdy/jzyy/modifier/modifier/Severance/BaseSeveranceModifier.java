@@ -33,13 +33,14 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
         LivingEntity target = context.getLivingTarget();
+//        if (isFromIceAndFire(target)) return knockback;
         Player player = context.getPlayerAttacker();
         if (target != null && player != null) {
             if (target.getHealth() <= 0) return knockback;
             if (isFromDummmmmmyMod(target)) return knockback;
             if (isDefender(target)) return knockback;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierSeverance(target,player,toolDamage,this.value + this.baseDamage);
+            modifierSeverance(target,player,toolDamage,this.value,this.baseDamage);
         }
         return knockback;
     }
@@ -48,12 +49,13 @@ public class BaseSeveranceModifier extends NoLevelsModifier implements MeleeHitM
     public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
         LivingEntity target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
+        //if (isFromIceAndFire(target)) return;
         if (target != null && player != null) {
             if (target.getHealth() <= 0) return;
             if (isFromDummmmmmyMod(target)) return;
             if (isDefender(target)) return;
             float toolDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
-            modifierSeverance(target,player,toolDamage,this.value + this.baseDamage);
+            modifierSeverance(target,player,toolDamage,this.value,this.baseDamage);
         }
     }
 

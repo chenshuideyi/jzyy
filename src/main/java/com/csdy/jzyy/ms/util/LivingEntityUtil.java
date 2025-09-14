@@ -21,6 +21,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromIceAndFire;
+
 public class LivingEntityUtil {
 
     //DATA_HEALTH_ID
@@ -294,6 +296,11 @@ public class LivingEntityUtil {
      * 我称它为“绝对切断”（Absolute Severance）
      */
     public static void forceSetAllCandidateHealth(LivingEntity entity, float newHealth) {
+
+        if (entity.isDeadOrDying() || !entity.isAlive()) {
+            return;
+        }
+
         // 1. 先尝试覆盖原版生命值
         reflectionSeverance(entity, newHealth);
 
@@ -309,39 +316,53 @@ public class LivingEntityUtil {
             forceSetCandidateNBTEnhanced(entity, newHealth);
 
             // 方法C: 激进的全数值字段清零（备用方案）
-            if (Math.abs(entity.getHealth() - newHealth) > 0.1f) {
-                aggressivelyModifyAllHealthFields(entity, newHealth);
-            }
+//            if (Math.abs(entity.getHealth() - newHealth) > 0.1f) {
+//                aggressivelyModifyAllHealthFields(entity, newHealth);
+//            }
     }
 
 
     public static void forceSetCandidateNBTEnhanced(LivingEntity entity, float newHealth) {
+        // 添加频率限制：不要在短时间内重复调用
+        if (System.currentTimeMillis() - lastNbtOperationTime < 50) { // 50ms冷却
+            return;
+        }
+        lastNbtOperationTime = System.currentTimeMillis();
+
         try {
             CompoundTag tag = entity.saveWithoutId(new CompoundTag());
             boolean modified = enhanceNbtHealthModification(tag, entity, newHealth);
 
             if (modified) {
-                try {
-                    // 使用反射调用readAdditionalSaveData
-                    Method readMethod = LivingEntity.class.getDeclaredMethod("readAdditionalSaveData", CompoundTag.class);
-                    readMethod.setAccessible(true);
+                // 使用缓存的方法查找来提高性能
+                Method readMethod = getCachedReadMethod();
+                if (readMethod != null) {
                     readMethod.invoke(entity, tag);
-                } catch (NoSuchMethodException e) {
-                    // 尝试使用混淆方法名
-                    try {
-                        Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
-                        readMethod.setAccessible(true);
-                        readMethod.invoke(entity, tag);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // 静默处理错误
         }
+    }
+
+    private static Method cachedReadMethod = null;
+    private static long lastNbtOperationTime = 0;
+
+    private static Method getCachedReadMethod() {
+        if (cachedReadMethod == null) {
+            try {
+                cachedReadMethod = LivingEntity.class.getDeclaredMethod("readAdditionalSaveData", CompoundTag.class);
+                cachedReadMethod.setAccessible(true);
+            } catch (NoSuchMethodException e) {
+                try {
+                    cachedReadMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
+                    cachedReadMethod.setAccessible(true);
+                } catch (Exception ex) {
+                    return null;
+                }
+            }
+        }
+        return cachedReadMethod;
     }
 
     /**
@@ -352,18 +373,20 @@ public class LivingEntityUtil {
         float currentHealth = entity.getHealth();
         float maxHealth = entity.getMaxHealth();
 
-        // 已知的健康字段名称（跨模组兼容）
-        Set<String> knownHealthFields = Set.of(
-                "Health", "health", "HEALTH",
-                "Hp", "hp", "HP",
-                "Life", "life", "LIFE",
-                "HitPoints", "hitpoints", "HITPOINTS",
-                "CurrentHealth", "currenthealth", "CURRENT_HEALTH",
-                "EntityHealth", "entityhealth", "ENTITY_HEALTH"
-        );
+        // 精确匹配已知的健康字段（避免模糊匹配）
+        String[] exactHealthFields = {"Health", "health"};
+        for (String field : exactHealthFields) {
+            if (tag.contains(field) && isNumericTag(tag.get(field))) {
+                setNumericTagValue(tag, field, tag.get(field), newHealth);
+                modified = true;
+                break; // 找到就退出
+            }
+        }
 
-        // 递归处理所有字段
-        modified |= recursivelyModifyHealthFields(tag, knownHealthFields, currentHealth, maxHealth, newHealth);
+        // 只有在精确匹配失败时才进行有限递归
+        if (!modified) {
+            modified = limitedRecursiveModify(tag, currentHealth, maxHealth, newHealth, 2); // 限制递归深度为2
+        }
 
         return modified;
     }
@@ -391,6 +414,35 @@ public class LivingEntityUtil {
                 setNumericTagValue(tag, key, value, newHealth);
                 modified = true;
             }
+        }
+
+        return modified;
+    }
+
+    private static boolean limitedRecursiveModify(CompoundTag tag, float currentHealth, float maxHealth,
+                                                  float newHealth, int maxDepth) {
+        if (maxDepth <= 0) return false;
+
+        boolean modified = false;
+        Set<String> keys = new HashSet<>(tag.getAllKeys());
+
+        for (String key : keys) {
+            Tag value = tag.get(key);
+
+            if (value instanceof CompoundTag compoundTag) {
+                modified |= limitedRecursiveModify(compoundTag, currentHealth, maxHealth, newHealth, maxDepth - 1);
+            }
+            else if (isNumericTag(value)) {
+                float numericValue = getFloatValue(value);
+                // 更严格的匹配条件：数值接近当前生命值或最大生命值
+                if (Math.abs(numericValue - currentHealth) < 1.0f ||
+                        Math.abs(numericValue - maxHealth) < 0.1f) {
+                    setNumericTagValue(tag, key, value, newHealth);
+                    modified = true;
+                }
+            }
+
+            if (modified) break; // 找到后就退出
         }
 
         return modified;
@@ -505,46 +557,46 @@ public class LivingEntityUtil {
     /**
      * 激进的全字段修改（备用方案）
      */
-    private static void aggressivelyModifyAllHealthFields(LivingEntity entity, float newHealth) {
-        try {
-            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
-            aggressivelyModifyAllNumericFields(tag, newHealth);
-
-            // 尝试通过反射加载修改后的数据
-            try {
-                Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
-                readMethod.setAccessible(true);
-                readMethod.invoke(entity, tag);
-            } catch (Exception e) {
-                // 备用方案
-            }
-        } catch (Exception e) {
-            // 忽略错误
-        }
-    }
-
-    /**
-     * 激进地修改所有数值字段
-     */
-    private static void aggressivelyModifyAllNumericFields(CompoundTag tag, float newValue) {
-        for (String key : tag.getAllKeys()) {
-            Tag value = tag.get(key);
-
-            if (value instanceof CompoundTag compound) {
-                aggressivelyModifyAllNumericFields(compound, newValue);
-            }
-            else if (value instanceof ListTag list) {
-                for (Tag element : list) {
-                    if (element instanceof CompoundTag compound) {
-                        aggressivelyModifyAllNumericFields(compound, newValue);
-                    }
-                }
-            }
-            else if (isNumericTag(value)) {
-                setNumericTagValue(tag, key, value, newValue);
-            }
-        }
-    }
+//    private static void aggressivelyModifyAllHealthFields(LivingEntity entity, float newHealth) {
+//        try {
+//            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
+//            aggressivelyModifyAllNumericFields(tag, newHealth);
+//
+//            // 尝试通过反射加载修改后的数据
+//            try {
+//                Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
+//                readMethod.setAccessible(true);
+//                readMethod.invoke(entity, tag);
+//            } catch (Exception e) {
+//                // 备用方案
+//            }
+//        } catch (Exception e) {
+//            // 忽略错误
+//        }
+//    }
+//
+//    /**
+//     * 激进地修改所有数值字段
+//     */
+//    private static void aggressivelyModifyAllNumericFields(CompoundTag tag, float newValue) {
+//        for (String key : tag.getAllKeys()) {
+//            Tag value = tag.get(key);
+//
+//            if (value instanceof CompoundTag compound) {
+//                aggressivelyModifyAllNumericFields(compound, newValue);
+//            }
+//            else if (value instanceof ListTag list) {
+//                for (Tag element : list) {
+//                    if (element instanceof CompoundTag compound) {
+//                        aggressivelyModifyAllNumericFields(compound, newValue);
+//                    }
+//                }
+//            }
+//            else if (isNumericTag(value)) {
+//                setNumericTagValue(tag, key, value, newValue);
+//            }
+//        }
+//    }
 
 
 

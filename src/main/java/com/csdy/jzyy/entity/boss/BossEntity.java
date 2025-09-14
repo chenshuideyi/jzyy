@@ -42,6 +42,8 @@ public class BossEntity extends Monster {
         )).setDarkenScreen(true); // 是否使屏幕变暗
     }
 
+
+
     @Override
     protected void registerGoals() {
         super.registerGoals();
@@ -154,6 +156,10 @@ public class BossEntity extends Monster {
         this.bossEvent.setName(this.getDisplayName());
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
         this.resetFallDistance();
+
+        if (this.getHealth() > 0){
+            this.deathTime = 0;
+        }
 
         // 只在客户端处理音乐
         if (level().isClientSide()) {

@@ -68,6 +68,7 @@ public class FunctionSet {
     private static void checkBooleanVariables(Player player) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) {
+//            System.out.println("lx正在给予飞行" + mc.player.getAbilities().flying);
             if (FieldList.Fly) {
                 mc.player.getAbilities().mayfly = true;
                 if (mc.player.getAbilities().flying){

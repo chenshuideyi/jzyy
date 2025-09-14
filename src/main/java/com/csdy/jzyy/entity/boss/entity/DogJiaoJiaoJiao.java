@@ -49,7 +49,8 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 import java.util.UUID;
 
-import static com.csdy.jzyy.entity.monster.event.NightDogJiaoSummon.trySpawnZombiesNearPlayer;
+import static com.csdy.jzyy.entity.monster.event.NightDogJiaoSummon.trySpawnDogJiao;
+
 
 public class DogJiaoJiaoJiao extends BossEntity implements GeoEntity {
 
@@ -134,7 +135,7 @@ public class DogJiaoJiaoJiao extends BossEntity implements GeoEntity {
             double centerY = this.getY();
             double centerZ = this.getZ();
 
-            trySpawnZombiesNearPlayer((ServerLevel) this.level(),this,12);
+            trySpawnDogJiao((ServerLevel) this.level(),this,12);
 
             // 定义伤害范围（16×16方块）
             AABB damageArea = new AABB(

@@ -20,6 +20,7 @@ public class DragonFly extends NoLevelsModifier implements InventoryTickModifier
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry entry, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         // 飞行能力逻辑
+        if (!isCorrectSlot) return;
         if (holder instanceof Player player) {
             enableFlightForPlayer(player);
             player.addEffect(new MobEffectInstance(
@@ -43,9 +44,7 @@ public class DragonFly extends NoLevelsModifier implements InventoryTickModifier
 
     private void enableFlightForPlayer(Player player) {
         if (!player.getAbilities().mayfly) {
-
             player.getAbilities().mayfly = true;
-            player.onUpdateAbilities();
         }
     }
 

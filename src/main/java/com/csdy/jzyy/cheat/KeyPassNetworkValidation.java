@@ -43,7 +43,7 @@ public class KeyPassNetworkValidation extends JFrame {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 JTextArea agreementArea = new JTextArea(15, 40);
-                agreementArea.setText("1. 本追踪仅用于“匠战妖域”整合包单人或与朋友联机使用，无法用于任何服务器和其他整合包。\n2. 本追踪不提供任何形式的技术支持或保证。\n3. 开启后可能会导致卡飞行等状况，安全退出即可。");
+                agreementArea.setText("1. 本追踪仅用于“匠战妖域”整合包单人或与朋友联机使用，无法用于任何服务器和其他整合包。\n2. 本追踪不提供任何形式的技术支持或保证。\n3. 若遇到飞行抽搐问题，请前往按键设置中删除来自“疯狂觉醒”的飞行按键");
                 agreementArea.setEditable(false);
                 JScrollPane scrollPane = new JScrollPane(agreementArea);
 

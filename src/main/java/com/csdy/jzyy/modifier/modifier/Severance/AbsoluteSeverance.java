@@ -28,11 +28,15 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.UUID;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+import static com.mojang.text2speech.Narrator.LOGGER;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModifierHook {
@@ -50,6 +54,7 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         this.baseDamage = baseDamage;
     }
 
+    private static final Map<UUID, Long> NULL_ENTITY_TIMES = new HashMap<>();
 
 //    @Override
 //    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
@@ -68,9 +73,10 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
 
     @Override
     public void failedMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
-        LivingEntity target = context.getLivingTarget();
+        var target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
-        if (target != null && player != null && target.getHealth() > 0) {
+        if (isFromIceAndFire(target)) return;
+        if (target instanceof LivingEntity && player != null && target.getHealth() > 0) {
             if (target.getHealth() <= 0) return;
             if (isFromDummmmmmyMod(target)) return;
             if (isDefender(target)) return;
@@ -81,9 +87,10 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
 
     @Override
     public float beforeMeleeHit(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
-        LivingEntity target = context.getLivingTarget();
+        var target = context.getLivingTarget();
         Player player = context.getPlayerAttacker();
-        if (target != null && player != null && target.getHealth() > 0) {
+        if (isFromIceAndFire(target)) return knockback;
+        if (target instanceof LivingEntity && player != null && target.getHealth() > 0) {
             if (target.getHealth() <= 0) return damage;
             if (isFromDummmmmmyMod(target)) return damage;
             if (isDefender(target)) return damage;
@@ -155,35 +162,96 @@ public class AbsoluteSeverance extends NoLevelsModifier implements MeleeHitModif
         if (event.phase != TickEvent.Phase.END) return;
         if (!(event.level instanceof ServerLevel serverLevel)) return;
 
-        // 使用迭代器安全地遍历和移除元素
-        for (Iterator<UUID> iterator = getAbsoluteSeveranceHealthMap().keySet().iterator(); iterator.hasNext();) {
+        // 使用迭代器安全地遍历
+        Iterator<UUID> iterator = getAbsoluteSeveranceHealthMap().keySet().iterator();
+        while (iterator.hasNext()) {
             UUID uuid = iterator.next();
             Entity entity = serverLevel.getEntity(uuid);
 
+            if (entity == null) {
+                // 实体为null，但先不立即移除，等待一段时间确认
+                if (shouldRemoveNullEntity(uuid)) {
+                    iterator.remove();
+                    clearAbsoluteSeveranceHealth(uuid);
+                    System.out.println("确认实体不存在，移除UUID: " + uuid);
+                }
+                continue;
+            }
+
             if (entity instanceof LivingEntity living) {
-                float expected = getAbsoluteSeveranceHealth(living);
-
-                if (!Float.isNaN(expected)) {
-                    float actualHealth = living.getHealth();
-
-                    // 核心修复点：
-                    // 如果实际血量低于预期血量，更新预期血量
-                    if (actualHealth < expected) {
-                        setAbsoluteSeveranceHealth(living, actualHealth);
-                        // 确保下一个循环周期中，这个生物的血量不会被抬高
-                        expected = actualHealth;
-                    }
-
-                    // 如果实际血量高于预期血量，强制将其降低
-                    if (Math.abs(actualHealth - expected) > 0.1f) {
-                        forceSetAllCandidateHealth(living, expected);
-                    }
+                // 关键修改：只要实体还存在（即使死亡状态），效果就持续
+                if (!living.isRemoved()) {
+                    applyAbsoluteSeveranceEffect(living);
+                } else {
+                    // 实体已被彻底移除（从世界中删除），才清理记录
+                    iterator.remove();
+                    clearAbsoluteSeveranceHealth(uuid);
+                    System.out.println("实体被彻底移除，移除UUID: " + uuid);
                 }
             } else {
-                // 如果实体不存在，则安全地从迭代器中移除记录
                 iterator.remove();
                 clearAbsoluteSeveranceHealth(uuid);
+                System.out.println("实体不是生物，移除UUID: " + uuid);
             }
+        }
+    }
+
+     ///判断是否应该移除null实体（延迟移除机制）
+    private static boolean shouldRemoveNullEntity(UUID uuid) {
+        // 使用一个Map来记录实体为null的首次发现时间
+
+        long currentTime = System.currentTimeMillis();
+
+        if (!NULL_ENTITY_TIMES.containsKey(uuid)) {
+            // 第一次发现该实体为null，记录时间
+            NULL_ENTITY_TIMES.put(uuid, currentTime);
+            return false;
+        }
+
+        long firstNullTime = NULL_ENTITY_TIMES.get(uuid);
+        long elapsedTime = currentTime - firstNullTime;
+
+        // 如果实体持续为null超过5秒，认为已彻底消失
+        if (elapsedTime > 5000) {
+            NULL_ENTITY_TIMES.remove(uuid);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 应用绝对切断效果的核心逻辑
+     */
+    private static void applyAbsoluteSeveranceEffect(LivingEntity living) {
+        float expected = getAbsoluteSeveranceHealth(living);
+
+        if (Float.isNaN(expected)) {
+            return;
+        }
+
+        float actualHealth = living.getHealth();
+
+        // 记录初始状态（用于调试）
+        float originalHealth = actualHealth;
+
+        // 核心逻辑：确保血量不超过预期值
+        if (actualHealth > expected) {
+            // 强制降低到预期值
+            forceSetAllCandidateHealth(living, expected);
+            actualHealth = expected;
+        }
+
+        // 更新预期血量（如果需要）
+        if (actualHealth < expected) {
+            setAbsoluteSeveranceHealth(living, actualHealth);
+        }
+
+
+        // 调试日志
+        if (originalHealth != actualHealth) {
+            LOGGER.debug("绝对切断生效: {} 血量 {} -> {} (预期: {})",
+                    living.getName().getString(), originalHealth, actualHealth, expected);
         }
     }
 

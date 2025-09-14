@@ -52,13 +52,15 @@ public class Yin extends NoLevelsModifier implements InventoryTickModifierHook {
 
         // 只有在没有yin和yang材料时才触发
         if (!hasYinOrYang) {
-            boolean addedAny = false;
+            // 检查是否存在YIN_STATIC_MODIFIER
+            if (tool.getModifier(ModifierRegister.YIN_STATIC_MODIFIER.getId()) != ModifierEntry.EMPTY
+                && tool.getModifier(ModifierRegister.YANG_STATIC_MODIFIER.getId()) != ModifierEntry.EMPTY) {
 
-            // 一次性添加所有缺失的modifier
-            for (ModifierId modifier : POSSIBLE_MODIFIERS) {
-                if (tool.getModifier(modifier) == ModifierEntry.EMPTY) {
-                    tool.addModifier(modifier, 1);
-                    addedAny = true;
+                // 一次性添加所有缺失的modifier
+                for (ModifierId modifier : POSSIBLE_MODIFIERS) {
+                    if (tool.getModifier(modifier) == ModifierEntry.EMPTY) {
+                        tool.addModifier(modifier, 1);
+                    }
                 }
             }
 
