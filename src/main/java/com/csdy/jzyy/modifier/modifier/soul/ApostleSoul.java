@@ -3,6 +3,7 @@ package com.csdy.jzyy.modifier.modifier.soul;
 import com.Polarice3.Goety.common.items.ModItems;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,12 +20,12 @@ public class ApostleSoul extends NoLevelsModifier implements OnAttackedModifierH
 
     @Override
     public void onAttacked(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource damageSource, float amount, boolean isDirectDamage) {
-        if (!(context.getEntity() instanceof Player player)) return;
-        if (player.level.isClientSide) return;
-        spawnUnholyBloodItem(player);
+        LivingEntity living = context.getEntity();
+        if (living.level.isClientSide) return;
+        spawnUnholyBloodItem(living);
     }
 
-    private void spawnUnholyBloodItem(Player player) {
+    private void spawnUnholyBloodItem(LivingEntity player) {
         Level level = player.level;
 
         // 获取UNHOLY_BLOOD物品堆栈

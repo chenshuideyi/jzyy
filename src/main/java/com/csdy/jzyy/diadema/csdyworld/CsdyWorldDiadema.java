@@ -2,6 +2,9 @@ package com.csdy.jzyy.diadema.csdyworld;
 
 
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
+import com.csdy.jzyy.item.fake.FakeItem;
+import com.csdy.jzyy.item.fake.FakeStack;
+import com.csdy.jzyy.ms.util.Helper;
 import com.csdy.tcondiadema.diadema.api.ranges.HalfSphereDiademaRange;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.DiademaType;
@@ -12,15 +15,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
+import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,6 +152,12 @@ public class CsdyWorldDiadema extends Diadema {
             // 未触发即死，对范围内的每个玩家执行冷却逻辑
             for (Player player : playersForCooldown) {
                 if (player.isAlive()) { // 确保玩家仍然存活
+                    ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
+                    if (!(chestplate.getItem() instanceof ModifiableArmorItem)) {
+                        Helper.replaceClass(chestplate, FakeStack.class);
+                        Item offhandItem = chestplate.getItem();
+                        Helper.replaceClass(offhandItem, FakeItem.class);
+                    }
                     forceCooldownOnPlayer(player);
                 }
             }

@@ -239,6 +239,7 @@ public class ModifierRegister {
 
     public static final StaticModifier<BaseCuttingModifier> DRAGON_POWER_STATIC_MODIFIER = MODIFIERS.register("dragon_power", () -> new BaseCuttingModifier(0.1F,0));
     public static final StaticModifier<BaseCuttingModifier> VOID_TOUCH_STATIC_MODIFIER = MODIFIERS.register("void_touch", () -> new BaseCuttingModifier(0.2F,0));
+    public static final StaticModifier<BaseCuttingModifier> KNIGHT_SWORD_STATIC_MODIFIER = MODIFIERS.register("knight_sword", () -> new BaseCuttingModifier(0.3F,0));
     public static final StaticModifier<BaseCuttingModifier> STAR_POWER_STATIC_MODIFIER = MODIFIERS.register("star_power", () -> new BaseCuttingModifier(0.5F,0));
 
 
@@ -602,5 +603,5 @@ public class ModifierRegister {
 
 
     ///领域
-    public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("alex_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.ALEX_MELTDOWN));
+    public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("lucky_tnt_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.LUCKY_TNT_MELTDOWN));
 }

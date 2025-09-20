@@ -77,7 +77,6 @@ public class JzyyModMain {
 
         gpuUtilInit();
 
-
         JzyyDiademaRegister.DIADEMA_TYPES.register(bus);
         //仅客户端运行
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {

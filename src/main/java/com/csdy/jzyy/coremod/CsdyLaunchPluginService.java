@@ -50,48 +50,95 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
 
     private boolean transformLivingEntity(ClassNode classNode) {
         AtomicBoolean transformed = new AtomicBoolean(false);
-        // 筛选出 LivingEntity 类中的 getHealth 方法 (m_21223_)
+
         classNode.methods.stream()
                 .filter(method -> "m_21223_".equals(method.name) && "()F".equals(method.desc))
                 .forEach(method -> {
                     InsnList newInstructions = new InsnList();
                     LabelNode originalCode = new LabelNode();
 
-                    // 1. 调用辅助方法获取强制生命值
-                    newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // 加载 'this'
-                    newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "com/csdy/jzyy/ms/JzyyHealthHelper", "getForcedHealth", "(Lnet/minecraft/world/entity/LivingEntity;)F", false));
-
-                    // 2. 将返回的 float 值存储到一个新的局部变量中
+                    // 使用正确的局部变量索引
                     int forcedHealthVarIndex = method.maxLocals;
+                    method.maxLocals++; // 先增加最大局部变量数
+
+                    // 1. 调用辅助方法获取强制生命值
+                    newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+                    newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                            "com/csdy/jzyy/ms/JzyyHealthHelper",
+                            "getForcedHealth",
+                            "(Lnet/minecraft/world/entity/LivingEntity;)F", false));
+
+                    // 2. 存储返回值
                     newInstructions.add(new VarInsnNode(Opcodes.FSTORE, forcedHealthVarIndex));
 
-                    // 3. 再次加载这个值，用于和 -1.0f 比较
+                    // 3. 比较逻辑
                     newInstructions.add(new VarInsnNode(Opcodes.FLOAD, forcedHealthVarIndex));
-                    newInstructions.add(new LdcInsnNode(-1.0f)); // 加载常量 -1.0f
-                    newInstructions.add(new InsnNode(Opcodes.FCMPL)); // 比较栈顶的两个浮点数
+                    newInstructions.add(new LdcInsnNode(-1.0f));
+                    newInstructions.add(new InsnNode(Opcodes.FCMPL));
 
-                    // 4. 如果比较结果为0 (即相等)，说明辅助方法返回了-1.0f，我们就跳转到原版代码
+                    // 4. 跳转逻辑
                     newInstructions.add(new JumpInsnNode(Opcodes.IFEQ, originalCode));
 
-                    // 5. 如果不相等，说明需要修改生命值，我们再次加载存储的强制生命值并返回
+                    // 5. 返回强制生命值
                     newInstructions.add(new VarInsnNode(Opcodes.FLOAD, forcedHealthVarIndex));
                     newInstructions.add(new InsnNode(Opcodes.FRETURN));
 
-                    // 6. 跳转标签，指向原方法的开始位置
+                    // 6. 原版代码
                     newInstructions.add(originalCode);
 
-                    // 为我们创建的局部变量增加方法的最大局部变量计数
-                    method.maxLocals++;
-
-                    // 将我们创建的字节码指令插入到原方法的开头
-                    method.instructions.insert(newInstructions);
+                    // 插入到方法开头
+                    method.instructions.insertBefore(method.instructions.getFirst(), newInstructions);
 
                     System.out.println("成功修改 LivingEntity::getHealth 方法体！");
-                    new Throwable().printStackTrace();
                     transformed.set(true);
                 });
         return transformed.get();
     }
+
+//    private boolean transformLivingEntity(ClassNode classNode) {
+//        AtomicBoolean transformed = new AtomicBoolean(false);
+//        // 筛选出 LivingEntity 类中的 getHealth 方法 (m_21223_)
+//        classNode.methods.stream()
+//                .filter(method -> "m_21223_".equals(method.name) && "()F".equals(method.desc))
+//                .forEach(method -> {
+//                    InsnList newInstructions = new InsnList();
+//                    LabelNode originalCode = new LabelNode();
+//
+//                    // 1. 调用辅助方法获取强制生命值
+//                    newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // 加载 'this'
+//                    newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "com/csdy/jzyy/ms/JzyyHealthHelper", "getForcedHealth", "(Lnet/minecraft/world/entity/LivingEntity;)F", false));
+//
+//                    // 2. 将返回的 float 值存储到一个新的局部变量中
+//                    int forcedHealthVarIndex = method.maxLocals;
+//                    newInstructions.add(new VarInsnNode(Opcodes.FSTORE, forcedHealthVarIndex));
+//
+//                    // 3. 再次加载这个值，用于和 -1.0f 比较
+//                    newInstructions.add(new VarInsnNode(Opcodes.FLOAD, forcedHealthVarIndex));
+//                    newInstructions.add(new LdcInsnNode(-1.0f)); // 加载常量 -1.0f
+//                    newInstructions.add(new InsnNode(Opcodes.FCMPL)); // 比较栈顶的两个浮点数
+//
+//                    // 4. 如果比较结果为0 (即相等)，说明辅助方法返回了-1.0f，我们就跳转到原版代码
+//                    newInstructions.add(new JumpInsnNode(Opcodes.IFEQ, originalCode));
+//
+//                    // 5. 如果不相等，说明需要修改生命值，我们再次加载存储的强制生命值并返回
+//                    newInstructions.add(new VarInsnNode(Opcodes.FLOAD, forcedHealthVarIndex));
+//                    newInstructions.add(new InsnNode(Opcodes.FRETURN));
+//
+//                    // 6. 跳转标签，指向原方法的开始位置
+//                    newInstructions.add(originalCode);
+//
+//                    // 为我们创建的局部变量增加方法的最大局部变量计数
+//                    method.maxLocals++;
+//
+//                    // 将我们创建的字节码指令插入到原方法的开头
+//                    method.instructions.insert(newInstructions);
+//
+//                    System.out.println("成功修改 LivingEntity::getHealth 方法体！");
+//                    new Throwable().printStackTrace();
+//                    transformed.set(true);
+//                });
+//        return transformed.get();
+//    }
 
     private boolean transformMethodCalls(ClassNode classNode) {
 

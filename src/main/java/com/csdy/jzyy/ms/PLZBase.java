@@ -52,8 +52,8 @@ public class PLZBase {
 		try {
 			ClassLoader_defineClass0 = LOOKUP.findStatic(ClassLoader.class, "defineClass0", MethodType.methodType(Class.class, ClassLoader.class, Class.class, String.class, byte[].class, int.class, int.class, ProtectionDomain.class, boolean.class, int.class, Object.class));
 			ClassLoader_defineClass1 = LOOKUP.findStatic(ClassLoader.class, "defineClass1", MethodType.methodType(Class.class, ClassLoader.class, String.class, byte[].class, int.class, int.class, ProtectionDomain.class, String.class));
-			PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyPlayer", null, ClassOption.STRONG);
-			PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyServerPlayer", null, ClassOption.STRONG);
+//			PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyPlayer", null, ClassOption.STRONG);
+//			PLZBase.defineHiddenClassInPackage(null, JzyyModMain.class, "com.csdy.jzyy.ms.reclass.CsdyServerPlayer", null, ClassOption.STRONG);
 
 		} catch (Throwable e) {
 			throw new ExceptionInInitializerError(e);

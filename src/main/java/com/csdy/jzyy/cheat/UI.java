@@ -1,5 +1,7 @@
 package com.csdy.jzyy.cheat;
 
+import com.csdy.jzyy.ms.util.SoundPlayer;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -125,32 +127,32 @@ public class UI {
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel functionLabel = new JLabel();
-        functionLabel.setText("<html>" +  ("功能") + "</html>");
+        functionLabel.setText("<html>" + ("功能") + "</html>");
 
         JCheckBox enableFlight = new JCheckBox();
-        enableFlight.setText("<html>" +  ("飞行") + "</html>");
+        enableFlight.setText("<html>" + ("飞行") + "</html>");
         enableFlight.setSelected(FieldList.Fly);
         enableFlight.addActionListener(e -> FieldList.Fly = enableFlight.isSelected());
 
         JCheckBox enableFastSpeed = new JCheckBox();
-        enableFastSpeed.setText("<html>" +  ("飞速") + "</html>");
+        enableFastSpeed.setText("<html>" + ("飞速") + "</html>");
         enableFastSpeed.setSelected(FieldList.Speed);
         enableFastSpeed.addActionListener(e -> FieldList.Speed = enableFastSpeed.isSelected());
 
         JCheckBox ZF = new JCheckBox();
-        ZF.setText("<html>" +  ("自改高跳") + "</html>");
+        ZF.setText("<html>" + ("自改高跳") + "</html>");
         ZF.setSelected(FieldList.ZFly);
         ZF.addActionListener(e -> {
             FieldList.ZFly = ZF.isSelected();
             if (FieldList.ZFly) {
-                String input = JOptionPane.showInputDialog("<html>" +  ("高跳高度") + "</html>");
+                String input = JOptionPane.showInputDialog("<html>" + ("高跳高度") + "</html>");
                 if (input != null) {
                     try {
                         double height = Double.parseDouble(input);
                         FieldList.ZFlyHeight = height;
-                        JOptionPane.showMessageDialog(null, "<html>" +  ("高跳高度已设置为: " + height) + "</html>");
+                        JOptionPane.showMessageDialog(null, "<html>" + ("高跳高度已设置为: " + height) + "</html>");
                     } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "<html>" +  ("输入无效，请输入有效的数字。") + "</html>", "<html>" +  ("错误") + "</html>", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "<html>" + ("输入无效，请输入有效的数字。") + "</html>", "<html>" + ("错误") + "</html>", JOptionPane.ERROR_MESSAGE);
                         FieldList.ZFly = false;
                         ZF.setSelected(false);
                     }
@@ -162,20 +164,30 @@ public class UI {
         });
 
         JCheckBox jumpFar = new JCheckBox();
-        jumpFar.setText("<html>" +  ("跳远") + "</html>");
+        jumpFar.setText("<html>" + ("跳远") + "</html>");
         jumpFar.setSelected(FieldList.JumpFar);
         jumpFar.addActionListener(e -> FieldList.JumpFar = jumpFar.isSelected());
 
         JCheckBox headOutAccelerateBox = new JCheckBox();
-        headOutAccelerateBox.setText("<html>" +  ("挥拳加速") + "</html>");
+        headOutAccelerateBox.setText("<html>" + ("挥拳加速") + "</html>");
         headOutAccelerateBox.setSelected(FieldList.HeadOutAccelerate);
         headOutAccelerateBox.addActionListener(e -> FieldList.HeadOutAccelerate = headOutAccelerateBox.isSelected());
 
         JCheckBox noFallDamageBox = new JCheckBox();
-        noFallDamageBox.setText("<html>" +  ("摔落无伤") + "</html>");
+        noFallDamageBox.setText("<html>" + ("摔落无伤") + "</html>");
         noFallDamageBox.setSelected(FieldList.NoFallDamage);
         noFallDamageBox.addActionListener(e -> FieldList.NoFallDamage = noFallDamageBox.isSelected());
 
+        // 添加播放音乐按钮
+        // 添加随机播放音乐按钮
+        JButton randomMusicButton = new JButton();
+        randomMusicButton.setText("<html>" + ("随机播放") + "</html>");
+        randomMusicButton.addActionListener(e -> SoundPlayer.tryPlayRandom());
+
+        // 添加停止播放按钮
+        JButton stopMusicButton = new JButton();
+        stopMusicButton.setText("<html>" + ("停止播放") + "</html>");
+        stopMusicButton.addActionListener(e -> SoundPlayer.stopPlay());
 
         panel.add(functionLabel);
         panel.add(enableFlight);
@@ -184,6 +196,9 @@ public class UI {
         panel.add(headOutAccelerateBox);
         panel.add(noFallDamageBox);
         panel.add(jumpFar);
+        panel.add(randomMusicButton);
+        panel.add(stopMusicButton);
+
         return panel;
     }
 

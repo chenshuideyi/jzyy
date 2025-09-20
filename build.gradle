@@ -131,7 +131,10 @@ buildscript {
 
         implementation fg.deobf("curse.maven:curios-309927:6418456")
 
-        implementation fg.deobf("curse.maven:alexs-caves-924854:5848216")
+//        implementation fg.deobf("curse.maven:alexs-caves-924854:5848216")
+
+        implementation fg.deobf("curse.maven:luckytnt-545405:5376300")
+
 
 
         implementation fg.deobf("curse.maven:IAF-264231:5633453")
@@ -145,11 +148,6 @@ buildscript {
 
         //巫法
         implementation fg.deobf("curse.maven:goety-586095:6366932")
-
-
-
-
-
 
 //        //假人
 //        implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:6237015")

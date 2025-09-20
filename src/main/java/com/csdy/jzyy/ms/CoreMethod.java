@@ -1,15 +1,8 @@
 package com.csdy.jzyy.ms;
 
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
@@ -27,8 +20,9 @@ public final class CoreMethod {
                     if ((entity instanceof Player player)){
                         yield 0.0F;
                     }
-                    KillEntity(entity);
-                    yield 0.0F;
+                    CoreMsUtil.setCategory(entity,EntityCategory.csdykill);
+                    entity.refreshDimensions();
+                    yield 0F;
                 } else {
                     yield health;
                 }
@@ -47,7 +41,8 @@ public final class CoreMethod {
     public static int getDeathTime(LivingEntity entity) {
         return switch (CoreMsUtil.getCategory(entity)) {
             case csdy -> 0;
-            case csdykill, normal -> entity.deathTime;
+            case csdykill -> 20;
+            case normal -> entity.deathTime;
         };
     }
 

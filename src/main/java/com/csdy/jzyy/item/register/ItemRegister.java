@@ -2,10 +2,12 @@ package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
+import com.csdy.jzyy.font.Rarity.ExtendedRarity;
 import com.csdy.jzyy.item.*;
 import com.csdy.jzyy.item.food.FriedChicken;
 import com.csdy.jzyy.item.food.GoldenStrawberry;
 import com.csdy.jzyy.item.food.HotDog;
+import com.csdy.jzyy.item.kill_count.BaseKillCountCounter;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -117,5 +119,13 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> SUMMON_CSDY = ITEMS.register("summon_csdy", SummonCsdy::new);
 
+
+
+    public static final RegistryObject<Item> KILL_COUNT_COUNTER_6 = ITEMS.register("kill_count_counter_6",() -> new BaseKillCountCounter(Rarity.COMMON,6));
+    public static final RegistryObject<Item> KILL_COUNT_COUNTER_30 = ITEMS.register("kill_count_counter_30",() -> new BaseKillCountCounter(Rarity.UNCOMMON,30));
+    public static final RegistryObject<Item> KILL_COUNT_COUNTER_68 = ITEMS.register("kill_count_counter_60",() -> new BaseKillCountCounter(Rarity.RARE,68));
+    public static final RegistryObject<Item> KILL_COUNT_COUNTER_128 = ITEMS.register("kill_count_counter_128",() -> new BaseKillCountCounter(Rarity.EPIC,128));
+    public static final RegistryObject<Item> KILL_COUNT_COUNTER_328 = ITEMS.register("kill_count_counter_328",() -> new BaseKillCountCounter(ExtendedRarity.LEGENDARY,328));
+    public static final RegistryObject<Item> KILL_COUNT_COUNTER_648 = ITEMS.register("kill_count_counter_648",() -> new BaseKillCountCounter(ExtendedRarity.RAINBOW,648));
 
 }

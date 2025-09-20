@@ -3,6 +3,16 @@
 
   "item.jzyy.mini_csdy": "作者的话",
 
+  "item.jzyy.kill_count_counter_6": "拔刀剑杀敌数充值卡-6个",
+  "item.jzyy.kill_count_counter_30": "拔刀剑杀敌数充值卡-30个",
+  "item.jzyy.kill_count_counter_60": "拔刀剑杀敌数充值卡-60个",
+  "item.jzyy.kill_count_counter_128": "拔刀剑杀敌数充值卡-128个",
+  "item.jzyy.kill_count_counter_328": "拔刀剑杀敌数充值卡-328个",
+  "item.jzyy.kill_count_counter_648": "拔刀剑杀敌数充值卡-648个",
+  "item.jzyy.kill_count_counter.line1": "右键为你背包里所有拔刀剑充值杀敌数",
+
+
+
   "item.jzyy.mtf": "代码能力提升药",
   "item.jzyy.null": "死亡是向下的，而我已经失去了我的高度",
   "item.jzyy.harcadium": "哈肯典姆",
@@ -703,6 +713,10 @@
   "modifier.jzyy.void_touch.flavor": "来自虚空的寒冷",
   "modifier.jzyy.void_touch.description":"造成额外20%的生命值剪切\n也就是说「切割」20%效能",
 
+  "modifier.jzyy.knight_sword": "骑士之剑",
+  "modifier.jzyy.knight_sword.flavor": "黄嘉琪",
+  "modifier.jzyy.knight_sword.description":"造成额外30%的生命值剪切\n也就是说「切割」30%效能",
+
   "modifier.jzyy.star_power": "星之力",
   "modifier.jzyy.star_power.flavor": "宇宙的尘埃",
   "modifier.jzyy.star_power.description":"造成额外50%的生命值剪切\n也就是说「切割」50%效能",
@@ -1115,9 +1129,9 @@
   "modifier.jzyy.triplingcurse.description": "每级增加全槽位一个，该工具其他所有因特性而增加的槽位都会格外生效一次。每个槽位将全属性修正为原先的133%——在上一个槽位的基础上！",
 
 
-  "modifier.jzyy.alex_meltdown": "No.鏡音リン-炉心融解 - Alex洞穴特供版",
-  "modifier.jzyy.alex_meltdown.flavor": "做了个紧勒住你脖子的梦",
-  "modifier.jzyy.alex_meltdown.description":"对领域内的所有生物施加巨量的辐射",
+  "modifier.jzyy.lucky_tnt_meltdown": "No.鏡音リン-炉心融解 - 更多tnt特供版",
+  "modifier.jzyy.lucky_tnt_meltdown.flavor": "做了个紧勒住你脖子的梦",
+  "modifier.jzyy.lucky_tnt_meltdown.description":"对领域内的所有生物施加巨量的辐射",
 
   "赞助强化这一块": "",
   "modifier.jzyy.final_sword.requirements": "需要剑刃解放III作为前置",

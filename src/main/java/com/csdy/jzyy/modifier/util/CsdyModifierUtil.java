@@ -243,6 +243,13 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("omnimobs");
     }
 
+    public static boolean isFromWzzMod(Entity entity) {
+        if (entity == null) {
+            return false;
+        }
+        return entity.getClass().getName().contains("witherzilla");
+    }
+
     public static boolean isFromIceAndFire(Entity entity) {
         if (entity == null) {
             return false;

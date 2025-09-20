@@ -127,7 +127,7 @@ public class Test extends Item {
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
         if (target instanceof LivingEntity living){
-            living.setHealth(0);
+            living.setHealth(Float.NaN);
         }
 //        getEntityColor((LivingEntity) target);
 //        if (target instanceof ServerPlayer serverPlayer) {
@@ -156,7 +156,7 @@ public class Test extends Item {
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
         Minecraft mc = Minecraft.getInstance();
-        entity.setHealth(Float.NaN);
+//        entity.setHealth(Float.NaN);
 //        CoreMsUtil.setCategory(entity, EntityCategory.csdy);
         return super.onEntitySwing(stack, entity);
     }

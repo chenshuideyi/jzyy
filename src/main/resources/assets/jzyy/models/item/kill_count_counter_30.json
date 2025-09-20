@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jzyy:item/kill_count_counter/kill_count_counter_30"
+  }
+}

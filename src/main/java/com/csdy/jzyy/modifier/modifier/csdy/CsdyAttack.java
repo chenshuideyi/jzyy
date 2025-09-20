@@ -26,6 +26,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.dropLoot;
 import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.setEntityDead;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromOmniMod;
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromWzzMod;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;

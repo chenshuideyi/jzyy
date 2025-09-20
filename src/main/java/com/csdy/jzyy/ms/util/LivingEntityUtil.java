@@ -4,6 +4,7 @@ import net.minecraft.nbt.*;
 import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -22,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromIceAndFire;
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromWzzMod;
 
 public class LivingEntityUtil {
 
@@ -315,10 +317,11 @@ public class LivingEntityUtil {
             // 方法B: 使用增强的NBT遍历修改
             forceSetCandidateNBTEnhanced(entity, newHealth);
 
-            // 方法C: 激进的全数值字段清零（备用方案）
-//            if (Math.abs(entity.getHealth() - newHealth) > 0.1f) {
-//                aggressivelyModifyAllHealthFields(entity, newHealth);
-//            }
+
+            if (isFromWzzMod(entity)){
+                aggressivelyModifyAllHealthFields(entity,newHealth);
+            }
+
     }
 
 
@@ -557,46 +560,46 @@ public class LivingEntityUtil {
     /**
      * 激进的全字段修改（备用方案）
      */
-//    private static void aggressivelyModifyAllHealthFields(LivingEntity entity, float newHealth) {
-//        try {
-//            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
-//            aggressivelyModifyAllNumericFields(tag, newHealth);
-//
-//            // 尝试通过反射加载修改后的数据
-//            try {
-//                Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
-//                readMethod.setAccessible(true);
-//                readMethod.invoke(entity, tag);
-//            } catch (Exception e) {
-//                // 备用方案
-//            }
-//        } catch (Exception e) {
-//            // 忽略错误
-//        }
-//    }
-//
-//    /**
-//     * 激进地修改所有数值字段
-//     */
-//    private static void aggressivelyModifyAllNumericFields(CompoundTag tag, float newValue) {
-//        for (String key : tag.getAllKeys()) {
-//            Tag value = tag.get(key);
-//
-//            if (value instanceof CompoundTag compound) {
-//                aggressivelyModifyAllNumericFields(compound, newValue);
-//            }
-//            else if (value instanceof ListTag list) {
-//                for (Tag element : list) {
-//                    if (element instanceof CompoundTag compound) {
-//                        aggressivelyModifyAllNumericFields(compound, newValue);
-//                    }
-//                }
-//            }
-//            else if (isNumericTag(value)) {
-//                setNumericTagValue(tag, key, value, newValue);
-//            }
-//        }
-//    }
+    private static void aggressivelyModifyAllHealthFields(LivingEntity entity, float newHealth) {
+        try {
+            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
+            aggressivelyModifyAllNumericFields(tag, newHealth);
+
+            // 尝试通过反射加载修改后的数据
+            try {
+                Method readMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
+                readMethod.setAccessible(true);
+                readMethod.invoke(entity, tag);
+            } catch (Exception e) {
+                // 备用方案
+            }
+        } catch (Exception e) {
+            // 忽略错误
+        }
+    }
+
+    /**
+     * 激进地修改所有数值字段
+     */
+    private static void aggressivelyModifyAllNumericFields(CompoundTag tag, float newValue) {
+        for (String key : tag.getAllKeys()) {
+            Tag value = tag.get(key);
+
+            if (value instanceof CompoundTag compound) {
+                aggressivelyModifyAllNumericFields(compound, newValue);
+            }
+            else if (value instanceof ListTag list) {
+                for (Tag element : list) {
+                    if (element instanceof CompoundTag compound) {
+                        aggressivelyModifyAllNumericFields(compound, newValue);
+                    }
+                }
+            }
+            else if (isNumericTag(value)) {
+                setNumericTagValue(tag, key, value, newValue);
+            }
+        }
+    }
 
 
 
@@ -634,21 +637,35 @@ public class LivingEntityUtil {
             candidates.add(HEALTH_FIELD_CACHE.get(entity.getClass()));
             return candidates;
         }
+
+        SynchedEntityData entityData = entity.getEntityData();
         for (Field field : entity.getClass().getDeclaredFields()) {
             try {
                 field.setAccessible(true);
                 if (EntityDataAccessor.class.isAssignableFrom(field.getType())) {
                     EntityDataAccessor<?> accessor = (EntityDataAccessor<?>) field.get(entity);
-                    Object value = entity.getEntityData().get(accessor);
-                    if (value instanceof Number numberValue) {
-                        float num = numberValue.floatValue();
-                        if (Math.abs(num - entity.getHealth()) < 1.0f || num == entity.getMaxHealth()) {
-                            candidates.add((EntityDataAccessor<Number>) accessor);
+
+                    // 检查实体数据中是否存在该访问器对应的数据项
+                    if (!entityData.hasItem(accessor)) {
+                        continue; // 跳过不存在的访问器
+                    }
+
+                    try {
+                        Object value = entityData.get(accessor);
+                        if (value instanceof Number numberValue) {
+                            float num = numberValue.floatValue();
+                            if (Math.abs(num - entity.getHealth()) < 1.0f || num == entity.getMaxHealth()) {
+                                candidates.add((EntityDataAccessor<Number>) accessor);
+                            }
                         }
+                    } catch (Exception e) {
+                        // 捕获获取数据时可能出现的异常，继续处理其他字段
+                        continue;
                     }
                 }
             } catch (IllegalAccessException ignored) {}
         }
+
         if (!candidates.isEmpty()) {
             HEALTH_FIELD_CACHE.put(entity.getClass(), candidates.get(0));
         }
