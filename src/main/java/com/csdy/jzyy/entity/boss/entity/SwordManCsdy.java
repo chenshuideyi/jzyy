@@ -5,16 +5,17 @@ import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.BossMusic;
 import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
 import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
-import com.csdy.jzyy.shader.BatBlindnessEffect;
 import com.csdy.jzyy.shader.BloodSkyEffect;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -28,7 +29,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.FluidState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -40,55 +40,57 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
-import java.util.function.Predicate;
 
 public class SwordManCsdy extends BossEntity implements GeoEntity {
 
-    // 更新 RawAnimation 定义以匹配你的JSON文件
+    // 动画定义
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.model.stand");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.model.walk");
 
-    @Override
-    public void setCustomName(@Nullable Component name) {
-        super.setCustomName(name);
-        if (name != null && name.getString().contains("沉睡的艺") && !isReal()) {
-            this.setHealth(this.getMaxHealth());
-            setReal(true);
-        }
-    }
+    // 实体数据定义
+    private static final EntityDataAccessor<Boolean> DATA_IS_ATTACKING =
+            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_REAL =
+            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
+    // 自定义血量系统
+    private float currentHealth = 50000.0f;
+    private boolean isDying = false;
 
-    private CsdyMeleeGoal meleeGoal; // 持有对近战Goal的引用
-    private int attackBehaviorCooldown = 0; // 控制攻击行为（动画+伤害）的整体冷却
-    private AnimationController<SwordManCsdy> mainAnimationController; // 主动画控制器
+    // 战利品表
+    private static final ResourceLocation LOOT_TABLE = new ResourceLocation("jzyy", "entities/sword_man_csdy");
 
+    // 其他字段
+    private CsdyMeleeGoal meleeGoal;
+    private int attackBehaviorCooldown = 0;
+    private AnimationController<SwordManCsdy> mainAnimationController;
     private static Diadema csdyWorld;
-
-    private transient BossMusic clientBossMusicInstance; // transient 防止序列化，客户端专用
+    private transient BossMusic clientBossMusicInstance;
     private boolean musicStarted = false;
-
     public boolean isDead;
     private float oldHealth;
     private float lastHealth;
     private int updateTimer;
     private Entity.RemovalReason oldRemovalReason;
     private boolean damageTooHigh;
-
     private final ServerBossEvent bossEvent;
+
     public SwordManCsdy(EntityType<? extends BossEntity> type, Level level) {
         super(type, level);
-        this.entityData.set(DATA_HEALTH_ID,this.getMaxHealth());
+        this.bossEvent = (ServerBossEvent) new ServerBossEvent(
+                this.getDisplayName(),
+                BossEvent.BossBarColor.PURPLE, // 血条颜色
+                BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(true);
         this.setMaxUpStep(0.6F);
         this.xpReward = 0;
         this.setPersistenceRequired();
         this.oldHealth = this.getHealth();
-        this.bossEvent = (ServerBossEvent)(new ServerBossEvent(
-                this.getDisplayName(),
-                BossEvent.BossBarColor.PURPLE, // 血条颜色
-                BossEvent.BossBarOverlay.PROGRESS // 血条样式
-        )).setDarkenScreen(true); // 是否使屏幕变暗
+
         if (level.isClientSide) return;
         csdyWorld = JzyyDiademaRegister.CSDY_WORLD.get().CreateInstance(new FollowDiademaMovement(this));
+
+        // 初始化时同步血量显示
+        syncHealthToNative();
     }
 
     @Override
@@ -97,11 +99,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         this.entityData.define(DATA_IS_ATTACKING, false);
         this.entityData.define(DATA_IS_REAL, false);
     }
-
-    private static final EntityDataAccessor<Boolean> DATA_IS_ATTACKING =
-            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> DATA_IS_REAL =
-            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
     public boolean isAttacking() {
         return this.entityData.get(DATA_IS_ATTACKING);
@@ -119,23 +116,67 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         this.entityData.set(DATA_IS_REAL, real);
     }
 
-
-
-
-
-
-
-
-
-
-    private static final ResourceLocation LOOT_TABLE = new ResourceLocation("jzyy", "entities/sword_man_csdy");
-
     @Override
-    protected @NotNull ResourceLocation getDefaultLootTable() {
-        return LOOT_TABLE;
+    public void setCustomName(@Nullable Component name) {
+        super.setCustomName(name);
+        if (name != null && name.getString().contains("沉睡的艺") && !isReal()) {
+            this.currentHealth = this.getMaxHealth();
+            setReal(true);
+            syncHealthToNative();
+        }
     }
 
+    @Override
+    public void tick() {
+        super.tick();
 
+        if (!this.level().isClientSide) {
+            // 使用自定义血量更新血条 - 使用超类的bossEvent
+            this.bossEvent.setProgress(this.currentHealth / this.getMaxHealth());
+            this.bossEvent.setName(this.getDisplayName());
+
+            // 每20tick设置天气
+            if (this.tickCount % 20 == 0) {
+                ServerLevel serverLevel = (ServerLevel) this.level();
+                serverLevel.setWeatherParameters(0, 400, true, true);
+            }
+
+            // 死亡处理
+            if (this.currentHealth <= 0 && !isDying) {
+                handleDeath();
+            }
+        }
+
+        this.invulnerableTime = 0;
+
+        // 持续同步血量显示
+        if (this.tickCount % 10 == 0) {
+            syncHealthToNative();
+        }
+
+        // 客户端音乐停止处理
+        if (this.level().isClientSide && (isDying || this.currentHealth <= 0)) {
+            stopBossMusic();
+        }
+    }
+
+    @Override
+    public void onRemovedFromWorld() {
+        super.onRemovedFromWorld();
+        this.bossEvent.removeAllPlayers();
+        // 停止音乐
+        if (!this.level().isClientSide) {
+            // 服务端移除血天效果
+            if (this.level() instanceof ServerLevel serverLevel) {
+                for (ServerPlayer player : serverLevel.players()) {
+                    BloodSkyEffect.SetEnableTo(player, false);
+                }
+            }
+        } else {
+            // 客户端停止音乐
+            stopBossMusic();
+        }
+    }
 
     @Override
     public void startSeenByPlayer(@NotNull ServerPlayer player) {
@@ -152,47 +193,30 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     }
 
     @Override
-    public void tick() {
-        super.tick();
-
-         if (!this.level().isClientSide && this.bossEvent != null) {
-             this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-         }
-
-        if (!this.level().isClientSide && this.tickCount % 20 == 0) {
-            ServerLevel serverLevel = (ServerLevel) this.level();
-            serverLevel.setWeatherParameters(0, 400, true, true);
-        }
-        this.invulnerableTime = 0;
-
-    }
-
-    @Override
-    public void onRemovedFromWorld() {
-        super.onRemovedFromWorld();
-        // 确保当Boss死亡或被移除时，血条也从所有玩家屏幕上消失
-        this.bossEvent.removeAllPlayers();
-    }
-
-    @Override
-    public SoundEvent getBossMusic() {
-        return JzyySoundsRegister.GIRL_A.get();
-    }
-
-    @Override
     public boolean hurt(@NotNull DamageSource source, float damage) {
-        if (isReal()) return false;
+        if (isReal() || isDying) return false;
 
-        // 计算开方后的伤害
-        float sqrtDamage = (float) Math.sqrt(damage);
-        // 减少80%（即只保留20%）
-        float realDamage = sqrtDamage * 0.2f;
+        float realDamage = (float) Math.sqrt(damage) * 2;
 
         if (realDamage < 100f) {
             return false;
         }
+
+        // 只通过这个途径减少血量
+        this.currentHealth -= realDamage;
+        if (this.currentHealth < 0) {
+            this.currentHealth = 0;
+        }
+
+        // 传送机制
         teleportToAttacker(source);
-        return super.hurt(source, realDamage); // 传递处理后的伤害值
+
+        // 如果生命值归零，触发死亡逻辑
+        if (this.currentHealth <= 0 && !isDying) {
+            handleDeath();
+        }
+
+        return true;
     }
 
     private void teleportToAttacker(DamageSource source) {
@@ -203,49 +227,132 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         double y = attacker.getY() + random.nextInt(2);
         double z = attacker.getZ() + (random.nextDouble() - 0.5) * 1.2;
 
-        this.teleportTo(x,y,z);
+        this.teleportTo(x, y, z);
     }
 
+    /**
+     * 处理死亡逻辑
+     */
+    private void handleDeath() {
+        if (isDying) return;
 
+        isDying = true;
+
+        // 触发原生死亡逻辑
+        DamageSource deathSource = this.damageSources().generic();
+        super.die(deathSource);
+
+        // 确保掉落战利品
+        this.dropAllDeathLoot(deathSource);
+
+        // 移除血天效果
+        if (this.level() instanceof ServerLevel serverLevel) {
+            for (ServerPlayer player : serverLevel.players()) {
+                BloodSkyEffect.SetEnableTo(player, false);
+            }
+        }
+
+        // 确保原生系统也知道死亡
+        super.setHealth(0);
+    }
+
+    @Override
+    public void dropAllDeathLoot(DamageSource pDamageSource) {
+        if (this.currentHealth > 0 || !isDying) return;
+        super.dropAllDeathLoot(pDamageSource);
+    }
+
+    @Override
+    protected @NotNull ResourceLocation getDefaultLootTable() {
+        return LOOT_TABLE;
+    }
+
+    // ========== 血量系统防护 ==========
+
+    /**
+     * 同步自定义血量到原生系统（仅用于显示）
+     */
+    private void syncHealthToNative() {
+        super.setHealth(Math.max(0.1f, this.currentHealth));
+    }
+
+    @Override
+    public float getHealth() {
+        return this.currentHealth;
+    }
+
+    @Override
+    public float getMaxHealth() {
+        return 50000.0f;
+    }
 
     @Override
     public void setHealth(float value) {
-        if (isReal()) return;
+        if (isReal() || isDying) return;
 
-        float currentHealth = this.getHealth();
-        float healthLoss = currentHealth - value;
-
-        // 对血量损失进行同样的处理：开方后减80%
-        float processedHealthLoss = (float) (Math.sqrt(healthLoss) * 0.2f);
-
-        float threshold = 325.0f;
-        if (processedHealthLoss > threshold) {
-            value = currentHealth - processedHealthLoss * 0.2f;
+        // 记录尝试修改的堆栈信息
+        if (value < this.currentHealth) {
+            System.out.println("妄想用这种力量对付我？");
+            Thread.dumpStack();
         }
 
-        super.setHealth(value);
+        // 只允许增加血量，不允许减少
+        if (value > this.currentHealth) {
+            this.currentHealth = Math.min(value, this.getMaxHealth());
+            syncHealthToNative();
+        }
     }
-
 
     @Override
-    protected void registerGoals() {
-        super.registerGoals();
-
-        // 行为选择器 (goalSelector)
-        this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false)); // 2: 近战攻击
-        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
-
-        // 目标选择器 (targetSelector) - 修改后的版本
-        this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true));
+    public void setAbsorptionAmount(float amount) {
+        super.setAbsorptionAmount(0);
     }
+
+    @Override
+    public void heal(float amount) {
+        if (!isReal() && !isDying) {
+            this.currentHealth = Math.min(this.currentHealth + amount, this.getMaxHealth());
+            syncHealthToNative();
+        }
+    }
+
+    @Override
+    public boolean isDeadOrDying() {
+        return isDying || this.currentHealth <= 0;
+    }
+
+    @Override
+    public boolean isAlive() {
+        return !isDying && this.currentHealth > 0;
+    }
+
+    @Override
+    public void die(@NotNull DamageSource damageSource) {
+        if (this.currentHealth <= 0 && !isDying) {
+            handleDeath();
+        }
+    }
+
+    @Override
+    public void kill() {
+        csdySay("可悲的尝试");
+    }
+
+    @Override
+    public void remove(Entity.RemovalReason reason) {
+        if (reason == Entity.RemovalReason.KILLED && !isDying) {
+            csdySay("苟延残喘又不肯认输的样子真丑陋啊");
+            return;
+        }
+        super.remove(reason);
+    }
+
+    // ========== 动画系统 ==========
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
-        // 您可以将控制器命名得通用一些，比如 "controller" 或 "main"
         controllers.add(new AnimationController<>(this, "controller", 5, this::mainAnimController));
     }
 
@@ -256,23 +363,57 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         return state.setAndContinue(IDLE_ANIM);
     }
 
-
-
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.geoCache;
     }
 
-
+    // ========== 属性注册 ==========
 
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, 4.4);
-        builder = builder.add(Attributes.MAX_HEALTH, 10000.0);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
+        builder = builder.add(Attributes.MAX_HEALTH, 50000.0);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 1600.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 128);
         return builder;
     }
 
+    // ========== 其他方法 ==========
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+
+        this.goalSelector.addGoal(0, new CsdyMeleeGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
+
+        this.targetSelector.addGoal(1, new PersistentHurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true));
+    }
+
+    @Override
+    public SoundEvent getBossMusic() {
+        return JzyySoundsRegister.GIRL_A.get();
+    }
+
+
+    private void csdySay(String line) {
+        MinecraftServer server = this.level().getServer();
+        if (server != null) {
+            for (ServerPlayer onlinePlayer : server.getPlayerList().getPlayers()) {
+                onlinePlayer.displayClientMessage(
+                        Component.translatable(line).withStyle(ChatFormatting.RED),
+                        false
+                );
+            }
+        }
+    }
+
+    // 用于实体注册的工厂方法
+    public static SwordManCsdy create(EntityType<SwordManCsdy> entityType, Level level) {
+        return new SwordManCsdy(entityType, level);
+    }
 }

@@ -89,10 +89,7 @@ import com.csdy.jzyy.modifier.modifier.redstone_component.real.FullOfEnergy;
 import com.csdy.jzyy.modifier.modifier.return_to_the_end.Bravery;
 import com.csdy.jzyy.modifier.modifier.return_to_the_end.Honor;
 import com.csdy.jzyy.modifier.modifier.silence.SilenceAlmighty;
-import com.csdy.jzyy.modifier.modifier.soul.ApostleSoul;
-import com.csdy.jzyy.modifier.modifier.soul.BatSoul;
-import com.csdy.jzyy.modifier.modifier.soul.EnderManSoul;
-import com.csdy.jzyy.modifier.modifier.soul.UnDeadSoul;
+import com.csdy.jzyy.modifier.modifier.soul.*;
 import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseHealModifier;
@@ -600,7 +597,7 @@ public class ModifierRegister {
     public static final StaticModifier<BatSoul> BAT_SOUL_STATIC_MODIFIER = MODIFIERS.register("bat_soul", BatSoul::new);
     public static final StaticModifier<UnDeadSoul> UN_DEAD_SOUL_STATIC_MODIFIER = MODIFIERS.register("undead_soul", UnDeadSoul::new);
     public static final StaticModifier<ApostleSoul> APOSTLE_SOUL_STATIC_MODIFIER = MODIFIERS.register("apostle_soul", ApostleSoul::new);
-
+    public static final StaticModifier<HJMSoul> HJM_SOUL_STATIC_MODIFIER = MODIFIERS.register("hjm_soul", HJMSoul::new);
 
     ///领域
     public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("lucky_tnt_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.LUCKY_TNT_MELTDOWN));

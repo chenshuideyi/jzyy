@@ -172,10 +172,6 @@ public class CsdyBartest {
                 int nameX = x + (width / 2) - (nameWidth / 2);
                 int nameY = y - 12;
 
-//                if (nameY < 5) { // 如果太靠近屏幕顶部
-//                    nameY = y + height + 5; // 改为显示在血条下方
-//                }
-
                 // 名称装饰性背景
                 guiGraphics.fill(nameX - 2, nameY - 2, nameX + nameWidth + 2, nameY + 10, rgba(0, 0, 0, 150));
                 guiGraphics.fill(nameX - 1, nameY - 1, nameX + nameWidth + 1, nameY + 9, rgba(20, 20, 20, 180));

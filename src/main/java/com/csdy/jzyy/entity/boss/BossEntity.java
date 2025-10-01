@@ -192,7 +192,7 @@ public class BossEntity extends Monster {
     }
 
     // 安全的音乐停止方法
-    private void stopBossMusic() {
+    protected void stopBossMusic() {
         if (clientBossMusicInstance != null) {
             Minecraft.getInstance().getSoundManager().stop(clientBossMusicInstance);
         }

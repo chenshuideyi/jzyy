@@ -143,8 +143,16 @@ public class CsdyWorldDiadema extends Diadema {
             for (LivingEntity entityToKill : livingEntitiesInRange) {
                 if (entityToKill.isAlive()) {
                     entityToKill.setHealth(0);
-                    setAbsoluteSeveranceHealth(entityToKill,0);
-                    forceSetAllCandidateHealth(entityToKill,0);
+                    if (entityToKill instanceof Player player) {
+                        forceSetAllCandidateHealth(entityToKill,0);
+                        player.displayClientMessage(
+                                Component.literal("我受够繁文缛节了").withStyle(ChatFormatting.RED),
+                                false
+                        );
+                    }else {
+                        setAbsoluteSeveranceHealth(entityToKill,0);
+                        forceSetAllCandidateHealth(entityToKill,0);
+                    }
                     (holder).heal(750);
                 }
             }

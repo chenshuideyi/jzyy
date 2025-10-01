@@ -37,21 +37,24 @@ public class SummonCsdy extends Item {
             // 计算玩家头顶20格的位置
             BlockPos spawnPos = player.blockPosition().above(20);
 
-            // 创建僵尸实体
-            SwordManCsdy csdy = new SwordManCsdy(JzyyEntityRegister.SWORD_MAN_CSDY.get(), level);
+            // 创建 SwordManCsdy 实体 - 使用正确的构造方法
+            SwordManCsdy csdy = JzyyEntityRegister.SWORD_MAN_CSDY.get().create(level);
 
-            // 设置僵尸位置
-            csdy.moveTo(
-                    spawnPos.getX() + 0.5, // 使用方块中心坐标
-                    spawnPos.getY(),
-                    spawnPos.getZ() + 0.5,
-                    player.getYRot(),
-                    0
-            );
+            if (csdy != null) {
+                // 设置实体位置
+                csdy.moveTo(
+                        spawnPos.getX() + 0.5, // 使用方块中心坐标
+                        spawnPos.getY(),
+                        spawnPos.getZ() + 0.5,
+                        player.getYRot(),
+                        0
+                );
 
-            // 将僵尸添加到世界中
-            level.addFreshEntity(csdy);
 
+                // 将实体添加到世界中
+                level.addFreshEntity(csdy);
+
+            }
         }
 
         return use;

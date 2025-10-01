@@ -42,7 +42,28 @@ public class WindowMixin {
             "火焰纹章",
             "魔兽世界",
             "挺进地牢",
-            "elona"
+            "elona",
+            "Warframe",
+            "Undertale",
+            "废墟图书馆",
+            "VRChat",
+            "Dota2",
+            "对你说再见",
+            "梦日记",
+            "Spore",
+            "纸房子",
+            "超级鸡马",
+            "魔女之家",
+            "主播女孩重度依赖",
+            "终之空",
+            "美好的每一天·不连续存在",
+            "SallyFace",
+            "Euphoria",
+            "Kio的人间冒险",
+            "宅男的人间冒险",
+            "South Park - The Stick of Truth",
+            "海猫鸣泣之时",
+            "匠战妖域"
     };
 
     @Unique

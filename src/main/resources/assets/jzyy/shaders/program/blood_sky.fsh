@@ -27,7 +27,7 @@ vec3 rgb2hsv(vec3 rgb) {
     return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
 }
 
-// 噪声函数
+// 噪声
 float hash(float n) { return fract(sin(n) * 1e4); }
 float hash(vec2 p) { return fract(1e4 * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x)))); }
 
@@ -42,7 +42,7 @@ float noise(vec2 x) {
     return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
-// 更复杂的噪声函数，用于撕裂效果
+// 还是噪声
 float fbm(vec2 p) {
     float value = 0.0;
     float amplitude = 0.5;
@@ -73,28 +73,28 @@ vec3 bloodVeins(vec2 uv, float time) {
     return vec3(veins * 0.3);
 }
 
-// 创建撕裂效果
+// 撕裂效果
 float createTear(vec2 uv, float time) {
-    // 创建多个撕裂线
+    // 线条
     float tear1 = 1.0 - smoothstep(0.0, 0.1, abs(uv.y - 0.3 + sin(uv.x * 3.0 + time * 0.5) * 0.1));
     float tear2 = 1.0 - smoothstep(0.0, 0.15, abs(uv.x - 0.6 + sin(uv.y * 2.0 + time * 0.3) * 0.2));
     float tear3 = 1.0 - smoothstep(0.0, 0.12, abs(uv.y + 0.2 - cos(uv.x * 4.0 + time * 0.7) * 0.15));
 
-    // 使用噪声创建不规则的撕裂区域
+    // 噪声
     vec2 tearUV = uv * 2.0 + time * 0.1;
     float noiseTear = fbm(tearUV * 4.0);
     noiseTear = smoothstep(0.4, 0.6, noiseTear);
 
-    // 组合所有撕裂效果
+    // 组合
     float tears = max(tear1, max(tear2, tear3));
     tears = max(tears, noiseTear * 0.7);
 
     return tears;
 }
 
-// 创建闪电效果，增强撕裂感
+// 闪电
 float lightning(vec2 uv, float time) {
-    // 创建闪电路径
+    // 路径
     vec2 lightningUV = uv * vec2(1.5, 3.0);
     lightningUV.x += sin(lightningUV.y * 2.0 + time * 0.5) * 0.2;
 
@@ -112,7 +112,7 @@ float lightning(vec2 uv, float time) {
     // 组合闪电效果
     float lightning = max(mainBolt, max(branch1, branch2));
 
-    // 添加闪烁效果
+    // 闪烁效果
     lightning *= pulse(time, 10.0, 0.5) + 0.5;
 
     return lightning;
@@ -131,7 +131,7 @@ void main() {
         return;
     }
 
-    // 动态效果参数
+    // 动态效果
     float time = Time * 0.5;
     vec2 uv = texCoord * 2.0 - 1.0;
     float dist = length(uv);
@@ -139,53 +139,48 @@ void main() {
     // 基础血色
     vec3 baseBlood = vec3(0.8, 0.1, 0.1);
 
-    // 脉动效果 - 心脏跳动般的节奏
+    // 脉动效果
     float pulse1 = pulse(time, 2.0, 0.1);
     float pulse2 = pulse(time + 0.3, 3.0, 0.08);
     float overallPulse = 0.8 + pulse1 + pulse2;
 
-    // 噪声扰动
+    // 噪声
     float noise1 = noise(uv * 3.0 + time * 0.1);
     float noise2 = noise(uv * 5.0 - time * 0.2);
     float noisePattern = mix(noise1, noise2, 0.5);
 
-    // 漩涡效果
+    // 漩涡
     float angle = atan(uv.y, uv.x);
     float radius = dist * 2.0;
     float swirl = sin(radius * 8.0 - time * 2.0 + angle * 4.0) * 0.3;
 
-    // 血丝效果
+    // 血丝
     vec3 veins = bloodVeins(uv, time);
 
-    // 撕裂效果
+    // 泪痕的蜿蜒
     float tears = createTear(texCoord, time);
 
-    // 闪电效果
+    // 闪电
     float lightning = lightning(texCoord, time);
 
-    // 颜色混合
+    // 混合在一起！
     vec3 dynamicColor = baseBlood * overallPulse;
     dynamicColor += vec3(noisePattern * 0.2);
     dynamicColor += vec3(swirl * 0.15);
     dynamicColor += veins;
 
-    // 添加撕裂效果 - 在撕裂处显示更亮的血色
     dynamicColor = mix(dynamicColor, dynamicColor * 1.5 + vec3(0.3, 0.0, 0.0), tears);
-
-    // 添加闪电效果 - 闪电区域显示亮白色
     dynamicColor = mix(dynamicColor, vec3(1.0, 1.0, 1.0), lightning * 0.7);
 
-    // 边缘变暗效果
+    // 边缘变暗，这个很酷
     float edgeDarken = 1.0 - smoothstep(0.7, 1.2, dist);
     dynamicColor *= edgeDarken;
 
-    // 饱和度增强
     vec3 hsv = rgb2hsv(dynamicColor);
     hsv.y = min(hsv.y * 1.5, 0.95); // 提高饱和度
-    hsv.z = hsv.z * 0.9; // 稍微降低亮度
+    hsv.z = hsv.z * 0.9;
 
     vec3 finalColor = hsv2rgb(hsv);
 
-    // 保持原始alpha
     fragColor = vec4(finalColor, originalColor.a);
 }
