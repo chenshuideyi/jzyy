@@ -34,7 +34,7 @@ public final class CoreMethod {
         return switch (CoreMsUtil.getCategory(living)) {
             case csdy -> false;
             case csdykill -> true;
-            case normal -> living.isDeadOrDying();
+            case normal -> living.dead || living.getHealth() <= 0;
         };
     }
 

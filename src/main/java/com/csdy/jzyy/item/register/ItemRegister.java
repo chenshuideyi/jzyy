@@ -36,6 +36,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> RAIN_CURTAIN = ITEMS.register("rain_curtain", RainCurtain::new);
     public static final RegistryObject<Item> YAKUMO_ENDER = ITEMS.register("yakumo_ender", YakumoEnder::new);
     public static final RegistryObject<Item> FAILED_GOBBERS = ITEMS.register("failed_gobbers", FaliedGobbers::new);
+    public static final RegistryObject<Item> TIANYUAN_BOX = ITEMS.register("tianyuan_box", TianyuanBox::new);
 
     public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
     public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("fried_chicken", FriedChicken::new);

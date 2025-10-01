@@ -138,6 +138,8 @@
   "item.jzyy.molten_ardite_bucket": "熔融阿迪特桶",
   "block.jzyy.molten_ardite_fluid": "熔融阿迪特",
 
+  "item.jzyy.tianyuan_box": "天元宝匣",
+  "item.jzyy.tianyuan_box.line1": "momo__sensei的提案",
 
 
   "material.jzyy.yin": "阴",
@@ -324,6 +326,10 @@
   "material.jzyy.ardite": "阿迪特",
   "material.jzyy.ardite.flavor": "过去的梦该醒了",
   "material.jzyy.ardite.encyclopedia": "大声呼救，坐地大哭，只因为不想被下界合金替代",
+
+  "material.jzyy.tianyuan_box": "天元宝匣",
+  "material.jzyy.tianyuan_box.flavor": "福缘天赐，万象归藏",
+  "material.jzyy.tianyuan_box.encyclopedia": "此物乃采集九天星核熔铸，内蕴周天星辰之力，得此匣者，可窥天道秘辛，获无上机缘",
 
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
@@ -1128,10 +1134,14 @@
   "modifier.jzyy.triplingcurse.flavor": "戈伯强大力量的源头已被通晓，权柄已被篡夺。你可以运用它真正的力量——随你的意志，而不是它的",
   "modifier.jzyy.triplingcurse.description": "每级增加全槽位一个，该工具其他所有因特性而增加的槽位都会格外生效一次。每个槽位将全属性修正为原先的133%——在上一个槽位的基础上！",
 
-
   "modifier.jzyy.lucky_tnt_meltdown": "No.鏡音リン-炉心融解 - 更多tnt特供版",
   "modifier.jzyy.lucky_tnt_meltdown.flavor": "做了个紧勒住你脖子的梦",
   "modifier.jzyy.lucky_tnt_meltdown.description":"对领域内的所有生物施加巨量的辐射",
+
+  "modifier.jzyy.heavenly_gift": "天之运",
+  "modifier.jzyy.heavenly_gift.flavor": "源于天地之气，可夺天地之造化",
+  "modifier.jzyy.heavenly_gift.description": "工具上的[天元宝匣]材料将会随机转换为其他任意一种材料（该转换会受目标材料是否能做出对应部件的影响）",
+
 
   "赞助强化这一块": "",
   "modifier.jzyy.final_sword.requirements": "需要剑刃解放III作为前置",

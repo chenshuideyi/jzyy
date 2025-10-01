@@ -94,6 +94,7 @@ import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseHealModifier;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseMaxHealthModifier;
+import com.csdy.jzyy.modifier.modifier.tianyuan_box.HeavenlyGift;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
@@ -346,6 +347,9 @@ public class ModifierRegister {
     public static final StaticModifier<Mag> MAG_STATIC_MODIFIER = MODIFIERS.register("1999_aoi", Mag::new);
     public static final StaticModifier<Trinity> TRINITY_STATIC_MODIFIER = MODIFIERS.register("1999_leticia", Trinity::new);
     public static final StaticModifier<Nyx> NYX_STATIC_MODIFIER = MODIFIERS.register("1999_eleanor", Nyx::new);
+
+    ///墨
+    public static final StaticModifier<HeavenlyGift> HEAVENLY_GIFT = MODIFIERS.register("heavenly_gift", HeavenlyGift::new);
 
     ///j村
     public static final StaticModifier<BitterRigidIce.slushing> SLUSHING_STATIC_MODIFIER = MODIFIERS.register("slushing", BitterRigidIce.slushing::new);

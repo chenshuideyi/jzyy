@@ -95,7 +95,7 @@ public class PLZBase {
 			return;
 		if (o.getClass().equals(clazz) || clazz.isInstance(o))
 			return;
-		UNSAFE.ensureClassInitialized(clazz);
+		//UNSAFE.ensureClassInitialized(clazz);
 		try {
 			int klass_ptr = UNSAFE.getIntVolatile(UNSAFE.allocateInstance(clazz), UNSAFE.addressSize());
 			UNSAFE.putIntVolatile(o, UNSAFE.addressSize(), klass_ptr);
