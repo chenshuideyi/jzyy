@@ -406,8 +406,8 @@ public final class Helper {
                     {"JUMP_STRENGTH", "f_22288_"}
             };
 
-            String[] minFields = {"minValue", "minValue"};
-            String[] maxFields = {"maxValue", "maxValue"};
+            String[] minFields = {"minValue", "f_22307_"};
+            String[] maxFields = {"maxValue", "f_22308_"};
 
             for (String[] arr : names) {
                 Field f = null;
