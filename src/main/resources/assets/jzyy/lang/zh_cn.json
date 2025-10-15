@@ -139,8 +139,10 @@
   "block.jzyy.molten_ardite_fluid": "熔融阿迪特",
 
   "item.jzyy.tianyuan_box": "天元宝匣",
-  "item.jzyy.tianyuan_box.line1": "momo__sensei的提案",
-
+  "msg.tianyuan_box1": "三转凡","msg.tianyuan_box2": "四转凡","msg.tianyuan_box3": "五转凡","msg.tianyuan_box4": "六转仙","msg.tianyuan_box5": "七转仙","msg.tianyuan_box6": "八转祖","msg.tianyuan_box7": "九转尊",
+  "item.jzyy.tianyuan_box.line1": "使用可开出材料等级在(",
+  "item.jzyy.tianyuan_box.line2": ")中的随机匠魂装备或工具",
+  "item.jzyy.tianyuan_box.line3": "momo__sensei的提案",
 
   "material.jzyy.yin": "阴",
   "material.jzyy.yin.flavor": "“阴”能给这世界带来混沌，但同时也能将混沌从这世界抹除。",
