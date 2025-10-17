@@ -144,6 +144,22 @@ public class TianyuanBox extends Item {
         ItemStack itemStack = toolStack.createStack();
         return !itemStack.isEmpty() && itemStack.getItem() != Items.AIR;
     }
+    private int getRandomInt(int a) {
+        if (a >= 32 && a <= 56) {
+            return 4;
+        } else if (a >= 56 && a <= 74) {
+            return 5;
+        } else if (a >= 74 && a <= 86) {
+            return 6;
+        } else if (a >= 86 && a <= 94) {
+            return 7;
+        } else if (a >= 94 && a <= 98) {
+            return 8;
+        } else if (a >= 98 && a <= 100) {
+            return 9;
+        }
+        return 3;
+    }
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         ItemStack retval = super.finishUsingItem(stack, level, living);
@@ -152,7 +168,7 @@ public class TianyuanBox extends Item {
             String s = "TianYuanTier";
             Random random=new Random();
             if (c.getInt(s)==0) {
-                c.putInt(s,random.nextInt(7)+3);
+                c.putInt(s,getRandomInt(random.nextInt(101)));
             }else
             if (c.getInt(s)>=3) {
                 ToolStack tools = getToolStack(stack);

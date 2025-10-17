@@ -138,7 +138,7 @@
   "item.jzyy.molten_ardite_bucket": "熔融阿迪特桶",
   "block.jzyy.molten_ardite_fluid": "熔融阿迪特",
 
-  "item.jzyy.tianyuan_box": "天元宝匣",
+  "item.jzyy.tianyuan_box": "天元宝莲",
   "msg.tianyuan_box1": "三转凡","msg.tianyuan_box2": "四转凡","msg.tianyuan_box3": "五转凡","msg.tianyuan_box4": "六转仙","msg.tianyuan_box5": "七转仙","msg.tianyuan_box6": "八转祖","msg.tianyuan_box7": "九转尊",
   "item.jzyy.tianyuan_box.line1": "使用可开出材料等级在(",
   "item.jzyy.tianyuan_box.line2": ")中的随机匠魂装备或工具",
@@ -329,9 +329,9 @@
   "material.jzyy.ardite.flavor": "过去的梦该醒了",
   "material.jzyy.ardite.encyclopedia": "大声呼救，坐地大哭，只因为不想被下界合金替代",
 
-  "material.jzyy.tianyuan_box": "天元宝匣",
+  "material.jzyy.tianyuan_box": "天元宝莲",
   "material.jzyy.tianyuan_box.flavor": "福缘天赐，万象归藏",
-  "material.jzyy.tianyuan_box.encyclopedia": "此物乃采集九天星核熔铸，内蕴周天星辰之力，得此匣者，可窥天道秘辛，获无上机缘",
+  "material.jzyy.tianyuan_box.encyclopedia": "此物乃采集九天星核熔铸，内蕴周天星辰之力，得此者，可窥天道秘辛，获无上机缘",
 
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
