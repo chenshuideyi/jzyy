@@ -368,6 +368,7 @@ public class ModifierRegister {
     public static final StaticModifier<MerorArmor.merortoughness> MERORToughness_STATIC_MODIFIER = MODIFIERS.register("merortoughness", MerorArmor.merortoughness::new);
     public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("lowinjurydisregard", RefineMerorArmor.lowinjurydisregard::new);
     public static final StaticModifier<RefineMeror> REFINEMEROR_STATIC_MODIFIER = MODIFIERS.register("refinemeror", RefineMeror::new);
+    public static final StaticModifier<LifeAndArmor> LIFE_AND_ARMOR_STATIC_MODIFIER = MODIFIERS.register("lifeandarmor", LifeAndArmor::new);
 
     ///护甲补强
     public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);

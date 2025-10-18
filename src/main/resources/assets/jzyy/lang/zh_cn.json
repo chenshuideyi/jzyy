@@ -753,6 +753,12 @@
   "modifier.jzyy.optima.flavor": "无限の力！",
   "modifier.jzyy.optima.description":"「绝对切断」100%效能",
 
+  "modifier.jzyy.lifeandarmor": "生命与护甲",
+  "modifier.jzyy.lifeandarmor.flavor": "命与甲",
+  "modifier.jzyy.lifeandarmor.description":"根据你生命值与护甲值差值平方造成绝对切断",
+
+
+
   "modifier.jzyy.dragon_killer": "屠龙者",
   "modifier.jzyy.dragon_killer.flavor": "你的名字将作为传奇",
   "modifier.jzyy.dragon_killer.description":"对龙造成50%额外伤害（是dragon不是loong哦）",
@@ -1270,6 +1276,8 @@
   "material.jzyy.fire_secretor_adhesive.flavor": "元素材料之一",
   "material.jzyy.malignasaur_teeth": "恶鳞牙齿",
   "material.jzyy.malignasaur_teeth.flavor": "其实是宝石恶鳞的牙齿化石,但是宝石恶鳞不会掉落这个",
+  "material.jzyy.bulge_rod": "波涛棒",
+  "material.jzyy.bulge_rod.flavor": "深蓝色的棒棒（意味深）",
   "material.jzyy.marine_reptiles_fine_scale": "海爬细鳞",
   "material.jzyy.marine_reptiles_fine_scale.flavor": "宝石恶鳞会掉落这个",
   "material.jzyy.ocean_gemstone": "海洋宝石",

@@ -2,6 +2,8 @@
   "default": [
     {
       "name": "jzyy:refinemeror",
+      "level": 1,
+      "name": "jzyy:lifeandarmor",
       "level": 1
     }
   ],
