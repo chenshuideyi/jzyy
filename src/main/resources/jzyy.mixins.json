@@ -8,6 +8,7 @@
   "mixins": [
     "AbsoluteSeveranceHealthMixin",
     "AttackHelperMixin",
+    "AttributeInstanceAccessor",
     "CsdyProtectionLivingEntityMixin",
     "ItemStackMixin",
     "LivingEntityMixin",

@@ -4,6 +4,7 @@ import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.ai.TitanWarden.TitanWardenAttackGoal;
 import com.csdy.jzyy.entity.boss.ai.TitanWarden.RayTraceHelper;
+import com.csdy.jzyy.mixins.AttributeInstanceAccessor;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.core.BlockPos;
@@ -113,8 +114,18 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     }
 
     @Override
-    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate){
+    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate) {
+        super.updateFluidHeightAndDoFluidPushing(shouldUpdate);
+    }
 
+    //没多大用，加着玩
+    @Override
+    public float getHealth() {
+        return (float) getCachedValue(this.getAttribute(Attributes.MAX_HEALTH));
+    }
+
+    public static double getCachedValue(AttributeInstance attribute) {
+        return ((AttributeInstanceAccessor) attribute).getCachedValue();
     }
     @Override
     public void tick() {
