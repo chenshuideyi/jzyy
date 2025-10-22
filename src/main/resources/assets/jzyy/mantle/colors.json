@@ -121,6 +121,7 @@
     "holy_protection": "#ecc813",
     "ciallo": "#DD7C6F",
     "ass_we_can": "#F0A8A4",
+    "tianyuan_box": "#78FFF0",
     "护甲补强": null,
     "return": "#8FBC8F",
     "love": "#FF0000",
@@ -225,7 +226,8 @@
     "real_return_to_the_end": "#4B0082",
     "yin": "#000000",
     "mega_manyullyn": "#9b59b6",
-    "ardite": "#c84e17"
+    "ardite": "#c84e17",
+    "heavenly_gift": "#78FFF0"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"

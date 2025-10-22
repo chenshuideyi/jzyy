@@ -94,6 +94,7 @@ import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseHealModifier;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseMaxHealthModifier;
+import com.csdy.jzyy.modifier.modifier.tianyuan_box.HeavenlyGift;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
@@ -347,6 +348,9 @@ public class ModifierRegister {
     public static final StaticModifier<Trinity> TRINITY_STATIC_MODIFIER = MODIFIERS.register("1999_leticia", Trinity::new);
     public static final StaticModifier<Nyx> NYX_STATIC_MODIFIER = MODIFIERS.register("1999_eleanor", Nyx::new);
 
+    ///墨
+    public static final StaticModifier<HeavenlyGift> HEAVENLY_GIFT = MODIFIERS.register("heavenly_gift", HeavenlyGift::new);
+
     ///j村
     public static final StaticModifier<BitterRigidIce.slushing> SLUSHING_STATIC_MODIFIER = MODIFIERS.register("slushing", BitterRigidIce.slushing::new);
     public static final StaticModifier<GiantMonsterHair.frostabsorption> FROSTABSORPTION_STATIC_MODIFIER = MODIFIERS.register("frostabsorption", GiantMonsterHair.frostabsorption::new);
@@ -364,6 +368,7 @@ public class ModifierRegister {
     public static final StaticModifier<MerorArmor.merortoughness> MERORToughness_STATIC_MODIFIER = MODIFIERS.register("merortoughness", MerorArmor.merortoughness::new);
     public static final StaticModifier<RefineMerorArmor.lowinjurydisregard> LOW_INJURY_DISREGARD_STATIC_MODIFIER = MODIFIERS.register("lowinjurydisregard", RefineMerorArmor.lowinjurydisregard::new);
     public static final StaticModifier<RefineMeror> REFINEMEROR_STATIC_MODIFIER = MODIFIERS.register("refinemeror", RefineMeror::new);
+    public static final StaticModifier<LifeAndArmor> LIFE_AND_ARMOR_STATIC_MODIFIER = MODIFIERS.register("lifeandarmor", LifeAndArmor::new);
 
     ///护甲补强
     public static final StaticModifier<Return> RETURN_STATIC_MODIFIER = MODIFIERS.register("return", Return::new);

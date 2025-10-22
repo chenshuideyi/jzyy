@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 public class RefineMeror extends NoLevelsModifier implements EquipmentChangeModifierHook, InventoryTickModifierHook {
-    private static final double DEFAULT_RADIUS = 6.0;
+    private static final double DEFAULT_RADIUS = 15.0;
     private double currentRadius = DEFAULT_RADIUS;
 
     @Override
