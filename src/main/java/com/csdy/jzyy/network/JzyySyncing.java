@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class JzyySyncing {
+
     private static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(JzyyModMain.MODID, "jzyy"),

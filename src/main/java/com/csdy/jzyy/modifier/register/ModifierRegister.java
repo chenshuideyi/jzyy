@@ -534,6 +534,13 @@ public class ModifierRegister {
 
     ///来自你们投稿
     public static final StaticModifier<DeepSeaGirl> DEEP_SEA_GIRL_STATIC_MODIFIER = MODIFIERS.register("deep_sea_girl", DeepSeaGirl::new);
+    public static final StaticModifier<Truck> TRUCK_STATIC_MODIFIER = MODIFIERS.register("truck", Truck::new);
+
+
+
+
+
+
 
 
     ///耐久

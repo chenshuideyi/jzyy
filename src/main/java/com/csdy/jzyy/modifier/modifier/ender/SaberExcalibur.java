@@ -38,6 +38,7 @@ public class SaberExcalibur extends NoLevelsModifier implements GeneralInteracti
     private static final int radius = 160; // 破坏半径
     private static final float angle = 50; // 角度
     private static final int height = 60;  // 高度
+
     @Override
     public int getPriority() {
         return Integer.MAX_VALUE;
@@ -132,7 +133,7 @@ public class SaberExcalibur extends NoLevelsModifier implements GeneralInteracti
                 damageEntitiesInSector(player, radius, angle, height,damage);
             }
             tool.setDamage(2147483647);
-        }
+    }
 
     /**
      * 在玩家面前创建一个圆锥形的破坏区域。
@@ -305,6 +306,7 @@ public class SaberExcalibur extends NoLevelsModifier implements GeneralInteracti
             }
         }
     }
+
         @Override
         protected void registerHooks (ModuleHookMap.Builder hookBuilder){
             hookBuilder.addHook(this, ModifierHooks.GENERAL_INTERACT);
