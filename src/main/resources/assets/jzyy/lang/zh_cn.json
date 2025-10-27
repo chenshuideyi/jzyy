@@ -471,15 +471,14 @@
 
 
 
-
+  "modifier.jzyy.tong_greed": "§d桐之§b贪欲",
+  "modifier.jzyy.tong_greed.flavor": "我的！都是我的！",
+  "modifier.jzyy.tong_greed.description": "这把工具会想方设法夺取攻击目标的一切，无论是生命值、掉落物还是经验值，每级词条等级等效于1级噬生、1级抢夺，1级时运和1级阅历。",
 
   "modifier.jzyy.hyper_beam": "破坏死光",
   "modifier.jzyy.hyper_beam.flavor": "黑·魔·导·爆·烈·破",
   "modifier.jzyy.hyper_beam.description": "空挥时会发射一道音爆，被音爆击中的目标等同受到一次你的全额攻击",
 
-  "modifier.jzyy.tong_greed": "§d桐之§b贪欲",
-  "modifier.jzyy.tong_greed.flavor": "我的！都是我的！",
-  "modifier.jzyy.tong_greed.description": "这把工具会想方设法夺取攻击目标的一切，无论是生命值、掉落物还是经验值，每级词条等级等效于1级噬生、1级抢夺，1级时运和1级阅历。",
 
   "modifier.jzyy.marisa": "行窃预兆DA☆ZE",
   "modifier.jzyy.marisa.flavor": "在死前会还的DA☆ZE",

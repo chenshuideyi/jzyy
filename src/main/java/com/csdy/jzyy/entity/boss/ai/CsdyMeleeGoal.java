@@ -143,10 +143,10 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
      * @param target 要伤害的目标
      */
     private void dealDamageToTarget(LivingEntity target) {
-        if (!target.isAlive()) return; // 安全检查
-        target.invulnerableTime = 0;      // 强制取消无敌帧，以实现快速连击
-        this.mob.doHurtTarget(target); // 造成常规伤害
-        forceHurt(target, this.mob.damageSources().mobAttack(this.mob),1);
+        if (!target.isAlive()) return;
+        target.invulnerableTime = 0;
+        this.mob.doHurtTarget(target);
+        forceHurt(target, this.mob.damageSources().mobAttack(this.mob),3);
 
         if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {
             float oldHealth = target.getHealth();
