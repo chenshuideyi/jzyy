@@ -16,15 +16,13 @@ public class CuriosUtil {
         Optional<ICuriosItemHandler> curiosHandler = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve();
         if (curiosHandler.isPresent()) {
             ICuriosItemHandler handler = (ICuriosItemHandler) curiosHandler.get();
-            handler.getCurios().entrySet().stream()
-                    // 移除了filter，现在会处理所有饰品槽位
-                    .forEach((entry) -> {
-                        int slots = entry.getValue().getSlots();
-                        for (int i = 0; i < slots; ++i) {
-                            entry.getValue().getStacks().setStackInSlot(i, ItemStack.EMPTY);
-                        }
-                    });
-            player.playSound(SoundEvents.WITHER_BREAK_BLOCK);
+            // 移除了filter，现在会处理所有饰品槽位
+            handler.getCurios().forEach((key, value) -> {
+                int slots = value.getSlots();
+                for (int i = 0; i < slots; ++i) {
+                    value.getStacks().setStackInSlot(i, ItemStack.EMPTY);
+                }
+            });
         }
     }
 

@@ -34,12 +34,16 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 
+import static com.csdy.jzyy.coremod.CsdyLaunchPluginService.checkJavaVersion;
+import static com.csdy.jzyy.coremod.CsdyLaunchPluginService.checkOculus;
 import static com.csdy.jzyy.item.tool.until.JzyyTools.lollipop;
 import static com.csdy.jzyy.item.tool.until.JzyyTools.tinker_loli_pickaxe;
 import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
@@ -58,6 +62,10 @@ public class JzyyModMain {
 
     public JzyyModMain() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        final ModLoadingContext context = ModLoadingContext.get();
+
+        context.registerConfig(ModConfig.Type.COMMON, JzyyConfig.JZYY_CONFIG);
+
         CsdyTab.CREATIVE_MODE_TABS.register(bus);
         JzyyTools.initRegisters();
 
@@ -74,6 +82,12 @@ public class JzyyModMain {
         JzyyFluidRegister.FLUIDS.register(bus);
         JzyyParticlesRegister.PARTICLE_TYPES.register(bus);
         MinecraftForge.EVENT_BUS.register(JzyyAnimationHandler.class);
+
+
+
+
+        checkJavaVersion();
+        checkOculus();
 
         gpuUtilInit();
 

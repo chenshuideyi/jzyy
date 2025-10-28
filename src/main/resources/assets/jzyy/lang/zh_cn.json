@@ -108,7 +108,7 @@
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
   "item.jzyy.summon_csdy": "天子的帽子",
-  "item.jzyy.summon_csdy_line1": "可以召唤csdy",
+  "item.jzyy.summon_csdy_line1": "右键召唤csdy，只会在主世界奏效",
 
   "item.jzyy.return_to_the_end": "归终锭",
   "item.jzyy.return_to_the_end.line1": "无梦的赞助者提案",
@@ -1188,6 +1188,8 @@
   "effect.jzyy.csdy": "csdy的礼物",
   "effect.jzyy.horologium_no_ai": "时间停止",
   "effect.jzyy.holy_protection_cooldown": "神圣闪避冷却中",
+  "effect.jzyy.deep_wound": "深度伤口",
+
 
   "jzyy.tool.tab": "匠战妖域-工具",
   "item.jzyy.lollipop": "棒棒糖",

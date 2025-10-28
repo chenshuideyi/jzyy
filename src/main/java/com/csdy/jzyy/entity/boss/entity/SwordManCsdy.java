@@ -238,6 +238,11 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     private void handleDeath() {
         if (isDying) return;
 
+        if (this.level() == null || this.level().getServer() == null) {
+            // 服务器已关闭，跳过死亡处理
+            return;
+        }
+
         isDying = true;
 
         DamageSource deathSource = this.damageSources().generic();
@@ -287,12 +292,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public void setHealth(float value) {
         if (isReal() || isDying) return;
-
-        // 记录尝试修改的堆栈信息
-        if (value < this.currentHealth) {
-            System.out.println("妄想用这种力量对付我？");
-            Thread.dumpStack();
-        }
 
         // 只允许增加血量，不允许减少
         if (value > this.currentHealth) {
