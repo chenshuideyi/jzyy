@@ -51,8 +51,8 @@ public class TitanWardenAttackGoal extends MeleeAttackGoal {
 
             // 在动画即将结束的瞬间 (例如，计时器为1时) 尝试造成伤害
             if (this.attackSequenceTicks == 44) {
-                breakBlocksInFront();
-                // (您已有的伤害逻辑保持不变)
+//                breakBlocksInFront();
+
                 LivingEntity target = this.mob.getTarget();
                 if (target != null) {
                     double reachSqr = this.getAttackReachSqr(target);

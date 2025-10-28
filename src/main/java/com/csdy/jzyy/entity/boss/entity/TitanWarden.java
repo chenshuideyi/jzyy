@@ -178,16 +178,11 @@ public class TitanWarden extends BossEntity implements GeoEntity {
                     this.remoteTicks = 0;
                 }
             }
-            if (this.remotingTicks == 68&&this.isRemote()&&this.getTarget()!=null) {
-                float a = (float) this.position().subtract(this.getTarget().position()).length();
+            LivingEntity target = this.getTarget();
+            if (this.remotingTicks == 68 && this.isRemote() && target != null) {
+                float a = (float) this.position().subtract(target.position()).length();
                 RayTraceHelper.TraceResult result = RayTraceHelper.trace(this,this.getTarget(), a+attackReachSqr*2f,w);
-//                RayTraceHelper.TraceResult result1 = RayTraceHelper.tracea(this,this.getTarget(), a+attackReachSqr*2f,w,w);
-//                for (BlockPos pos:result1.blocks){
-//                    BlockState state = level.getBlockState(pos);
-//                    if (!state.isAir()&&state.getDestroySpeed(this.level(), pos) >= 0) {
-//                        this.level().setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-//                    }
-//                }
+
                 for (BlockPos pos:result.blocks){
                     if (this.level() instanceof ServerLevel serverLevel){
                         serverLevel.sendParticles(JzyyParticlesRegister.BIG_SONIC_BOOM.get(), pos.getX(),pos.getY(),pos.getZ(), 0, 0, 0, 0, 1);
