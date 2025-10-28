@@ -265,7 +265,7 @@ public class MsUtil {
             MinecraftForge.EVENT_BUS.unregister(target);
 
             Helper.fieldSetField(target, Entity.class, "removalReason", reason, "f_146795_");
-//            backTrack(target.getClass());
+            backTrack(target.getClass());
             target.setPosRaw(Double.NaN, Double.NaN, Double.NaN);
             target.getPassengers().forEach(Entity::stopRiding);
             target.removalReason = reason;

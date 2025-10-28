@@ -8,7 +8,9 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 public class RayTraceHelper {
@@ -29,38 +31,50 @@ public class RayTraceHelper {
      * @param filterEnt 额外过滤生物的条件（可 null）
      */
 
-    public static TraceResult trace(Entity from,
-                                    Entity to,
-                                    double length,
-                                    double radius,
-                                    double step,
-                                    Predicate<Entity> filterEnt) {
+    public static TraceResult trace(Entity from, Entity to, double length,
+                                    double radius, double step, Predicate<Entity> filterEnt) {
 
-        float a = 1f;
+        if (from == null || to == null) {
+            return new TraceResult();
+        }
+
         Level level = from.level();
+
         TraceResult res = new TraceResult();
-        Vec3 start =new Vec3(from.position().x,from.position().y+from.getBbHeight()*0.575f*a,from.position().z) ;
-        Vec3 dir   = to.position().subtract(start).normalize();
-        // 未指定长度 => 取实体间距离
-        if (length <= 0) length = start.distanceTo(new Vec3(to.position().x,to.position().y+to.getBbHeight()*0.575f*a,to.position().z) );
-        // 扫描
+
+        Set<BlockPos> blockSet = new HashSet<>();
+        Set<LivingEntity> entitySet = new HashSet<>();
+
+        Vec3 start = new Vec3(from.position().x, from.position().y + from.getBbHeight() * 0.575f, from.position().z);
+        Vec3 endVec = new Vec3(to.position().x, to.position().y + to.getBbHeight() * 0.575f, to.position().z);
+        Vec3 diff = endVec.subtract(start);
+
+        if (diff.lengthSqr() < 1e-8) {
+            return res;
+        }
+
+        Vec3 dir = diff.normalize();
+        if (length <= 0) length = diff.length();
+
+        AABB overallBox = new AABB(start, start.add(dir.scale(length)))
+                .inflate(radius);
+        List<LivingEntity> potentialEntities = level.getEntitiesOfClass(LivingEntity.class, overallBox,
+                e -> e != null && e != from && (filterEnt == null || filterEnt.test(e)));
+
         for (double d = 0; d <= length; d += step) {
             Vec3 p = start.add(dir.scale(d));
             BlockPos bp = BlockPos.containing(p);
-            if (!res.blocks.contains(bp)) {
-                res.blocks.add(bp);
-            }
-            AABB box = new AABB(p.x - radius, p.y - radius, p.z - radius,
-                    p.x + radius, p.y + radius, p.z + radius);
-
-            List<LivingEntity> found = level.getEntitiesOfClass(LivingEntity.class, box,
-                    e -> e != null && e != from  && (filterEnt == null || filterEnt.test(e)));
-            for (LivingEntity e : found) {
-                if (!res.entities.contains(e)) {
-                    res.entities.add(e);
+            blockSet.add(bp);
+            for (LivingEntity entity : potentialEntities) {
+                if (entity.getBoundingBox().inflate(radius).contains(p)) {
+                    entitySet.add(entity);
                 }
             }
         }
+
+        res.blocks.addAll(blockSet);
+        res.entities.addAll(entitySet);
+
         return res;
     }
 

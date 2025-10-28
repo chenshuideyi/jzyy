@@ -29,11 +29,10 @@ public class SummonCsdy extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        // 先调用父类的use方法（保持原有效果）
+
         InteractionResultHolder<ItemStack> use = super.use(level, player, hand);
 
-        // 只在服务端执行生成逻辑（避免客户端也执行）
-        if (!level.isClientSide()) {
+        if (!level.isClientSide() && level.dimension() == Level.OVERWORLD) {
             // 计算玩家头顶20格的位置
             BlockPos spawnPos = player.blockPosition().above(20);
 
@@ -50,10 +49,8 @@ public class SummonCsdy extends Item {
                         0
                 );
 
-
                 // 将实体添加到世界中
                 level.addFreshEntity(csdy);
-
             }
         }
 

@@ -4,6 +4,7 @@ import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.ai.TitanWarden.TitanWardenAttackGoal;
 import com.csdy.jzyy.entity.boss.ai.TitanWarden.RayTraceHelper;
+import com.csdy.jzyy.mixins.AttributeInstanceAccessor;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.core.BlockPos;
@@ -113,8 +114,18 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     }
 
     @Override
-    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate){
+    public void updateFluidHeightAndDoFluidPushing(Predicate<FluidState> shouldUpdate) {
+        super.updateFluidHeightAndDoFluidPushing(shouldUpdate);
+    }
 
+    //没多大用，加着玩
+    @Override
+    public float getHealth() {
+        return (float) getCachedValue(this.getAttribute(Attributes.MAX_HEALTH));
+    }
+
+    public static double getCachedValue(AttributeInstance attribute) {
+        return ((AttributeInstanceAccessor) attribute).getCachedValue();
     }
     @Override
     public void tick() {
@@ -167,16 +178,11 @@ public class TitanWarden extends BossEntity implements GeoEntity {
                     this.remoteTicks = 0;
                 }
             }
-            if (this.remotingTicks == 68&&this.isRemote()&&this.getTarget()!=null) {
-                float a = (float) this.position().subtract(this.getTarget().position()).length();
+            LivingEntity target = this.getTarget();
+            if (this.remotingTicks == 68 && this.isRemote() && target != null) {
+                float a = (float) this.position().subtract(target.position()).length();
                 RayTraceHelper.TraceResult result = RayTraceHelper.trace(this,this.getTarget(), a+attackReachSqr*2f,w);
-//                RayTraceHelper.TraceResult result1 = RayTraceHelper.tracea(this,this.getTarget(), a+attackReachSqr*2f,w,w);
-//                for (BlockPos pos:result1.blocks){
-//                    BlockState state = level.getBlockState(pos);
-//                    if (!state.isAir()&&state.getDestroySpeed(this.level(), pos) >= 0) {
-//                        this.level().setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-//                    }
-//                }
+
                 for (BlockPos pos:result.blocks){
                     if (this.level() instanceof ServerLevel serverLevel){
                         serverLevel.sendParticles(JzyyParticlesRegister.BIG_SONIC_BOOM.get(), pos.getX(),pos.getY(),pos.getZ(), 0, 0, 0, 0, 1);

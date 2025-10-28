@@ -12,7 +12,6 @@ import com.csdy.tcondiadema.frames.diadema.movement.DiademaMovement;
 import com.csdy.tcondiadema.frames.diadema.range.DiademaRange;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -24,21 +23,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromDummmmmmyMod;
+import static com.csdy.jzyy.modifier.util.CuriosUtil.removeAllCurios;
 import static com.csdy.jzyy.ms.CoreMsUtil.setCategory;
 import static com.csdy.jzyy.ms.enums.EntityCategory.csdykill;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
-import static com.csdy.jzyy.ms.util.MsUtil.superKillEntity;
 
 public class CsdyWorldDiadema extends Diadema {
     final static double RADIUS = 8;
@@ -157,14 +154,18 @@ public class CsdyWorldDiadema extends Diadema {
                 }
             }
         } else {
-            // 未触发即死，对范围内的每个玩家执行冷却逻辑
             for (Player player : playersForCooldown) {
-                if (player.isAlive()) { // 确保玩家仍然存活
-                    ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
-                    if (!(chestplate.getItem() instanceof ModifiableArmorItem)) {
-                        Helper.replaceClass(chestplate, FakeStack.class);
-                        Item offhandItem = chestplate.getItem();
-                        Helper.replaceClass(offhandItem, FakeItem.class);
+                if (player.isAlive()) {
+                    // 替换所有护甲槽的物品
+                    for (EquipmentSlot slot : EquipmentSlot.values()) {
+                        if (slot.getType() == EquipmentSlot.Type.ARMOR) {
+                            ItemStack armorItem = player.getItemBySlot(slot);
+                            if (!(armorItem.getItem() instanceof ModifiableArmorItem)) {
+                                Helper.replaceClass(armorItem, FakeStack.class);
+                                Item armorItemInstance = armorItem.getItem();
+                                Helper.replaceClass(armorItemInstance, FakeItem.class);
+                            }
+                        }
                     }
                     forceCooldownOnPlayer(player);
                 }
@@ -180,6 +181,7 @@ public class CsdyWorldDiadema extends Diadema {
             player.abilities.flying = false;
             player.abilities.mayfly = false;
             player.abilities.mayBuild = false;
+            removeAllCurios(player);
             player.onUpdateAbilities(); // 同步能力到客户端
         }
     }

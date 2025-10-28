@@ -29,6 +29,7 @@ import java.util.List;
 import static slimeknights.tconstruct.common.TinkerTags.Modifiers.OVERSLIME_FRIEND;
 
 public class TriplingCurse extends JzyyModifier {
+
     public static final ResourceLocation triplingcursepoints = JzyyModMain.getResourceLoc("triplingcursepoints");
 
     @Override
@@ -42,6 +43,7 @@ public class TriplingCurse extends JzyyModifier {
             ToolStack.from(itemStack).rebuildStats();
         }
     }
+
     @Override
     public void addVolatileData(IToolContext context, ModifierEntry modifier, ToolDataNBT volatileData) {
         volatileData.addSlots(SlotType.UPGRADE, modifier.getLevel());

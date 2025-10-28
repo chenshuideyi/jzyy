@@ -1,10 +1,13 @@
 package com.csdy.jzyy.entity.boss.ai;
 
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
 import lombok.Getter;
 import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.player.Player;
@@ -143,10 +146,18 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
      * @param target 要伤害的目标
      */
     private void dealDamageToTarget(LivingEntity target) {
-        if (!target.isAlive()) return; // 安全检查
-        target.invulnerableTime = 0;      // 强制取消无敌帧，以实现快速连击
-        this.mob.doHurtTarget(target); // 造成常规伤害
-        forceHurt(target, this.mob.damageSources().mobAttack(this.mob),1);
+        if (!target.isAlive()) return;
+        target.invulnerableTime = 0;
+        this.mob.doHurtTarget(target);
+
+        int currentLevel = target.hasEffect(JzyyEffectRegister.DEEP_WOUND.get()) ?
+                target.getEffect(JzyyEffectRegister.DEEP_WOUND.get()).getAmplifier() : -1;
+
+        int newLevel = currentLevel + 1;
+        float damage = 1 + newLevel;
+
+        forceHurt(target, this.mob.damageSources().mobAttack(this.mob), damage);
+        target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
 
         if (!(target instanceof Player) && !(isFromDummmmmmyMod(target))) {
             float oldHealth = target.getHealth();

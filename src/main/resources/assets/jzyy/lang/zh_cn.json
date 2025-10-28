@@ -108,7 +108,7 @@
   "item.jzyy.player_meat": "你的肉",
   "item.jzyy.csdy_meat": "Csdy的肉",
   "item.jzyy.summon_csdy": "天子的帽子",
-  "item.jzyy.summon_csdy_line1": "可以召唤csdy",
+  "item.jzyy.summon_csdy_line1": "右键召唤csdy，只会在主世界奏效",
 
   "item.jzyy.return_to_the_end": "归终锭",
   "item.jzyy.return_to_the_end.line1": "无梦的赞助者提案",
@@ -471,15 +471,14 @@
 
 
 
-
+  "modifier.jzyy.tong_greed": "§d桐之§b贪欲",
+  "modifier.jzyy.tong_greed.flavor": "我的！都是我的！",
+  "modifier.jzyy.tong_greed.description": "这把工具会想方设法夺取攻击目标的一切，无论是生命值、掉落物还是经验值，每级词条等级等效于1级噬生、1级抢夺，1级时运和1级阅历。",
 
   "modifier.jzyy.hyper_beam": "破坏死光",
   "modifier.jzyy.hyper_beam.flavor": "黑·魔·导·爆·烈·破",
   "modifier.jzyy.hyper_beam.description": "空挥时会发射一道音爆，被音爆击中的目标等同受到一次你的全额攻击",
 
-  "modifier.jzyy.tong_greed": "§d桐之§b贪欲",
-  "modifier.jzyy.tong_greed.flavor": "我的！都是我的！",
-  "modifier.jzyy.tong_greed.description": "这把工具会想方设法夺取攻击目标的一切，无论是生命值、掉落物还是经验值，每级词条等级等效于1级噬生、1级抢夺，1级时运和1级阅历。",
 
   "modifier.jzyy.marisa": "行窃预兆DA☆ZE",
   "modifier.jzyy.marisa.flavor": "在死前会还的DA☆ZE",
@@ -1189,6 +1188,8 @@
   "effect.jzyy.csdy": "csdy的礼物",
   "effect.jzyy.horologium_no_ai": "时间停止",
   "effect.jzyy.holy_protection_cooldown": "神圣闪避冷却中",
+  "effect.jzyy.deep_wound": "深度伤口",
+
 
   "jzyy.tool.tab": "匠战妖域-工具",
   "item.jzyy.lollipop": "棒棒糖",
@@ -1352,6 +1353,12 @@
   "modifier.jzyy.hjm_soul": "哈基米的灵魂",
   "modifier.jzyy.hjm_soul.flavor":"得到了一些先天特征",
   "modifier.jzyy.hjm_soul.description":"三哈一强化普攻",
+
+  "modifier.jzyy.truck": "大运",
+  "modifier.jzyy.truck.flavor":"人生啊能不能放过我这一次",
+  "modifier.jzyy.truck.description":"跑起来，把他们当成减速带",
+
+
 
 
   "entity.oni_miko.onimiko": "鬼巫女",

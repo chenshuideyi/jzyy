@@ -17,6 +17,8 @@ import java.io.InputStream;
 import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static com.csdy.jzyy.JzyyConfig.I_KNOW_WHAT_I_AM_DOING;
+
 public class CsdyLaunchPluginService implements ILaunchPluginService {
 
     private static final String owner = "com/csdy/jzyy/ms/CoreMethod";
@@ -34,11 +36,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
 
     @Override
     public boolean processClass(Phase phase, ClassNode classNode, Type classType) {
-
-        if (!javaVersionChecked) {
-            checkJavaVersion();
-            javaVersionChecked = true;
-        }
 
         if ("net/minecraft/world/entity/LivingEntity".equals(classNode.name)) {
             System.out.println("正在尝试修改getHealth");
@@ -243,11 +240,42 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     public static void checkJavaVersion() {
         String version = System.getProperty("java.version");
         if (!version.startsWith("17")) {
-            JOptionPane.showMessageDialog(null,
-                    "请更换Java版本为17\n当前版本: " + version,
-                    "Java版本错误",
-                    JOptionPane.ERROR_MESSAGE);
-            System.exit(1);
+            if (I_KNOW_WHAT_I_AM_DOING.get()) return;
+            SwingUtilities.invokeLater(() -> {
+                JDialog dialog = new JDialog();
+                dialog.setAlwaysOnTop(true); // 设置始终在最上层
+                JOptionPane.showMessageDialog(dialog,
+                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java21启动游戏，前往jzyy-common.toml中开启“我知道我在干什么”",
+                        "Java版本错误",
+                        JOptionPane.ERROR_MESSAGE);
+                System.exit(1);
+            });
+            try {
+                Thread.sleep(Long.MAX_VALUE);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    public static void checkOculus() {
+        // 如果你在使用模组加载器API
+        if (net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("oculus") != null) {
+            if (I_KNOW_WHAT_I_AM_DOING.get()) return;
+            SwingUtilities.invokeLater(() -> {
+                JDialog dialog = new JDialog();
+                dialog.setAlwaysOnTop(true); // 设置始终在最上层
+                JOptionPane.showMessageDialog(dialog,
+                        "本包不支持光影，请移除 Oculus 以避免兼容性问题" +"\n如果你执意要添加光影，前往jzyy-common.toml中开启“我知道我在干什么”",
+                        "模组冲突",
+                        JOptionPane.ERROR_MESSAGE);
+                System.exit(1);
+            });
+            try {
+                Thread.sleep(Long.MAX_VALUE);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 

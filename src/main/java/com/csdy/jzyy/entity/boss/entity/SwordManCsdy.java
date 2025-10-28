@@ -202,16 +202,18 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             return false;
         }
 
-        // 只通过这个途径减少血量
+        // 计算血量比例减伤（血量越低减伤越多）
+        float healthRatio = this.currentHealth / this.getMaxHealth(); // 假设有maxHealth字段
+        float damageReduction = (1 - healthRatio) * 0.9f; // 最多减伤90%
+        realDamage = realDamage * (1 - damageReduction);
+
         this.currentHealth -= realDamage;
         if (this.currentHealth < 0) {
             this.currentHealth = 0;
         }
 
-        // 传送机制
         teleportToAttacker(source);
 
-        // 如果生命值归零，触发死亡逻辑
         if (this.currentHealth <= 0 && !isDying) {
             handleDeath();
         }
@@ -236,23 +238,24 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     private void handleDeath() {
         if (isDying) return;
 
+        if (this.level() == null || this.level().getServer() == null) {
+            // 服务器已关闭，跳过死亡处理
+            return;
+        }
+
         isDying = true;
 
-        // 触发原生死亡逻辑
         DamageSource deathSource = this.damageSources().generic();
         super.die(deathSource);
 
-        // 确保掉落战利品
         this.dropAllDeathLoot(deathSource);
 
-        // 移除血天效果
         if (this.level() instanceof ServerLevel serverLevel) {
             for (ServerPlayer player : serverLevel.players()) {
                 BloodSkyEffect.SetEnableTo(player, false);
             }
         }
 
-        // 确保原生系统也知道死亡
         super.setHealth(0);
     }
 
@@ -289,12 +292,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     @Override
     public void setHealth(float value) {
         if (isReal() || isDying) return;
-
-        // 记录尝试修改的堆栈信息
-        if (value < this.currentHealth) {
-            System.out.println("妄想用这种力量对付我？");
-            Thread.dumpStack();
-        }
 
         // 只允许增加血量，不允许减少
         if (value > this.currentHealth) {
@@ -374,7 +371,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
         builder = builder.add(Attributes.MAX_HEALTH, 50000.0);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 1600.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 6400.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 128);
         return builder;
