@@ -240,12 +240,16 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     public static void checkJavaVersion() {
         String version = System.getProperty("java.version");
         if (!version.startsWith("17")) {
-            if (I_KNOW_WHAT_I_AM_DOING.get()) return;
+
+            if (I_KNOW_WHAT_I_AM_DOING.get()) {
+                return; // 如果用户知道风险，直接返回，不执行后面的警告代码
+            }
+
             SwingUtilities.invokeLater(() -> {
                 JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true); // 设置始终在最上层
                 JOptionPane.showMessageDialog(dialog,
-                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java21启动游戏，前往jzyy-common.toml中开启“我知道我在干什么”",
+                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java" + version + "启动游戏，前往jzyy-common.toml中开启“我知道我在干什么”",
                         "Java版本错误",
                         JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
@@ -261,7 +265,11 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     public static void checkOculus() {
         // 如果你在使用模组加载器API
         if (net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("oculus") != null) {
-            if (I_KNOW_WHAT_I_AM_DOING.get()) return;
+            if (I_KNOW_WHAT_I_AM_DOING.get()) {
+                return; // 如果用户知道风险，直接返回，不执行后面的警告代码
+            }
+
+            // 只有当用户不知道风险时，才执行下面的警告和退出代码
             SwingUtilities.invokeLater(() -> {
                 JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true); // 设置始终在最上层

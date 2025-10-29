@@ -86,10 +86,7 @@ public class JzyyModMain {
 
 
 
-        checkJavaVersion();
-        checkOculus();
 
-        gpuUtilInit();
 
         JzyyDiademaRegister.DIADEMA_TYPES.register(bus);
         //仅客户端运行
@@ -119,10 +116,15 @@ public class JzyyModMain {
     public static void onFMLCommonSetup(FMLCommonSetupEvent event) {
         //网络包
         JzyySyncing.Init();
+        //安全检查和配置检查
+        checkJavaVersion();
+        checkOculus();
+        gpuUtilInit();
         // 以下代码仅在客户端运行
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> DxSlots::init);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BatBlindnessEffect::init));
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BloodSkyEffect::init));
+
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
