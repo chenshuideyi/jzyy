@@ -2,16 +2,23 @@
   "default": [
     {
       "name": "jzyy:refinemeror",
-      "level": 1,
+      "level": 1
+    },
+    {
       "name": "jzyy:lifeandarmor",
       "level": 1
     }
+
   ],
   "perStat": {
     "tconstruct:armor":[
       {
         "name": "jzyy:lowinjurydisregard",
         "level": 1
+      },
+      {
+        "name": "jzyy:merortoughness",
+        "level": 5
       }
     ]
   }
