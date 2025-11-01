@@ -1,0 +1,34 @@
+{
+  "default": [
+    {
+      "name": "jzyy:my_sadness_is_liquid_formed",
+      "level": 1
+    },
+    {
+      "name": "jzyy:zettai_zetsumei",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "jzyy:reality",
+        "level": 1
+      },
+      {
+        "name": "jzyy:immortal_death",
+        "level": 1
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "jzyy:connect",
+        "level": 1
+      },
+      {
+        "name": "jzyy:the_center_of_the_peculiar_storm",
+        "level": 1
+      }
+    ]
+  }
+}

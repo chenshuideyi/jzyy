@@ -249,7 +249,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                 JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true); // 设置始终在最上层
                 JOptionPane.showMessageDialog(dialog,
-                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java" + version + "启动游戏，前往jzyy-common.toml中开启“我知道我在干什么”",
+                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java" + version + "启动游戏，前往jzyy-common.toml中开启“我知道我在干什么”" + "\n开启后遇到的一切未知卡顿，游戏崩溃问题都不会被受理",
                         "Java版本错误",
                         JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
@@ -274,7 +274,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                 JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true); // 设置始终在最上层
                 JOptionPane.showMessageDialog(dialog,
-                        "本包不支持光影，请移除 Oculus 以避免兼容性问题" +"\n如果你执意要添加光影，前往jzyy-common.toml中开启“我知道我在干什么”",
+                        "本包不支持光影，请移除 Oculus 以避免兼容性问题" +"\n如果你执意要添加光影，前往jzyy-common.toml中开启“我知道我在干什么”" + "\n开启后遇到的一切贴图错误，渲染崩坏问题都不会被受理",
                         "模组冲突",
                         JOptionPane.ERROR_MESSAGE);
                 System.exit(1);

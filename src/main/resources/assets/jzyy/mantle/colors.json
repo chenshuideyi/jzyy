@@ -187,7 +187,15 @@
     "更新后切断": null,
     "coda": "#8A2BE2",
     "kuva": "#DC143C",
-    "tenet": "#20B2AA"
+    "tenet": "#20B2AA",
+    "天依": null,
+    "immortal_death": "#66CCFF",
+    "reality": "#66CCFF",
+    "zettai_zetsumei": "#66CCFF",
+    "my_sadness_is_liquid_formed": "#66CCFF",
+    "the_center_of_the_peculiar_storm": "#66CCFF",
+    "connect": "#66CCFF"
+
   },
   "material.jzyy": {
     "overflowed_memory": "#FF68EE",
@@ -227,7 +235,8 @@
     "yin": "#000000",
     "mega_manyullyn": "#9b59b6",
     "ardite": "#c84e17",
-    "heavenly_gift": "#78FFF0"
+    "heavenly_gift": "#78FFF0",
+    "tian_yi": "#66CCFF"
   },
   "stat.tconstruct.slot": {
     "dx": "#00FFFF"
