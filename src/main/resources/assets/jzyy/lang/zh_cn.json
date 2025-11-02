@@ -63,6 +63,11 @@
   "item.jzyy.yue_zheng_ling.line1": "COPY",
   "item.jzyy.yue_zheng_ling.line2": "CSDY的提案",
 
+
+  "item.jzyy.dot": "dot",
+  "item.jzyy.dot.line1": "BiAn的提案",
+
+
   "item.jzyy.magic_uranium": "魔力铀",
   "item.jzyy.magic_uranium.line1": "Urranium的提案",
 
@@ -238,7 +243,9 @@
   "material.jzyy.tian_yi.flavor": "脑袋上有莫比乌斯环",
   "material.jzyy.tian_yi.encyclopedia": "我是初音未来，这才是洛天依",
 
-
+  "material.jzyy.dot": "dot",
+  "material.jzyy.dot.flavor": "持续？",
+  "material.jzyy.dot.encyclopedia": "在持续中持续",
 
 
 
