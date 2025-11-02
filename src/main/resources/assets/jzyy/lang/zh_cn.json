@@ -59,6 +59,9 @@
   "item.jzyy.yakumo_ender": "誓约胜利之锭",
   "item.jzyy.yakumo_ender_line1": "tzdEnder的提案",
 
+  "item.jzyy.dot_item": "dot锭",
+  "item.jzyy.dot_item.line1": "BiAn的提案",
+
   "item.jzyy.yue_zheng_ling": "石墨砖",
   "item.jzyy.yue_zheng_ling.line1": "COPY",
   "item.jzyy.yue_zheng_ling.line2": "CSDY的提案",
@@ -232,7 +235,9 @@
   "material.jzyy.true_rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
 
 
-
+  "material.jzyy.dot_item": "§bdot锭",
+  "material.jzyy.dot_item.flavor": "持续？",
+  "material.jzyy.dot_item.encyclopedia": "会持续存在的持续",
 
 
 
@@ -1267,6 +1272,15 @@
   "modifier.jzyy.refinemeror.flavor":"refinemeror",
   "modifier.jzyy.refinemeror.description":"装备时会让你自动攻击敌人",
 
+  "modifier.jzyy.dotmodifier": "§b重铸dot荣光，我辈义不容辞",
+  "modifier.jzyy.dotmodifier.flavor":"dot荣光!",
+  "modifier.jzyy.dotmodifier.description":"对目标强制施加负面效果并根据效果数量提升伤害，达到一定值时额外造成绝对切断。",
+
+  "modifier.jzyy.dotarmor": "§b指令：防御",
+  "modifier.jzyy.dotarmor.flavor":"弱势防御",
+  "modifier.jzyy.dotarmor.description":"装备时给予增益效果,同时免疫大多数伤害，免疫负面效果，受到攻击给予攻击者随机负面效果以及返还数倍普通伤害",
+
+
   "material.jzyy.bitter_cold_firm_ice": "苦寒坚冰",
   "material.jzyy.bitter_cold_firm_ice.flavor": "非常寒冷的冰?",
   "material.jzyy.frost_yeti_hair": "寒霜雪怪毛发",
@@ -1368,4 +1382,9 @@
   "advancements.jzyy.jzyy_advancements.description": "只是一个开始",
   "advancements.jzyy.compound_bow.title": "复合弓",
   "advancements.jzyy.compound_bow.description": "背包存在弹射物伤害超过999的弓类匠魂工具时，小耄们将不敢靠近你"
+
+
+
+
+
 }

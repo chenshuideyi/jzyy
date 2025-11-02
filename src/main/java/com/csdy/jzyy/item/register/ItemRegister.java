@@ -23,7 +23,7 @@ public class ItemRegister {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
     public static final RegistryObject<Item> MINI_CSDY = ITEMS.register("mini_csdy", MiniCsdy::new);
-
+    public static final RegistryObject<Item> DOT_ITEM = ITEMS.register("dot_item", DotItem::new);
     public static final RegistryObject<Item> MARISA = ITEMS.register("marisa_ingot", MarisaIngot::new);
     public static final RegistryObject<Item> YUE_ZHENG_LING = ITEMS.register("yue_zheng_ling", YueZhengLing::new);
     public static final RegistryObject<Item> ABYSS_ALLOY = ITEMS.register("abyss_alloy", AbyssAlloy::new);
@@ -65,6 +65,10 @@ public class ItemRegister {
 
     public static final RegistryObject<BaseSponsorshipItem> ARDITE_INGOT = ITEMS.register("ardite_ingot",
             () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.ardite_ingot.line1", ChatFormatting.WHITE));
+
+
+
+
 
     public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));

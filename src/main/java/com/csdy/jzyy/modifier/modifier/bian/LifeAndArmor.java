@@ -14,7 +14,7 @@ import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 
 
 public class LifeAndArmor extends NoLevelsModifier implements MeleeHitModifierHook {
-    private final float absoluteSeveranceValue = 0.3F;
+    private final float absoluteSeveranceValue = 0.7F;
     private final float absoluteSeveranceBaseDamage = 0;
 
     @Override
