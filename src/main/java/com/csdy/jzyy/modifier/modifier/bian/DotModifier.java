@@ -27,9 +27,7 @@ public class DotModifier extends Modifier implements MeleeDamageModifierHook {
 
     private static final Map<UUID, Integer> highestEffectCountMap = new WeakHashMap<>();
 
-
     private static final Map<UUID, Set<MobEffect>> appliedEffectsMap = new WeakHashMap<>();
-
 
     private static final Map<UUID, Long> NULL_ENTITY_TIMES = new HashMap<>();
 
@@ -66,12 +64,6 @@ public class DotModifier extends Modifier implements MeleeDamageModifierHook {
             Player attacker = context.getPlayerAttacker();
             if (attacker != null && enemy.getHealth() > 0) {
                 float weaponDamage = tool.getDamage();
-
-
-                float severanceValue = absoluteSeveranceBaseValue + (highestEffectCount * 1.2F);
-
-
-                modifierAbsoluteSeverance(enemy, attacker, weaponDamage, severanceValue);
 
 
                 if (highestEffectCount >= absoluteSeveranceThreshold) {

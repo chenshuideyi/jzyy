@@ -3,15 +3,15 @@
     "tconstruct:binding": {},
     "tconstruct:handle": {
       "durability": 1145.14,
-      "mining_speed": 19198.10,
-      "melee_speed": 19198.10,
+      "mining_speed": 1919.81,
+      "melee_speed": 1919.81,
       "melee_damage": 1145.14
     },
     "tconstruct:head": {
       "durability": 20000,
       "mining_speed": 100,
       "mining_tier": "minecraft:netherite",
-      "melee_attack": 10000
+      "melee_attack": 114514
     },
     "tconstruct:limb": {
     "durability": 1250,
