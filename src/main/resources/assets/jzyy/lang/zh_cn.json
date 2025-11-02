@@ -59,15 +59,15 @@
   "item.jzyy.yakumo_ender": "誓约胜利之锭",
   "item.jzyy.yakumo_ender_line1": "tzdEnder的提案",
 
-  "item.jzyy.dot_item": "dot锭",
-  "item.jzyy.dot_item.line1": "BiAn的提案",
-
   "item.jzyy.yue_zheng_ling": "石墨砖",
   "item.jzyy.yue_zheng_ling.line1": "COPY",
   "item.jzyy.yue_zheng_ling.line2": "CSDY的提案",
 
   "item.jzyy.magic_uranium": "魔力铀",
   "item.jzyy.magic_uranium.line1": "Urranium的提案",
+
+  "item.jzyy.tian_yi_ingot": "天依锭",
+  "item.jzyy.tian_yi_ingot.line1": "Lost In Tianyi的赞助者提案",
 
   "item.jzyy.silence": "寂静",
   "item.jzyy.silence.inventory_name": "一知半解锭",
@@ -234,10 +234,10 @@
   "material.jzyy.true_rain_curtain.flavor": "时代病",
   "material.jzyy.true_rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
 
+  "material.jzyy.tian_yi": "天依",
+  "material.jzyy.tian_yi.flavor": "脑袋上有莫比乌斯环",
+  "material.jzyy.tian_yi.encyclopedia": "我是初音未来，这才是洛天依",
 
-  "material.jzyy.dot_item": "§bdot锭",
-  "material.jzyy.dot_item.flavor": "持续？",
-  "material.jzyy.dot_item.encyclopedia": "会持续存在的持续",
 
 
 
@@ -1272,15 +1272,6 @@
   "modifier.jzyy.refinemeror.flavor":"refinemeror",
   "modifier.jzyy.refinemeror.description":"装备时会让你自动攻击敌人",
 
-  "modifier.jzyy.dotmodifier": "§b重铸dot荣光，我辈义不容辞",
-  "modifier.jzyy.dotmodifier.flavor":"dot荣光!",
-  "modifier.jzyy.dotmodifier.description":"对目标强制施加负面效果并根据效果数量提升伤害，达到一定值时额外造成绝对切断。",
-
-  "modifier.jzyy.dotarmor": "§b指令：防御",
-  "modifier.jzyy.dotarmor.flavor":"弱势防御",
-  "modifier.jzyy.dotarmor.description":"装备时给予增益效果,同时免疫大多数伤害，免疫负面效果，受到攻击给予攻击者随机负面效果以及返还数倍普通伤害",
-
-
   "material.jzyy.bitter_cold_firm_ice": "苦寒坚冰",
   "material.jzyy.bitter_cold_firm_ice.flavor": "非常寒冷的冰?",
   "material.jzyy.frost_yeti_hair": "寒霜雪怪毛发",
@@ -1372,6 +1363,37 @@
   "modifier.jzyy.truck.flavor":"人生啊能不能放过我这一次",
   "modifier.jzyy.truck.description":"跑起来，把他们当成减速带",
 
+  "modifier.jzyy.immortal_death": "不老不死",
+  "modifier.jzyy.immortal_death.flavor":"这一场自作自受的孽",
+  "modifier.jzyy.immortal_death.description":"无限复活",
+
+  "modifier.jzyy.reality": "九重现实",
+  "modifier.jzyy.reality.flavor":"义无反顾地向下坠落 痴心妄想谁能接住我",
+  "modifier.jzyy.reality.description":"获得虚空救援",
+
+  "modifier.jzyy.zettai_zetsumei": "绝体绝命",
+  "modifier.jzyy.zettai_zetsumei.flavor":"我观赏这喜剧是你导演",
+  "modifier.jzyy.zettai_zetsumei.description":"「绝对切断」71.2%效能",
+
+  "modifier.jzyy.my_sadness_is_liquid_formed": "我的悲伤是水做的",
+  "modifier.jzyy.my_sadness_is_liquid_formed.flavor":"我的太阳在哪里呢，在哪里呢",
+  "modifier.jzyy.my_sadness_is_liquid_formed.description":"攻击后，若时间处于晚上，发动一次太阳氦闪",
+
+  "modifier.jzyy.the_center_of_the_peculiar_storm": "异样的风暴中心",
+  "modifier.jzyy.the_center_of_the_peculiar_storm.flavor":"对不起，好像不小心掉进了风暴的中心",
+  "modifier.jzyy.the_center_of_the_peculiar_storm.description":"箭矢射中的区域会产生一股巨大的吸力",
+
+  "modifier.jzyy.connect": "CONNECT",
+  "modifier.jzyy.connect.flavor":"欢呼着哔哩哔哩 次元咒语",
+  "modifier.jzyy.connect.description":"射中生物后会产生造成「绝对切断」的闪电链",
+
+
+
+
+
+
+
+
 
 
 
@@ -1382,9 +1404,4 @@
   "advancements.jzyy.jzyy_advancements.description": "只是一个开始",
   "advancements.jzyy.compound_bow.title": "复合弓",
   "advancements.jzyy.compound_bow.description": "背包存在弹射物伤害超过999的弓类匠魂工具时，小耄们将不敢靠近你"
-
-
-
-
-
 }

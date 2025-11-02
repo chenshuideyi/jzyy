@@ -94,6 +94,7 @@ import com.csdy.jzyy.modifier.modifier.srp.Infested;
 import com.csdy.jzyy.modifier.modifier.srp.ItsLive;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseHealModifier;
 import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseMaxHealthModifier;
+import com.csdy.jzyy.modifier.modifier.tian_yi.*;
 import com.csdy.jzyy.modifier.modifier.tianyuan_box.HeavenlyGift;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
@@ -612,6 +613,17 @@ public class ModifierRegister {
     public static final StaticModifier<UnDeadSoul> UN_DEAD_SOUL_STATIC_MODIFIER = MODIFIERS.register("undead_soul", UnDeadSoul::new);
     public static final StaticModifier<ApostleSoul> APOSTLE_SOUL_STATIC_MODIFIER = MODIFIERS.register("apostle_soul", ApostleSoul::new);
     public static final StaticModifier<HJMSoul> HJM_SOUL_STATIC_MODIFIER = MODIFIERS.register("hjm_soul", HJMSoul::new);
+
+    ///天依
+    public static final StaticModifier<Reality> REALITY_STATIC_MODIFIER = MODIFIERS.register("reality", Reality::new);
+    public static final StaticModifier<ImmortalDeath> IMMORTAL_DEATH_STATIC_MODIFIER = MODIFIERS.register("immortal_death", ImmortalDeath::new);
+
+    public static final StaticModifier<Connect> CONNECT_STATIC_MODIFIER = MODIFIERS.register("connect", Connect::new);
+    public static final StaticModifier<TheCenterOfThePeculiarStorm> THE_CENTER_OF_THE_PECULIAR_STORM_STATIC_MODIFIER = MODIFIERS.register("the_center_of_the_peculiar_storm", TheCenterOfThePeculiarStorm::new);
+
+    public static final StaticModifier<MySadnessIsLiquidFormed> MY_SADNESS_IS_LIQUID_FORMED_STATIC_MODIFIER = MODIFIERS.register("my_sadness_is_liquid_formed", MySadnessIsLiquidFormed::new);
+    public static final StaticModifier<AbsoluteSeverance> ZETTAI_ZETSUMEI = MODIFIERS.register("zettai_zetsumei", () -> new AbsoluteSeverance(0.712F,0));
+
 
     ///领域
     public static final StaticModifier<DiademaModifier> ALEX_MELTDOWN_STATIC_MODIFIER = MODIFIERS.register("lucky_tnt_meltdown", CommonDiademaModifier.Create(JzyyDiademaRegister.LUCKY_TNT_MELTDOWN));

@@ -99,7 +99,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
      * 封装的四连击与范围伤害逻辑。
      * @param mainTarget 主要攻击的目标
      */
-    private void performFourHitCombo(LivingEntity mainTarget) {
+    public void performFourHitCombo(LivingEntity mainTarget) {
         // --- 连击参数 ---
         final int hitCount = 4;      // 连击次数
         final double aoeRadius = 4.0D; // 范围伤害的半径

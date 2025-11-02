@@ -1,6 +1,7 @@
 package com.csdy.jzyy.entity.boss.entity;
 
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
+import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.csdy.jzyy.entity.boss.BossEntity;
 import com.csdy.jzyy.entity.boss.BossMusic;
 import com.csdy.jzyy.entity.boss.ai.CsdyMeleeGoal;
@@ -22,6 +23,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,6 +31,8 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -40,6 +44,10 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
+import java.util.List;
+
+import static com.csdy.jzyy.entity.Util.forceHurt;
+
 
 public class SwordManCsdy extends BossEntity implements GeoEntity {
 
@@ -250,12 +258,6 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
         this.dropAllDeathLoot(deathSource);
 
-        if (this.level() instanceof ServerLevel serverLevel) {
-            for (ServerPlayer player : serverLevel.players()) {
-                BloodSkyEffect.SetEnableTo(player, false);
-            }
-        }
-
         super.setHealth(0);
     }
 
@@ -396,6 +398,59 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         return JzyySoundsRegister.GIRL_A.get();
     }
 
+    @Override
+    public void tickDeath() {
+        ++this.deathTime;
+
+        // 死亡后继续战斗10秒（200 ticks = 10秒）
+        if (this.deathTime >= 20 && this.deathTime < 200) { // 第1秒到第10秒
+            if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+                // 对附近半径8格的生物造成伤害
+                damageNearbyEntities(serverLevel);
+            }
+        }
+
+        if (this.deathTime >= 200 && !this.level().isClientSide() && !this.isRemoved()) {
+            if (this.level() instanceof ServerLevel serverLevel) {
+                for (ServerPlayer player : serverLevel.players()) {
+                    BloodSkyEffect.SetEnableTo(player, false);
+                }
+            }
+            this.level().broadcastEntityEvent(this, (byte)60);
+            this.remove(RemovalReason.KILLED);
+        }
+    }
+
+    // 对附近生物造成伤害的方法
+    private void damageNearbyEntities(ServerLevel level) {
+        // 获取boss位置
+        Vec3 bossPos = this.position();
+
+        // 查找半径8格内的所有生物（除了自己）
+        List<LivingEntity> nearbyEntities = level.getEntitiesOfClass(
+                LivingEntity.class,
+                new AABB(bossPos.x - 8, bossPos.y - 8, bossPos.z - 8,
+                        bossPos.x + 8, bossPos.y + 8, bossPos.z + 8),
+                entity -> entity != this && entity.isAlive()
+        );
+
+        // 对每个生物造成伤害
+        for (LivingEntity target : nearbyEntities) {
+            // 造成伤害，可以根据需要调整伤害值
+
+            int currentLevel = target.hasEffect(JzyyEffectRegister.DEEP_WOUND.get()) ?
+                    target.getEffect(JzyyEffectRegister.DEEP_WOUND.get()).getAmplifier() : -1;
+
+            int newLevel = currentLevel + 1;
+            float damage = 1 + newLevel;
+
+            forceHurt(target, this.damageSources().mobAttack(this), damage * 2);
+            target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
+
+        }
+
+
+    }
 
     private void csdySay(String line) {
         MinecraftServer server = this.level().getServer();
