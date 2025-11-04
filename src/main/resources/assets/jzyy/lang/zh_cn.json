@@ -64,7 +64,7 @@
   "item.jzyy.yue_zheng_ling.line2": "CSDY的提案",
 
 
-  "item.jzyy.dot": "dot",
+  "item.jzyy.dot_item": "§1dot",
   "item.jzyy.dot_item.line1": "BiAn的提案",
 
 
@@ -243,9 +243,9 @@
   "material.jzyy.tian_yi.flavor": "脑袋上有莫比乌斯环",
   "material.jzyy.tian_yi.encyclopedia": "我是初音未来，这才是洛天依",
 
-  "material.jzyy.dot": "dot",
-  "material.jzyy.dot.flavor": "持续？",
-  "material.jzyy.dot.encyclopedia": "在持续中持续",
+  "material.jzyy.dot_item": "dot",
+  "material.jzyy.dot_item.flavor": "持续？",
+  "material.jzyy.dot_item.encyclopedia": "在持续中持续",
 
 
 
@@ -1278,6 +1278,14 @@
   "modifier.jzyy.refinemeror": "莫厄反应",
   "modifier.jzyy.refinemeror.flavor":"refinemeror",
   "modifier.jzyy.refinemeror.description":"装备时会让你自动攻击敌人",
+
+  "modifier.jzyy.dotmodifier": "§9重铸dot荣光，我辈义不容辞",
+  "modifier.jzyy.dotmodifier.flavor":"§bdot荣光!",
+  "modifier.jzyy.dotmodifier.description":"§b攻击时使目标强制随机获得等负面效果,而且目标负面达到一定值再次攻击会额外造成一次绝对切断",
+
+  "modifier.jzyy.dotarmor": "§9指令：防御",
+  "modifier.jzyy.dotarmor.flavor":"§b弱势防御",
+  "modifier.jzyy.dotarmor.description":"§b装备时给予增益效果,同时免疫大部分伤害，强制免疫负面效果，受到攻击给予攻击者随机负面效果以及返还数倍普通伤害",
 
   "material.jzyy.bitter_cold_firm_ice": "苦寒坚冰",
   "material.jzyy.bitter_cold_firm_ice.flavor": "非常寒冷的冰?",

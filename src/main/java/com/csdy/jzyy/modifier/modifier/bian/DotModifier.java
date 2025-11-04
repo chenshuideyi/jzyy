@@ -72,7 +72,7 @@ public class DotModifier extends Modifier implements MeleeDamageModifierHook {
                     modifierAbsoluteSeverance(enemy, attacker, weaponDamage, extraSeverance);
 
 
-                    highestEffectCountMap.remove(enemyId);
+                    //highestEffectCountMap.remove(enemyId);
                 }
             }
         }
