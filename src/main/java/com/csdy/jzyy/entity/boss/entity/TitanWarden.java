@@ -400,7 +400,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
         return Mob.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.MAX_HEALTH, 500000000)
-                .add(Attributes.ATTACK_DAMAGE, 3)
+                .add(Attributes.ATTACK_DAMAGE, 3000000)
                 .add(Attributes.ATTACK_SPEED, 1)
                 .add(Attributes.FOLLOW_RANGE, 100)
                 .add(Attributes.ATTACK_KNOCKBACK, 15);
