@@ -7,9 +7,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
 import static com.csdy.jzyy.JzyyModMain.MODID;
-import static com.csdy.jzyy.cheat.FieldList.ZFlyHeight;
 
 
 @Mod.EventBusSubscriber(modid = MODID)
@@ -68,39 +66,43 @@ public class FunctionSet {
     private static void checkBooleanVariables(Player player) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) {
-//            System.out.println("lx正在给予飞行" + mc.player.getAbilities().flying);
             if (FieldList.Fly) {
+
                 mc.player.getAbilities().mayfly = true;
-                if (mc.player.getAbilities().flying){
-                    mc.player.getAbilities().flying = true;
-                }
+
+                mc.player.getAbilities().flying = true;
+
+                mc.player.onUpdateAbilities();
+            } else {
+                mc.player.getAbilities().mayfly = false;
             }
+
             if (FieldList.Speed) {
                 mc.player.getAbilities().setFlyingSpeed(0.3f);
             } else {
-                mc.player.getAbilities().setFlyingSpeed(0.1f);
+                mc.player.getAbilities().setFlyingSpeed(0.2f);
             }
 
-            if (FieldList.ZFly) {
-                if (mc.options.keyJump.isDown()) {
-                    mc.player.teleportTo(mc.player.getX(), mc.player.getY() + ZFlyHeight / 20000, mc.player.getZ());
-                    mc.player.setPos(mc.player.getX(), mc.player.getY() + ZFlyHeight / 20000, mc.player.getZ());
-                    mc.player.moveTo(mc.player.getX(), mc.player.getY() + ZFlyHeight / 20000, mc.player.getZ());
-                }
-            }
-            if (FieldList.JumpFar) {
+            // 注释自改高跳功能
+            // if (FieldList.ZFly) {
+            //     if (mc.options.keyJump.isDown()) {
+            //         mc.player.teleportTo(mc.player.getX(), mc.player.getY() + ZFlyHeight / 20000, mc.player.getZ());
+            //         mc.player.setPos(mc.player.getX(), mc.player.getY() + ZFlyHeight / 20000, mc.player.getZ());
+            //         mc.player.moveTo(mc.player.getX(), mc.player.getY() + ZFlyHeight / 20000, mc.player.getZ());
+            //     }
+            // }
+
+            // 保留跳远功能，但优化条件判断
+            if (FieldList.JumpFar && !mc.player.getAbilities().flying) {
                 if (mc.options.keyJump.isDown()) {
                     Vec3 lookVec = mc.player.getLookAngle().normalize();
                     double newX = mc.player.getX() + lookVec.x;
                     double newZ = mc.player.getZ() + lookVec.z;
-                    mc.player.moveTo(newX, mc.player.getY(), newZ);
-                    mc.player.teleportTo(newX, mc.player.getY(), newZ);
                     mc.player.setPos(newX, mc.player.getY(), newZ);
                 }
             }
         }
     }
-
     public static void RecordPlayerPosition() {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null && mc.level != null) {

@@ -18,20 +18,20 @@ public class UI {
 
     private static final Color COLOR = Color.WHITE;
     private static final Color TEXT_COLOR = Color.BLACK;
-    private static final Color BUTTON_COLOR = new Color(0x27AE60);
+   private static final Color BUTTON_COLOR = new Color(0x27AE60);
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                 UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
+   public static void main(String[] args) {
+       try {
+           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+       } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                UnsupportedLookAndFeelException e) {
+           e.printStackTrace();
+       }
 
-        SwingUtilities.invokeLater(UI::createAndShowGUI);
-    }
+       SwingUtilities.invokeLater(UI::createAndShowGUI);
+   }
 
-    private static void createAndShowGUI() {
+   private static void createAndShowGUI() {
         frame = new JFrame("LXiSZH - 匠战妖域官方外挂");
         frame.setUndecorated(true);
         frame.setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 20, 20));
@@ -138,30 +138,38 @@ public class UI {
         enableFastSpeed.setText("<html>" + ("飞速") + "</html>");
         enableFastSpeed.setSelected(FieldList.Speed);
         enableFastSpeed.addActionListener(e -> FieldList.Speed = enableFastSpeed.isSelected());
-
         JCheckBox ZF = new JCheckBox();
         ZF.setText("<html>" + ("自改高跳") + "</html>");
-        ZF.setSelected(FieldList.ZFly);
+        ZF.setSelected(false);
+        ZF.setEnabled(false);
         ZF.addActionListener(e -> {
-            FieldList.ZFly = ZF.isSelected();
-            if (FieldList.ZFly) {
-                String input = JOptionPane.showInputDialog("<html>" + ("高跳高度") + "</html>");
-                if (input != null) {
-                    try {
-                        double height = Double.parseDouble(input);
-                        FieldList.ZFlyHeight = height;
-                        JOptionPane.showMessageDialog(null, "<html>" + ("高跳高度已设置为: " + height) + "</html>");
-                    } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "<html>" + ("输入无效，请输入有效的数字。") + "</html>", "<html>" + ("错误") + "</html>", JOptionPane.ERROR_MESSAGE);
-                        FieldList.ZFly = false;
-                        ZF.setSelected(false);
-                    }
-                } else {
-                    FieldList.ZFly = false;
-                    ZF.setSelected(false);
-                }
-            }
+            FieldList.ZFly = false;
+            ZF.setSelected(false);
+            JOptionPane.showMessageDialog(null, "<html>" + ("自改高跳功能已禁用") + "</html>");
         });
+    //    JCheckBox ZF = new JCheckBox();
+   //     ZF.setText("<html>" + ("自改高跳") + "</html>");
+   //     ZF.setSelected(FieldList.ZFly);
+   //     ZF.addActionListener(e -> {
+    //        FieldList.ZFly = ZF.isSelected();
+    //        if (FieldList.ZFly) {
+    //            String input = JOptionPane.showInputDialog("<html>" + ("高跳高度") + "</html>");
+    //            if (input != null) {
+    //                try {
+    //                    double height = Double.parseDouble(input);
+    //                    FieldList.ZFlyHeight = height;
+    //                    JOptionPane.showMessageDialog(null, "<html>" + ("高跳高度已设置为: " + height) + "</html>");
+    //                } catch (NumberFormatException ex) {
+    //                    JOptionPane.showMessageDialog(null, "<html>" + ("输入无效，请输入有效的数字。") + "</html>", "<html>" + ("错误") + "</html>", JOptionPane.ERROR_MESSAGE);
+    //                    FieldList.ZFly = false;
+    //                    ZF.setSelected(false);
+    //                }
+    //            } else {
+    //                FieldList.ZFly = false;
+    //                ZF.setSelected(false);
+    //            }
+    //        }
+    //    });
 
         JCheckBox jumpFar = new JCheckBox();
         jumpFar.setText("<html>" + ("跳远") + "</html>");
