@@ -1,0 +1,24 @@
+{
+  "default": [
+    {
+      "name": "jzyy:dotmodifier",
+      "level": 3
+    },
+    {
+      "name": "jzyy:infinitum",
+      "level": 1
+    }
+  ],
+  "perStat" : {
+"tconstruct:armor": [
+{
+"name": "jzyy:dotarmor",
+"level": 1
+          },
+  {
+    "name": "jzyy:infinitum",
+    "level": 1
+  }
+     ]
+   }
+}
