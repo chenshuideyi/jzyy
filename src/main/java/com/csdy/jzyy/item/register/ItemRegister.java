@@ -48,8 +48,8 @@ public class ItemRegister {
 
 
 
-    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
-            () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.starmetal_ingot.line1", ChatFormatting.ITALIC));
+//    public static final RegistryObject<BaseSponsorshipItem> STARMETAL_INGOT = ITEMS.register("starmetal_ingot",
+//            () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.starmetal_ingot.line1", ChatFormatting.ITALIC));
 
     public static final RegistryObject<BaseSponsorshipItem> EVANGE_ALLOY_INGOT = ITEMS.register("evange_alloy_ingot",
             () -> new BaseSponsorshipItem(Rarity.RARE,"item.jzyy.evange_alloy_ingot.line1", ChatFormatting.AQUA));
@@ -111,8 +111,8 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> MEGA_MANYULLYN = ITEMS.register("mega_manyullyn",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
-    public static final RegistryObject<Item> MEGA_MANYULLYN_BOOSTER_ENERGY = ITEMS.register("mega_manyullyn_booster_energy",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
+//    public static final RegistryObject<Item> MEGA_MANYULLYN_BOOSTER_ENERGY = ITEMS.register("mega_manyullyn_booster_energy",
+//            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
 
 
 

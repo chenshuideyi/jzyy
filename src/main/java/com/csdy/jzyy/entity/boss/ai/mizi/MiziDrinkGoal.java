@@ -10,8 +10,6 @@ public class MiziDrinkGoal extends Goal{
 
     public MiziDrinkGoal(MiziAo miziAo) {
         this.miziAo = miziAo;
-        // 声明此Goal需要移动、跳跃和视线控制权限。
-        // 由于这个Goal的优先级会是最高的，它将阻止其他需要这些权限的Goal运行。
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP, Goal.Flag.LOOK));
     }
 

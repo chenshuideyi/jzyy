@@ -119,14 +119,15 @@ public class TitanWarden extends BossEntity implements GeoEntity {
     }
 
     //没多大用，加着玩
-    @Override
-    public float getHealth() {
-        return (float) getCachedValue(this.getAttribute(Attributes.MAX_HEALTH));
-    }
+//    @Override
+//    public float getHealth() {
+//        return (float) getCachedValue(this.getAttribute(Attributes.MAX_HEALTH));
+//    }
+//
+//    public static double getCachedValue(AttributeInstance attribute) {
+//        return ((AttributeInstanceAccessor) attribute).getCachedValue();
+//    }
 
-    public static double getCachedValue(AttributeInstance attribute) {
-        return ((AttributeInstanceAccessor) attribute).getCachedValue();
-    }
     @Override
     public void tick() {
         super.tick();
@@ -401,7 +402,7 @@ public class TitanWarden extends BossEntity implements GeoEntity {
                 .add(Attributes.MAX_HEALTH, 500000000)
                 .add(Attributes.ATTACK_DAMAGE, 3)
                 .add(Attributes.ATTACK_SPEED, 1)
-                .add(Attributes.FOLLOW_RANGE, 30000)
+                .add(Attributes.FOLLOW_RANGE, 100)
                 .add(Attributes.ATTACK_KNOCKBACK, 15);
     }
 

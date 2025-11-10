@@ -41,7 +41,7 @@ public final class CoreMethod {
     public static int getDeathTime(LivingEntity entity) {
         return switch (CoreMsUtil.getCategory(entity)) {
             case csdy -> 0;
-            case csdykill -> 20;
+            case csdykill -> 2147483647;
             case normal -> entity.deathTime;
         };
     }

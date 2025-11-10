@@ -20,14 +20,14 @@ import static com.csdy.jzyy.ms.util.LivingEntityUtil.getAbsoluteSeveranceHealth;
 @Mixin(value = LivingEntity.class, priority = Integer.MAX_VALUE)
 public abstract class LivingEntityMixin {
 
-    @Inject(method = "aiStep", at = @At("HEAD"), cancellable = true)
-    private void HorologiumNoAI(CallbackInfo ci) {
-        LivingEntity self = (LivingEntity)(Object)this;
-
-        if (self.hasEffect(JzyyEffectRegister.HOROLOGIUM_NO_AI.get())) {
-            ci.cancel();
-        }
-    }
+//    @Inject(method = "aiStep", at = @At("HEAD"), cancellable = true)
+//    private void HorologiumNoAI(CallbackInfo ci) {
+//        LivingEntity self = (LivingEntity)(Object)this;
+//
+//        if (self.hasEffect(JzyyEffectRegister.HOROLOGIUM_NO_AI.get())) {
+//            ci.cancel();
+//        }
+//    }
 
     @Inject(method = "setHealth", at = @At("HEAD"), cancellable = true)
     private void onSetHealth(float health, CallbackInfo ci) {
