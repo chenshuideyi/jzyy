@@ -62,7 +62,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
     // 自定义血量系统
-    private float currentHealth = 50000.0f;
+    private float currentHealth = 15000000.0f;
     private boolean isDying = false;
 
     // 战利品表
