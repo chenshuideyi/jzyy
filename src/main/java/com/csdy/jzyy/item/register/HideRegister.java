@@ -1,12 +1,9 @@
 package com.csdy.jzyy.item.register;
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.item.food.LueMaoQu;
+import com.csdy.jzyy.item.food.*;
 import com.csdy.jzyy.item.Test;
 import com.csdy.jzyy.item.fake.FakeItem;
-import com.csdy.jzyy.item.food.CsdyMeat;
-import com.csdy.jzyy.item.food.CsdySword;
-import com.csdy.jzyy.item.food.PlayerMeat;
 import com.csdy.jzyy.item.team.StarLight;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,7 +19,7 @@ public class HideRegister {
     public static final RegistryObject<Item> PLAYER_MEAT = ITEMS.register("player_meat", PlayerMeat::new);
     public static final RegistryObject<Item> CSDY_MEAT = ITEMS.register("csdy_meat", CsdyMeat::new);
     public static final RegistryObject<Item> LUE_MAO_QU = ITEMS.register("lue_mao_qu", LueMaoQu::new);
-
+    public static final RegistryObject<Item> MTF = ITEMS.register("mtf", Mtf::new);
 
 
 

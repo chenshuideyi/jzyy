@@ -22,6 +22,7 @@ import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.JzyyAnimationHandler;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
+import com.csdy.jzyy.shader.BlackFogEffect;
 import com.csdy.jzyy.shader.BloodSkyEffect;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.client.Minecraft;
@@ -124,7 +125,7 @@ public class JzyyModMain {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> DxSlots::init);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BatBlindnessEffect::init));
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BloodSkyEffect::init));
-
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> event.enqueueWork(BlackFogEffect::init));
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

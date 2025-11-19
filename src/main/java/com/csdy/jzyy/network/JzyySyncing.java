@@ -3,6 +3,7 @@ package com.csdy.jzyy.network;
 import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.shader.BatBlindnessEffect;
 import com.csdy.jzyy.network.packets.*;
+import com.csdy.jzyy.shader.BlackFogEffect;
 import com.csdy.jzyy.shader.BloodSkyEffect;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -88,6 +89,14 @@ public class JzyySyncing {
                 BloodSkyEffect.Packet::encode,
                 BloodSkyEffect.Packet::decode,
                 BloodSkyEffect.Packet::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT)
+        );
+        CHANNEL.registerMessage(
+                packetId++,
+                BlackFogEffect.Packet.class,
+                BlackFogEffect.Packet::encode,
+                BlackFogEffect.Packet::decode,
+                BlackFogEffect.Packet::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT)
         );
     }

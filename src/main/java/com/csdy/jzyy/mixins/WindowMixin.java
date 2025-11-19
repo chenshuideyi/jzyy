@@ -16,7 +16,7 @@ import java.util.Random;
 public class WindowMixin {
     @Unique
     private static final String[] jzyy$ARRAY = {
-            "工匠：技艺革新",
+            "逃离鸭科夫",
             "泰拉瑞亚",
             "迷你世界",
             "roblox",
