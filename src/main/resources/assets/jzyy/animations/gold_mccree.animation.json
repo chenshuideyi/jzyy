@@ -1,0 +1,4375 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gold_mccree.phase1": {
+			"loop": true,
+			"bones": {
+				"knife": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"goblet": {
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.phase2": {
+			"loop": true,
+			"bones": {
+				"knife": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"goblet": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.phase3": {
+			"loop": true,
+			"bones": {
+				"knife": {
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"goblet": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.phase4": {
+			"loop": true,
+			"bones": {
+				"Right Weapon": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"Left Weapon": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"goblet": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.idel": {
+			"animation_length": 1.5,
+			"bones": {
+				"Right Arm": {
+					"rotation": {
+						"vector": [-31.17283, -18.74724, 7.09597]
+					},
+					"position": {
+						"vector": [0, 0, -1]
+					}
+				},
+				"Right hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [-12.5, 0, 0]
+						},
+						"0.5": {
+							"vector": [-25.56145, 27.51235, -12.45891]
+						},
+						"1.0": {
+							"vector": [-28.40086, 36.43129, -17.80232]
+						},
+						"1.5": {
+							"vector": [-12.5, 0, 0]
+						}
+					}
+				},
+				"Left Hand": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"Right Weapon": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"goblet": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [37.5, 0, -42.5]
+						},
+						"1.0": {
+							"vector": [162.18774, -45.20477, -130.20511]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [10, 11, -8]
+						},
+						"1.5": {
+							"vector": [10, 11, -8]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.battle": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.6304,
+			"bones": {
+				"Head": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"Right Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-31.17283, -18.74724, 7.09597]
+						},
+						"1.087": {
+							"vector": [-98.03343, 16.58178, 11.825]
+						},
+						"1.6304": {
+							"vector": [-30, -15, 10],
+							"easing": "easeInElastic"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, -1]
+						},
+						"1.087": {
+							"vector": [0, 0, -1]
+						},
+						"1.6304": {
+							"vector": [0, 0, -1]
+						}
+					}
+				},
+				"Left Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-31.17283, -18.74724, 7.09597]
+						},
+						"1.6304": {
+							"vector": [-30, 15, -10],
+							"easing": "easeInElastic"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, -1]
+						},
+						"1.6304": {
+							"vector": [0, 0, 1]
+						}
+					}
+				},
+				"Gold McCree": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.087": {
+							"vector": [2.5, 0, 0]
+						},
+						"1.6304": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.087": {
+							"vector": [0, 0, 0]
+						},
+						"1.6304": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.087": {
+							"vector": [1, 1, 1]
+						},
+						"1.6304": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Right hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [-12.5, 0, 0]
+						},
+						"0.5435": {
+							"vector": [-25.56145, 27.51235, -12.45891]
+						},
+						"1.087": {
+							"vector": [-28.40086, 36.43129, -17.80232]
+						},
+						"1.6304": {
+							"vector": [-12.5, 0, 0]
+						}
+					}
+				},
+				"Left Hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.6304": {
+							"vector": [-12.5, 0, 0]
+						}
+					}
+				},
+				"Right Weapon": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.3587": {
+							"vector": [0, 0, 0]
+						},
+						"1.6304": {
+							"vector": [-157.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.3587": {
+							"vector": [0, 0, 0]
+						},
+						"1.6304": {
+							"vector": [0, -13, -12],
+							"easing": "easeInBack"
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.3587": {
+							"vector": [1, 1, 1]
+						},
+						"1.6304": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Left Weapon": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.3587": {
+							"vector": [0, 0, 0]
+						},
+						"1.6304": {
+							"vector": [-157.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.3587": {
+							"vector": [0, 0, 0]
+						},
+						"1.6304": {
+							"vector": [0, -13, -12],
+							"easing": "easeInBack"
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.3587": {
+							"vector": [1, 1, 1]
+						},
+						"1.6304": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"goblet": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5435": {
+							"vector": [37.5, 0, -42.5]
+						},
+						"1.087": {
+							"vector": [162.18774, -45.20477, -130.20511]
+						},
+						"1.6304": {
+							"vector": [112.37559, -61.09544, -29.03199]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [10, 11, -8]
+						},
+						"1.087": {
+							"vector": [7, 22, -8],
+							"easing": "easeInSine"
+						},
+						"1.6304": {
+							"vector": [14, -5, -15],
+							"easing": "easeInElastic",
+							"easingArgs": [1.1]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.attack": {
+			"animation_length": 2.5,
+			"bones": {
+				"Head": {
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"Right Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-30, 0, 0]
+						},
+						"2.5": {
+							"vector": [-30, 0, 0]
+						}
+					}
+				},
+				"Left Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-30, 0, 0]
+						},
+						"2.5": {
+							"vector": [-30, 0, 0]
+						}
+					}
+				},
+				"Right hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [-10, 0, 0]
+						},
+						"2.5": {
+							"vector": [-10, 0, 0]
+						}
+					}
+				},
+				"Left Hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [-10, 0, 0]
+						},
+						"2.5": {
+							"vector": [-10, 0, 0]
+						}
+					}
+				},
+				"Right Weapon": {
+					"rotation": {
+						"0.0": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.4167": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.4583": {
+							"vector": [-175, 0, 0]
+						},
+						"0.5417": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.6667": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.7083": {
+							"vector": [-175, 0, 0]
+						},
+						"0.7917": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.9167": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.9583": {
+							"vector": [-175, 0, 0]
+						},
+						"1.0417": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.1667": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.2083": {
+							"vector": [-175, 0, 0]
+						},
+						"1.2917": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.4167": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.4583": {
+							"vector": [-175, 0, 0]
+						},
+						"1.5417": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.7083": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.75": {
+							"vector": [-175, 0, 0]
+						},
+						"1.8333": {
+							"vector": [-157.5, 0, 0]
+						},
+						"2.5": {
+							"vector": [-157.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [-11, -12, -14]
+						},
+						"2.5": {
+							"vector": [-11, -12, -14]
+						}
+					}
+				},
+				"Left Weapon": {
+					"rotation": {
+						"0.0": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.25": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.2917": {
+							"vector": [-175, 0, 0]
+						},
+						"0.375": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.5": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.5417": {
+							"vector": [-175, 0, 0]
+						},
+						"0.625": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.75": {
+							"vector": [-157.5, 0, 0]
+						},
+						"0.7917": {
+							"vector": [-175, 0, 0]
+						},
+						"0.875": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.0": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.0417": {
+							"vector": [-175, 0, 0]
+						},
+						"1.125": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.25": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.2917": {
+							"vector": [-175, 0, 0]
+						},
+						"1.375": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.5": {
+							"vector": [-157.5, 0, 0]
+						},
+						"1.5417": {
+							"vector": [-175, 0, 0]
+						},
+						"1.625": {
+							"vector": [-157.5, 0, 0]
+						},
+						"2.5": {
+							"vector": [-157.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [11, -12, -14]
+						},
+						"2.5": {
+							"vector": [11, -12, -14]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.blink": {
+			"loop": true,
+			"animation_length": 1.25,
+			"bones": {
+				"dissipate_view_0": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_1": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_2": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_3": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_4": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_5": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_6": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_7": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_8": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_9": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_10": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_11": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_12": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_13": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_14": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_15": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_16": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_17": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_18": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_19": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_20": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_21": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_22": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_23": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_24": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_25": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_26": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_27": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_28": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_29": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_30": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_31": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_32": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_33": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_34": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_35": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_36": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_37": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_38": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_39": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_40": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_41": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_42": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_43": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_44": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_45": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_46": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_47": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_48": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_49": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_50": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_51": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_52": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_53": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_54": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_55": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_56": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_57": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_58": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_59": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_60": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_61": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_62": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_63": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_64": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_65": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_66": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_67": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_68": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_69": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_70": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_71": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_72": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_73": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_74": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_75": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_76": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_77": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_78": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_79": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_80": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_81": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_82": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_83": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_84": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_85": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_86": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_87": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_88": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_89": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_90": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_91": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_92": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_93": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_94": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_95": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_96": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_97": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_98": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_99": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_100": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_101": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_102": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_103": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_104": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_105": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_106": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_107": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_108": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_109": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_110": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_111": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_112": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_113": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_114": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_115": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_116": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_117": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_118": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_119": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_120": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_121": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_122": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_123": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_124": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_125": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_126": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_127": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_128": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_129": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_130": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_131": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_132": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_133": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_134": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_135": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_136": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_137": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_138": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_139": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_140": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_141": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_142": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_143": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_144": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_145": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_146": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_147": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_148": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_149": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_150": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_151": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_152": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_153": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_154": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_155": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_156": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_157": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_158": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_159": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_160": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_161": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_162": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_163": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_164": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_165": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_166": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_167": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_168": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_169": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_170": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_171": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_172": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_173": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_174": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_175": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_176": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_177": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_178": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_179": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_180": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_181": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_182": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_183": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_184": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_185": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_186": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_187": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_188": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_189": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_190": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"dissipate_view_191": {
+					"position": {
+						"vector": [
+							"-0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))",
+							"0.0000000000*math.max(0,(1/(1+math.exp(1*-8*(q.anim_time-0.625)))-0.01))"
+						]
+					},
+					"scale": {
+						"vector": [
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))",
+							"math.max(0,1.01*(1/(1+math.exp(1*8*(q.anim_time-0.625)))-0.01))"
+						]
+					}
+				},
+				"Right Arm": {
+					"rotation": {
+						"vector": [-30, 0, 0]
+					}
+				},
+				"Left Arm": {
+					"rotation": {
+						"vector": [-30, 0, 0]
+					}
+				},
+				"m1873": {
+					"position": {
+						"vector": [-10, 0, 0]
+					}
+				},
+				"knife": {
+					"scale": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"Right hand": {
+					"rotation": {
+						"vector": [-10, 0, 0]
+					}
+				},
+				"Left Hand": {
+					"rotation": {
+						"vector": [-10, 0, 0]
+					}
+				},
+				"goblet": {
+					"scale": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.walk": {
+			"animation_length": 2.5,
+			"bones": {
+				"Right Leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [25, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [-25, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.5": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Left Leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [-25, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [25, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.5": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"knife": {
+					"scale": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"goblet": {
+					"scale": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.run": {
+			"animation_length": 2.5,
+			"bones": {
+				"Right Leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [-25, 0, 0]
+						},
+						"0.25": {
+							"vector": [25, 0, 0]
+						},
+						"0.5": {
+							"vector": [-25, 0, 0]
+						},
+						"0.75": {
+							"vector": [25, 0, 0]
+						},
+						"1.0": {
+							"vector": [-25, 0, 0]
+						},
+						"1.25": {
+							"vector": [25, 0, 0]
+						},
+						"1.5": {
+							"vector": [-25, 0, 0]
+						},
+						"1.75": {
+							"vector": [25, 0, 0]
+						},
+						"2.0": {
+							"vector": [-25, 0, 0]
+						},
+						"2.25": {
+							"vector": [25, 0, 0]
+						},
+						"2.5": {
+							"vector": [-25, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.75": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.25": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.25": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1, 1]
+						},
+						"0.75": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.25": {
+							"vector": [1, 1, 1]
+						},
+						"1.5": {
+							"vector": [1, 1, 1]
+						},
+						"1.75": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						},
+						"2.25": {
+							"vector": [1, 1, 1]
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Left Leg": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [-25, 0, 0]
+						},
+						"0.5": {
+							"vector": [25, 0, 0]
+						},
+						"0.75": {
+							"vector": [-25, 0, 0]
+						},
+						"1.0": {
+							"vector": [25, 0, 0]
+						},
+						"1.25": {
+							"vector": [-25, 0, 0]
+						},
+						"1.5": {
+							"vector": [25, 0, 0]
+						},
+						"1.75": {
+							"vector": [-25, 0, 0]
+						},
+						"2.0": {
+							"vector": [25, 0, 0]
+						},
+						"2.25": {
+							"vector": [-25, 0, 0]
+						},
+						"2.5": {
+							"vector": [25, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, 0]
+						},
+						"1.75": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.25": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.25": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1, 1, 1]
+						},
+						"0.75": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.25": {
+							"vector": [1, 1, 1]
+						},
+						"1.5": {
+							"vector": [1, 1, 1]
+						},
+						"1.75": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						},
+						"2.25": {
+							"vector": [1, 1, 1]
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.draw_sword": {
+			"animation_length": 2,
+			"bones": {
+				"Right Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-125, 0, 0]
+						},
+						"1.2917": {
+							"vector": [-155, 0, 0]
+						},
+						"2.0": {
+							"vector": [-155, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.2917": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.2917": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Left Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-125, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"knife": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"1.2917": {
+							"vector": [-0.00004, -130, 0.00004]
+						},
+						"2.0": {
+							"vector": [-0.00004, -130, 0.00004]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"1.2917": {
+							"vector": [-2, -10, -18]
+						},
+						"2.0": {
+							"vector": [-2, -10, -18]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"1.2917": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Right Weapon": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-30, 0, 0]
+						},
+						"1.125": {
+							"vector": [-30, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 13, 4]
+						},
+						"1.125": {
+							"vector": [0, 13, 4]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.125": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"Left Weapon": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-30, 0, 0]
+						},
+						"1.125": {
+							"vector": [-30, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [0, 13, 4]
+						},
+						"1.125": {
+							"vector": [0, 13, 4]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.125": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.gold_mccree.knife_attack": {
+			"animation_length": 2.5,
+			"bones": {
+				"Right Arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [-155, 0, 0]
+						},
+						"1.25": {
+							"vector": [-155, 0, 0]
+						},
+						"2.0": {
+							"vector": [-100, 0, 0],
+							"easing": "easeInBack"
+						},
+						"2.5": {
+							"vector": [-155, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, 0, -4],
+							"easing": "easeInBack"
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.25": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1],
+							"easing": "easeInBack"
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"knife": {
+					"rotation": {
+						"0.0": {
+							"vector": [-0.00004, -130, 0.00004]
+						},
+						"1.25": {
+							"vector": [0, -130, 0]
+						},
+						"2.0": {
+							"vector": [0, -130, 0],
+							"easing": "easeInBack"
+						},
+						"2.5": {
+							"vector": [0, -130, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [-2, -10, -18]
+						},
+						"1.25": {
+							"vector": [-2, -9, -16]
+						},
+						"2.0": {
+							"vector": [-2, -18.6, -40.2],
+							"easing": "easeInBack"
+						},
+						"2.5": {
+							"vector": [-2, -10, -18]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.25": {
+							"vector": [1, 1, 1]
+						},
+						"2.0": {
+							"vector": [1.6, 1, 1],
+							"easing": "easeInBack"
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"Right hand": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [-7.5, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0, 0]
+						},
+						"2.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.25": {
+							"vector": [1, 1, 1]
+						},
+						"2.5": {
+							"vector": [1, 1, 1]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

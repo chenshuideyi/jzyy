@@ -50,7 +50,7 @@ public class BlackFogEffect {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void onRenderLevelStage(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL) return;
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_CUTOUT_BLOCKS) return;
         if (!isBlackFog) return;
 
         Minecraft mc = Minecraft.getInstance();

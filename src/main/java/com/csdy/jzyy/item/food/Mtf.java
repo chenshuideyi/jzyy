@@ -12,6 +12,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import static com.csdy.jzyy.entity.boss.bartest.GoldMcCreeBartest.testX;
+import static com.csdy.jzyy.entity.boss.bartest.GoldMcCreeBartest.testY;
+
 
 public class Mtf extends ItemGenericFood {
 
@@ -30,7 +33,9 @@ public class Mtf extends ItemGenericFood {
         var player = (Player) livingEntity;
         if (player.level.isClientSide) player.displayClientMessage(Component.literal("代码能力+1！"), false);
         else {
-                BlackFogEffect.SetEnableTo((ServerPlayer) player, true);
+            testX += 10;
+            testY += 10;
+//            BlackFogEffect.SetEnableTo((ServerPlayer) player, true);
         }
         return stack;
     }

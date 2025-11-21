@@ -73,6 +73,12 @@ public class JzyyEntityRegister {
                             .clientTrackingRange(120)
                             .build("jzyy:titan_warden"));
 
+    public static final RegistryObject<EntityType<GoldMcCree>> GOLD_MC_CREE =
+            JZYY_ENTITY.register("gold_mccree",
+                    () -> EntityType.Builder.of(GoldMcCree::new, MobCategory.MONSTER)
+                            .sized(1f, 1.95f) // 碰撞箱大小 (宽, 高)
+                            .clientTrackingRange(14) // 客户端追踪距离
+                            .build("jzyy:gold_mccree"));
 
     public JzyyEntityRegister(IEventBus modBus) {
         JZYY_ENTITY.register(modBus);

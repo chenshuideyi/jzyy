@@ -137,6 +137,7 @@ public class JzyyModMain {
         event.put(JzyyEntityRegister.HJM.get(), HJMEntity.createAttributes().build());
         event.put(JzyyEntityRegister.TITAN_WARDEN.get(), TitanWarden.createAttributes().build());
         event.put(JzyyEntityRegister.WEB_13234.get(), Web13234.createAttributes().build());
+        event.put(JzyyEntityRegister.GOLD_MC_CREE.get(), GoldMcCree.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -169,6 +170,10 @@ public class JzyyModMain {
         event.registerEntityRenderer(
                 JzyyEntityRegister.WEB_13234.get(),
                 Web13234Renderer::new
+        );
+        event.registerEntityRenderer(
+                JzyyEntityRegister.GOLD_MC_CREE.get(),
+                GoldMcCreeRenderer::new
         );
     }
 

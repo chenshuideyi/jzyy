@@ -444,7 +444,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             int newLevel = currentLevel + 1;
             float damage = 1 + newLevel;
 
-            forceHurt(target, this.damageSources().mobAttack(this), damage * 2);
+            forceHurt(target, this.damageSources().mobAttack(this), damage * 100);
+
             target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
 
         }
