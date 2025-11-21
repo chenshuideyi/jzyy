@@ -1,7 +1,10 @@
 package com.csdy.jzyy.item.food;
 
 
+import com.csdy.jzyy.shader.BlackFogEffect;
+import com.csdy.jzyy.shader.BloodSkyEffect;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,6 +29,9 @@ public class Mtf extends ItemGenericFood {
         super.finishUsingItem(stack, worldIn, livingEntity);
         var player = (Player) livingEntity;
         if (player.level.isClientSide) player.displayClientMessage(Component.literal("代码能力+1！"), false);
+        else {
+                BlackFogEffect.SetEnableTo((ServerPlayer) player, true);
+        }
         return stack;
     }
 }
