@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 import static com.csdy.jzyy.entity.Util.forceHurt;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionSeverance;
 
 
 public class SwordManCsdy extends BossEntity implements GeoEntity {
@@ -62,7 +63,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
     // 自定义血量系统
-    private float currentHealth = 50000.0f;
+    private float currentHealth = 15000000.0f;
+    private float maxHealth = 15000000.0f;
     private boolean isDying = false;
 
     // 战利品表
@@ -288,7 +290,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
 
     @Override
     public float getMaxHealth() {
-        return 50000.0f;
+        return maxHealth;
     }
 
     @Override
@@ -373,7 +375,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
         builder = builder.add(Attributes.MAX_HEALTH, 499999.0);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 6400.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 640000.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 128);
         return builder;
@@ -444,8 +446,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             int newLevel = currentLevel + 1;
             float damage = 1 + newLevel;
 
-            forceHurt(target, this.damageSources().mobAttack(this), damage * 100);
-
+            forceHurt(target, this.damageSources().mobAttack(this), damage * 20);
+            reflectionSeverance(target,target.getHealth() - 100);
             target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
 
         }

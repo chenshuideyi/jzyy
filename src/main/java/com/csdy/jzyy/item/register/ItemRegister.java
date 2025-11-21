@@ -45,6 +45,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
     public static final RegistryObject<Item> MAGGOT = ITEMS.register("maggot", Maggot::new);
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
+    public static final RegistryObject<Item> SOURCE_OF_MANAITA = ITEMS.register("source_of_manaita", SourceOfManaita::new);
 
 
 
