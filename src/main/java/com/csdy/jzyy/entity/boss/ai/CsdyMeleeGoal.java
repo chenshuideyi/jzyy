@@ -154,7 +154,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
                 target.getEffect(JzyyEffectRegister.DEEP_WOUND.get()).getAmplifier() : -1;
 
         int newLevel = currentLevel + 1;
-        float damage = 1 + newLevel;
+        float damage = 1 + newLevel * 2;
 
         forceHurt(target, this.mob.damageSources().mobAttack(this.mob), damage);
         target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
