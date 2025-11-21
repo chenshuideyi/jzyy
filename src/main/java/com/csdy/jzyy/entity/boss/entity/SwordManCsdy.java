@@ -63,8 +63,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
     // 自定义血量系统
-    private float currentHealth = 15000000.0f;
-    private float maxHealth = 15000000.0f;
+    private float currentHealth = 30000000.0f;
+    private static float maxHealth = 30000000.0f;
     private boolean isDying = false;
 
     // 战利品表
@@ -206,16 +206,26 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (isReal() || isDying) return false;
 
-        float realDamage = (float) Math.sqrt(damage) * 2;
+        float healthRatio = this.currentHealth / this.getMaxHealth();
 
-        if (realDamage < 100f) {
-            return false;
+        float logDamage = (float) Math.log10(Math.max(1, damage));
+
+        float processedDamage;
+        if (logDamage <= 7.0f) { // 1000万以下伤害
+            processedDamage = logDamage * 20000f; // 正常处理
+        } else if (logDamage <= 10.0f) { // 100亿以下伤害
+            processedDamage = 140000f + (logDamage - 7.0f) * 1000f; // 缓慢增长
+        } else { // 100亿以上伤害
+            processedDamage = 143000f + (logDamage - 10.0f) * 100f; // 极慢增长
         }
 
-        // 计算血量比例减伤（血量越低减伤越多）
-        float healthRatio = this.currentHealth / this.getMaxHealth(); // 假设有maxHealth字段
-        float damageReduction = (1 - healthRatio) * 0.9f; // 最多减伤90%
-        realDamage = realDamage * (1 - damageReduction);
+        float healthMultiplier = 0.9f + (1 - healthRatio) * 0.2f; // 0.9到1.1之间
+
+        float realDamage = processedDamage * healthMultiplier;
+
+        float minDamage = 50000f;
+        float maxDamage = 500000f;
+        realDamage = Math.max(minDamage, Math.min(realDamage, maxDamage));
 
         this.currentHealth -= realDamage;
         if (this.currentHealth < 0) {
@@ -374,7 +384,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
-        builder = builder.add(Attributes.MAX_HEALTH, 499999.0);
+        builder = builder.add(Attributes.MAX_HEALTH, maxHealth);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 640000.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 128);
@@ -446,8 +456,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             int newLevel = currentLevel + 1;
             float damage = 1 + newLevel;
 
-            forceHurt(target, this.damageSources().mobAttack(this), damage * 20);
-            reflectionSeverance(target,target.getHealth() - 100);
+            forceHurt(target, this.damageSources().mobAttack(this), damage * 2000);
+            reflectionSeverance(target,target.getHealth() - 10000);
             target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
 
         }

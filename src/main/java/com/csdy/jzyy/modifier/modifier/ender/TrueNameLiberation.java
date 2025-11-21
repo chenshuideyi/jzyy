@@ -24,7 +24,6 @@ public class TrueNameLiberation extends RealFormBaseModifier {
         // 正确获取工具名称的字符串表示
         Component nameComponent = tool.createStack().getHoverName();
         String toolName = nameComponent.getString();
-        System.out.println(toolName);
         return isTrueName(toolName);
     }
 
