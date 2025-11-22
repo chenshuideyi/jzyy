@@ -1,7 +1,7 @@
 package com.csdy.jzyy.entity.boss.entity;
 
 import com.csdy.jzyy.entity.boss.BossEntity;
-import com.csdy.jzyy.entity.boss.ai.gold_mccree.KeepDistanceGoal;
+import com.csdy.jzyy.entity.boss.ai.gold_mccree.RangedKeepDistanceAndRunGoal;
 import com.csdy.jzyy.shader.BlackFogEffect;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -31,9 +32,17 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class GoldMcCree extends BossEntity implements GeoEntity {
 
+    private boolean firstHurt;
     private final ServerBossEvent bossEvent;
+    private int transitionTimer = 0;
+
+    private int attackingTimer = 0;
+    private int movingTimer = 0;
+    private static final int STATE_DURATION = 40;
+
     public GoldMcCree(EntityType<? extends BossEntity> type, Level level) {
         super(type, level);
+        this.firstHurt = false;
         this.bossEvent = (ServerBossEvent) new ServerBossEvent(
                 this.getDisplayName(),
                 BossEvent.BossBarColor.PURPLE, // 血条颜色
@@ -46,13 +55,38 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-        if (this.getTarget() != null) {
-            this.getLookControl().setLookAt(this.getTarget(), 30.0F, 30.0F);
+
+        // 处理转阶段计时
+        if (isTransitioning() && transitionTimer > 0) {
+            transitionTimer--;
+            if (transitionTimer <= 0) {
+                endPhaseTransition();
+                setPhase(getPhase()+1);
+                setJoinBattle(false);
+            }
         }
+
+        if (attackingTimer > 0) {
+            attackingTimer--;
+            if (attackingTimer <= 0) {
+                this.setAttacking(false);
+            }
+        }
+
+        // 处理移动状态计时
+        if (movingTimer > 0) {
+            movingTimer--;
+            if (movingTimer <= 0) {
+
+            }
+        }
+
+
+        this.heal(10000f);
+
         if (!this.level.isClientSide) {
-            // 服务器端执行
             ServerLevel serverLevel = (ServerLevel) this.level;
-            long nightTime = 18000L; // 午夜时间
+            long nightTime = 18000L;
             serverLevel.setDayTime(nightTime);
         }
     }
@@ -60,6 +94,12 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     @Override
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (isInvulnerableTo(source) || isDeadOrDying()) return false;
+
+        if (!this.firstHurt){
+            this.firstHurt = true;
+            setJoinBattle(true);
+            startPhaseTransition(2);
+        }
 
         float healthRatio = this.getHealth() / this.getMaxHealth();
 
@@ -99,12 +139,21 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     }
 
     private static final EntityDataAccessor<Integer> DATA_PHASE =
-            SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.INT);
+            SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> DATA_IS_ATTACKING =
+            SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_JOIN_BATTLE =
+            SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_TRANSITIONING =
+            SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.BOOLEAN);
 
     @Override
     public void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_PHASE, 1);;
+        this.entityData.define(DATA_PHASE, 1);
+        this.entityData.define(DATA_IS_ATTACKING, false);
+        this.entityData.define(DATA_JOIN_BATTLE, false);
+        this.entityData.define(DATA_IS_TRANSITIONING, false);
     }
 
     public int getPhase(){
@@ -115,65 +164,159 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
         this.entityData.set(DATA_PHASE, phase);
     }
 
+    public boolean isAttacking() {
+        return this.entityData.get(DATA_IS_ATTACKING);
+    }
 
+    public void setAttacking(boolean attacking) {
+        this.entityData.set(DATA_IS_ATTACKING, attacking);
+    }
+
+    public boolean isJoinBattle() {
+        return this.entityData.get(DATA_JOIN_BATTLE);
+    }
+
+    public void setJoinBattle(boolean battle) {
+        this.entityData.set(DATA_JOIN_BATTLE, battle);
+    }
+
+    public boolean isTransitioning() {
+        return this.entityData.get(DATA_IS_TRANSITIONING);
+    }
+
+    public void setTransitioning() {
+        this.entityData.set(DATA_IS_TRANSITIONING, true);
+    }
+
+    public void endPhaseTransition() {
+        this.entityData.set(DATA_IS_TRANSITIONING, false);
+    }
+
+    private void startPhaseTransition(int newPhase) {
+        System.out.println("开始转阶段: " + getPhase() + " -> " + newPhase);
+
+        // 设置转阶段状态
+        setTransitioning();
+        transitionTimer = 30; // 2秒
+
+        // 停止所有AI和移动
+        this.goalSelector.getRunningGoals().forEach(goal -> goal.stop());
+        this.targetSelector.getRunningGoals().forEach(goal -> goal.stop());
+        this.getNavigation().stop();
+        this.setDeltaMovement(Vec3.ZERO);
+        this.setAttacking(false);
+
+    }
+
+    public void setAttackingWithDuration(boolean attacking) {
+        this.setAttacking(attacking);
+        if (attacking) {
+            attackingTimer = STATE_DURATION;
+        } else {
+            attackingTimer = 0;
+        }
+    }
+
+    public void setMovingWithDuration(boolean moving) {
+        if (moving) {
+            movingTimer = STATE_DURATION;
+        } else {
+            movingTimer = 0;
+        }
+    }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(0, new KeepDistanceGoal(this, 2.0D, 4, 12));
+        this.goalSelector.addGoal(1, new RangedKeepDistanceAndRunGoal(this, 1.5D, 7, 26, 0, 32));
 
-        // 使用更可靠的目标选择
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
+    // 确保这些动画名称与你的geo文件中的动画名称完全一致
     private static final RawAnimation PHASE_1 = RawAnimation.begin().thenLoop("animation.gold_mccree.phase1");
     private static final RawAnimation PHASE_2 = RawAnimation.begin().thenLoop("animation.gold_mccree.phase2");
     private static final RawAnimation PHASE_3 = RawAnimation.begin().thenLoop("animation.gold_mccree.phase3");
     private static final RawAnimation PHASE_4 = RawAnimation.begin().thenLoop("animation.gold_mccree.phase4");
-    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.idel");
+
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.idel"); // 注意拼写
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.walk");
-
-
+    private static final RawAnimation RUN_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.run");
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.attack");
+    private static final RawAnimation BATTLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.battle");
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "state_controller", 0, this::stateMachine));
-        controllers.add(new AnimationController<>(this, "phase_controller", 0, this::phaseState));
+
+        controllers.add(new AnimationController<>(this, "main_controller", 0, this::mainAnimationHandler));
+
+        controllers.add(new AnimationController<>(this, "move_controller", 1, this::moveHandler));
+
+        controllers.add(new AnimationController<>(this, "phase_controller", 2, this::phaseState));
+
+        controllers.add(new AnimationController<>(this, "battle_controller", 2, this::BattleHandler));
     }
 
-    private  PlayState phaseState(AnimationState<GoldMcCree> state){
+    // 修改动画控制器
+    private PlayState mainAnimationHandler(AnimationState<GoldMcCree> state) {
         int phase = getPhase();
 
+        // 阶段1：只播放idle
+        if (phase == 1) {
+            return state.setAndContinue(IDLE_ANIM);
+        }
+
+        // 转阶段时停止所有动作
+        if (this.isTransitioning()) {
+            return PlayState.STOP;
+        }
+
+        // 阶段2-4：正常行为
+        boolean isMoving = state.isMoving();
+        boolean isAttacking = this.isAttacking();
+
+        if (isMoving && isAttacking) {
+            return state.setAndContinue(ATTACK_ANIM);
+        }
+        else if (isMoving) {
+            return state.setAndContinue(RUN_ANIM);
+        }
+        else if (isAttacking) {
+            return state.setAndContinue(ATTACK_ANIM);
+        }
+        else {
+            return state.setAndContinue(RUN_ANIM);
+        }
+    }
+
+    private PlayState BattleHandler(AnimationState<GoldMcCree> state){
+        if (this.isJoinBattle()) {
+            return state.setAndContinue(BATTLE_ANIM);
+        }
+        return PlayState.STOP;
+
+    }
+
+    private PlayState moveHandler(AnimationState<GoldMcCree> state){
+        if (state.isMoving()) {
+            return state.setAndContinue(RUN_ANIM);
+        }
+        return PlayState.STOP;
+
+    }
+
+    private PlayState phaseState(AnimationState<GoldMcCree> state) {
+        int phase = getPhase();
         return switch (phase) {
-            case 1 -> state.setAndContinue(PHASE_1); // 转酒杯待机
+            case 1 -> state.setAndContinue(PHASE_1);
             case 2 -> state.setAndContinue(PHASE_2);
             case 3 -> state.setAndContinue(PHASE_3);
             case 4 -> state.setAndContinue(PHASE_4);
             default -> PlayState.STOP;
         };
-    }
-
-    private PlayState stateMachine(AnimationState<GoldMcCree> state) {
-        int phase = getPhase();
-
-        switch(phase) {
-            case 1:
-                return state.setAndContinue(IDLE_ANIM); // 转酒杯待机
-            case 2:
-                // Phase 2的逻辑
-                return state.setAndContinue(PHASE_2);
-            case 3:
-                // Phase 3的逻辑
-                return state.setAndContinue(PHASE_3);
-            case 4:
-                // Phase 4的逻辑
-                return state.setAndContinue(PHASE_4);
-            default:
-                return PlayState.STOP;
-        }
     }
 
     @Override

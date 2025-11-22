@@ -1,8 +1,8 @@
 package com.csdy.jzyy.entity.boss.ai.gold_mccree;
 
+import com.csdy.jzyy.entity.boss.entity.GoldMcCree;
 import icyllis.modernui.annotation.Nullable;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.phys.Vec3;
@@ -10,7 +10,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.EnumSet;
 
 public class KeepDistanceGoal extends Goal {
-    protected final PathfinderMob mob;
+    protected final GoldMcCree mob;
     protected final double speedModifier;
     protected final float minDistance;
     protected final float maxDistance;
@@ -19,11 +19,11 @@ public class KeepDistanceGoal extends Goal {
     protected boolean forceTrigger;
     private int cooldown = 0; // 冷却计时器
 
-    public KeepDistanceGoal(PathfinderMob mob, double speedModifier, float minDistance, float maxDistance) {
+    public KeepDistanceGoal(GoldMcCree mob, double speedModifier, float minDistance, float maxDistance) {
         this(mob, speedModifier, minDistance, maxDistance, 20);
     }
 
-    public KeepDistanceGoal(PathfinderMob mob, double speedModifier, float minDistance, float maxDistance, int interval) {
+    public KeepDistanceGoal(GoldMcCree mob, double speedModifier, float minDistance, float maxDistance, int interval) {
         this.mob = mob;
         this.speedModifier = speedModifier;
         this.minDistance = minDistance;
@@ -85,28 +85,23 @@ public class KeepDistanceGoal extends Goal {
             boolean success = this.mob.getNavigation().moveTo(movePos.x, movePos.y, movePos.z, this.speedModifier);
             if (!success) {
                 // 如果路径寻找失败，设置短暂冷却
-                cooldown = 10;
+                cooldown = 0;
             }
         } else {
             // 如果找不到位置，设置短暂冷却
-            cooldown = 10;
+            cooldown = 0;
         }
         this.forceTrigger = false;
     }
 
     @Override
     public void tick() {
-        // 每帧都面向目标
-        if (this.target != null) {
-            this.mob.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
-        }
-
-        // 如果导航完成但距离仍然不合适，立即重新寻路
         if (this.mob.getNavigation().isDone() && this.target != null) {
             float currentDistance = this.mob.distanceTo(this.target);
             if (currentDistance < minDistance || currentDistance > maxDistance) {
                 Vec3 newPos = findSuitablePosition();
                 if (newPos != null) {
+                    // 移动时保持当前朝向，不自动转向
                     this.mob.getNavigation().moveTo(newPos.x, newPos.y, newPos.z, this.speedModifier);
                 }
             }
@@ -118,7 +113,7 @@ public class KeepDistanceGoal extends Goal {
         this.target = null;
         this.mob.getNavigation().stop();
         // 停止时设置短暂冷却，避免立即重新开始
-        cooldown = 5;
+        cooldown = 0;
     }
 
     @Nullable
