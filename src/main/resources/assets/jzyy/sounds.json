@@ -171,5 +171,13 @@
         "stream": false
       }
     ]
+  },
+  "shoot": {
+    "sounds": [
+      {
+        "name":"jzyy:shoot",
+        "stream": false
+      }
+    ]
   }
 }

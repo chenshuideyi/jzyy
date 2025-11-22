@@ -3,8 +3,11 @@ package com.csdy.jzyy.entity.boss.ai.gold_mccree;
 import com.csdy.jzyy.entity.boss.entity.GoldMcCree;
 
 
+import com.csdy.jzyy.sounds.JzyySoundsRegister;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionSeverance;
@@ -146,6 +149,7 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
         // 停止移动
         this.mob.setDeltaMovement(0, this.mob.getDeltaMovement().y, 0);
         System.out.println("停止边跑边射");
+        performTeleport();
         this.attackTime = -1;
         this.lastMovePos = null;
         this.shouldMove = false;
@@ -162,8 +166,80 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
     }
 
     private void shoot(LivingEntity target){
-        for (int i = 0; i<6; i++) {
-            reflectionSeverance(target, target.getHealth() - 158);
+        for (int i = 0; i<12; i++) {
+            this.mob.level.getServer().execute(() -> {
+                if (this.mob.isAlive() && target.isAlive()) {
+                    this.mob.playSound(JzyySoundsRegister.SHOOT.get(), 2.0F, 1F);
+                    reflectionSeverance(target, target.getHealth() - 158);
+                }
+            });
         }
     }
+
+    private void performTeleport() {
+        if (this.target == null || !this.target.isAlive()) return;
+
+        Vec3 targetPos = this.target.position();
+
+        // 尝试多个随机方向找到合适的瞬移位置
+        for (int attempt = 0; attempt < 10; attempt++) {
+            // 随机角度
+            double angle = this.mob.getRandom().nextDouble() * Math.PI * 2;
+            Vec3 teleportDirection = new Vec3(Math.cos(angle), 0, Math.sin(angle));
+
+            // 计算瞬移位置（7格距离）
+            Vec3 teleportPos = targetPos.add(teleportDirection.scale(7.0));
+
+            // 寻找地面位置
+            Vec3 groundPos = findGroundPosition(teleportPos);
+
+            if (groundPos != null && isPositionSafe(groundPos)) {
+                // 执行瞬移
+                this.mob.teleportTo(groundPos.x, groundPos.y, groundPos.z);
+                System.out.println("成功瞬移到: " + groundPos);
+                return;
+            }
+        }
+
+        System.out.println("找不到合适的瞬移位置");
+    }
+
+    private boolean isPositionSafe(Vec3 pos) {
+        BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y, (int)pos.z);
+        Level level = this.mob.level;
+
+        // 检查位置是否安全（不在方块内，有足够的空间）
+        return !level.getBlockState(blockPos).isSolid() &&
+                !level.getBlockState(blockPos.above()).isSolid() &&
+                level.getBlockState(blockPos.below()).isSolid();
+    }
+
+    private Vec3 findGroundPosition(Vec3 pos) {
+        // 寻找可行的地面位置
+        BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y, (int)pos.z);
+        Level level = this.mob.level;
+
+        // 向下寻找地面
+        while (blockPos.getY() > level.getMinBuildHeight() &&
+                !level.getBlockState(blockPos).isSolid()) {
+            blockPos = blockPos.below();
+        }
+
+        // 向上寻找可行走的位置
+        while (blockPos.getY() < level.getMaxBuildHeight() &&
+                (level.getBlockState(blockPos).isSolid() ||
+                        !level.getBlockState(blockPos.above()).isAir())) {
+            blockPos = blockPos.above();
+        }
+
+        // 确保位置可行走
+        if (level.getBlockState(blockPos).isSolid() &&
+                level.getBlockState(blockPos.above()).isAir() &&
+                level.getBlockState(blockPos.above(2)).isAir()) {
+            return new Vec3(blockPos.getX() + 0.5, blockPos.above().getY(), blockPos.getZ() + 0.5);
+        }
+
+        return null;
+    }
+
 }

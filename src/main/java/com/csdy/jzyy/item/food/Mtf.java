@@ -33,8 +33,9 @@ public class Mtf extends ItemGenericFood {
         var player = (Player) livingEntity;
         if (player.level.isClientSide) player.displayClientMessage(Component.literal("代码能力+1！"), false);
         else {
-            testX += 10;
-            testY += 10;
+            player.setHealth(player.getMaxHealth());
+//            testX += 10;
+//            testY += 10;
 //            BlackFogEffect.SetEnableTo((ServerPlayer) player, true);
         }
         return stack;
