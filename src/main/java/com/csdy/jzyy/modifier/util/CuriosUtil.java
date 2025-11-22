@@ -13,6 +13,7 @@ import java.util.Optional;
 public class CuriosUtil {
 
     public static void removeAllCurios(LivingEntity player) {
+        //noinspection UnstableApiUsage,removal,deprecation
         Optional<ICuriosItemHandler> curiosHandler = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve();
         if (curiosHandler.isPresent()) {
             ICuriosItemHandler handler = (ICuriosItemHandler) curiosHandler.get();

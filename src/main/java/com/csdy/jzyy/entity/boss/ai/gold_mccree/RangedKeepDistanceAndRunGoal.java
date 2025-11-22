@@ -4,9 +4,11 @@ import com.csdy.jzyy.entity.boss.entity.GoldMcCree;
 
 
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -14,9 +16,10 @@ import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionSeverance;
 
 public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
 
-    private int attackTime = -1;
+    private int attackCooldown = -1;
     private final int attackInterval;
     private final float attackRadius;
+    private int attackedTimes = 0;
     private Vec3 lastMovePos;
 
     // 添加移动状态控制
@@ -50,10 +53,13 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
         // 自定义移动逻辑
         updateCustomMovement();
 
+        // 尝试瞬移
+        updateBlink();
+
         // 攻击逻辑
         updateAttack();
 
-        System.out.println("执行边跑边射 - 移动: " + shouldMove + " | 攻击冷却: " + attackTime);
+        System.out.println("执行边跑边射 - 移动: " + shouldMove + " | 攻击冷却: " + attackCooldown);
     }
 
     private void updateCustomMovement() {
@@ -100,15 +106,26 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
         this.mob.move(MoverType.SELF, this.mob.getDeltaMovement());
     }
 
+    private void updateBlink() {
+        Minecraft.LOGGER.atDebug().log("尝试瞬移，当前攻击次数共：%d".formatted(attackedTimes));
+        if (attackedTimes < 12) return;
+        attackedTimes = 0; // 12枪一次，完成后归零
+
+        performTeleport();
+    }
+
     private void updateAttack() {
         float distance = this.mob.distanceTo(this.target);
         boolean inRange = distance <= this.attackRadius;
         boolean canSee = this.mob.getSensing().hasLineOfSight(this.target);
 
-        if (canSee && inRange && --this.attackTime <= 0) {
+        this.attackCooldown--;
+        if (canSee && inRange && this.attackCooldown <= 0) {
             performRangedAttack();
+            this.mob.setBlinking(false); // 奇技淫巧之：在瞬移时候设成true顺便设一个攻击CD，完事儿了清掉就好
             shoot(target);
-            this.attackTime = this.attackInterval;
+            this.attackedTimes++;
+            this.attackCooldown = this.attackInterval;
         }
     }
 
@@ -120,7 +137,7 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
         double dz = this.target.getZ() - this.mob.getZ();
 
         // 计算目标朝向（角度）
-        float targetYRot = (float)(Math.atan2(dz, dx) * (180 / Math.PI)) - 90.0F;
+        float targetYRot = (float) (Math.atan2(dz, dx) * (180 / Math.PI)) - 90.0F;
 
         // 直接设置所有朝向相关变量
         this.mob.setYRot(targetYRot);
@@ -150,7 +167,7 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
         this.mob.setDeltaMovement(0, this.mob.getDeltaMovement().y, 0);
         System.out.println("停止边跑边射");
         performTeleport();
-        this.attackTime = -1;
+        this.attackCooldown = -1;
         this.lastMovePos = null;
         this.shouldMove = false;
         this.moveCooldown = 0;
@@ -165,19 +182,20 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
         System.out.println("开始边跑边射模式");
     }
 
-    private void shoot(LivingEntity target){
-        for (int i = 0; i<12; i++) {
-            this.mob.level.getServer().execute(() -> {
-                if (this.mob.isAlive() && target.isAlive()) {
-                    this.mob.playSound(JzyySoundsRegister.SHOOT.get(), 2.0F, 1F);
-                    reflectionSeverance(target, target.getHealth() - 158);
-                }
-            });
-        }
+    private void shoot(LivingEntity target) {
+        this.mob.level.getServer().execute(() -> {
+            if (this.mob.isAlive() && target.isAlive()) {
+                this.mob.playSound(JzyySoundsRegister.SHOOT.get(), 2.0F, 1F);
+                reflectionSeverance(target, target.getHealth() - 158); // 重复播这一大段意义不大，有需要的话你可以只重复这行
+            }
+        });
     }
 
     private void performTeleport() {
-        if (this.target == null || !this.target.isAlive()) return;
+        if (this.target == null || !this.target.isAlive()) {
+            Minecraft.LOGGER.atInfo().log("<GMCR> 闪了但是没闪：shan le dan shi mei shan");
+            return;
+        }
 
         Vec3 targetPos = this.target.position();
 
@@ -196,16 +214,20 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
             if (groundPos != null && isPositionSafe(groundPos)) {
                 // 执行瞬移
                 this.mob.teleportTo(groundPos.x, groundPos.y, groundPos.z);
-                System.out.println("成功瞬移到: " + groundPos);
+                this.mob.setBlinking(true);
+                this.attackCooldown = 40; // 奇技淫巧之：在这里设置攻击冷却然后冷却好就清掉状态
+                Minecraft.LOGGER.atInfo().log("<GMCR>成功瞬移到: %s, Yattaze~".formatted(groundPos));
+                System.out.println();
                 return;
             }
+            Minecraft.LOGGER.atInfo().log("<GMCR>这个位置不能用: %s, Ezattay:(".formatted(groundPos));
         }
 
-        System.out.println("找不到合适的瞬移位置");
+        Minecraft.LOGGER.atInfo().log("<GMCR>找不到合适的瞬移位置: zhao bu dao he shi wei zhi");
     }
 
     private boolean isPositionSafe(Vec3 pos) {
-        BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y, (int)pos.z);
+        BlockPos blockPos = new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
         Level level = this.mob.level;
 
         // 检查位置是否安全（不在方块内，有足够的空间）
@@ -216,7 +238,7 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
 
     private Vec3 findGroundPosition(Vec3 pos) {
         // 寻找可行的地面位置
-        BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y, (int)pos.z);
+        BlockPos blockPos = new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
         Level level = this.mob.level;
 
         // 向下寻找地面
@@ -232,12 +254,13 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
             blockPos = blockPos.above();
         }
 
-        // 确保位置可行走
-        if (level.getBlockState(blockPos).isSolid() &&
-                level.getBlockState(blockPos.above()).isAir() &&
-                level.getBlockState(blockPos.above(2)).isAir()) {
-            return new Vec3(blockPos.getX() + 0.5, blockPos.above().getY(), blockPos.getZ() + 0.5);
-        }
+//        // 确保牛魔啊确保，上面都提高到不是Solid才停了这儿还检查是Solid，那不始终为false然后返回null了吗
+//        // 确保位置可行走
+//        if (level.getBlockState(blockPos).isSolid() &&
+//                level.getBlockState(blockPos.above()).isAir() &&
+//                level.getBlockState(blockPos.above(2)).isAir()) {
+//            return new Vec3(blockPos.getX() + 0.5, blockPos.above().getY(), blockPos.getZ() + 0.5);
+//        }
 
         return null;
     }

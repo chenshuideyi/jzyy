@@ -32,6 +32,17 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK)); // 需要移动和朝向控制
     }
 
+    private boolean isInLiquid() {
+        return this.mob.isInWaterOrBubble() ||
+                this.mob.isInLava() ||
+                this.mob.isEyeInFluid(FluidTags.WATER) ||
+                this.mob.isEyeInFluid(FluidTags.LAVA);
+    }
+
+    private boolean isStuck() {
+        return !isInLiquid() && isEffectivelyStuck();
+    }
+
     @Override
     public boolean canUse() {
         if (timeSinceLastCheck < checkInterval) {
@@ -41,8 +52,9 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
         timeSinceLastCheck = 0;
 
         // 1. 条件检测
-        boolean isInLiquid = this.mob.isInWaterOrBubble() || this.mob.isInLava() || this.mob.isEyeInFluid(FluidTags.WATER) || this.mob.isEyeInFluid(FluidTags.LAVA);
-        boolean isStuck = !isInLiquid && isEffectivelyStuck(); // 如果在液体里，优先处理液体情况，不判断stuck
+
+        boolean isInLiquid = isInLiquid();
+        boolean isStuck = isStuck(); // 如果在液体里，优先处理液体情况，不判断stuck
 
         if (!isInLiquid && !isStuck) {
             return false; // 条件不满足
@@ -61,10 +73,10 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
             return false;
         }
 
-         if (this.mob.getY() > this.targetEntity.getY() + flightHeightOffset - 1.0 &&
-             this.mob.distanceToSqr(this.targetEntity.getX(), this.targetEntity.getY() + flightHeightOffset, this.targetEntity.getZ()) < 4.0) {
-             return false;
-         }
+        if (this.mob.getY() > this.targetEntity.getY() + flightHeightOffset - 1.0 &&
+                this.mob.distanceToSqr(this.targetEntity.getX(), this.targetEntity.getY() + flightHeightOffset, this.targetEntity.getZ()) < 4.0) {
+            return false;
+        }
 
         return true;
     }
@@ -97,6 +109,7 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
             }
             if (checksDone >= MAX_STUCK_CHECKS) break;
         }
+
         // 如果周围超过一定数量的检测点是固体方块，则认为被堵住
         return solidBlocksAround >= (MAX_STUCK_CHECKS / 2 + 1); // 例如，超过一半的点是固体
     }
@@ -145,8 +158,8 @@ public class FlyToTargetWhenStuckOrInLiquidGoal extends Goal {
         }
 
         // 重新检查条件
-        boolean isInLiquid = this.mob.isInWaterOrBubble() || this.mob.isInLava() || this.mob.isEyeInFluid(FluidTags.WATER) || this.mob.isEyeInFluid(FluidTags.LAVA);
-        boolean isStuck = !isInLiquid && isEffectivelyStuck();
+        boolean isInLiquid = isInLiquid();
+        boolean isStuck = isStuck();
         if (!isInLiquid && !isStuck) {
             return false;
         }

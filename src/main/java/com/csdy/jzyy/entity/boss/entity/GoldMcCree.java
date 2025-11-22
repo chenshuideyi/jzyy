@@ -61,7 +61,7 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
             transitionTimer--;
             if (transitionTimer <= 0) {
                 endPhaseTransition();
-                setPhase(getPhase()+1);
+                setPhase(getPhase() + 1);
                 setJoinBattle(false);
             }
         }
@@ -95,7 +95,7 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     public boolean hurt(@NotNull DamageSource source, float damage) {
         if (isInvulnerableTo(source) || isDeadOrDying()) return false;
 
-        if (!this.firstHurt){
+        if (!this.firstHurt) {
             this.firstHurt = true;
             setJoinBattle(true);
             startPhaseTransition(2);
@@ -146,6 +146,8 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
             SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> DATA_IS_TRANSITIONING =
             SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_BLINKING =
+            SynchedEntityData.defineId(GoldMcCree.class, EntityDataSerializers.BOOLEAN);
 
     @Override
     public void defineSynchedData() {
@@ -154,9 +156,10 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
         this.entityData.define(DATA_IS_ATTACKING, false);
         this.entityData.define(DATA_JOIN_BATTLE, false);
         this.entityData.define(DATA_IS_TRANSITIONING, false);
+        this.entityData.define(DATA_IS_BLINKING, false);
     }
 
-    public int getPhase(){
+    public int getPhase() {
         return this.entityData.get(DATA_PHASE);
     }
 
@@ -170,6 +173,14 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
 
     public void setAttacking(boolean attacking) {
         this.entityData.set(DATA_IS_ATTACKING, attacking);
+    }
+
+    public boolean isBlinking() {
+        return this.entityData.get(DATA_IS_BLINKING);
+    }
+
+    public void setBlinking(boolean blinking) {
+        this.entityData.set(DATA_IS_BLINKING, blinking);
     }
 
     public boolean isJoinBattle() {
@@ -229,7 +240,7 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(1, new RangedKeepDistanceAndRunGoal(this, 1.5D, 7, 26, 0, 32));
+        this.goalSelector.addGoal(1, new RangedKeepDistanceAndRunGoal(this, 1.5D, 7, 26, 1, 32));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
@@ -244,6 +255,7 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.idel"); // 注意拼写
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.walk");
     private static final RawAnimation RUN_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.run");
+    private static final RawAnimation BLINK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.blink");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.attack");
     private static final RawAnimation BATTLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.battle");
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -277,22 +289,22 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
         // 阶段2-4：正常行为
         boolean isMoving = state.isMoving();
         boolean isAttacking = this.isAttacking();
+        boolean isBlinking = this.isBlinking();
 
-        if (isMoving && isAttacking) {
+        if (isBlinking) {
+            return state.setAndContinue(BLINK_ANIM);
+        } else if (isMoving && isAttacking) {
             return state.setAndContinue(ATTACK_ANIM);
-        }
-        else if (isMoving) {
+        } else if (isMoving) {
             return state.setAndContinue(RUN_ANIM);
-        }
-        else if (isAttacking) {
+        } else if (isAttacking) {
             return state.setAndContinue(ATTACK_ANIM);
-        }
-        else {
+        } else {
             return state.setAndContinue(RUN_ANIM);
         }
     }
 
-    private PlayState BattleHandler(AnimationState<GoldMcCree> state){
+    private PlayState BattleHandler(AnimationState<GoldMcCree> state) {
         if (this.isJoinBattle()) {
             return state.setAndContinue(BATTLE_ANIM);
         }
@@ -300,7 +312,7 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
 
     }
 
-    private PlayState moveHandler(AnimationState<GoldMcCree> state){
+    private PlayState moveHandler(AnimationState<GoldMcCree> state) {
         if (state.isMoving()) {
             return state.setAndContinue(RUN_ANIM);
         }
