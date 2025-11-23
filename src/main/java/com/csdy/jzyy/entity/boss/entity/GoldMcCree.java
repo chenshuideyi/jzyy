@@ -255,7 +255,8 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.idel"); // 注意拼写
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.walk");
     private static final RawAnimation RUN_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.run");
-    private static final RawAnimation BLINK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.blink");
+    private static final RawAnimation BLINK_ANIM = RawAnimation.begin().thenPlay("animation.gold_mccree.blink_prepare");
+    private static final RawAnimation APPEAR_ANIM = RawAnimation.begin().thenPlay("animation.gold_mccree.appear");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.attack");
     private static final RawAnimation BATTLE_ANIM = RawAnimation.begin().thenLoop("animation.gold_mccree.battle");
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -270,6 +271,8 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
         controllers.add(new AnimationController<>(this, "phase_controller", 2, this::phaseState));
 
         controllers.add(new AnimationController<>(this, "battle_controller", 2, this::BattleHandler));
+
+        controllers.add(new AnimationController<>(this, "blink_controller", 3, this::BlinkHandler));
     }
 
     // 修改动画控制器
@@ -289,11 +292,8 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
         // 阶段2-4：正常行为
         boolean isMoving = state.isMoving();
         boolean isAttacking = this.isAttacking();
-        boolean isBlinking = this.isBlinking();
 
-        if (isBlinking) {
-            return state.setAndContinue(BLINK_ANIM);
-        } else if (isMoving && isAttacking) {
+        if (isMoving && isAttacking) {
             return state.setAndContinue(ATTACK_ANIM);
         } else if (isMoving) {
             return state.setAndContinue(RUN_ANIM);
@@ -309,7 +309,6 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
             return state.setAndContinue(BATTLE_ANIM);
         }
         return PlayState.STOP;
-
     }
 
     private PlayState moveHandler(AnimationState<GoldMcCree> state) {
@@ -317,7 +316,6 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
             return state.setAndContinue(RUN_ANIM);
         }
         return PlayState.STOP;
-
     }
 
     private PlayState phaseState(AnimationState<GoldMcCree> state) {
@@ -329,6 +327,13 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
             case 4 -> state.setAndContinue(PHASE_4);
             default -> PlayState.STOP;
         };
+    }
+
+    private PlayState BlinkHandler(AnimationState<GoldMcCree> state) {
+        if (this.isBlinking()) {
+            return state.setAndContinue(BLINK_ANIM);
+        }
+        return state.setAndContinue(APPEAR_ANIM);
     }
 
     @Override
