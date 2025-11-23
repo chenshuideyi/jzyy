@@ -240,7 +240,7 @@ public class GoldMcCree extends BossEntity implements GeoEntity {
     protected void registerGoals() {
         super.registerGoals();
 
-        this.goalSelector.addGoal(1, new RangedKeepDistanceAndRunGoal(this, 1.5D, 7, 26, 1, 32));
+        this.goalSelector.addGoal(1, new RangedKeepDistanceAndRunGoal(this, 2.5D, 9, 18, 1, 32));
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
