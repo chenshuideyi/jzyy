@@ -27,7 +27,7 @@ public class jzyyWandererTrades {
                                    List<VillagerTrades.ItemListing> rareTrades) {
 
         Random random = new Random();
-        if (random.nextDouble() < 0.1) {
+        if (random.nextDouble() < 0.25) {
             rareTrades.add(new ItemForEmeraldsTrade(
                     new ItemStack(ItemRegister.DOT.get()),
                     64,                                     // 绿宝石价格
