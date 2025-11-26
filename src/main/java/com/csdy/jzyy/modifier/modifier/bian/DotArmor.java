@@ -46,7 +46,7 @@ public class DotArmor extends NoLevelsModifier implements OnAttackedModifierHook
     }
 
     @Override
-    public void onAttacked(@NotNull IToolStackView tool, @NotNull ModifierEntry entry, EquipmentContext context, @NotNull EquipmentSlot slot, DamageSource damageSource, float amount, boolean isDirectDamage) {
+    public void onAttacked(@NotNull IToolStackView tool, @NotNull ModifierEntry entry, @NotNull EquipmentContext context, @NotNull EquipmentSlot slot, @NotNull DamageSource damageSource, float amount, boolean isDirectDamage) {
         if (context == null || context.getEntity() == null || !(context.getEntity() instanceof Player player)) {
             return;
         }
@@ -93,7 +93,9 @@ public class DotArmor extends NoLevelsModifier implements OnAttackedModifierHook
     @Override
     public void onEquip(@Nonnull IToolStackView tool, @Nonnull ModifierEntry modifier,@Nonnull EquipmentChangeContext context) {
         if (isArmorSlot(context.getChangedSlot()) && context.getEntity() instanceof Player player) {
-
+            player.getAbilities().mayfly = true;
+            player.getAbilities().flying = true;
+            player.onUpdateAbilities();
             player.getPersistentData().putBoolean("dot2_equipped", true);
 
             eventListener = new Object() {
@@ -122,6 +124,9 @@ public class DotArmor extends NoLevelsModifier implements OnAttackedModifierHook
     public void onUnequip(@Nonnull IToolStackView tool, @Nonnull ModifierEntry modifier, @Nonnull EquipmentChangeContext context) {
         if (isArmorSlot(context.getChangedSlot()) && context.getEntity() instanceof Player player) {
             player.getPersistentData().putBoolean("dot2_equipped", false);
+            player.getAbilities().mayfly = false;
+            player.getAbilities().flying = false;
+            player.onUpdateAbilities();
             MinecraftForge.EVENT_BUS.unregister(this);
             MinecraftForge.EVENT_BUS.unregister(eventListener);
         }
@@ -129,7 +134,7 @@ public class DotArmor extends NoLevelsModifier implements OnAttackedModifierHook
 
     private boolean isArmorSlot(EquipmentSlot slot) {
         return slot == EquipmentSlot.HEAD || slot == EquipmentSlot.CHEST || slot == EquipmentSlot.LEGS || slot == EquipmentSlot.FEET;
-        }
+    }
 
 
     public float modifyDamageTaken(@Nonnull IToolStackView tool, @Nonnull ModifierEntry modifier, @Nonnull EquipmentContext context, @Nonnull EquipmentSlot slot, @Nonnull DamageSource damageSource, float amount, boolean isDirectDamage) {
@@ -147,3 +152,4 @@ public class DotArmor extends NoLevelsModifier implements OnAttackedModifierHook
         return amount * 0.0f;
     }
 }
+

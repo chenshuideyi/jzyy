@@ -80,7 +80,7 @@ public class DotModifier extends Modifier implements MeleeDamageModifierHook {
     }
 
     private float getDamageMultiplier(float effectCount) {
-        return 1 + effectCount * 2147483648F;
+        return 1 + effectCount * 214748364821474836482147483648214748364F;
     }
 
     private List<MobEffect> getRandomStatusEffects(int count) {
