@@ -227,8 +227,8 @@ public class RangedKeepDistanceAndRunGoal extends KeepDistanceGoal {
                 }
                 if (flag) {
                     if (mob.randomTeleport(d3, d4, d5, false)) {
-                        this.mob.setBlinking(true);
-                        this.attackCooldown = 40; // 奇技淫巧之：在这里设置攻击冷却然后冷却好就清掉状态
+//                        this.mob.setBlinking(true);
+//                        this.attackCooldown = 40; // 奇技淫巧之：在这里设置攻击冷却然后冷却好就清掉状态
                         break;
                     }
                 }
