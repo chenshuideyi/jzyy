@@ -13,6 +13,7 @@ import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
 import com.csdy.jzyy.entity.monster.render.HJMRenderer;
 import com.csdy.jzyy.event.LivingEvent;
+import com.csdy.jzyy.event.jzyyWandererTrades;
 import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;

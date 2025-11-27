@@ -957,9 +957,7 @@
   "modifier.jzyy.music.flavor": "要开始了哟",
   "modifier.jzyy.music.description":"获得一个音乐槽",
 
-  "modifier.jzyy.refill": "再来一瓶！",
-  "modifier.jzyy.refill.flavor": "来干来干",
-  "modifier.jzyy.refill.description":"造成伤害或者受到伤害后，有概率获得“再来一瓶”",
+
 
 
   "modifier.jzyy.ama_no_jyaku": "天之弱",
@@ -1290,7 +1288,7 @@
 
   "modifier.jzyy.dotarmor": "§9指令：防御",
   "modifier.jzyy.dotarmor.flavor":"§b弱势防御",
-  "modifier.jzyy.dotarmor.description":"§b装备时给予增益效果,同时免疫大部分伤害，强制免疫负面效果，受到攻击给予攻击者随机负面效果以及返还数倍普通伤害",
+  "modifier.jzyy.dotarmor.description":"§b装备时给予增益效果,以及飞行，同时免疫大部分伤害，强制免疫负面效果，受到攻击给予攻击者随机负面效果以及返还数倍普通伤害",
 
   "material.jzyy.bitter_cold_firm_ice": "苦寒坚冰",
   "material.jzyy.bitter_cold_firm_ice.flavor": "非常寒冷的冰?",

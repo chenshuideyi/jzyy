@@ -30,7 +30,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> MAGIC_URANIUM = ITEMS.register("magic_uranium", MagicUranium::new);
     public static final RegistryObject<Item> OVERFLOWED_MEMORY = ITEMS.register("overflowed_memory", OverflowedMemory::new);
     public static final RegistryObject<Item> ETSH = ITEMS.register("etsh", Etsh::new);
-    public static final RegistryObject<Item> DX_INGOT = ITEMS.register("dx_ingot", DxIngot::new);
+//    public static final RegistryObject<Item> DX_INGOT = ITEMS.register("dx_ingot", DxIngot::new);
     public static final RegistryObject<Item> ICE = ITEMS.register("ice", Ice::new);
     public static final RegistryObject<Item> TONG_BAN = ITEMS.register("tong_ban", TongBan::new);
     public static final RegistryObject<Item> RAIN_CURTAIN = ITEMS.register("rain_curtain", RainCurtain::new);
@@ -119,8 +119,8 @@ public class ItemRegister {
 
     public static final RegistryObject<Item> PORTABLE_END_PORTAL = ITEMS.register("portable_end_portal", PortableEndPortal::new);
 
-    public static final RegistryObject<Item> MOZHUA_CAP = ITEMS.register("mozhua_cap",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+//    public static final RegistryObject<Item> MOZHUA_CAP = ITEMS.register("mozhua_cap",
+//            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
 
     public static final RegistryObject<Item> SUMMON_CSDY = ITEMS.register("summon_csdy", SummonCsdy::new);
 
