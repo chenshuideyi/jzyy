@@ -20,7 +20,7 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.Random;
-
+/*
 public class Refill extends NoLevelsModifier implements MeleeHitModifierHook, OnAttackedModifierHook {
     private static final Random random = new Random();
 
@@ -71,3 +71,4 @@ public class Refill extends NoLevelsModifier implements MeleeHitModifierHook, On
     }
 
 }
+*/

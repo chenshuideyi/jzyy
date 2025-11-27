@@ -27,7 +27,6 @@ import com.csdy.jzyy.modifier.modifier.csdy.CsdyWhisper;
 import com.csdy.jzyy.modifier.modifier.csdytinker.*;
 import com.csdy.jzyy.modifier.modifier.dx.BaseToolMusic;
 import com.csdy.jzyy.modifier.modifier.dx.Music;
-import com.csdy.jzyy.modifier.modifier.dx.Refill;
 import com.csdy.jzyy.modifier.modifier.dx.diadema.AwakenPandora;
 import com.csdy.jzyy.modifier.modifier.dx.tool.AwakenTiamat;
 import com.csdy.jzyy.modifier.modifier.ender.SaberExcalibur;
@@ -278,7 +277,7 @@ public class ModifierRegister {
 
     ///米子山民
     public static final StaticModifier<Music> MUSIC_STATIC_MODIFIER = MODIFIERS.register("music", Music::new);
-    public static final StaticModifier<Refill> REFILL_STATIC_MODIFIER = MODIFIERS.register("refill", Refill::new);
+//    public static final StaticModifier<Refill> REFILL_STATIC_MODIFIER = MODIFIERS.register("refill", Refill::new);
 
 
     ///这里是工具的音乐
