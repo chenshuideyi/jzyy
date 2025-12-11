@@ -429,6 +429,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
                 }
             }
             this.level().broadcastEntityEvent(this, (byte)60);
+            csdySay("<CSDY>我死了,看来本体没有把我写的太强");
             this.remove(RemovalReason.KILLED);
         }
     }
@@ -456,7 +457,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             int newLevel = currentLevel + 1;
             float damage = 1 + newLevel;
 
-            forceHurt(target, this.damageSources().mobAttack(this), damage * 2000);
+            forceHurt(target, this.damageSources().mobAttack(this), damage * 20000);
             reflectionSeverance(target,target.getHealth() - 10000);
             target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
 
