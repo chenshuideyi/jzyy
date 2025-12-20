@@ -50,8 +50,7 @@
   "stat.tconstruct.slot.display.dx": "音乐",
   "stat.tconstruct.slot.prefix.dx": "音乐槽：",
 
-  "item.jzyy.dx_ingot": "舞萌锭",
-  "item.jzyy.dx_ingot.line1": "mizi_ao的提案",
+
 
   "item.jzyy.marisa_ingot": "魔，魔理沙？",
   "item.jzyy.marisa_ingot.line1": "Web_13234的提案",
@@ -1192,7 +1191,7 @@
   "msg.lue_mao_qu4": "该食物未被加入黑名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu5": "该食物已被加入白名单, 因此无法用于增加生命值.",
   "msg.lue_mao_qu6": "这个是略人的梗😱😱😱",
-  "msg.lue_mao_qu7": "来自耄的馈赠使得大狗不再主动找你的麻烦",
+  "msg.lue_mao_qu7": "哈基米多基金多哈西哈呀苦南北绿豆",
 
   "entity.jzyy.titan_warden": "监守者泰坦（未锁敌）",
   "entity.jzyy.titan_warden.lock": "监守者泰坦（已锁定）",

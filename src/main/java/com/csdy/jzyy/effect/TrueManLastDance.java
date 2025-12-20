@@ -1,13 +1,15 @@
 package com.csdy.jzyy.effect;
 
-
 import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.effect.register.JzyyEffectRegister;
+import com.csdy.jzyy.ms.CoreMsUtil;
+import com.csdy.jzyy.ms.enums.EntityCategory;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -45,7 +47,6 @@ public class TrueManLastDance extends MobEffect {
         if (entity.hasEffect(JzyyEffectRegister.TRUE_MAN_LAST_DANCE.get())) {
             AttributeInstance attackDamage = entity.getAttribute(Attributes.ATTACK_DAMAGE);
             if (attackDamage != null) {
-
                 // 2. 移除旧的修改器
                 AttributeModifier oldModifier = attackDamage.getModifier(UUID.fromString(ATTACK_DAMAGE_MODIFIER_UUID));
                 if (oldModifier != null) {
@@ -76,19 +77,23 @@ public class TrueManLastDance extends MobEffect {
                             0, 0.1, 0
                     );
                 }
+            }
         }
     }
-        }
-
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        // 每tick执行的效果（如需要持续治疗效果可在此添加）
+        CoreMsUtil.setCategory(entity, EntityCategory.csdy);
     }
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        // 是否需要每tick执行applyEffectTick
-        return false; // 本例中不需要持续效果
+        return true;
+    }
+
+    @Override
+    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        CoreMsUtil.setCategory(entity, EntityCategory.normal);
+        super.removeAttributeModifiers(entity, attributeMap, amplifier);
     }
 }

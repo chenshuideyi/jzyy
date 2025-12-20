@@ -5,6 +5,7 @@ import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -182,34 +183,92 @@ public class LivingEntityUtil {
     }
 
     /**
-     * 强制清除负面效果实例（包括自定义效果）
+     * 强制移除所有负面效果（修复版）
      * @param entity 目标生物
      */
     public static void forceRemoveAllNegativeEffects(LivingEntity entity) {
-        try {
-            ///混淆名 f_20945_
-            Field effectsField = LivingEntity.class.getDeclaredField("f_20945_");
-//            Field effectsField = LivingEntity.class.getDeclaredField("activeEffects");
-            effectsField.setAccessible(true);
 
-            @SuppressWarnings("unchecked")
-            Map<MobEffect, MobEffectInstance> effects = (Map<MobEffect, MobEffectInstance>) effectsField.get(entity);
+        if (entity == null || entity.isRemoved()) {
+            return;
+        }
 
-            Iterator<Map.Entry<MobEffect, MobEffectInstance>> iterator = effects.entrySet().iterator();
+        boolean isServer = !entity.level().isClientSide;
+        List<MobEffect> removedEffects = new ArrayList<>();
+        boolean reflectionSuccess = false;
+        for (String fieldName : new String[]{"activeEffects", "f_20945_"}) {
+            try {
+                Field effectsField = LivingEntity.class.getDeclaredField(fieldName);
+                effectsField.setAccessible(true);
+                @SuppressWarnings("unchecked")
+                Map<MobEffect, MobEffectInstance> effectsMap = (Map<MobEffect, MobEffectInstance>) effectsField.get(entity);
 
-            while (iterator.hasNext()) {
-                Map.Entry<MobEffect, MobEffectInstance> entry = iterator.next();
-                MobEffect effect = entry.getKey();
-                if (effect.getCategory() == MobEffectCategory.HARMFUL) {
-                    if (!entity.level().isClientSide && entity instanceof ServerPlayer player) {
-                        player.connection.send(new ClientboundRemoveMobEffectPacket(entity.getId(), effect));
+                List<MobEffect> harmfulEffects = new ArrayList<>();
+                for (MobEffect effect : effectsMap.keySet()) {
+                    if (effect.getCategory() == MobEffectCategory.HARMFUL) {
+                        harmfulEffects.add(effect);
                     }
-                    iterator.remove();
+                }
+
+                for (MobEffect effect : harmfulEffects) {
+                    MobEffectInstance instance = effectsMap.remove(effect);
+                    entity.removeEffect(effect);
+                    if (instance != null) {
+                        try {
+                            Method onEffectRemoved = LivingEntity.class.getDeclaredMethod("onEffectRemoved", MobEffectInstance.class);
+                            onEffectRemoved.setAccessible(true);
+                            onEffectRemoved.invoke(entity, instance);
+                            Method removeEffect = LivingEntity.class.getDeclaredMethod("removeEffect", MobEffect.class);
+                            removeEffect.setAccessible(true);
+                            removeEffect.invoke(entity, effect);
+
+                        } catch (Exception e) {
+
+                            try {
+                                effect.removeAttributeModifiers(entity, entity.getAttributes(), instance.getAmplifier());
+
+                            } catch (Exception ex) {
+
+                            }
+                        }
+
+                        removedEffects.add(effect);
+                    }
+                }
+
+                reflectionSuccess = true;
+                break;
+            } catch (Exception ex) {
+
+                continue;
+            }
+        }
+        if (!reflectionSuccess) {
+            for (MobEffectInstance effectInstance : new ArrayList<>(entity.getActiveEffects())) {
+                MobEffect effect = effectInstance.getEffect();
+                if (effect.getCategory() == MobEffectCategory.HARMFUL) {
+                    entity.removeEffect(effect);
+                    removedEffects.add(effect);
                 }
             }
+        }
+        if (isServer) {
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+
+            if (entity instanceof ServerPlayer player) {
+                for (MobEffect effect : removedEffects) {
+                    player.connection.send(new ClientboundRemoveMobEffectPacket(entity.getId(), effect));
+
+                }
+            } else {
+                MinecraftServer server = entity.level().getServer();
+                if (server != null) {
+                    for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                        for (MobEffect effect : removedEffects) {
+                            player.connection.send(new ClientboundRemoveMobEffectPacket(entity.getId(), effect));
+                        }
+                    }
+                }
+            }
         }
     }
 
