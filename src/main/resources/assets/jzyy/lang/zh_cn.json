@@ -1026,7 +1026,7 @@
 
   "modifier.jzyy.harcadium_armor": "哈肯典姆护身",
   "modifier.jzyy.harcadium_armor.flavor": "感觉很眼熟",
-  "modifier.jzyy.harcadium_armor.description":"获得60点最大生命值",
+  "modifier.jzyy.harcadium_armor.description":"获得600点最大生命值",
 
   "modifier.jzyy.mouse3": "鼠标按键3",
   "modifier.jzyy.mouse3.flavor": "这是世间最纯粹的力量",
@@ -1038,7 +1038,7 @@
 
   "modifier.jzyy.bedrock": "基岩化",
   "modifier.jzyy.bedrock.flavor": "这是泰坦生物？",
-  "modifier.jzyy.bedrock.description":"获得1500点最大生命值",
+  "modifier.jzyy.bedrock.description":"获得150000点最大生命值",
 
   "modifier.jzyy.just_bed_and_rock": "只是一块基佬岩石",
   "modifier.jzyy.just_bed_and_rock.flavor": "怎会如此？",
