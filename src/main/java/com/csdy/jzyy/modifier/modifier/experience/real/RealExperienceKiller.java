@@ -29,7 +29,7 @@ public class RealExperienceKiller extends Modifier implements MeleeDamageModifie
         if (attacker instanceof Player player) {
             int exp = player.experienceLevel;
             player.giveExperienceLevels(15);
-            return damage + exp * 5F * level;
+            return damage + exp * 15F * level;
         }
         return damage;
     }
@@ -40,7 +40,7 @@ public class RealExperienceKiller extends Modifier implements MeleeDamageModifie
         if (attacker instanceof Player player && target instanceof LivingEntity living) {
             int exp = player.experienceLevel;
             player.giveExperienceLevels(15);
-            return damage + exp * 2.5F * level;
+            return damage + exp * 12.5F * level;
         }
         return damage;
     }

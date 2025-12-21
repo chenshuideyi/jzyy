@@ -101,7 +101,7 @@ public class CsdyMeleeGoal extends MeleeAttackGoal {
      */
     public void performFourHitCombo(LivingEntity mainTarget) {
         // --- 连击参数 ---
-        final int hitCount = 4;      // 连击次数
+        final int hitCount = 6;      // 连击次数
         final double aoeRadius = 4.0D; // 范围伤害的半径
 
         for (int i = 0; i < hitCount; i++) {

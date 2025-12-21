@@ -1,30 +1,29 @@
 package com.csdy.jzyy.modifier.util;
 
+
+import com.csdy.jzyy.mixins.LivingEntityAccessor;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.yellowbrossproductions.yellowbrossextras.entities.DefenderEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.stat.INumericToolStat;
 import slimeknights.tconstruct.library.tools.stat.IToolStat;
@@ -277,10 +276,9 @@ public class CsdyModifierUtil {
             forceSetAllCandidateHealth(target, 0);
             setAbsoluteSeveranceHealth(target, 0);
 //            target.die(playerKill);
+            die(target,playerKill);
             triggerKillAdvancement(target, playerKill);
-            setEntityDead(target);
-            dropLoot(target, playerKill);
-            target.dropAllDeathLoot(playerKill);
+
         }
     }
 
@@ -300,10 +298,10 @@ public class CsdyModifierUtil {
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
             forceSetAllCandidateHealth(target,0);
+            die(target,playerKill);
             triggerKillAdvancement(target,playerKill);
-            setEntityDead(target);
-            dropLoot(target,playerKill);
-            target.dropAllDeathLoot(playerKill);
+
+
         }
     }
 
@@ -314,6 +312,7 @@ public class CsdyModifierUtil {
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         target.setHealth(reHealth);
         if (reHealth <= 0 || target.getHealth() <= 0){
+            die(target,playerKill);
             target.dropAllDeathLoot(playerKill);
         }
     }
@@ -373,5 +372,46 @@ public class CsdyModifierUtil {
             }
         }
         return 0;
+    }
+    public static void die(LivingEntity livingEntity, DamageSource p_21014_) {
+        if (livingEntity.level.isClientSide) return;
+        try {
+            livingEntity.die(p_21014_);
+        } catch (ClassCastException exception) {
+            exception.printStackTrace();
+        }
+        LivingEntityAccessor accessor = (LivingEntityAccessor) livingEntity;
+        if (!livingEntity.isRemoved() && !accessor.dead()) {
+            Entity entity = p_21014_.getEntity();
+            LivingEntity livingentity = livingEntity.getKillCredit();
+            if (accessor.deathScore() >= 0 && livingentity != null) {
+                livingentity.awardKillScore(livingEntity, accessor.deathScore(), p_21014_);
+            }
+
+            if (livingEntity.isSleeping()) {
+                livingEntity.stopSleeping();
+            }
+
+            accessor.setDead(true);
+            livingEntity.getCombatTracker().recheckStatus();
+            Level level = livingEntity.level();
+            if (level instanceof ServerLevel serverlevel) {
+                if (entity == null || entity.killedEntity(serverlevel, livingEntity)) {
+                    livingEntity.gameEvent(GameEvent.ENTITY_DIE);
+                    dropAllDeathLoot(livingEntity, p_21014_);
+                }
+
+                livingEntity.level().broadcastEntityEvent(livingEntity, (byte) 3);
+            }
+
+            livingEntity.setPose(Pose.DYING);
+            if (livingEntity.getHealth() > 0.0F) {
+                forceSetAllCandidateHealth(livingEntity, 0.0F);
+            }
+        }
+    }
+
+    private static void dropAllDeathLoot(LivingEntity entity, DamageSource source) {
+        entity.dropAllDeathLoot(source);
     }
 }

@@ -10,7 +10,7 @@ import static com.csdy.jzyy.JzyyModMain.MODID;
 public class BlockRegister {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
-    public static final RegistryObject<Block> HARCADIUM_ORE = BLOCKS.register(
+/*    public static final RegistryObject<Block> HARCADIUM_ORE = BLOCKS.register(
             "harcadium_ore",
             HarcadiumOre::new
     );
@@ -20,5 +20,5 @@ public class BlockRegister {
             HarcadiumOreEndStone::new
     );
 
-
+*/
 }

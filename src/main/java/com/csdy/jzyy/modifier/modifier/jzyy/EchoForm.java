@@ -1,6 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.jzyy;
 
 import net.minecraft.server.level.ServerPlayer;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
@@ -12,13 +13,24 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 public class EchoForm extends NoLevelsModifier implements MeleeDamageModifierHook {
 
     @Override
-    public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
-        if (!(context.getAttacker() instanceof ServerPlayer player)) return damage;
+    public float getMeleeDamage(@NotNull IToolStackView tool, @NotNull ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
+
+        if (!(context.getAttacker() instanceof ServerPlayer player)) {
+            return damage;
+        }
+
         for (ModifierEntry modifier : tool.getModifierList()) {
-            if (modifier.getModifier() != entry.getModifier()) {
-                damage = entry.getHook(ModifierHooks.MELEE_DAMAGE).getMeleeDamage(tool, modifier, context, baseDamage, damage);
+            if (modifier.getModifier() == entry.getModifier()) {
+                continue;
+            }
+
+            MeleeDamageModifierHook damageHook = modifier.getHook(ModifierHooks.MELEE_DAMAGE);
+            if (damageHook != null && damageHook != this) {
+                damage = damageHook.getMeleeDamage(tool, modifier, context, baseDamage, damage);
             }
         }
+
+
         return damage;
     }
 
@@ -27,3 +39,4 @@ public class EchoForm extends NoLevelsModifier implements MeleeDamageModifierHoo
         hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
     }
 }
+

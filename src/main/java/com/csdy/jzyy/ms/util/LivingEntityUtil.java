@@ -183,7 +183,7 @@ public class LivingEntityUtil {
     }
 
     /**
-     * 强制移除所有负面效果（修复版）
+     * 强制移除所有负面效果
      * @param entity 目标生物
      */
     public static void forceRemoveAllNegativeEffects(LivingEntity entity) {

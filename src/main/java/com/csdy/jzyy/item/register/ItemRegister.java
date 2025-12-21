@@ -74,7 +74,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));
     public static final RegistryObject<Item> TITAN_WARDEN_SPAWN_EGG = ITEMS.register("titan_warden_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.TITAN_WARDEN,  993082, 330000, new Item.Properties()));
 
-    public static final RegistryObject<Item> HARCADIUM = ITEMS.register(
+/*    public static final RegistryObject<Item> HARCADIUM = ITEMS.register(
             "harcadium",
             () -> new Item(new Item.Properties()
                     .stacksTo(64)
@@ -97,7 +97,7 @@ public class ItemRegister {
                     new Item.Properties()
             )
     );
-
+*/
     public static final RegistryObject<Item> EXPERIENCE_STEEL_INGOT = ITEMS.register("experience_steel_ingot",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> LIVING_WOOD = ITEMS.register("living_wood",

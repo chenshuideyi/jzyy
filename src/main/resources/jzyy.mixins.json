@@ -11,6 +11,7 @@
     "AttributeInstanceAccessor",
     "CsdyProtectionLivingEntityMixin",
     "ItemStackMixin",
+    "LivingEntityAccessor",
     "LivingEntityMixin",
     "PlayerAttackParticleMixin",
     "PreventDisarmamentMixin",
