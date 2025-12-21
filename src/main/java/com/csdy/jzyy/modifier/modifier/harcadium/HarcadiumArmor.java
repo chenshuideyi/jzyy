@@ -20,11 +20,11 @@ public class HarcadiumArmor extends NoLevelsModifier implements AttributesModifi
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry entry, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         if (slot.getType() == EquipmentSlot.Type.ARMOR) {
-            UUID uuid = UUID.nameUUIDFromBytes(("tool_health_boost_" + slot.getName()).getBytes());
+            UUID uuid = UUID.nameUUIDFromBytes(("harcadium_health_boost_" + slot.getName()).getBytes());
             AttributeModifier modifier = new AttributeModifier(
                     uuid,
                     "harcadium_health_boost",
-                    60.0,
+                    600.0,
                     AttributeModifier.Operation.ADDITION
             );
             consumer.accept(Attributes.MAX_HEALTH, modifier);

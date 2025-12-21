@@ -21,11 +21,11 @@ public class BedRock extends NoLevelsModifier implements AttributesModifierHook 
     public void addAttributes(IToolStackView tool, ModifierEntry entry, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
         if (slot.getType() == EquipmentSlot.Type.ARMOR) {
             // 使用基于插槽和修饰符的固定UUID
-            UUID uuid = UUID.nameUUIDFromBytes(("tool_health_boost_" + slot.getName()).getBytes());
+            UUID uuid = UUID.nameUUIDFromBytes(("bedrock_health_boost_" + slot.getName()).getBytes());
             AttributeModifier modifier = new AttributeModifier(
                     uuid,
-                    "tool_health_boost",
-                    1500.0,
+                    "bedrock_health_boost",
+                    150000.0,
                     AttributeModifier.Operation.ADDITION
             );
             consumer.accept(Attributes.MAX_HEALTH, modifier);
