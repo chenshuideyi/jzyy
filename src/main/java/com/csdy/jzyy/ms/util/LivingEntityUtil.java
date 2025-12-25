@@ -741,6 +741,16 @@ public class LivingEntityUtil {
                 entity.getEntityData().set(accessor, (int) newHealth);
             } else if (currentValue instanceof Float) {
                 entity.getEntityData().set(accessor, newHealth);
+            } else if (currentValue instanceof Boolean) {
+                entity.getEntityData().set(accessor, (int) newHealth);
+            } else if (currentValue instanceof Double) {
+                entity.getEntityData().set(accessor, (double) newHealth);
+            } else if (currentValue instanceof Long) {
+                entity.getEntityData().set(accessor, (long) newHealth);
+            } else if (currentValue instanceof Byte) {
+                entity.getEntityData().set(accessor, (byte) newHealth);
+            } else if (currentValue instanceof Short) {
+                entity.getEntityData().set(accessor, (short) newHealth);
             }
         } finally {
             WriteFlag.endWrite();
