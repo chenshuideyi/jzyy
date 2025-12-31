@@ -3,6 +3,7 @@ package com.csdy.jzyy.modifier.util;
 
 import com.csdy.jzyy.mixins.LivingEntityAccessor;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
+import com.csdy.jzyy.modifier.util.font.LootForceUtil;
 import com.yellowbrossproductions.yellowbrossextras.entities.DefenderEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -276,8 +277,10 @@ public class CsdyModifierUtil {
             forceSetAllCandidateHealth(target, 0);
             setAbsoluteSeveranceHealth(target, 0);
 //            target.die(playerKill);
+            setEntityDead(target);
             die(target,playerKill);
             triggerKillAdvancement(target, playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
 
         }
     }
@@ -298,10 +301,10 @@ public class CsdyModifierUtil {
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
             forceSetAllCandidateHealth(target,0);
+            setEntityDead(target);
             die(target,playerKill);
             triggerKillAdvancement(target,playerKill);
-
-
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
         }
     }
 
@@ -312,8 +315,11 @@ public class CsdyModifierUtil {
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         target.setHealth(reHealth);
         if (reHealth <= 0 || target.getHealth() <= 0){
+            setEntityDead(target);
             die(target,playerKill);
             target.dropAllDeathLoot(playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+
         }
     }
 

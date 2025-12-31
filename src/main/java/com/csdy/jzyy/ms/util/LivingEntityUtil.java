@@ -373,30 +373,33 @@ public class LivingEntityUtil {
             }
 
             // 方法B: 使用增强的NBT遍历修改
-            forceSetCandidateNBTEnhanced(entity, newHealth);
+        forceSetCandidateNBTEnhanced(entity, newHealth, true);
 
 
-            if (isFromWzzMod(entity)){
+        if (isFromWzzMod(entity)){
                 aggressivelyModifyAllHealthFields(entity,newHealth);
             }
 
     }
 
 
-    public static void forceSetCandidateNBTEnhanced(LivingEntity entity, float newHealth) {
-        // 添加频率限制：不要在短时间内重复调用
-        if (System.currentTimeMillis() - lastNbtOperationTime < 50) { // 50ms冷却
+    public static void forceSetCandidateNBTEnhanced(LivingEntity entity, float newHealth, boolean force) {
+        // 如果不是强制模式，则应用冷却限制
+        if (!force && System.currentTimeMillis() - lastNbtOperationTime < 20) { // 减少冷却到20ms
             return;
         }
+
         lastNbtOperationTime = System.currentTimeMillis();
 
         try {
-            CompoundTag tag = entity.saveWithoutId(new CompoundTag());
-            boolean modified = enhanceNbtHealthModification(tag, entity, newHealth);
+            net.minecraft.nbt.CompoundTag tag = entity.saveWithoutId(new net.minecraft.nbt.CompoundTag());
+
+
+            boolean modified = enhanceNbtHealthModification(tag, newHealth, 3); // 递归深度到3
 
             if (modified) {
-                // 使用缓存的方法查找来提高性能
-                Method readMethod = getCachedReadMethod();
+                // 使用缓存的读取方法应用修改
+                java.lang.reflect.Method readMethod = getCachedReadMethod();
                 if (readMethod != null) {
                     readMethod.invoke(entity, tag);
                 }
@@ -404,6 +407,39 @@ public class LivingEntityUtil {
         } catch (Exception e) {
             // 静默处理错误
         }
+    }
+    private static boolean enhanceNbtHealthModification(net.minecraft.nbt.CompoundTag tag, float newHealth, int maxDepth) {
+        if (maxDepth <= 0) return false;
+
+        boolean modified = false;
+        java.util.Set<String> keys = new java.util.HashSet<>(tag.getAllKeys());
+
+        for (String key : keys) {
+            net.minecraft.nbt.Tag value = tag.get(key);
+
+            // 递归处理嵌套标签
+            if (value instanceof net.minecraft.nbt.CompoundTag compoundTag) {
+                modified |= enhanceNbtHealthModification(compoundTag, newHealth, maxDepth - 1);
+            }
+            else if (value instanceof net.minecraft.nbt.ListTag listTag) {
+                // 处理列表中的复合标签
+                for (int i = 0; i < listTag.size(); i++) {
+                    net.minecraft.nbt.Tag element = listTag.get(i);
+                    if (element instanceof net.minecraft.nbt.CompoundTag compoundTag) {
+                        modified |= enhanceNbtHealthModification(compoundTag, newHealth, maxDepth - 1);
+                    }
+                }
+            }
+
+
+            if (isNumericTag(value)) {
+
+                setNumericTagValue(tag, key, value, newHealth);
+                modified = true;
+            }
+        }
+
+        return modified;
     }
 
     private static Method cachedReadMethod = null;
