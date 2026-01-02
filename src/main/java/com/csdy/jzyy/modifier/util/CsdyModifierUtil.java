@@ -38,8 +38,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.*;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 public class CsdyModifierUtil {
 
@@ -257,6 +256,33 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("iceandfire");
     }
 
+
+    public static void SupermodifierAbsoluteSeverance(LivingEntity target, Player player, float damage, float value){
+        if (target.getHealth() <= 0) return;
+        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        var playerKill = target.level().damageSources.playerAttack(player);
+        target.hurt(playerKill,1);
+        setAbsoluteSeveranceHealth(target, reHealth);
+        SuperforceSetAllCandidateHealth(target,reHealth);
+        if (isFromOmniMod(target)) {
+            CompoundTag tag = new CompoundTag();
+            tag.putFloat("Health", reHealth);
+            try {
+                target.readAdditionalSaveData(tag);
+            } catch (Exception ignored) {
+            }
+
+        }
+        if (reHealth <= 0 || target.getHealth() <= 0){
+            SuperforceSetAllCandidateHealth(target,0);
+            setAbsoluteSeveranceHealth(target, 0);
+            setEntityDead(target);
+            target.dropAllDeathLoot(playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+            triggerKillAdvancement(target,playerKill);
+        }
+    }
+
     public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage, float value){
         if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
@@ -271,17 +297,16 @@ public class CsdyModifierUtil {
                 target.readAdditionalSaveData(tag);
             } catch (Exception ignored) {
             }
+
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
 //            System.out.println("绝对切断强制掉落");
-            forceSetAllCandidateHealth(target, 0);
+            forceSetAllCandidateHealth(target,0);
             setAbsoluteSeveranceHealth(target, 0);
-//            target.die(playerKill);
             setEntityDead(target);
-            die(target,playerKill);
-            triggerKillAdvancement(target, playerKill);
+            target.dropAllDeathLoot(playerKill);
             LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
-
+            triggerKillAdvancement(target,playerKill);
         }
     }
 
@@ -302,9 +327,11 @@ public class CsdyModifierUtil {
         if (reHealth <= 0 || target.getHealth() <= 0){
             forceSetAllCandidateHealth(target,0);
             setEntityDead(target);
-            die(target,playerKill);
-            triggerKillAdvancement(target,playerKill);
+            dropLoot(target,playerKill);
+            target.dropAllDeathLoot(playerKill);
             LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+            triggerKillAdvancement(target,playerKill);
+
         }
     }
 
@@ -316,7 +343,7 @@ public class CsdyModifierUtil {
         target.setHealth(reHealth);
         if (reHealth <= 0 || target.getHealth() <= 0){
             setEntityDead(target);
-            die(target,playerKill);
+            dropLoot(target,playerKill);
             target.dropAllDeathLoot(playerKill);
             LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
 
@@ -379,45 +406,5 @@ public class CsdyModifierUtil {
         }
         return 0;
     }
-    public static void die(LivingEntity livingEntity, DamageSource p_21014_) {
-        if (livingEntity.level.isClientSide) return;
-        try {
-            livingEntity.die(p_21014_);
-        } catch (ClassCastException exception) {
-            exception.printStackTrace();
-        }
-        LivingEntityAccessor accessor = (LivingEntityAccessor) livingEntity;
-        if (!livingEntity.isRemoved() && !accessor.dead()) {
-            Entity entity = p_21014_.getEntity();
-            LivingEntity livingentity = livingEntity.getKillCredit();
-            if (accessor.deathScore() >= 0 && livingentity != null) {
-                livingentity.awardKillScore(livingEntity, accessor.deathScore(), p_21014_);
-            }
 
-            if (livingEntity.isSleeping()) {
-                livingEntity.stopSleeping();
-            }
-
-            accessor.setDead(true);
-            livingEntity.getCombatTracker().recheckStatus();
-            Level level = livingEntity.level();
-            if (level instanceof ServerLevel serverlevel) {
-                if (entity == null || entity.killedEntity(serverlevel, livingEntity)) {
-                    livingEntity.gameEvent(GameEvent.ENTITY_DIE);
-                    dropAllDeathLoot(livingEntity, p_21014_);
-                }
-
-                livingEntity.level().broadcastEntityEvent(livingEntity, (byte) 3);
-            }
-
-            livingEntity.setPose(Pose.DYING);
-            if (livingEntity.getHealth() > 0.0F) {
-                forceSetAllCandidateHealth(livingEntity, 0.0F);
-            }
-        }
-    }
-
-    private static void dropAllDeathLoot(LivingEntity entity, DamageSource source) {
-        entity.dropAllDeathLoot(source);
-    }
 }

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LootForceUtil {
-
+    //我寻思这玩意能行
     private static final Logger LOGGER = LogUtils.getLogger();
     /**
      * 生成实体战利品表中的所有物品
@@ -55,7 +55,7 @@ public class LootForceUtil {
     }
 
     /**
-     * 生成指定物品到实体位置（核心依赖方法，保留）
+     * 生成指定物品到实体位置
      * @param entity 目标实体
      * @param itemStack 物品栈
      * @return 是否生成成功
@@ -76,7 +76,7 @@ public class LootForceUtil {
     }
 
     /**
-     * 解析实体的战利品表，返回所有可能的物品（不修改条件）
+     * 解析实体的战利品表，返回所有可能的物品
      * @param entity 目标实体
      * @return 物品列表
      */
@@ -98,7 +98,7 @@ public class LootForceUtil {
     }
 
     /**
-     * 解析指定的战利品表，返回所有可能的物品（
+     * 解析指定的战利品表，返回所有可能的物品
      * @param lootTable 战利品表
      * @return 物品列表
      */
@@ -240,7 +240,7 @@ public class LootForceUtil {
     }
 
     /**
-     * 判断战利品条目是否包含子条目（用于递归解析）
+     * 判断战利品条目是否包含子条目
      */
     private static boolean hasChildrenField(LootPoolEntryContainer entry) {
         return getFirstMatchedField(entry.getClass(), new String[]{"f_79285_", "f_79481_", "children"}) != null;
