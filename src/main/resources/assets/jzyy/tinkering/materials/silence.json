@@ -21,8 +21,16 @@
           "color": "FF000000"
         },
         {
-          "grey": 102,
+          "grey": 30,
+          "path": "jzyy:item/silence_dark"
+        },
+        {
+          "grey": 110,
           "path": "jzyy:item/silence"
+        },
+        {
+          "grey": 255,
+          "path": "jzyy:item/silence_light"
         }
       ]
     }
