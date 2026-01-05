@@ -1302,6 +1302,12 @@
   "material.jzyy.meror_metal_ingot": "莫厄金属锭",
   "material.jzyy.meror_metal_ingot.flavor": "旧时代遗物",
 
+  "modifier.jzyy.super_absolute_severance": "超级绝对切断",
+  "modifier.jzyy.super_absolute_severance.flavor":"你最好知道你在做什么再使用祂",
+  "modifier.jzyy.super_absolute_severance.description":"「超级绝对切断」100%效能",
+
+
+
   "modifier.jzyy.runner": "一人行者",
   "modifier.jzyy.runner.flavor":"天亮 那路在呼唤 我的行囊和我的吉他",
   "modifier.jzyy.runner.description":"你的视角越广，速度越快,反之亦然",

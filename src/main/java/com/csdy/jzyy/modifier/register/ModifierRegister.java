@@ -250,6 +250,7 @@ public class ModifierRegister {
     public static final StaticModifier<AbsoluteSeverance> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos", () -> new AbsoluteSeverance(0.5F,0));
     public static final StaticModifier<AbsoluteSeverance> ULTIMA_STATIC_MODIFIER = MODIFIERS.register("ultima", () -> new AbsoluteSeverance(1F,0));
     public static final StaticModifier<AbsoluteSeverance> OPTIMA_STATIC_MODIFIER = MODIFIERS.register("optima", () -> new AbsoluteSeverance(1F,0));
+    public static final StaticModifier<SuperAbsoluteSeverance> SUPER_ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("super_absolute_severance", () -> new SuperAbsoluteSeverance(1F,0));
 
 
     ///冰火
