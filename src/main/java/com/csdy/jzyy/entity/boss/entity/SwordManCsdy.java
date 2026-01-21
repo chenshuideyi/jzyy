@@ -63,8 +63,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             SynchedEntityData.defineId(SwordManCsdy.class, EntityDataSerializers.BOOLEAN);
 
     // 自定义血量系统
-    private float currentHealth = 30000000.0f;
-    private static float maxHealth = 30000000.0f;
+    private float currentHealth = 50000000.0f;
+    private static float maxHealth = 50000000.0f;
     private boolean isDying = false;
 
     // 战利品表
@@ -226,6 +226,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         float minDamage = 50000f;
         float maxDamage = 500000f;
         realDamage = Math.max(minDamage, Math.min(realDamage, maxDamage));
+
+        if (!(realDamage > 50000)) return false;
 
         this.currentHealth -= realDamage;
         if (this.currentHealth < 0) {

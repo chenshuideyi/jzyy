@@ -37,45 +37,4 @@ public class Divinity extends MobEffect {
         entity.setHealth(0);
     }
 
-    @SubscribeEvent
-    public static void KamuiPlus(LivingAttackEvent event) {
-        //双神威
-        if (event.getEntity() instanceof Player player) {
-            if (player.hasEffect(JzyyEffectRegister.DIVINITY.get())) {
-                player.invulnerableTime = 1;
-                event.setCanceled(true);
-            }
-
-        }
-    }
-
-    @SubscribeEvent
-    public static void FuckYouDraconicEvolution(LivingDeathEvent event) {
-        //双神威免死 操他妈的混沌守卫
-        if (event.getEntity() instanceof Player player) {
-            if (player.hasEffect(JzyyEffectRegister.DIVINITY.get())) {
-                player.setHealth(player.getMaxHealth());
-                player.deathTime = -2;
-                player.isAlive();
-                event.setCanceled(true);
-            }
-
-        }
-    }
-
-    @SubscribeEvent
-    public static void Kamuidontdie(TickEvent.PlayerTickEvent event) {
-        //双神威免死plus
-        Player player = event.player;
-        if (player.hasEffect(JzyyEffectRegister.DIVINITY.get())) {
-            player.deathTime = 0;
-            Minecraft mc = Minecraft.getInstance();
-            if (mc.screen instanceof DeathScreen) {
-                mc.screen = null;
-                mc.setScreen(null);
-            }
-            player.setHealth(player.getMaxHealth());
-        }
-
-    }
 }

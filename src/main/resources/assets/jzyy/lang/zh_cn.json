@@ -73,6 +73,9 @@
   "item.jzyy.magic_uranium": "魔力铀",
   "item.jzyy.magic_uranium.line1": "Urranium的提案",
 
+  "item.jzyy.valstrax_ingot": "赫光摇曳的锭",
+  "item.jzyy.valstrax_ingot.line1": "LuraSD的赞助者提案",
+
   "item.jzyy.tian_yi_ingot": "天依锭",
   "item.jzyy.tian_yi_ingot.line1": "Lost In Tianyi的赞助者提案",
 
@@ -346,6 +349,10 @@
   "material.jzyy.tianyuan_box": "天元宝莲",
   "material.jzyy.tianyuan_box.flavor": "福缘天赐，万象归藏",
   "material.jzyy.tianyuan_box.encyclopedia": "此物乃采集九天星核熔铸，内蕴周天星辰之力，得此者，可窥天道秘辛，获无上机缘",
+
+  "material.jzyy.valstrax": "龙星",
+  "material.jzyy.valstrax.flavor": "蕴含着龙气",
+  "material.jzyy.valstrax.encyclopedia": "「绝望と灾厄の化身」",
 
   "block.jzyy.harcadium_ore": "哈肯典姆矿石",
   "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
@@ -1404,13 +1411,21 @@
   "modifier.jzyy.connect.flavor":"欢呼着哔哩哔哩 次元咒语",
   "modifier.jzyy.connect.description":"射中生物后会产生造成「绝对切断」的闪电链",
 
+  "modifier.jzyy.valstrax_soul": "天彗龙之魂",
+  "modifier.jzyy.valstrax_soul.flavor":"银翼の凶星",
+  "modifier.jzyy.valstrax_soul.description":"若处于龙气状态，则获得20%的伤害提升",
 
+  "modifier.jzyy.dragon_gas": "龙气活性",
+  "modifier.jzyy.dragon_gas.flavor":"活性化的龙属性之力在全身奔腾",
+  "modifier.jzyy.dragon_gas.description":"当你的生命低于80%，进入龙气状态。获得200%的攻击并使护甲归0",
 
+  "modifier.jzyy.gold_finger_tool": "米线炼化",
+  "modifier.jzyy.gold_finger_tool.flavor":"哎，老金",
+  "modifier.jzyy.gold_finger_tool.description":"你的武器攻击必定会心，不会损耗斩味并提升了50%的攻击面板",
 
-
-
-
-
+  "modifier.jzyy.gold_finger_armor": "米线炼化",
+  "modifier.jzyy.gold_finger_armor.flavor":"你知道的我们PC猎人运气都很好",
+  "modifier.jzyy.gold_finger_armor.description":"-48护甲，获得一个4级孔（四个能力槽），两个一级孔（一个强化槽和一个防御槽）",
 
 
 

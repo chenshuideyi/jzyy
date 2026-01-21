@@ -96,6 +96,10 @@ import com.csdy.jzyy.modifier.modifier.srp.base.SrpBaseMaxHealthModifier;
 import com.csdy.jzyy.modifier.modifier.tian_yi.*;
 import com.csdy.jzyy.modifier.modifier.tianyuan_box.HeavenlyGift;
 import com.csdy.jzyy.modifier.modifier.tong_ban.TongGreed;
+import com.csdy.jzyy.modifier.modifier.valstrax.GoldFingerArmor;
+import com.csdy.jzyy.modifier.modifier.valstrax.GoldFingerTool;
+import com.csdy.jzyy.modifier.modifier.valstrax.ValstraxSoul;
+import com.csdy.jzyy.modifier.modifier.valstrax.armor.DragonGasModifier;
 import com.csdy.jzyy.modifier.modifier.warframe1999.Modifier1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.ModifierArmor1999;
 import com.csdy.jzyy.modifier.modifier.warframe1999.armor.Mag;
@@ -544,8 +548,11 @@ public class ModifierRegister {
     public static final StaticModifier<Truck> TRUCK_STATIC_MODIFIER = MODIFIERS.register("truck", Truck::new);
 
 
-
-
+    ///天彗龙
+    public static final StaticModifier<DragonGasModifier> DRAGON_GAS_MODIFIER_STATIC_MODIFIER = MODIFIERS.register("dragon_gas", DragonGasModifier::new);
+    public static final StaticModifier<ValstraxSoul> VALSTRAX_SOUL_STATIC_MODIFIER = MODIFIERS.register("valstrax_soul", ValstraxSoul::new);
+    public static final StaticModifier<GoldFingerArmor> GOLD_FINGER_ARMOR_STATIC_MODIFIER = MODIFIERS.register("gold_finger_armor", GoldFingerArmor::new);
+    public static final StaticModifier<GoldFingerTool> GOLD_FINGER_TOOL_STATIC_MODIFIER = MODIFIERS.register("gold_finger_tool", GoldFingerTool::new);
 
 
 
