@@ -15,7 +15,7 @@
 
   "item.jzyy.mtf": "代码能力提升药",
   "item.jzyy.null": "死亡是向下的，而我已经失去了我的高度",
-  "item.jzyy.harcadium": "哈肯典姆",
+
   "item.jzyy.living_wood": "生命木",
   "item.jzyy.experience_steel_ingot": "经验钢",
   "item.jzyy.unpowered_redstone_component": "未充能的红石构件",
@@ -76,7 +76,7 @@
   "item.jzyy.valstrax_ingot": "赫光摇曳的锭",
   "item.jzyy.valstrax_ingot.line1": "LuraSD的赞助者提案",
 
-  "item.jzyy.tian_yi_ingot": "天依锭",
+  "item.jzyy.tian_yi_ingot": "天依锭（假）",
   "item.jzyy.tian_yi_ingot.line1": "Lost In Tianyi的赞助者提案",
 
   "item.jzyy.silence": "寂静",
@@ -204,17 +204,13 @@
   "material.jzyy.overflowed_memory.flavor": "这是啥？？？",
   "material.jzyy.overflowed_memory.encyclopedia": "也许使用它就是个错误",
 
-  "material.jzyy.harcadium": "哈肯典姆",
-  "material.jzyy.harcadium.flavor": "感觉好眼熟？",
-  "material.jzyy.harcadium.encyclopedia": "末地力量的聚晶",
+
 
   "material.jzyy.bedrock": "基岩",
   "material.jzyy.bedrock.flavor": "主世界最硬的物质",
   "material.jzyy.bedrock.encyclopedia": "泰坦造物",
 
-  "material.jzyy.fake_bedrock": "基佬石头",
-  "material.jzyy.fake_bedrock.flavor": "除了硬一无是处",
-  "material.jzyy.fake_bedrock.encyclopedia": "没有泰坦诸神眷恋的小石头",
+
 
   "material.jzyy.tong_ban": "§d桐板",
   "material.jzyy.tong_ban.flavor": "还在眨眼睛",
@@ -244,7 +240,7 @@
   "material.jzyy.true_rain_curtain.flavor": "时代病",
   "material.jzyy.true_rain_curtain.encyclopedia": "我与生病的她以及不停歇的雨",
 
-  "material.jzyy.tian_yi": "天依",
+  "material.jzyy.tian_yi": "天依（假）",
   "material.jzyy.tian_yi.flavor": "脑袋上有莫比乌斯环",
   "material.jzyy.tian_yi.encyclopedia": "我是初音未来，这才是洛天依",
 
@@ -350,13 +346,10 @@
   "material.jzyy.tianyuan_box.flavor": "福缘天赐，万象归藏",
   "material.jzyy.tianyuan_box.encyclopedia": "此物乃采集九天星核熔铸，内蕴周天星辰之力，得此者，可窥天道秘辛，获无上机缘",
 
+
   "material.jzyy.valstrax": "龙星",
   "material.jzyy.valstrax.flavor": "蕴含着龙气",
   "material.jzyy.valstrax.encyclopedia": "「绝望と灾厄の化身」",
-
-  "block.jzyy.harcadium_ore": "哈肯典姆矿石",
-  "block.jzyy.harcadium_ore_end_stone": "末地哈肯典姆矿石",
-
 
   "modifier.jzyy.holy_protection": "神圣防护",
   "modifier.jzyy.holy_protection.flavor": "替代了钛金",
@@ -1030,9 +1023,6 @@
   "modifier.jzyy.eat_stone.flavor": "早餐吃石头",
   "modifier.jzyy.eat_stone.description":"左键石头类方块会强制挖掘，并不掉落物品",
 
-  "modifier.jzyy.harcadium_armor": "哈肯典姆护身",
-  "modifier.jzyy.harcadium_armor.flavor": "感觉很眼熟",
-  "modifier.jzyy.harcadium_armor.description":"获得600点最大生命值",
 
   "modifier.jzyy.mouse3": "鼠标按键3",
   "modifier.jzyy.mouse3.flavor": "这是世间最纯粹的力量",
@@ -1046,9 +1036,7 @@
   "modifier.jzyy.bedrock.flavor": "这是泰坦生物？",
   "modifier.jzyy.bedrock.description":"获得150000点最大生命值",
 
-  "modifier.jzyy.just_bed_and_rock": "只是一块基佬岩石",
-  "modifier.jzyy.just_bed_and_rock.flavor": "怎会如此？",
-  "modifier.jzyy.just_bed_and_rock.description":"没有泰坦之力的灌注，这也只不过是一块小石头",
+
 
   "modifier.jzyy.stinger": "毒刺",
   "modifier.jzyy.stinger.flavor": "这会很扎手",
@@ -1318,6 +1306,12 @@
   "material.jzyy.refine_meror_metal_ingot.flavor": "真正的莫厄金属?",
   "material.jzyy.meror_metal_ingot": "莫厄金属锭",
   "material.jzyy.meror_metal_ingot.flavor": "旧时代遗物",
+
+  "modifier.jzyy.super_absolute_severance": "超级绝对切断",
+  "modifier.jzyy.super_absolute_severance.flavor":"你最好知道你在做什么再使用祂",
+  "modifier.jzyy.super_absolute_severance.description":"「超级绝对切断」100%效能",
+
+
 
   "modifier.jzyy.runner": "一人行者",
   "modifier.jzyy.runner.flavor":"天亮 那路在呼唤 我的行囊和我的吉他",

@@ -183,7 +183,7 @@ public class LivingEntityUtil {
     }
 
     /**
-     * 强制移除所有负面效果（修复版）
+     * 强制移除所有负面效果
      * @param entity 目标生物
      */
     public static void forceRemoveAllNegativeEffects(LivingEntity entity) {
@@ -349,6 +349,93 @@ public class LivingEntityUtil {
         living.getEntityData().set(DATA_HEALTH_ID, value);
     }
 
+    public static void SuperforceSetAllCandidateHealth(LivingEntity entity, float newHealth) {
+        if (entity == null || entity.isRemoved()) {
+            return;
+        }
+
+        try {
+
+            WriteFlag.beginWrite();
+
+
+            List<EntityDataAccessor<Number>> candidates = findCandidateHealthAccessors(entity);
+            for (EntityDataAccessor<Number> accessor : candidates) {
+                forceSetHealthByAccessor(entity, accessor, newHealth);
+            }
+
+            SuperforceSetCandidateNBTEnhanced(entity, newHealth, true);
+
+        } catch (Exception e) {
+            // 记录异常但继续执行
+            e.printStackTrace();
+        } finally {
+            // 确保结束内部写入标记
+            WriteFlag.endWrite();
+        }
+        if (isFromWzzMod(entity)){
+            aggressivelyModifyAllHealthFields(entity,newHealth);
+        }
+
+    }
+
+    public static void SuperforceSetCandidateNBTEnhanced(LivingEntity entity, float newHealth, boolean force) {
+
+        if (!force && System.currentTimeMillis() - lastNbtOperationTime < 50) {
+            return;
+        }
+
+        lastNbtOperationTime = System.currentTimeMillis();
+
+        try {
+            net.minecraft.nbt.CompoundTag tag = entity.saveWithoutId(new net.minecraft.nbt.CompoundTag());
+
+
+            boolean modified = SuperenhanceNbtHealthModification(tag, newHealth, 3);
+
+            if (modified) {
+
+                java.lang.reflect.Method readMethod = getCachedReadMethod();
+                if (readMethod != null) {
+                    readMethod.invoke(entity, tag);
+                }
+            }
+        } catch (Exception e) {
+            // 静默处理错误
+        }
+    }
+    private static boolean SuperenhanceNbtHealthModification(net.minecraft.nbt.CompoundTag tag, float newHealth, int maxDepth) {
+        if (maxDepth <= 0) return false;
+
+        boolean modified = false;
+        java.util.Set<String> keys = new java.util.HashSet<>(tag.getAllKeys());
+
+        for (String key : keys) {
+            net.minecraft.nbt.Tag value = tag.get(key);
+
+
+            if (value instanceof net.minecraft.nbt.CompoundTag compoundTag) {
+                modified |= SuperenhanceNbtHealthModification(compoundTag, newHealth, maxDepth - 1);
+            }
+            else if (value instanceof net.minecraft.nbt.ListTag listTag) {
+
+                for (int i = 0; i < listTag.size(); i++) {
+                    net.minecraft.nbt.Tag element = listTag.get(i);
+                    if (element instanceof net.minecraft.nbt.CompoundTag compoundTag) {
+                        modified |= SuperenhanceNbtHealthModification(compoundTag, newHealth, maxDepth - 1);
+                    }
+                }
+            }
+
+
+            if (isNumericTag(value)) {
+                setNumericTagValue(tag, key, value, newHealth);
+                modified = true;
+            }
+        }
+
+        return modified;
+    }
 
     /**
      * 覆盖实体所有候选生命值字段（包括 DataAccessor 和 NBT 方式），确保与预期生命值一致
@@ -376,15 +463,17 @@ public class LivingEntityUtil {
             forceSetCandidateNBTEnhanced(entity, newHealth);
 
 
-            if (isFromWzzMod(entity)){
-                aggressivelyModifyAllHealthFields(entity,newHealth);
+        if (isFromWzzMod(entity)){
+            aggressivelyModifyAllHealthFields(entity,newHealth);
             }
 
     }
 
 
+
+
     public static void forceSetCandidateNBTEnhanced(LivingEntity entity, float newHealth) {
-        // 添加频率限制：不要在短时间内重复调用
+
         if (System.currentTimeMillis() - lastNbtOperationTime < 50) { // 50ms冷却
             return;
         }
@@ -395,7 +484,7 @@ public class LivingEntityUtil {
             boolean modified = enhanceNbtHealthModification(tag, entity, newHealth);
 
             if (modified) {
-                // 使用缓存的方法查找来提高性能
+
                 Method readMethod = getCachedReadMethod();
                 if (readMethod != null) {
                     readMethod.invoke(entity, tag);
@@ -406,25 +495,6 @@ public class LivingEntityUtil {
         }
     }
 
-    private static Method cachedReadMethod = null;
-    private static long lastNbtOperationTime = 0;
-
-    private static Method getCachedReadMethod() {
-        if (cachedReadMethod == null) {
-            try {
-                cachedReadMethod = LivingEntity.class.getDeclaredMethod("readAdditionalSaveData", CompoundTag.class);
-                cachedReadMethod.setAccessible(true);
-            } catch (NoSuchMethodException e) {
-                try {
-                    cachedReadMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
-                    cachedReadMethod.setAccessible(true);
-                } catch (Exception ex) {
-                    return null;
-                }
-            }
-        }
-        return cachedReadMethod;
-    }
 
     /**
      * 增强的NBT健康字段修改逻辑 - 结合精确匹配和模糊匹配
@@ -450,6 +520,26 @@ public class LivingEntityUtil {
         }
 
         return modified;
+    }
+
+    private static Method cachedReadMethod = null;
+    private static long lastNbtOperationTime = 0;
+
+    private static Method getCachedReadMethod() {
+        if (cachedReadMethod == null) {
+            try {
+                cachedReadMethod = LivingEntity.class.getDeclaredMethod("readAdditionalSaveData", CompoundTag.class);
+                cachedReadMethod.setAccessible(true);
+            } catch (NoSuchMethodException e) {
+                try {
+                    cachedReadMethod = LivingEntity.class.getDeclaredMethod("m_7378_", CompoundTag.class);
+                    cachedReadMethod.setAccessible(true);
+                } catch (Exception ex) {
+                    return null;
+                }
+            }
+        }
+        return cachedReadMethod;
     }
 
     /**
@@ -552,7 +642,7 @@ public class LivingEntityUtil {
                 lowerKey.contains("vital") ||
                 lowerKey.contains("blood");
 
-        // 3. 数值匹配：与当前生命值接近或等于最大生命值
+
         boolean valueMatches = Math.abs(numericValue - currentHealth) < 1.0f ||
                 Math.abs(numericValue - maxHealth) < 0.1f;
 
@@ -659,33 +749,6 @@ public class LivingEntityUtil {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * 查找所有可能的生命值候选字段（DataAccessor），依据字段值与实体当前生命值的接近程度判断
      */
@@ -741,6 +804,16 @@ public class LivingEntityUtil {
                 entity.getEntityData().set(accessor, (int) newHealth);
             } else if (currentValue instanceof Float) {
                 entity.getEntityData().set(accessor, newHealth);
+            } else if (currentValue instanceof Boolean) {
+                entity.getEntityData().set(accessor, (int) newHealth);
+            } else if (currentValue instanceof Double) {
+                entity.getEntityData().set(accessor, (double) newHealth);
+            } else if (currentValue instanceof Long) {
+                entity.getEntityData().set(accessor, (long) newHealth);
+            } else if (currentValue instanceof Byte) {
+                entity.getEntityData().set(accessor, (byte) newHealth);
+            } else if (currentValue instanceof Short) {
+                entity.getEntityData().set(accessor, (short) newHealth);
             }
         } finally {
             WriteFlag.endWrite();

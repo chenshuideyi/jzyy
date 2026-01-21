@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 import static com.csdy.jzyy.entity.Util.forceHurt;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionSeverance;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 
 public class SwordManCsdy extends BossEntity implements GeoEntity {
@@ -387,7 +387,7 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 2.2);
         builder = builder.add(Attributes.MAX_HEALTH, maxHealth);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, 640000.0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 102400000.0);
         builder = builder.add(Attributes.ATTACK_SPEED, 20.0);
         builder = builder.add(Attributes.FOLLOW_RANGE, 128);
         return builder;
@@ -459,8 +459,8 @@ public class SwordManCsdy extends BossEntity implements GeoEntity {
             int newLevel = currentLevel + 1;
             float damage = 1 + newLevel;
 
-            forceHurt(target, this.damageSources().mobAttack(this), damage * 20000);
-            reflectionSeverance(target,target.getHealth() - 10000);
+            forceHurt(target, this.damageSources().mobAttack(this), damage * 2000000);
+            reflectionSeverance(target,target.getHealth() - 1000000);
             target.addEffect(new MobEffectInstance(JzyyEffectRegister.DEEP_WOUND.get(), 20 * 15, newLevel));
 
         }

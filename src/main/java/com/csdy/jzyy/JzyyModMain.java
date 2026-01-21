@@ -73,7 +73,6 @@ public class JzyyModMain {
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new LivingEvent());
-
         ModifierRegister.MODIFIERS.register(bus);
         ItemRegister.ITEMS.register(bus);
         HideRegister.ITEMS.register(bus);

@@ -114,6 +114,7 @@ import com.csdy.jzyy.modifier.modifier.yue_zheng_ling.*;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.modifier.CommonDiademaModifier;
 import com.csdy.tcondiadema.modifier.DiademaModifier;
+import net.minecraftforge.fml.ModList;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
@@ -218,14 +219,15 @@ public class ModifierRegister {
     ///哈肯典姆
     public static final StaticModifier<EatStone> EAT_STONE_STATIC_MODIFIER = MODIFIERS.register("eat_stone", EatStone::new);
     public static final StaticModifier<NoLevelsModifier> BEDROCK_BREAK = MODIFIERS.register("bedrock_breaker", NoLevelsModifier::new);
-    public static final StaticModifier<HarcadiumArmor> HARCADIUM_ARMOR_STATIC_MODIFIER = MODIFIERS.register("harcadium_armor", HarcadiumArmor::new);
+//    public static final StaticModifier<HarcadiumArmor> HARCADIUM_ARMOR_STATIC_MODIFIER = MODIFIERS.register("harcadium_armor", HarcadiumArmor::new);
 
     ///基岩
     public static final StaticModifier<BedRock> BED_ROCK_STATIC_MODIFIER = MODIFIERS.register("bedrock", BedRock::new);
     public static final StaticModifier<Deicide> DEICIDE_STATIC_MODIFIER = MODIFIERS.register("deicide", Deicide::new);
-    public static final StaticModifier<Mouse3> MOUSE_3_STATIC_MODIFIER = MODIFIERS.register("mouse3", Mouse3::new);
+
+    public static final StaticModifier<Mouse3> MOUSE_3_STATIC_MODIFIER =  MODIFIERS.register("mouse3", Mouse3::new);
     ///假的
-    public static final StaticModifier<NoLevelsModifier> JUST_BED_AND_ROCK = MODIFIERS.register("just_bed_and_rock", NoLevelsModifier::new);
+//    public static final StaticModifier<NoLevelsModifier> JUST_BED_AND_ROCK = MODIFIERS.register("just_bed_and_rock", NoLevelsModifier::new);
 
     ///切断及换皮
     public static final StaticModifier<BaseSeveranceModifier> SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("severance", () -> new BaseSeveranceModifier(0.1F,0));
@@ -252,6 +254,7 @@ public class ModifierRegister {
     public static final StaticModifier<AbsoluteSeverance> COSMOS_STATIC_MODIFIER = MODIFIERS.register("cosmos", () -> new AbsoluteSeverance(0.5F,0));
     public static final StaticModifier<AbsoluteSeverance> ULTIMA_STATIC_MODIFIER = MODIFIERS.register("ultima", () -> new AbsoluteSeverance(1F,0));
     public static final StaticModifier<AbsoluteSeverance> OPTIMA_STATIC_MODIFIER = MODIFIERS.register("optima", () -> new AbsoluteSeverance(1F,0));
+    public static final StaticModifier<SuperAbsoluteSeverance> SUPER_ABSOLUTE_SEVERANCE_STATIC_MODIFIER = MODIFIERS.register("super_absolute_severance", () -> new SuperAbsoluteSeverance(1F,0));
 
 
     ///冰火

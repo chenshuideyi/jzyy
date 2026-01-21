@@ -33,13 +33,13 @@ public class AwakenPandora extends DiademaModifier implements OnDeathModifierHoo
 
     @Override
     public float onHoldingPreventDeath(LivingEntity living, IToolStackView tool, ModifierEntry entry, EquipmentContext equipmentContext, EquipmentSlot equipmentSlot, DamageSource damageSource) {
-        // 检查当前血量是否低于或等于最大生命值的1%
+
         float maxHealth = living.getMaxHealth();
         float currentHealth = living.getHealth();
 
-        // 如果当前生命值低于或等于最大生命值的1%
+
         if (currentHealth <= maxHealth * 0.01f) {
-            // 如果还没有效果，就添加效果
+
             if (!living.hasEffect(JzyyEffectRegister.TRUE_MAN_LAST_DANCE.get())) {
                 living.addEffect(new MobEffectInstance(JzyyEffectRegister.TRUE_MAN_LAST_DANCE.get(), 400, 1));
             }
@@ -51,7 +51,7 @@ public class AwakenPandora extends DiademaModifier implements OnDeathModifierHoo
 
     @Override
     public void onDeathed(IToolStackView tool, ModifierEntry entry, EquipmentContext context, EquipmentSlot slot, DamageSource source, LivingEntity living, boolean isAliveSource) {
-        // 保留原有逻辑作为备份
+
         if (living.hasEffect(JzyyEffectRegister.TRUE_MAN_LAST_DANCE.get())) return;
         living.setHealth(living.getMaxHealth()/2);
         living.deathTime = -2;

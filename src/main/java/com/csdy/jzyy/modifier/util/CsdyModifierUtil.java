@@ -1,30 +1,30 @@
 package com.csdy.jzyy.modifier.util;
 
+
+import com.csdy.jzyy.mixins.LivingEntityAccessor;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
+import com.csdy.jzyy.modifier.util.font.LootForceUtil;
 import com.yellowbrossproductions.yellowbrossextras.entities.DefenderEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.stat.INumericToolStat;
 import slimeknights.tconstruct.library.tools.stat.IToolStat;
@@ -38,8 +38,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.*;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
 
 public class CsdyModifierUtil {
 
@@ -257,6 +256,33 @@ public class CsdyModifierUtil {
         return entity.getClass().getName().contains("iceandfire");
     }
 
+
+    public static void SupermodifierAbsoluteSeverance(LivingEntity target, Player player, float damage, float value){
+        if (target.getHealth() <= 0) return;
+        float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
+        var playerKill = target.level().damageSources.playerAttack(player);
+        target.hurt(playerKill,1);
+        setAbsoluteSeveranceHealth(target, reHealth);
+        SuperforceSetAllCandidateHealth(target,reHealth);
+        if (isFromOmniMod(target)) {
+            CompoundTag tag = new CompoundTag();
+            tag.putFloat("Health", reHealth);
+            try {
+                target.readAdditionalSaveData(tag);
+            } catch (Exception ignored) {
+            }
+
+        }
+        if (reHealth <= 0 || target.getHealth() <= 0){
+            SuperforceSetAllCandidateHealth(target,0);
+            setAbsoluteSeveranceHealth(target, 0);
+            setEntityDead(target);
+            target.dropAllDeathLoot(playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+            triggerKillAdvancement(target,playerKill);
+        }
+    }
+
     public static void modifierAbsoluteSeverance(LivingEntity target, Player player, float damage, float value){
         if (target.getHealth() <= 0) return;
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
@@ -271,16 +297,16 @@ public class CsdyModifierUtil {
                 target.readAdditionalSaveData(tag);
             } catch (Exception ignored) {
             }
+
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
 //            System.out.println("绝对切断强制掉落");
-            forceSetAllCandidateHealth(target, 0);
+            forceSetAllCandidateHealth(target,0);
             setAbsoluteSeveranceHealth(target, 0);
-//            target.die(playerKill);
-            triggerKillAdvancement(target, playerKill);
             setEntityDead(target);
-            dropLoot(target, playerKill);
             target.dropAllDeathLoot(playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+            triggerKillAdvancement(target,playerKill);
         }
     }
 
@@ -300,10 +326,12 @@ public class CsdyModifierUtil {
         }
         if (reHealth <= 0 || target.getHealth() <= 0){
             forceSetAllCandidateHealth(target,0);
-            triggerKillAdvancement(target,playerKill);
             setEntityDead(target);
             dropLoot(target,playerKill);
             target.dropAllDeathLoot(playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+            triggerKillAdvancement(target,playerKill);
+
         }
     }
 
@@ -314,7 +342,11 @@ public class CsdyModifierUtil {
         float reHealth = target.getHealth() - damage * value - target.getMaxHealth() * 0.01f;
         target.setHealth(reHealth);
         if (reHealth <= 0 || target.getHealth() <= 0){
+            setEntityDead(target);
+            dropLoot(target,playerKill);
             target.dropAllDeathLoot(playerKill);
+            LootForceUtil.generateEntityLoot(target, player.getLuck(), true);
+
         }
     }
 
@@ -374,4 +406,5 @@ public class CsdyModifierUtil {
         }
         return 0;
     }
+
 }
