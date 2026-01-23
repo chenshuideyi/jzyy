@@ -10,9 +10,12 @@ import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceRemoveAllNegativeEffects;
-
 public class DragonGasModifier extends JzyyModifier {
+
+    @Override
+    public boolean isNoLevels() {
+        return true;
+    }
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {

@@ -74,10 +74,6 @@ public class WindowMixin {
     public WindowMixin() {
     }
 
-    /**
-     * @author
-     * @reason 自定义窗口标题并添加随机副标题
-     */
     @Overwrite
     public void setTitle(String string) {
         jzyy$currentSubtitle = jzyy$ARRAY[jzyy$random.nextInt(jzyy$ARRAY.length)];

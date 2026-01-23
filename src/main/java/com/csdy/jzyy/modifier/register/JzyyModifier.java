@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
+import slimeknights.tconstruct.library.modifiers.hook.armor.DamageBlockModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.armor.EquipmentChangeModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.armor.ModifyDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.armor.OnAttackedModifierHook;
@@ -70,7 +71,7 @@ public abstract class JzyyModifier extends Modifier implements MeleeDamageModifi
         BowAmmoModifierHook, ProjectileHitModifierHook, ProjectileLaunchModifierHook,KeybindInteractModifierHook, ProcessLootModifierHook,
         EquipmentChangeModifierHook, InventoryTickModifierHook, OnAttackedModifierHook, TooltipModifierHook, AttributesModifierHook,
         ModifyDamageModifierHook, ModifierRemovalHook, BlockBreakModifierHook, EntityInteractionModifierHook, ToolStatsModifierHook,
-        ToolDamageModifierHook,ModifyDamageSourceModifierHook,  VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook, RepairFactorModifierHook {
+        ToolDamageModifierHook,ModifyDamageSourceModifierHook,  VolatileDataModifierHook, RequirementsModifierHook, ValidateModifierHook, RepairFactorModifierHook, DamageBlockModifierHook {
 
     public JzyyModifier() {
     }
@@ -86,7 +87,7 @@ public abstract class JzyyModifier extends Modifier implements MeleeDamageModifi
         builder.addHook(this, ModifierHooks.ARMOR_INTERACT, ModifierHooks.ATTRIBUTES, ModifierHooks.PROCESS_LOOT);
         builder.addHook(this, ModifierHooks.TOOL_DAMAGE, ModifierHooks.VOLATILE_DATA,EtSTLibHooks.MODIFY_DAMAGE_SOURCE);
         builder.addHook(this, ModifierHooks.VALIDATE, ModifierHooks.REPAIR_FACTOR,ModifierHooks.REQUIREMENTS);
-
+        builder.addHook(this,ModifierHooks.DAMAGE_BLOCK);
     }
 
     @Override
@@ -201,6 +202,7 @@ public abstract class JzyyModifier extends Modifier implements MeleeDamageModifi
     public boolean isNoLevels() {
         return false;
     }
+
     public ItemStack modifierFindAmmo(IToolStackView tool, ModifierEntry modifiers, LivingEntity livingEntity, ItemStack itemStack, Predicate<ItemStack> predicate) {
         return itemStack;
     }
@@ -234,5 +236,12 @@ public abstract class JzyyModifier extends Modifier implements MeleeDamageModifi
     }
     public void onModifierRemoved(IToolStackView tool) {
     }
+
+    @Override
+    public boolean isDamageBlocked(IToolStackView tool, ModifierEntry entry, EquipmentContext context,
+                                   EquipmentSlot slot, DamageSource source, float damage) {
+        return false;
+    }
+
 
 }

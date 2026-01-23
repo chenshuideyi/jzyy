@@ -25,7 +25,8 @@
     "void_walk.EntityMoveMixin"
   ],
   "client": [
-    "WindowMixin"
+    "WindowMixin",
+    "MinecraftMixin"
   ],
   "injectors": {
     "defaultRequire": 1

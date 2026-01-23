@@ -20,6 +20,7 @@ import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease1;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease2;
 import com.csdy.jzyy.modifier.modifier.blade_release.BladeRelease3;
 import com.csdy.jzyy.modifier.modifier.boring.*;
+import com.csdy.jzyy.modifier.modifier.ceramics_matter.Ceramics;
 import com.csdy.jzyy.modifier.modifier.command_block.Gamemode1;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyArmor;
 import com.csdy.jzyy.modifier.modifier.csdy.CsdyAttack;
@@ -556,6 +557,9 @@ public class ModifierRegister {
     public static final StaticModifier<ValstraxSoul> VALSTRAX_SOUL_STATIC_MODIFIER = MODIFIERS.register("valstrax_soul", ValstraxSoul::new);
     public static final StaticModifier<GoldFingerArmor> GOLD_FINGER_ARMOR_STATIC_MODIFIER = MODIFIERS.register("gold_finger_armor", GoldFingerArmor::new);
     public static final StaticModifier<GoldFingerTool> GOLD_FINGER_TOOL_STATIC_MODIFIER = MODIFIERS.register("gold_finger_tool", GoldFingerTool::new);
+
+    /// 陶瓷物质
+    public static final StaticModifier<Ceramics> CERAMICS_STATIC_MODIFIER = MODIFIERS.register("ceramics", Ceramics::new);
 
 
 

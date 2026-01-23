@@ -76,6 +76,10 @@
   "item.jzyy.valstrax_ingot": "赫光摇曳的锭",
   "item.jzyy.valstrax_ingot.line1": "LuraSD的赞助者提案",
 
+  "item.jzyy.ceramics_matter": "陶瓷物质",
+  "item.jzyy.ceramics_matter.line1": "游客岛的提案",
+  "item.jzyy.ceramics_matter.line2": "可以在《机械动力·应力转动》中看见这个！",
+
   "item.jzyy.tian_yi_ingot": "天依锭（假）",
   "item.jzyy.tian_yi_ingot.line1": "Lost In Tianyi的赞助者提案",
 
@@ -203,6 +207,9 @@
   "material.jzyy.overflowed_memory": "溢出的内存",
   "material.jzyy.overflowed_memory.flavor": "这是啥？？？",
   "material.jzyy.overflowed_memory.encyclopedia": "也许使用它就是个错误",
+
+
+
 
 
 
@@ -346,10 +353,35 @@
   "material.jzyy.tianyuan_box.flavor": "福缘天赐，万象归藏",
   "material.jzyy.tianyuan_box.encyclopedia": "此物乃采集九天星核熔铸，内蕴周天星辰之力，得此者，可窥天道秘辛，获无上机缘",
 
-
   "material.jzyy.valstrax": "龙星",
   "material.jzyy.valstrax.flavor": "蕴含着龙气",
   "material.jzyy.valstrax.encyclopedia": "「绝望と灾厄の化身」",
+
+
+  "material.jzyy.ceramics_matter": "陶瓷物质",
+  "material.jzyy.ceramics_matter.flavor": "是的这是陶瓷物质不是粘土物质，绝对不是作者没有画出陶瓷质感的能力才画成这样的",
+  "material.jzyy.ceramics_matter.encyclopedia": "出自某本虚构历史的MC主题小说",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   "modifier.jzyy.holy_protection": "神圣防护",
   "modifier.jzyy.holy_protection.flavor": "替代了钛金",
@@ -1198,7 +1230,7 @@
   "effect.jzyy.horologium_no_ai": "时间停止",
   "effect.jzyy.holy_protection_cooldown": "神圣闪避冷却中",
   "effect.jzyy.deep_wound": "深度伤口",
-
+  "effect.jzyy.dragon_gas": "龙气",
 
   "jzyy.tool.tab": "匠战妖域-工具",
   "item.jzyy.lollipop": "棒棒糖",
@@ -1420,6 +1452,10 @@
   "modifier.jzyy.gold_finger_armor": "米线炼化",
   "modifier.jzyy.gold_finger_armor.flavor":"你知道的我们PC猎人运气都很好",
   "modifier.jzyy.gold_finger_armor.description":"-48护甲，获得一个4级孔（四个能力槽），两个一级孔（一个强化槽和一个防御槽）",
+
+  "modifier.jzyy.ceramics": "陶瓷物质",
+  "modifier.jzyy.ceramics.flavor":"等价交换系列的最终物质！",
+  "modifier.jzyy.ceramics.description":"武器：获得二十档充能，每档提供200%攻击伤害加成；你造成的伤害不受护甲值与盔甲韧性的减伤，每级提供15个能力槽、15个升级槽与15个防御槽。（最大五级）\n 护甲：每级提供10000000点伤害格挡,24%任意伤害抗性；同时，每级提供15个能力槽、15个升级槽与15个防御槽。（最大五级）",
 
 
 
