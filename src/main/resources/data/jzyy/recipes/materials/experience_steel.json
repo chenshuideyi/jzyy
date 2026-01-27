@@ -1,0 +1,22 @@
+{
+    "type": "tconstruct:alloy",
+    "inputs": [
+      {
+        "tag": "tconstruct:molten_steel",
+        "amount": 180
+      },
+      {
+        "name": "tinkersinnovation:molten_experience",
+        "amount": 450
+      },
+      {
+        "name": "kubejs:molten_lapis",
+        "amount": 600
+      } 
+    ],
+    "result": {
+      "fluid": "kubejs:molten_experience_steel",
+      "amount": 90
+    },
+    "temperature": 1500
+  }
