@@ -10,7 +10,7 @@ public class GpuUtil {
     public static void gpuUtilInit() {
 
     }
-    static final float totalVideoMemory = getTotalVideoMemory();
+    static final float totalVideoMemory = getTotalVideoMemory() * 1024;
 
     static float getTotalVideoMemory() {
         try {

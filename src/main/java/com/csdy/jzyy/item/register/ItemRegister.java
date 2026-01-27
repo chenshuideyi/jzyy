@@ -30,6 +30,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> MAGIC_URANIUM = ITEMS.register("magic_uranium", MagicUranium::new);
     public static final RegistryObject<Item> OVERFLOWED_MEMORY = ITEMS.register("overflowed_memory", OverflowedMemory::new);
     public static final RegistryObject<Item> ETSH = ITEMS.register("etsh", Etsh::new);
+    public static final RegistryObject<Item> CERAMICS_MATTER = ITEMS.register("ceramics_matter", CeramicsMatter::new);
 //    public static final RegistryObject<Item> DX_INGOT = ITEMS.register("dx_ingot", DxIngot::new);
     public static final RegistryObject<Item> ICE = ITEMS.register("ice", Ice::new);
     public static final RegistryObject<Item> TONG_BAN = ITEMS.register("tong_ban", TongBan::new);
@@ -69,6 +70,9 @@ public class ItemRegister {
 
     public static final RegistryObject<BaseSponsorshipItem> TIAN_YI_INGOT = ITEMS.register("tian_yi_ingot",
             () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.tian_yi_ingot.line1", ChatFormatting.BLUE));
+
+    public static final RegistryObject<BaseSponsorshipItem> VALSTRAX_INGOT = ITEMS.register("valstrax_ingot",
+            () -> new BaseSponsorshipItem(Rarity.EPIC,"item.jzyy.valstrax_ingot.line1", ChatFormatting.RED));
 
     public static final RegistryObject<Item> DOG_JIAO_SPAWN_EGG = ITEMS.register("dog_jiao_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.DOG_JIAO,  -10998784, -8650752, new Item.Properties()));
     public static final RegistryObject<Item> HJM_SPAWN_EGG = ITEMS.register("hjm_spawn_egg", () -> new ForgeSpawnEggItem(JzyyEntityRegister.HJM,  -4682658, -2311533, new Item.Properties()));

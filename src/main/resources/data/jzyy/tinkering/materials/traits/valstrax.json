@@ -1,0 +1,24 @@
+{
+  "default": [
+    {
+      "name": "jzyy:valstrax_soul",
+      "level": 1
+    },
+    {
+      "name": "jzyy:gold_finger_tool",
+      "level": 1
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor":[
+      {
+        "name": "jzyy:dragon_gas",
+        "level": 1
+      },
+      {
+        "name": "jzyy:gold_finger_armor",
+        "level": 1
+      }
+    ]
+  }
+}

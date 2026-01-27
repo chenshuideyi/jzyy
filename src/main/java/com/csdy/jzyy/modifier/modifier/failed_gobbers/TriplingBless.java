@@ -13,6 +13,7 @@ public class TriplingBless extends JzyyModifier {
     public boolean isNoLevels() {
         return true;
     }
+
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         CsdyModifierUtil.multiplyAllToolStats(builder,0.0001f);

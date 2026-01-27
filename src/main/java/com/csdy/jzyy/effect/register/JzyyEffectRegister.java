@@ -19,6 +19,7 @@ public class JzyyEffectRegister {
     public static final RegistryObject<MobEffect> CSDY = EFFECTS.register("csdy", Csdy::new);
     public static final RegistryObject<MobEffect> HOROLOGIUM_NO_AI = EFFECTS.register("horologium_no_ai", HorologiumNoAI::new);
     public static final RegistryObject<MobEffect> DEEP_WOUND = EFFECTS.register("deep_wound", DeepWound::new);
+    public static final RegistryObject<MobEffect> DRAGON_GAS = EFFECTS.register("dragon_gas", DragonGas::new);
 
 
 }

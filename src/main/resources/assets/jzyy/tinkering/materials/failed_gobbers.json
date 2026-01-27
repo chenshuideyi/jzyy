@@ -6,19 +6,40 @@
   "luminosity": 0,
   "generator": {
     "transformer": {
-      "type": "tconstruct:recolor_sprite",
-      "color_mapping": {
-        "type": "tconstruct:grey_to_color",
-        "palette": [
-          {  "grey": 0,    "color": "FFF1FEFF"},
-          {  "grey": 63,   "color": "FF678BAB"},
-          {  "grey": 102,  "color": "FF7DA2C4"},
-          {  "grey": 140,  "color": "FFDFEDFB"},
-          {  "grey": 178,  "color": "FFAFCFF2"},
-          {  "grey": 216,  "color": "FFBADBFF"},
-          {  "grey": 255,  "color": "FFB7DFE2"}
-        ]
-      }
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "color": "FF000000",
+          "grey": 0
+        },
+        {
+          "color": "FFC8C8C8",
+          "grey": 63,
+          "path": "jzyy:hover/failed_gobbers_dark"
+        },
+        {
+          "grey": 102,
+          "path": "jzyy:hover/failed_gobbers_dark"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 140,
+          "path": "jzyy:hover/failed_gobbers"
+        },
+        {
+          "grey": 178,
+          "path": "jzyy:hover/failed_gobbers"
+        },
+        {
+          "color": "FFE1E1E1",
+          "grey": 216,
+          "path": "jzyy:hover/failed_gobbers_light"
+        },
+        {
+          "grey": 255,
+          "path": "jzyy:hover/failed_gobbers_light"
+        }
+      ]
     },
     "supportedStats": [
       "tconstruct:head",
