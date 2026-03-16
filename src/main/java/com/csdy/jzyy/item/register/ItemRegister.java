@@ -42,7 +42,7 @@ public class ItemRegister {
     public static final RegistryObject<Item> GOLDEN_STRAWBERRY = ITEMS.register("golden_strawberry", GoldenStrawberry::new);
     public static final RegistryObject<Item> FRIED_CHICKEN = ITEMS.register("fried_chicken", FriedChicken::new);
 
-    public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
+//    public static final RegistryObject<Item> RAINBOW_MATERIAL = ITEMS.register("rainbow_material", RainbowMaterial::new);
     public static final RegistryObject<Item> SILENCE = ITEMS.register("silence", Silence::new);
     public static final RegistryObject<Item> MAGGOT = ITEMS.register("maggot", Maggot::new);
     public static final RegistryObject<Item> HOT_DOG = ITEMS.register("hot_dog", HotDog::new);
@@ -112,8 +112,8 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final RegistryObject<Item> DEFECT = ITEMS.register("defect",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE)));
-    public static final RegistryObject<Item> HALLOWED_BAR = ITEMS.register("hallowed_bar",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
+//    public static final RegistryObject<Item> HALLOWED_BAR = ITEMS.register("hallowed_bar",
+//            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> MEGA_MANYULLYN = ITEMS.register("mega_manyullyn",
             () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC)));
 //    public static final RegistryObject<Item> MEGA_MANYULLYN_BOOSTER_ENERGY = ITEMS.register("mega_manyullyn_booster_energy",
