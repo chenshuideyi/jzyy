@@ -1,7 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.csdy;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
-import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
+import com.c2h6s.etstlib.tool.hooks.ProjectileDamageModifierHook;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
 import com.csdy.jzyy.ms.util.MsUtil;
@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -32,7 +33,7 @@ import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 
-public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
+public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierHook, ProjectileDamageModifierHook {
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
@@ -54,20 +55,19 @@ public class CsdyAttack extends NoLevelsModifier implements MeleeDamageModifierH
     }
 
     @Override
-    public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
-        if (attacker instanceof ServerPlayer player && target instanceof LivingEntity living) {
-            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
-            if (isFromOmniMod(living)) KillEntity(living);
-//            invokeKillEntity(living);
-            return damage;
-        }
-        return damage;
+    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
+        hookBuilder.addHook(this, EtSTLibHooks.PROJECTILE_DAMAGE);
     }
 
     @Override
-    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
-        hookBuilder.addHook(this, EtSTLibHooks.ARROW_DAMAGE);
+    public float getProjectileDamage(ModDataNBT modDataNBT, ModifierEntry modifierEntry, ModifierNBT modifierNBT, @NotNull Projectile projectile, @Nullable AbstractArrow abstractArrow, @Nullable LivingEntity livingEntity, @NotNull Entity entity, float v, float v1) {
+        if (livingEntity instanceof ServerPlayer player && entity instanceof LivingEntity living) {
+            CoreMsUtil.setCategory(living, EntityCategory.csdykill);
+            if (isFromOmniMod(living)) KillEntity(living);
+//            invokeKillEntity(living);
+            return v1;
+        }
+        return v1;
     }
-
 }

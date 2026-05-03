@@ -1,12 +1,13 @@
 package com.csdy.jzyy.modifier.modifier.living_wood.real;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
-import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
+import com.c2h6s.etstlib.tool.hooks.ProjectileDamageModifierHook;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -21,7 +22,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
 import javax.annotation.Nullable;
 //TODO 也许可以优化
-public class ForestAngry extends NoLevelsModifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
+public class ForestAngry extends NoLevelsModifier implements MeleeDamageModifierHook, ProjectileDamageModifierHook {
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry entry, ToolAttackContext context, float baseDamage, float damage) {
@@ -36,22 +37,27 @@ public class ForestAngry extends NoLevelsModifier implements MeleeDamageModifier
         return damage * damageMultiplier;
     }
 
-    @Override
-    public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow,
-                                @Nullable LivingEntity attacker, @NotNull Entity target, float baseDamage, float damage) {
-        if (attacker == null) return damage;
 
-        int treeCount = countNearbyTrees(attacker.level(), attacker.blockPosition());
-        float damageMultiplier = 1.0f + (10 - Math.min(treeCount, 10)) * 0.03f; // 远程加成略低
-        return damage * damageMultiplier;
+    @Override
+    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
+        hookBuilder.addHook(this, EtSTLibHooks.PROJECTILE_DAMAGE);
     }
 
-    // 统计周围10格内的树木数量
+
+    @Override
+    public float getProjectileDamage(ModDataNBT modDataNBT, ModifierEntry modifierEntry, ModifierNBT modifierNBT, @NotNull Projectile projectile, @org.jetbrains.annotations.Nullable AbstractArrow abstractArrow, @org.jetbrains.annotations.Nullable LivingEntity livingEntity, @NotNull Entity entity, float v, float v1) {
+        if (livingEntity == null) return v1;
+
+        int treeCount = countNearbyTrees(livingEntity.level(), livingEntity.blockPosition());
+        float damageMultiplier = 1.0f + (10 - Math.min(treeCount, 10)) * 0.03f;
+        return v1 * damageMultiplier;
+    }
+
     private int countNearbyTrees(Level level, BlockPos centerPos) {
-        int radius = 10; // 检测半径
+        int radius = 10;
         int treeCount = 0;
 
-        // 检测范围内的原木方块
         for (BlockPos pos : BlockPos.betweenClosed(
                 centerPos.offset(-radius, -radius, -radius),
                 centerPos.offset(radius, radius, radius))) {
@@ -63,12 +69,4 @@ public class ForestAngry extends NoLevelsModifier implements MeleeDamageModifier
 
         return treeCount;
     }
-
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
-        hookBuilder.addHook(this, EtSTLibHooks.ARROW_DAMAGE);
-    }
-
-
 }

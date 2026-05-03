@@ -104,10 +104,10 @@ buildscript {
 
 
         //tic
-        implementation fg.deobf("curse.maven:mantle-74924:6819217")
-        implementation fg.deobf("curse.maven:tinkers-construct-74072:6777068")
+        implementation fg.deobf("curse.maven:mantle-74924:7563777")
+        implementation fg.deobf("curse.maven:tinkers-construct-74072:7449219")
 
-        implementation fg.deobf("curse.maven:etst-lib-1206379:6732443")
+        implementation fg.deobf("curse.maven:etst-lib-1206379:7904844")
 
         //ProjectE
         implementation fg.deobf("curse.maven:projecte-226410:4901949")

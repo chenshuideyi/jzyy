@@ -52,7 +52,7 @@ public class JzyyFluidRegister {
 
     public static final FluidObject<ForgeFlowingFluid> PLA_STEEL = registerHotBurning(FLUIDS,"molten_pla_steel",1500,4,18,4f,false);
 
-    public static final FluidObject<ForgeFlowingFluid> RAINBOW_MATERIAL = registerHotBurning(FLUIDS,"molten_rainbow_material",6666,14,32,777f,false);
+ //   public static final FluidObject<ForgeFlowingFluid> RAINBOW_MATERIAL = registerHotBurning(FLUIDS,"molten_rainbow_material",6666,14,32,777f,false);
 
     public static final FluidObject<ForgeFlowingFluid> YIN = registerHotBurning(FLUIDS,"molten_yin",6666,14,32,777f,false);
 

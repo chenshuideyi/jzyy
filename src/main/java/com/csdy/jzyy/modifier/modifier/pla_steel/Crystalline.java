@@ -1,7 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.pla_steel;
 
 import com.c2h6s.etstlib.register.EtSTLibHooks;
-import com.c2h6s.etstlib.tool.hooks.ArrowDamageModifierHook;
+import com.c2h6s.etstlib.tool.hooks.ProjectileDamageModifierHook;
 import com.csdy.jzyy.JzyyModMain;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +21,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-public class Crystalline extends NoLevelsModifier implements MeleeDamageModifierHook, ProjectileLaunchModifierHook,ArrowDamageModifierHook {
+public class Crystalline extends NoLevelsModifier implements MeleeDamageModifierHook, ProjectileLaunchModifierHook,ProjectileDamageModifierHook {
     private static final String DAMAGE_UP = JzyyModMain.MODID + ":damage_up";
 
     @Override
@@ -44,20 +44,21 @@ public class Crystalline extends NoLevelsModifier implements MeleeDamageModifier
         arrow.getPersistentData().putInt(DAMAGE_UP, durabilityValue);
     }
 
-    @Override
-    public float getArrowDamage(ModDataNBT nbt, ModifierEntry entry, ModifierNBT modifierNBT, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull Entity target, float basedamage, float damage) {
-        if (attacker instanceof Player && target instanceof LivingEntity) {
-            int damageBonus = arrow.getPersistentData().getInt(DAMAGE_UP);
-            return damage + damageBonus;
-        }
-        return damage;
-    }
+
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
         hookBuilder.addHook(this, ModifierHooks.PROJECTILE_LAUNCH);
-        hookBuilder.addHook(this, EtSTLibHooks.ARROW_DAMAGE);
+        hookBuilder.addHook(this, EtSTLibHooks.PROJECTILE_DAMAGE);
     }
 
+    @Override
+    public float getProjectileDamage(ModDataNBT modDataNBT, ModifierEntry modifierEntry, ModifierNBT modifierNBT, @NotNull Projectile projectile, @Nullable AbstractArrow abstractArrow, @Nullable LivingEntity livingEntity, @NotNull Entity entity, float v, float v1) {
+        if (livingEntity instanceof Player && entity instanceof LivingEntity) {
+            int damageBonus = abstractArrow.getPersistentData().getInt(DAMAGE_UP);
+            return v1 + damageBonus;
+        }
+        return v1;
+    }
 }
