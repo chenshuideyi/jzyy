@@ -1,144 +1,138 @@
 package com.csdy.jzyy.modifier.modifier.bian;
 
 import com.csdy.jzyy.ms.util.LivingEntityUtil;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.server.ServerStoppingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.stat.ToolStats;
+
 import javax.annotation.Nonnull;
 import java.util.*;
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.modifierAbsoluteSeverance;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
+import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 
-public class DotModifier extends Modifier implements MeleeDamageModifierHook {
+public class DotModifier extends Modifier implements MeleeDamageModifierHook, MeleeHitModifierHook {
 
-    private final float absoluteSeveranceBaseValue = 1.5F;
-    private final float absoluteSeveranceThreshold = 5F;
-
-    private static final Map<UUID, Integer> highestEffectCountMap = new WeakHashMap<>();
-
-    private static final Map<UUID, Set<MobEffect>> appliedEffectsMap = new WeakHashMap<>();
-
-    private static final Map<UUID, Long> NULL_ENTITY_TIMES = new HashMap<>();
-
-    private static List<MobEffect> harmfulEffectsCache = null;
-
-
+    private static final float ABSOLUTE_SEVERANCE_THRESHOLD = 1F;
+    private static final float DAMAGE_MULTIPLIER_PER_EFFECT = 212121212121F;
+    private static final Map<UUID, Integer> HIGHEST_EFFECT_COUNT_MAP = new ConcurrentHashMap<>();
+    private static final List<MobEffect> HARMFUL_EFFECTS_CACHE;
     static {
+        List<MobEffect> effects = new ArrayList<>();
+        for (var key : ForgeRegistries.MOB_EFFECTS.getKeys()) {
+            MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(key);
+            if (effect != null && effect.getCategory() == MobEffectCategory.HARMFUL) {
+                effects.add(effect);
+            }
+        }
+        HARMFUL_EFFECTS_CACHE = Collections.unmodifiableList(effects);
+
         MinecraftForge.EVENT_BUS.register(DotModifier.class);
     }
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE);
-
+        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT);
         super.registerHooks(hookBuilder);
     }
 
     @Override
     public float getMeleeDamage(@Nonnull IToolStackView tool, @Nonnull ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
         LivingEntity enemy = context.getLivingTarget();
-        if (enemy != null) {
-            UUID enemyId = enemy.getUUID();
-            int level = modifier.getLevel();
-
-            List<MobEffect> statusEffects = getRandomStatusEffects(level);
-            applyStatusEffects(enemy, statusEffects, level, enemyId);
-
-            int currentEffectCount = enemy.getActiveEffects().size();
-            int highestEffectCount = getHighestEffectCount(enemyId, currentEffectCount);
-
-            float damageMultiplier = getDamageMultiplier(Math.max(currentEffectCount, highestEffectCount));
-            damage = baseDamage * damageMultiplier;
-
-
-            Player attacker = context.getPlayerAttacker();
-            if (attacker != null && enemy.getHealth() > 0) {
-                float weaponDamage = tool.getDamage();
-
-
-                if (highestEffectCount >= absoluteSeveranceThreshold) {
-
-                    float extraSeverance = highestEffectCount * highestEffectCount * highestEffectCount * 1.2F + getDamageMultiplier(highestEffectCount);
-                    modifierAbsoluteSeverance(enemy, attacker, weaponDamage, extraSeverance);
-
-
-                    //highestEffectCountMap.remove(enemyId);
-                }
-            }
-        }
-        return damage;
+        if (enemy == null) return damage;
+        int level = modifier.getLevel();
+        List<MobEffect> statusEffects = getRandomStatusEffects(level);
+        applyStatusEffects(enemy, statusEffects, level);
+        int currentEffectCount = enemy.getActiveEffects().size();
+        int highestEffectCount = updateHighestEffectCount(enemy.getUUID(), currentEffectCount);
+        float damageMultiplier = getDamageMultiplier(highestEffectCount);
+        return baseDamage * damageMultiplier;
+    }
+    @Override
+    public float beforeMeleeHit(@NotNull IToolStackView tool, @NotNull ModifierEntry modifier, ToolAttackContext context, float damage, float baseKnockback, float knockback) {
+        LivingEntity enemy = context.getLivingTarget();
+        if (enemy == null) return knockback;
+        int highestEffectCount = HIGHEST_EFFECT_COUNT_MAP.getOrDefault(enemy.getUUID(), 0);
+        if (highestEffectCount < ABSOLUTE_SEVERANCE_THRESHOLD) return knockback;
+        Player attacker = context.getPlayerAttacker();
+        if (attacker == null) return knockback;
+        if (enemy instanceof Player) return knockback;
+        if (enemy.getHealth() <= 0) return knockback;
+        if (isFromDummmmmmyMod(enemy)) return knockback;
+        if (isDefender(enemy)) return knockback;
+        float damageMultiplier = getDamageMultiplier(highestEffectCount);
+        float toolDmg = tool.getStats().get(ToolStats.ATTACK_DAMAGE);
+        float extraSeverance = highestEffectCount * highestEffectCount * highestEffectCount * 1.2F + damageMultiplier;
+        modifierAbsoluteSeverance(enemy, attacker, toolDmg, extraSeverance);
+        return knockback;
     }
 
-    private float getDamageMultiplier(float effectCount) {
-        return 1 + effectCount * 214748364821474836482147483648214748364F;
+    @Override
+    public void failedMeleeHit(@NotNull IToolStackView tool, @NotNull ModifierEntry modifier, ToolAttackContext context, float damageAttempted) {
+        LivingEntity enemy = context.getLivingTarget();
+        if (enemy == null) return ;
+        int highestEffectCount = HIGHEST_EFFECT_COUNT_MAP.getOrDefault(enemy.getUUID(), 0);
+        if (highestEffectCount < ABSOLUTE_SEVERANCE_THRESHOLD) return ;
+        Player attacker = context.getPlayerAttacker();
+        if (attacker == null) return ;
+        if (enemy instanceof Player) return ;
+        if (enemy.getHealth() <= 0) return ;
+        if (isFromDummmmmmyMod(enemy)) return ;
+        if (isDefender(enemy)) return;
+        float damageMultiplier = getDamageMultiplier(highestEffectCount);
+        float extraSeverance = highestEffectCount * highestEffectCount * highestEffectCount * 1.2F + damageMultiplier;
+        modifierAbsoluteSeverance(enemy, attacker, tool.getDamage(), extraSeverance);
     }
 
-    private List<MobEffect> getRandomStatusEffects(int count) {
-        if (harmfulEffectsCache == null) {
-            harmfulEffectsCache = new ArrayList<>();
-            for (ResourceLocation effectId : ForgeRegistries.MOB_EFFECTS.getKeys()) {
-                MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(effectId);
-                if (effect != null && effect.getCategory() == MobEffectCategory.HARMFUL) {
-                    harmfulEffectsCache.add(effect);
-                }
-            }
-        }
-
-        List<MobEffect> selectedEffects = new ArrayList<>();
-        Random random = new Random();
-        List<MobEffect> tempEffects = new ArrayList<>(harmfulEffectsCache);
-
-        while (selectedEffects.size() < count && !tempEffects.isEmpty()) {
-            int index = random.nextInt(tempEffects.size());
-            selectedEffects.add(tempEffects.get(index));
-            tempEffects.remove(index);
-        }
-        return selectedEffects;
+    private static float getDamageMultiplier(float effectCount) {
+        return 1.0F + effectCount * DAMAGE_MULTIPLIER_PER_EFFECT;
     }
 
-    private static void applyStatusEffects(LivingEntity entity, List<MobEffect> statusEffects, int level, UUID entityId) {
+    private static List<MobEffect> getRandomStatusEffects(int count) {
+        if (HARMFUL_EFFECTS_CACHE.isEmpty() || count <= 0) return Collections.emptyList();
+        List<MobEffect> shuffled = new ArrayList<>(HARMFUL_EFFECTS_CACHE);
+        Collections.shuffle(shuffled, ThreadLocalRandom.current());
+        return shuffled.subList(0, Math.min(count, shuffled.size()));
+    }
 
-        Set<MobEffect> entityEffects = appliedEffectsMap.computeIfAbsent(entityId, k -> new HashSet<>());
-
-
-
+    private static void applyStatusEffects(LivingEntity entity, List<MobEffect> statusEffects, int level) {
+        int duration = level * 20 * 100;
         for (MobEffect effect : statusEffects) {
-
-            entityEffects.add(effect);
-
-
-            MobEffectInstance instance = new MobEffectInstance(effect, level * 20 * 100, 4);
-
+            MobEffectInstance instance = new MobEffectInstance(effect, duration, 4);
             try {
-
                 LivingEntityUtil.forceAddEffect(entity, instance);
             } catch (Exception e) {
-
                 entity.addEffect(instance);
             }
         }
     }
-
-    private int getHighestEffectCount(UUID entityId, int currentCount) {
-        Integer highestCount = highestEffectCountMap.get(entityId);
-        if (highestCount == null || currentCount > highestCount) {
-            highestEffectCountMap.put(entityId, currentCount);
-            return currentCount;
-        }
-        return highestCount;
+    private static int updateHighestEffectCount(UUID entityId, int currentCount) {
+        return HIGHEST_EFFECT_COUNT_MAP.merge(entityId, currentCount, Math::max);
+    }
+    @SubscribeEvent
+    public static void onServerStopping(ServerStoppingEvent event) {
+        HIGHEST_EFFECT_COUNT_MAP.clear();
+    }
+    @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        HIGHEST_EFFECT_COUNT_MAP.remove(event.getEntity().getUUID());
     }
 }
-
-
-
-
