@@ -12,7 +12,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.modifierSeverance;
 
 public class BaseCuttingModifier extends NoLevelsModifier implements MeleeHitModifierHook {
 

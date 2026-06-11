@@ -4,8 +4,6 @@ import com.csdy.jzyy.ms.enums.EntityCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
-import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
-
 @SuppressWarnings("unused")
 public final class CoreMethod {
 

@@ -1,12 +1,8 @@
 package com.csdy.jzyy.modifier.modifier.golden_strawberry;
 
 import com.csdy.jzyy.item.register.ItemRegister;
-import com.csdy.jzyy.modifier.util.JzyyAnimationHandler;
 import com.csdy.jzyy.network.JzyySyncing;
-import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.network.packets.UndyingAnimationPacket;
-import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -15,7 +11,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;

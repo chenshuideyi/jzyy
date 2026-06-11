@@ -1,17 +1,10 @@
 package com.csdy.jzyy.entity.boss.entity;
 
-import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.BossEntity;
-import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.entity.boss.ai.dog_jiao_jiao_jiao.DogJiaoJiaoJiaoAttackGoal;
-import com.csdy.jzyy.entity.monster.ai.DogJiaoMeleeGoal;
-import com.csdy.jzyy.entity.monster.entity.DogJiao;
-import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -35,7 +28,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;

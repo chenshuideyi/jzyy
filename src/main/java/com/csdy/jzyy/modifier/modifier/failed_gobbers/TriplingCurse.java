@@ -5,7 +5,6 @@ import com.csdy.jzyy.font.RainbowText;
 import com.csdy.jzyy.modifier.register.JzyyModifier;
 import com.csdy.jzyy.modifier.util.CsdyModifierUtil;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,16 +16,12 @@ import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.SlotType;
 import slimeknights.tconstruct.library.tools.nbt.*;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.text.DecimalFormat;
 import java.util.List;
-
-import static slimeknights.tconstruct.common.TinkerTags.Modifiers.OVERSLIME_FRIEND;
 
 public class TriplingCurse extends JzyyModifier {
 

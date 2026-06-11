@@ -2,14 +2,11 @@ package com.csdy.jzyy.entity.boss.entity;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.boss.BossEntity;
-import com.csdy.jzyy.entity.boss.ai.TitanWarden.TitanWardenAttackGoal;
 import com.csdy.jzyy.entity.boss.ai.TitanWarden.RayTraceHelper;
-import com.csdy.jzyy.mixins.AttributeInstanceAccessor;
+import com.csdy.jzyy.entity.boss.ai.TitanWarden.TitanWardenAttackGoal;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
-import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -46,7 +43,10 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 public class TitanWarden extends BossEntity implements GeoEntity {

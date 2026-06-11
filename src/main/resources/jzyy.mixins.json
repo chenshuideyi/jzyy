@@ -18,7 +18,6 @@
     "SynchedEntityDataMixin",
     "TheKingMixin",
     "ToolAttackUtilMixin",
-    "UILoadMixin",
     "void_walk.BlockBehaviourMixin",
     "void_walk.EntityCollisionContextAccessor",
     "void_walk.EntityInvoker",
@@ -26,7 +25,8 @@
   ],
   "client": [
     "WindowMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "LxTrackSessionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

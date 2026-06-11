@@ -3,7 +3,6 @@ package com.csdy.jzyy.modifier.modifier.astral;
 import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;

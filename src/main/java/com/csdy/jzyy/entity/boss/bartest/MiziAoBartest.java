@@ -1,6 +1,5 @@
 package com.csdy.jzyy.entity.boss.bartest;
 
-import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
@@ -15,7 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 
 import java.awt.*;
-import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class MiziAoBartest {

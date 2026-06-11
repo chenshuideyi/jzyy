@@ -6,23 +6,20 @@ import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.effect.register.JzyyEffectRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.boss.entity.*;
-
 import com.csdy.jzyy.entity.boss.render.*;
 import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import com.csdy.jzyy.entity.monster.render.DogJiaoRenderer;
 import com.csdy.jzyy.entity.monster.render.HJMRenderer;
 import com.csdy.jzyy.event.LivingEvent;
-import com.csdy.jzyy.event.jzyyWandererTrades;
 import com.csdy.jzyy.fluid.register.JzyyFluidRegister;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.item.register.ItemRegister;
-//import com.csdy.jzyy.item.tool.until.JzyyTools;
-import com.csdy.jzyy.shader.BatBlindnessEffect;
 import com.csdy.jzyy.modifier.register.ModifierRegister;
 import com.csdy.jzyy.modifier.util.JzyyAnimationHandler;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.particle.register.JzyyParticlesRegister;
+import com.csdy.jzyy.shader.BatBlindnessEffect;
 import com.csdy.jzyy.shader.BlackFogEffect;
 import com.csdy.jzyy.shader.BloodSkyEffect;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
@@ -39,16 +36,16 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import slimeknights.tconstruct.library.client.model.TinkerItemProperties;
 
 import static com.csdy.jzyy.coremod.CsdyLaunchPluginService.checkJavaVersion;
 import static com.csdy.jzyy.coremod.CsdyLaunchPluginService.checkOculus;
+import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
+
+//import com.csdy.jzyy.item.tool.until.JzyyTools;
 //import static com.csdy.jzyy.item.tool.until.JzyyTools.lollipop;
 //import static com.csdy.jzyy.item.tool.until.JzyyTools.tinker_loli_pickaxe;
-import static com.csdy.jzyy.modifier.modifier.etsh.GpuUtil.gpuUtilInit;
 
 @Mod(JzyyModMain.MODID)
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

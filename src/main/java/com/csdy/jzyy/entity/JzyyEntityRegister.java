@@ -6,7 +6,6 @@ import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;

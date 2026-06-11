@@ -3,7 +3,6 @@ package com.csdy.jzyy.block;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import static com.csdy.jzyy.JzyyModMain.MODID;
 

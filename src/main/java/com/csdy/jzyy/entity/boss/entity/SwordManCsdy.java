@@ -24,7 +24,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
@@ -47,7 +50,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 import static com.csdy.jzyy.entity.Util.forceHurt;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
+import static com.csdy.jzyy.ms.util.LivingEntityUtil.reflectionSeverance;
 
 
 public class SwordManCsdy extends BossEntity implements GeoEntity {

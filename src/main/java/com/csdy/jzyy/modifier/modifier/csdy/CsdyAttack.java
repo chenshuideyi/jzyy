@@ -4,7 +4,6 @@ import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ProjectileDamageModifierHook;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import com.csdy.jzyy.ms.util.MsUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -24,12 +23,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.dropLoot;
-import static com.csdy.jzyy.modifier.modifier.Severance.AbsoluteSeverance.setEntityDead;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromOmniMod;
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromWzzMod;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.forceSetAllCandidateHealth;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.csdy.jzyy.ms.util.MsUtil.KillEntity;
 
 

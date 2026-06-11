@@ -1,11 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.silence;
 
-import com.c2h6s.etstlib.entity.specialDamageSources.PercentageBypassArmorSource;
-import com.c2h6s.etstlib.register.EtSTLibHooks;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -14,7 +9,9 @@ import slimeknights.tconstruct.library.modifiers.hook.build.VolatileDataModifier
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.tools.nbt.*;
+import slimeknights.tconstruct.library.tools.nbt.IToolContext;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ToolDataNBT;
 
 public class SilenceAlmighty extends NoLevelsModifier implements ToolDamageModifierHook, VolatileDataModifierHook {
 

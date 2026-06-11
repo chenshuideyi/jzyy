@@ -3,13 +3,10 @@ package com.csdy.jzyy.entity.monster.event;
 
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.entity.monster.entity.HJMEntity;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -18,9 +15,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.library.json.predicate.tool.StatInRangePredicate;
-import slimeknights.tconstruct.library.json.predicate.tool.ToolStackItemPredicate;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 

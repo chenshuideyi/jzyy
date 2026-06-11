@@ -1,13 +1,11 @@
 package com.csdy.jzyy.ms;
 
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 
 import java.lang.invoke.MethodHandle;
-import java.lang.reflect.Field;
-
 import java.lang.invoke.MethodType;
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class CoreMsUtil {

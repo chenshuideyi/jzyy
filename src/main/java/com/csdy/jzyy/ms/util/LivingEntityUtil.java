@@ -23,7 +23,6 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromIceAndFire;
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.isFromWzzMod;
 
 public class LivingEntityUtil {

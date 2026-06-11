@@ -1,6 +1,5 @@
 package com.csdy.jzyy.modifier.modifier.tian_yi;
 
-import com.c2h6s.etstlib.entity.specialDamageSources.PercentageBypassArmorSource;
 import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.c2h6s.etstlib.tool.hooks.ArrowHitModifierHook;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +14,6 @@ import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
-import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;

@@ -2,7 +2,6 @@ package com.csdy.jzyy.entity.boss.model;
 
 import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.entity.boss.entity.DogJiaoJiaoJiao;
-import com.csdy.jzyy.entity.boss.entity.MiziAo;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

@@ -1,6 +1,5 @@
 package com.csdy.jzyy.mixins;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
 import org.spongepowered.asm.mixin.Mixin;

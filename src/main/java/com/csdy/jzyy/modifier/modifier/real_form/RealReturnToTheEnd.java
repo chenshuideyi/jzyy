@@ -1,18 +1,17 @@
 package com.csdy.jzyy.modifier.modifier.real_form;
 
 import com.csdy.jzyy.modifier.modifier.real_form.base.RealFormBaseModifier;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-///归终真实形态——屠龙
-///我将沐浴这份荣誉的光辉
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementProgress;
+/// 归终真实形态——屠龙
+/// 我将沐浴这份荣誉的光辉
 
 public class RealReturnToTheEnd extends RealFormBaseModifier {
 

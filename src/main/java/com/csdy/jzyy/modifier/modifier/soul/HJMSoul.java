@@ -1,9 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.soul;
 
-import com.c2h6s.etstlib.register.EtSTLibHooks;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;

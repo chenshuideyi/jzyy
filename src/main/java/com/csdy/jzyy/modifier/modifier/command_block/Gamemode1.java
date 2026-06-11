@@ -1,10 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.command_block;
 
-import com.csdy.jzyy.ms.CoreMsUtil;
-import com.csdy.jzyy.ms.enums.EntityCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -14,8 +11,6 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-
-import java.awt.*;
 
 public class Gamemode1 extends NoLevelsModifier implements EquipmentChangeModifierHook {
 

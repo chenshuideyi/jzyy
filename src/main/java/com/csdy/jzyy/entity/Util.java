@@ -1,9 +1,7 @@
 package com.csdy.jzyy.entity;
 
-import com.csdy.jzyy.ms.PLZBase;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
