@@ -85,7 +85,6 @@ buildscript {
     dependencies {
         minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
         annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-        implementation 'org.javassist:javassist:3.28.0-GA'
 
         implementation fg.deobf("curse.maven:jei-238222:6075247")
 

@@ -26,7 +26,6 @@
   "client": [
     "WindowMixin",
     "MinecraftMixin",
-    "LxTrackSessionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

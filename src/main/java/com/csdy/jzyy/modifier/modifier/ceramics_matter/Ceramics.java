@@ -26,6 +26,7 @@ public class Ceramics extends JzyyModifier {
     }
 
     @Override
+    @SuppressWarnings("all")
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source){
         if (!(attacker instanceof Player player)) return source;
         return PercentageBypassArmorSource.playerAttack(player,100);

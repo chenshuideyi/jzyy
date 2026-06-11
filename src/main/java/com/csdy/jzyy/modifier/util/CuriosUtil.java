@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public class CuriosUtil {
 
+    @SuppressWarnings("all")
     public static void removeAllCurios(LivingEntity player) {
         //noinspection UnstableApiUsage,removal,deprecation
         Optional<ICuriosItemHandler> curiosHandler = CuriosApi.getCuriosHelper().getCuriosHandler(player).resolve();

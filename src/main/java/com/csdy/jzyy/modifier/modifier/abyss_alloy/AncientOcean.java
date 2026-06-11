@@ -25,6 +25,7 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 public class AncientOcean extends NoLevelsModifier implements ToolDamageModifierHook, ArrowHitModifierHook, ModifyDamageSourceModifierHook {
 
     @Override
+    @SuppressWarnings("all")
     public LegacyDamageSource modifyDamageSource(IToolStackView tool, ModifierEntry entry, LivingEntity attacker, InteractionHand hand, Entity target, EquipmentSlot sourceSlot, boolean isFullyCharged, boolean isExtraAttack, boolean isCritical, LegacyDamageSource source){
         if (!(attacker instanceof Player player)) return source;
         if (player.getHealth() < player.getMaxHealth()*0.88f) return source;
@@ -33,6 +34,7 @@ public class AncientOcean extends NoLevelsModifier implements ToolDamageModifier
     }
 
     @Override
+    @SuppressWarnings("all")
     public LegacyDamageSource modifyArrowDamageSource(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, AbstractArrow arrow, @Nullable LivingEntity attacker, @Nullable Entity target, LegacyDamageSource source){
         if (!(attacker instanceof Player player)) return source;
         if (player.getHealth() < player.getMaxHealth()*0.88f) return source;
@@ -46,6 +48,7 @@ public class AncientOcean extends NoLevelsModifier implements ToolDamageModifier
     }
 
     @Override
+    @SuppressWarnings("all")
     public void afterArrowHit(ModDataNBT persistentData, ModifierEntry entry, ModifierNBT modifiers, AbstractArrow arrow, @Nullable LivingEntity attacker, @NotNull LivingEntity target, float damageDealt) {
         if (!(attacker instanceof Player player)) return;
         if (player.getHealth() < player.getMaxHealth() * 0.88f) return;
