@@ -74,6 +74,10 @@ public class WindowMixin {
     public WindowMixin() {
     }
 
+    /**
+     * @author
+     * @reason
+     */
     @Overwrite
     public void setTitle(String string) {
         jzyy$currentSubtitle = jzyy$ARRAY[jzyy$random.nextInt(jzyy$ARRAY.length)];

@@ -2,23 +2,19 @@ package com.csdy.jzyy.modifier.modifier.Severance;
 
 
 import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
-import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -35,7 +31,6 @@ import java.util.UUID;
 
 import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.*;
 import static com.csdy.jzyy.ms.util.LivingEntityUtil.*;
-import static com.csdy.jzyy.ms.util.LivingEntityUtil.setAbsoluteSeveranceHealth;
 import static com.mojang.text2speech.Narrator.LOGGER;
 
 @Mod.EventBusSubscriber(modid = JzyyModMain.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)

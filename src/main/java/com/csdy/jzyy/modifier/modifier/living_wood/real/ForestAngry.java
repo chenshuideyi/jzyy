@@ -20,7 +20,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-import javax.annotation.Nullable;
 //TODO 也许可以优化
 public class ForestAngry extends NoLevelsModifier implements MeleeDamageModifierHook, ProjectileDamageModifierHook {
 

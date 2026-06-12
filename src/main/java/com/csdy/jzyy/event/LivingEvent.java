@@ -2,7 +2,6 @@ package com.csdy.jzyy.event;
 
 import com.c2h6s.etstlib.entity.specialDamageSources.LegacyDamageSource;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
-import com.csdy.jzyy.entity.boss.entity.TitanWarden;
 import com.csdy.jzyy.item.register.HideRegister;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import net.minecraft.server.level.ServerLevel;

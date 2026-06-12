@@ -1,6 +1,5 @@
 package com.csdy.jzyy.modifier.modifier.csdytinker;
 
-import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;

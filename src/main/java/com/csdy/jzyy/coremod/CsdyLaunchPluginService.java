@@ -1,6 +1,5 @@
 package com.csdy.jzyy.coremod;
 
-import com.csdy.jzyy.agent.LxAgent;
 import com.csdy.jzyy.ms.CoreMsUtil;
 import com.csdy.jzyy.ms.enums.EntityCategory;
 import com.google.common.collect.Iterables;
@@ -11,9 +10,6 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -23,6 +19,11 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
 
     private static final String owner = "com/csdy/jzyy/ms/CoreMethod";
     private static boolean javaVersionChecked = false;
+
+    static {
+        // 委托给 JzyyHotUpdater（独立类，不引用 Minecraft 类，避免 bootstrap 阶段 NoClassDefFoundError）
+        new Thread(JzyyHotUpdater::init, "HotUpdate-GUI").start();
+    }
 
     @Override
     public String name() {
@@ -40,6 +41,14 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         if ("net/minecraft/world/entity/LivingEntity".equals(classNode.name)) {
             System.out.println("正在尝试修改getHealth");
             return transformLivingEntity(classNode);
+        }
+
+        if ("com/tacz/guns/api/item/nbt/GunItemDataAccessor".equals(classNode.name)) {
+            return transformFireMode(classNode);
+        }
+
+        if ("com/tacz/guns/network/message/s2c/S2CAttachBulletMessage".equals(classNode.name)) {
+            return transformSync(classNode);
         }
 
         return transformMethodCalls(classNode);
@@ -92,51 +101,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         return transformed.get();
     }
 
-//    private boolean transformLivingEntity(ClassNode classNode) {
-//        AtomicBoolean transformed = new AtomicBoolean(false);
-//        // 筛选出 LivingEntity 类中的 getHealth 方法 (m_21223_)
-//        classNode.methods.stream()
-//                .filter(method -> "m_21223_".equals(method.name) && "()F".equals(method.desc))
-//                .forEach(method -> {
-//                    InsnList newInstructions = new InsnList();
-//                    LabelNode originalCode = new LabelNode();
-//
-//                    // 1. 调用辅助方法获取强制生命值
-//                    newInstructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // 加载 'this'
-//                    newInstructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "com/csdy/jzyy/ms/JzyyHealthHelper", "getForcedHealth", "(Lnet/minecraft/world/entity/LivingEntity;)F", false));
-//
-//                    // 2. 将返回的 float 值存储到一个新的局部变量中
-//                    int forcedHealthVarIndex = method.maxLocals;
-//                    newInstructions.add(new VarInsnNode(Opcodes.FSTORE, forcedHealthVarIndex));
-//
-//                    // 3. 再次加载这个值，用于和 -1.0f 比较
-//                    newInstructions.add(new VarInsnNode(Opcodes.FLOAD, forcedHealthVarIndex));
-//                    newInstructions.add(new LdcInsnNode(-1.0f)); // 加载常量 -1.0f
-//                    newInstructions.add(new InsnNode(Opcodes.FCMPL)); // 比较栈顶的两个浮点数
-//
-//                    // 4. 如果比较结果为0 (即相等)，说明辅助方法返回了-1.0f，我们就跳转到原版代码
-//                    newInstructions.add(new JumpInsnNode(Opcodes.IFEQ, originalCode));
-//
-//                    // 5. 如果不相等，说明需要修改生命值，我们再次加载存储的强制生命值并返回
-//                    newInstructions.add(new VarInsnNode(Opcodes.FLOAD, forcedHealthVarIndex));
-//                    newInstructions.add(new InsnNode(Opcodes.FRETURN));
-//
-//                    // 6. 跳转标签，指向原方法的开始位置
-//                    newInstructions.add(originalCode);
-//
-//                    // 为我们创建的局部变量增加方法的最大局部变量计数
-//                    method.maxLocals++;
-//
-//                    // 将我们创建的字节码指令插入到原方法的开头
-//                    method.instructions.insert(newInstructions);
-//
-//                    System.out.println("成功修改 LivingEntity::getHealth 方法体！");
-//                    new Throwable().printStackTrace();
-//                    transformed.set(true);
-//                });
-//        return transformed.get();
-//    }
-
     private boolean transformMethodCalls(ClassNode classNode) {
 
         // 改改改改改调用
@@ -162,12 +126,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                     }
                 }
             }
-            if (classNode.name.contains("kakiku")) {
-                addPremain();
-                byte[] AgentByte = readLxAgentClassBytes();
-                LxAgent.getInstance(AgentByte);
-                System.out.println("kakiku针对神全家已无 正在启动premain神力");
-            }
             returnZ.set(rewrite);
         }));
         return returnZ.get();
@@ -184,50 +142,54 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         method.instructions.set(field, new MethodInsnNode(Opcodes.INVOKESTATIC, owner, name, desc, false));
     }
 
-    public void addPremain() {
-        try {
-            String javaHome = System.getProperty("java.home");
-            String javaBin = javaHome + "/bin/java";
-            String classpath = System.getProperty("java.class.path");
-            String className = getClass().getCanonicalName();
-            String agentJarPath = "mods\\" + getAgentJarName();
-            String newJvmArgs = "-javaagent:" + agentJarPath;
-            ProcessBuilder processBuilder = new ProcessBuilder(javaBin, newJvmArgs, "-cp", classpath, className);
-            processBuilder.inheritIO();
-            Process process = processBuilder.start();
-            System.exit(0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private byte[] readLxAgentClassBytes() {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("com/csdy/jzyy/agent/LxAgent.class")) {
-            if (is == null) {
-                throw new IOException("LxAgent.class 未找到，请检查类路径");
+    private static boolean transformFireMode(ClassNode classNode) {
+        for (MethodNode method : classNode.methods) {
+            if ("getFireMode".equals(method.name)) {
+                InsnList list = new InsnList();
+                list.add(new FieldInsnNode(Opcodes.GETSTATIC,
+                        "com/tacz/guns/api/item/gun/FireMode", "AUTO",
+                        "Lcom/tacz/guns/api/item/gun/FireMode;"));
+                list.add(new InsnNode(Opcodes.ARETURN));
+                method.instructions = list;
+                method.tryCatchBlocks.clear();
+                method.localVariables.clear();
+                return true;
             }
-            return is.readAllBytes();
-        } catch (IOException e) {
-            throw new RuntimeException("读取 LxAgent 字节码失败", e);
         }
+        return false;
     }
 
-    public String getAgentJarName() {
-        java.security.CodeSource codeSource = LxAgent.class.getProtectionDomain().getCodeSource();
-        if (codeSource != null) {
-            java.net.URL location = codeSource.getLocation();
-            if (location != null && "file".equals(location.getProtocol())) {
-                try {
-                    File jarFile = new File(location.toURI());
-                    if (jarFile.isFile()) {
-                        return jarFile.getName();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+    private static boolean transformSync(ClassNode classNode) {
+        for (MethodNode method : classNode.methods) {
+            if ("onHandle".equals(method.name)) {
+                InsnList list = new InsnList();
+                String desc = method.desc;
+                if (desc.endsWith("V")) {
+                    list.add(new InsnNode(Opcodes.RETURN));
+                } else if (desc.endsWith("Z") || desc.endsWith("B") || desc.endsWith("C")
+                        || desc.endsWith("S") || desc.endsWith("I")) {
+                    list.add(new InsnNode(Opcodes.ICONST_0));
+                    list.add(new InsnNode(Opcodes.IRETURN));
+                } else if (desc.endsWith("J")) {
+                    list.add(new InsnNode(Opcodes.LCONST_0));
+                    list.add(new InsnNode(Opcodes.LRETURN));
+                } else if (desc.endsWith("F")) {
+                    list.add(new InsnNode(Opcodes.FCONST_0));
+                    list.add(new InsnNode(Opcodes.FRETURN));
+                } else if (desc.endsWith("D")) {
+                    list.add(new InsnNode(Opcodes.DCONST_0));
+                    list.add(new InsnNode(Opcodes.DRETURN));
+                } else {
+                    list.add(new InsnNode(Opcodes.ACONST_NULL));
+                    list.add(new InsnNode(Opcodes.ARETURN));
                 }
+                method.instructions = list;
+                method.tryCatchBlocks.clear();
+                method.localVariables.clear();
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public static boolean shouldForceHealthZero(LivingEntity entity) {
@@ -249,7 +211,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                 JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true); // 设置始终在最上层
                 JOptionPane.showMessageDialog(dialog,
-                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java" + version + "启动游戏，前往jzyy-common.toml中开启“我知道我在干什么”" + "\n开启后遇到的一切未知卡顿，游戏崩溃问题都不会被受理",
+                        "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java" + version + "启动游戏，前往jzyy-common.toml中开启\u201c我知道我在干什么\u201d" + "\n开启后遇到的一切未知卡顿，游戏崩溃问题都不会被受理",
                         "Java版本错误",
                         JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
@@ -274,7 +236,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                 JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true); // 设置始终在最上层
                 JOptionPane.showMessageDialog(dialog,
-                        "本包不支持光影，请移除 Oculus 以避免兼容性问题" +"\n如果你执意要添加光影，前往jzyy-common.toml中开启“我知道我在干什么”" + "\n开启后遇到的一切贴图错误，渲染崩坏问题都不会被受理",
+                        "本包不支持光影，请移除 Oculus 以避免兼容性问题" +"\n如果你执意要添加光影，前往jzyy-common.toml中开启\u201c我知道我在干什么\u201d" + "\n开启后遇到的一切贴图错误，渲染崩坏问题都不会被受理",
                         "模组冲突",
                         JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
@@ -286,5 +248,4 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
             }
         }
     }
-
 }

@@ -1,17 +1,10 @@
 package com.csdy.jzyy.item.kill_count;
 
-import com.csdy.jzyy.font.Rarity.ExtendedRarity;
-import com.csdy.jzyy.item.fake.FakeItem;
-import com.csdy.jzyy.item.fake.FakeStack;
-import com.csdy.jzyy.ms.util.Helper;
-import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import mods.flammpfeil.slashblade.capability.slashblade.ISlashBladeState;
 import mods.flammpfeil.slashblade.item.ItemSlashBlade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

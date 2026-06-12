@@ -5,7 +5,6 @@ import com.csdy.jzyy.modifier.util.CsdyModifierUtil;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class TriplingBless extends JzyyModifier {
 

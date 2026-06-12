@@ -1,8 +1,6 @@
 package com.csdy.jzyy.modifier.modifier.ice_and_fire.armor;
 
 import com.csdy.jzyy.effect.register.JzyyEffectRegister;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.effect.ChargeEffect;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;

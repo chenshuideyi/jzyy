@@ -1,20 +1,14 @@
 package com.csdy.jzyy.entity.boss.ai.gold_mccree;
 
-import com.Polarice3.Goety.utils.BlockFinder;
 import com.csdy.jzyy.entity.boss.entity.GoldMcCree;
-
-
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.vehicle.Minecart;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 

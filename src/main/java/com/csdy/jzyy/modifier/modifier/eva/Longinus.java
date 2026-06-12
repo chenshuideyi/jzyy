@@ -17,7 +17,6 @@ import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
-import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public class Longinus extends Modifier implements MeleeDamageModifierHook, ProjectileDamageModifierHook {
 

@@ -1,10 +1,5 @@
 package com.csdy.jzyy.modifier.modifier.valstrax;
 
-import com.c2h6s.etstlib.register.EtSTLibHooks;
-import com.c2h6s.etstlib.tool.hooks.CriticalAttackModifierHook;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;

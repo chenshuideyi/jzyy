@@ -1,6 +1,5 @@
 package com.csdy.jzyy.item.register;
 
-import com.csdy.jzyy.block.BlockRegister;
 import com.csdy.jzyy.entity.JzyyEntityRegister;
 import com.csdy.jzyy.font.Rarity.ExtendedRarity;
 import com.csdy.jzyy.item.*;
@@ -9,7 +8,6 @@ import com.csdy.jzyy.item.food.GoldenStrawberry;
 import com.csdy.jzyy.item.food.HotDog;
 import com.csdy.jzyy.item.kill_count.BaseKillCountCounter;
 import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.ForgeSpawnEggItem;

@@ -1,6 +1,5 @@
 package com.csdy.jzyy.ms.util;
 
-import com.csdy.jzyy.ms.enums.ClassOption;
 import cpw.mods.modlauncher.Launcher;
 import cpw.mods.modlauncher.ModuleLayerHandler;
 import cpw.mods.modlauncher.api.NamedPath;
@@ -13,8 +12,6 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import sun.misc.Unsafe;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodHandles.Lookup;

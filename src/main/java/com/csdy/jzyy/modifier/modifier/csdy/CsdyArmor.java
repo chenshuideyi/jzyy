@@ -1,14 +1,7 @@
 package com.csdy.jzyy.modifier.modifier.csdy;
 
-import com.csdy.jzyy.JzyyModMain;
 import com.csdy.jzyy.ms.CoreMsUtil;
-import com.csdy.jzyy.ms.PLZBase;
-import com.csdy.jzyy.ms.enums.ClassOption;
 import com.csdy.jzyy.ms.enums.EntityCategory;
-import com.csdy.jzyy.ms.reclass.CsdyPlayer;
-import com.csdy.jzyy.ms.reclass.CsdyServerPlayer;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;

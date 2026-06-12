@@ -1,15 +1,11 @@
 package com.csdy.jzyy.entity.monster.entity;
 
 import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
-import com.csdy.jzyy.entity.boss.entity.MiziAo;
-import com.csdy.jzyy.entity.boss.entity.SwordManCsdy;
 import com.csdy.jzyy.entity.monster.ai.DogJiaoMeleeGoal;
-import com.csdy.tcondiadema.item.sword.Dog;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;

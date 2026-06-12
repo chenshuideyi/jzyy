@@ -1,15 +1,9 @@
 package com.csdy.jzyy.ms;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.csdy.jzyy.ms.enums.ClassOption;
+import sun.misc.Unsafe;
+
+import java.io.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -23,22 +17,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.ProtectionDomain;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 import java.util.jar.Manifest;
-
-import com.csdy.jzyy.JzyyModMain;
-import com.csdy.jzyy.ms.enums.ClassOption;
-import sun.misc.Unsafe;
 
 public class PLZBase {
 	public static final Unsafe UNSAFE = getUnsafe();

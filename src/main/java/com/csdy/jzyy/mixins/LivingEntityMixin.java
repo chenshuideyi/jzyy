@@ -1,8 +1,5 @@
 package com.csdy.jzyy.mixins;
 
-import com.csdy.jzyy.effect.register.JzyyEffectRegister;
-import com.csdy.jzyy.ms.CoreMsUtil;
-import com.csdy.jzyy.ms.enums.EntityCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

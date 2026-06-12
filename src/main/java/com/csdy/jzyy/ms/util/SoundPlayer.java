@@ -1,20 +1,14 @@
 package com.csdy.jzyy.ms.util;
 
 import javax.sound.sampled.*;
-import java.io.*;
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import java.net.URISyntaxException;
-import java.nio.file.*;
-import java.util.*;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 public class SoundPlayer {
 

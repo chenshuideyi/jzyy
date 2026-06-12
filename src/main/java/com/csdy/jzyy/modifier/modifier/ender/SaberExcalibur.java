@@ -106,6 +106,7 @@ public class SaberExcalibur extends NoLevelsModifier implements GeneralInteracti
         }
 
         @Override
+        @SuppressWarnings("all")
         public void onFinishUsing (IToolStackView tool, ModifierEntry entry, LivingEntity entity){
             if (!(entity instanceof Player player)) return;
             float baseDamage = tool.getStats().get(ToolStats.ATTACK_DAMAGE);

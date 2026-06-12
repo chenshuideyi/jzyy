@@ -7,7 +7,6 @@ import com.csdy.jzyy.entity.monster.entity.DogJiao;
 import com.csdy.jzyy.network.JzyySyncing;
 import com.csdy.jzyy.network.packets.PlaySoundPacket;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

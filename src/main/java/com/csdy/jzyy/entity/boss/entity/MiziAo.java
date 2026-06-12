@@ -2,14 +2,18 @@ package com.csdy.jzyy.entity.boss.entity;
 
 import com.csdy.jzyy.diadema.JzyyDiademaRegister;
 import com.csdy.jzyy.entity.boss.BossEntity;
+import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.entity.boss.ai.mizi.MiziDrinkGoal;
 import com.csdy.jzyy.entity.boss.ai.mizi.MiziMeleeGoal;
-import com.csdy.jzyy.entity.boss.ai.PersistentHurtByTargetGoal;
 import com.csdy.jzyy.sounds.JzyySoundsRegister;
 import com.csdy.tcondiadema.frames.diadema.Diadema;
 import com.csdy.tcondiadema.frames.diadema.movement.FollowDiademaMovement;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -42,11 +46,6 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
-
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 
 public class MiziAo extends BossEntity implements GeoEntity {
 

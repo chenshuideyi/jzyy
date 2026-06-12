@@ -12,8 +12,6 @@ import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import static com.csdy.jzyy.modifier.util.CsdyModifierUtil.repairItem;
-
 public class Reality extends NoLevelsModifier implements InventoryTickModifierHook {
 
     @Override

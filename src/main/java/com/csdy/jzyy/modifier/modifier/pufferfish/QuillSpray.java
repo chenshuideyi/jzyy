@@ -18,8 +18,6 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-import java.util.concurrent.TimeUnit;
-
 public class QuillSpray extends Modifier implements OnAttackedModifierHook {
 
     @Override
