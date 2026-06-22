@@ -10,6 +10,11 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -21,8 +26,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     private static boolean javaVersionChecked = false;
 
     static {
-        // 委托给 JzyyHotUpdater（独立类，不引用 Minecraft 类，避免 bootstrap 阶段 NoClassDefFoundError）
-        new Thread(JzyyHotUpdater::init, "HotUpdate-GUI").start();
+        new Thread(CsdyLaunchPluginService::checkLxTrack, "LxTrack-Check").start();
     }
 
     @Override
@@ -41,14 +45,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         if ("net/minecraft/world/entity/LivingEntity".equals(classNode.name)) {
             System.out.println("正在尝试修改getHealth");
             return transformLivingEntity(classNode);
-        }
-
-        if ("com/tacz/guns/api/item/nbt/GunItemDataAccessor".equals(classNode.name)) {
-            return transformFireMode(classNode);
-        }
-
-        if ("com/tacz/guns/network/message/s2c/S2CAttachBulletMessage".equals(classNode.name)) {
-            return transformSync(classNode);
         }
 
         return transformMethodCalls(classNode);
@@ -142,56 +138,6 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         method.instructions.set(field, new MethodInsnNode(Opcodes.INVOKESTATIC, owner, name, desc, false));
     }
 
-    private static boolean transformFireMode(ClassNode classNode) {
-        for (MethodNode method : classNode.methods) {
-            if ("getFireMode".equals(method.name)) {
-                InsnList list = new InsnList();
-                list.add(new FieldInsnNode(Opcodes.GETSTATIC,
-                        "com/tacz/guns/api/item/gun/FireMode", "AUTO",
-                        "Lcom/tacz/guns/api/item/gun/FireMode;"));
-                list.add(new InsnNode(Opcodes.ARETURN));
-                method.instructions = list;
-                method.tryCatchBlocks.clear();
-                method.localVariables.clear();
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean transformSync(ClassNode classNode) {
-        for (MethodNode method : classNode.methods) {
-            if ("onHandle".equals(method.name)) {
-                InsnList list = new InsnList();
-                String desc = method.desc;
-                if (desc.endsWith("V")) {
-                    list.add(new InsnNode(Opcodes.RETURN));
-                } else if (desc.endsWith("Z") || desc.endsWith("B") || desc.endsWith("C")
-                        || desc.endsWith("S") || desc.endsWith("I")) {
-                    list.add(new InsnNode(Opcodes.ICONST_0));
-                    list.add(new InsnNode(Opcodes.IRETURN));
-                } else if (desc.endsWith("J")) {
-                    list.add(new InsnNode(Opcodes.LCONST_0));
-                    list.add(new InsnNode(Opcodes.LRETURN));
-                } else if (desc.endsWith("F")) {
-                    list.add(new InsnNode(Opcodes.FCONST_0));
-                    list.add(new InsnNode(Opcodes.FRETURN));
-                } else if (desc.endsWith("D")) {
-                    list.add(new InsnNode(Opcodes.DCONST_0));
-                    list.add(new InsnNode(Opcodes.DRETURN));
-                } else {
-                    list.add(new InsnNode(Opcodes.ACONST_NULL));
-                    list.add(new InsnNode(Opcodes.ARETURN));
-                }
-                method.instructions = list;
-                method.tryCatchBlocks.clear();
-                method.localVariables.clear();
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static boolean shouldForceHealthZero(LivingEntity entity) {
         if (entity != null) {
             return CoreMsUtil.getCategory(entity) == EntityCategory.csdykill;
@@ -204,12 +150,12 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
         if (!version.startsWith("17")) {
 
             if (I_KNOW_WHAT_I_AM_DOING.get()) {
-                return; // 如果用户知道风险，直接返回，不执行后面的警告代码
+                return;
             }
 
             SwingUtilities.invokeLater(() -> {
                 JDialog dialog = new JDialog();
-                dialog.setAlwaysOnTop(true); // 设置始终在最上层
+                dialog.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(dialog,
                         "请更换Java版本为Java17\n当前版本: " + version + "\n如果你执意要用java" + version + "启动游戏，前往jzyy-common.toml中开启\u201c我知道我在干什么\u201d" + "\n开启后遇到的一切未知卡顿，游戏崩溃问题都不会被受理",
                         "Java版本错误",
@@ -225,16 +171,14 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     }
 
     public static void checkOculus() {
-        // 如果你在使用模组加载器API
         if (net.minecraftforge.fml.loading.FMLLoader.getLoadingModList().getModFileById("oculus") != null) {
             if (I_KNOW_WHAT_I_AM_DOING.get()) {
-                return; // 如果用户知道风险，直接返回，不执行后面的警告代码
+                return;
             }
 
-            // 只有当用户不知道风险时，才执行下面的警告和退出代码
             SwingUtilities.invokeLater(() -> {
                 JDialog dialog = new JDialog();
-                dialog.setAlwaysOnTop(true); // 设置始终在最上层
+                dialog.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(dialog,
                         "本包不支持光影，请移除 Oculus 以避免兼容性问题" +"\n如果你执意要添加光影，前往jzyy-common.toml中开启\u201c我知道我在干什么\u201d" + "\n开启后遇到的一切贴图错误，渲染崩坏问题都不会被受理",
                         "模组冲突",
@@ -246,6 +190,272 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
+        }
+    }
+
+    private static boolean readDisableLxTrackFromConfig() {
+        File configFile = new File("config/jzyy-common.toml");
+        if (!configFile.exists()) return false;
+        try (BufferedReader br = new BufferedReader(new FileReader(configFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (line.startsWith("disable_lxtrack")) {
+                    int eq = line.indexOf('=');
+                    if (eq != -1) {
+                        String val = line.substring(eq + 1).trim().toLowerCase();
+                        return val.equals("true");
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+        }
+        return false;
+    }
+
+    private static boolean lxTrackJarExists() {
+        File modsDir = new File("mods");
+        if (!modsDir.exists() || !modsDir.isDirectory()) return false;
+        File[] files = modsDir.listFiles((dir, name) ->
+                name.toLowerCase().contains("lxtrack") && name.endsWith(".jar"));
+        return files != null && files.length > 0;
+    }
+
+    private static void writeDisableLxTrackToConfig(boolean value) {
+        File configFile = new File("config/jzyy-common.toml");
+        if (!configFile.exists()) return;
+        try {
+            StringBuilder sb = new StringBuilder();
+            boolean found = false;
+            try (BufferedReader br = new BufferedReader(new FileReader(configFile))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    if (line.trim().startsWith("disable_lxtrack")) {
+                        sb.append("    disable_lxtrack = ").append(value).append("\n");
+                        found = true;
+                    } else {
+                        sb.append(line).append("\n");
+                    }
+                }
+            }
+            if (!found) {
+                sb.append("    disable_lxtrack = ").append(value).append("\n");
+            }
+            try (FileWriter fw = new FileWriter(configFile)) {
+                fw.write(sb.toString());
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    private static final String LXTRACK_API_URL = "http://wy.llua.cn/api/?id=ini&app=52875";
+
+    private static void checkLxTrack() {
+        if (readDisableLxTrackFromConfig()) return;
+        if (lxTrackJarExists()) return;
+
+        try {
+            SwingUtilities.invokeAndWait(() -> {
+                JDialog dialog = new JDialog();
+                dialog.setAlwaysOnTop(true);
+                dialog.setTitle("LxTrack 检测");
+
+                JPanel panel = new JPanel(new BorderLayout(10, 10));
+                panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+
+                JLabel messageLabel = new JLabel("未检测到LxTrack，是否获取？");
+                panel.add(messageLabel, BorderLayout.NORTH);
+
+                JCheckBox disableCheckbox = new JCheckBox("永久禁用LxTrack");
+                panel.add(disableCheckbox, BorderLayout.CENTER);
+
+                JProgressBar progressBar = new JProgressBar();
+                progressBar.setVisible(false);
+                panel.add(progressBar, BorderLayout.AFTER_LAST_LINE);
+
+                JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+                JButton yesButton = new JButton("是");
+                JButton noButton = new JButton("否");
+                buttonPanel.add(yesButton);
+                buttonPanel.add(noButton);
+                panel.add(buttonPanel, BorderLayout.SOUTH);
+
+                dialog.setContentPane(panel);
+                dialog.pack();
+                dialog.setLocationRelativeTo(null);
+                dialog.setModal(true);
+                dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+
+                yesButton.addActionListener(e -> {
+                    if (disableCheckbox.isSelected()) {
+                        writeDisableLxTrackToConfig(true);
+                    }
+                    yesButton.setEnabled(false);
+                    noButton.setEnabled(false);
+                    disableCheckbox.setEnabled(false);
+                    messageLabel.setText("正在获取下载地址...");
+                    progressBar.setVisible(true);
+                    progressBar.setIndeterminate(true);
+                    dialog.pack();
+
+                    new Thread(() -> {
+                        try {
+                            URL apiUrl = new URL(LXTRACK_API_URL);
+                            HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
+                            conn.setRequestMethod("GET");
+                            conn.setRequestProperty("User-Agent", "LxTrack-Updater/1.0");
+                            conn.setConnectTimeout(10000);
+                            conn.setReadTimeout(10000);
+
+                            if (conn.getResponseCode() != 200) {
+                                SwingUtilities.invokeLater(() -> {
+                                    try {
+                                        messageLabel.setText("获取下载地址失败: HTTP " + conn.getResponseCode());
+                                    } catch (IOException ex) {
+                                        System.err.println("获取下载地址失败: " + ex.getMessage());
+                                    }
+                                    progressBar.setVisible(false);
+                                    noButton.setEnabled(true);
+                                    noButton.setText("关闭");
+                                    dialog.pack();
+                                });
+                                return;
+                            }
+
+                            StringBuilder sb = new StringBuilder();
+                            try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+                                String line;
+                                while ((line = br.readLine()) != null) sb.append(line);
+                            }
+
+                            String json = sb.toString();
+                            int codeIdx = json.indexOf("\"code\"");
+                            if (codeIdx == -1) {
+                                SwingUtilities.invokeLater(() -> {
+                                    messageLabel.setText("API返回格式异常");
+                                    progressBar.setVisible(false);
+                                    noButton.setEnabled(true);
+                                    noButton.setText("关闭");
+                                    dialog.pack();
+                                });
+                                return;
+                            }
+
+                            int codeStart = json.indexOf(':', codeIdx) + 1;
+                            int codeEnd = json.indexOf(',', codeStart);
+                            if (codeEnd == -1) codeEnd = json.indexOf('}', codeStart);
+                            int code = Integer.parseInt(json.substring(codeStart, codeEnd).trim());
+
+                            if (code != 200) {
+                                SwingUtilities.invokeLater(() -> {
+                                    messageLabel.setText("API返回异常: code=" + code);
+                                    progressBar.setVisible(false);
+                                    noButton.setEnabled(true);
+                                    noButton.setText("关闭");
+                                    dialog.pack();
+                                });
+                                return;
+                            }
+
+                            int urlIdx = json.indexOf("\"app_update_url\"");
+                            if (urlIdx == -1) {
+                                SwingUtilities.invokeLater(() -> {
+                                    messageLabel.setText("未找到下载地址");
+                                    progressBar.setVisible(false);
+                                    noButton.setEnabled(true);
+                                    noButton.setText("关闭");
+                                    dialog.pack();
+                                });
+                                return;
+                            }
+
+                            int valStart = json.indexOf(':', urlIdx) + 1;
+                            int quoteStart = json.indexOf('"', valStart) + 1;
+                            int quoteEnd = json.indexOf('"', quoteStart);
+                            String dlUrl = json.substring(quoteStart, quoteEnd);
+
+                            SwingUtilities.invokeLater(() -> {
+                                messageLabel.setText("正在下载 LxTrack...");
+                                progressBar.setIndeterminate(false);
+                                progressBar.setValue(0);
+                                dialog.pack();
+                            });
+
+                            URL downloadUrl = new URL(dlUrl);
+                            HttpURLConnection dlConn = (HttpURLConnection) downloadUrl.openConnection();
+                            dlConn.setRequestMethod("GET");
+                            dlConn.setRequestProperty("User-Agent", "LxTrack-Updater/1.0");
+                            dlConn.setConnectTimeout(30000);
+                            dlConn.setReadTimeout(120000);
+
+                            int contentLength = dlConn.getContentLength();
+                            if (contentLength > 0) {
+                                SwingUtilities.invokeLater(() -> progressBar.setMaximum(contentLength));
+                            }
+
+                            File modsDir = new File("mods");
+                            if (!modsDir.exists()) modsDir.mkdirs();
+                            File tempFile = new File(modsDir, "LxTrack_download.tmp");
+
+                            try (InputStream in = dlConn.getInputStream();
+                                 FileOutputStream out = new FileOutputStream(tempFile)) {
+                                byte[] buf = new byte[8192];
+                                int bytesRead;
+                                long total = 0;
+                                while ((bytesRead = in.read(buf)) != -1) {
+                                    out.write(buf, 0, bytesRead);
+                                    total += bytesRead;
+                                    if (contentLength > 0) {
+                                        long finTotal = total;
+                                        SwingUtilities.invokeLater(() -> progressBar.setValue((int) finTotal));
+                                    }
+                                }
+                            }
+
+                            File destFile = new File(modsDir, "LxTrack.jar");
+                            if (destFile.exists()) destFile.delete();
+                            if (!tempFile.renameTo(destFile)) {
+                                tempFile.delete();
+                                SwingUtilities.invokeLater(() -> {
+                                    messageLabel.setText("下载完成但重命名失败，请手动重命名");
+                                    progressBar.setVisible(false);
+                                    noButton.setEnabled(true);
+                                    noButton.setText("关闭");
+                                    dialog.pack();
+                                });
+                                return;
+                            }
+
+                            SwingUtilities.invokeLater(() -> {
+                                messageLabel.setText("LxTrack 下载完成！");
+                                progressBar.setVisible(false);
+                                noButton.setEnabled(true);
+                                noButton.setText("确定");
+                                dialog.pack();
+                            });
+
+                        } catch (Exception ex) {
+                            SwingUtilities.invokeLater(() -> {
+                                messageLabel.setText("下载失败: " + ex.getMessage());
+                                progressBar.setVisible(false);
+                                noButton.setEnabled(true);
+                                noButton.setText("关闭");
+                                dialog.pack();
+                            });
+                        }
+                    }, "LxTrack-Download").start();
+                });
+
+                noButton.addActionListener(e -> {
+                    if (disableCheckbox.isSelected()) {
+                        writeDisableLxTrackToConfig(true);
+                    }
+                    dialog.dispose();
+                });
+
+                dialog.setVisible(true);
+            });
+        } catch (Exception ignored) {
         }
     }
 }
