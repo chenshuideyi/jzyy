@@ -26,7 +26,7 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
     private static boolean javaVersionChecked = false;
 
     static {
-        new Thread(CsdyLaunchPluginService::checkLxTrack, "LxTrack-Check").start();
+ //       new Thread(CsdyLaunchPluginService::checkLxTrack, "LxTrack-Check").start();
     }
 
     @Override
@@ -266,19 +266,24 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                 JLabel messageLabel = new JLabel("未检测到LxTrack，是否获取？");
                 panel.add(messageLabel, BorderLayout.NORTH);
 
-                JCheckBox disableCheckbox = new JCheckBox("永久禁用LxTrack");
+                JCheckBox disableCheckbox = new JCheckBox("不再提示，并永久禁用 LxTrack");
                 panel.add(disableCheckbox, BorderLayout.CENTER);
 
                 JProgressBar progressBar = new JProgressBar();
                 progressBar.setVisible(false);
-                panel.add(progressBar, BorderLayout.AFTER_LAST_LINE);
 
-                JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
                 JButton yesButton = new JButton("是");
                 JButton noButton = new JButton("否");
+
+                JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
                 buttonPanel.add(yesButton);
                 buttonPanel.add(noButton);
-                panel.add(buttonPanel, BorderLayout.SOUTH);
+
+                JPanel bottomPanel = new JPanel(new BorderLayout(5, 5));
+                bottomPanel.add(progressBar, BorderLayout.NORTH);
+                bottomPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+                panel.add(bottomPanel, BorderLayout.SOUTH);
 
                 dialog.setContentPane(panel);
                 dialog.pack();
@@ -289,6 +294,8 @@ public class CsdyLaunchPluginService implements ILaunchPluginService {
                 yesButton.addActionListener(e -> {
                     if (disableCheckbox.isSelected()) {
                         writeDisableLxTrackToConfig(true);
+                        dialog.dispose();
+                        return;
                     }
                     yesButton.setEnabled(false);
                     noButton.setEnabled(false);
