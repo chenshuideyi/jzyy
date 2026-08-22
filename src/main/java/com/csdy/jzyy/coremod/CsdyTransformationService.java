@@ -16,11 +16,14 @@ import java.util.Map;
 import java.util.Set;
 
 public class CsdyTransformationService implements ITransformationService {
+    private static CsdyLaunchPluginService launchPlugin;
+
     static {
         LaunchPluginHandler handler = Helper.getFieldValue(Launcher.INSTANCE, "launchPlugins", LaunchPluginHandler.class);
         Map<String, ILaunchPluginService> plugins = (Map<String, ILaunchPluginService>) Helper.getFieldValue(handler, "plugins", Map.class);
         Map<String, ILaunchPluginService> newMap = new HashMap<>();
-        newMap.put("!Csdy", new com.csdy.jzyy.coremod.CsdyLaunchPluginService());
+        launchPlugin = new com.csdy.jzyy.coremod.CsdyLaunchPluginService();
+        newMap.put("!Csdy", launchPlugin);
         if (plugins != null) for (String name : plugins.keySet())
             newMap.put(name, plugins.get(name));
         Helper.setFieldValue(handler, "plugins", newMap);
@@ -34,7 +37,9 @@ public class CsdyTransformationService implements ITransformationService {
 
     @Override
     public void initialize(IEnvironment environment) {
-
+        if (launchPlugin != null) {
+            launchPlugin.checkLxTrack();
+        }
     }
 
     @Override

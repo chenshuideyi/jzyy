@@ -1,10 +1,10 @@
 package com.csdy.jzyy.mixins;
 
 import com.mojang.blaze3d.platform.Window;
-import net.minecraft.client.Minecraft;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Random;
@@ -71,6 +71,9 @@ public class WindowMixin {
     @Unique
     private String jzyy$currentSubtitle = "";
 
+    @Shadow
+    private long window;
+
     public WindowMixin() {
     }
 
@@ -81,6 +84,6 @@ public class WindowMixin {
     @Overwrite
     public void setTitle(String string) {
         jzyy$currentSubtitle = jzyy$ARRAY[jzyy$random.nextInt(jzyy$ARRAY.length)];
-        GLFW.glfwSetWindowTitle(Minecraft.getInstance().window.getWindow(), "匠战妖域 试试" + jzyy$currentSubtitle +" ，很好玩！");
+        GLFW.glfwSetWindowTitle(this.window, "匠战妖域 试试" + jzyy$currentSubtitle +" ，很好玩！");
     }
 }
